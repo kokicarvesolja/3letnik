@@ -1,0 +1,42 @@
+#+title: 1. predavanje iz EMP
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Elektrostatika
+** Coulumbova sila med naboji
+
+Elektrostatika opisuje sile med /mirujočimi/ električnimi naboji. Ker so mirujoči, pomeni, da nimamo nobenih magnetnih sil. Točkasta nabita telesa med seboj delujejo z električno silo. Sila je privlačna, če sta različno predznačena in odbojna, če sta enako predznačena. Sila je sorazmerna z velikostjo obeh nabojev
+
+\begin{equation}
+\label{eq:1}
+ \vec{F} = \frac{e_1 e_2}{4 \pi \epsilon_0 r ^2} \frac{\vec{r}}{r}
+\end{equation}
+
+Enačba \ref{eq:1} opisuje silo, ki jo čuti naboj \( e_2 \) zaradi \( e_1 \). Konstanti \( \epsilon_0 = 8.85 \cdot 10^{-12} \frac{\mathrm{As}}{\mathrm{Vm}} \) rečemo indukcijska/influenčna konstanta (ang. /vacuum conductivity/). Izvor Coulumbove sile so bile meritve.
+** Velikost in enota eletričnega naboja
+
+Naboj merimo v Coulumbih \( 1 \mathrm{C} = 1 \mathrm{As} \). Naboj je (praviloma) mnogokratnik osnovnega naboja \( e_0 = 1.6 \cdot 10^{-19} \mathrm{As} \). Najmanjši naboj v naravi je na kvarku in sicer \( \frac{1}{3} e_0 \).
+
+| thing of magic          | naboj (e 0)                             |
+| kvark                   | 1/3                                     |
+| elektrona               | 1                                       |
+| kondenzator             | \(1 \cdot 10^{-7} \mathrm{As }\)        |
+| blisk                   | 1 - 100 C                               |
+| avto akumulator         | \( 10 \mathrm{Ah} = 36000 \mathrm{C} \) |
+| Zemlja (brez atmosfere) | 1 C                                     |
+| elektrarna (1 leto)     | \( 3 \cdot 10^{11} \mathrm{C} \)        |
+** Jakost električnega polja
+
+V Faradeyjevi in Maxwellovi sliki je električno polje posrednik interakcije (elektrostatske sile). Z uvedbo posrednika se s trenutnim znanjem izognemo veliki količini enačb, kasneje se izkaže, da sta v relativizmu magnetno in električno polje sklopljena in je najbolj naravno govoriti o tem.
+
+En (ali več) naboj električnega polja, ki pa potem deluje na drugi naboj. Električno silo zapišemo kot
+
+\[ \vec{F} = e  \vec{E} \quad \text{ali} F_{21} = e_1 \vec{E}_2
+\]
+
+Sila \( \vec{F}_{21} \) je sila, ki deluje na prvi naboj, ki pa jo ustvarja električno polje drugega naboja.
