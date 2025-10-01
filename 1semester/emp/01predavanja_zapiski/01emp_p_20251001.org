@@ -102,3 +102,67 @@ kjer je \( C = \partial S \). Posledično sledi
 \]
 
 Statično električno polje je vedno brezvrtinčno (lastnost 3 naših silnic).
+
+#+begin_my_example
+Imamo dve polji. Glej slike.
+
+a) Polje opišemo z
+
+   \[ \vec{E}_1 = E_0 \frac{\vec{r}}{r}
+   \]
+
+   Rotor polja \( \vec{E}_1 \) je enak \( 0 \). Divergenca polja \( \vec{E}_1 \) je različna od \( 0 \).
+   /Kuščar, Kodre imata identitete na koncu knjige./
+
+   Brezvrtinčno polje je izvorno.
+
+b) Električno polje je
+
+   \[ \vec{E}_2 = E_2 \hat{e}_{\phi} = E_0 \left( - \sin \phi, \cos \phi \right)
+   \]
+
+   Rotor polja \( \vec{E}_2 \) je različen od \( 0 \), divergenca pa enaka ničla.
+#+end_my_example
+
+** Električni pretok
+
+Električni pretok je definiran kot integral električnega polja po površini
+
+\[ \Phi_E = \int\limits_S^{} \vec{E} \cdot \mathrm{d} \vec{S}
+\]
+
+Površina je poljubna, vendar ni nujno sklenjena. Če je, dobimo Gaussov zakon.
+
+/O njem bomo več povedali v prihodnosti. Tole sedaj je samo :sparkles: foreplay :sparkles:/.
+** Električni potencial
+
+Uvedemo ga kot
+
+\[ \vec{E} \left( \vec{r} \right) = - \nabla \phi \left( \vec{r} \right)
+\]
+
+Negativen predznak je tam po dogovoru. Uvedemo električni potencial, zato da si olajšamo računanje, saj je skalarna količina.
+
+#+begin_my_example
+Električni potencial točkastega naboja je po definiciji enak
+
+\[ \vec{E} = - \nabla \phi
+\]
+
+Električno polje je definirano iz sile.
+
+\begin{equation}
+\label{eq:2}
+ \frac{e}{4 \pi \epsilon_0} \frac{\vec{r}}{r ^3} = - \nabla \left( \frac{e}{4 \pi \epsilon_0} \frac{1}{r} + \phi_0 \right)
+\end{equation}
+
+Za točkast naboj je potencial tako
+
+\[ \phi \left( \vec{r} \right) = \frac{e}{4 \pi \epsilon_0} \frac{1}{r} + \phi_0
+\]
+#+end_my_example
+
+Potencial v enačbi \ref{eq:2} lahko določimo do konstante natančno, kar dosežemo do \( \phi_0 \). Tej zadevi pravimo umeritev (ang. /gauge/).
+Izbira umeritve nima vpliva na makroskopsko dinamiko našega potenciala. Potencial sam na ne pove veliko - napetost je razlika potencialov in se umeritvi odštejeta. Poleg tega je sila povezana z električnim poljem, konstanto pa prvi odvod izniči.
+
+Za drugačna polja se lahko umerja tudi različne funkcije \( f \).
