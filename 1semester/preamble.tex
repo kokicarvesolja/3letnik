@@ -1,0 +1,108 @@
+\usepackage[utf8]{inputenc} % makes sure that pdflatex uses utf-8 encoding and not ascii
+% usually not necessary but nice to have (https://tex.stackexchange.com/questions/370278/is-there-any-reason-to-use-inputenc)
+\usepackage[T1]{fontenc} % T1 encoding supports most European languages
+% https://latexref.xyz/fontenc-package.html
+\usepackage{url}
+
+% geometry of a page
+
+\usepackage[a4paper]{geometry}
+
+% trying to use biblatex instead of bibtex
+\usepackage[
+sorting=nyt, %sorting by name, year, title
+style=numeric
+]{biblatex}
+% to add bibliography add to master.tex \printbibliography[heading=bibintoc]
+
+% add \addbibresource{} to the master.tex preamble
+
+
+% adding Bibliography to Table of Contents (ToC)
+%\usepackage[nottoc]{tocbibind}
+% it can be also done with \printbibliography[heading=bibintoc]
+
+\usepackage{hyperref} % makes pdf include hyperlinks (for equation, titles, etc)
+% good to be imported last
+\hypersetup{
+  colorlinks,
+  linkcolor={black},
+  citecolor={black},
+  urlcolor={blue!80!black}
+}
+
+
+\usepackage{graphicx} % package for graphics
+\usepackage{float} %used for floating stuff (tables, figures, etc)
+\usepackage{caption} %for giving captions to figures and tables
+\usepackage{xcolor} % gives me access to a shit ton of colors, look at docs for packages of color (docs: https://mirror.szerverem.hu/ctan/macros/latex/contrib/xcolor/xcolor.pdf)
+
+% math packages
+
+\usepackage{amsmath, amsfonts, mathtools, amsthm, amssymb}
+
+% must be loaded after hyperref, and amsmath!
+\usepackage{cleveref}
+% beside reference number also adds reference style (figure, equation), which can be modified (docs: https://ctan.mirror.garr.it/mirrors/ctan/macros/latex/contrib/cleveref/cleveref.pdf)
+% use \cref or \Cref for capitalizing
+% cancelling different things of mathematical formulae
+
+\usepackage{cancel}
+
+% for creating diagrams in LaTeX
+\usepackage{tikz}
+\usepackage{tikz-cd}
+
+% importing files from different folders relative to the import-ed one
+
+\usepackage{import}
+
+% inserting external multi-page pdf
+
+\usepackage{pdfpages}
+
+% load language package
+
+\usepackage[slovene]{babel}
+
+\usepackage{textcomp} % load Companion fonts such as bullet, copyright, yen, etc
+\usepackage{gensymb} % package to load degree
+\usepackage{siunitx} % does correct applications of units of measurement (see docs)
+
+\usepackage{titlesec} % change title and page styles with one command (see docs)
+
+\usepackage{parskip} %replaces parindent changes
+
+% define two new floats for Slika in tabela
+
+\newfloat{slika}{htbp}{loc}
+\floatname{slika}{Slika}
+
+\newfloat{tabela}{htbp}{loc}
+\floatname{tabela}{Tabela}
+
+% setting up title page
+%\title{
+%  %\includegraphics[width=0.4\textwidth]{fmf_logo}\\
+%  {\small Oddelek za fiziko} \\
+%  {Naslov}\\
+%  {\small Podnaslov}\\
+%
+%}
+%\date{}
+%\author{ Kristofer Č. Povšič, 28211104 \\[5 cm]
+% \small  Asistent:  \\
+%}
+
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter{. }}{0pt}{\Huge\bfseries}
+
+
+% Define document class in your document
+% copy title and FMF logo to the given folder
+% addbibresource to the preamble of master.tex!
+% add \printbibliography[heading=bibintoc] to the end of the file
+% to include all citations, use \nocite{*} somewhere in the body of the file
+% for preamble that is two levels higher than master.tex use this code
+% \input{../../preamble.tex}
+% also you can make \setcounter{page}{2}
+% for compilation run pdflatex filename, biber filename (or depricated bibtex), pdflatex filename
