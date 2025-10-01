@@ -39,4 +39,66 @@ En (ali več) naboj električnega polja, ki pa potem deluje na drugi naboj. Elek
 \[ \vec{F} = e  \vec{E} \quad \text{ali} F_{21} = e_1 \vec{E}_2
 \]
 
-Sila \( \vec{F}_{21} \) je sila, ki deluje na prvi naboj, ki pa jo ustvarja električno polje drugega naboja.
+Sila \( \vec{F}_{21} \) je sila, ki deluje na prvi naboj, ki pa jo ustvarja električno polje drugega naboja. Posledica uvedbe električnega polja \(  \vec{E} \) preko sile je to, da je smer \( \vec{E} \) sile na pozitiven točkast naboj.
+
+Električno polje točkastega naboja je enako
+
+\[ E = \frac{e_0}{4 \pi \epsilon_0} \frac{\vec{r}}{r ^3}
+\]
+
+ki ga izpeljemo preko primerjave s Coulumbovim zakonom (I presume).
+
+[skici el. polja + in - naboja]
+
+\[ \begin{array}{|c|c|} \hline \text{kozmicno sevanje} & 10 \mu \frac{\mathrm{V}}{ \mathrm{m}} \\ \text{polje znotraj bakrene zice} & 0.5 \frac{m \mathrm{V}}{m} \\ \text{polje v Zemljini atmosferi} & 100 - 300 \frac{\mathrm{V}}{\mathrm{m}} \\ \text{prebojna jakost v atmosferi} & 1 - 3 \frac{M \mathrm{V}}{m} \\ \text{polje preko bioloske membrane} & 10 \frac{M \mathrm{V}}{m} \\ \text{polje v mocnem laserskem pulzu} & 100 \frac{\mathrm{T V}}{\mathrm{m}}\\ \hline \end{array}
+\]
+
+
+#+begin_my_example
+Električno polje zaslona (LCD). Napetost približno \( 10 \mathrm{V} \). Debelina zaslonov je nekaj \( 10 \mu m \). Električno polje je tako
+
+\[ E \sim \frac{U}{d} \sim 10^6 \frac{V}{m}
+\]
+#+end_my_example
+** Električne silnice
+
+[mreza nabojev 3 x 3]
+
+Lastnosti silnic so:
+- silnice kažejo v smeri \( \vec{E} \) in se ne sekajo
+- silnice se začnejo v pozitivnem naboju in končajo v negativnem naboju
+- silnice niso zaključene
+- gostota silnic ustreza jakosti polja
+
+Mreža, ki smo jo narisali, je Faradayjeva konstrukcija.
+** Električna cirkulacija
+
+Cirkulacija se uvede kot integral skalarnega produkta
+
+\[ \Gamma_E = \oint\limits_{C}^{} \vec{E} \cdot \, \mathrm{d} \vec{r}
+\]
+
+po zaključeni zanki \( C \).
+
+#+begin_my_example
+Imamo homogeno električno polje \( \vec{E} \). V njem tvorimo poljubno pravokotno zanko \( C \) tako, da sta dve stranici \( b \) pravokotni, dve stranici \( a \) pa vzporedni električnemu polju. Zanima nas \( \Gamma_E \), ki bo vsota skalarnih produktov posameznih stranic pravokotnika. Skalarni produkt stranic pravokotnih na električno polje je po definiciji skalarnega produkta enako 0. Stranici, ki sta vzporedni, pa je integral enak \( E\cdot a \).
+
+\[ \Gamma_E = E\cdot a + 0 - E \cdot a = 0 = 0
+\]
+#+end_my_example
+
+#+begin_theorem
+Za vsa statična električna polja velja \( \Gamma_E = 0 \).
+#+end_theorem
+
+Iz tega sledi z uporabo Stokesovega izreka
+
+\[ 0 = oint\limits_C^{} \vec{E} \cdot \mathrm{d} \vec{r} = \iint\limits_{S}^{} \nabla \times \vec{E} \,\mathrm{d } \vec{S}
+\]
+
+kjer je \( C = \partial S \). Posledično sledi
+
+\[ \nabla \times \vec{E} = 0
+\]
+
+Statično električno polje je vedno brezvrtinčno (lastnost 3 naših silnic).
