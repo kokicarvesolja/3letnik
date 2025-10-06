@@ -172,3 +172,5 @@ Dobimo novo zvezo in sicer pričakovano gibalno količine
 
 \[ m \frac{\mathrm{d} \left\langle x \right\rangle}{\mathrm{d} t} = \left\langle \hat{p} \right\rangle
 \]
+
+kjer je \( \hat{p} = - \mathrm{i} \hbar \frac{\partial }{\partial x}  \) ali v treh dimenzijah \( \hat{\vec{p}} = - \mathrm{i} \hbar \nabla \).

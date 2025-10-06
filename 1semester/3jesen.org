@@ -99,8 +99,8 @@ Tomaž Rejec
 *** sreda, KM P, F2 (08:00 - 11:00)
 **** CANCELED KM 1
 CLOSED: [2025-10-01 Wed 10:15] DEADLINE: <2025-10-01 Wed 08:00-11:00>
-**** PREDAVANJE KM
-DEADLINE: <2025-10-06 Mon 08:00-10:00>
+**** DONE KM
+CLOSED: [2025-10-06 Mon 10:22] DEADLINE: <2025-10-06 Mon 08:00-10:00>
 **** PREDAVANJE KM 2
 DEADLINE: <2025-10-08 Wed 08:00-11:00>
 **** PREDAVANJE KM 3
@@ -166,10 +166,13 @@ DEADLINE: <2026-01-12 Mon 08:00-10:00>
 * Matematična fizika II
 ** lastnosti
 *** profesor
-Marko Žnidarič
+Marko Žnidarič, J21 1.27
+
+marko.znidaric@fmf.uni-lj.si
 *** asistenti
 Urban Duh
 *** viri
+Spletna stran predmeta je na [[predmeti.fmf.uni-lj.si/matfiz2][predmeti.fmf.uni-lj.si]]
 ** urnik
 *** torek, Mafija 2 P, MFP (08:00 - 11.00)
 **** PREDAVANJE MAF2 1

@@ -1,0 +1,63 @@
+#+title: 1. predavanje iz Matematične fizike 2
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Uvod
+
+Zakaj, kje se pojavijo parcialne diferencialne enačbe? Gibanje enega delca opišemo z eno navadno difernencialno enačbo (ODE). Za opis gibanja dveh delcev imamo 2 sklopljeni ODE. Za opis gibanja neskončnega števila delcev imamo neskončno ODE. V kontinuumski limiti, ko iz diskretnih delcev preidemo na polje, dobimo PDE.
+
+Za dobro definirano in enolično rešljivo PDE potrebujemo enačbo in začetne pogoje (ang. /boundary conditions/, označim BC).
+
+Do PDE lahko pridemo tudi preko principa najmanjše akcije. Za 1 delec imamo Hamiltonian/Lagrangian, pri neskončnem številu delcev pa imamo integral po koordinatah. Pri Euler-Lagrangevih enačbah nimamo samo integrala po času, ampak tudi integral (lokalne) gostote. Tej lokalnosti pravimo fizikalno tudi kavzalnosti. E-L enačbe nam podajo PDE, ki so rešljive lokalno (?).
+** Kakšne PDE rešujemo?
+
+Tako kot ODE imajo tudi PDE rede, ki nakazuje stopnjo najvišjega odvoda. Najenostavnejša PDE je 1. reda.
+
+#+name: Kontinuitetna enačba
+#+begin_my_example
+\begin{equation}
+\label{eq:1}
+ \frac{\partial \rho}{\partial t} + \mathrm{div} \left( \rho \vec{v} \right) = 0
+\end{equation}
+
+Kontinuitetna enačba, ki izraža nek ohranitveni zakon. Zanima nas, za katero količino je to diferencialna enačba - in zato potrebujemo zvezo med \( \rho \) in \( \vec{v} \).
+
+Predpostavimo, da je ta zveza enaka \( \vec{\jmath} \sim \nabla \rho \), npr.
+
+\begin{equation}
+\label{eq:2}
+ j = - \frac{\partial \rho}{\partial x}
+\end{equation}
+
+Z združitvijo enačb \ref{eq:1} in \ref{eq:2} dobimo PDE *2. reda*. Ciljali bomo na aproksimacijo, da so enačbe *linearne* (naravni zakoni, npr. Maxwellove enačbe, so eksaktno linearni). Prednost linearnosti je princip superpozicije.
+#+end_my_example
+
+Najpomembnejši primeri so:
+
+- valovna enačba je hiperbolična
+
+  \[ \nabla ^2 u = \frac{1}{c ^2} \frac{\partial ^2 }{\partial t ^2} u, \quad u \left( \vec{r}, t \right)
+  \]
+
+  kjer je \( c \) hitrost valovanja.
+
+  Valovna enačba opisuje zvok, svetlobo, in ostala nihanja.
+
+- difuzijska enačba je parabolična
+
+  \[ \nabla ^2 u = \frac{1}{D} \frac{\partial u}{\partial t}
+  \]
+
+  kjer je \( D \) difuzijska enačba.
+
+- Laplaceova enačba je eliptična
+
+  \[ \nabla ^2 u = 0
+  \]
+
+  Opazimo, da ne vsebuje odvoda po času.
