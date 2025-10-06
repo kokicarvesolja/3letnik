@@ -24,8 +24,8 @@ Griffiths, Introduction to Electrodynamics
 - ustni izpit na koncu semestra, 15 min priprave, 15 min ustnega izpita
 ** urnik
 *** sreda, EMP P, F2 (11:00-14:00)
-**** PREDAVANJE EMP 1
-DEADLINE: <2025-10-01 Wed 11:00-14:00>
+**** DONE EMP 1
+CLOSED: [2025-10-01 Wed 13:34] DEADLINE: <2025-10-01 Wed 11:00-14:00>
 **** PREDAVANJE EMP 2
 DEADLINE: <2025-10-08 Wed 11:00-14:00>
 **** PREDAVANJE EMP 3
@@ -171,9 +171,11 @@ Marko Žnidarič
 Urban Duh
 *** viri
 ** urnik
-*** torek, Mafija 2, MFP (08:00 - 11.00)
+*** torek, Mafija 2 P, MFP (08:00 - 11.00)
 **** PREDAVANJE MAF2 1
 DEADLINE: <2025-10-07 Tue 08:00-10:00>
+**** PREDAVANJE MAF2 1.5
+DEADLINE: <2025-10-06 Mon 10:00-12:00>
 **** PREDAVANJE MAF2 2
 DEADLINE: <2025-10-14 Tue 08:00-10:00>
 **** PREDAVANJE MAF2 3
@@ -202,9 +204,9 @@ DEADLINE: <2025-12-30 Tue 08:00-10:00>
 DEADLINE: <2026-01-06 Tue 08:00-10:00>
 **** PREDAVANJE MAF2 15
 DEADLINE: <2026-01-13 Tue 08:00-10:00>
-*** ponedeljek, Mafija 2, F2 (10:00 - 12:00)
-**** VAJE MAF2 1
-DEADLINE: <2025-10-06 Mon 10:00-12:00>
+*** ponedeljek, Mafija 2 V, F2 (10:00 - 12:00)
+**** CANCELED MAF2 1
+CLOSED: [2025-10-06 Mon 07:59] DEADLINE: <2025-10-06 Mon 10:00-12:00>
 **** VAJE MAF2 2
 DEADLINE: <2025-10-13 Mon 10:00-12:00>
 **** VAJE MAF2 3
@@ -243,8 +245,8 @@ DEADLINE: <2026-01-12 Mon 10:00-12:00>
 *** viri
 ** urnik
 *** četrtek, MFPR, F4 (10:00 - 13:00)
-**** PREDAVANJE MFPR 1
-DEADLINE: <2025-10-02 Thu 10:00-13:00>
+**** NOTDONE MFPR 1
+CLOSED: [2025-10-05 Sun 13:16] DEADLINE: <2025-10-02 Thu 10:00-13:00>
 **** PREDAVANJE MFPR 2
 DEADLINE: <2025-10-09 Thu 10:00-13:00>
 **** PREDAVANJE MFPR 3

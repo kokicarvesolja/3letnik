@@ -1,0 +1,77 @@
+#+title: 1. predavanje iz Kvantne mehanike
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Uvod
+
+Pri klasični mehaniki nas zanima trajektorija delca \( \vec{r}(t) \). Z Newtonovim zakonom lahko izpeljemo pospešek, ki je funkcija časa, kraja in hitrosti. Če poznamo začetne pogoje, lahko določimo \( \vec{r} \) kjerkoli v prihodnosti.
+
+Potreba po kvantni mehaniki se je razvila zaradi Michelsonovega poskusa, ki je pokazal, da je hitrost svetlobe v vakuumu absolutna. Čez 1 mesec bo 100 let, odkar je Heisenberg izdal svoj članek, ki se smatra kot začetek kvantne mehanike. Pred letom 1925 so bila sledeča odkritja, ki so kazala na nekaj več od klasične mehanike
+
+- Planck, Einstein leta 1905 razložita enačbo \( E = \hbar \omega \)
+- 1923 de Broglie opazi, da je hitrost elektrona obratno sorazmerna njegovi valovni dolžini
+
+  \[ p = \frac{2 \pi \hbar}{\lambda} = m v
+  \]
+  - imamo valovanje pri masnih delcih \( \cos \left( k x - \omega t \right) \) in \( p = \hbar k \)
+- energija elektrona je \( E = \frac{p ^2}{2m} \)
+- spektri plinov so črtasti
+- zanimala jih je stabilnost in sestava atoma - ta vprašanja je omogočala nova tehnologija
+
+  Planetni model (pozitivno jedro - sonce, elektroni - planeti) pogojno razloži spekter vodikovega atom, vendar posplošitev ni bila mogoča. Ta razlaga tudi ne more razložiti spektra vodikovega atoma v električnem polju.
+
+Decembra 1925 Heisenberg objavi svoj članek o kvantni mehaniki. V začetku leta 1926 je Schrödinger objavil svoj članek, kjer uvede Schrödingerjevo enačbo. Želel je izpeljati relativistično invariantno enačbo, česar ni uspel (Dirac, 3 leta kasneje, glej FJOD), hkrati pa je želel, da veljajo prve tri alineje.
+
+Osnovna Schrödingerjeva enačba v eni dimenziji brez potenciala zapišemo kot
+
+\[ \mathrm{i} \hbar \frac{\partial \Psi}{\partial t} = - \frac{\hbar ^2}{2m} \frac{\partial ^2 }{\partial x ^2} \Psi
+\]
+
+Rešitev enačbe je valovanje \( \Psi = A e^{\mathrm{i} \left( kx - \omega t \right)} \). Ko rešitev vstavimo vanj, dobimo
+
+\begin{align*}
+  \mathrm{i} \hbar \left( - \mathrm{i} \right) \omega &= - \frac{\hbar ^2}{2m} i ^2 k ^2 \\
+\hbar \omega = \frac{\hbar ^2 k ^2}{2m} &= \frac{p ^2}{2m}
+\end{align*}
+
+Opazimo v zadnji vrstici vse tri alineje.
+
+Valovna enačba ne reši problema kvantne mehanike (vstavi \( \Psi \) vanjo). Difuzijska enačba
+
+\[ \frac{\partial T}{\partial t} = D \frac{\partial ^2 }{\partial x ^2} T
+\]
+
+je rešena s \( T (x, t) = \cos \left( kx - \omega t \right) \). Schrödingerjeva enačba je difuzijska enačba s kompleksno enačbo.
+
+Schrödingerjevi enačbi dodamo tudi potencial
+
+\begin{equation}
+\label{eq:1}
+\mathrm{i} \hbar \frac{\partial \Psi}{\partial t}  = - \frac{\hbar ^2}{2m} \frac{\partial ^2 }{\partial x^2} \Psi + V \Psi
+\end{equation}
+
+Newtonove enačbe so bile sprejete, saj je lahko prepričljivo izpeljal elipse planetov. Schrödinger se je na podoben način lotil Keplerjevega problema s potencialom \( V \left( \vec{r}, t \right) \propto \frac{1}{r} \). Z nekaj mučenja je izpeljal spekter vodika \( E_n \propto \frac{1}{n ^2} \), s še malo več mučenja je rešil tudi problem spektra vodikovega atoma v električnem polju \( E_n \left( \vec{E}, \vec{B} \right) \).
+
+** Valovanje
+
+Prišli smo do tega, da ja, je valovanje, vendar nas zanima, kaj valuje. Bornova interpretacija valovne funkcije definira verjetnost, da delec detektiramo na zaprtem intervalu \( [a, b] \) preko enačbe
+
+\[ P_{ab} = \int\limits_a^b \left| \Psi(x, t) \right| ^2 \, \mathrm{d} x
+\]
+
+kjer je \( \rho (x, t) = \left| \Psi(x, t) \right| ^2\) verjetnostna gostota. Velja enakost
+
+\[ \frac{\mathrm{d} P}{\mathrm{d} x} = \rho
+\]
+
+Pri detekciji ne dobimo nobene druge informacije kot to ali je elektron bil na intervalu ali ne. Ob neskončnem številu ponovitev dobimo našo verjetnost
+
+\[ \lim_{n \to \infty}  \frac{N_{zaznan}}{N} = P_{ab }
+\]
+
+Mi bomo obravnavali minimalistično Kobenhavensko interpretacijo kvantne mehanike.
