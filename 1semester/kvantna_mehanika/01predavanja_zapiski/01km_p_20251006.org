@@ -61,8 +61,10 @@ Newtonove enačbe so bile sprejete, saj je lahko prepričljivo izpeljal elipse p
 
 Prišli smo do tega, da ja, je valovanje, vendar nas zanima, kaj valuje. Bornova interpretacija valovne funkcije definira verjetnost, da delec detektiramo na zaprtem intervalu \( [a, b] \) preko enačbe
 
-\[ P_{ab} = \int\limits_a^b \left| \Psi(x, t) \right| ^2 \, \mathrm{d} x
-\]
+\begin{equation}
+\label{eq:4}
+ P_{ab} = \int\limits_a^b \left| \Psi(x, t) \right| ^2 \, \mathrm{d} x
+\end{equation}
 
 kjer je \( \rho (x, t) = \left| \Psi(x, t) \right| ^2\) verjetnostna gostota. Velja enakost
 
@@ -75,3 +77,98 @@ Pri detekciji ne dobimo nobene druge informacije kot to ali je elektron bil na i
 \]
 
 Mi bomo obravnavali minimalistično Kobenhavensko interpretacijo kvantne mehanike.
+
+** Lastnosti valovne funkcije
+
+Pišemo lastnosti valovne funkcija v eni dimenziji. Velja, da je valovna funkcija normirana
+
+\[ \int\limits_{-\infty}^{\infty} \left| \Psi \right| ^2 \, \mathrm{d} x = 1
+\]
+
+Enačba, ki dokazuje, da nimamo izvorov, je
+
+\begin{equation}
+\label{eq:2}
+ \frac{\partial \rho}{\partial t} + \nabla \cdot \vec{\jmath} = q
+\end{equation}
+
+
+Verjetnostno gostoto nadomestimo z definicijo in upoštevamo odvod produkta. \( \Psi^{\ast} \) je kompleksna konjugiranka valovne funkcije, ki jo dobimo s konjugiranjem Schrödingerjeve enačbe in izražavo odvoda po času.
+
+\begin{align}\label{ali:ss}
+\frac{\partial \rho}{\partial t} &= \frac{\partial \Psi^{\ast} \Psi}{\partial t} \\
+&= \frac{\partial \Psi^{\ast}}{\partial t} \Psi + \frac{\partial \Psi}{\partial t} \Psi^{\ast} \\
+&=- \frac{\hbar ^2}{2m} \frac{1}{-\mathrm{i} \hbar} \frac{\partial ^2 }{\partial x ^2} \Psi^{\ast} \Psi + \frac{V^{\ast}}{- \mathrm{i} \hbar} \Psi^{\ast} \Psi + C. C.
+\end{align}
+
+Odvod po kraju lahko razpišemo
+
+\[ \frac{\partial ^2 \Psi^{\ast} }{\partial x ^2} \Psi = \frac{\partial }{\partial x}  \left( \frac{\partial \Psi^{\ast}}{\partial x} \Psi \right) - \frac{\partial \Psi^{\ast}}{\partial x}  \frac{\partial \Psi}{\partial x}
+\]
+
+Enačba \ref{ali:ss} postane
+
+\begin{equation}
+\label{eq:3}
+ \frac{\partial \rho}{\partial t} = - \frac{\partial }{\partial x} \left( \frac{\hbar}{2 \mathrm{i} m }\left( \Psi^{\ast} \frac{\partial \Psi}{\partial x}  - \Psi \frac{\partial \Psi^{\ast}}{\partial x}  \right) \right) - \frac{2}{\hbar} \mathrm{Im} \left( V \left| \Psi \right| ^2 \right)
+\end{equation}
+
+Enačbo \ref{eq:2} zapišemo v eni dimenziji kot
+
+\[ \frac{\partial \rho}{\partial t}  + \frac{\partial }{\partial x} \vec{\jmath} = q = 0
+\]
+
+Verjetnostni tok v treh dimenzijah zapišemo kot
+
+\[ \vec{\jmath} = - \frac{\mathrm{i} \hbar}{2m} \left( \Psi^{\ast} \nabla \Psi - \Psi \nabla \Psi^{\ast} \right) = \vec{\jmath} \left( \vec{r}, t \right)
+\]
+
+Opazimo, da se verjetnostni tok pokrajša s prvim členom v enačbi \ref{eq:3} in nam tako ostane
+
+\[ q = - \frac{2}{\hbar} \mathrm{Im} V \left| \Psi \right| ^2
+\]
+
+Za realen potencial je imaginaren del enak \( 0 \), kar pomeni, da nimamo izvorov ali ponorov, saj \( q = 0 \).
+
+Preverimo še normiranost. Enačbo \ref{eq:4} odvajamo po času
+
+\[ \frac{\mathrm{d} P_{ab }}{\mathrm{d} t} = - \int\limits_a^b \frac{\partial }{\partial x} j_x \, \mathrm{d} x = j_x (a) - j_x(b)
+\]
+
+Za \( a \to - \infty \) in \( b \to \infty \) bo razlika \( 0 \). Za naše valovne funkcije velja, da so del Scwarzovega prostora, torej
+
+\[ \lim_{x \to \infty} x^n \left| \Psi \right|  = 0
+\]
+
+#+begin_my_example
+Primera taka funkcije sta \( e^{- \lambda x} \) ter \( e ^{- \mu x ^2} \).
+#+end_my_example
+*** Zveznost
+
+Valovna funkcija \( \Psi \) je zvezna funkcija. Odvod \( \frac{\partial \Psi}{\partial x} \) je zvezna funkcija, če je \( V \) zvezna funkcija. Drugi odvod \( \frac{\partial ^2 }{\partial x ^2} \Psi  \) je zvezna, če je \( V \) zvezna.
+
+Pravokotna potencialna jama ima v jami kosinusno valovanje, izven jame pa potencialno pada, imamo prevoj v točki nezveznosti.
+
+** Pričakovane vrednosti
+
+Pričakovane vrednosti položaja izračunamo preko
+
+\[ \left\langle x \right\rangle  = \int\limits_{- \infty}^{\infty} x \rho (x, t) \, \mathrm{d} x
+\]
+
+Predpostavimo, da imamo dve različni funkciji. Zanima nas, kako se spreminja težišče v odvisnosti od časa:
+
+\begin{align*}
+\frac{\mathrm{d} \left\langle x \right\rangle}{\mathrm{d} t} &= \int\limits_{- \infty}^{\infty} x \frac{\partial \rho}{\partial t} \, \mathrm{d} x \\
+&= - \int\limits_{- \infty}^{\infty} x \frac{\partial j}{\partial x}  \, \mathrm{d} x && \text{per partes} \\
+&=  \cancel{\left. x j \right|_{- \infty}^{\infty}} + \int\limits_{- \infty}^{\infty} j \, \mathrm{d} x \\
+&= \int\limits_{- \infty}^{\infty} j \, \mathrm{d} x \\
+&= - \frac{\mathrm{i} \hbar}{2m} \left( \int\limits_{-\infty}^{\infty} \Psi^{\ast} \frac{\partial \Psi}{\partial x}  \, \mathrm{d} x - \int\limits_{- \infty}^{\infty} \Psi \frac{\partial \Psi^{\ast}}{\partial x} \, \mathrm{d} x \right) && \text{per partes} \\
+&= \frac{1}{m} \int\limits_{- \infty}^{\infty} \Psi^{\ast} \left( - \mathrm{i} \hbar \frac{\partial }{\partial x}  \right) \Psi \\
+&= \frac{1}{m} \int\limits_{- \infty}^{\infty} \Psi^{\ast} \hat{p} \Psi \, \mathrm{d} x
+\end{align*}
+
+Dobimo novo zvezo in sicer pričakovano gibalno količine
+
+\[ m \frac{\mathrm{d} \left\langle x \right\rangle}{\mathrm{d} t} = \left\langle \hat{p} \right\rangle
+\]
