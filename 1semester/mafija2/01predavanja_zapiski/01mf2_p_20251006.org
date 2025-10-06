@@ -61,3 +61,110 @@ Najpomembnejši primeri so:
   \]
 
   Opazimo, da ne vsebuje odvoda po času.
+* PDE prvega reda (Kuščar, Kodre, poglavje 5.1, Haberman 12.2, Arfken 9.2)
+
+#+begin_my_example
+Kot primer bomo vzeli prometne zastoje. Operiramo v eni dimenziji, in kontinuitetna enačba je
+
+\begin{equation}
+\label{eq:3}
+ \frac{\partial \rho}{\partial t} + \frac{\partial j}{\partial x}  = 0
+\end{equation}
+
+Na določenem, zaprtem intervalu, bo količina avtov, ki vstopajo na začetku intervala, enaka količino avtov, ki interval zapuščajo. Tok avtomobilov zapišemo s funkcijo
+
+\begin{equation}
+\label{eq:4}
+ j = f(\rho) = \rho v(\rho)
+\end{equation}
+
+kjer je \( v \) hitrost avtomobilov.
+
+Odvod enačbe \ref{eq:4} po \( x \) zapišemo s posrednim odvajanjem
+
+\[ \frac{\partial j}{\partial x} = \frac{\partial j}{\partial \rho} \frac{\partial \rho}{\partial x} = c (\rho) \frac{\partial \rho}{\partial x}
+\]
+
+Količina \( c(\rho) \) je parameter, ki si ga izberemo. Upoštevajoč odvod \ref{eq:4} in \ref{eq:3} dobimo novo enačbo
+
+\[ \frac{\partial \rho}{\partial t} + c \frac{\partial \rho}{\partial x}  = 0
+\]
+
+Parameter \( c \) je hitrost premikanja razredčin in zgoščin, kar je lahko različno od hitrosti premikanja mikroskopskih delcev (avtov).
+
+Če je avtocesta prazna, bodo avtomobili vozili ob neki konstantni hitrosti \( v_0 \). Več je avtomobilov, počasneje bodo vozili, kar pomeni, da hitrost v odvisnosti od gostote zapišemo
+
+\[ v (\rho) = v_0 \left( 1 - \frac{\rho}{\rho_{max}} \right)
+\]
+
+Če je cesta popolnoma polna, je hitrost \( 0 \). Naš približek je semi-dober.
+
+Preko definicije \ref{eq:4} in definicije parametra \( c \), dobimo, da je hitrost motnje enaka
+
+\[ c (\rho) = v_0 \left( 1 - \frac{2 \rho}{\rho_{max}} \right)
+\]
+
+Upoštevajoč dobljen \( c \) enačba ni več linearna.
+
+Za začetek si bomo ogledali linearen problem, kjer je hitrost motnje \( c = v_0 = konst \). Rešujemo enačbo
+
+\[ \frac{\partial \rho}{\partial t}  + v_0 \frac{\partial \rho}{\partial x} = 0
+\]
+
+Iščemo funkcijo \( \rho(x, t) \), ki velja za mirujoč opazovalni sistem. Recimo, da smo na vlaku, ki se premika kot \( x(t) \). Predpostavimo, da je gibanje linearno, torej
+
+\begin{equation}
+\label{eq:5}
+x(t) = x_0 + vt
+\end{equation}
+
+Funkcija, ki jo sedaj iščemo, v premikajočem opazovalnem sistemu je \( \rho \left( x(t), t \right) \). Odvod po času je
+
+\[ \frac{\mathrm{d} \rho }{\mathrm{d} t} = \frac{\partial \rho}{\partial t}  + \frac{\partial \rho}{\partial x} \cdot \dot{x}
+\]
+
+Zakaj totalni odvod?
+
+Če je hitrost \( \dot{x} = v_0 \), se gostota ne spreminja
+
+\[ \frac{\mathrm{d} \rho}{\mathrm{d} t} = 0
+\]
+
+Pri začetnem pogoju \( \rho_0 (x) = \rho(x, t = 0) \). Gostota bo tako enaka
+
+\[ \rho(x, t) = \rho_0 (x_0) = \rho_0 (x - v_0 t)
+\]
+
+kjer smo \( x_0 \) izrazili iz enačbe \ref{eq:5} in zadnji enačaj predstavlja rešitev.
+#+end_my_example
+
+#+begin_note
+Uporabljali bomo sledečo notacijo. Totalni odvod po času bomo označili s piko, torej
+
+\[ \dot{x} = \frac{\mathrm{d} x}{\mathrm{d} t}
+\]
+
+Parcialni odvod po času bomo označili z indeksom \( t \), torej
+
+\[ \frac{\partial u}{\partial t}  = \partial_t u = u_t
+\]
+
+kjer je \( u \) funkcija večih spremenljivk, ena od njih je čas.
+
+Drugi odvod po kraju označimo z dvojnim \( x \), torej
+
+\[ \frac{\partial ^2 }{\partial x ^2} = u_{xx }
+\]
+#+end_note
+
+Definiramo diferencialno enačbo za karakteristiko
+
+\[ \frac{\mathrm{d} x}{\mathrm{d} t} = v_0
+\]
+
+#+begin_my_example
+Obravnavajmo zgornji primer, kjer je enačba nelinearna. Najlepšo linearnost bomo dosegli z \( c (\rho) = \rho \). Enačba, ki jo rešujemo je Burgerjeva enačba (ang. /Burger's equation/)
+
+\[ \frac{\partial \rho}{\partial t}  + \rho \frac{\partial \rho}{\partial x}  = 0
+\]
+#+end_my_example
