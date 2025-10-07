@@ -177,8 +177,8 @@ Spletna stran predmeta je na [[predmeti.fmf.uni-lj.si/matfiz2][predmeti.fmf.uni-
 *** torek, Mafija 2 P, MFP (08:00 - 11.00)
 **** PREDAVANJE MAF2 1
 DEADLINE: <2025-10-07 Tue 08:00-10:00>
-**** PREDAVANJE MAF2 1.5
-DEADLINE: <2025-10-06 Mon 10:00-12:00>
+**** DONE MAF2 1.5
+CLOSED: [2025-10-06 Mon 15:29] DEADLINE: <2025-10-06 Mon 10:00-12:00>
 **** PREDAVANJE MAF2 2
 DEADLINE: <2025-10-14 Tue 08:00-10:00>
 **** PREDAVANJE MAF2 3

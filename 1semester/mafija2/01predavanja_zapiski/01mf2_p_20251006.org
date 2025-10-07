@@ -123,19 +123,15 @@ Funkcija, ki jo sedaj iščemo, v premikajočem opazovalnem sistemu je \( \rho \
 \[ \frac{\mathrm{d} \rho }{\mathrm{d} t} = \frac{\partial \rho}{\partial t}  + \frac{\partial \rho}{\partial x} \cdot \dot{x}
 \]
 
-Zakaj totalni odvod?
-
-Če je hitrost \( \dot{x} = v_0 \), se gostota ne spreminja
+saj iščemo sistem, kjer se gostota ne spreminja. Vidimo, da je to sistem, ki ima hitrost \( \dot{x} = v_0 \)
 
 \[ \frac{\mathrm{d} \rho}{\mathrm{d} t} = 0
 \]
 
-Pri začetnem pogoju \( \rho_0 (x) = \rho(x, t = 0) \). Gostota bo tako enaka
+Z upoštevanjem začetnega pogoja \( \rho_0 (x) = \rho(x, t = 0) \) in transformacijo v prvotni koordinatni sistem preko \ref{eq:5} je gostota enaka
 
 \[ \rho(x, t) = \rho_0 (x_0) = \rho_0 (x - v_0 t)
 \]
-
-kjer smo \( x_0 \) izrazili iz enačbe \ref{eq:5} in zadnji enačaj predstavlja rešitev.
 #+end_my_example
 
 #+begin_note
@@ -167,4 +163,109 @@ Obravnavajmo zgornji primer, kjer je enačba nelinearna. Najlepšo linearnost bo
 
 \[ \frac{\partial \rho}{\partial t}  + \rho \frac{\partial \rho}{\partial x}  = 0
 \]
+
+Glej grafe: ob izbranem \( x_0 \) je gostota \( \rho_0 \), ki se iz časa \( t = 0 \) preslika v \( t = 1 \).
+
+Ena karakteristika je oblike
+
+\[ x = x_0 + \rho_0 (x_0) t
+\]
+
+Graf \( x (t) \) prikazuje karakteristike, ki ni počesan (nima vzporednic). Naklon premic \( \frac{\mathrm{d} x}{\mathrm{d} t} \) (pazi graf je zasukan!) prikazujejo hitrosti/gostote \( \rho \).
+
+Za dano začetno gostoto \( \rho_0 \) izrazimo karakteristiko \( x (x_0, t) \), katere izraz obrnemo, da dobimo odvisnost \( x_0 (x, t) \). Tako dobimo rešitev
+
+\[ \rho(x, t) = \rho_0 (x_0 (x, t))
+\]
+
+Ne vemo, kakšne oblike je \( \rho_0 \) in je možno, da je odvisnost \( x_0 (x, t) \) težko izraziti.
+
+Ob času na \( t = 2 \) oz. splošneje \( t > t_0 \) inverz \( x_0 (x, t) \) ni več enoličen in dobimo singularnost.
 #+end_my_example
+** Hitrost udarnega vala
+
+Naj bo udarni val imel hitrost \( w \). Avti pred udarnim valom naj imajo v mirujočem sistemu gostoto \( \rho_- \) in hitrost \( v_- \). Avti po udarnem valu pa imajo v istem sistemu gostoto \( \rho_+ \) ter \( v_+ \).
+
+Velja, da je količina avtomobilov pred udarnim valom enaka količini avtomobilov po udarnem valu
+
+\[ \tilde{\jmath}_- = \tilde{\jmath}_+
+\]
+
+v sistemu udarnega vala, ki se premika s hitrostjo \( w \). Naše hitrosti moramo preko Galilejeve transfomarcije pretvoriti v sistem udarnega vala
+
+\[ \rho_- \left( v_- - w \right) = \rho_+ \left( v_+ - w \right)
+\]
+
+iz česar izrazimo hitrost udarnega vala kot
+
+\[ w = \frac{j_+ - j_{-} }{\rho_+ - \rho_-} = \frac{\rho_+ v_+ - \rho_- v_-}{\rho_+ - \rho_-}
+\]
+
+#+begin_my_example
+Naj bo hitrost avtomobilov enaka odvisnosti kakor prej
+
+\[ v \left( \rho \right) = v_0 \left( 1 - \frac{\rho}{\rho_{max}} \right)
+\]
+
+Ob zastoju zaradi rdeče luči velja \( \rho_+ = \rho_{max} \) in \( v_+ = 0 \).
+
+Hitrost motnje je tako
+
+\[ w = - \frac{\rho_- v_0 \left( 1 - \frac{\rho_-}{\rho_{max}} \right)}{\rho_{max} - \rho_-}
+\]
+
+oziroma, če poenostavimo
+
+\[ w = - v_0 \frac{\rho_-}{\rho_{max}}
+\]
+
+Če se avtomobili premikajo s hitrostjo \( 40 \mathrm{km}/ \mathrm{h} \) na avtocesti in se nekje ustavijo, ter je gostota \( \rho_- \) približno enaka \( \rho_{max} \), potem to pomeni, da se bo udarni val širil nazaj s hitrostjo \( v_0 = 120 \frac{\mathrm{km}}{\mathrm{h}} \).
+
+To je tudi razlog, zakaj prihaja do naletov.
+#+end_my_example
+* Splošna PDE 1. reda
+
+Rešujemo enačbo oblike
+
+\begin{equation}
+\label{eq:6}
+ a(x, y) u_x + b(x, y) u_y = \phi(x, y, u)
+\end{equation}
+
+kjer je \( u = u(x, y) \).
+
+Enačba je nelinearna, saj je \( \phi \propto u \).
+
+Zapišemo vektorsko polje \( \vec{v} = (a, b) \) in tako lahko enačbo \ref{eq:6} zapišemo z vektorskim poljem
+
+\[ \left( \vec{v} \, \nabla \right) u = \phi
+\]
+
+Podobno kot v prejšnjem poglavju poskušamo z metodo karakteristike - ali obstaja krivulja \( \left( x(s), y(s) \right) \), na kateri se PDE  poenostavi (na \( \phi = 9 \))?
+
+Če najdemo pravilen zapis odvod funkcije \( u \) po \( s \), bo to našo enačbo pretvorilo v iz PDE v NDE.
+
+Po definiciji verižnega pravila je odvod po \( s \) enak
+
+\begin{equation}
+\label{eq:7}
+ \frac{\mathrm{d} u}{\mathrm{d} s} = u_x \frac{\mathrm{d} x}{\mathrm{d} s} + u_y \frac{\mathrm{d} y}{\mathrm{d} s}
+\end{equation}
+
+\ref{eq:7} mora biti enak levi strani \ref{eq:6}, kar pomeni, da mora veljati
+
+\begin{equation}
+\label{eq:8}
+ \frac{\mathrm{d} x}{\mathrm{d} s} = a \quad \text{in} \quad \frac{\mathrm{d} y}{\mathrm{d} s} = b
+\end{equation}
+
+Enačba \ref{eq:8} je enačba za karakteristiko. Karakteristike kažejo v smeri vektorskega polja \( \vec{v} \), kar pomeni, da so črte vektorskega polje karakteristike. Za izbrano karakteristiko \( \Sigma \) PDE preide v
+
+\[ \frac{\mathrm{d} u}{\mathrm{d} s} = \phi (x, y, u) = \phi(s)
+\]
+
+kar pa je ODE. Rečemo, da PDE /propagira/ rešitev vzdolž \( \Sigma \).
+
+Če je \( \phi = 0 \), to pomeni, da so posledično \( \Sigma \) izohipse.
+
+Predpostavimo, da imamo začetni pogoj \( \Gamma \). Za dober začetni pogoj mora sekati vse karakteristike in vsako karakteristiko samo enkrat.
