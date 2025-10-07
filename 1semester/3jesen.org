@@ -11,7 +11,7 @@ Miha Ravnik, kontakt: miha (dot) ravnik (at) fmf (dot) uni-lj (dot) si
 
 Jadranska 19, soba 401
 *** asistenti
-Martin Klanjšek
+Martin Klanjšek, dostopen na [[martin.klanjsek@ijs.si][martin.klanjsek@ijs.si]]
 *** viri
 Spletna učilnica in spletna stran predmeta predmeti (dot) fmf (dot) uni-lj (dot) si
 
@@ -22,6 +22,7 @@ J. D. Jackson, Classical Electrodynamics
 Griffiths, Introduction to Electrodynamics
 *** obveznosti
 - ustni izpit na koncu semestra, 15 min priprave, 15 min ustnega izpita
+- 2.5 točke je ocena 6, 5 točk je ocena 10
 ** urnik
 *** sreda, EMP P, F2 (11:00-14:00)
 **** DONE EMP 1
@@ -86,6 +87,10 @@ DEADLINE: <2026-01-06 Tue 10:00-12:00>
 **** VAJE EMP 15
 DEADLINE: <2026-01-13 Tue 10:00-12:00>
 ** kolokviji/izpiti
+*** KOLOKVIJ kolokvij 1, EMP, VFP
+DEADLINE: <2025-11-21 Fri 14:00-16:00>
+*** KOLOKVIJ kolokvij 2, EMP, VFP
+DEADLINE: <2026-01-23 Fri 13:00-15:00>
 ** rezultati
 ** domače naloge
 * Kvantna mehanika
@@ -175,8 +180,8 @@ Urban Duh
 Spletna stran predmeta je na [[predmeti.fmf.uni-lj.si/matfiz2][predmeti.fmf.uni-lj.si]]
 ** urnik
 *** torek, Mafija 2 P, MFP (08:00 - 11.00)
-**** PREDAVANJE MAF2 1
-DEADLINE: <2025-10-07 Tue 08:00-10:00>
+**** DONE MAF2 1
+CLOSED: [2025-10-07 Tue 10:32] DEADLINE: <2025-10-07 Tue 08:00-10:00>
 **** DONE MAF2 1.5
 CLOSED: [2025-10-06 Mon 15:29] DEADLINE: <2025-10-06 Mon 10:00-12:00>
 **** PREDAVANJE MAF2 2
