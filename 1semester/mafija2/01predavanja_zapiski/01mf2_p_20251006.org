@@ -268,4 +268,133 @@ kar pa je ODE. Rečemo, da PDE /propagira/ rešitev vzdolž \( \Sigma \).
 
 Če je \( \phi = 0 \), to pomeni, da so posledično \( \Sigma \) izohipse.
 
-Predpostavimo, da imamo začetni pogoj \( \Gamma \). Za dober začetni pogoj mora sekati vse karakteristike in vsako karakteristiko samo enkrat.
+Predpostavimo, da imamo začetni pogoj \( \Gamma \). Za dober začetni pogoj mora sekati vse karakteristike in vsako karakteristiko samo enkrat (črtkana črta na sliki je slab začetni pogoj).
+* Valovna enačba
+** Izpeljava
+*** Struna (Kuščar, Kodre 5.5, Haberman 4.2)
+
+Naj bo vrv težka in idealno gibka. Idealno gibka pomeni, da za zvijanje vrvi ne uporabimo nič energije. Gledamo košček vrvi dolžine \( \mathrm{d} s \).
+
+Definiramo dolžinsko gostoto zunanjih sil v \( x \) in \( y \) smeri kot
+
+\[ f_i = \frac{\mathrm{d} F_{i}}{\mathrm{d} s}
+\]
+
+kjer je \( i = x, y \). Dolžinska gostota mase pa je definirana kot
+
+\[ \mu = \frac{\mathrm{d} m}{\mathrm{d} s}
+\]
+
+Sila v vrvici \( F = F(s) \) (je odvisna od dolžine).
+
+Zapišimo Newtonove zakone v posameznih smereh. Glej sliko.
+
+Začetni del vrvi doživlja silo \( F(s) \), konec končka vrvi pa silo \( F(s + \mathrm{d} s) \). Na vrvico v smeri \( x \) deluje dolžinska gostota sile \( f_x \), hkrati pa še razlika \( F_x \), kar je razlika \( F(s + \mathrm{d} s) - F(s) \) projecirana na \( x \) os.
+
+\( \mathrm{d}s \) je hipotenuza, medtem ko sta \( \mathrm{d} x \) in \( \mathrm{d} y \) kateti. Silo \( F_x \) zapišemo s kosinusom kot
+
+\[ F_x = F \frac{\mathrm{d} x}{\mathrm{d} s}
+\]
+
+Projekcijo razlike sil pa izrazimo z odvodom kot
+
+\[ F(s + \mathrm{d} s) - F(s) = \frac{\partial }{\partial s}  \left( F_x \right) = \frac{\partial }{\partial s}  \left( F \frac{\mathrm{d} x}{\mathrm{d} s} \right)
+\]
+
+Drugi Newtonov zakon v \( x \) osi zapišemo kot
+
+\[ \mathrm{d} s \mu x_{tt } = f_x \mathrm{d} s ++ \mathrm{d} s  \frac{\partial }{\partial s}  \left( F \frac{\mathrm{d} x}{\mathrm{d} x} \right)
+\]
+
+V obeh smereh tako zapišemo
+
+\begin{align*}
+  \mu x_{tt } &= \frac{\partial }{\partial s}  \left( F(s) \frac{\mathrm{d} x}{\mathrm{d} s} \right) + f_x \\
+\mu y_{tt } &= \frac{\partial }{\partial s} \left( F(s) \frac{\mathrm{d} y}{\mathrm{d} s} \right) + f_y
+\end{align*}
+
+Manjka nam še pogoj, da je vrv neraztegljiva, ki ga opišemo z
+
+\[ \mathrm{d} x ^2 + \mathrm{d} y ^2 = \mathrm{d} s ^2 \quad \text{ali} \quad \left| \frac{\mathrm{d} \vec{r}}{\mathrm{d} s} \right| = 1
+\]
+
+Ta pogoj velja za \( F(s) \). Za raztegljivo vrv bo pogoj oblike.
+
+\[ F\sim k \left( \left| \frac{\mathrm{d} \vec{r}}{\mathrm{d} s} \right|  - 1\right)
+\]
+
+Obravnavamo posebni primer, ko imamo majhni odkloni, kar matematično zapišemo kot
+
+\[ \frac{\mathrm{d} y}{\mathrm{d} s} \ll 1 \quad \text{oz.}  \frac{\mathrm{d} x}{\mathrm{d} s} \approx 1
+\]
+
+Dodatno nimamo zunanjih sil \( f_x = 0 \) ter da vrv ne pospešuje v \( x \) smeri: \( x_{tt } = 0 \). Iz Newtonovega zakona v smeri \( x \) in zdajle povedanih pogojev sledi, da je \( F(s) = \mathrm{konst} \), saj
+
+\[ \frac{\partial F}{\partial s}  = 0
+\]
+
+Newtonov zakon v smeri \( y \) pa je tako
+
+\[ \mu y_{tt } = F \frac{\partial ^2 y }{\partial x ^2} + f_y
+\]
+
+kar zapišemo v valovno enačbo
+
+\begin{equation}
+\label{eq:9}
+y_{tt } = c ^2 y_{xx } + \frac{f_y}{\mu}, \quad \frac{F}{\mu} = c ^2
+\end{equation}
+
+Stacionarna rešitev parabole je aproksimacije verižnice \( \mathrm{ch} \).
+
+Pri mostu (npr. Golden Gate Bridge) je obremenitev konstanta na \( \mathrm{d}x \) in ne na \( \mathrm{d} s \).
+**** Energija nihanja za \( y_{tt } = c ^2 y_{xx } \)
+
+Funkcija \( y \) je funkcija \( x \) in \( t \). Zaradi pogoja \( \frac{\mathrm{d} y}{\mathrm{d} s} \ll 1 \) zapišemo maso kot
+
+\[ \mathrm{d} m = \mu \mathrm{d} s = \mu \mathrm{d} x
+\]
+
+Kinetični del energije zapišemo kot integral po dolžini vrvi
+
+\begin{equation}
+\label{eq:10}
+T = \int\limits_{}^{} \mu \mathrm{d} x \, \frac{y_t ^2}{2}
+\end{equation}
+
+Energiji dodamo tudi prožnostno energijo
+
+\begin{equation}
+\label{eq:11}
+W_{Pr} = \frac{1}{2} \int\limits_{}^{} F y_x ^2 \, \mathrm{d} x
+\end{equation}
+
+kjer smo \( y_x ^2 \) dobili iz Taylorjevega razvoja
+
+\begin{align*}
+  \mathrm{d} s &= \sqrt{\mathrm{d} x ^2 + \mathrm{d} y ^2} \\
+&= \mathrm{d} x \sqrt{1 - \left( \frac{\mathrm{d} y}{\mathrm{d}x} \right) ^2} \\
+&= \mathrm{d} x \left( 1 + \frac{1}{2} \left( \frac{\mathrm{d} y}{\mathrm{d} x} \right) ^2 + \ldots \right)
+\end{align*}
+
+Zanima nas tudi delo
+
+\begin{equation}
+\label{eq:12}
+A = \int\limits_{}^{} \left( \frac{\mathrm{d} F_{y}}{\mathrm{d} x} \right) \, \mathrm{d} x \, \mathrm{d} u
+\end{equation}
+
+kjer zapišemo \( u = \beta y \) za \( \beta \in (0, 1] \) obliko strune (od ravnovnesnega stanja do maksimalne lege). \( \beta \) je skalirni element. Majhni del oblike strune je \( \mathrm{d} u = y \mathrm{d} \beta \). Sila \( F_y \) je sila, ki sili vrv v ravnovesno lego. Zapišemo jo s pomočjo Newtonovega zakona
+
+\[ \mathrm{d} x \mu y_{tt } = \mathrm{d} F_y = \left( F y_{xx } + f_y \right) \, \mathrm{d} x
+\]
+
+kjer je \( f_y \) zunanja sila (sila teže).
+
+Integral \ref{eq:12} tako postane
+
+\begin{align*}
+  A &= \int\limits_{}^{} \left( \frac{\mathrm{d} F_y}{\mathrm{d} x} \right) \, \mathrm{d} x \, \mathrm{d} u \\
+&= \iint\limits_0^1 \left( \beta F y_{xx } + f_y  \right)\, \mathrm{d} x \cdot y \, \mathrm{d} \beta \\
+&= \int\limits_{}^{} \, \mathrm{d} x \left[ \frac{1}{2} F y_{xx } + f_y \right] y
+\end{align*}
