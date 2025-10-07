@@ -166,6 +166,8 @@ Obravnavajmo zgornji primer, kjer je enačba nelinearna. Najlepšo linearnost bo
 
 Glej grafe: ob izbranem \( x_0 \) je gostota \( \rho_0 \), ki se iz časa \( t = 0 \) preslika v \( t = 1 \).
 
+[[file:figures/01PDE_udarni_val.jpg]]
+
 Ena karakteristika je oblike
 
 \[ x = x_0 + \rho_0 (x_0) t
@@ -222,6 +224,8 @@ oziroma, če poenostavimo
 Če se avtomobili premikajo s hitrostjo \( 40 \mathrm{km}/ \mathrm{h} \) na avtocesti in se nekje ustavijo, ter je gostota \( \rho_- \) približno enaka \( \rho_{max} \), potem to pomeni, da se bo udarni val širil nazaj s hitrostjo \( v_0 = 120 \frac{\mathrm{km}}{\mathrm{h}} \).
 
 To je tudi razlog, zakaj prihaja do naletov.
+
+[[file:figures/01PDE_hitrost_udarnega_vala.jpg]]
 #+end_my_example
 * Splošna PDE 1. reda
 
@@ -240,6 +244,8 @@ Zapišemo vektorsko polje \( \vec{v} = (a, b) \) in tako lahko enačbo \ref{eq:6
 
 \[ \left( \vec{v} \, \nabla \right) u = \phi
 \]
+
+[[file:figures/01PDE_vektorsko_polje.jpg]]
 
 Podobno kot v prejšnjem poglavju poskušamo z metodo karakteristike - ali obstaja krivulja \( \left( x(s), y(s) \right) \), na kateri se PDE  poenostavi (na \( \phi = 9 \))?
 
@@ -274,6 +280,8 @@ Predpostavimo, da imamo začetni pogoj \( \Gamma \). Za dober začetni pogoj mor
 *** Struna (Kuščar, Kodre 5.5, Haberman 4.2)
 
 Naj bo vrv težka in idealno gibka. Idealno gibka pomeni, da za zvijanje vrvi ne uporabimo nič energije. Gledamo košček vrvi dolžine \( \mathrm{d} s \).
+
+[[file:figures/02WE_izpeljava.jpg]]
 
 Definiramo dolžinsko gostoto zunanjih sil v \( x \) in \( y \) smeri kot
 

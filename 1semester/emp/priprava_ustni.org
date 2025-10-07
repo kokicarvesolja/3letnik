@@ -1,0 +1,78 @@
+#+title: Priprava Ustni
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Elektrostatika
+** 1. vprašanje
+ #+begin_problem
+Uvedi in razloži naslednje elektrostatske količine in koncepte: Coulombska sila, naboj, jakost polja, silnice, cirkulacija, pretok, potencial, ekvipotencialne ploskve in princip superpozicije.
+ #+end_problem
+*** Coulombov zakon
+
+Mirujoče naelektreno telo z nabojem \( e_1 \) deluje na drugo mirujoče naelektreno telo z nabojem \( e_2 \) z električno silo
+
+\begin{equation}
+\label{eq:1}
+ \vec{F} = \frac{e_1 e_2}{4 \pi \epsilon_0 r ^2} \frac{\vec{r}}{r}.
+\end{equation}
+
+Pri tem vektor \( \vec{r} \) kaže od naboja \( e_1 \) do naboja \( e_2 \). Konstanti \( \epsilon_0 = 8.85 \cdot 10^{-12} \frac{\mathrm{As}}{\mathrm{Vm}} \) pravimo influenčna konstanta vakuuma. Enačbi pravimo Coulombska sila.
+*** Naboj
+
+Naboj je ena izmed osnovnih količin, ki jo merimo v coulombih. Označimo jo s črko \( C \) in je ekvivalentna \( \mathrm{As} \).
+*** Jakost električnega polja
+
+Električno silo, ki deluje na daljavo, v Coulombovi sliki, nadomesti električno polje v Faradayjevi in Maxwellovi sliki. Torej je električno polje posrednik interakcije.
+
+Električno silo naboja \( e_1 \) na nabit delec \( e_2 \) zapišemo preko enačbe
+
+\[ \vec{F} = e_2 \vec{E}_1
+\]
+
+Iz enačbe \ref{eq:1} sledi, da je električno polje točkastega naboja enako
+
+\[ E = \frac{e_0}{4 \pi \epsilon_0} \frac{\vec{r}}{r ^3}
+\]
+*** Silnice
+
+Električne silnice so primer prostorske upodobitve vektorskega polja. Prostorskim krivuljam v naravni parametrizaciji \( \vec{r}(s) \), ki so v vsaki točki sorazmerna smeri elektrostatske sile, pravimo električne silnice.
+
+\[ \odv{r}(s) = \frac{\mathrm{d} r}{\mathrm{d} s} = \frac{\vec{F}(\vec{r}(s))}{\left| \vec{F} (\vec{r} (s)) \right|}
+\]
+
+Podobno lahko zapišemo tudi s pomočjo električnega polja v vsaki točki prostora
+
+\[ \odv{r}(s) = \frac{\vec{E} \left( \vec{r}(s) \right)}{\left| \vec{E} \left( \vec{r} (s) \right) \right|}
+\]
+
+Silnice so usmerjene proti naboju, če je negativen, drugače so pozitivne. Električne silnice imajo naslednje 4 lastnosti:
+
+- silnice kažejo v smeri električnega polja \( \vec{E} \) in se ne sekajo
+- površinska gostota silnic je sorazmerna velikosti električne polja \( \left| \vec{E} \right| \)
+- silnice izvirajo v pozitivnih nabojih in izginjajo v negativnih nabojih
+- silnice niso nikoli zaključene
+*** Električna cirkulacija
+
+Definiramo jo kot integral po zaključeni krivulji \( \mathcal{C} \)
+
+\begin{equation}
+\label{eq:2}
+ \Gamma_E = \oint\limits_{\mathcal{C}}^{} \vec{E} \, \mathrm{d} \vec{r}
+\end{equation}
+
+Eksperimentalno je določeno, da je cirkulacija statičnega električnega polja enaka nič. Integral \ref{eq:2} lahko razpišemo s pomočjo Stokesovega izreka kot
+
+\[ 0 = \oint\limits_{\mathcal{C}}^{} \vec{E} \, \mathrm{d} \vec{r} = \iint\limits_S^{} \nabla \times \vec{E} \,\mathrm{d } \vec{S}
+\]
+
+V tem primeru krivulja \( \mathcal{C} \) predstavlja rob \( \partial S \) območja \( S \). Iz lastnosti cirkulacije statičnega električnega polja sledi
+
+\[ \nabla \times \vec{E} = 0
+\]
+
+kar po definiciji pomeni, da je brezvrtinčno.

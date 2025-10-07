@@ -93,7 +93,7 @@ Za vsa statična električna polja velja \( \Gamma_E = 0 \).
 
 Iz tega sledi z uporabo Stokesovega izreka
 
-\[ 0 = oint\limits_C^{} \vec{E} \cdot \mathrm{d} \vec{r} = \iint\limits_{S}^{} \nabla \times \vec{E} \,\mathrm{d } \vec{S}
+\[ 0 = \oint\limits_C^{} \vec{E} \cdot \mathrm{d} \vec{r} = \iint\limits_{S}^{} \nabla \times \vec{E} \,\mathrm{d } \vec{S}
 \]
 
 kjer je \( C = \partial S \). Posledično sledi

@@ -27,7 +27,7 @@ V disku s polmerom \( a \) vzamemo kolobar z notranjim polmerom \( \rho \). Dife
 
 Ker je problem simetričen, si lahko privoščimo gledati samo za os nad diskom.
 
-[skica problema]
+[[file:figures/01nabit_disk.jpg]]
 
 Projekcija električnega polja \( \mathrm{d} E' \) na navpično os je definirana preko kosinusa, torej velja razmerje
 
@@ -90,7 +90,7 @@ Električno polje je tako enako
 
 kar je izraz za točkasti naboj.
 
-[graf]
+[[file:figures/01nabit_disk_Eodz.jpg]]
 #+end_solution
 * Električno polje nabite ravne plošče z režo
 
