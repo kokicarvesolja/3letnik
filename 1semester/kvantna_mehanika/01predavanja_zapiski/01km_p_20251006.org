@@ -187,7 +187,6 @@ Definiramo, nam že poznan, Hamiltonianov operator
  \hat{H} = \frac{p ^2}{2m} + V = - \frac{\hbar ^2 \nabla ^2}{2m} + V
 \end{equation}
 
-
 ** Stacionarna stanja
 
 Za funkcijo, kjer ločimo spremenljivke
@@ -305,7 +304,7 @@ Per partes smo naredili dvakrat - najprej na \( \frac{\partial }{\partial x}  \l
 
 \[ \int\limits_{-\infty}^{\infty} \phi^{\ast} H \psi \, \mathrm{d} x = \int\limits_{- \infty}^{\infty} \left( H \phi \right)^{\ast} \psi \, \mathrm{d} x
 \]
-* Ehrenfestov teorem
+** Ehrenfestov teorem
 
 Postopamo podobno kot pri izpeljavi operatorja gibalne količine. Imamo operator \( \hat{A} \), ki je lahko \( x, \hat{p} \) ali \( H \). Pričakovana vrednost je
 
@@ -357,3 +356,108 @@ saj velja
 
 Velja \( \left[ x, V \right] = 0 \).
 #+end_my_example
+
+#+begin_my_example
+Za operator vzamemo gibalno količino \( A = p \). Lahko vzamemo totalni odvod, ker funkcija \( \vec{r} \) ni funkcija časa. Po definiciji Ehrenfestovega teorema
+
+\[ m \frac{\mathrm{d} ^2 }{\mathrm{d} t ^2} \left\langle x \right\rangle  = \frac{\mathrm{d} \left\langle p \right\rangle}{\mathrm{d} t}
+\]
+
+kjer smo upoštevali rezultat prejšnjega primera. Nadaljujemo
+
+\[ \frac{\mathrm{d} }{\mathrm{d} t} \left\langle p \right\rangle  = \frac{1}{\mathrm{i} \hbar} \left\langle \left[ p, H \right] \right\rangle = \frac{1}{\mathrm{i} \hbar} \left\langle \left[ p, \frac{p ^2}{2m} + V \right] \right\rangle
+\]
+
+Komutacija \( p \) in \( p ^2 \) nam da ničelni rezultat. Torej
+
+\[\frac{\mathrm{d} }{\mathrm{d} t} \left\langle p \right\rangle &= \frac{1}{\mathrm{i} \hbar} \left\langle \left[ p, V \right] \right\rangle
+\]
+
+Komutacija \( p \) in \( V \) pa nam poda rezultat
+
+\begin{align*}
+  \left[ p, V(x, t) \right] \Psi &= \left( p V - V p \right) \Psi \\
+&= - \mathrm{i} \hbar \frac{\partial }{\partial x} V \Psi + \mathrm{i} \hbar V \frac{\partial }{\partial x} \Psi \\
+&= - \mathrm{i} \hbar \left( \frac{\partial V}{\partial x} V \right) \Psi - \mathrm{i} \hbar V \frac{\partial \Psi}{\partial x}  + \mathrm{i} \hbar V \frac{\partial \Psi}{\partial x } \\
+&= \left( - \mathrm{i} \hbar \frac{\partial V}{\partial x}  \right) \Psi
+\end{align*}
+
+Torej
+
+\[ \frac{\mathrm{d} }{\mathrm{d} t} \left\langle p \right\rangle  = m \frac{\mathrm{d} ^2 \left\langle x \right\rangle }{\mathrm{d} t ^2} = \left\langle  - \frac{\partial V}{\partial x}  \right\rangle = \left\langle F(x, t) \right\rangle
+\]
+
+To nas spominja na 2. Newtonov zakon. Klasično bi ga zapisali
+
+\[ m \frac{\mathrm{d} ^2 }{\mathrm{d} t ^2} = F (x, t)
+\]
+
+Ekvivalenten kvantnomehanski zapis bi bil
+
+\[ m \frac{\mathrm{d} ^2 \left\langle x \right\rangle }{\mathrm{d} t ^2} = F \left( \left\langle x \right\rangle , t \right)
+\]
+
+vendar mi imamo pa \( \left\langle F (x, t) \right\rangle \), kar je po definiciji
+
+\[ \int\limits_{-\infty}^{\infty} \Psi^{\ast} F (x, t)  \Psi \, \mathrm{d} x = F \left( \left\langle x \right\rangle , t\right) \int\limits_{- \infty}^{\infty} \left| \Psi \right| ^2 \, \mathrm{d} x = F \left( \left\langle x \right\rangle , t\right)
+\]
+
+Verjetnostna gostota \( \rho(x, t) \) ima obliko \( \delta \)-funkcije in ko gre širina stolpca \( \sigma \) proti 0 okoli pričakovane vrednosti \( \left\langle x \right\rangle \) bo zgornji integral veljal, saj je \( F(x, t) \) neodvisna od \( x \). Temu prehodu, ko gre širina proti \( 0 \), pravimo klasična limita.
+
+/Think through this, razlaga integrala je bolj švoh/.
+#+end_my_example
+
+#+begin_my_example
+Vzemimo za operator \( \hat{A} = \hat{\vec{r}} \times \hat{\vec{p}} = \hat{\vec{L}} \). Za vajo dokažemo doma
+
+\[ \frac{\mathrm{d} \left\langle \hat{\vec{L}} \right\rangle}{\mathrm{d} t} = \left\langle \hat{\vec{M}} \right\rangle  = \left\langle \vec{r} \times \left( - \nabla V \right) \right\rangle
+\]
+
+kjer je \( \hat{\vec{M}} = \vec{r} \times \vec{F} \).
+#+end_my_example
+** Nedoločenost
+
+[vstavi graf]
+
+Širina stolpca je enaka
+
+\[ \delta x ^2 = \sigma_x ^2 = \left\langle x ^2 \right\rangle  - \left\langle x \right\rangle ^2 \ge 0
+\]
+
+Naredimo to za splošen operator
+
+\[ \delta ^2 \hat{A} ^2 = \left\langle \hat{A} ^2 \right\rangle - \left\langle \hat{A} \right\rangle ^2
+\]
+
+Na vajah dokažemo, da za poljubna operatorja \( \hat{A} \) in \( \hat{B} \) velja
+
+\[ \left| \Delta A \Delta B \right| \ge \frac{1}{2} \left\langle  \left[ \hat{A}, \hat{B} \right] \right\rangle
+\]
+
+preko Schwartzove neenakosti.
+
+\[ \left| \int\limits_{}^{} \phi^{\ast} \psi \, \mathrm{d} x \right| \le \int\limits_{}^{} \left| \phi^ \right|^2 \, \mathrm{d} x \int\limits_{}^{} \left| \psi \right| ^2 \, \mathrm{d} x
+\]
+
+Za \( A = x \) in \( B = p \) je enako
+
+\[ \delta x \delta p \ge \frac{1}{2} \hbar
+\]
+* Formalizem kvantne mehanike
+
+Uporabljali bomo Diracov formalizem, ki ga je izdal v svoji knjigi leta 1930. Drugi pomembnejši za naš formalizem pa je von Neumann s knjigo leta 1932.
+
+Nahajamo se v vektorskem prostor, ki je Hilbertov \( L ^2 \). Naj bo funkcija \( \Psi(\vec{r}, t) \in L ^2 \). Obstaja baza \( \left\{ \phi_n \right\} \) za \( n \in \mathbb{N} \). Če bi obstajala baza \( \left\{ \phi_k \right\} \), kjer \( k \in \mathbb{R} \) je to Banachov prostor, kjer je matematika drastično značilna.
+
+Pri vektorjih imamo tudi avtomatsko skalarni produkt. Za dva vektorja \( \psi, \phi \in L ^2 \). Skalarni produkt zapišemo na več možnih načinov:
+
+\[ \left( \phi, \psi \right) = \left( \phi \middle| \psi \right) = \left\langle \phi, \psi \right\rangle  = \left\langle \phi \middle| \psi \right\rangle = \int\limits_{}^{} \phi^{\ast} \psi \, \mathrm{d} x
+\]
+
+Mi bomo uporabljali Diracov zapis skalarnega produkta, ki \( \left\langle \phi \middle| \psi \right\rangle \). Za skalarni produkt velja
+
+- \( \left\langle \phi \middle| \psi \right\rangle  = \left\langle \psi \middle| \phi \right\rangle ^{\ast} \)
+- \( \left\langle \psi \middle| \psi \right\rangle \ge 0 \) in če \( \left\langle \psi \midlle|\psi \right\rangle = 0\), ko \( \psi = 0 \)
+- \( \left| \left\langle \phi \middle| \psi \right\rangle \right| ^2 \ge \left\langle \phi \middle| \phi \right\rangle \left\langle \psi \middle| \psi \right\rangle\)
+
+Definiram /ket/. Za funkcijo ali stanje \( \Psi(x, t) \in L ^2 \) , definiramo stanje ali vektor kot \( \left| \psi \right\rangle \)
