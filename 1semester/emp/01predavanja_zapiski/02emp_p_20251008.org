@@ -1,0 +1,142 @@
+#+title: 2. predavanje iz EMP
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Elektrostatika
+** Princip superpozicije
+
+Obravnavamo 4 naboje \( e_1, e_2, e_3 \) in \( e_4 \) s svojimi radij vektorji \( \vec{r}_1, \vec{r}_2, \vec{r}_3 \) in \( \vec{r}_4 \). Če dodamo nov naboj \( e \) z radij vektorjem \( r \), bo sila nanjega vsota sil vseh ostalih nabojev
+
+\[ \vec{F} \left( \vec{r} \right) = \sum\limits_i^{} \frac{e e_i}{4 \pi \epsilon_0} \frac{\left( \vec{r} - \vec{r}_i \right)}{\left| \vec{r} - \vec{r}_i \right| ^3}
+\]
+
+Celotna elektrostatika je odvisna od zgolj parskih interakcij (interakcij dveh delcev) - ang. /two body interaction/. Obstaja, vendar ne pri elektrostatiki, tudi /multi-body interaction/.
+
+Celotna sila je kar vsota parskih prispevkov sil med posameznima dvema nabojema - temu, da je sila /vsota/ *parskih* prispevkov sil, pravimo princip superpozicije. Enako velja za električno polje in potencial
+
+\[ \vec{E} \left( \vec{r} \right) = \sum\limits_i^{} \frac{e_i}{4 \pi \epsilon_0} \frac{\left( \vec{r} - \vec{r}_i \right)}{\left| \vec{r} - \vec{r}_i \right| ^3}, \quad \phi \left( \vec{r} \right) = \sum\limits_i^{} \frac{e}{4 \pi \epsilon_0} \frac{1}{\left| \vec{r} - \vec{r}_1 \right|}
+\]
+
+Električno polje in potencial sta aditivna.
+** Gostota naboja
+
+Električni naboj je pogosto porazdeljen - bodisi površina, volumen, ... Pogosto je uporabno, da ga opišem z gostoto naboja \( \rho \left( \vec{r} \right) \).
+
+Gostoto naboja lahko opišemo diskretno z enačbo
+
+\[ \rho \left( \vec{r} \right) = \sum\limits_i^{} e_i \delta_i ^3 \left( \vec{r} - \vec{r}_i \right)
+\]
+
+Z \( \delta \) funkcijo opišemo lokalizacijo naboja \( e_i \). Enote nam ustrezajo, saj vemo, da je integral \( \delta \) funkcije enak
+
+\[ \int\limits_{}^{} \delta(x) \, \mathrm{d}x = 1
+\]
+
+kar pomeni, da če ima \( \mathrm{d} x \) enote \( \mathrm{m} \), potem ima \( \delta \) funkcija v tem primeru \( \frac{1}{\mathrm{m}} \).
+
+
+Gostoto naboja lahko opišemo tudi zvezno z enačbo
+
+\begin{equation}
+\label{eq:1}
+ \rho \left( \vec{r} \right) =  \frac{\mathrm{d} e}{\mathrm{d} V}
+\end{equation}
+
+Preko integracije velja
+
+\[ e = \int\limits_{}^{} \rho \left( \vec{r} \right) \, \mathrm{d} V = \int\limits_{}^{} \sum\limits_i^{} e_i \delta ^3 \left( \vec{r} - \vec{r}_i \right) \, \mathrm{d}V = \sum\limits_i^{} e_i
+\]
+
+Z uporabo gostote lahko zapišemo električno silo \( \vec{F} \), električno polje \( \vec{E} \) ter električni potencial \( \phi \).
+
+Silo na celoten naboj v polju \( \vec{E} \left( \vec{r} \right) \) zapišemo z enačbo
+
+\[ \vec{F} = \int\limits_{}^{} \rho \left( \vec{r} \right) \vec{E} \left( \vec{r} \right) \, \mathrm{d} ^3 \vec{r}
+\]
+
+Električno polje \( \vec{E} \) v integralu je zunanje električno polje.
+
+Električno polje pa zapišemo kot
+
+\[ \vec{E} \left( \vec{r} \right) = \int\limits_{}^{} \frac{\rho \left( \vec{r}\, ' \right)}{4 \pi \epsilon_0} \frac{\left( \vec{r} - \vec{r} \, ' \right)}{\left| \vec{r} - \vec{r} \, ' \right|} \, \mathrm{d} ^3 \vec{r} \, '
+\]
+
+Uvedli smo \( \vec{r}\, ' \), saj nas zanima električno polje v točki \( \vec{r} \), vendar se naboj nahaja v nenujno različni točki \( \vec{r}\, ' \).
+** Primeri gostote naboja
+
+a) Točkast naboj ima gostoto naboja
+
+   \[ \rho \left( \vec{r} \right) = e_0 \delta ^3 \left( \vec{r} - \vec{r} _0 \right)
+   \]
+
+   kjer je \( \vec{r}_0 \) položaj naboja.
+
+b) Točkast dipol: naj bo razdalja med težiščema negativnega naboja \( e_- \) in pozitivnega naboja enaka \( d \). Radij vektor do prvega je \( \vec{r}_1 \) in do slednjega \( \vec{r}_2 \). Radij vektor do težišča točkastega dipola je \( \vec{r}_0 \).
+
+   [vstavi skico]
+
+   Gostoto naboja zapišemo
+
+   \[ \rho \left( \vec{r}  \right) = e \delta ^3 \left( \vec{r} - \vec{r}_1 \right) - e \delta \cub \left( \vec{r} - \vec{r}_2 \right)
+   \]
+
+   Označimo razdaljo med težiščem točkastega dipola in težiščem pozitivnega naboja z \( \delta \vec{r} \), analogno pa še z negativnim nabojem \( - \delta \vec{r} \)
+
+   Gostoto naboja zapišemo kot
+
+   \begin{align*}
+     \rho \left( \vec{r} \right) &= e \delta ^3 \left( \vec{r} - \left( \vec{r}_0 + \delta \vec{r} \right) \right) - e \delta ^3 \left( \vec{r} - \left( \vec{r}_0 - \delta \vec{r} \right) \right) \\
+        &= e \delta ^3 \left( \vec{r} - \vec{r}_0 - \delta \vec{r} \right) - e \delta ^3 \left( \vec{r} - \vec{r}_0  + \delta \vec{r} \right)
+   \end{align*}
+
+   Dano opazujemo v limiti \( \vec{r} - \vec{r}_0 \gg \delta \vec{r} \) in gostoto naboja razvijemo preko odvoda. Za skalarno količino bi to bilo enako
+
+   \[ f \left( x + h \right) = f (x) + h f' (x),
+   \]
+
+   vendar ker operiramo z vektorji, imamo
+
+   \[ f \left( \vec{r} + \Delta \vec{r} \right) = f \left( \vec{r} \right) + \nabla f \left( \vec{r} \right) \cdot \Delta \vec{r}
+   \]
+
+   Gostota naboja bo torej
+
+   \begin{align*}
+     \rho \left( \vec{r} \right) &= - e \delta \vec{r} \cdot \nabla \delta ^3 \left( \vec{r} - \vec{r}_0 \right) - e \delta \vec{r} \cdot \nabla \delta ^3 \left( \vec{r} - \vec{r}_0 \right) \\
+        &= -2 e \delta \vec{r} \cdot \nabla \delta ^3 \left( \vec{r} - \vec{r}_0 \right)
+   \end{align*}
+
+   Prepoznamo dipolni moment
+
+   \[ \vec{p} = - 2e \delta \vec{r}
+   \]
+
+   Ne bomo računali gradienta \( \delta \) funkcije, ampak bomo pogledali v Kuščar, Kodre, kjer velja dobimo zvezo med divergenco (levo) in gradientom (najbolj desni člen).
+
+   \begin{equation}
+   \label{eq:2}
+   \nabla \cdot \left( \vec{p} \cdot \delta ^3 \left( \vec{r} - \vec{r} \right) \right) = \left( \nabla \cdot p \right) \delta ^3 \left( \vec{r} - \vec{r}_0 \right) + \vec{p} \cdot \nabla \left( \delta ^3 \left( \vec{r} - \vec{r}_0 \right) \right)
+   \end{equation}
+
+   Divergence \( \nabla \cdot \vec{p} \) je zaradi konstantnosti \( \delta \vec{r} \) enaka \( 0 \).
+
+   Dodatno preobrazimo gostoto naboja z zgornjo vezo
+
+   \begin{equation}
+   \label{eq:3}
+   \rho \left( \dot{r} \right) = - \nabla \cdot \left[ \vec{p} \cdot \delta ^3 \left( \vec{r} - \vec{r}_0 \right) \right]
+   \end{equation}
+
+   kjer je količina \( \vec{p} \cdot \delta ^3 \left( \vec{r} - \vec{r}_0 \right) \) gostota dipolnega momenta ali /polarizacija/ \( \vec{P} \).
+
+   Enačbo \ref{eq:3} lahko zapišemo tudi kot
+
+   \[ \rho \left( \dot{r} \right) = - \nabla \cdot \vec{P} \left( \vec{r} \right)
+   \]
+
+   in s tem smo pridobili povezavo med gostoto naboja in polarizacijo.
