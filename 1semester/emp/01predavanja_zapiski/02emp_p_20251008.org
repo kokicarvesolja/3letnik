@@ -140,3 +140,161 @@ b) Točkast dipol: naj bo razdalja med težiščema negativnega naboja \( e_- \)
    \]
 
    in s tem smo pridobili povezavo med gostoto naboja in polarizacijo.
+
+c) površinsko porazdeljen naboj: naboj je porazdeljen po tanki plasi - površini. Vpeljemo površinsko gostoto naboja
+
+   \[ \rho \left( \vec{r} \right) = \sigma \left( \vec{u} \right) \delta \left( z - z_0 \right)
+   \]
+
+   kjer je \( \vec{u} \) radij vektor v dveh dimenzijah, kjer je \( z_0 \) lega te površine.
+
+d) Volumsko porazdeljen naboj
+
+   \[ \rho \left( \vec{r} \right) = \begin{cases}
+                                      \rho_{0}; & \left| \vec{r} \right| \le a \\
+                                      0 ; & \text{else }
+                                    \end{cases}
+   \]
+
+e) Volumsko porazdeljeni dipoli. Polarizacija je
+
+   \[ \vec{P} = \begin{cases}
+                \vec{P}_0; & \vec{r} \le a \\
+                0, & \text{else}
+                \end{cases}
+   \]
+
+   Gostota naboja \( \rho \left( \vec{r} \right) \) je
+
+   \[ \rho \left( \vec{r} \right) = - \nabla \cdot \vec{P} = - \nabla\cdot \left( \vec{P}_0 H \left( a - r \right) \right)
+   \]
+
+   kjer je \( H \) Heavisideova funkcija in je \( r \) skalar.
+
+   Tako kot v pimeru točkastega dipola upoštevamo, da je divergenca produkta enaka
+
+   \begin{align*}
+     \rho \left( \vec{r} \right) &= - \nabla \cdot \left( \vec{P}_0 H \left( a - r \right) \right) \\
+        &= - \left( \nabla \cdot \vec{P}_0 \right) H \left( a - r \right) - \vec{P}_0 \nabla \cdot H \left( a - r \right) \\
+        &= \vec{P}_0 \cdot \frac{\vec{r}}{r} \delta \left( a - r \right)
+   \end{align*}
+
+   Neničelna gostota električnega naboja je samo na robu površine, največja na vrhu in na dnu, ob strani manjša. To je zaradi tega, ker se naboji ne izničijo.
+** Integralna oblika Gaussovega izreka
+
+Naj bodo naboji \( e_1, e_2, \ldots, e_i \) s pripadajočimi radij vektorji \( \vec{r}_1, \vec{r}_2, \ldots, \vec{r}_i \), ki jih zaobjamemo s sklenjeno sfero s površino \( S \). Zanima nas električni pretok skozi sklenjeno površino \( S \).
+
+Nakazali bomo, kako se to izpelje, ostalo prepustimo Gaussu, ki je to že naredil. Za točko na sferi kaže električno polje v specifično smer, ki jo določajo naboji. Diferencial površine \( \mathrm{d} \vec{S} \) bo kazal radialno navzven.
+
+\begin{align*}
+  \oint\limits_S^{} \vec{E} \, \mathrm{d} \vec{S} &= \oint\limits_S^{} \left( \vec{E} \cdot \vec{n} \right) \, \mathrm{d} S \\
+&= \oint\limits_{}^{} E \cos \theta \, \mathrm{d} S \\
+&= \sum\limits_i^{} \frac{e_i}{4 \pi \epsilon_0} \oint\limits_{}^{} \frac{1}{\left| \vec{r} - \vec{r}_i \right| ^2} \cos \theta_i \left( \vec{r} \right) \, \mathrm{d} S
+\end{align*}
+
+Ta integral znamo preprosto izračunati, ko \( \vec{r}_i = 0 \). Gauss je dokazal, da ta integral velja za poljubno površino.
+
+\[ \oint\limits_{}^{} \vec{E}_1 \, \mathrm{d} \vec{S} = \frac{e_1}{4 \pi \epsilon_0} \oint\limits_{}^{} \frac{1}{r ^2} \cdot 1 \cdot r ^2 \sin \theta \, \mathrm{d} \theta \, \mathrm{d} \phi = \frac{e_1}{\epsilon_0}
+\]
+
+To velja tudi za \( \vec{r}_i \ne 0 \). Iz tega sledi, da je
+
+\begin{equation}
+\label{eq:4}
+ \oint\limits_{}^{} \vec{E} \, \mathrm{d} \vec{S} = \frac{\sum\limits_i^{} e_i}{\epsilon_0}
+\end{equation}
+
+Enačbo \ref{eq:4} lahko pretvorimo tudi na zvezni naboj, ki nam poda Gaussov izrek
+
+\[ \oint\limits_{S = \partial V}^{} \vec{E} \, \mathrm{d} \vec{S} = \frac{1}{\epsilon_0} \int\limits_V^{} \rho \left( \vec{r} \right) \, \mathrm{d} ^3 \vec{r}
+\]
+
+Pove nam, da je električni pretok skozi zaključeno površino enak zaobjetemu naboju.
+
+Uporabimo izrek Gauss-Ostrogradski:
+
+\begin{equation}
+\label{eq:5}
+ \oint\limits_{S = \partial V}^{} \vec{A} \, \mathrm{d} \vec{S} = \int\limits_V^{} \nabla\cdot \vec{A} \, \mathrm{d} ^3 \vec{r}
+\end{equation}
+
+Vzamemo Gaussov izrek
+
+\[ \oint\limits_{S = \partial V}^{} \vec{E} \, \mathrm{d} \vec{S}  = \frac{1}{\epsilon_0} \int\limits_V^{} \rho \left( \vec{r} \right) \, \mathrm{d} ^3 \vec{r}
+\]
+
+in upoštevamo \ref{eq:5} dobimo diferencialno obliko Gaussovega izreka
+
+\begin{equation}
+\label{eq:7}
+ \nabla \cdot \vec{E} = \frac{\rho \left( \vec{r} \right)}{\epsilon_0}
+\end{equation}
+
+ki velja v vsaki točki.
+
+** Poissonova in Laplaceova enačba
+
+Poissonova enačba je osnovna enačba elektrostatike, ki določa elektrostatski potencial. Upoštevamo definicijo potenciala
+
+\begin{equation}
+\label{eq:6}
+\vec{E} = - \nabla \phi
+\end{equation}
+
+in jo upoštevamo v \ref{eq:7}, da dobimo Poissonovo enačbo
+
+\begin{equation}
+\label{eq:8}
+ \nabla ^2 \phi \left( \vec{r} \right) = - \frac{\rho \left( \vec{r} \right)}{\epsilon_0}.
+\end{equation}
+
+Imamo tudi poseben primer, ko je \( \rho = 0 \), potem imamo Laplaceovo enačbo
+
+\[ \nabla ^2 \phi \left( \vec{r} \right) = 0
+\]
+
+ki pa mora zadostiti robnim pogojem.
+*** Greenova funkcija Poissonove enačbe
+
+Metoda Greenove funkcije se uporablja za iskanje splošne rešitve, v našem primeru Poissonove enačbe \ref{eq:8}. Rešitev iščemo kot konvolucijo. Predpostavimo, da je potencial, ki ima kot razlog izvora električen naboj, povezan z gostoto naboja. Matematično zapisano
+
+\begin{equation}
+\label{eq:9}
+ \phi \left( \vec{r} \right) = \int\limits_{}^{} G \left( \vec{r} - \vec{r} \, ' \right) \rho \left( \vec{r} \, ' \right) \, \mathrm{d} ^3 \vec{r} \, ',
+\end{equation}
+
+kjer je \( G \left( \vec{r} - \vec{r} \, ' \right) \) Greenova funkcija in je \( \rho \left( \vec{r} \, ' \right) \) gostota naboja. Za nadaljevanje predpostavimo, da taka rešitev obstaja.
+
+Zanima nas, kaj je Greenova funkcija. Uporabimo nastavek \ref{eq:9}, da ga vstavimo v \ref{eq:8} in ker vpliva Laplace na \( \vec{r} \) in ne na \( \vec{r} \, ' \), ga lahko nesemo znotraj integrala, kjer vpliva zgolj na Greenovo funkcijo
+
+\begin{align*}
+  \nabla ^2 \phi \left( \vec{r} \right) &= \nabla ^2 \left[ \int\limits_{}^{} G \left( \vec{r} - \vec{r} \, ' \right) \rho \left( \vec{r} \, ' \right) \, \mathrm{d} ^3 \vec{r} \, ' \right] \\
+&= \int\limits_{}^{} \nabla ^2 G \left( \vec{r} - \vec{r} \, ' \right) \rho \left( \vec{r} \, ' \right) \, \mathrm{d} ^3 \vec{r} \, ' = - \frac{\rho \left( \vec{r} \right)}{\epsilon_0}
+\end{align*}
+
+Zadnji enačaj smo dobili iz Poissonove enačbe \ref{eq:8}. Če pa Poissonova enačba drži, potem mora veljati
+
+\begin{equation}
+\label{eq:10}
+ \nabla ^2 G \left( \vec{r} - \vec{r} \, ' \right) = - \frac{\delta ^3 \left( \dot{r} - \vec{r} \, ' \right)}{\epsilon_0}
+\end{equation}
+
+Enačbo \ref{eq:10} primerjamo po obliki z enačbo \ref{eq:8}, iz česar zaključimo, da je Greenova funkcija, kar rešitev Poissonove enačbe za točkast naboj, ki se nahaja pri \( \vec{r}\, ' \).
+
+Sedaj nas zanima, kakšna je Greenova funkcija, kar bomo naredili s prestopom v Fourierov prostor. Greenovo funkcijo zapišemo kot
+
+\[ G \left( \vec{r} \right) = \int\limits_{}^{} \frac{\mathrm{d} ^3 k}{\left( 2 \pi \right) ^3} e^{\mathrm{i} \vec{k} \left( \vec{r} - \vec{r} \, ' \right)}  G \left( \vec{k} \right)
+\]
+
+\( \delta \) funkcijo pa zapišemo kot
+
+\[ \delta ^3 \left( \vec{r} - \vec{r} \, ' \right) = \int\limits_{}^{} \frac{\mathrm{d} ^3 \vec{k}}{\left( 2 \pi \right) ^3} e ^{\mathrm{i}  \vec{k} \left( \vec{r} - \vec{r} \, ' \right)} \cdot 1
+\]
+
+Dobljena zapisa v Fourierovem prostoru nesecmo v \ref{eq:10} in dobimo
+
+\begin{align*}
+  \nabla ^2 \left[ \int\limits_{}^{} \frac{\mathrm{d} ^3 \vec{k}}{\left( 2 \pi \right) ^3} e^{\mathrm{i} \vec{k} \left( \vec{r} - \vec{r} \, ' \right)} G \left( \vec{k} \right) \right] &= - \frac{1}{\epsilon_0} \int\limits_{}^{} \frac{\mathrm{d} ^3 \vec{k}}{\left( 2 \pi \right) ^3} e^{\mathrm{i} \vec{k} \left( \vec{r} - \vec{r} \, '  \right)} \\
+\int\limits_{}^{} \frac{\mathrm{d} ^3 \vec{k}}{ \left( 2 \pi  \right) ^3} \left[ \nabla ^2  \left\{e^{\mathrm{i} \vec{k} \left( \vec{r} - \vec{r} \, ' \right)} G \left( \vec{k} \right) \right\} + \frac{1}{\epsilon_0} e^{\mathrm{i} \vec{k} \left( \vec{r} - \vec{r} \, ' \right)} \right] &= 0 \\
+\int\limits_{}^{} \frac{\mathrm{d} ^3 \vec{k}}{\left( 2 \pi \right) ^3} \left[ - k ^2 G \left( \vec{k} \right) + \frac{1}{\epsilon_0}  \right]e^{\mathrm{i} \vec{k} \left( \vec{r} - \vec{r} \, ' \right)} &= 0
+\end{align*}
