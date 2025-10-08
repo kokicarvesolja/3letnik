@@ -447,17 +447,185 @@ Za \( A = x \) in \( B = p \) je enako
 
 Uporabljali bomo Diracov formalizem, ki ga je izdal v svoji knjigi leta 1930. Drugi pomembnejši za naš formalizem pa je von Neumann s knjigo leta 1932.
 
-Nahajamo se v vektorskem prostor, ki je Hilbertov \( L ^2 \). Naj bo funkcija \( \Psi(\vec{r}, t) \in L ^2 \). Obstaja baza \( \left\{ \phi_n \right\} \) za \( n \in \mathbb{N} \). Če bi obstajala baza \( \left\{ \phi_k \right\} \), kjer \( k \in \mathbb{R} \) je to Banachov prostor, kjer je matematika drastično značilna.
+1. Nahajamo se v vektorskem prostor, ki je Hilbertov \( L ^2 \). Naj bo funkcija \( \Psi(\vec{r}, t) \in L ^2 \). Obstaja baza \( \left\{ \phi_n \right\} \) za \( n \in \mathbb{N} \). Če bi obstajala baza \( \left\{ \phi_k \right\} \), kjer \( k \in \mathbb{R} \) je to Banachov prostor, kjer je matematika drastično značilna.
 
-Pri vektorjih imamo tudi avtomatsko skalarni produkt. Za dva vektorja \( \psi, \phi \in L ^2 \). Skalarni produkt zapišemo na več možnih načinov:
+2. Pri vektorjih imamo tudi avtomatsko skalarni produkt. Za dva vektorja \( \psi, \phi \in L ^2 \). Skalarni produkt zapišemo na več možnih načinov:
 
-\[ \left( \phi, \psi \right) = \left( \phi \middle| \psi \right) = \left\langle \phi, \psi \right\rangle  = \left\langle \phi \middle| \psi \right\rangle = \int\limits_{}^{} \phi^{\ast} \psi \, \mathrm{d} x
-\]
+   \[ \left( \phi, \psi \right) = \left( \phi \middle| \psi \right) = \left\langle \phi, \psi \right\rangle  = \left\langle \phi \middle| \psi \right\rangle = \int\limits_{}^{} \phi^{\ast} \psi \, \mathrm{d} x
+   \]
 
-Mi bomo uporabljali Diracov zapis skalarnega produkta, ki \( \left\langle \phi \middle| \psi \right\rangle \). Za skalarni produkt velja
+   Mi bomo uporabljali Diracov zapis skalarnega produkta, ki \( \left\langle \phi \middle| \psi \right\rangle \). Za skalarni produkt velja
 
-- \( \left\langle \phi \middle| \psi \right\rangle  = \left\langle \psi \middle| \phi \right\rangle ^{\ast} \)
-- \( \left\langle \psi \middle| \psi \right\rangle \ge 0 \) in če \( \left\langle \psi \midlle|\psi \right\rangle = 0\), ko \( \psi = 0 \)
-- \( \left| \left\langle \phi \middle| \psi \right\rangle \right| ^2 \ge \left\langle \phi \middle| \phi \right\rangle \left\langle \psi \middle| \psi \right\rangle\)
+   - \( \left\langle \phi \middle| \psi \right\rangle  = \left\langle \psi \middle| \phi \right\rangle ^{\ast} \)
+   - \( \left\langle \psi \middle| \psi \right\rangle \ge 0 \) in če \( \left\langle \psi \midlle|\psi \right\rangle = 0\), ko \( \psi = 0 \)
+   - \( \left| \left\langle \phi \middle| \psi \right\rangle \right| ^2 \ge \left\langle \phi \middle| \phi \right\rangle \left\langle \psi \middle| \psi \right\rangle\)
 
-Definiram /ket/. Za funkcijo ali stanje \( \Psi(x, t) \in L ^2 \) , definiramo stanje ali vektor kot \( \left| \psi \right\rangle \)
+3. Definiram /ket/. Za funkcijo ali stanje \( \Psi(x, t) \in L ^2 \) , definiramo stanje ali vektor kot \( \left| \psi \right\rangle \)
+
+4. Linearni operatorji je definiran s tem, da vsoto preslika v vsoto
+
+   \[ \hat{A} \left( \lambda \left| \phi \right\rangle  + \mu \left| \psi \right\rangle\right) = \lambda \hat{A} \left| \phi \right\rangle + \mu \hat{A} \left| \psi \right\rangle
+   \]
+
+   Operator je antilinearen, če ga kompleksno konjugira:
+
+   \[ \hat{A} \lambda \left| \psi \right\rangle  = \lambda^{\ast} \hat{A} \left| \psi \right\rangle
+   \]
+
+5. Rieszov izrek: Naj bo \( \hat{f} \) linearni funkcional. Obstaja neka funkcija, da delovanje funkcionala \( \hat{f} \) predstavimo kot skalarni produkt
+
+   \[ \hat{f} \left| \psi \right\rangle = \left| f \middle| \psi \right\rangle = \int\limits_{}^{} f^{\ast} (x) \psi(x) \, \mathrm{d} x = z \in \mathbb{C}
+   \]
+
+   kjer je \( z \in \mathcal{C} \) število.
+
+   Uvedemo bra \( \left\langle \psi \right| \). Funkcional zapišemo kot \( \left\langle \phi \right|  = \hat{f}\) ali drugače
+
+   \[ \hat{f} \left| \psi \right\rangle  = z = \left\langle \phi\middle| \psi \right\rangle
+   \]
+
+   Tukaj velja, da če imamo bra, ki deluje na vektor, je to skalarni produkt
+
+   \[ \left\langle \phi \right| \left| \psi \right\rangle = \left| \phi \middle| \psi \right\rangle
+   \]
+
+6. Razvoj stanja po dani bazi \( \left\{ \phi_n (x) \right\} \). Velja
+
+   \[ \int\limits_{}^{} \phi^{\ast}_m \phi_n \, \mathrm{d} x = \delta_{mn }
+   \]
+
+   Integral je ortonormiran, vendar je lahko proble degeneriran.
+
+   Funkcijo \( \Psi (x) \) razvijemo po bazi
+
+   \[ \Psi (x) = \sum\limits_n^{} c_n \phi_n (x)
+   \]
+
+   Razvoj pomnožimo s \( \phi_m^{\ast} \) in upoštevamo zgornjo enakost
+
+   \[ \int\limits_{}^{} \phi_m ^{\ast} (x) \Psi(x) \, \mathrm{d} x = c_m
+   \]
+
+   To pomeni, da lahko naš razvoj po bazi zapišemo namesto s \( c_n \) kot
+
+   \[ \Psi (x) = \sum\limits_n^{} \int\limits_{}^{} \phi^{\ast}_n (x') \Psi(x') \, \mathrm{d} x' \phi_n (x)
+   \]
+
+   Ker varčujemo z biti, bomo pisali bazo \( \left\{ \left| \phi_n \right\rangle \right\} \) tudi kot \( \left\{ \left| n \right\rangle \right\} \). Razvoj po bazi zapišemo kot
+
+   \[ \left| \psi \right\rangle  = \sum\limits_n^{} c_n \left| n \right\rangle
+   \]
+
+   Na vektor delujemo s funkcionalom \( \left| m \right\rangle \) in zapišemo
+
+   \[ \left\langle m \middle| \psi \right\rangle  = \sum\limits_n^{} c_n \left\langle m \middle| n \right\rangle = c_m
+   \]
+
+   Poleg tega
+
+   \[ \left| \psi \right\rangle  = \sum\limits_n^{} \left\langle n \middle| \\Psi \right\rangle \left| n \right\rangle = \sum\limits_n^{} \left| n \right\rangle \left\langle n \middle| \Psi \left\rangle = \left( \sum\limits_n^{} \left| n \right\rangle \left\langle n \right|\right) \left| \Psi \right\rangle = I \left| \Psi \right\rangle
+   \]
+
+   saj velja
+
+   \[ I = \sum\limits_n^{} \left| n \right\rangle  \left| n \right\rangle \iff I = \sum\limits_n^{} \int\limits_{}^{} \phi_n ^{\ast} (x') \Psi(x') \, \mathrm{d} x' \phi_n (x)
+   \]
+
+7. Zapis operatorja v dani bazi \( \left\{ n \right\} \). Imamo poljuben operator \( \hat{A} \) in enakost \( I = \sum\limits_n^{} \left| n \right\rangle \left\langle n \right|\).
+
+   Operator, ki deluje na vektor, zapišemo kot
+
+   \begin{align*}
+     A \left| \psi \right\rangle &= I A I \left| \psi \right\rangle \\
+        &= \sum\limits_{m, n}^{} \left| m \right\rangle \left\langle m \right| A \left| n \right\rangle \left| n \middle| \psi \right\rangle \\
+        &= \sum\limits_{m, n}^{} \left| m \right\rangle A_{mn} \left\langle n \middle| \psi \right\rangle \\
+        &= \sum\limits_{m, n}^{} \left| m \right\rangle A_{mn} c_n
+   \end{align*}
+
+   Zapišemo \( A \left| \psi \right\rangle  = \left| \psi_1 \right\rangle\). Razvoj posameznih funkcij po bazi zapišemo kot
+
+   \[ \left| \psi \right\rangle  = \sum\limits_n^{} c_n \left| n \right\rangle
+   \]
+
+   ter
+
+   \[ \left| \psi_1 \right\rangle  = \sum\limits_n^{} d_n \left| n \right\rangle
+   \]
+
+   Torej bomo zapisali kot
+
+   \[ A \left| \psi \right\rangle  = \sum\limits_m^{} \left( \sum\limits_n^{} A_{mn} c_n \right) \left| m \right\rangle = \left| \psi_1 \right\rangle
+   \]
+
+   Vsota \( \sum\limits_n^{} A_{mn} c_n \) predstavlja člene \( \sum\limits_m^{} d_m \). Vse skupaj lahko zapišemo v matrični obliki
+
+   \[ \begin{pmatrix} d_{1} \\ d_{2} \\ \vdots \\ d_n \\ \vdots \end{pmatrix} = \begin{pmatrix}
+                                                                               A_{11} & A_{12} & &  \\
+                                                                                & \ddots & & \\
+                                                                                &  & A_{nn} & \\
+                                                                                &&&& \ddots
+                                                                               \end{pmatrix} \begin{pmatrix} c_{1} \\ c_{2} \\ \vdots \\ c_{n} \\  \vdots \end{pmatrix}
+   \]
+
+   #+begin_my_example
+        Operator gibalne količine \( A = - \mathrm{i} \hbar \frac{\partial }{\partial x}  = \hat{p} \). Baza je
+
+        \[ \phi_n (x) = c_n \sin k_n x
+        \]
+
+        Matrični element neskončne potencialne jame bo
+
+        \[ A_{mn} = \int\limits_{-a}^a \phi_m^{\ast} (x) \hat{p} \phi_n (x) \, \mathrm{d} x = \left\langle m \middle| A \middle| n \right\rangle
+        \]
+
+        Zapišemo razvoj po bazi
+
+        \[ \psi(x) = \sum\limits_n^{} \alpha_n \phi_n (x)
+        \]
+   #+end_my_example
+
+8. Operator je hermitski ali simetričen, če velja
+
+   \[ \left| \phi \middle| A \middle| \psi \right\rangle  = \int\limits_{}^{} \phi^{\ast} A \psi \, \mathrm{d} x = \left| A \phi \middle| \psi \right\rangle
+   \]
+
+   za vsak vektor \( \phi, \psi \). Možen je tudi zapis \( \left\langle \psi \middle| A \middle| \psi \right\rangle  = \left\langle \psi \middle| A \psi \right\rangle\)
+
+   Ima nekaj lepih lastnosti:
+   - pričakovana vrednost
+
+    \begin{align*}
+      \left\langle \psi \middle| A \middle| \psi \right\rangle &= \left\langle A \psi \middle| \psi \right\rangle \\
+       &= \left\langle \psi \middle| A \psi \right\rangle^{\ast} \\
+       &= \left\langle \psi \middle| A \middle| \psi \right\rangle^{\ast}
+    \end{align*}
+
+    je realna, saj je konjugirana vrednost enaka nekonjugirani.
+
+   - Naj bo \( a \) lastna vrednost. Potem zapišemo
+
+     \[ A \left| a \right\rangle  = a \left| a \right\rangle
+     \]
+
+     kjer je \( \left| a \right\rangle \) lastni vektor. Nadalje to pomnožimo s funkcionalom \( \left\langle a \right| \) in dobimo
+
+     \[ \left\langle a \middle| A \middle| a \right\rangle  = a \left\langle a \middle| a \right\rangle  \in \mathbb{R}
+     \]
+
+     Iz tega sledi, da je lastna vrednost \( a \in \mathbb{R} \) realna.
+
+   - Imamo dve različni lastni vrednosti \( a, b \) in različna lastna vektorja \( \left| a \right\rangle \) ter \( \left| b \right\rangle \). Velja
+
+     \[ A \left| a \right\rangle  = a \left| a \right\rangle \quad A \left| b \right\rangle = b \left| b \right\rangle
+     \]
+
+     Prvo enakost pomnožimo z lastnim vektorjem \( \left\langle b \right| \), dobimo
+
+     \begin{align*}
+       \left\langle b \middle| A \middle| a \right\rangle &= a \left\langle b \middle| a \right\rangle \\
+        &= \left\langle Ab \middle| a \right\rangle \\
+        &= b \left\langle b \middle| a \right\rangle \\
+        &= (a - b) \left\langle b \middle| a \right\rangle = 0
+     \end{align*}
+
+     Imamo dve situaciji: če je \( a \ne b \), potem je skalarni produkt \( \left\langle b \middle| a \right\rangle  = 0\). Če pa \( a = b \), potem sta \( \left\{ \left| a \right\rangle, \left| b \right\rangle\right\} \) bazi in sledi \( \left| a_1 \right\rangle, \left| b_1 \right\rangle \)
