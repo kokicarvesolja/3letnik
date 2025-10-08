@@ -174,3 +174,186 @@ Dobimo novo zvezo in sicer pričakovano gibalno količine
 \]
 
 kjer je \( \hat{p} = - \mathrm{i} \hbar \frac{\partial }{\partial x}  \) ali v treh dimenzijah \( \hat{\vec{p}} = - \mathrm{i} \hbar \nabla \).
+
+S kvadriranjem operatorja gibalne količine dobimo nov operator kinetične energije:
+
+\[ T = p ^2 = \vec{p} \vec{p} = - \hbar ^2 \nabla ^2
+\]
+
+Definiramo, nam že poznan, Hamiltonianov operator
+
+\begin{equation}
+\label{eq:5}
+ \hat{H} = \frac{p ^2}{2m} + V = - \frac{\hbar ^2 \nabla ^2}{2m} + V
+\end{equation}
+
+
+** Stacionarna stanja
+
+Za funkcijo, kjer ločimo spremenljivke
+
+\[ \Psi \left( \vec{r}, t \right) = \psi (\vec{r}) f (t),
+\]
+
+iščemo taka stanja, da bo veljalo
+
+\[ \hat{H} \Psi_n =  E_n \Psi_n
+\]
+
+Z upoštevanjem enačbe \ref{eq:5} razpišemo
+
+\begin{align*}
+  \left( - \frac{\hbar ^2}{2m} \nabla ^2 + V \right) \Psi_n &= E_n \Psi_n \\
+\hat{H} \Psi = \mathrm{i} \hbar \frac{\partial \Psi}{\partial t} \\
+&= E_n \Psi
+\end{align*}
+
+iz česar sledi enakost za časovni del
+
+\[ f = \exp \left\{ - \mathrm{i} \frac{E_n}{\hbar} t \right\}
+\]
+
+V kvantni mehaniki pišemo časovni eksponent negativno predznačen kot \( e^{- \mathrm{i} \omega t} \), kjer je \( \omega = \frac{E}{\hbar} \).
+** Komutator
+
+Naj bosta \( \hat{A} \) in \( \hat{B} \) operatorja. Definiramo operacijo
+
+\[ \left[ \hat{A}, \hat{B} \right] = \hat{A} \hat{B} - \hat{B} \hat{A}
+\]
+
+Glej Poissonove oklepaje iz klasične mehanike, kjer smo povedali
+
+\[ \left[ q_i, p_i  \right]= \delta_{ij}
+\]
+
+#+begin_my_example
+Naj bo operator \( \hat{A} = x \) in \( \hat{B} = \hat{p} = - \mathrm{i} \hbar \frac{\partial }{\partial  x} \). Po definiciji
+
+\[ \left[ x, p \right] = xp - px = - \mathrm{i} \hbar \frac{\partial }{\partial x}  + \mathrm{i} \hbar \frac{\partial }{\partial x}  x
+\]
+
+\( x \) ne smeš odvajati v drugem členu. Potrebno je videti, kako ta komutator vpliva na splošno funkcijo \( \Psi \). Torej
+
+\begin{align*}
+ \left[ x, p \right]\Psi (x) &= - \mathrm{i} \hbar x \frac{\partial \Psi}{\partial x}  + \mathrm{i} \hbar \frac{\partial }{\partial x} \left( x \Psi \right) \\
+&= - \mathrm{i} \hbar x \frac{\partial \Psi}{\partial x}  + \mathrm{i} \hbar \Psi + \mathrm{i} \hbar x \frac{\partial \Psi}{\partial x}  \\
+&= \mathrm{i} \hbar \Psi
+\end{align*}
+
+kar velja za vsako funkcijo \( \Psi \).
+
+Torej velja
+
+\[ \left[ x_i, p_j \right] = \mathrm{i} \hbar \delta_{ij}
+\]
+#+end_my_example
+
+Lastnosti komutatorjev so
+
+- \[ \left[ \alpha A, B \right] = \alpha \left[ A, B \right]
+  \]
+- \[   \left[ AB, C \right] = A \left[ B, C \right] + \left[ A, C \right] B
+  \]
+
+  #+begin_proof
+Dokazujemo drugo alinejo. Razpišemo desno stran
+
+\begin{align*}
+  A \left[ B, C \right] + \left[ A, C \right] B &= A \left( BC - CB \right) + \left( AC - CA \right) B \\
+&= ABC - ACB + ACB - CAB \\
+&= \left[ AB, C \right]
+\end{align*}
+  #+end_proof
+** Lastnosti operatorjev
+
+Imamo operator \( A = \frac{\partial }{\partial x}  \mathrm{i} \), s katerim operiramo na funkciji \( \phi \) in \( \psi \). Opazujemo matrični element, ki ga bomo še definirali kasneje
+
+\[ \int\limits_{-\infty}^{\infty} \phi^{\ast} A \psi \, \mathrm{d} x = \int\limits_{- \infty}^{\infty} \phi^{\ast} \frac{\partial }{\partial x} \psi \, \mathrm{d} x
+\]
+
+Preko integriranja per partes in upoštevanja, da so naše funkcije v razredu Schwartzevih funkcij, pridobimo enakost
+
+\[ \int\limits_{- \infty}^{\infty} \phi^{\ast} A \psi \, \mathrm{d} x =\left. \phi^{\ast} \psi \right_{-\infty}^{\infty} - \int\limits_{-\infty}^{\infty} \frac{\partial \phi^{\ast}}{\partial x} \psi \, \mathrm{d} x = - \int\limits_{-\infty}^{\infty} \left( A \phi^{\ast} \right) \psi \, \mathrm{d} x
+\]
+
+Lahko zapišemo člen v zadnjem integralu kot \( \left( A \phi^{\ast} \right) = \left( A \phi \right)^{\ast} \). Operator \( A \) je v tem primeru antisimetričen.
+
+Če je operator \( A \) enak gibalni količini, potem preko enakega postopka pridemo do rezultata
+
+\begin{align*}
+  \int\limits_{-\infty}^{\infty} \phi^{\ast} \left( - \mathrm{i} \hbar \frac{\partial }{\partial x} \psi \right) \, \mathrm{d}x &= \mathrm{i} \hbar \int\limits_{-\infty}^{\infty} \frac{\partial \phi ^{\ast}}{\partial x} \psi \, \mathrm{d} x \\
+&= \int\limits_{-\infty}^{\infty} \left( - \mathrm{i} \hbar \frac{\partial }{\partial x}  \phi \right)^{\ast} \psi \, \mathrm{d} x
+\end{align*}
+
+Operatorju, kjer velja
+
+\[ \int\limits_{-\infty}^{\infty} \phi^{\ast} \hat{p}\psi \, \mathrm{d} x = \int\limits_{-\infty}^{\infty} \left( \hat{p} \phi \right)^{\ast} \psi \, \mathrm{d} x  ,
+\]
+
+pravimo, da je simetričen ali hermitski.
+
+Poglejmo si še primer, ko je \( A = H = \frac{p ^2 }{2m} + V \). Problematičen del Hamiltoniana je \( p ^2 \).
+
+\begin{align*}
+  \int\limits_{-\infty}^{\infty} \phi^{\ast} \frac{\partial ^2 }{\partial x ^2} \psi &= - \int\limits_{-\infty}^{\infty} \frac{\partial \phi^{\ast}}{\partial x} \frac{\partial \psi}{\partial x}  \, \mathrm{d} x \\
+&=  \int\limits_{-\infty}^{\infty}  \frac{\partial ^2 }{\partial x ^2} \phi^{\ast} \psi \, \mathrm{d} x
+\end{align*}
+
+Per partes smo naredili dvakrat - najprej na \( \frac{\partial }{\partial x}  \left( \frac{\partial \psi}{\partial x}  \right) \), kar nam pridela prvi negativen predznak. Z drugim per partes se negativna predznaka izničita.
+
+\( H \) je hermitski, če je potencial realen ali dugače zapisano \( V = V^{\ast} \).
+
+\[ \int\limits_{-\infty}^{\infty} \phi^{\ast} H \psi \, \mathrm{d} x = \int\limits_{- \infty}^{\infty} \left( H \phi \right)^{\ast} \psi \, \mathrm{d} x
+\]
+* Ehrenfestov teorem
+
+Postopamo podobno kot pri izpeljavi operatorja gibalne količine. Imamo operator \( \hat{A} \), ki je lahko \( x, \hat{p} \) ali \( H \). Pričakovana vrednost je
+
+\[ \left\langle \hat{A} \right\rangle = \int\limits_{-\infty}^{\infty} \Psi^{\ast} \hat{A} \Psi \, \mathrm{d} x
+\]
+
+Časovna odvisnost pričakovane vrednosti operatorja je
+
+\begin{equation}
+\label{eq:6}
+ \frac{\mathrm{d} }{\mathrm{d} t} \left\langle \hat{A} \right\rangle  = \int\limits_{- \infty}^{\infty} \left( \frac{\partial \Psi^{\ast}}{\partial t} A \Psi + \Psi^{\ast} \frac{\partial A}{\partial t} \Psi + \Psi^{\ast} A \frac{\partial \Psi}{\partial x}   \right) \, \mathrm{d} x
+\end{equation}
+
+Veljata naslednji zvezi
+
+\[ \frac{\partial \Psi}{\partial t}  = \frac{1}{\mathrm{i} \hbar} H \Psi \quad \text{in} \quad \frac{\partial \Psi^{\ast}}{\partial t} = - \frac{1}{\mathrm{i} \hbar} \left( H \Psi \right)^{\ast}
+\]
+
+Nadalje sledi iz enačbe \ref{eq:6}, da
+
+\begin{align*}
+  \frac{\mathrm{d} }{\mathrm{d} t} \left\langle A \right\rangle &= \int\limits_{- \infty}^{\infty} \left( - \frac{1}{\mathrm{i} \hbar} \left[ H \Psi \right]^{\ast} A \Psi + \Psi^{\ast} \frac{\partial A}{\partial t} \Psi + \Psi^{\ast} A \left[ \frac{1}{\mathrm{i} \hbar} H \Psi \right] \right) \, \mathrm{d} x \\
+&=  \left\langle \frac{\partial \hat{A}}{\partial t}  \right\rangle + \frac{1}{\mathrm{i} \hbar} \int\limits_{- \infty}^{\infty} \left[ \Psi^{\ast} H \Psi - \left( H \Psi \right)^{\ast} A \Psi \right] \, \mathrm{d} x \\
+&= \left\langle \frac{\partial \hat{A}}{\partial t}  \right\rangle + \frac{1}{\mathrm{i} \hbar} \left\langle \left[ \hat{A}, \hat{H} \right] \right\rangle
+\end{align*}
+
+Enačbi
+
+\[ \frac{\mathrm{d} }{\mathrm{d} t} \left\langle \hat{A} \right\rangle =  \left\langle \frac{\partial \hat{A}}{\partial t}  \right\rangle + \frac{1}{\mathrm{i} \hbar} \left\langle \left[ \hat{A}, \hat{H} \right] \right\rangle
+\]
+
+pravimo Ehrenfestov teorem.
+
+
+#+begin_my_example
+Za \(  A = x \) s Hamiltonianom velja preko teorema
+
+\[ \frac{\mathrm{d} }{\mathrm{d} t} \left\langle x \right\rangle  = \frac{1}{\mathrm{i} \hbar} \left\langle \left[ x, H \right] \right\rangle = \frac{1}{\mathrm{i} \hbar} \mathrm{i} \hbar \frac{\left\langle p \right\rangle}{m} = \frac{\left\langle p \right\rangle}{m}
+\]
+
+saj velja
+
+\begin{align*}
+  \left[ x, H \right] &= \left[ x, \frac{p ^2}{2m} + V(\vec{r}, t) \right] \\
+&= \frac{1}{2m} \left[ x, p ^2 \right] \\
+&= \frac{1}{2m} \left( \left[ x, p \right] p + p \left[ x, p \right] \right) \\
+&= \frac{1}{2m} \left( \mathrm{i} \hbar p + p \mathrm{i} \hbar \right)
+\end{align*}
+
+Velja \( \left[ x, V \right] = 0 \).
+#+end_my_example
