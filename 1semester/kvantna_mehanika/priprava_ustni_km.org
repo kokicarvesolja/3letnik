@@ -1,0 +1,55 @@
+#+title: Priprava na ustni izpit iz Kvantne mehanike
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Prvi set vprašanj
+** Schrödingerjeva enačba
+
+Osnovna Schrödingerjeva enačba v eni dimenziji je
+
+\[ \mathrm{i} \hbar \frac{\partial \Psi (x, t)}{\partial t} = - \frac{\hbar ^2}{2m} \frac{\partial ^2 }{\partial x ^2} \Psi(x, t) + V(x, t) \Psi(x, t)
+\]
+
+V treh dimenzijah pa je enačba enaka
+
+\[ \mathrm{i} \hbar \frac{\partial \Psi}{\partial t} \left( \vec{r}, t \right) = - \frac{\hbar ^2}{2m} \nabla ^2 \Psi (\vec{r}, t) + V \left( \vec{r}, t \right) \Psi \left( \vec{r}, t \right)
+\]
+
+Schrödingerjeva enačba je najenostavnejša enačba, ki zadošča naslednjim kvantno-mehanskim lastnostim:
+
+- delec je neke vrste valovanje z valovno dolžino \( \lambda = \frac{2\pi}{k} \) in s frekvenco \( \nu = \frac{\omega}{2\pi} \)
+- energije delca je sorazmerna s frekvenco valovanje \( E = \hbar \omega \), kjer je \( h = 2\pi \hbar \) Planckova konstanta
+- gibalna količina naj bo podana z valovnim vektorjem \( p = \hbar k \)
+- energija prostega delca z maso \( m \) ima obliko \( E = \frac{p ^2}{2m} \) in disperzijsko relacijo \( \omega \propto k ^2 \)
+
+Zadnja točka je tudi razlog, zakaj valovna enačba ni primerna - poda nam linearno disperzijsko relacijo. Disperzijska relacija nam podaja zvezo med frekvenco in valovnim vektorjem.
+
+Schrödingerjeva enačba je podobna difuzijski enačbi
+
+\[ \frac{\partial T}{\partial t}  = D \frac{\partial ^2 T}{\partial x ^2}
+\]
+
+vendar jo rešimo s kompleksnim nastavkom \( e^{\mathrm{i} (k x - \omega t)} \), kar nam poda kvadratno disperzijsko relacijo \( \omega = - \mathrm{i} D k ^2 \). Željena energijska zveza \( E = \frac{p ^2}{2m} \) velja zgolj za \( D = \frac{\mathrm{i} \hbar}{2m} \in \mathbb{C} \).
+
+Realna rešitev difuzijske enačbe ne oscilira in zato ni rešitev.
+
+Pokažimo, da valovna funkcija oscilira ter da lahko valovno funkcijo izrazimo z dvema realnima funkcijama. Zapišemo jo kot
+
+\[ \Psi = \alpha + \mathrm{i}\beta, \ \alpha, \beta \in \mathbb{R}
+\]
+
+Ko vstavimo to v Schrödingerjevo enačbo, dobimo sklopljeni enačbi
+
+\begin{align*}
+  -\hbar \dot{\beta} &= - \frac{\hbar ^2}{2m} \alpha '' + V \alpha \\
+  -\hbar \dot{\alpha} &= - \frac{\hbar ^2}{2m} \beta '' + V \beta
+\end{align*}
+
+Sklopljenost dveh enačb vodi do osciliranje, vidimo pa tudi, da dve realni funkciji rešita Schrödingerjevo enačbo.
+** Valovna funkcija
+** Verjetnost    

@@ -46,7 +46,7 @@ Valovna enačba ne reši problema kvantne mehanike (vstavi \( \Psi \) vanjo). Di
 \[ \frac{\partial T}{\partial t} = D \frac{\partial ^2 }{\partial x ^2} T
 \]
 
-je rešena s \( T (x, t) = \cos \left( kx - \omega t \right) \). Schrödingerjeva enačba je difuzijska enačba s kompleksno enačbo.
+je rešena s \( T (x, t) = \cos \left( kx - \omega t \right) \). Schrödingerjeva enačba je difuzijska enačba s kompleksno rešitvijo.
 
 Schrödingerjevi enačbi dodamo tudi potencial
 
