@@ -52,4 +52,48 @@ Ko vstavimo to v Schrödingerjevo enačbo, dobimo sklopljeni enačbi
 
 Sklopljenost dveh enačb vodi do osciliranje, vidimo pa tudi, da dve realni funkciji rešita Schrödingerjevo enačbo.
 ** Valovna funkcija
-** Verjetnost    
+
+#+begin_problem
+Kaj je valovna funkcija in kaj je njena vloga v kvantni mehaniki? Kako je valovna funkcija povezana z verjetnostjo zaznave delca v določenem prostoru?
+#+end_problem
+
+Valovna funkcija \( \Psi \left( \vec{r}, t \right) \) je osnovna količina, s katero opišemo delce v kvantni mehaniki. Z valovno funkcijo definiramo gostoto verjetnosti
+
+\[ \rho \left( \vec{r}, t \right) = \left| \Psi \left( \vec{r}, t \right) \right| ^2
+\]
+
+Gostota verjetnosti nam pove, s kakšno verjetnostjo \( \mathrm{d} P = \rho \mathrm{d} ^3 \vec{r} \) bomo v okolici koordinate \( \vec{r} \) ob času \( t \) v delu prostora \( \mathrm{d} ^3 \vec{r} \) zaznali delec.
+
+Delec bomo v vsem prostoru \( V \) zagotovo detektirali \( P = 1 \), zato je valovna funkcija ob vsakem času \( t \) normirana
+
+\[ \int\limits_V^{} \left| \Psi \left( \vec{r}, t \right) \right| ^2 \, \mathrm{d} ^3 \vec{r} = 1.
+\]
+
+Želimo dokazati, da je valovna funkcija normirana tudi ob drugih časih, če je že ob danem. Gostoto verjetnosti odvajamo po času z odvodom produkta
+
+\[ \frac{\partial \rho \left( \vec{r}, t \right)}{\partial t} = \frac{\left| \Psi \left( \vec{r}, t \right) \right| ^2}{\partial t} = \frac{\partial \Psi \left( \vec{r}, t \right)}{\partial t} \Psi^{\ast} \left( \vec{r}, t \right) + \frac{\partial \Psi^{\ast} \left( \vec{r}, t \right)}{\partial t} \Psi \left( \vec{r}, t \right)
+\]
+
+Upoštevali smo definicije absolutne vrednosti kompleksne vrednosti \( \left| z \right| ^2 = z \cdot z^{\ast}, \ z \in \mathbb{C} \).
+
+Nadomestimo vrednosti \( \Psi \) z nastavkom Schrödingerjeve enačbe, da dobimo izraz
+
+\begin{align*}
+  \frac{\partial \rho \left( \vec{r}, t \right) }{\partial t} = & \left( - \frac{\hbar \mathrm{i}}{2m} \nabla ^2 \Psi^{\ast} \left( \vec{r}, t \right)+ \frac{\mathrm{i}}{\hbar} V^{\ast} \left( \vec{r}, t \right) \Psi^{\ast} \left( \vec{r}, t \right) \right) \Psi \left( \vec{r}, t \right) \\
+&+ \left( \frac{\hbar \mathrm{i}}{2m} \nabla ^2 \Psi \left( \vec{r}, t \right) - \frac{\mathrm{i}}{\hbar} V \left( \vec{r}, t \right) \Psi \left( \vec{r}, t \right) \right) \Psi^{\ast} \left( \vec{r}, t \right)
+\end{align*}
+
+Uporabimo identiteto
+
+\[ \Psi \nabla ^2 \Psi^{\ast} = \nabla \cdot \left( \Psi \nabla \Psi^{\ast} \right) - \nabla \Psi \cdot \nabla \Psi^{\ast}
+\]
+
+da prepišemo zgornji dobljeni rezultat v obliko kontinuitetne enačbe za gostoto verjetnosti \( \rho \left( \vec{r}, t \right) \)
+
+\[ \frac{\partial }{\partial t} \rho \left( \vec{r}, t \right) + \nabla \cdot \vec{\jmath} \left( \vec{r}, t \right) = q \left( \vec{r}, t \right)
+\]
+
+kjer je
+
+\[ \vec{\jmath} \left( \vec{r}, t \right) = \frac{\hbar}{2 \mathrm{i} m} \left[ \Psi^{\ast} \nabla \Psi \left( \vec{r}, t \right) - \Psi \left( \vec{r}, t \right) \nabla \Psi ^{\ast} \left( \vec{r}, t \right) \right]
+\]

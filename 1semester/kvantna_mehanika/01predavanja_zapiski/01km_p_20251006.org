@@ -101,6 +101,8 @@ Verjetnostno gostoto nadomestimo z definicijo in upoštevamo odvod produkta. \( 
 &=- \frac{\hbar ^2}{2m} \frac{1}{-\mathrm{i} \hbar} \frac{\partial ^2 }{\partial x ^2} \Psi^{\ast} \Psi + \frac{V^{\ast}}{- \mathrm{i} \hbar} \Psi^{\ast} \Psi + C. C.
 \end{align}
 
+kjer je c.c kompleksna konjugirana vrednost.
+
 Odvod po kraju lahko razpišemo
 
 \[ \frac{\partial ^2 \Psi^{\ast} }{\partial x ^2} \Psi = \frac{\partial }{\partial x}  \left( \frac{\partial \Psi^{\ast}}{\partial x} \Psi \right) - \frac{\partial \Psi^{\ast}}{\partial x}  \frac{\partial \Psi}{\partial x}
