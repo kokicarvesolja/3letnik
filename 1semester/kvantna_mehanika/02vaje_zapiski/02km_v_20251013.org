@@ -126,7 +126,7 @@ Definiramo hitrosti \( v_1 \) in \( v_2 \) s koeficienti iz verjetnostnih tokov
 \[ v_1 = \frac{\hbar k_1}{m},  \quad v_2 = \frac{\hbar k_2}{m}
 \]
 
-in predefiniramo nastavke \ref{eq:4}, da bodo s sabo nosili nek del verjetnostnega toka
+in predefiniramo nastavke \ref{eq:4}, saj valovni funkciji oscilirata in ne moreta biti normalizirani.
 
 \begin{equation}
 \label{eq:5}
@@ -154,3 +154,143 @@ Ker je valovna funkcijo zvezna in zvezno odvedljiva, moramo zadostiti pogojem
 \end{align*}
 
 Imamo konstante \( A_1, B_1, A_2, B_2, C \) in \( D \). Če poznamo \( A_1 \) in \( A_2 \) bomo rešitev imeli enolično določeno.
+
+Preko dveh od štirih pogojev dobimo elimirano konstante \( C, D \), preko ostalih dveh pa izrazimo kosntanti \( B_1 \) in \( B_2 \) v odvisnosti od \( A_1 \) in \( A_2 \).
+
+
+\begin{equation}
+\label{eq:6}
+ \begin{pmatrix} B_{1} \\ B_{2} \end{pmatrix} = \begin{pmatrix}
+                                                  r & t' \\
+                                                  t & r'
+                                                   \end{pmatrix} \begin{pmatrix} A_{1} \\ A_{2} \end{pmatrix}
+\end{equation}
+
+kjer je \( 2 \times 2 \) matrika sipalna matrika \( S \) (ang. /scattering matrix/).
+
+Velja
+
+\begin{align*}
+  \begin{pmatrix} r \\ t \end{pmatrix} &= \begin{pmatrix}
+                                         r & t' \\
+                                         t & r'
+                                          \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} \\
+\begin{pmatrix} t' \\ r' \end{pmatrix} &= \begin{pmatrix}
+                                          r & t' \\
+                                          t & r'
+                                           \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+\end{align*}
+
+Definiramo refleksivnost \( R = \left| r \right| ^2 \), ki nam pove koliko delcev se odbije od potenciala, medtem ko tranzitivnost \( T = \left| t \right| ^2 \) pove koliko delcev gre skozi potenciala.
+
+Velja identiteta
+
+\[ 1 = \left| r \right|  ^2 + \left| t \right| ^2
+\]
+
+in verjetnostna tokova potem zapišemo s parametroma \( r, t \)
+
+\[ j_1 (x) = 1 - \left| r \right|  ^2,  \quad j_2 (x) = \left| t \right| ^2
+\]
+
+Ker smo v nerelativistični kvantni mehaniki, je predpostavka, da se število delcev ohranja, kar nam poda dva dodatna toka
+
+\begin{align*}
+  j_{in} &= \left| A_1 \right| ^2 + \left| A_2 \right| ^2 && \text{proti sipalcu} \\
+j_{out} &= \left| B_1 \right| ^2 + \left| B_2 \right| ^2 && \text{od sipalca}
+\end{align*}
+
+ \( A_2 \) in \( B_1 \) sta v verjetnostnih tokov drugačno predznačena, vendar nas zanima vsota.
+
+Vsoti \( j_{in} \) in \( j_{out} \) zapišemo v vektorskem zapisu
+
+\begin{align*}
+  \left| A_1 \right| ^2 + \left| A_2 \right| ^2 &= \left(A_1 ^{\ast} \, A_2^{\ast} \right) = A^{\dagger} A \\
+  \left| B_1 \right| ^2 + \left| B_2 \right| ^2 &= \left(B_1 ^{\ast} \, B_2^{\ast} \right) = B^{\dagger} B \\
+\end{align*}
+
+Zaradi ohranitve tokov velja \( j_{in} = j_{out} \) oziroma \( A^{\dagger}A = B^{\dagger}B \). Preko enačbe \ref{eq:6} dobimo enakost
+
+\begin{align*}
+  A^{\dagger} A &= \left( SA \right)^{\dagger} SA \\
+&= A^{\dagger} S^{\dagger} S A
+\end{align*}
+
+Iz tega dobimo, da velja \( S^{\dagger} S = I \) oziroma matematično, matrika \( S \) je unitarna za vsako matriko \( A \).
+
+Predpostavimo, da je Hamiltonian \( H \in \mathbb{R} \) in konjugirana Schrödingerjeva enačba
+
+\[ H \Psi(x) = E \Psi(x)
+\]
+
+bo tudi sipalno stanje. Torej, konjugiramo sedaj \ref{eq:5}, da dobimo
+
+\begin{equation}
+\label{eq:7}
+\Psi_1^{\ast} (x) = A_1 ^{\ast} \frac{e^{- \mathrm{i} k_1 x}}{\sqrt{v_{1}}} + B_1 ^{\ast} \frac{e^{\mathrm{i} k_1 x}}{ \sqrt{v_{1}}}, \quad
+\Psi_2^{\ast} (x) = B_1 ^{\ast} \frac{e^{- \mathrm{i} k_2 x}}{\sqrt{v_{2}}} + A_1 ^{\ast} \frac{e^{\mathrm{i} k_2 x}}{ \sqrt{v_{2}}}
+\end{equation}
+
+Vlogi koeficientov sta se zamenjali, in naša enačba za sipanje postane
+
+\begin{align*}
+  \begin{bmatrix} A_{1}^{\ast} \\ A_2^{\ast} \end{bmatrix} &= S \begin{bmatrix} B_{1}^{\ast} \\ B_{2}^{\ast} \end{bmatrix} \\
+A^{\ast} &= S B^{\ast} \\
+S^{\dagger} &= S^{\dagger} S B^{\ast} \\
+S^{\dagger} A^{\ast} &= B^{\ast} && \left/ ^{\ast} \right. \\
+S^T A &= B
+\end{align*}
+
+Torej, ob predpostavki, da je Hamiltonian realen, in ob vedenju, da za vsako matriko velja \ref{eq:6}, je iz zgornje izpeljave razvidno, da velja
+
+\[ S^T = S
+\]
+
+in je sipalna matrika simetrična in sta prosta parametra samo \( t \) in \( t' \). Hamiltonian (npr. pri magnetizmu) ni nujno realen.
+
+Za sod potencial \( V(x) = V(-x) \) in Schrödingerjevo enačbo
+
+\[ H \Psi(x) = E \Psi(x)
+\]
+
+nas zanima soda valovna funkcija
+
+\[ H \Psi(-x) = E \Psi(-x )
+\]
+
+Iz sodega potenciala dobimo enakost \( k_1 = k_2 \equiv k \) in \( v_1 = v_2  \equiv v \). Valovni funkciji \ref{eq:5} bosta tako pri \( \Psi(-x) \) enaki
+
+\[ \Psi_1 = B_2 \frac{e^{- \mathrm{k} x}}{\sqrt{v}} + A_2 \frac{e^{\mathrm{i} k x}}{\sqrt{v}} \quad  \Psi_2 = A_1 \frac{e^{- \mathrm{k} x}}{\sqr\sqrt{v}}} + B_1 \frac{e^{\mathrm{i} k x}}{\sqr\sqrt{v}}}
+\]
+
+Zgornje lahko zapišemo v matrični obliki kot
+
+\begin{equation}
+\label{eq:8}
+ \begin{pmatrix} B_{2} \\ B_{1} \end{pmatrix} = S \begin{pmatrix} A_{2} \\ A_{1} \end{pmatrix} = S \begin{pmatrix}
+                                                                                                     0 & 1 \\
+                                                                                                     1 & 0
+                                                                                                      \end{pmatrix}  \begin{pmatrix} A_{1} \\ A_{2} \end{pmatrix}
+\end{equation}
+
+
+kjer smo uvedli Diracovo matriko \( \sigma_x \), ki je enaka
+
+\[ \sigma_x = \begin{pmatrix}
+              0 & 1 \\
+              1 & 0
+               \end{pmatrix}
+\]
+
+Stanje s koeficienti \( B \) lahko tudi zapišemo kot \( \sigma_x B (-x) = B \). Velja, da je \( \sigma_x ^2 = I \). Enačbo \ref{eq:8} pomnožimo s \( \sigma_x \) in upoštevamo identiteto, da dobimo
+
+\[ S = \sigma_x S \sigma_x
+\]
+
+Velja,da je \( \sigma_x S \sigma_x = \begin{pmatrix} r' & t \\ t' & r \end{pmatrix} \), kar pomeni, da je matrika \( S \) enaka
+
+\[ S = \begin{pmatrix}
+       r & t \\
+       t & r
+        \end{pmatrix}
+\]
