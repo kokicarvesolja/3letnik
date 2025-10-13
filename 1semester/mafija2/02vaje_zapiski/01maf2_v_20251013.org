@@ -1,0 +1,129 @@
+#+title: 1. vaje iz Matematične fizike 2
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Teorija: PDE 1. reda
+
+Rešujemo PDE 1. reda oblike
+
+\[ a(x, y, u) \frac{\partial u}{\partial x}  + b (x, y, u) \frac{\partial u}{\partial y}  &= \phi (x, y, u)
+\]
+
+Enačbo rešujemo preko karakteristike (grafično jih predstavimo s črtami) z uvedbo novih spremenljivk \( x(s) \) in \( y(s) \). Parcialno odvajanje
+
+\[ \frac{\partial u}{\partial s} = \frac{\partial u}{\partial x}  \frac{\mathrm{d} x}{\mathrm{d} s} + \frac{\partial u}{\partial y} \frac{\mathrm{d} y}{\mathrm{d} s}
+\]
+
+Izberemo, da velja
+
+\begin{align*}
+  \frac{\mathrm{d} x}{\mathrm{d} s} &= a(x, y, u) \\
+\frac{\mathrm{d} y}{\mathrm{d} s} &= b(x, y, u)
+\end{align*}
+
+kar nam da še tretjo ODE
+
+\[ \frac{\partial u}{\partial s}  = \phi(x, y, u)
+\]
+* 1. naloga
+
+#+begin_my_example
+Rešujemo Burgersevo enačbo
+
+\[ \frac{\partial \rho}{\partial t}  + \rho \frac{\partial \rho}{\partial x}  = 0
+\]
+
+z začetnimi pogoji
+
+\[ \rho (x, t = 0) = \begin{cases}
+                       a ^2 - x ^2; & \left| x \right| \le a \\
+                       0; & \left| x \right| > a
+                     \end{cases}
+\]
+#+end_my_example
+
+Kakor v teoriji, dobimo 3 ODE
+
+\begin{align*}
+  \frac{\mathrm{d} t}{\mathrm{d} s} &= 1 \\
+\frac{\mathrm{d} x}{\mathrm{d} s} &= \rho \\
+\frac{\mathrm{d} \rho}{\mathrm{d} s} &= 0
+\end{align*}
+
+Iz zadnje enačbe sledi, da je \( \rho(s) = \mathrm{konst} \). Iz prve enačbe po integraciji sledi
+
+\begin{equation}
+\label{eq:1}
+ t(s) = s + C
+\end{equation}
+
+in ob predpostavki \( t(0) = 0 \) sledi, da je \( C = 0 \). Po integraciji druge enačbe dobimo
+
+\begin{equation}
+\label{eq:2}
+ x(s) = \int\limits_{}^{} \rho(x, t) \, \mathrm{d} s = \rho(x, t) s + D
+\end{equation}
+
+kjer smo upoštevali, da je \( \rho(x, t) = \mathrm{konst} \). Zaradi enačbe \ref{eq:1} lahko zapišemo \ref{eq:2} kot
+
+\[ x(s) = \rho(x, t) t + x_0
+\]
+
+kjer smo označili \( x(0)= x_0 = D \).
+
+Naša enačba karakteristike bo
+
+\[ x (t) = \rho(x_0, 0) t + x_0
+\]
+
+[glej skico karakteristik v [[https://matevzprincic.splet.arnes.si/files/2023/11/mafija2_latex_vaje.pdf][Prinčičevih zapiskih, stran 3]]]
+
+Sedaj iščemo karakteristiko, ki reši našo enačbo, z upoštevanjem IC:
+
+\begin{align*}
+  x &= \rho(x_0, 0) t + x_0 \\
+&= \left( a ^2 - x_0 ^2 \right)t + x_0 \\
+&= a ^2 t - x_0 ^2 + x_0
+\end{align*}
+
+iz česar sledi
+
+\[ x_0 = \frac{1 \pm \sqrt{1 - 4t \left( x - a ^2 t \right)}}{2t}
+\]
+
+Predznak bomo izbrali tako, da bomo pogledali predznak v določeni točki, ki jo poznamo. Poznamo \( x_0 = 0 \) pri \( x = 0 \) in \( t = 0 \) (glej skico karakteristik).
+
+\[ x_0 = \lim_{t \to 0} \frac{1 \pm \sqrt{1 - 4 t (0 - a ^2 t)}}{2t} = \begin{cases}
+                                                                        \infty; & + \\
+                                                                        0; & -
+                                                                       \end{cases}
+\]
+
+kjer smo pri limiti za negativen predznak uporabili L'Hopitalovo pravilo.
+
+To nam poda rešitev
+
+\[ \rho(x, t) = \rho \left( x_0(x, t), t = 0 \right) = a ^2 - \left( \frac{1 - \sqrt{1 - 4t \left( x - a ^2 t \right)}}{2t} \right) ^2
+\]
+
+(I guess, da smo to enakost dobili iz IC, ob upoštevanju vrednosti \( x_0 \))
+* 2. naloga (reši doma)
+
+#+begin_my_example
+Rešujemo PDE 1. reda oblike
+
+\[ (x - y) \frac{\partial u}{\partial x}  + \frac{\partial u}{\partial y}  = x
+\]
+
+z začetnimi pogoji \( u(x, y = 0) = f(x) \).
+#+end_my_example
+
+Rešitev, ki jo dobimo je,
+
+\[ u(x, y) = f(1 + (x - y - 1) e^{-y}) + y + \frac{1}{2} y ^2 + (x - y - 1) \left( 1 - e^{-y} \right)
+\]
