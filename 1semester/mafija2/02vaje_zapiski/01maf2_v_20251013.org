@@ -127,3 +127,120 @@ Rešitev, ki jo dobimo je,
 
 \[ u(x, y) = f(1 + (x - y - 1) e^{-y}) + y + \frac{1}{2} y ^2 + (x - y - 1) \left( 1 - e^{-y} \right)
 \]
+* Enačba strune
+
+Enačba strune je podana z enačbama
+
+\begin{align*}
+  \mu \frac{\partial ^2 x }{\partial t ^2} &= \frac{\partial }{\partial s}  \left( F(s) \frac{\partial x}{\partial s}  \right) + f_x   \\
+  \mu \frac{\partial ^2 y}{\partial t ^2} &= \frac{\partial }{\partial s}  \left( F(s) \frac{\partial y}{\partial s}  \right) + f_y   \\
+\end{align*}
+
+kjer je \( \mu= \frac{\mathrm{d} m}{\mathrm{d} s} \) in \( f_{\alpha} = \frac{\mathrm{d} F_{sum, \alpha}}{\mathrm{d} s} \). Neraztegljivost podamo s pogojem
+
+\[ \mathrm{d} s ^2 = \mathrm{d} ^2 x + \mathrm{d} ^2 y
+\]
+* 3. naloga: Viseči most
+
+#+begin_my_example
+Izračunaj obliko visečega mostu z maso \( M \) in dolžino vrvice \( L \), ki med dvema palicama z višinama \( y_1 \) in \( y_2 \) pokrije razdaljo \( l \).
+#+end_my_example
+
+Velja \( \frac{\partial y}{\partial t} = \frac{\partial x}{\partial t}  = 0 \). Najprej si pogledamo v \( x \) smeri, kjer velja
+
+\[ \frac{\partial }{\partial s}  \left( F(s) \frac{\partial x}{\partial s}  \right) = - f_x = 0
+\]
+
+oziroma po integraciji
+
+\[ F(s) \frac{\partial x}{\partial s}  = \mathrm{konst} = F_0
+\]
+
+V \( y \) smeri pa imamo
+
+\[ \frac{\partial }{\partial s} \left( F(s) \frac{\partial y}{\partial s}  \right) = - f_y
+\]
+
+Zunanjo silo zapišemo kot
+
+\[ \mathrm{d} F_{zun}  = \frac{Mg}{l} \mathrm{d} x
+\]
+ in jo prepišemo v
+
+ \[ f_y = - \frac{Mg}{l} \frac{\mathrm{d} x}{\mathrm{d} s}
+ \]
+
+ Torej rešujemo
+
+ \begin{align*}
+   \frac{\partial }{\partial s} \left( F(s) \frac{\partial y}{\partial s}  \right) &= \frac{M g}{l} \frac{\mathrm{d} x}{\mathrm{d} s} \\
+\frac{\partial s}{\partial x} \left( \frac{F_0}{\frac{\partial x}{\partial s}} \cdot \frac{\partial y}{\partial s}  \right) &= \frac{Mg}{l} \frac{\mathrm{d} x}{\mathrm{d} s}\\
+\frac{\partial }{\partial s}  \left( F_0 \frac{\partial y}{\partial x}   \right) &= \frac{Mg}{l} \frac{\mathrm{d} x}{\mathrm{d} s}
+ \end{align*}
+
+ Kjer smo upoštevali definicijo \( F_0 \) in da se (nematematično) diferenciali v ulomkih (ds) pokrajšajo. Zaradi verižnega pravila velja
+
+ \[ F_0 \frac{\partial x}{\partial s} \frac{\partial ^2 y}{\partial ^2 x} = \frac{Mg}{l} \frac{\partial x}{\partial s}
+ \]
+
+ saj
+
+ \[ \frac{\partial }{\partial s}  \left( \frac{\partial y}{\partial x}  \right) = \frac{\partial }{\partial x}  \left( \frac{\partial y}{\partial x}  \right) \frac{\partial x}{\partial s}  = \frac{\partial ^2 y }{\partial x ^2} \frac{\partial x}{\partial s}
+ \]
+
+ Nadalje
+
+ \begin{align*}
+   \frac{\partial ^2 y }{\partial x ^2} &= \frac{Mg}{l F_0} \\
+\frac{\partial y}{\partial x}  = \frac{Mg}{l F_0} + C_1
+ \end{align*}
+
+ in na koncu
+
+ \[ y(x) = \frac{Mg}{l F_0} \frac{x ^2}{2} + C_1 x + C_2
+ \]
+
+ Ob upoštevanju začetnih pogojev:
+
+ - \( y(0) = y_1 \)
+
+   \[ y(0) = \frac{Mg}{lF_0} \cdot + C_1 \cdot 0 + C_2
+   \]
+
+ - \( y(l) = y_2 \)
+
+   \[ y_2 = \frac{Mg l}{2F_0} + C_1 l + y_1
+   \]
+
+   in tako
+
+   \[ C_1 = \frac{1}{l} \left( y_2 - y_1 - \frac{Mgl}{2 F_0} \right)
+   \]
+
+ - \[ L = \int\limits_{}^{} \, \mathrm{d} s = \int\limits_{}^{} \sqrt{ \mathrm{d} x ^2 + \mathrm{d} ^2 y} = \int\limits_{}^{} \sqrt{1 + \left( \frac{\mathrm{d} y}{\mathrm{d} x} \right) ^2 } \, \mathrm{d} x
+   \]
+
+
+** Struna s težo
+
+V primeru, da vrv ni brezmasna, je zunanja sila enaka
+
+\[ f_y = - \mu g
+\]
+
+in nadalje
+
+\[ \frac{\partial }{\partial s}  \left( F_0 \frac{\partial y}{\partial x}  \right) = \mu g
+\]
+
+Ko razpišemo, pa dobimo
+
+\[ F_0 \frac{\mathrm{d} y}{\mathrm{d} x} = \mu g s + C
+\]
+
+in po reševanju integrala dobimo
+
+\[ y = \mathrm{cosh}  \left( \frac{a}{x} \right), \quad a = \frac{F_0}{\mu g}
+\]
+
+Glej Wikipedia - catenary

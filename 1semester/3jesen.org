@@ -257,8 +257,10 @@ PDE 1. reda, primeri PDE: valovna.
 DEADLINE: <2025-12-11 Thu>
 Primeri PDE: difuzijska, Laplace
 *** KOLOKVIJ kolokvij 3, Maf2
+DEADLINE: <2025-12-23 Tue>
 Lastne funkcije.
 *** KOLOKVIJ kolokvij 4, Maf2
+DEADLINE: <2026-01-20 Tue>
 Greenove funkcije.
 ** rezultati
 ** domače naloge
