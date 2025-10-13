@@ -251,16 +251,15 @@ DEADLINE: <2026-01-12 Mon 10:00-12:00>
 ** kolokviji/izpiti
 *** KOLOKVIJ kolokvij 1, Maf2
 DEADLINE: <2025-11-13 Thu 18:15>
-
 PDE 1. reda, primeri PDE: valovna.
 *** KOLOKVIJ kolokvij 2, Maf2
 DEADLINE: <2025-12-11 Thu>
 Primeri PDE: difuzijska, Laplace
 *** KOLOKVIJ kolokvij 3, Maf2
-DEADLINE: <2025-12-23 Tue>
+DEADLINE: <2025-12-23 Tue 12:15>
 Lastne funkcije.
 *** KOLOKVIJ kolokvij 4, Maf2
-DEADLINE: <2026-01-20 Tue>
+DEADLINE: <2026-01-20 Tue 10:00-11:00>
 Greenove funkcije.
 ** rezultati
 ** domače naloge

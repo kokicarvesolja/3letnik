@@ -243,4 +243,61 @@ in po reševanju integrala dobimo
 \[ y = \mathrm{cosh}  \left( \frac{a}{x} \right), \quad a = \frac{F_0}{\mu g}
 \]
 
-Glej Wikipedia - catenary
+Glej Wikipedia - catenary.
+* 4. naloga: Viseča struna
+
+#+begin_my_example
+Imamo visečo struno z majhnimi odmiki v \( y \) smeri. To pomeni, da
+
+\[ \mathrm{d} ^2 = \mathrm{d} x ^2 + \mathrm{d} y ^2 \approx \mathrm{d} x ^2
+\]
+
+oziroma \( x = s \).
+#+end_my_example
+
+V smeri \( x \) velja
+
+\[ \frac{\partial x}{\partial t}  = 0
+\]
+
+iz česar sledi
+
+\[ \partial_s F (s) = - f_x = \frac{\mathrm{d} F_{zun, x}}{\mathrm{d} x} =  - \mu g
+\]
+
+saj
+
+\[ F_{zun, x} = \mu g
+\]
+
+oziroma diferencialno zapisano
+
+\[ \mathrm{d} F_{zun, x} = \mu g \mathrm{d} x
+\]
+
+Torej je zunanja sila enaka
+
+\[ F(x) = - \mu g x + F_0
+\]
+
+Določimo
+
+\[ mg = F(0) = F_0
+\]
+
+in tako zapišemo zunanjo silo kot
+
+\begin{equation}
+\label{eq:3}
+ F(x) = \mu g \left( l - x \right)
+\end{equation}
+
+V \( y \) smeri pa nimamo zunanjih sil in je \( f_y = 0 \). Z upoštevanjem \ref{eq:3} preobrazimo našo enačbo strune
+
+\[ \mu \frac{\partial ^2 y}{\partial t ^2} = \frac{\partial }{\partial x} \left( F(x) \frac{\partial y}{\partial x}  \right) + f_y
+\]
+
+v
+
+\[ \frac{\partial ^2 y }{\partial t ^2} = g \left[ \left( l - x \right) \frac{\partial y ^2}{\partial x ^2} - \frac{\partial y}{\partial x}  \right]
+\]
