@@ -298,3 +298,8 @@ Dobljena zapisa v Fourierovem prostoru nesecmo v \ref{eq:10} in dobimo
 \int\limits_{}^{} \frac{\mathrm{d} ^3 \vec{k}}{ \left( 2 \pi  \right) ^3} \left[ \nabla ^2  \left\{e^{\mathrm{i} \vec{k} \left( \vec{r} - \vec{r} \, ' \right)} G \left( \vec{k} \right) \right\} + \frac{1}{\epsilon_0} e^{\mathrm{i} \vec{k} \left( \vec{r} - \vec{r} \, ' \right)} \right] &= 0 \\
 \int\limits_{}^{} \frac{\mathrm{d} ^3 \vec{k}}{\left( 2 \pi \right) ^3} \left[ - k ^2 G \left( \vec{k} \right) + \frac{1}{\epsilon_0}  \right]e^{\mathrm{i} \vec{k} \left( \vec{r} - \vec{r} \, ' \right)} &= 0
 \end{align*}
+
+Zato, da je v splošnem enako nič, mora velja
+
+\[ G \left( \vec{k}  \right) = \frac{1}{\epsilon_0 k ^2}
+\]
