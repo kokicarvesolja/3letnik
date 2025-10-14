@@ -120,7 +120,7 @@ b) Točkast dipol: naj bo razdalja med težiščema negativnega naboja \( e_- \)
 
    \begin{equation}
    \label{eq:2}
-   \nabla \cdot \left( \vec{p} \cdot \delta ^3 \left( \vec{r} - \vec{r} \right) \right) = \left( \nabla \cdot p \right) \delta ^3 \left( \vec{r} - \vec{r}_0 \right) + \vec{p} \cdot \nabla \left( \delta ^3 \left( \vec{r} - \vec{r}_0 \right) \right)
+   \nabla \cdot \left( \vec{p} \cdot \delta ^3 \left( \vec{r} - \vec{r}_0 \right) \right) = \left( \nabla \cdot p \right) \delta ^3 \left( \vec{r} - \vec{r}_0 \right) + \vec{p} \cdot \nabla \left( \delta ^3 \left( \vec{r} - \vec{r}_0 \right) \right)
    \end{equation}
 
    Divergence \( \nabla \cdot \vec{p} \) je zaradi konstantnosti \( \delta \vec{r} \) enaka \( 0 \).
@@ -129,19 +129,19 @@ b) Točkast dipol: naj bo razdalja med težiščema negativnega naboja \( e_- \)
 
    \begin{equation}
    \label{eq:3}
-   \rho \left( \dot{r} \right) = - \nabla \cdot \left[ \vec{p} \cdot \delta ^3 \left( \vec{r} - \vec{r}_0 \right) \right]
+   \rho \left( \vec{r} \right) = - \nabla \cdot \left[ \vec{p} \cdot \delta ^3 \left( \vec{r} - \vec{r}_0 \right) \right]
    \end{equation}
 
    kjer je količina \( \vec{p} \cdot \delta ^3 \left( \vec{r} - \vec{r}_0 \right) \) gostota dipolnega momenta ali /polarizacija/ \( \vec{P} \).
 
    Enačbo \ref{eq:3} lahko zapišemo tudi kot
 
-   \[ \rho \left( \dot{r} \right) = - \nabla \cdot \vec{P} \left( \vec{r} \right)
+   \[ \rho \left( \vec{r} \right) = - \nabla \cdot \vec{P} \left( \vec{r} \right)
    \]
 
    in s tem smo pridobili povezavo med gostoto naboja in polarizacijo.
 
-c) površinsko porazdeljen naboj: naboj je porazdeljen po tanki plasi - površini. Vpeljemo površinsko gostoto naboja
+c) površinsko porazdeljen naboj: naboj je porazdeljen po tanki plasti - površini. Vpeljemo površinsko gostoto naboja
 
    \[ \rho \left( \vec{r} \right) = \sigma \left( \vec{u} \right) \delta \left( z - z_0 \right)
    \]

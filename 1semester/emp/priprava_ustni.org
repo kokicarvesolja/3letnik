@@ -120,3 +120,155 @@ Opomba, da je elektrostatika zgrajena na izključno parskih interakcijah. Jakost
 
 \[ \vec{E} \left( \vec{r} \right) = \frac{1}{4 \pi \epsilon_0} \sum\limits_i^{} \frac{e_i \left( \vec{r} - \vec{r}_i \right)}{\left| \vec{r} - \vec{r}_i \right| ^3}, \quad \phi \left( \vec{r} \right) = \frac{1}{4\pi\epsilon_0} \sum\limits_i^{} \frac{e_i}{\left| \vec{r} - \vec{r}_i \right|}
 \]
+** 2. vprašanje
+#+begin_problem
+Uvedi gostoto naboja in za poljubno gostoto zapiši elektrostatsko silo, polje in električni potencial. Nato navedi primere gostote naboja, pri čemer tudi pokaži, kakšna je povezava med gostoto naboja in gostoto dipolnega momenta.
+#+end_problem
+*** Gostota naboja
+
+Električni naboj, ki je porazdeljen, je enostavneje zapisati s pomočjo gostote naboja \( \rho \left( \vec{r} \right) \).
+
+Gostoto električnega naboja v točki \( \vec{r} \) obkroženo s točkastimi naboji \( e_i \) v točkah \( \vec{r}_i \) zapišemo s pomočjo Diracove \( \delta \) funkcije.
+
+\begin{equation}
+\label{eq:3}
+ \rho \left( \vec{r} \right) = \sum\limits_i^{} e_i \delta ^3 \left( \vec{r} - \vec{r}_i \right)
+\end{equation}
+
+Gostoto lahko zapišemo tudi v diferencialni obliki
+
+\[ \rho \left( \vec{r} \right) = \frac{\mathrm{d} e}{\mathrm{d} V}
+\]
+
+Volumnski integral gostote električnega naboja \ref{eq:3} je enak celotnemu naboju
+
+\[ e = \int\limits_{}^{} \rho \left( \vec{r} \right) \, \mathrm{d} V = \int\limits_{}^{} \sum\limits_i^{} \delta ^3 \left( \vec{r} - \vec{r}_i \right) \, \mathrm{d} V = \sum\limits_i^{} e_i
+\]
+
+Prav tako lahko zapišemo silo na naboj v polju drugih nabojev
+
+\[ \vec{F} \left( \vec{r} \right) = \int\limits_{}^{} \rho \left( \vec{r} \right) \vec{E} \left( \vec{r} \right) \, \mathrm{d} ^3 \vec{r}
+\]
+
+Električno polje sistema točkastih nabojev
+
+\[ \vec{E} \left( \vec{r} \right) = \frac{1}{4 \pi \epsilon_0} \int\limits_V^{} \frac{\rho \left( \vec{r} \, ' \right) \left( \vec{r} - \vec{r}\,' \right)}{\left| \vec{r} - \vec{r} \, ' \right| ^3} \, \mathrm{d} ^3 \vec{r} \, '
+\]
+Podobno je za potencial
+
+\[ \phi \left( \vec{r} \right) = \frac{1}{4 \pi \epsilon_0} \int\limits_V^{} \frac{\rho \left( \vec{r} \, '\right)}{\left| \vec{r} - \vec{r} \, ' \right|} \, \mathrm{d} ^3 \vec{r} \, '
+\]
+*** Primeri
+**** Točkast naboj
+
+Za naboj \( e \) v točki \( \vec{r}_0 \) je gostota naboja
+
+\[ \rho \left( \vec{r} \right) = e \delta \left( \vec{r} - \vec{r}_0 \right)
+\]
+**** Točkast dipol
+
+Imamo dva nasprotno nabita točkasta naboja \( e \) in \( -e \) pri \( \vec{r}_1 = \vec{r}_0 - \delta \vec{r} \) in \( \vec{r}_2 = \vec{r}_0 + \delta \vec{r} \), ki sta narazen za \( d = \left|\vec{r}_1 - \vec{r}_2\right| \).
+
+Gostoto naboja podamo kot
+
+\[ \rho \left( \vec{r} \right) = e \delta ^3 \left( \vec{r} - \vec{r}_1 \right) - \delta ^3 \left( \vec{r} - \vec{r}_2 \right)
+\]
+
+Predpostavimo, da je razdalja med naboje zelo majhna \( \left| \delta \vec{r} \right| \ll \left| \vec{r}  \right|\).
+
+Taylorjev razvoj z vektorji je enak:
+
+\[ f \left( \vec{r} + \Delta \vec{r} \right) = f \left( \vec{r} \right) + \nabla f \left( \vec{r} \right) \cdot \Delta \vec{r} + \ldots
+\]
+
+Upoštevajoč definicije \( \vec{r}_1 \) in \( \vec{r}_2 \), lahko gostoto naboja razvijemo po Taylorju, da dobimo
+
+\[ \rho \left( \vec{r} \right) = - e \left( \vec{r}_1 - \vec{r}_2 \right) \cdot \nabla \delta ^3 \left( \vec{r} - \vec{r}_0 \right) = - 2 e \delta \vec{r}\, \nabla \delta ^3 \left( \vec{r} - \vec{r}_0 \right)
+\]
+
+Vpeljemo vektor dipolnega momenta \( p = e \left( \vec{r}_1 - \vec{r}_2 \right) = -2 e \delta \vec{r} \).
+
+Velja identiteta
+
+\[ \nabla \cdot \left( \vec{p} \cdot \delta ^3 \left( \vec{r} - \vec{r}_0 \right) \right) = \left( \nabla \cdot p \right) \delta ^3 \left( \vec{r} - \vec{r}_0 \right) + \vec{p} \cdot \nu \left( \delta ^3 \vec{r} - \vec{r}_0 \right)
+\]
+
+Dipolni moment je konstanten, torej \( \nabla \cdot \vec{p} = 0 \). Preobrazimo našo gostoto v
+
+\[ \rho \left( \vec{r} \right)= - \nabla \cdot \left[ \vec{p} \cdot \delta ^3 \left( \vec{r} - \vec{r}_0 \right) \right] = - \nabla \cdot \vec{P} \left( \vec{r} \right)
+\]
+
+kjer je \( \vec{P} = \vec{p} \cdot \delta ^3 \left( \vec{r} - \vec{r}_0 \right) \) polarizacija.
+**** Površinsko porazdeljen naboj
+
+Površinska gostota naboja \( \sigma \left( \vec{u} \right) \) vpeljemo kot
+
+\[ \rho \left( \vec{r} \right) = \sigma \left( \vec{u} \right) \delta \left( z - z_0 \right)
+\]
+
+kjer je \( \vec{u} \) radij vektor v na površini podani z \( z = z_0 \).
+
+Celoten naboj je površinski integral
+
+\[ \int\limits_V^{} \rho \left( \vec{r} \right) \, \mathrm{d} ^3 \vec{r} = \int\limits_V^{} \sigma \left( \vec{u} \right) \delta \left( z - z_0 \right) \, \mathrm{d} z \, \mathrm{d} ^2 \vec{u} = \int\limits_S^{} \sigma \left( \vec{u} \right) \, \mathrm{d} ^2 \vec{u}
+\]
+**** Površinsko porazdeljen dipol
+
+Podobno kot pri točkastem dipolu, imamo dve nasprotno nabiti površini, s površinskima gostotama naboja \( \sigma \left( \vec{u} \right) \) in \( - \sigma \left( \vec{u} \right) \). Površini se nahajata na ravnina \( z = z_1 = z_0 + \delta z \) ter \( z = z_2 = z_0 - \delta z \). Velja \( \delta z \ll z \).
+
+Površinska gostota naboja je
+
+\[ \rho \left( \vec{r} \right) = \sigma \left( \vec{u} \right) \delta (z - z_1) - \sigma (\vec{u}) \delta (z - z_2)
+
+ki jo razvijemo po Taylorju
+
+\[ \rho \left( \vec{r} \right) = - \sigma \left( \vec{u} \right) (z_1 - z_2) \frac{\partial }{\partial z}  \delta\left( z - z_0 \right)  = - p \left( \vec{u} \right) \frac{\partial }{\partial z} \delta \left( z - z_0 \right)
+\]
+
+kjer je \( p \left( \vec{u} \right) \) površinska gostota dipolnega momenta.
+**** Volumsko porazdeljen naboj
+
+Gostota je lahko porazdeljena po končnem volumnu. Za enakomerno porazdeljeno kroglo z radijem \( a \) je gostota naboja
+
+\[ \rho \left( \vec{r} \right) = \begin{cases}
+                                 \rho_0; & \left| \vec{r} \right| \leq a \\
+                                 0; & \text{else}
+                                 \end{cases} = \rho_0 H \left( a - r \right)
+\]
+
+kjer je \( H \) Heavisodeova funkcija.
+**** Volumsko porazdeljen dipol
+
+Vektor polarizacije \( \vec{P} \) zapišemo s porazdelitvijo
+
+\[ P \left( \vec{r} \right) = \begin{cases}
+                               P_0; & \left| \vec{r} \right| \leq a,\\
+                               0; &\text{else}
+                              \end{cases} = \vec{P}_0 H (a - r)
+\]
+
+Vzamemo nastavek enakomerno polarizirane krogle
+
+\[ \rho \left( \vec{r} \right) = - \nabla \cdot \vec{P} \left( \vec{r} \right)
+\]
+
+in velja
+
+\[ \frac{\mathrm{d} }{\mathrm{d} r} H (a - r) = - \delta (a - r)
+\]
+
+dobimo, da je gostota naboja enaka
+
+\[ \rho \left( \vec{r} \right) = \vec{P}_0 \delta \left( a - r \right) \frac{\vec{r}}{r}
+\]
+
+Torej je naboj zgolj površinski.
+
+** 3. vprašanje
+#+begin_problem
+Zapiši in razloži Gaussov izrek v integralni in diferencialni obliki. Pokaži njegovo uporabo na primeru geometrije/problema, ki ga sam izbereš.
+#+end_problem
+** 4. vprašanje
+#+begin_problem
+Zapiši Poissonovo in Laplaceovo enačbo in ju razloži. Izpelji splošno rešitev (Greenovo funkcijo) Poissonove enačbe v Fourierovem in direktnem prostoru. Z uporabo Greenove funkcije nato zapiši splošno obliko električnega potenciala in električnega polja. Kako se ta rešitev spremni v končnem volumnu?
+#+end_problem
