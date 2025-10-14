@@ -109,3 +109,116 @@ Zapisu \ref{eq:2} pravimo d'Alembertova rešitev (čeprav jo je Euler že prej i
 
 Točke \( u(x - ct), u(x + ct) \) in \( t \) tvorijo kavzalni stožec. Vse kar je znotraj stožca vpliva na rešitve, vse kar je izven, pa ne vpliva na rešitev.
 #+end_my_example
+
+Funkcijo \( f \) (in \( g \)) lahko zapišemo preko Fourierovega razvoja
+
+\[ f(x - ct) = \frac{1}{\sqrt{2 \pi}} \int\limits_{}^{} \, \mathrm{d} k \left[ a(k) e^{- \mathrm{i} \left( k x - \omega t \right)} + a^{\ast} (k) e^{\mathrm{i} (kx - \omega t)} \right]
+\]
+
+kjer je \( \omega = ck \).
+**  Nehomogeno sredstvo
+*** Diskretna sila
+
+Obravnavamo valovno enačbo z dodano diskretno silo
+
+\begin{equation}
+\label{eq:3}
+u_{tt } = c ^2 u_{ xx } + \frac{F_y}{\mu} \delta (x - x_0)
+\end{equation}
+
+Enačbo \ref{eq:3} integriramo v majhen intervalu \( [- \epsilon +x_0, \epsilon + x_0] \), ko \( \epsilon \to 0 \).
+
+\begin{align*}
+ \int\limits_{x_0 - \epsilon}^{x_0 + \epsilon} u_{tt } &= \int\limits_{x_0 - \epsilon}^{x_0 + \epsilon} c ^2 u_{xx } \, \mathrm{d} x + \int\limits_{x_0 - \epsilon}^{x_0 + \epsilon}\frac{F_y}{\mu} \delta(x - x_0) \, \mathrm{d} x \\
+0 &= \left. c ^2 u_x \right|_{x_0^-} ^{x_0^+} + \frac{F_y}{\mu}\\
+\left. F u_x \right|_{x_0^-}^{x_0^+} &= - F_y
+\end{align*}
+
+Označili smo levi \( x_0^- \) in desnji \( x_0^+ \) odvod.
+*** Diskretna masa
+
+Imamo maso \( m \) na koordinati \( x_0 \). Zapišemo Newtonov zakon za maso
+
+\[ m u_{tt }(x_0) = \left. F u_{x} \right|_{x_0^-}^{x_0^+}
+\]
+*** Struna iz dveh delov
+
+Imamo motnjo, ki se širi po vrvi od leve proti desni, ki ima različno debelino. Tanjši del se nahaja na levi strani in ima hitrost \( c_1 \), debelejši del pa na desni strani stika vrvi in hitrost \( c_2 \). Velja \( c_2 < c_1 \), saj je kvadrat hitrosti obratno sorazmeren z maso
+
+\[ c ^2 = \frac{F}{\mu}
+\]
+
+Motnja ima v tanjšem delu nastavek
+
+\begin{equation}
+\label{eq:4}
+ u_1 = u_i \left( x - c_1 t \right) + u_r (x + c_1 t)
+\end{equation}
+
+kjer indeks \( i \) označuje /initial/, in \( r \) označuje /reflected/ del vala.
+
+Motnja v debelejšem delu je sestavljena samo iz dela, ki je bil prepuščen, torej
+
+\begin{equation}
+\label{eq:5}
+ u_2 = u_t \left( x - c_2 t \right)
+\end{equation}
+
+Spomnim, da bodi pozoren na predznake ( \( u_r \) se širi v nasprotno smer od ostalih dveh nastavkov).
+
+Predpostavimo, da je spoj na \( x = 0 \). Zahtevamo zveznost in zvezno odvedljivost v spoju, saj bi drugače bil v spoju neskončen pospešek. Matematično zapisano:
+
+\begin{align*}
+  u_1 (0, t) &= u_2 (0, t) \\
+u_{1x } (0, t) &= u_{2x} (0, t)
+\end{align*}
+
+Nastavka \ref{eq:4} in \ref{eq:5} vstavimo v začetne pogoje in integriramo odvode v mejah \( (-\infty, t] \). Integriramo od \( -\infty \), saj bomo potem rekli, da je v tisti točki vrednost integrirancev enaka \( 0 \).
+
+\begin{align*}
+  u_1 (- c_1 t) + u_r (c_1 t) &= u_2 (- c_2 t) \\
+u_1 ' (- c_1 \tilde{t}) + u_r '(c_1 \tilde{t}) &= u_t (- c_2 \tilde{t}) && \left/ \int\limits_{-\infty}^t \, \mathrm{d} \tilde{t}
+\end{align*}
+
+Opomnik, da indeks \( t \) označuje tranzitivnost in ne odvoda po času.
+
+Po integriranju dobimo
+
+\[ - \frac{1}{c_1} u_i (- c_1 t) + \frac{1}{c_1} u_r (c_1t) = - \frac{1}{c_2} u_t (-c_2 t)
+\]
+
+Skupaj s prvo enačbo iz začetnih pogojev, želimo izračunati \( u_r \) in \( u_t \) v odvisnosti od podanega \( u_i \).
+
+\begin{align*}
+  u_r (s) &= \frac{c_2 - c_1}{c_1 + c_2} u_i (- s) \\
+u_t (s) &= \frac{2c_2}{c_2 + c_1} u_i (s \cdot \frac{c_1}{c_2})
+\end{align*}
+
+Koeficient \( \frac{c_2 - c_1}{c_1 + c_2} \) označimo z \( R \), koeficient \( \frac{2c_2}{c_2 + c_1} \) pa s \( T \).
+
+[slika primera]
+
+V primeru, če imamo polneskončno struno, gre \( c_2 \to 0 \), kar pomeni, da je \( R = -1 \) oziroma, val se popolnoma odbije, kar je ustreza pričakovanjem.
+
+Prepuščeni val se skrči, saj je \( \frac{c_1}{c_2} > 1 \), kar pomeni, da ima prepuščeni val krajšo valovno dolžino. /ni mi popolnoma jasno, kako na to vpliva člen \( u_t \) v primerjavi z \( u_i \)/.
+
+Energije so ohranjene in velja
+
+\[ 1 = R ^2 + T ^2 \frac{c_1}{c_2}
+\]
+** Končna struna
+
+Obravnavamo struno dolžine \( l \), ki je na obeh koncih vpeta. Vpetost strune predstavljajo robne pogoje za poljuben čas \( t \)
+
+\[ u(0, t) = u(l, t) = 0
+\]
+
+Imamo valovno enačbo
+
+\[ u_{tt } = c ^2 u_{ xx }
+\]
+
+Reševanja se bomo ločili s separacijo spremenljivk, kjer uporabimo separacijski nastavek
+
+\[ u(x, t) = X (x) T(t)
+\]
