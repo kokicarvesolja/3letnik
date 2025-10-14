@@ -76,3 +76,47 @@ V tem primeru krivulja \( \mathcal{C} \) predstavlja rob \( \partial S \) območ
 \]
 
 kar po definiciji pomeni, da je brezvrtinčno.
+*** Električni pretok
+
+Električni pretok preko neke površine je definiran kot površinski integral jakosti električnega polja po neki dani površini:
+
+\[ \Phi_E = \int\limits_S^{} \vec{E} \cdot \mathrm{d} \vec{S}
+\]
+
+\( \mathrm{d}\vec{S} \) je vektorski diferencialni element površine, ki ima smer lokalne zunanje normalena površino.
+*** Električni potencial
+
+Električni potencial definiramo tako, da vsaki točki prostora priredimo neko skalarno funkcijo \( \phi \left( \vec{r} \right) \), da velja zveza
+
+\[ \vec{E} \left( \vec{r} \right) = - \nabla \phi \left( \vec{r} \right)
+\]
+
+kjer je \( \nabla \) diferencialni operator.
+
+#+begin_my_example
+Jakost električnega polja točkastega naboja je enaka
+
+\[ \vec{E} = \frac{e}{4 \pi \epsilon_0} \frac{\vec{r}}{r ^3}
+\]
+
+Iz tega sledi, da je potencial enaka
+
+\[ \phi = \frac{e}{4 \pi \epsilon_0} \frac{1}{r} + \phi_0.
+\]
+#+end_my_example
+
+Potencial lahko določamo le do konstante natančno in je invarianten na transformacijo.
+*** Ekvipotencialne ploskve
+*** Princip superpozicije
+
+Za prostor z več naboji \( e_i \) v točkah \( \vec{r}_i \), je električna sila na naboj \( e \), ki se nahaja v točki \( \vec{r} \) različni od \( \vec{r}_i \) enaka vsoti sil ostalih nabojev
+
+\[ \vec{F} \left( \vec{r} \right) = \sum\limits_i^{}  \frac{e \cdot e_i}{4 \pi \epsilon_0} \frac{\left( \vec{r} - \vec{r}_i \right)}{\left| \vec{r} - \vec{r}_i \right| ^3}
+\]
+
+To je /princip superpozicije/.
+
+Opomba, da je elektrostatika zgrajena na izključno parskih interakcijah. Jakost električnega polja in potencial tudi zadoščata principu superpozicije in ju zapišemo kot
+
+\[ \vec{E} \left( \vec{r} \right) = \frac{1}{4 \pi \epsilon_0} \sum\limits_i^{} \frac{e_i \left( \vec{r} - \vec{r}_i \right)}{\left| \vec{r} - \vec{r}_i \right| ^3}, \quad \phi \left( \vec{r} \right) = \frac{1}{4\pi\epsilon_0} \sum\limits_i^{} \frac{e_i}{\left| \vec{r} - \vec{r}_i \right|}
+\]

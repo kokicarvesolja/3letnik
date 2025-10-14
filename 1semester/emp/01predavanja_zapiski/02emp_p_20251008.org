@@ -82,7 +82,7 @@ b) Točkast dipol: naj bo razdalja med težiščema negativnega naboja \( e_- \)
 
    Gostoto naboja zapišemo
 
-   \[ \rho \left( \vec{r}  \right) = e \delta ^3 \left( \vec{r} - \vec{r}_1 \right) - e \delta \cub \left( \vec{r} - \vec{r}_2 \right)
+   \[ \rho \left( \vec{r}  \right) = e \delta ^3 \left( \vec{r} - \vec{r}_1 \right) - e \delta ^3 \left( \vec{r} - \vec{r}_2 \right)
    \]
 
    Označimo razdaljo med težiščem točkastega dipola in težiščem pozitivnega naboja z \( \delta \vec{r} \), analogno pa še z negativnim nabojem \( - \delta \vec{r} \)

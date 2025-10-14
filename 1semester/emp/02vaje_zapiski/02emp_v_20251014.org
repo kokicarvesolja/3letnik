@@ -164,7 +164,7 @@ Za točkasti naboj z gostoto \( \rho \left( \vec{r} \right) = e \delta \left( \v
 
 \[ U \left( \vec{r} \right) = \frac{e}{4 \pi \epsilon_0 \left| \vec{r} - 0 \right|}
 \]
-* Teorija: električno polje poljubne porazdelitve naboj
+* Teorija: električno polje poljubne porazdelitve naboja
 
 Poljubno porazdelitev sestavimo iz točkasih nabojev z razširitvijo po bazi \( \delta \) funkcije
 
@@ -173,7 +173,7 @@ Poljubno porazdelitev sestavimo iz točkasih nabojev z razširitvijo po bazi \( 
 
 Rešitev za potencial \( U \left( \vec{r} \right) \) Poissonove enačbe je
 
-\[ U \left( \vec{r} \right) = \int\limits_{}^{} \frac{ \rho \left( \vec{r} \, ' \right) \, \mathrm{d} ^3 \vec{r} \, '}{ 4 \pi \epsilon_0 left| \vec{r} - \vec{r}\, ' \right|}
+\[ U \left( \vec{r} \right) = \int\limits_{}^{} \frac{ \rho \left( \vec{r} \, ' \right) \, \mathrm{d} ^3 \vec{r} \, '}{ 4 \pi \epsilon_0 \left| \vec{r} - \vec{r}\, ' \right|}
 \]
 
 Pripadajoče električno polje \( \vec{E} \left( \vec{r} \right) \) je
@@ -264,7 +264,7 @@ Imamo še robne pogoje:
 \begin{align}
   u (x, 0) &= 0 && \text{spodaj} \\
 u(x, a) &= 0 && \text{zgoraj} \\
-u(0, y) = U_0 && \text{trak} \\
-U(\infty, y) \ne \infty \text{desno}
+u(0, y) &= U_0 && \text{trak} \\
+U(\infty, y) &\ne \infty \text{desno}
 \end{align}
 #+end_solution
