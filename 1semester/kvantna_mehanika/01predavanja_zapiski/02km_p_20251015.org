@@ -161,3 +161,152 @@
 
    \[ e^{\frac{\partial }{\partial x} } = 1 + \frac{\partial }{\partial x}  + \frac{1}{2!} \frac{\partial ^2 }{\partial x ^2} + \ldots + \frac{1}{n!} \frac{\partial ^n }{\partial x ^n}
    \]
+
+   \begin{align*}
+     f \left( \hat{A} \right) \left| a_n \right\rangle &= \sum\limits_m^{} c_m \hat{A}^m \left| a_n \right\rangle \\
+         \hat{A} \left| a_n \right\rangle &= a_n \left| a_n \right\rangle \\
+        &= \sum\limits_m^{} c_m \left( a_n \right)^m \left| a_n \right\rangle = f \left( a_n \right) \left| a_n \right\rangle
+   \end{align*}
+
+   *Actual stuff* nimamo \( \Psi(t) \), vendar imamo začetni pogoj \( \Psi(0) \).
+
+   Preko
+
+   \[ H \left| \phi_n \right\rangle  = E_n \left| \phi_n \right\rangle
+   \]
+
+   potem
+
+   \[ \left| \Psi(t) \right\rangle = \sum\limits_n^{} \left\langle \phi_n \middle| \Psi(0) \right\rangle \exp \left\{ - \mathrm{i \frac{E_n t}{\hbar}} \right\} \left| \phi_n \right\rangle
+   \]
+
+   kjer je npr. \( \phi_n (x) = C_n \sin k_n x \)
+
+   Kakor smo zapisali višje v tej točki, lahko nadomestimo \( E_n \) z operatorjem
+
+   \[ \left| \Psi(t) \right\rangle = \sum\limits_n^{} \left\langle \phi_n \middle| \Psi(0) \right\rangle \exp \left\{ - \mathrm{i \frac{H t}{\hbar}} \right\} \left| \phi_n \right\rangle = \exp \left\{ - \mathrm{i} \frac{H t}{\hbar} \right\} \sum\limits_n^{} \left\langle \phi_n \middle| \Psi(0) \right\rangle \left| \phi_n \right\rangle
+   \]
+
+   Ker velja komutacija pri skalarnem produktu, lahko vsoto pretvorimo v
+
+   \[ \left| \Psi(t) \right\rangle = \exp \left\{ - \mathrm{i} \frac{Ht}{\hbar} \right\} \sum\limits_n^{} \left| \phi_n \right\rangle \left\langle \phi_n \right| \left| \Psi(0) \right\rangle
+   \]
+
+   Nadalje \( \left| \phi_n \right\rangle \left\langle \phi_n \right| = I \) in dobimo zapis
+
+   \[ \left| \Psi(t) \right\rangle  = \exp \left\{ - \mathrm{i} \frac{Ht}{\hbar} \right\} \left| \Psi(0) \right\rangle
+   \]
+
+   Dobimo časovni razvoj
+
+   \[ U(t) = \exp \left\{ - \mathrm{i} \frac{Ht}{\hbar} \right\}
+   \]
+
+5. Reprezentacija \( p \) in \( x \) (ang. /x- or p-representation/)
+
+   Spomnimo se Fourierovega integrala
+
+   \begin{equation}
+   \label{eq:1}
+    f(x) = \int\limits_{-\infty}^{\infty} \tilde{f} \left( k \right) e^{\mathrm{i} k x} \, \mathrm{d} k
+   \end{equation}
+
+   Za dovolj pohlevne funkcije predpostavimo obstoj inverza
+
+   \[ \tilde{f}(k) = \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} f(x') e^{- \mathrm{i} k x'} \, \mathrm{d} x'
+   \]
+
+   V enačbo \ref{eq:1} vstavimo definicijo inverz in zamenjamo vrstni red integriranja
+
+   \begin{equation}
+   \label{eq:2}
+   f(x) = \int\limits_{-\infty}^{\infty} \left( \frac{1}{2\pi} \int\limits_{- \infty}^{\infty} e^{- \mathrm{i} k \left( x' - x \right)} \, \mathrm{d} k \right) f(x') \, \mathrm{d} x'
+   \end{equation}
+
+   Po stopinjah Diraca, uvedemo objekt
+
+   \[ \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} e^{- \mathrm{i}k \left( x' - x \right) } \, \mathrm{d} k = \delta (x ' - x)
+   \]
+
+   kot Diracovo delta funkcijo.
+
+   Enačbo \ref{eq:2} z novo definicijo zapišemo
+
+   \[ f(x) = \int\limits_{-\infty}^{\infty} \delta \left( x' - x \right) f(x') \, \mathrm{d} x'
+   \]
+
+   Vzemimo kot primer prost delec s potencialom \( V(x) = 0 \). Zanimata nas energija \( H = \frac{p ^2}{2m} \) in lastna funkcija energije
+
+   \[ p \left| \phi_{p_0} \right\rangle = p_0 \left| \phi_{p_0} \right\rangle, \quad p_0 \in \mathbb{R}
+   \]
+
+   kjer je \( p \) operator in \( p_0 \) lastna vrednost. Upoštevamo definicijo operatorja gibalne količine
+
+   \[ - \mathrm{i} \hbar \frac{\partial }{\partial x}  \phi_{p_0} (x) = p_0 \phi_{p_0} (x)
+   \]
+
+   katere rešitev je
+
+   \[ \phi_{p_0} = C e^{\mathrm{i} \frac{p_0}{\hbar} x}
+   \]
+
+   in velja \( \left| \phi_{p_0} \right| ^2 = \left| C \right| ^2\). Funkcija torej ni normirana in se, I guess, ne da integrirati. Težavo lahko rešimo s Fourierovo transformacijo. Definiramo \( C = \frac{1}{\sqrt{2 \pi \hbar}} \). Faktor \( 2\pi \) smo uporabili zaradi definicije delta funkcije, medtem ko je valovni vektor definiran \( k = \frac{p}{\hbar} \). Hkrati pa za delta funkcijo velja \( \delta(ax) = \frac{1}{\left| a \right|} \delta(x) \). Rešitev se preobrazi v
+
+   \begin{equation}
+   \label{eq:3}
+   \phi_{p_0} (x) = \frac{1}{\sqrt{2\pi\hbar}} e^{\mathrm{i} \frac{p_0 x}{\hbar}}
+   \end{equation}
+
+   Velja
+
+   \[ \int\limits_{}^{}\phi_{p_0} ^{\ast} (x) \phi_p (x) \, \mathrm{d} x = \delta \left( p_0 - p \right)
+   \]
+
+   Delujemo z operatorjem \( \hat{p} \) na \( \Psi(x) \), ki ga zapišemo s Fourierovim integralom:
+
+   \[ \hat{p} \Psi(x) = - \mathrm{i} \hbar \frac{\partial }{\partial x}  \Psi(x) = \int\limits_{}^{} \tilde{\Psi} (p) \left( - \mathrm{i} \hbar \frac{\partial }{\partial x}  \phi_p (x) \right) \, \mathrm{d} p
+   \]
+
+   *Note*:  Fourierovo transformacijo bomo pisali oblike
+
+   \[ \Psi(x) = \frac{1}{\sqrt{2\pi\hbar}} \int\limits_{-\infty}^{\infty} \tilde{\Psi} (p) e^{\mathrm{i} \frac{p x}{\hbar}} \, \mathrm{d} p,  \quad \text{in}\quad \tilde{\Psi}(p) = \frac{1}{\sqrt{2\pi\hbar}} \int\limits_{-\infty}^{\infty} \Psi(x) e^{- \mathrm{i} \frac{px}{\hbar}} \, \mathrm{d} x
+   \]
+
+   Poudarek na ulomke pred integrali. Zaradi definicije \ref{eq:3} zapišemo
+
+   \begin{align*}
+     \Psi(x) &= 1 \int\limits_{-\infty}^{\infty} \tilde{\Psi}(p) \phi_p (x) \, \mathrm{d} p \\
+        \tilde{\Psi} (p) &= 1 \int\limits_{-\infty}^{\infty} \Psi(x) \phi_p^{\ast} (x) \, \mathrm{d} p
+   \end{align*}
+
+   Koeficient v razvoju dobimo z integriranjem produkta funkcije in operatorja.
+
+   Nadaljujemo naprej s \( \hat{p} \Psi(x) \). Odvod \( - \mathrm{i} \hbar \frac{\partial }{\partial x} \phi_p (x) \) nam bo zaradi definicije podal integral
+
+   \[ \hat{p} \Psi(x) = \int\limits_{}^{} p \p \tilde{\Psi} (p) \phi_p (x) \, \mathrm{d} p
+   \]
+
+   Iz tega sledi
+
+   \[ \hat{p}^n \Psi(x) = \int\limits_{}^{}p^n \tilde{\Psi}(p) \phi_p (x) \, \mathrm{d} p
+   \]
+
+   Poglejmo si še primer, ko množimo valovno funkcijo \( \Psi(x) \) z \( x \). Dobimo
+
+   \begin{align*}
+        x \Psi(x) &= \int\limits_{}^{} \vec{\Psi}(p) x \phi_p (x) \, \mathrm{d} p \\
+        &= \int\limits_{}^{} \tilde{\Psi}(p) \left( - \mathrm{i} \hbar \frac{\partial }{\partial p} \phi_p (x) \right) \, \mathrm{d} p \\
+        &= \int\limits_{}^{} \left( \mathrm{i} \hbar \frac{\partial }{\partial p}  \tilde{\Psi}(p) \right) \phi_p (x) \, \mathrm{d} p
+   \end{align*}
+
+   Tako dobimo relacijo
+
+   \[ x \Psi(x) \iff \mathrm{i} \hbar \frac{\partial }{\partial p}  \tilde{\Psi}(p)
+   \]
+
+   Prav tako velja
+
+   \[ x^n \Psi(x) \iff \left( \mathrm{i} \hbar \frac{\partial }{\partial p}  \right)^n \tilde{\Psi}(p)
+   \]
+
+   Ta formalizem nam omogoči obravnavo in normiranost funkcij, ki niso iz \( L ^2 \).
