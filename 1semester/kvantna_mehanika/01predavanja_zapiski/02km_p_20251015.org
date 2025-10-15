@@ -1,0 +1,163 @@
+#+title: 2. predavanje iz Kvantne mehanike
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Formalizem kvantne mehanike
+
+1. Hermitsko adjungiran operator
+
+   Če velja za poljubna operatorja \( A, B \) in za vsaka vektorja \( \phi, \psi \)
+
+   \[ \left\langle \phi \middle| A \middle| \Psi \right\rangle = \left\langle B \phi \middle| \Psi \right\rangle
+   \],
+
+   potem je \( B = A ^{\dagger} \) hermitsko adjungiran operator.
+
+   Lastnosti operatorja so:
+   - za \( z \in \mathbb{C} \) je \( A = z B \) velja
+
+     \[ A^{\dagger} = z^{\ast} B ^{\dagger}
+     \]
+
+     Dokaz: \( z \) daš na levo (cinično).
+
+   - za \( A = \left| m \right\rangle \left\langle n \right|\) velja
+
+     \[ A ^{\dagger} = \left| n \right\rangle \left\langle m \right|
+     \]
+
+     Dokaz:
+
+     \begin{align*}
+        \left\langle \phi \middle| A \middle| \Psi \right\rangle  &=  \left\langle \phi \middle| m \right\rangle \left\langle n \middle| \Psi \right\rangle \\
+        &= \left( \left\langle \Psi \middle| n \right\rangle \left\langle m \middle| \phi \right\rangle\right) ^{\ast} \\
+        &= \left( \left\langle \Psi \middle| A \phi \right\rangle \right) ^{\ast} \\
+        &= \left\langle A^{\dagger} \phi \middle| \Psi \right\rangle
+     \end{align*}
+
+   - velja
+
+     \[ \left( \mu A + B \right)^{\dagger} = \mu^{\ast} A^{\dagger} + \lambda^{\ast} B^{\dagger}
+     \]
+
+   - velja
+
+     \[ \left( AB \right) ^{\dagger} = B^{\dagger} A^{\dagger}
+     \]
+
+     Dokaz:
+
+     \begin{align*}
+       \left\langle \phi \middle| AB \middle| \Psi \right\rangle &= \left\langle A^{\dagger} \phi \middle| B \middle| \Psi \right\rangle \\
+        &= \left\langle B^{\dagger} A^{\dagger} \phi \middle| \Psi \right\rangle
+     \end{align*}
+
+   - Kako najti hermitsko adjungiran operator \( A \)?
+
+     \( A \) zapišemo v bazi
+
+     \[ A = I A I = \sum\limits_{m, n}^{} \left| m \right\rangle A_{mn} \left\langle n \right|
+     \]
+
+     Hermitsko adjungiramo bazo in dobimo
+
+     \[ A ^{\dagger} = \sum\limits_{m, n}^{} \left| n \right\rangle A_{mn}^{\ast} \left\langle n \right|
+     \]
+
+     Za ta operator velja \( \left( A^{\dagger} \right)^{\dagger} = A \)
+
+     Za lepši zapis zamenjamo \( n \) z \( m \) in obratno. Tako se poenostavi(?) v
+
+     \[ A^{\dagger} = \sum\limits_{m, n}^{} \left| m \right\rangle A_{nm}^{\ast} \left\langle n \right|
+     \]
+
+     kjer je \( A_{mn} \) postal \( A_{nm}^{\ast} \).
+
+2. Sebi adjungirani operatorji so operatorji, če velja za operator \( A \)
+
+   \[ A = A^{\dagger} \quad \mathrm{in} \quad \mathcal{D} \left( A \right) = \mathcal{D} \left( A^{\dagger} \right)
+   \]
+
+   Za \( \phi \) in \( \Psi \) \( \left\langle \phi \middle| A \middle| \Psi \right\rangle \) je enak robni pogoj, če je operator sebi adjungiran. Spektralni teorem
+
+   \[ A \left| n \right\rangle  = a_n \left| n \right\rangle
+   \]
+
+   kjer je \( \left\{ \left| n \right\rangle \right\} \) baza v \( L ^2 \). To je izredno pomembno, saj če iščemo bazo, so tukaj lastne funkcije kar baza.
+
+3. Unitarni operator je operator, kjer velja
+
+   \[ U^{-1} = U^{\dagger}
+   \]
+
+   Velja \( U^{-1} U = U U^{-1} = I \) in posledično tudi \( U^{\dagger} U = U U^{\dagger} = I \).
+
+   - Imamo vektorja \( \left| \phi \right\rangle \) in \( \left| \psi \right\rangle \). Zapišemo nov vektor
+
+      \[ \left| \tilde{\phi} \right\rangle = U \left| \phi \right\rangle
+      \]
+
+      Zaradi definicije unitarnega operatorja velja
+
+      \[ \left| \phi \right\rangle = U^{\dagger} \left| \tilde{\phi} \right\rangle
+      \]
+
+      Potem zapišemo
+
+      \[ \left\langle \phi \middle| \Psi \right\rangle = \left\langle U ^{\dagger} \tilde{\phi} \middle| U^{\dagger} \tilde{\Psi} \right\rangle = \left\langle \tilde{\phi} \middle| U U^{\dagger} \middle| \tilde{\Psi} \right\rangle = \left\langle \tilde{\phi} \middle| \tilde{\Psi} \right\rangle
+      \]
+
+   - bla
+
+     \begin{align*}
+       \left\langle \phi \middle| \Psi \right\rangle &= \left\langle U^{\dagger} \tilde{\phi} \middle| A \middle| U^{\dagger} \tilde{\Psi} \right\rangle \\
+        &= \left\langle \tilde{\phi} \middle| U A U ^{\dagger} \middle| \tilde{\Psi} \right\rangle \\
+        &= \left\langle \tilde{\phi} \middle| \tilde{A} \middle| \tilde{\Psi} \right\rangle
+     \end{align*}
+
+     kjer je \( \tilde{A} = UA U^{\dagger} \).
+
+   - Naj velja \( A \left| a \right\rangle  = a \left| a \right\rangle\). Potem velja, da so \( a \) tudi lastne vrednosti operatorja \( \tilde{A} \)
+
+     \begin{align*}
+       UAU^{\dagger}U \left| a \right\rangle &= a U \left| a \right\rangle \\
+       \tilde{A} \left| \tilde{a} \right\rangle &= a \left| \tilde{a} \right\rangle
+     \end{align*}
+
+   - Če je \( K = K^{\dagger} \) (hermitski), potem je operator \( U \) definiran kot
+
+     \[ U = e ^{\mathrm{i} K}
+     \]
+
+     unitaren operator.
+
+     /Brez dokaza/.
+
+   - Vsak enoparametrični unitarni operator ima naslednjo obliko
+
+     \[ U(s) = e^{\mathrm{i} s K}
+     \]
+
+     kjer je \( K = K^{\dagger} \). Operatorju \( K \) rečemo generator.
+
+4. Časovni razvoj stanja z unitarnim operatorjem
+
+   Operator lahko razvijemo v vrsto. Za \( x \in \mathbb{C} \) lahko zapišemo
+
+   \[ f(x) = \sum\limits_n^{} c_n x^n
+   \]
+
+   Definiramo operator \( \hat{A} \) in velja
+
+   \[ f \left( \hat{A} \right) = \sum\limits_n^{} c_n \hat{A}^n
+   \]
+
+   Kot primer vzamemo funkcijo \( f(x) = e^x \) in operator \( \hat{A} = \frac{\partial }{\partial x}  \).  Potem je
+
+   \[ e^{\frac{\partial }{\partial x} } = 1 + \frac{\partial }{\partial x}  + \frac{1}{2!} \frac{\partial ^2 }{\partial x ^2} + \ldots + \frac{1}{n!} \frac{\partial ^n }{\partial x ^n}
+   \]

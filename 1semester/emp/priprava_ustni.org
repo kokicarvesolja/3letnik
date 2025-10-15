@@ -268,6 +268,8 @@ Torej je naboj zgolj površinski.
 #+begin_problem
 Zapiši in razloži Gaussov izrek v integralni in diferencialni obliki. Pokaži njegovo uporabo na primeru geometrije/problema, ki ga sam izbereš.
 #+end_problem
+
+
 ** 4. vprašanje
 #+begin_problem
 Zapiši Poissonovo in Laplaceovo enačbo in ju razloži. Izpelji splošno rešitev (Greenovo funkcijo) Poissonove enačbe v Fourierovem in direktnem prostoru. Z uporabo Greenove funkcije nato zapiši splošno obliko električnega potenciala in električnega polja. Kako se ta rešitev spremni v končnem volumnu?
