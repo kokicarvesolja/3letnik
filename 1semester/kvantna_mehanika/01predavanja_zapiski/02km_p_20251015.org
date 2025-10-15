@@ -259,8 +259,10 @@
 
    Velja
 
-   \[ \int\limits_{}^{}\phi_{p_0} ^{\ast} (x) \phi_p (x) \, \mathrm{d} x = \delta \left( p_0 - p \right)
-   \]
+   \begin{equation}
+   \label{eq:4}
+    \int\limits_{}^{}\phi_{p_0} ^{\ast} (x) \phi_p (x) \, \mathrm{d} x = \delta \left( p_0 - p \right)
+   \end{equation}
 
    Delujemo z operatorjem \( \hat{p} \) na \( \Psi(x) \), ki ga zapišemo s Fourierovim integralom:
 
@@ -310,3 +312,101 @@
    \]
 
    Ta formalizem nam omogoči obravnavo in normiranost funkcij, ki niso iz \( L ^2 \).
+
+6. Verjetnostna amplituda \( \left\langle x \middle| \Psi \right\rangle \) in \( \left\langle p \middle| \Psi \right\rangle \)
+
+   Naj bo funkcijo \( \Psi(x, t) \in L ^2  \)
+
+   Enačbo
+
+   \[ \left| \Psi \right\rangle = \int\limits_{}^{} \tilde{\Psi} (p) \left| p \right\rangle \, \mathrm{d} p
+   \]
+
+   kjer je \( \left| p \right\rangle \) oz. \( \frac{1}{\sqrt{2\pi\hbar}} e^{\mathrm{i} \frac{px}{\hbar}} \), pomnožimo s \( \left\langle p_1 \right| \), zapišemo
+
+   \[ \left\langle p_1 \middle| \Psi \right\rangle  = \int\limits_{}^{} \tilde{\Psi}(p) \left\langle p_1 \middle| p_0 \right\rangle \, \mathrm{d} p = \tilde{\Psi} (p_1)
+   \]
+
+   kjer smo uporabili \ref{eq:4} in velja \( \left\langle p_0 \middle| p \right\rangle  = \delta \left( p_0 - p \right)\)
+
+   #+begin_note
+   Sledeče spada pod točko 13, ampak oh, well.
+
+   Povedali smo, kaj je
+
+   \[ \hat{p} \phi_{p_0} (x) = p_0 \phi_{p_0} (x)
+   \]
+
+   Zanima pa nas, kaj je v tem primeru operator \( \hat{x} \).
+
+
+   \[ \hat{x} \Psi_0 (x) = x_0 \Psi_0 (x) = x \Psi(x)
+   \]
+
+   Funkcijo \( \Psi_0 \) razvijemo po Fourieru in jo lahko zapišemo kot
+
+   \[ \hat{x} \Psi_0 (x) = x \int\limits_{}^{} \tilde{\Psi}_0 (p) \phi_p (x) \, \mathrm{d} p
+   \]
+
+   Hkrati pa vemo od prej, da mora biti množenje z \( x \) enak odvodu po \( p \), torej
+
+   \[ x \int\limits_{}^{} \tilde{\Psi}_0 (p) \phi_p (x) \, \mathrm{d} p = \int\limits_{}^{} \left( \mathrm{i} \hbar \frac{\partial }{\partial p}  \tilde{\Psi}_0 (p) \right) \phi_p (x) \, \mathrm{d} p = x_0 \int\limits_{}^{} \tilde{\Psi}_0 (p) \phi_p (x) \, \mathrm{d} p
+   \]
+
+   Sedaj smo vzpostavili identiteto
+
+   \[ \mathrm{i} \hbar \frac{\partial }{\partial p}  \tilde{\Psi}_0 (p) = x_0 \tilde{\Psi}_0 (p)
+   \]
+
+   ki nam poda
+
+   \[ \frac{1}{\sqrt{2 \pi \hbar}} e^{-\mathrm{i} \frac{p x_0}{ \hbar} } = \phi^{\ast}_p (x_0)
+   \]
+
+   Tako sledi, da lahko zapišemo
+
+   \[ \Psi_0 (x) = \int\limits_{}^{} \phi^{\ast}_p (x_0) \phi_p (x) \, \mathrm{d} p = \delta (x_0 - x) = \left| x_0 \right\rangle
+   \]
+
+   To je lastni
+   #+end_note
+
+   Poljuben vektor razvijemo po lastnih stanjih gibalne količine
+
+   \[ \left| \Psi \right\rangle  = \int\limits_{}^{} \tilde{\Psi}(p) \left| p \right\rangle \, \mathrm{d} p
+   \]
+
+   Pomnožimo ga z lastno funkcijo \( x \) \( \left\langle x_0 \right| \)
+
+   \[ \left\langle x_0 \middle| \Psi \right\rangle = \int\limits_{}^{} \tilde{\Psi}(p) \left\langle x_0 \middle| p \right\rangle \, \mathrm{d} p
+   \]
+
+   Iz prej izpeljanih stvari vidimo, da je
+
+   \begin{align*}
+     \left\langle x_0 \middle| p \right\rangle &= \int\limits_{}^{} \delta (x_0 - x) \frac{1}{\sqrt{2 \pi \hbar}} e^{\mathrm{i} \frac{px}{\hbar}} \, \mathrm{d} x \\
+        &= \frac{1}{\sqrt{2\pi \hbar}} e^{\mathrm{i} \frac{px_0}{\hbar}}
+   \end{align*}
+
+   Identiteto upoštevamo v integralu, dobimo
+
+   \[ \left\langle x_0 \middle| \Psi \right\rangle  = \int\limits_{}^{} \tilde{\Psi} (p) \frac{1}{\sqrt{2 \pi \hbar}} e^{\mathrm{i} \frac{p x_0}{\hbar}} \, \mathrm{d} p = \Psi(x_0)
+   \]
+
+   Torej to velja
+
+   \begin{align*}
+     \left\langle x \middle| \Psi \right\rangle &= \Psi(x) \\
+        \left\langle p \middle| \Psi \right\rangle &= \tilde{\Psi}(p)
+   \end{align*}
+
+   Z upoštevanjem komutacije skalarnega produkta lahko preko zgornje zveze torej zapišemo
+
+   \begin{align*}
+        \left| \Psi \right\rangle &= \int\limits_{}^{} \Psi(x) \left| x \right\rangle \, \mathrm{d} x \\
+        &= \int\limits_{}^{} \left\langle x \middle| \Psi \right\rangle \left| x \right\rangle \, \mathrm{d} x \\
+        &= \left( \int\limits_{}^{} \left| x \right\rangle \left\langle x \right|\right) \, \mathrm{d} x \left| \Psi \right\rangle \\
+        &= \left( \int\limits_{}^{} \left| p \right\rangle \left\langle p \right|\right) \, \mathrm{d} p \left| \Psi \right\rangle
+   \end{align*}
+
+   saj je skalarni produkt v oklepajih enak identiteti.
