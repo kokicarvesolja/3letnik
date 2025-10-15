@@ -1,0 +1,84 @@
+#+title: 3. predavanje iz EMP
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Elektrostatika
+** Poissonova in Laplaceova enačba
+*** Greenova funkcija Poissonove enačbe
+
+Naredimo prehod iz Fourierovega prostora v normalni prostora
+
+\[ G \left( \vec{r} - \vec{r} \, ' \right) = \iiint\limits_{}^{} \frac{e^{\mathrm{i} \vec{k} \left( \vec{r} - \vec{r} \,' \right)}}{\left( 2 \pi \right) ^3} \frac{1}{\epsilon_0 k ^2} \,\mathrm{d } ^3 \vec{k}
+\]
+
+kjer smo upoštevali izračun predavanj prejšnjega tedna, da je
+
+\[ G(k) = \frac{1}{\epsilon_0 k ^2}
+\]
+
+Preidemo v sferične koordinate
+
+\[ G \left( \vec{r} - \vec{r} \, '	 \right) = \frac{1}{\left( 2\pi \right) ^3} \int\limits_0^{\infty} \int\limits_0^{\pi} \int\limits_{-1}^{1} \, \mathrm{d} \phi \, \mathrm{d} \left( \cos \theta \right) k ^2 \, \mathrm{d} k  e^{\mathrm{i} k \left| \vec{r} - \vec{r} \, ' \right| \cos \theta} \frac{1}{\epsilon_0 k ^2}
+\]
+
+Najlažjo integracijo je narediti po \( \phi \), kjer je rezultat samo \( 2\pi \). Uvedemo novo spremenljivko
+
+\begin{align*}
+  k \left| \vec{r} - \vec{r} \, ' \right| \cos \theta &= x \\
+k \left| \vec{r} - \vec{r} \, ' \right| \, \mathrm{d} \left( \cos \theta \right) &= \mathrm{d} x
+\end{align*}
+
+Integral tako postane lažji za izračun
+
+\[ G \left( \vec{r} - \vec{r} \, ' \right) =  \frac{1}{\left( 2 \pi \right) ^2} \int\limits_0^{\infty} \int\limits_{vstavi}^{meje} \frac{\mathrm{d} x \mathrm{d} k e^{\mathrm{i} x}}{k \left| \vec{r} - \vec{r} \, ' \right|} = \frac{1}{4 \pi \epsilon_0 \left| \vec{r} - \vec{r} \, ' \right|}
+\]
+
+Splošna rešitev Poissonove enačbe
+
+\[ \phi \left( \vec{r} \right) = \int\limits_{}^{} \frac{\rho \left( \vec{r} \right)}{4 \pi \epsilon_0 \left| \vec{r} - \vec{r} \, ' \right|} \, \mathrm{d} ^3 \vec{r}\, '
+\]
+
+Za električno polje samo preko relacije za električno polje \( \vec{E} \) in potencial \( \phi \)
+
+\[ E = - \nabla \phi = - \nabla \left( \int\limits_{}^{} \frac{\rho \left( \vec{r} \, ' \right)}{4 \pi \epsilon_0 \left| \vec{r} - \vec{r} \, ' \right|} \, \mathrm{d} ^3 \vec{r} \, '  \right) = \int\limits_{}^{} \frac{\rho \left( \vec{r} \, ' \right)}{4 \pi \epsilon_0} \frac{\left( \vec{r} - \vec{r} \, ' \right)}{\left| \vec{r} - \vec{r} \, ' \right|} \, \mathrm{d} ^3 \vec{r} \, '
+\]
+** Earnshawjev teorem
+
+#+begin_theorem
+Nabor točkastih nabojev ne more nikoli biti v stabilnem ravnovesju samo kot posledica elektrostatskih interakcij.
+#+end_theorem
+
+Elektrostatski potencial v praznem prostoru nima minimumov ali maksimumov, ampak kvečjemu sedla.
+
+Predpostavimo, da vseeno imamo v neki točki minimum. Za delec v minimumu so vsi vektorji sil usmerjeni proti delci. To pa pomeni, da je divergenca sile neničelna
+
+\[ \nabla \cdot \vec{F} \ne 0
+\]
+
+Zapisana relacija definira tudi električno polje,
+
+\[ \nabla \cdot F = \nabla \left( e \vec{E} \right) = - e \nabla ^2 \phi
+\]
+
+kjer smo upoštevali relacijo med električnim poljem \( E \) in potencialom. Za prazni prostor je po Laplaceovi enačbi to vedno enako \( 0 \). Prišli smo do protislovja, da so torej točke kvečjemu sedlo.
+
+Iz tega sledi vprašanje, zakaj je snov stabilna? Atomi so medseboj povezani s pomočjo elektrostatske sile, vendar jih ne razžene narazen. To nakazujejo na obstoj drugil sil.
+** Thomsonov problem
+
+Elektrostatska energija lahko ima minimume, če naboje ogradiš, npr. na površini.
+
+Obravnavajmo diskretne nasprotne naboje na okrogli površini:
+
+- 1 naboj bo prost
+- 2 naboja se bosta postavila na nasprotna roba površine, da sta čim dlje oddaljena drug od drugega
+- 3 naboji bodo tvorili enostranični trikotnik na robovih površine
+- 4 naboji tetraeder
+** Elektrostatska energija
+*** Elektrostatska energija naboja v zunanjem polju
+
+Imamo zunanje električno polje \( \vec{E} \) in zanima nas, koliko elektrostatske energije ima naboj, da je v \( \vec{E} \)? Ne zanima nas, koliko energije smo potrebovali za izdelavo zunanjega električnega polja.
