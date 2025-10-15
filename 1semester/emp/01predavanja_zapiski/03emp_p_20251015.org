@@ -81,4 +81,97 @@ Obravnavajmo diskretne nasprotne naboje na okrogli površini:
 ** Elektrostatska energija
 *** Elektrostatska energija naboja v zunanjem polju
 
-Imamo zunanje električno polje \( \vec{E} \) in zanima nas, koliko elektrostatske energije ima naboj, da je v \( \vec{E} \)? Ne zanima nas, koliko energije smo potrebovali za izdelavo zunanjega električnega polja.
+Imamo zunanje električno polje \( \vec{E} \) in zanima nas, koliko elektrostatske energije ima naboj, da je v \( \vec{E} \)? Ne zanima nas, koliko energije smo potrebovali za izdelavo zunanjega električnega polja. Na naboj deluje sila \( \vec{F} = e \vec{E} \). Izračunamo elektrostatsko energijo kot delo, ki potrebno, da naboj postavimo na dano mesto.
+
+Zapišemo delo po definiciji
+
+\[ \mathrm{d} A = - \vec{F} \cdot  \mathrm{d} \vec{r} = - e \vec{E} \cdot \mathrm{d} \vec{r} = + e \nabla \phi \cdot \mathrm{d} \vec{r}
+\]
+
+Uporabimo energijski zakon
+
+\[ A = \int\limits_{(1)}^{(2)} \, \mathrm{d} A = W(2) - W(1) = \int\limits_{(1)}^{(2)} e \nabla \phi \cdot \mathrm{d} \vec{r}  = e \phi(2) - e \phi(1)
+\]
+
+Elektrostatsko energijo preproznamo kot
+
+\[ W = e \phi
+\]
+
+V primeru da imamo zvezno porazdeljen naboj, bomo gostoto električnega naboja integrirali po prostoru
+
+\begin{equation}
+\label{eq:1}
+ W = \int\limits_V^{} \rho \left( \vec{r}\, ' \right) \phi \left( \vec{r} \right) \, \mathrm{d} ^3 \vec{r} \, '
+\end{equation}
+
+To je energija naboje \( \rho \left( \vec{r} \right) \), v zunanjem električnem polju (potencialu, ki pa ga v principu ustvarjajo drugi naboji, ki so daleč stran).
+*** Celotna elektrostatska energija
+
+Zanima nas celotna energija polja, ki ga ustvarijo izbrani naboji. Imamo poljuben volumen, ki ima gostoto električnega naboja \( \rho \left( \vec{r} \right) \). Dana gostota ustvari potencial \( \phi \left( \vec{r} \right) \).
+
+Predstavljajmo si, da polje ni samo bilo, ampak smo ga kot glasnost na zvočnikih povečali iz tišine na maksimum. To povečanje potenciala označimo s parametrom \( \alpha \in [0, 1] \). Za poljuben \( \alpha \) zapišemo Poissonovo enačbo, kjer upoštevamo njeno lastnost linearnosti:
+
+\[ \nabla ^2 \left( \alpha \phi \right) = -\frac{\alpha  \rho \left( \vec{r} \right)}{\epsilon_0}
+\]
+
+Sistemu dodamo \( \mathrm{d} \rho = \rho \mathrm{d} \alpha \) naboja. Zanima nas energija, ki je bila potrebna, da smo dodali naboj \( \mathrm{d} \rho \). Naša dejanska situacije je to, da dodajamo naboj v zunanje električno polje in zato uporabimo enačbo \ref{eq:1}
+
+\[ \mathrm{d} W = \int\limits_{}^{} \mathrm{d} \rho \cdot a \phi \left( \vec{r} \right) \, \mathrm{d} ^3 \vec{r} = \int\limits_{}^{} \mathrm{d} \alpha \rho \left( \vec{r} \right) \alpha \phi \left( \vec{r} \right) \, \mathrm{d} ^3 \vec{r}
+\]
+
+Po izračunu integrala bo celotna energija
+
+\begin{equation}
+\label{eq:2}
+ W = \int\limits_0^1 \alpha \, \mathrm{d} \alpha \int\limits_{}^{} \rho \left( \vec{r} \right) \phi \left( \vec{r} \right) \, \mathrm{d} \vec{r}
+\end{equation}
+
+Enačba \ref{eq:2} je elektrostatska energija polja. Gostota električnega naboja \( \rho \left( \vec{r} \right) \) v enačbi \ref{eq:2} ustvarja potencial \( \phi \left( \vec{r} \right) \) znotraj istega integrala. V primerjavi z enačbo \ref{eq:1} je to drugače, saj je gostota električnega naboja \( \rho \left( \vec{r} \right) \) znotraj potenciala \( \phi \left( \vec{r} \right) \), ki ga ustvarjajo drugi naboji.
+
+Zapis energije polja lahko prevedemo tudi n
+
+\[ W = \frac{1}{2} \frac{1}{4 \pi \epsilon_0} \int\limits_{}^{} \int\limits_{}^{} \frac{\rho \left( \vec{r} \right) \rho \left( \vec{r} \, ' \right)}{\left| \vec{r} - \vec{r} \, ' \right|} \, \mathrm{d} ^3 \vec{r} \, \mathrm{d} ^3 \vec{r} \, '
+\]
+*** Gostota elektrostatske energije polja
+
+Elektrostatska energijo zapišemo z električnim poljem \( \vec{E} \)
+
+\[ W = \frac{1}{2} \int\limits_{}^{} \rho \left( \vec{r} \right) \phi \left( \vec{r} \right) \, \mathrm{d} ^3 \vec{r} = \frac{1}{2} \int\limits_{}^{} \epsilon_0 \left( \nabla \cdot \vec{E} \right) \phi \left( \vec{r} \right) \, \mathrm{d} ^3 \vec{r}
+\]
+
+kjer smo upoštevali \( \rho \left( \dot{r} \right) = \epsilon_0 \nabla \cdot \vec{E} \). Hkrati upoštevamo še relacijo \( \vec{E} = - \nabla \cdot \phi \).
+
+Uporabimo identiteto
+
+\[ \nabla \left( f \cdot \vec{g} \right) = \nabla f \cdot \vec{g} + f \nabla \cdot \vec{g}
+\]
+
+in energija postane
+
+\[ W = \frac{\epsilon_0}{2} \left[ \int\limits_{}^{} \nabla \cdot \left( \phi \vec{E} \right) \, \mathrm{d} ^3 \vec{r} - \int\limits_{}^{} \nabla \phi \cdot \vec{E} \, \mathrm{d} ^3 \vec{r} \right]
+\]
+
+Volumnski integral lahko pretvorimo v ploskovni integral
+
+\[ W = \frac{\epsilon_0}{2} \int\limits_{\partial V}^{} \left( \phi \vec{E} \right) \, \mathrm{d} \vec{S} + \frac{\epsilon_0}{2} \int\limits_V^{} \vec{E} \cdot \vec{E} \, \mathrm{d} ^3 \vec{r}
+\]
+
+Upoštevali smo, da je \( - \nabla \phi = \vec{E} \)
+
+Na potencial in električno polje lahko gledamo kot veliko točkastih nabojev. Potencial posameznega naboja je obratno sorazmeren z razdaljo \( \frac{1}{r} \), medtem ko električno polje pa obratno sorazmeren s kvadratom razdalje \( \frac{1}{r ^2} \). Istočasno pa tudi površina raste s kvadratom razdalje \( r ^2 \), kar pomeni, da celoten integral pada kot \( \frac{1}{r} \). V limiti, ko gre \( r \to \infty \), gre prvi integral do \( 0 \).
+
+Energijo lahko v približku zapišemo kot
+
+\[ W = \frac{\epsilon_0}{2} \int\limits_{}^{} E  ^2 \, \mathrm{d} ^3 \vec{r}
+\]
+*** Sila kot funkcional električnega polja
+
+Zanima nas sila na \( \rho \left( \vec{r} \right) \), ki se nahaja v zunanjem električnem polju. Zunanje električno polje je del celotnega električnega polja \( \vec{E} \left( \vec{r} \right) \). Celotno polje \( \vec{E} \) je sestavljeno iz lastnega polja, ki ga ustvari \( \rho \left( \vec{r} \right) \), in zunanjega električnega polja.
+
+Velja
+
+\[ \vec{F} = \int\limits_V^{} \rho \left( \vec{r} \right) \vec{E}_Z \, \mathrm{d} ^3 \vec{r}
+\]
+
+Volumen je tam, kjer je \( \rho \left( \vec{r} \right) \ne 0 \).
