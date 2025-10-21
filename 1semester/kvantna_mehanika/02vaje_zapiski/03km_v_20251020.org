@@ -1,0 +1,308 @@
+#+title: 3. vaje iz Kvantne mehanike
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* 2. sklop nalog
+
+Za \( A = (1, 0) \) in \( B = (r, t) \) zapišemo valovni funkciji za območji 1 in 2:
+
+\begin{align*}
+  \Psi_1(x) &= \frac{A_1}{\sqrt{v}}e^{\mathrm{i} k x} + \frac{B_1}{\sqrt{v}} e^{- \mathrm{i} k x} = \frac{e^{\mathrm{i} k x}}{\sqrt{v}} + \frac{r}{\sqrt{v}} e^{-\mathrm{i} k x} \\
+  \Psi_3 (x) &= \frac{A_3}{\sqrt{v}}e^{-\mathrm{i} k x} + \frac{B_3}{\sqrt{v}} e^{ \mathrm{i} k x} = 0 + \frac{t}{\sqrt{v}} e^{-\mathrm{i} k x}
+\end{align*}
+
+kjer je \( k ^2 = \frac{2m E}{\hbar ^2} \). Opomnimo, da je potencial enak na obeh straneh, kar tudi vpliva, da \( k_1 = k_2 = k \) ter \( v_1 = v_2 = v \).
+
+Za potencial delta funkcija \( V(x) = - \lambda \delta(x) \) območja 3 praktično ni. Upoštevamo robna pogoja zveznosti in zvezne odvedljivosti.
+
+Zveznost \( \Psi_1 (0) = \Psi_3 (0) \) nam poda enačbo
+
+\begin{equation}
+\label{eq:1}
+1 + r = t
+\end{equation}
+
+Za robni pogoj zvezne odvedljivosti pa uporabimo pogoj, ki smo uporabili na prejšnji uri, in sicer
+
+\[ \Psi_2 '(0) - \Psi_1 '(0) = \frac{2m \lambda \Psi(0)}{\hbar ^2}, \quad \kappa = \frac{m \lambda}{\hbar ^2}
+\]
+
+To nam poda drugo enačbo, ki je
+
+\begin{equation}
+\label{eq:2}
+ \mathrm{i} k \left( t + r - 1 \right) = - 2 \kappa_0  t
+\end{equation}
+
+Dobili smo dve enačbi, kjer enačbo \ref{eq:1} vstavimo v \ref{eq:2}, ki nam poda rešitev za
+
+\[ r = - \frac{i \kappa_0}{\mathrm{i} k + \kappa_0}
+\]
+
+in nato še
+
+\[ t = \frac{\mathrm{i} k}{\mathrm{i} k + \kappa_0}
+\]
+
+Vrednosti \( r' \) in \( t' \) poiščemo preko analognega postopka, vendar za \( A = (0, 1) \).
+
+Sipalna matrika \( S \) je tako
+
+\[ S = \frac{1}{\mathrm{i}k + \kappa_0} \begin{pmatrix}
+                                        -\kappa_0  & \mathrm{i} k \\
+                                         \mathrm{i} k& -\kappa_0
+                                         \end{pmatrix}
+\]
+
+Tranzitivnost je po definiciji
+
+\begin{equation}
+\label{eq:3}
+ T (k) = \left| t \right|  ^2 = \left| \frac{\mathrm{i} k }{\mathrm{i} k + \kappa_0} \right| ^2 = \frac{k ^2}{k ^2 + \kappa_0 ^2}
+\end{equation}
+
+Refleksivnost pa analogno
+
+\begin{equation}
+\label{eq:4}
+ R(k) = \left| \frac{- \kappa_0}{\mathrm{i} k + \kappa_0} \right| ^2 = \frac{\kappa_0}{k ^2 + \kappa_0}
+\end{equation}
+
+Iz definicije \( k \) lahko izrazimo odvisnost \( E(k) \) kot
+
+\[ E = \frac{\hbar ^2 k ^2}{2m}
+\]
+
+in sedaj lahko enačbi \ref{eq:3} in \ref{eq:4} izrazimo v odvisnosti od energije, torej
+
+\[ T(E) = \frac{E}{E + \frac{\hbar ^2 \kappa_0 ^2}{2m}}, \quad R(E) = \frac{E_0}{E + E_0}
+\]
+
+kjer je \( E_0 = \frac{\hbar ^2 \kappa_0}{2m} \). Trivialno lahko preverimo, da je
+
+\[ R + T = 1
+\]
+
+* 3. sklop nalog
+
+Iščemo valovno funkcijo, za katero velja princip nedoločenosti
+
+\[ \delta x \cdot \delta p \ge \frac{\hbar}{2}
+\]
+
+Najprej bomo dokazali princip nedoločenosti, nato pa poiskali valovne funkcije.
+
+To bomo naredili v splošnem s hermitskima operatorjema \( A \) in \( B \). Za hermitska ali sebi-adjungirana operatorja velja
+
+\begin{equation}
+\label{eq:5}
+ A ^{\dagger} = A, \quad B ^{\dagger} = B
+\end{equation}
+
+Po definiciji nedoločenost posameznega operatorja zapišemo kot
+
+\[ \left( \delta A \right) ^2 = \left\langle A ^2 \right\rangle = \left\langle A \right\rangle ^2 = \left\langle \left( A - \left\langle A \right\rangle \right) ^2 \right\rangle
+\]
+
+Definiramo \( \tilde{A} = A - \left\langle A \right\rangle \).
+
+Dokažimo, da je pričakovana vrednost realna. Po definiciji pričakovano vrednost zapišemo v integralski in braket notaciji kot
+
+\[ \left\langle A \right\rangle  = \int\limits_{}^{} \psi^{\ast} A \psi \, \mathrm{d} x = \left\langle \psi \middle| A \middle| \psi \right\rangle = \left\langle \psi \middle| A \psi \right\rangle = \left\langle A^{\dagger} \psi \middle| \psi \right\rangle
+\]
+
+Zaradi \ref{eq:5} velja
+
+\[ \left\langle A \right\rangle  = \left\langle \psi \middle| A \psi \right\rangle = \left\langle A^{\dagger} \psi \middle| \psi \right\rangle = \left\langle A \psi \middle| A \right\rangle^{\dagger} = \left\langle A \right\rangle^{\dagger}
+\]
+
+kar pomeni, da je \( \left\langle A \right\rangle \in \mathbb{R} \).
+
+Vsota dveh hermitskih operatorjev je enaka
+
+\[ \left( A + B \right)^{\dagger} = A ^{\dagger} + B ^{\dagger} = A + B
+\]
+
+Iz tega sledi, da je
+
+\[ \tilde{A} ^{\dagger} = \tilde{A}.
+\]
+
+Vrnimo se nazaj k produktu nedoločenosti
+
+\begin{align*}
+   \left( \delta A \delta B \right) ^2 &= \left\langle \psi \middle| \tilde{A} ^2 \middle| \psi \right\rangle \left\langle \psi \middle| \tilde{B} ^2 \middle| \psi  \right\rangle \\
+&= \left\langle \tilde{A} \psi \middle| \tilde{A} \psi \right\rangle \left\langle \tilde{B} \psi\middle| \tilde{B} \psi \right\rangle \\
+&= \left\lVert \tilde{A} \psi \right\rVert ^2 \left\lVert \tilde{B} \psi \right\rVert ^2
+\end{align*}
+
+Produkt norm smo lahko zapisali, saj je \( \left\langle \tilde{A} \psi \middle| \tilde{A} \Psi \right\rangle \) produkt dveh enakih vektorjev. Produkt kvadrata norm se pojavi v Cauchy-Schwartzovi neenakosti, iz česar sledi
+
+\[ \left\lVert \tilde{A} \psi \right\rVert ^2 \left\lVert \tilde{B} \Psi \right\rVert ^2 \ge \left| \left\langle \tilde{A} \psi \middle| \tilde{B} \psi \right\rangle \right| ^2 = \left| \left\langle \psi \middle| \tilde{A} \tilde{B} \psi \right\rangle \right| ^2
+\]
+
+Dobljen rezultat bomo še dodatno razpisali in sicer
+
+\[ \left| \left\langle \psi \middle| \tilde{A} \tilde{B} \psi \right\rangle \right| ^2 = \left| \left\langle \psi \middle| \frac{1}{2} \left( \tilde{A} \tilde{B} - \tilde{B} \tilde{A} + \tilde{A} \tilde{B} + \tilde{B} \tilde{A} \right) \middle| \psi \right\rangle \right|
+\]
+
+Razliki
+
+\[ \tilde{A} \tilde{B} - \tilde{B} \tilde{A} = \left[ \tilde{A} , \tilde{B} \right]
+\]
+
+rečemo komutator, vsoti
+
+\[ \tilde{A} \tilde{B} + \tilde{B} \tilde{A} =\left\{ \tilde{A}, \tilde{B} \right\}
+\]
+
+pa antikomutator.
+** Lastnosti komutatorjev in antikomutatorjev.
+
+Antikomutator dveh hermitskih komutatorjev je tudi hermitski operator:
+
+\begin{align*}
+  \left\{ A, B \right\} ^{\dagger} &= \left( A B + B A   \right) ^{\dagger} \\
+&= (AB) ^{\dagger} + (BA) ^{\dagger} = B^{\dagger} A^{\dagger} + A^{\dagger} B^{\dagger} \\
+&= \left\{ A, B \right\}
+\end{align*}
+
+Opomba, da velja \( \left( AB \right)^{\dagger} = B^{\dagger} A^{\dagger} \).
+
+Komutator dveh hermitskih operatorjev pa je anti-hermitski operator
+
+\begin{align*}
+  \left[ A, B \right]^{\dagger} &= \left( A B - B A \right)^{\dagger} \\
+&= \left( A B \right) ^{\dagger} - \left( BA \right) ^{\dagger} = B ^{\dagger}A ^{\dagger} - A ^{\dagger} B^{\dagger} \\
+&= B A - A B = - \left[ A, B \right]
+\end{align*}
+
+Pričakovana vrednost anti-hermitskega operatorja \( A ^{\dagger} = - A \) je po definiciji
+
+\begin{align*}
+  \left\langle A \right\rangle &= \left\langle \psi \middle| A \psi \right\rangle \\
+&= \left\langle A ^{\ast} \psi \middle| \psi \right\rangle = \left\langle - A \psi \middle| \psi \right\rangle \\
+&= - \left\langle A \psi \middle| \psi \right\rangle = -\left\langle \psi \middle| A \psi \right\rangle^{\ast} \\
+&= - \left\langle A \right\rangle^{\ast}
+\end{align*}
+
+Iz tega sledi, da je pričakovana vrednost anti-hermitskega operatorja kompleksna vrednost.
+** Nadaljevanje nedoločenosti
+
+\begin{align*}
+  \left( \delta A \delta B \right) ^2 &= \left\lVert \tilde{A} \psi  \right\rVert ^2 \left\lVert \tilde{B} \psi \right\rVert ^2 \\
+& \ge \left| \left\langle \tilde{A} \psi \middle| \tilde{B} \psi \right\rangle \right| \\
+&= \left| \left\langle \psi \middle| \frac{1}{2} \left[ \tilde{A}, \tilde{B} \right] + \frac{1}{2} \left\{ \tilde{A}, \tilde{B} \right\}\middle| \psi \right\rangle \right| \\
+&= \left| \underbrace{\frac{1}{2} \left\langle \left[ \tilde{A}, \tilde{B} \right] \right\rangle}_{\in \mathrm{Im}} + \underbrace{\frac{1}{2} \left\langle \left\{ \tilde{A}, \tilde{B} \right\} \right\rangle}_{\in \mathrm{Re}} \right| ^2 \\
+&= \frac{1}{4} \left( \left| \left\langle \left[ \tilde{A}, \tilde{B} \right] \right\rangle \right|  ^2 + \left| \left\langle \left\{ \tilde{A}, \tilde{B} \right\} \right\rangle \right| ^2 \right)
+\end{align*}
+
+Zadnja vrstica je posledica tega, da je prvi člen kompleksno število, drug člen realno število in absolutna vrednost kompleksnega števila \( z = a + \mathrm{i} b \) je \( \left| z \right| = a ^2 + b ^2 \). Ker imamo vsoto dveh pozitivnih členov, kar pomeni, da lahko zanemarimo antikomutator in zapišemo
+
+\[ \frac{1}{4} \left( \left| \left\langle \tilde{A}, \tilde{B} \right\rangle \right| ^2+ \left| \left\langle \left\{ \tilde{A}, \tilde{B} \right\} \right\rangle \right| ^2\right) \ge \frac{1}{4} \left| \left\langle \left[ \tilde{A}, \tilde{B} \right] \right\rangle \right| ^2
+\]
+
+Po definiciji zapišemo
+
+\begin{align*}
+\left[ \tilde{A}, \tilde{B} \right] &= \left[ A - \left\langle A \right\rangle, B - \left\langle B \right\rangle\right] \\
+&= \left[ A, B \right] - \left[ \left\langle A \right\rangle , B\right] - \left[ A, \left\langle B \right\rangle \right] + \left[ \left\langle A \right\rangle , \left\langle B \right\rangle\right] \\
+&= \left[ A, B \right]
+\end{align*}
+
+Zadnji člen je \( 0 \), saj je množenje števil med sabo komutativno. Pri členih z eno pričakovano vrednostjo pa je tudi komutativno, saj imamo en operator in eno število.
+
+Sedaj, če združimo vse skupaj, dobimo
+
+\[ \left( \delta A, \delta B \right) ^2 \ge \left( \frac{1}{2} \left| \left\langle \left[ A, B \right] \right\rangle \right| \right) ^2
+\]
+
+Nadomestimo splošna operatorja \( A \) in \( B \) z \( x = x \) in \( p = - \mathrm{i} \hbar \frac{\partial }{\partial x}  \):
+
+\[ \delta x \cdot \delta p  = \left| \left\langle \frac{1}{2} \left[ x, p \right] \right\rangle \right|
+\]
+
+Komutator na funkcijo je enak
+
+\begin{align*}
+  \left[ x, p \right] \psi(x) &= \left( x p - p x \right) \psi(x) = \left( - x \mathrm{i} \hbar \frac{\partial }{\partial x}  - \left( \mathrm{i} \hbar \frac{\partial }{\partial x}  \right)x \right) \psi(x) \\
+&= - \mathrm{i} \hbar x \psi'(x) + \mathrm{i} \hbar \left( 1 \cdot \psi(x) + x \psi'(x) \right) \\
+&= \mathrm{i} \hbar \psi(x)
+\end{align*}
+
+Končno, dobimo
+
+\[ \delta x \delta p = \frac{1}{2} \hbar
+\]
+** Iskanje valovnih funkcij za princip nedoločenosti
+
+Želimo najti valovne funkcije, kjer velja
+
+\[ \delta x \delta p = \frac{1}{2} \hbar
+\]
+
+Da bo veljala enakost in ne samo neenakost, moramo zadostiti pogojema, kjer se v teoriji/dokazu principa nedoločenosti pojavi neenakost. To je
+
+- Cauchy-Schwartzova neenakosti je enakost, če sta vektorja vzporedna
+
+  \[ \left\lVert \tilde{A} \psi \right\rVert ^2 \left\lVert \tilde{B} \psi \right\rVert ^2= \left| \left\langle \tilde{A} \psi \middle| \tilde{B} \psi \right\rangle  \right| ^2 \iff \quad \tilde{A} \psi = \alpha \tilde{B} \psi, \quad \alpha \in \mathbb{C}
+  \]
+
+- druga neenakost je enaka \( 0 \), torej
+
+  \[ \left\langle \left\{ \tilde{A}, \tilde{B} \right\} \right\rangle = 0
+  \]
+
+Začnemo z drugim pogojem, ki ga razpišemo po definiciji
+
+\begin{align*}
+  0 \equiv \left\langle \left\{ \tilde{A}, \tilde{B} \right\} \right\rangle &= \left\langle \psi \middle| \tilde{A} \tilde{B} + \tilde{B} \tilde{A} \middle| \psi \right\rangle \\
+&= \left\langle \psi \middle| \tilde{A} \tilde{B} \middle| \psi \right\rangle + \left\langle \psi \middle| \tilde{B} \tilde{A} \middle| \psi \right\rangle \\
+&= \left\langle \tilde{A} \psi \middle| \tilde{B} \psi \right\rangle + \left\langle \tilde{B} \psi \middle| \tilde{A} \psi \right\rangle = 0
+\end{align*}
+
+Upoštevamo sedaj še prvi pogoj in naš pogoj se preobrazi v
+
+\begin{align*}
+  0 &= \left\langle \tilde{A} \psi \middle| \tilde{B} \psi \right\rangle + \left\langle \tilde{B} \psi \middle| \tilde{A} \psi \right\rangle \\
+&= \left\langle \alpha \tilde{B} \psi \middle| \tilde{B} \psi \right\rangle + \left\langle \tilde{B} \psi \middle| \alpha \tilde{B} \psi \right\rangle \\
+&= \alpha ^{\ast} \left\langle \tilde{B} \psi \middle| \tilde{B} \psi \right\rangle + \alpha \left\langle \tilde{B} \psi \middle| \tilde{B} \psi \right\rangle \\
+&= \left( \alpha^{\ast} + \alpha \right) \left\langle \tilde{B} \psi \middle| \tilde{B} \psi \right\rangle
+\end{align*}
+
+To je enako nič, če je vsota \( \alpha^{\ast} + \alpha  \) enaka 0, ali pa če je \( \left\langle \tilde{B} \psi \middle| \tilde{B} \psi \right\rangle = \left( \delta B \right) ^2\) enako 0. Slednje ne more biti, saj bi bila nedoločenost operatorja \( A \) neskončna.
+
+Vsota \( \alpha^{\ast} + \alpha \) pa je enaka 0 zgolj in izključno, če je \( \alpha \) imaginarna številka, torej \( \alpha = \mathrm{i} c, \ c \in \mathbb{R} \). Cauchy-Schwartzov pogoje je tako
+
+\[ \left| \tilde{A} \psi \right| = \mathrm{i} c \left| \tilde{B} \psi \right\rangle
+\]
+
+Upoštevajoč definicije \( \tilde{A} \) in \( \tilde{B} \) dobimo
+
+\[ \left| A \psi \right\rangle - \left\langle A \right\rangle \left| \psi \right\rangle = \mathrm{i} c \left| B \psi \right\rangle - \mathrm{i} c \left\langle B \right\rangle \left| \psi \right\rangle
+\]
+
+Rešitve \( \psi \) bodo zadostile pogoje
+
+\[ \delta A \delta B = \frac{1}{2} \left| \left\langle A, B \right\rangle \right|
+\]
+
+Nadomestimo splošna operatorja \( A \) z \( x \) in \( B \) s \( p \). Dobimo diferencialno enačbo
+
+\[ \left( - \mathrm{i} \hbar \frac{\partial }{\partial x} - \left\langle p \right\rangle \right) \psi(x) = \mathrm{i} c \left( x - \left\langle x \right\rangle \right) \psi(x)
+\]
+
+Imamo diferencialno enačbo prvega reda, kjer lahko ločimo spremenljivke
+
+\[ \int\limits_{}^{} \frac{\mathrm{d} \psi}{\psi} = \int\limits_{}^{} - \frac{1}{\mathrm{i} \hbar} \left( \mathrm{i} c \left( x - \left\langle x \right\rangle \right) + \left\langle p \right\rangle \right) \, \mathrm{d} x
+\]
+
+in rešitev je
+
+\[ \psi(x) = C \exp \left\{ - \frac{c}{\hbar} x \left\langle x \right\rangle - \frac{\left\langle p \right\rangle x}{\mathrm{i} \hbar} + \frac{c}{\hbar} \frac{x ^2}{2} \right\}
+\]

@@ -282,12 +282,13 @@ kjer smo uvedli Diracovo matriko \( \sigma_x \), ki je enaka
                \end{pmatrix}
 \]
 
+
 Stanje s koeficienti \( B \) lahko tudi zapišemo kot \( \sigma_x B (-x) = B \). Velja, da je \( \sigma_x ^2 = I \). Enačbo \ref{eq:8} pomnožimo s \( \sigma_x \) in upoštevamo identiteto, da dobimo
 
 \[ S = \sigma_x S \sigma_x
 \]
 
-Velja,da je \( \sigma_x S \sigma_x = \begin{pmatrix} r' & t \\ t' & r \end{pmatrix} \), kar pomeni, da je matrika \( S \) enaka
+Če je potencial soda funkcija, uporabimo \( \sigma_x \) matriko. Velja,da je \( \sigma_x S \sigma_x = \begin{pmatrix} r' & t \\ t' & r \end{pmatrix} \), kar pomeni, da je matrika \( S \) enaka
 
 \[ S = \begin{pmatrix}
        r & t \\
