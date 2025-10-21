@@ -1,0 +1,254 @@
+#+title: 2. vaje iz Matematične fizike 2
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* 4. naloga: Viseča struna - nadaljevanje
+
+Enačba strune je
+
+\[ \mu \frac{\partial ^2 x}{\partial t ^2} = \frac{\partial }{\partial s}  \left( F(s) \frac{\partial x}{\partial s}  \right)+ f_x, \quad \mu \frac{\partial ^2 y}{\partial t ^2} = \frac{\partial }{\partial s} \left( F(s) \frac{\partial y}{\partial s}  \right)+ f_y
+\]
+
+kjer je \( \mu = \frac{\mathrm{d} m}{\mathrm{d} s} \) in \( f_{\alpha} = \frac{\mathrm{d} F_{sum, \alpha}}{\mathrm{d} s} \).
+
+Koordinatni sistem smo si izbrali tako, da je \( x \)-os vzporedna z dolžino vrvi navzdol. \( y \)-os je vzporedna s stropom, na katerega je vrv pritrjena.
+
+Vrv ima prav tako majhne odmike, torej \( \mathrm{d} s ^2 \approx \mathrm{d} x ^2 \). Zaradi majhnih odmikov velja pogoj \( \frac{\partial x}{\partial t} = 0 \).
+
+V \( x \)-smeri je sila enaka
+
+\[ F(x) = \mu g \left( l - x \right)
+\]
+
+V \( y \) smeri je \( f_y = 0 \). Zaradi majhnih odmikov \( x = s \) smo končali zadnjič z enačbo
+
+\begin{equation}
+\label{eq:1}
+ \frac{\partial ^2 y }{\partial t ^2} = g \left[ (l - x) \frac{\partial ^2 y}{\partial x ^2} - \frac{\partial y}{\partial x}  \right]
+\end{equation}
+
+Dobljeno parcialno enačbo bomo rešili z metodo separacije spremenljivk. Funkcijo \( y \) zapišemo kot produkt časovnega dela \( T(t) \) in krajevnega dela \( X(x) \). Torej v enačbo \ref{eq:1} vstavimo \( y = T(t) \cdot X(x) \) in ločimo spremenljivke
+
+\[ \frac{\ddot{T}}{T} = g \left( l - x \right) \frac{X''}{X} - g \frac{X'}{X} = - \omega ^2
+\]
+
+Konstanto \( \omega ^2 \) smo si tako izbrali, ker si s tem zagotovimo nihanje vrvi.
+
+Časovni del
+
+\[ \ddot{T} + \omega ^2 T = 0
+\]
+
+ima nam poznano rešitev
+
+\[ T(t) = A \cos \left( \omega t \right) + B \sin \left( \omega t \right).
+\]
+
+Krajevni del pa rešujemo enačbo
+
+\begin{equation}
+\label{eq:2}
+ g \left( l - x \right) X'' - g X' + \omega ^2 X = 0
+\end{equation}
+
+Enačbo lahko pretvorimo v Besselovo enačbo, oblike
+
+\[ z ^2 y'' + z y' + \left( z ^2 - n ^2 \right) y = 0,
+\]
+
+katere rešitev je linearna kombinacija Besselovi polinomov
+
+\[ y(z) = A J_n (z) + B Y_n (z).
+\]
+
+Z uvedbo nove spremenljivke \( z = \sqrt{l - x} \), odvodi, ki jih bomo vstavili v enačbo \ref{eq:2}, postanejo
+
+\begin{align*}
+  \frac{\mathrm{d} X}{\mathrm{d} x} &= \frac{\mathrm{d} X}{\mathrm{d} z} \frac{\mathrm{d} z}{\mathrm{d} x} = - \frac{\mathrm{d} X}{\mathrm{d} z} \cdot \left( - \frac{1}{2 \sqrt{l - x}} \right) = - \frac{\mathrm{d} X}{\mathrm{d} z} \frac{1}{2z} \\
+\frac{\mathrm{d} ^2 X }{\mathrm{d}z} &= \frac{\mathrm{d} }{\mathrm{d} x} \left( - \frac{\mathrm{d} X}{\mathrm{d} z} \frac{1}{2z} \right) = - \frac{\mathrm{d}}{\mathrm{d} z} \left( \frac{\mathrm{d} X}{\mathrm{d} z} \frac{1}{2z} \right) \cdot \left( - \frac{1}{2z} \right) = \frac{1}{2z} \left( - \frac{1}{2 z ^2} \frac{\mathrm{d} X}{\mathrm{d} z} + \frac{1}{2z} \frac{\mathrm{d} ^2 X }{\mathrm{d} z ^2} \right).
+\end{align*}
+
+Enačba se še z dodatnim množenjem s faktorjem \( 4z ^2 \) pretvori na
+
+\[ z ^2 \frac{\mathrm{d} ^2 X }{\mathrm{d} z ^2} + z \frac{\mathrm{d} X}{\mathrm{d} z} + 4 z ^2 \frac{\omega ^2}{g} X = 0
+\]
+
+Uvedemo novo spremenljivko \( \tilde{z} = \frac{2 z\omega}{\sqrt{g}} = 2 \omega \sqrt{\frac{l - x}{g}} \) in dobimo Besselovo enačbo
+
+\[ \tilde{z} ^2 \frac{\mathrm{d} ^2 X }{\mathrm{d}\tilde{z} ^2} + \tilde{z} \frac{\mathrm{d} X }{\mathrm{d}  \tilde{z}} + \tilde{z} ^2 X = 0
+\]
+
+Za dano Besselovo enačbo je \( n = 0 \), kar pomeni, da je rešitev
+
+\[ X(x) = C J_0 \left( 2 \omega \sqrt{\frac{l - x}{g}}\right) + D Y_0 \left( 2 \omega \sqrt{\frac{l - x}{g}} \right)
+\]
+
+Sedaj pri reševanju upoštevamo še robna pogoja, ki sta
+
+a) \( y(x = 0, t) = 0 \), saj je struna pritrjena
+b) \( y(x, t) < \infty \)
+
+Zaradi drugega pogoja bo bil \( D = 0 \), saj \( Y_0 (\infty) \) divergira proti \( -\infty \). Pogoje pritrjene strune \( X(0) = 0 \) pa nam poda enačbo
+
+\[ J_0 \left( 2 \omega \sqrt{ \frac{l}{g}} \right) = 0,
+\]
+
+ki ima neskončno rešitev. Označimo \( n \)-to ničlo ničte Besselove funkcije \( J_0 \) z
+
+\[ \xi_n^{(0)} = 2 \omega_n \sqrt{ \frac{l}{g}}
+\]
+
+Ničle Besselovo funkcije definiramo kot lastne frekvence sistema
+
+\[ \omega_n = \frac{1}{2} \sqrt{\frac{g}{l}} \xi_n^{(0)}
+\]
+
+Splošna rešitev problema je tako
+
+\[ y(x, t) = \sum\limits_{n = 1}^{\infty} J_0 \left( 2 \omega \sqrt{\frac{l - x}{g}}\right) \left[ A \sin \left( \omega t \right) + B \cos \left( \omega t \right) \right]
+\]
+
+Konstante dobimo iz začetnega pogoja
+
+\[ y(x, t = 0 ) = \sum\limits_{n = 1}^{\infty} A_n J_0 \left( 2 \omega \sqrt{\frac{l - x}{g}} \right)
+\]
+* 5. naloga (domača naloga)
+
+#+begin_problem
+Zanimajo nas lastna mala nihanja vrteče se strune, ki se vrti s krožno frekvenco \( \omega \). Predpostavimo, da je teža strune zanemarljiva.
+#+end_problem
+
+#+begin_solution
+Rešitev je
+
+\[ y(x, t) = \sum\limits_{\text{lihi } n }^{} P_n \left( \frac{x}{l} \right) \left[ A_n \sin \left( \omega_n t \right) + B_n \cos \left( \omega_n t \right) \right]
+\]
+#+end_solution
+* Valovna enačba
+
+Struno pripnemo s konstantno silo napenjana \( F = \mathrm{konst} \). Valovna enačba je tako oblike
+
+\[ c ^2 \frac{\partial ^2 u}{\partial x ^2} = \frac{\partial ^2 u}{\partial t ^2}
+\]
+
+kjer je \( c ^2 = \frac{F}{\mu} \). Enačbo bomo reševali preko d'Alembertovega principa, kjer je
+
+\[ u(x, t) = g(x - ct) + f(x + ct)
+\]
+
+S tem imamo podani dve karakteristiki, ki sta konstantni. Enačbo lahko rešimo ob podanih začetnih pogojih \( u(x, 0) \) ter \( u_t (x, 0) \). Splošna rešitev je
+
+\[ \tilde{u}(x, t) = \frac{1}{2} \left[ u(x - ct, 0) + u(x + ct, 0) \right] + \frac{1}{2c} \int\limits_{x - ct}^{x + ct} \frac{\partial u}{\partial t} (\xi, 0) \, \mathrm{d} \xi
+\]
+* 6. naloga :poglej_se_enkrat:
+
+#+begin_problem
+Napiši d'Alembertovo rešitev za primer pol-neskončne strune, ki ima
+a) pritrjen konec,
+b) prost konec.
+#+end_problem
+
+Enačbo rešimo za neskončno struno in rešitev povežemo z valom, ki se giblje v nasprotni smeri, da na neki točki destruktivno interferira.
+
+Za pritjen konec imamo robni pogoj enak \( u(x = 0, t) = 0 \). Začetna pogoja pa sta
+
+\begin{align}
+  \tilde{u}(x, t = 0) &= \begin{cases}
+                          u(x, 0); & x > 0 \\
+                                0; & \mathrm{else}
+                        \end{cases} \\
+\tilde{u}_t (x, 0) &= \begin{cases}
+                      u_t(x, 0); & x > 0 \\
+                        0; & \text{else}
+                      \end{cases}
+\end{align}
+
+Celotna naša rešitev za pol-neskončno struno je
+
+\begin{equation}
+\label{eq:3}
+ u(x, t) = \tilde{u}(x, t) - \tilde{u}(-x, t)
+\end{equation}
+
+Z vstavitvijo \ref{eq:3} v PDE preverimo ali je rešitev ustreza:
+
+\begin{align*}
+  \frac{\partial ^2 u}{\partial x ^2} (x, t) &= \frac{\partial ^2 \tilde{u}}{\partial x ^2} - \frac{\partial ^2 \tilde{u}}{\partial x ^2}  (-1) ^2 \\
+&= \frac{1}{c ^2} \frac{\partial ^2 \tilde{u}}{\partial t ^2} (x, t) - \frac{1}{c ^2} \frac{\partial ^2 \tilde{u}}{\partial t ^2} (- x, t) = \frac{1}{c ^2} \frac{\partial ^2 u}{\partial t ^2} (x, t)
+\end{align*}
+
+Preveriti moramo tudi začetna in robni pogoj. Torej
+
+\begin{align*}
+  u(x, 0) &= \tilde{u}(x, 0) - \tilde{u}(- x, 0) = u(x, ) \\
+u_t (x, 0) &= \tilde{u}_t (x, 0) - \underbrace{u_t (-x , 0)}_{0} = \frac{\partial u}{\partial t} (x, 0)
+\end{align*}
+
+Robni pogoj pa se tudi ujema, saj
+
+\[ u(0, t) = \tilde{u}(0, t) - \tilde{u}(0, t) = 0
+\]
+
+D'Alembertovo rešitev je možno razdeliti na dve območji in sicer na \( x \ge  ct \) ter \( x \le ct \):
+
+\begin{align*}
+  u(x, t) = &\frac{1}{2} \left[ \tilde{u}(x - ct, 0) + \tilde{u}(x + ct, 0) \right] + \frac{1}{2c} \int\limits_{x - ct}^{x + ct} \tilde{u}_t (\xi, 0) \, \mathrm{d} \xi  && x \ge ct\\
+&- \frac{1}{2} \left[ \tilde{u}(- x - ct, 0) + \tilde{u}(- x + ct, 0) \right] - \frac{1}{2c} \int\limits_{-x - ct}^{-x + ct} \tilde{u}_t (\xi, 0) \, \mathrm{d} \xi && x \le ct
+\end{align*}
+
+Rešitev je tako
+
+\[ u(x, t) = \frac{1}{2} \left[ u(x + ct, 0) + u(x - ct, 0) \right]+ \frac{1}{2c} \int\limits_{x - ct}^{x + ct} u_t (\xi, 0) \, \mathrm{d} \xi
+\]
+
+za \( x \ge ct \) ter
+
+\[ u(x, t) = \frac{1}{2} \left[ u(x + ct, 0) - u(- x + ct, 0) \right] + \frac{1}{2c} \int\limits_{-x + ct}^{x + ct}  u_t (\xi, 0) \, \mathrm{d} \xi
+\]
+
+V primeru prostega vpetja pa je rešitev za polneskončno struno
+
+\[ u(x, t) = \tilde{u}(x, t) + \tilde{u}(x, t)
+\]
+
+Ustreznost rešitve preverimo analogno zgornjemu, za rabni pogoj pa dobimo
+
+\[ u_x (0, t) = \tilde{u}_x (0, t) - \tilde{u}_x (0, t) = 0
+\]
+
+Imamo valovno enačbo
+
+\[ \frac{\partial ^2 u}{\partial t ^2} = c ^2 \frac{\partial ^2 u}{\partial x ^2} + \frac{f_y}{\mu}
+\]
+
+kjer je \( f_y \) dolžinska gostota sile. Silo mase zapišemo kot \( f_y = F_{zun} \delta(x - x_0) \). Po definiciji dolžinske gostote
+
+\[ f_y = \frac{\mathrm{d} F_{zun}}{\mathrm{d} x}
+\]
+
+lahko integriramo in dobimo
+
+\[ \int\limits_{}^{} f_y \, \mathrm{d} x = F_{zun} \int\limits_{}^{} \delta(x - x_0) \, \mathrm{d} x = F_{zun}
+\]
+
+Integriramo tudi valovno enačbo in želimo, da je zvezno, saj morajo biti odvodi zvezni. Torej
+
+\[ \int\limits_{x_0 - \epsilon}^{x_0 + \epsilon} \frac{\partial ^2 u}{\partial t ^2} \, \mathrm{d} t = \int\limits_{x_0 - \epsilon}^{x_0 + \epsilon} c ^2 \frac{\partial ^2 u}{\partial x ^2} + \frac{F_z}{\mu} \delta(x - x_0) \, \mathrm{d} x
+\]
+
+Levi integral je enak \( 0 \) in dobimo zvezo
+
+\[ F_z = - \left. F \frac{\partial u}{\partial x}  \right|_{x_0 - \epsilon}^{x_0 + \epsilon}
+\]
+
+Zunanja sila je
+
+\[ F_z = 0 = - F \frac{\partial u}{\partial x}  (x = 0, t)
+\]
+
+kar pomeni, da imamo Neumannov robni pogoj \( \frac{\partial u}{\partial x} (x = 0, t) = 0 \).

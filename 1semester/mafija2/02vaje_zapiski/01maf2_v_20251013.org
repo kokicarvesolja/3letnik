@@ -141,7 +141,6 @@ kjer je \( \mu= \frac{\mathrm{d} m}{\mathrm{d} s} \) in \( f_{\alpha} = \frac{\m
 \[ \mathrm{d} s ^2 = \mathrm{d} ^2 x + \mathrm{d} ^2 y
 \]
 * 3. naloga: Viseči most
-
 #+begin_my_example
 Izračunaj obliko visečega mostu z maso \( M \) in dolžino vrvice \( L \), ki med dvema palicama z višinama \( y_1 \) in \( y_2 \) pokrije razdaljo \( l \).
 #+end_my_example
@@ -249,7 +248,7 @@ Glej Wikipedia - catenary.
 #+begin_my_example
 Imamo visečo struno z majhnimi odmiki v \( y \) smeri. To pomeni, da
 
-\[ \mathrm{d} ^2 = \mathrm{d} x ^2 + \mathrm{d} y ^2 \approx \mathrm{d} x ^2
+\[ \mathrm{d} s^2 = \mathrm{d} x ^2 + \mathrm{d} y ^2 \approx \mathrm{d} x ^2
 \]
 
 oziroma \( x = s \).
