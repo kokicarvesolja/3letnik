@@ -141,3 +141,102 @@ Skalarni produkt z \( \vec{r} \) pa je kot posledica zgornje točke
    \]
 
    kar pomeni, da je Schrödingerjeva enačba samo časovni razvoj tega vektorja.
+
+5. Aksiom #5: kvantna meritev
+
+   Stanje valovnega vektorja opišemo z
+
+   \begin{equation}
+   \label{eq:1}
+    \left| \psi \right\rangle = \sum\limits_n^{} c_n \left| a_n \right\rangle
+   \end{equation}
+
+   kjer so \( \left| a_n \right\rangle \) lastni vektorji operatorja \( A \)
+
+   \[  A \left| a_n \right\rangle = a_n \left| a_n \right\rangle
+   \]
+
+   #+begin_axiom
+        Verjetnost \( P \) za \( n \)-to lastno vrednost je enaka \( \left| c_n \right| ^2 \), kjer je \( c_n \) verjetnostna amplituda.
+
+        Po opravljeni meritvi je sistem v stanju \( \left| a_m \right\rangle \), kjer velja \( c_{n \ne m}  = 0 \) in \( c_m = 1 \).  Temu dogodku se reče kolaps kvantnega stanja.
+   #+end_axiom
+
+   Beseda meritev je zavajujoča. Pred meritvijo je delec v vseh možnih stanjih hkrati kakor nakazuje enačba \ref{eq:1}. Po meritvi pa je delec v točno specifičnem stanju \( a_m \). To je različno od klasične meritve, kjer ima avto pred in po meritvi določeno stanje (hitrost).
+* Harmonski oscilator
+
+Naredili bomo povezavo s klasično mehaniko. Če so komponente časovno neodvisne, potem
+
+\[ H = \frac{p ^2}{2m} + \frac{1}{2} k x ^2 = E = \mathrm{konst}
+\]
+
+Enačba gibanje je
+
+\[ \ddot{x} + \omega ^2 x = 0, \ \omega ^2 = \frac{k}{m}
+\]
+
+in rešitev je
+
+\[ x(t) = A \cos \omega t + B \sin \omega t
+\]
+
+Podobno naredimo tudi v kvantni mehaniki. Začnemo s Hamiltonianom, kjer upoštevamo definicije operatorja \( p \):
+
+\[ H = \frac{p ^2}{2m} + \frac{1}{2} k x ^2 = - \frac{\hbar ^2}{2m} \frac{\mathrm{d} ^2 }{\mathrm{d} x ^2} + \frac{1}{2} k x ^2
+\]
+
+Harmonski oscilator želimo zapisati v nivojih energije \( \hbar \omega \), zato uvedemo konstanto \( \xi ^2 = \frac{\hbar}{\omega m}\). Hamiltonian tako zapišemo kot
+
+\[ H = \hbar \omega \left( \frac{1}{2} \frac{x ^2}{\xi ^2} - \frac{1}{2} \xi ^2 \frac{\mathrm{d} ^2 }{\mathrm{d} x ^2} \right)
+\]
+
+Upoštevamo definicijo razlike kvadratov
+
+\[ a ^2 - b ^2 = (a - b) (a + b) = (a+ b) (a - b) \implies 2 \left( a ^2 - b ^2 \right) = (a + b) (a - b) + (a + b) (a - b).
+\]
+
+Hamiltonian postane
+
+\[ H = \frac{\hbar \omega}{2} \cdot \frac{1}{2} \left[ \left( \frac{x}{\xi} + \xi \frac{\mathrm{d} }{\mathrm{d} x} \right) \left( \frac{x}{\xi} - \xi \frac{\mathrm{d} }{\mathrm{d} x} \right) + \left( \frac{x}{\xi} - \xi \frac{\mathrm{d} }{\mathrm{d} x} \right) \left( \frac{x}{\xi} + \xi \frac{\mathrm{d} }{\mathrm{d} x} \right) \right]
+\]
+
+Definiramo operatorja
+
+\begin{align*}
+  a &= \frac{1}{\sqrt{2}} \left( \frac{x}{\xi} + \xi \frac{\mathrm{d} }{\mathrm{d} x} \right) \\
+a^{\dagger} &= \frac{1}{\sqrt{2}} \left( \frac{x}{\xi} - \xi \frac{\mathrm{d} }{\mathrm{d} x} \right)
+\end{align*}
+
+Operatorju \( a \) pravimo anihilacijski, \( a^{\dagger} \) pa kreacijski. S faktorjema torej zapišemo Hamiltonian
+
+\begin{equation}
+\label{eq:2}
+ H  = \frac{\omega \hbar}{2} \left( a a^{\dagger} + a ^{\dagger} a \right)
+\end{equation}
+
+Komutacija operatorjev \( a \) in \( a^{\dagger} \) nam poda
+
+\[ \left[ a, a^{\dagger} \right] = a a^{\dagger}- a^{\dagger} a = \frac{\mathrm{d} }{\mathrm{d} x} x - x \frac{\mathrm{d} }{\mathrm{d} x}
+\]
+
+Če s komutatorjem vplivamo na valovno funkcijo \( \psi \), je rezultat
+
+\[ \frac{\mathrm{d} }{\mathrm{d} x} x \psi - x \frac{\mathrm{d} }{\mathrm{d} x} \psi = \psi + x \frac{\mathrm{d} \psi}{\mathrm{d} x}  - x \frac{\mathrm{d} \psi}{\mathrm{d} x} = \psi.
+\]
+
+Z drugimi besedami
+
+\[ \left[ a, a^{\dagger} \right] = 1
+\]
+
+iz česar sledi po definicije komutatorja
+
+\begin{equation}
+\label{eq:3}
+ a a^{\dagger} - a^{\dagger} a = 1 \implies a a^{\dagger} = 1 + a^{\dagger} a
+\end{equation}
+
+Harmonski oscilator \ref{eq:2} kvantno torej zapišemo z identiteto \ref{eq:3}
+
+\[ H = \hbar \omega \left( a^{\dagger} a + \frac{1}{2} \right)
+\]
