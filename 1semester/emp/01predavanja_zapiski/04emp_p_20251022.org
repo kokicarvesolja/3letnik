@@ -1,0 +1,115 @@
+#+title: 04emp P 20251022
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Elektrostatika
+** Sila kot funkcional električnega polja
+
+Zanima nas sila, ki deluje na \( \rho \left( \vec{r} \right) \) v odvisnosti od celotnega \( E \left( \vec{r} \right) \). Sila na telo je volumnski integral
+
+\[ \vec{F} = \int\limits_V^{} \rho \left( \vec{r} \right) \vec{E}_{Z} \left( \vec{r} \right) \, \mathrm{d} ^3 \vec{r}
+\]
+
+po volumnu telesa. \( \vec{E}_Z \) je zunanje električno polje. Preko Maxwellove enačbe nadomestimo \( \rho \left( \vec{r} \right) \) z
+
+\[ \nabla \cdot \vec{E}_L = \frac{\rho}{\epsilon_0}
+\]
+
+kjer je \( \vec{E}_L \) notranje električno polje. Sila je tako
+
+\[ \vec{F} \left( \vec{r} \right) = \epsilon_0 \int\limits_V^{} \left( \nabla \cdot \vec{E}_L \right) \vec{E}_{Z} \, \mathrm{d} ^3 \vec{r}
+\]
+
+Opomba, da je integral produkta gostote električnega polja in lastnega električnega polja enak 0 (ne moreš sam sebe dvigniti):
+
+\[ \int\limits_V^{} \rho \left( \vec{r} \right) \vec{E}_L \, \mathrm{d} ^3 \vec{r} = 0
+\]
+
+Zapis sile lahko razširimo z \( \nabla \cdot \vec{E}_Z \). Ta člen je v našem integralu enak \( 0 \) (torej nismo nič spremenili, ko smo ga dodali), saj je integral po volumnu telesa, medtem ko so naboji zunanjega električnega polja neskončno oddaljeni.
+
+\[ \vec{F} \left( \vec{r} \right) = \epsilon_0 \int\limits_V^{} \left( \nabla \cdot \vec{E}_L + \nabla \cdot \vec{E}_Z \right) \vec{E}_Z \, \mathrm{d} ^3 \vec{r} = \epsilon_0   \int\limits_V^{} \left( \nabla \cdot \vec{E} \left( \vec{r} \right) \right) \vec{E}_Z \, \mathrm{d} ^3 \vec{r}
+\]
+
+Vsota zunanjega in lastnega polja je pa ravno celotno električno polje - upoštevali smo linearno divergence.
+
+Naš volumnski integral bi radi zapisali v površinski integral, kar bomo naredili preko zveze s tenzorskim produktom
+
+\[ \nabla \cdot \left( \vec{E} \otimes \vec{E} \right) = \vec{E} \cdot \left( \nabla \cdot \vec{E} \right) + \left( \vec{E} \cdot \nabla  \right) \vec{E}
+\]
+
+ter Gaussovega izreka(?)
+
+\[ \int\limits_V^{} \nabla \cdot \vec{E} \, \mathrm{d} ^3 \vec{r} = \int\limits_{\partial V}^{} \vec{E} \, \mathrm{d} \vec{S}
+\]
+
+Tenzorski produkt za vektorja \( \vec{a} = (a_1, a_2, a_3) \) in \( \vec{b} = (b_1, b_2, b_3) \) je \( 3 \times 3 \) matrika, kjer je \( ij \)-ti element matrike
+
+\[ \left( \vec{a} \otimes \vec{b} \right)_{ij} = a_i \cdot b_j
+\]
+
+Integral se tako pretvori v
+
+\begin{equation}
+\label{eq:1}
+ \vec{F} = \epsilon_0 \int\limits_V^{} \left[ \nabla \cdot \left( \vec{E} \otimes \vec{E}\right) - \left( \vec{E} \cdot \nabla  \right) \vec{E} \right] \, \mathrm{d} ^3 \vec{r} = \epsilon_0 \int\limits_{\partial V}^{} \left( \vec{E} \otimes \vec{E}\right) \, \mathrm{d} \vec{S} - \epsilon_0 \int\limits_V^{} \left( \vec{E} \cdot \nabla \right) \vec{E} \, \mathrm{d} ^3 \vec{r}
+\end{equation}
+
+
+Upoštevamo identiteto
+
+\[ \frac{1}{2} \nabla E ^2 = \left( \vec{E} \cdot \nabla \right) \vec{E} + \vec{E} \times \left( \nabla \times \vec{E} \right)
+\]
+
+Člen z vektorskim produktom je ničeln (zakaj?). Enačba \ref{eq:1} pa se pretvori v
+
+\[ \vec{F} = \epsilon_0 \int\limits_{\partial V}^{} \left( \vec{E} \otimes  \vec{E}\right) \, \mathrm{d} \vec{S} - \frac{\epsilon_0}{2} \int\limits_V^{} \nabla E ^2 \, \mathrm{d} ^3 \vec{r} = \epsilon_0 \int\limits_{\partial V}^{} \left[ \left( \vec{E} \otimes \vec{E}\right)- \frac{1}{2} E ^2 \right] \, \mathrm{d} \vec{S}
+\]
+
+Torej bo sila
+
+\begin{equation}
+\label{eq:2}
+ \vec{F} = \epsilon_0 \int\limits_{\partial V}^{} \left[ \left( \vec{E} \otimes  \vec{E}\right) - \frac{1}{2} E ^2 \cdot I \right] \vec{n} \, \mathrm{d} S
+\end{equation}
+
+kjer je \( \vec{E} \) celotno električno polje, \( I \) identiteta in \( \vec{n} \) normala delca. Silo \( \vec{F} \) smo prav tako določili brez eksplicitne uporabe gostote električnega polja \( \rho \left( \vec{r} \right) \).
+** Napetostni tenzor električnega polja
+
+Dobljen zapis silo v električnem polju \ref{eq:2} se lahko zapiše z uporabo napetostnega tenzorja električnega polja
+
+\[ F_i = \oint\limits_V^{} T_{ik} n_k \, \mathrm{d} S, \quad T_{ik} = \epsilon_0 \left( E_i \cdot E_k - \frac{1}{2} E ^2 \delta_{ik} \right)
+\]
+
+kjer je \( T_{ik} \) napetostni tenzor električnega polja.
+
+Velja tudi Gauss-Ostrogradski
+
+\begin{equation}
+\label{eq:3}
+ F_i = \oint\limits_{\partial V}^{} T_{ik} \, \mathrm{d} S_k = \int\limits_V^{} \frac{\partial T_{ik}}{\partial x_{k}} \, \mathrm{d} ^3 \vec{r}
+\end{equation}
+
+Zapišemo identiteto
+
+\[ a_{ik} b_k = \sum\limits_k^{} a_{ik} b_k.
+\]
+
+Iz \ref{eq:3} lahko prepoznamo oz. uvedemo volumsko gostoto sile
+
+\[ f_i = \frac{\partial T_{ik}}{\partial x_{k}}
+\]
+
+Zapis gostote sile kot divergence napetostnega tenzorja je splošen in se lahko uporablja tudi za druga polja.
+** Multipolni razvoj električnega potenciala
+
+Imamo predmet, ki ima gostoto električnega polja \( \rho \left( \vec{r} \right) \). Ta predmet ustvarja potencial \( \phi \left( \dot{r} \right) \). Velja, kakor že mnogokrat povedano,
+
+\[ \phi \left( \vec{r} \right) = \int\limits_{}^{} \frac{\rho \left( \vec{r} \right)}{4 \pi \epsilon_0 \left| \vec{r} - \vec{r} \, ' \right|} \, \mathrm{d} ^3 \vec{r} \,'
+\]
+
+Zanima nas električno polje "daleč" stran od same gostote naboje in to po vodilnih prispevkih - multipolih.
