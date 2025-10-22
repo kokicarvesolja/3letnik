@@ -1,0 +1,143 @@
+#+title: 3. predavanje iz Kvantne mehanike 
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+
+* Formalizem kvantne mehanike
+
+Ponovitev od zadnjič: Lastne funkcije gibalne količine so ravni valovi, vendar ravni valovi niso normirani, kar posledično pomeni, da ni možno integrirati. Dokazali smo, da zaradi določenih lastnosti, če je funkcija v Fourierovem prostoru integrabilna, potem je tudi valovna funkcija gibalne količine (čeprav ni v \( L ^2 \)).
+
+Pri Bornovi interpretaciji smo definirali verjetnost za detekcijo delca kot
+
+\[ \frac{\mathrm{d} P}{\mathrm{d} x} = \left| \psi(x) \right| ^2
+\]
+
+V \( p \)-reprezentaciji pa lahko analogno zapišemo
+
+\[ \frac{\mathrm{d} P}{\mathrm{d} p} = \left| \tilde{\psi}(p) \right| ^2
+\]
+
+Če obravnavamo podoben primer kot na vajah, kjer imamo potencial na končnem intervalu, energije razdelimo na zvezni del in diskretni del spektra
+
+\[ E = \begin{cases}
+       E = \frac{\left( \pm \right) ^2}{2m}; & E > 0  \\
+       E_n; & E < 0
+       \end{cases}
+\]
+
+Valovni vektor zapišemo potem kot linearno kombinacijo
+
+\[ \psi(x) = \sum\limits_n^{} c_n \left| \psi_n \right\rangle + \int\limits_{}^{} \tilde{\psi}_p \left| p \right\rangle \, \mathrm{d} p
+\]
+
+kjer za posamezno komponento velja podobna zveza
+
+\begin{align*}
+  \left\langle n \middle| \psi \right\rangle &= c_n \\
+\left\langle p \middle| \psi \right\rangle &= \left| \tilde{\psi} \right|
+\end{align*}
+
+*pomanjkljivo*
+
+Nadaljujemo s *kompletnim sistemom komutirajočih operatorjev* (točka št. 15). Imejmo dva operatorja \( A, B \), ki komutirata
+
+\[ \left[ A, B \right] = 0
+\]
+
+Če sistem ni degeneriran, kar zapišemo z
+
+\[ A \left| a \right\rangle = a \left| a \right\rangle
+\]
+
+kjer je \( a \) lastna vrednost. Potem bo lastno stanje
+
+\[ BA \left| a \right\rangle = A B \left| a \right\rangle = a B \left| a \right\rangle
+\]
+
+sorazmerno z lastnim vektorjem \( \left| a \right\rangle \).
+
+V primeru, da je sistem degeneriran, kjer sta lastna vektorja \( \left| a_1 \right\rangle , \left| a_2 \right\rangle\), potem bo lastno stanje z operatorjem \( B \) linearna kombinacija degeneriranih vektorjev
+
+\[ \left| b_{1, 2} \right\rangle = c_1 \left| a_1 \right\rangle + c_2 \left| a_2 \right\rangle
+\]
+
+Enako velja tudi, če imamo več kot samo dva operatorjev, ki med seboj komutirajo
+
+\[ [A, B] = [A, C] = [B, C] = 0
+\]
+
+#+begin_my_example
+Vzemimo kot primer operatorje \( H, \vec{L} \) in \( \vec{S} \). Dani operatorji zaradi različnih prostorov lahko med seboj komutirajo. Lastna stanja Hamiltoniana so \( E_n \), lastna stanja vrtilne količine so \( L, L_n \) ter lastna stanja spina so \( S, S_n \).
+
+Vektor valovne funkcije zapišemo kot
+
+\[ \left| \psi \right\rangle = \left| n, L, L_n, S, S_n \right\rangle
+\]
+
+Skalarni produkt z \( \vec{r} \) pa je kot posledica zgornje točke
+
+\[ \left\langle \vec{r} \middle| \psi \right\rangle = \psi_n(\vec{r}) \cdot \psi_{lm} \left( \vec{r} \right) \begin{pmatrix} \alpha \\ \beta \end{pmatrix}
+\]
+#+end_my_example
+
+*Aksiomi (postulati) kvantne mehanike* (točka 16) Obravnavamo Kobenhavensko interpretacijo.
+
+1. Klasični in kvantni sistem:
+   #+begin_axiom
+        Kvantni sistem je določen s kvantnim stanjem \( \left| \psi \right\rangle \) iz Hilbertovega prostora.
+   #+end_axiom
+
+   Svet je razdeljen na dva dela: kvantnega in klasičnega. Na nas je, da določimo (pri eksperimentih), da določimo mejo med tema dvema deloma.
+
+2. Aksiom #2
+
+   #+begin_axiom
+        Vsaki merljivi količini ustreza hermitski operator.
+   #+end_axiom
+
+   Kot primer navedemo \( A = A ^{\dagger} \).
+
+3. Aksiom #3
+
+   #+begin_axiom
+        Pričakovana vrednost
+
+        \[ \left\langle A \right\rangle = \left\langle \psi \middle| A \middle| \psi \right\rangle
+        \]
+   #+end_axiom
+
+4. Aksiom #4
+
+   #+begin_axiom
+        Časovni razvoj \( \left| \psi(t) \right\rangle \) je podan z unitarnim razvojem
+
+        \[ \left| \psi(t) \right\rangle =  U(t) \left| \psi(0) \right\rangle,
+        \]
+
+        pri čemer je generator Hamiltonov operator
+
+        \[ U = \exp \left\{ -\frac{\mathrm{i} H t}{\hbar} \right\} = 1 - \frac{\mathrm{i} H t}{\hbar} + \ldots
+        \]
+   #+end_axiom
+
+   Časovni razvoj valovne funkcije je
+
+   \[ \left| \psi(t + \mathrm{d} t) \right\rangle = \left| \psi(t) \right\rangle - \frac{\mathrm{i} H \mathrm{d}t}{\hbar} \left| \psi(t) \right\rangle + \ldots
+   \]
+
+   Z deljenjem z \( \mathrm{d} t \) in premikom prvega koeficienta na drugo stran, dobimo odvod
+
+   \[ \frac{\mathrm{d} \left| \psi(t) \right\rangle }{\mathrm{d} t} = - \frac{\mathrm{i} H t}{\hbar} \left| \psi \right\rangle
+   \]
+
+   Dobimo Schrödingerjevo enačbo
+
+   \[ \mathrm{i} \hbar \frac{\mathrm{d} }{\mathrm{d} t} \left| \psi \right\rangle = H \left| \psi \right\rangle
+   \]
+
+   kar pomeni, da je Schrödingerjeva enačba samo časovni razvoj tega vektorja.
