@@ -240,3 +240,138 @@ Harmonski oscilator \ref{eq:2} kvantno torej zapišemo z identiteto \ref{eq:3}
 
 \[ H = \hbar \omega \left( a^{\dagger} a + \frac{1}{2} \right)
 \]
+
+Uvedemo operator štetja (ang. /number operator/)
+
+\[ \hat{n} = a^{\dagger} a,
+\]
+
+ki je hermitski.
+
+Posodobimo Hamiltonian
+
+\begin{equation}
+\label{eq:4}
+ H = \hbar \omega \left( \hat{n} + \frac{1}{2} \right)
+\end{equation}
+
+Lastna vrednost operatorja štetja je enaka
+
+\[ \hat{n} \left| \phi_{\lambda} \right\rangle = \lambda \left| \phi_{\lambda} \right\rangle
+\]
+
+(Točka 1) Lastna vrednost \( \lambda \ge 0 \), saj če množimo zgornjo enačbo s \( \left\langle \phi_{\lambda} \right| \), dobimo
+
+\begin{align*}
+  \left\langle \phi_{\lambda} \middle| \hat{n} \middle| \phi_{\lambda} \right\rangle &= \left\langle \phi_{\lambda} \middle| a^{\dagger} a \middle| \phi_{\lambda} \right\rangle \\
+&= \left\langle a \phi_{\lambda} \middle| a \phi_{\lambda} \right\rangle && \ge 0 \\
+ &= \lambda \left\langle \phi_{\lambda} \middle| \phi_{\lambda} \right\rangle \implies \lambda \ge 0
+\end{align*}
+
+saj \( \left\langle \phi_{\lambda} \middle| \phi_{\lambda} \right\rangle \ge 0\). Grafično lahko to vidimo tako, da so vsa stanja parabole harminskega oscilatorja večja od \( 0 \).
+
+(Točka 2) Ali je lahko lastna vrednost \( \lambda = 0 \)? Potem velja
+
+\[ a ^{\dagger} a \left| \phi_0 \right\rangle  = a \left| \phi_0 \right\rangle = \left( \frac{x}{\xi} + \xi \frac{\mathrm{d} }{\mathrm{d} x}  \right) \phi_0 (x) = 0
+\]
+
+Iz česar sledi, da je lastna vrednost enaka \( 0 \), če je
+
+\[ \phi_0 (x) = \frac{1}{\sqrt{\sqrt{\pi} \xi} } \exp \left\{ - \frac{1}{2} \frac{x ^2}{\xi ^2} \right\}
+\]
+
+(Točka 3) Komutacija operatorja štetja in kreacijskega operatorja nam poda enakost
+
+\[ \left[ \hat{n}, a^{\dagger} \right] = \left[ a ^{\dagger} a, a ^{\dagger} \right] = a^{\dagger} \underbrace{\left[ a, a^{\dagger} \right]}_{=1} + \underbrace{\left[ a^{\dagger} \right]}_{=0} a  = a ^{\dagger} = \hat{n} a^{\dagger} - a^{\dagger} n =
+\]
+
+\( \phi_{\lambda} \) je rešitev z lastno vrednostjo \( \lambda \)
+
+\[ \hat{n} \left| \phi_{\lambda} \right\rangle = \lambda \left| \phi_{\lambda} \right\rangle
+\]
+
+Prejle izračunani operator pa nampoda
+
+\[ \hat{n} a^{\dagger} \left| \phi_{\lambda} \right\rangle = \left( a^{\dagger} \hat{n} + a^{\dagger} \right) \left| \phi_{\lambda} \right\rangle = \left( \lambda + 1 \right) \left| \phi_{\lambda} \right\rangle = \left( \lambda + 1 \right) c_{\lambda} \left| \phi_{\lambda + 1} \right\rangle
+\]
+
+Zato se \( a^{\dagger} \) reče kreacijski, saj nam ustvari nov \( \lambda \).
+
+
+\[ \left| c_{\lambda} \right| \left\langle \phi_{\lambda + 1} \middle| \phi_{\lambda + 1} \right\rangle = \left\langle a ^{\dagger} \phi_{\lambda} \middle| a^{\dagger} \phi_{\lambda} \right\rangle = \left\langle \phi_{\lambda} \middle| a a ^{\dagger} \middle| \phi_{\lambda} \right\rangle = \left\langle \phi_{\lambda} \middle| a^{\dagger} a \middle| \phi_{\lambda} \right\rangle + \left\langle \phi_{\lambda} \middle| \phi_{\lambda} \right\rangle = \left( \lambda + 1 \right) \left\langle \phi_{\lambda} \middle| \phi_{\lambda} \right\rangle
+\]
+
+kjer smo upoštevali \ref{eq:3}.
+
+Iz tega sledi
+
+\[ \left| \phi_{\lambda + 1} \right\rangle  = \frac{a^{\dagger}}{\sqrt{\lambda + 1}} \left| \phi_{\lambda} \right\rangle, \ \lambda = 0,1, 2,\ldots
+\]
+
+\( n \)-to stanje bomo tako dobili s pomočjo rekurzivne zveze kot
+
+\[ \left| n \right\rangle  = \left| \phi_n \right\rangle = \frac{a^{\dagger}}{\sqrt{n}} \left| \phi_{n - 1} \right\rangle = \frac{a ^{\dagger} a^{\dagger}}{\sqrt{n (n - 1)}} \left| \phi_{n - 2} \right\rangle = \ldots = \frac{\left( a^{\dagger} \right) ^n}{\sqrt{n!}} \left| \phi_0 \right\rangle  = \frac{\left( a^{\dagger} \right) ^n}{\sqrt{n!}} \left| 0 \right\rangle
+\]
+
+kjer velja
+
+\[ \left\langle \phi_n \middle| \phi_n \right\rangle  = \left\langle \phi_0 \middle| \phi_0 \right\rangle = 1
+\]
+
+(Točka 4) Komutacija operatorja štetja in anihilacijskega operatorja je sledeča
+
+\[ \left[ \hat{n}, a \right] = \left[ a^{\dagger} a, a \right] = a ^{\dagger} \underbrace{\left[ a, a \right]}_{=0} + \underbrace{\left[ a^{\dagger}, a \right]}_{= -1} = - a
+\]
+
+Torej, če je \( n \) rešitev lastne vrednosti \( n \), potem
+
+\[ \hat{n} \left| n \right\rangle  = n \left| n \right\rangle
+\]
+
+Analogno kreacijskemu ugotovimo, zakaj se operatorju reče anihilacijski
+
+\[ \hat{n} a \left| n \right\rangle  = \left( a \hat{n} - a \right) \left| n \right\rangle = (n - 1) a \left| n \right\rangle = (n - 1) \tilde{c}_n \left| n - 1 \right\rangle
+\]
+
+Imamo tudi podobno zvezo kakor prej, saj iz
+
+\[ \left| \phi_n \right\rangle  = \frac{a}{\sqrt{n + 1}} \left| \phi_{n + 1} \right\rangle \implies \left| \phi_0 \right\rangle = \frac{a ^n}{\sqrt{(n + 1)!}} \left| \phi_n \right\rangle
+\]
+
+
+__
+
+Upoštevajoč \ref{eq:4} in Schrödingerjeve enačbe
+
+\[ H \left| n \right\rangle  = E_n \left| n \right\rangle
+\]
+
+dobimo lastna energijska stanja
+
+\[ E_n = \hbar \omega \left( n + \frac{1}{2} \right), \ n \in \mathbb{N}_0
+\]
+
+Ali obstajajo še kakšne druge lastne vrednosti? Dokaz s protislovje. Naj bo lastna vrednost enaka \( \lambda = 7.2 \). Tako lastno vrednost lahko zapišemo kot vsoto celega dela in decimalne številke \( \lambda = n + \nu \), kjer je \( \nu \in (0, 1) \). Predpostavili smo, da je lastna vrednost, torej je rešitev
+
+\[ \hat{n} \left| \phi_{\lambda} \right\rangle  = \lambda \left| \phi_{\lambda} \right\rangle
+\]
+
+Z \( n \)-kratno aplikacijo anihilacijskega operatorja po prejšnji izpeljavi
+
+\begin{align*}
+  \hat{n} a\left|  \phi_{\lambda} \right\rangle &= ( \lambda - 1 ) a \left| \phi_{ \lambda} \right\rangle \\
+&\vdots \\
+\hat{n} a ^n \left| \phi_{\lambda} \right\rangle &= \left( \lambda - n \right) a ^n \left| \phi_{\lambda} \right\rangle
+\end{align*}
+
+Če na dobljen rezultat, še enkrat apliciramo anihilacijski operator
+
+\[ \hat{n} a^{n + 1} \left| \phi_{\lambda} \right\rangle = \left( \lambda - n - 1 \right) a^{n + 1} \left| \phi_{\lambda} \right\rangle
+\]
+
+kar pa ni več možno, da je lastna vrednost negativna. Za \( \lambda = 7.2 \) je tako \( \lambda = -0.8 < 0 \), kar pa po točki 1 ni možno.
+
+Zanima nas ali je potem spekter degeneriran? Označimo \( \left| \phi_n \right\rangle = \left| n \right\rangle \). Ali obstaja potem še neko drugo stanje \( \left| \tilde{\phi}_n \right\rangle \), ki je prav tako rešitev tega stanja? Zato stanje potem tudi velja
+
+\[ \frac{a^n}{\sqrt{n+ 1}} \left| \tilde{\phi}_n \right\rangle = \left| \tilde{\phi}_0 \right\rangle \overset{?}{=} \left| \phi_0 \right\rangle
+\]
