@@ -1,0 +1,114 @@
+#+title: 3. vaje iz Elektromagnetnega polja
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Ploščati kondenzator s prečnim trakom - nadaljevanje
+
+Prostor med kondenzatorjema, omejen s trakom, ne vsebuje naboja in velja Laplaceova enačba
+
+\[ \nabla ^2 U \left( x, y \right) = 0
+\]
+
+Naboji se nahajajo na ploščah kondenzatorja in na traku. Za reševanje potrebujemo še robne pogoje (ang. /boundary conditions/ - BC). Na spodnji, ozemljeni plošči je \( U(x, 0) = 0 \). Zgornja plošča, ki je prav tako ozemljena, ima \( U(x, a) = 0 \). Trak ima napetost \( U(0, y) = U_0 \). Potrebujemo še četrti robni pogoj v neskončnosti, za katerega zahtevamo, da ne divergira.
+
+Za reševanje bomo uporabili metodo separacije spremenljivk \( U(x, y) = X(x), Y(y) \). Upoštevamo definicijo Laplaceovega operatorja v kartezičnih koordinatah in naš nastavek, da dobimo
+
+\[ X'' Y + X Y'' = 0  \implies \frac{X''}{X} = - \frac{Y''}{Y}
+\]
+
+Razmerji sta enaki samo, če sta konstantni \( \kappa ^2 \). To nam poda dve enačbi
+
+\begin{equation}
+\label{eq:1}
+ X'' - \kappa ^2 X= 0
+\end{equation}
+
+ter
+
+\begin{equation}
+\label{eq:2}
+Y'' + \kappa ^2 Y = 0
+\end{equation}
+
+S separacijo spremenljivk smo uspeli dobiti dve navadni diferencialni enačbi drugega reda. Enačbo \ref{eq:1} reši linearna kombinacija eksponentnih funkcij
+
+\[ X(x) = A e^{\kappa x} + B e^{- \kappa x},
+\]
+
+medtem ko enačbo \ref{eq:2} reši
+
+\[ Y(y) = C \sin (\kappa y) + D \cos (\kappa y)
+\]
+
+Upoštevajoč definicijo nastavka za separacijo spremenljivk je splošna rešitev
+
+\begin{equation}
+\label{eq:3}
+ U(x, y) =  \left[ A e^{\kappa x} + B e^{- \kappa x} \right] \left[  C \sin (\kappa y) + D \cos (\kappa y) \right]
+\end{equation}
+
+Zaradi robnega pogoja v neskončnosti je \( A = 0 \). Člen s koeficientom \( B \) bo na ploščah kondenzatorja vedno različen od \( 0 \). Edini način, da zadostimo robnemu pogoju \( U(x, 0) = 0 \), je, da velja \( D = 0 \).
+
+Našo splošno rešitev \ref{eq:3} smo sedaj oklestili do
+
+\begin{equation}
+\label{eq:4}
+U(x, y) = Be^{- \kappa x} C \cdot \sin (\kappa y)
+\end{equation}
+
+Pogoj na drugi plošči kondenzatorja je \( U(x, a) = 0 = B e^{-\kappa x} C \sin (a \kappa) \). Edini člen, ki je lahko ničeln, je sinus, torej
+
+\[ \sin (a \kappa) = 0 \implies a \kappa = n \pi, \ n = 1, 2, 3, \ldots
+\]
+
+\( n \ne 0 \), saj to implicira \( \kappa = 0 \) in nadalje \( U(x, y) = 0 \), kar pa je nezanimiva rešitev. Definiramo novo konstanto \( F = BC \).
+
+Kvantizirali smo našo rešitev, saj ima \( \kappa \) lahko samo določene vrednosti. \( n \)-to rešitev bomo označili z indeksom \( n \). Ta indeks bo prav tako imel pripadajoč koeficient.
+
+Vmesna rešitev \ref{eq:4} je superpozicija vseh možnih rešitev
+
+\[ U(x, y) = \sum\limits_{n = 1}^{\infty} F_n e^{- \kappa_n x} \sin (\kappa_n y)
+\]
+
+
+Za iskanje koeficientov bomo uporabili še zadnji neuporabljen robni pogoj \( U(0, y) = U_0 \). Nahajamo se v prostoru, kjer so \( \sin \left( \kappa_n y \right) = \sin \left( \frac{n \pi}{a} y \right) \) bazne funkcije. Skalarno bomo množili z neko drugo bazno funkcijo
+
+\begin{equation}
+\label{eq:5}
+ \int\limits_0^a U_0 \sin \left( \frac{m \pi}{a } y \right) \, \mathrm{d} y = \int\limits_0^a \sum\limits_{n = 1}^{\infty} F_n e^{- \kappa_n x} \sin \left( \frac{n \pi}{a} y  \right) \cdot \sin \left( \frac{m \pi}{a} y \right) \, \mathrm{d} y
+\end{equation}
+
+Leva stran enačbe je po integriranju enaka
+
+\[ \int\limits_0^a U_0 \sin \left( \frac{m \pi}{a} y \right) \, \mathrm{d} y = - \left. \frac{U_0a}{m \pi} \cos  \left( \frac{m \pi}{a} y \right) \right|_{y = 0}^{y = a} = \frac{U_0 a}{m \pi} \left[ 1 - (-1)^m \right]
+\]
+
+Argument kosinusa je vedno večkratnih števila \( \pi \), kar pomeni, da kosinus zaseda samo dve možno vrednosti \( 1 \) ali \( -1 \), odvisno od \( m \).
+
+Na desni strani enačbe \re{eq:5} si lahko zaradi predpostavk, ki jih zamolčimo, privoščimo menjavo integrala in vsote. Sinusne funkcije so si ortogonalne med seboj, zato je produkt sinusnih funkcij enak \( 0 \), če \( m \ne n \). Zapišemo
+
+\[ \sum\limits_{n = 1}^{\infty} F_n \int\limits_0^a \sin \left( \frac{n \pi}{a} y \right) \sin \left( \frac{m \pi}{a} y  \right) \, \mathrm{d} y= \sum\limits_{n = 1}^{\infty} F_n \delta_{mn} \int\limits_0^a \sin ^2 \left( \frac{m \pi }{a} y \right) \, \mathrm{d} y = \frac{F_m a}{2}
+\]
+
+Slednji integral se lahko reši na mnogo načinov, meni najljubši je \( \sin ^2 \alpha = \frac{1}{2} \left[ 1 -  \cos  2\alpha \right] \).
+
+Z enačenjem obeh strani enačbe dobimo, da so koeficienti enaki
+
+\begin{equation}
+\label{eq:6}
+ F_m = \frac{2 U_0}{\pi m} \left( 1 - (-1)^m \right)
+\end{equation}
+
+Koeficiente \ref{eq:6} vstavimo v vmesno rešitev
+
+\begin{equation}
+\label{eq:7}
+U(x, y) = \sum\limits_{n = 1}^{\infty} \frac{2U_0}{m \pi} \left( 1 - (-1)^m \right) \sin \left( \frac{m \pi}{a} y \right) e^{- \frac{m \pi}{a} x}
+\end{equation}
+
+Ostal pri 56.41, video 3.
