@@ -1,0 +1,133 @@
+#+title: 4. in 5. predavanje iz Kvantne mehanike
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Simetrije - unitarni operatorji
+** Translacija
+
+Grafično smo risali realen del \( \psi(x) \), nato pa smo narisali identično funkcijo \( \tilde{\psi}(x) \), ki pa je premaknjena za \( s \) in velja
+
+\[ \tilde{\psi}(x) = \psi(x - s)
+\]
+
+Za unitaren operator je značilno, da se ohranja skalarni produkt. Translacijo zapišemo
+
+\begin{align*}
+  U(s) \psi(x) &= \tilde{\psi}(x) = \psi(x - s) \\
+&= \psi(x) + s \frac{\partial }{\partial x} \psi(x) + \frac{s ^2}{2!} \frac{\partial ^2 }{\partial x ^2} \psi(x) + \ldots \\
+&= \exp \left\{ -s \frac{\partial }{\partial x}  \right\}\psi(x)
+\end{align*}
+
+V zadnji vrstici smo dobili zametek operatorja, vendar ga bomo sedaj nadomestili z gibalno količino \( p_x = - \mathrm{i} \hbar \frac{\partial }{\partial x}  \)
+
+\begin{equation}
+\label{eq:1}
+U(s) = \exp \left\{ - s \frac{\partial }{\partial x}  \right\} = \exp \left\{ - \mathrm{i} \frac{s p_x}{\hbar} \right\}
+\end{equation}
+
+Operator translacije \ref{eq:1} lahko zapišemo tudi v treh dimenzijah in sicer
+
+\[ U(\vec{s}) = \exp \left\{ - \mathrm{i} \frac{\vec{s} \cdot \vec{p}}{\hbar} \right\}
+\]
+
+kjer je produkt \( \vec{s} \cdot \vec{p} \) /generator premika/.
+** Rotacija, vrtenje
+
+Imamo valovno funkcijo \( \psi \left( \vec{r} \right) \), ki se nahaja na ravnini z vektorjem normale \( \vec{n} \). Funkcijo ravninsko zasučemo za kot \( \phi \) tako, da ostane na enaki razdalji od izhodišča. Zasukano funkcijo označimo z \( \psi \left( \vec{r}_1 \right) \), kjer je \( \vec{r}_1 = \vec{r} - \mathrm{d} \vec{r} \).
+
+Rotacija je infinitizimalno majhna, kar pomeni, da nam bo v pomoč tudi limita, ko gre \( \mathrm{d} \phi \to 0 \). Novi radij vektor \( \vec{r}_1 \) je vsota vektorjev \( \vec{r} \) in \( \mathrm{d} \vec{r} \), kjer sta tedva vektorja zaradi infinitizimalnosti pravokotnotna (glej sliko). Velja torej \( \mathrm{d} \vec{r} = \mathrm{d} \phi \vec{n} \times \vec{r} \).
+
+Unitarna opracija bo po razvoju po Taylorju
+
+\begin{align*}
+  U \left( \mathrm{d} \phi \vec{n} \right) \psi(r) &= \psi \left( \vec{r} - \mathrm{d} \vec{r} \right) \\
+&= \psi \left( \vec{r}  \right) - \mathrm{i} \mathrm{d} \phi \frac{\left( \vec{n} \times \vec{r} \right) \vec{p}}{\hbar} \psi \left( \vec{r} \right) + o \left( \mathrm{d} \phi ^2 \right) \\
+&= \left( I -  \mathrm{i} \mathrm{d} \phi \frac{\left( \vec{n} \times \vec{r} \right) \cdot \vec{p}}{\hbar} \right) \psi \left( \vec{r} \right) + o \left( \mathrm{d} \phi ^2 \right) \\
+&= \left( I - \mathrm{i} \mathrm{d} \phi \frac{\vec{n} \cdot \left( \vec{r} \times \vec{p} \right)}{\hbar} \right) \psi \left( \vec{r} \right) + \ldots
+\end{align*}
+
+
+Definiramo operator vrtilne količine \( \vec{L} = \vec{r} \times \vec{p} \). Izpeljani operator
+
+\[ U \left( \mathrm{d} \phi \vec{n} \right) = \left( I - \mathrm{i} \mathrm{d} \phi \frac{\vec{n} \cdot \vec{L}}{\hbar} \right) \psi + \ldots
+\]
+
+še ni uporaben, saj obravnavamo zgolj majhen premik
+
+[[file:~/Downloads/This-is-Worthless.png]]
+
+Namesto tega predpostavimo, da naredimo \( N \) majhnih premikov, kjer gre \( N \) proti neskončno. Torej
+
+\[ U \left( \phi \vec{n} \right) = \left. \left( I - \mathrm{i} \frac{\phi}{N} \frac{\vec{n} \cdot \vec{L}}{\hbar} \right)^N \right|_{N \to \infty} = \exp \left\{ - \mathrm{i} \phi \frac{\vec{n} \cdot \vec{L}}{\hbar} \right\}
+\]
+
+Dobili smo torej operator rotacije
+
+\[ U \left( \vec{\phi} \right) = \exp \left\{ - \mathrm{i} \frac{\vec{\phi} \cdot \vec{L}}{\hbar} \right\}
+\]
+
+kjer je \( \vec{\phi} = \phi \cdot \vec{n} \) ter je \( \vec{\phi} \cdot \vec{L} \) generator.
+** Inverzija prostora
+
+Obravnavamo operacijo in iščemo operator \( \Pi \), da velja
+
+\[ \Pi \psi \left( \vec{r} \right) = \psi \left( - \vec{r} \right)
+\]
+
+V eni dimenziji za operator inverzije velja
+
+\begin{align*}
+  \psi(x) &\to \psi(- x) \\
+\frac{\mathrm{d} }{\mathrm{d} x} &\to - \frac{\mathrm{d} }{\mathrm{d} x}, \quad p \to -p \\
+\frac{\mathrm{d} ^2 }{\mathrm{d} x ^2} &\to \frac{\mathrm{d} ^2 }{\mathrm{d} x ^2}, \quad p ^2 \to p ^2
+\end{align*}
+
+Naj imamo sod potencial \( V(x) = V(- x) \). Hamiltonian je po definiciji \( H = \frac{ p ^2}{2m} + V \). Zaradi zgoraj izpeljanih lastnosti velja
+
+\[ \Pi H = H \Pi \implies \left[ \Pi H \right] = 0
+\]
+
+Torej bodo rešitve enačbe
+
+\[ H \psi(x) = E \psi(x),
+\]
+
+na kateri smo opravili inverzijo prostora
+
+\[ \Pi H \psi = H \Pi \psi(x) = H \psi(- x) = E \psi(-x)
+\]
+
+enake
+
+\[ \psi_{\pm} (x) = \frac{1}{\sqrt{2}} \left( \psi(x) \pm \psi(- x) \right),
+\]
+
+saj je rešitev soda. Če energija \( E \) ni degenerirana, to pomeni, da \( \psi \) soda ali liha.
+** Obrat časa (time reversal) :Sakurai_QM_book:
+
+Obravnavajmo najprej klasično mehanski primer. Imejmo delec, ki se giblje po trajektoriji \( \vec{r} (t) \) s hitrostjo \( \vec{v} \). V primeru, če se začne gibati s hitrostjo \( - \vec{v} \), se bo gibal nazaj po isti trajektoriji. To nam nakažejo tudi gibalne enačbe, saj za obrat časa \( t \to - t \) in posledično \( \vec{r} (t) \to \vec{r} (- t) \) velja
+
+\begin{align*}
+  m \oddv{r} &= \vec{F} (\vec{r}) \\
+m \oddv{r} (t) &= \vec{F} (\vec{r} (t)) && t \to - t \\
+m \oddv{r} (-t) &= \vec{F} \left( \vec{r} (- t) \right)
+\end{align*}
+
+Velja \( \frac{\mathrm{d} ^2 }{\mathrm{d} t ^2} = \frac{\mathrm{d} ^2 }{\mathrm{d} t ^2} \).
+
+Za valovno enačbo
+
+\[ \frac{\partial ^2 u}{\partial x ^2} = \frac{1}{c ^2} \frac{\partial ^2 }{\partial t ^2}  u(x, t)
+\]
+
+katere rešitev je
+
+\[ u = \sin \left( k x - \omega t \right) = \sin \left( k (x - vt) \right) = \sin \left( k (x + vt) \right)
+\]
+
+pa je obrat časa zaznaven. Pri klasični mehaniki, če zanemarimo entropijo, ne ločimo med obratom časa.
