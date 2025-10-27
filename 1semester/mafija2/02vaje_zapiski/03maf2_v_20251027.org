@@ -74,3 +74,175 @@ Vstavimo v enačbo še prvo enačbo \ref{eq:2} in po nekaj matematičnih zablode
   T &= \frac{1}{1 - \frac{k \mathrm{i}}{\kappa_0}} \\
 R &= \frac{- 1}{\frac{\mathrm{i} k}{\kappa_0} + 1}
 \end{align*}
+* Naloga 8
+#+begin_problem
+Združimo dve opni z različnima gostotama \( \rho_1 \) in \( \rho_2 \). Po opni od leve proti desni pošljemo valovanje \( \vec{k}_0 = k_0 \left( \cos \alpha, \sin \alpha \right) \). Opna z gostoto \( \rho_1 \) se nahaja pri \( x < 0 \). Hitrost valovanja po prvi opni je \( c_1 \), po drugi opni pa \( c_2 \).
+#+end_problem
+
+Valovanje se na spoju \( x = 0 \) odbije in prepusti. Odbito valovanje označimo s \( \vec{k}_1 = k_1 \left( - \cos \beta, \sin \beta \right) \), prepuščeno valovanje pa s \( \vec{k}_2 = k_2 \left( \cos \gamma, \sin \gamma \right)  \).
+
+Zaradi ohranjanja frekvence in identitete \( \omega = k_0 c _1 \) sledi, da je
+
+\[ k_1 = \frac{\omega}{c_1} = k_0
+\]
+
+Hkrati pa za prepuščeno valovanje sledi \( k_2 = \frac{\omega}{c_2} \).
+
+Rešitev bo oblike
+
+\[ u \left( \vec{r}, t \right) = \begin{cases}
+                                  u_L \left( \vec{r}, t \right) &; x < 0 \\
+                                  u_D \left( \vec{r}, t \right) &; x > 0
+                                 \end{cases}
+\]
+
+Imamo dva robna pogoja:
+
+1) zveznost
+
+   \[ u_L (0, y, t) = u_D (0, y, t)
+   \]
+
+2) zvezno odvedljivost
+
+   \[ \partial_x u_L (0, y, t) = \partial_x u_D \left( 0, y, t \right)
+   \]
+
+Vemo, da bo rešitev oblike
+
+\begin{align*}
+  u_L \left( \vec{r}, t \right) &= e^{\mathrm{i} \left( \vec{k}_0 \vec{r} - \omega t \right)} + R e^{\mathrm{i} \left( \vec{k}_1 \vec{r} - \omega t \right)} \\
+u_D \left( \vec{r}, t \right) &= T e^{\mathrm{i} \left( \vec{k} \vec{r} - \omega t \right)}
+\end{align*}
+
+Zveznost nam da enakost
+
+\[ e^{\mathrm{i} \left( k_0 \sin \alpha \gamma - \omega t \right)} + R e^{\mathrm{i} \left( k \sin \beta y - \omega t \right)} = T e^{\mathrm{i} \left( k_2 \sin \gamma y - \omega t \right)}
+\]
+
+Za \( y = 0 \) dobimo pogoj
+
+\begin{equation}
+\label{eq:3}
+1 + R = T
+\end{equation}
+
+Uporabimo identiteto
+
+\[ \sin \left( u_1 x \right) = \sin \left( u_2 x \right) \implies u_1 = u_2.
+\]
+
+in upoštevamo, da je sistem translacijsko invarianten na \( y \), zato tudi velja
+
+\begin{equation}
+\label{eq:4}
+ k_0 \sin \alpha = k_0 \sin \beta = k_2 \sin \gamma
+\end{equation}
+
+To se da nadalje preobraziti v
+
+\[ \frac{\sin \alpha}{c_1} = \frac{\sin \beta}{c_1} = \frac{\sin \gamma}{c_2}
+\]
+
+kjer je prvi enačaj \( \alpha = \beta \) odbojni zakon, drugi enačaj pa lomni zakon.
+
+Uporabimo še drugi robni pogoj, kjer smo takoj pokrajšali eksponent, saj velja \ref{eq:4}. Dobimo enačbo
+
+\[ T k_2 \cos \alpha = \left( 1 + R \right) k_2 \cos \gamma
+\]
+
+Z upoštevanjem \ref{eq:4} dobimo
+
+\[ R = \frac{\cos \alpha - \frac{c_1}{c_2} \sqrt{1 - \frac{c_2 ^2}{c_1 ^2} \sin ^2 \alpha }}{\cos \alpha + \frac{c_1}{c_2} \sqrt{1 - \frac{c ^2_2}{c ^2_1} \sin ^2 \alpha}}
+\]
+* Naloga 9 (Prinčič 3.4) - doma
+* Naloga 10 (Prinčič 3.5)
+
+#+begin_problem
+Imamo končno struno, ki je napeta med stenama, ki sta na razdalji \( l \). Rešujemo valovno enačbo
+
+\[ \frac{\partial ^2 u}{\partial t ^2} = c ^2 \frac{\partial ^2 u}{\partial x ^2}
+\]
+
+Imamo tudi dva robna pogoj
+
+1) \( u(x = 0, t) = 0 \)
+2) \( u(x = L, t) = 0 \)
+
+Hkrati pa tudi začetna pogoja
+
+1) oblika strune je trikotna
+
+   \[ u(x, t = 0) = \begin{cases}
+                    \frac{2a}{l} x &; x < \frac{l}{2} \\
+                    \frac{2a}{l} (l - x) &; x > \frac{l}{2}
+                    \end{cases}
+   \]
+
+2) in struna miruje \( \partial_t u (x, t = 0) = 0 \)
+#+end_problem
+
+Reševali bomo s pomočjo separacije spremenljivk \( u(x, t) = X(x) T(t) \). Po izpeljavi, kakor je bila narejena na predavanjih, velja
+
+\[ T_n (t) = A_n \cos \left( \omega_n t \right) + B_n \sin \left( \omega_n t \right), \quad X_n (x) = C_n \cos \left( k_n x \right) + D_n \left( k_n x \right)
+\]
+
+kjer velja \( \omega = k c \).
+
+Z upoštevanjem prvega robnega pogoja \( u(x - 0, t) = 0 \) dobimo enakost \( X(0) = 0 \) in posledično \( C_n = 0 \). Drugi robni pogoj \( u(x = l, t) = 0 \) nam poda \( X(l) = D_n \sin (k_n l) = 0 \) in nadalje
+
+\[ k_n l = n \pi, \ n = 1, 2, 3, \ldots
+\]
+
+Četrti robni pogoj \( \partial_t u(x, t = 0) = 0 \) pa nam po izračunu odvoda
+
+\[ \partial_t u = X(x) \left[ A_n \omega_n \sin \left( \omega_n t \right) - B_n \omega_n \cos \left( \omega_n t \right) \right],
+\]
+
+poda enakost \( -B_n \omega_n = 0 \) in posledično \( B_n = 0 \).
+
+Z upoštevanjem \( \omega = kc \) je delna rešitev po upoštevanjih zgornjih pogojev
+
+\[ u(x, t) = \sum\limits_n^{} G_n \cos \left( \frac{n \pi c}{l} t \right) \sin \left( \frac{n \pi}{l} x \right) , G_n = D_n A_n
+\]
+
+Upoštevamo še zadnji, tretji, pogoj
+
+\begin{equation}
+\label{eq:5}
+ \sum\limits_n^{} G_n \sin \left( \frac{n \pi}{l} x \right) = u(x, t = 0)
+\end{equation}
+
+#+begin_note
+  Pri matematiki 4 smo dokazali, da je baza \( \left\{ \sin \left( \frac{n \pi}{l} x \right) \right\}_{n = 1}^{\infty} \) so kompletni ortogonalni sistem (KOS) v \( L ^2 ([0, L]) \). Skalarni produkt v \( L ^2 \) je definiran kot
+
+  \[ \left\langle f, g \right\rangle = \int\limits_0^L f(x) g(x) \, \mathrm{d} x
+  \]
+
+  Velja za \( f \in L ^2 \)
+
+  \[ f = \sum\limits_{b \in KOS}^{} \frac{\left\langle f, b \right\rangle}{\left\langle b, b \right\rangle} b
+  \]
+#+end_note
+
+Enačbo \ref{eq:5} skalarno pomnožimo, da dobimo
+
+\[ \left\langle u(x, t = 0), \sin \left( \frac{m \pi}{l} x \right) \right\rangle = \int\limits_0^l \sin \left( \frac{m \pi}{l} x \right) u(x, t = 0) \, \mathrm{d} x = \int\limits_0^l \sum\limits_n^{} G_n \sin \left( \frac{n \pi}{l} x \right) \sin \left( \frac{m \pi}{l} x \right) \, \mathrm{d} x = \frac{l}{2} \delta_{mn}
+\]
+
+#+begin_quote
+Integral na levi strani lahko prepišemo, malo poračunamo in potem obupamo.
+#+end_quote
+
+\[ G_n \frac{l}{2} = \int\limits_0^{\frac{l}{2}} \sin \left( \frac{m \pi}{L} x \right) \frac{2 a x}{l} \, \mathrm{d} x + \int\limits_{\frac{l}{2}}^l \sin \left( \frac{m \pi}{l} x \right) \frac{2a}{l} (l - x) \, \mathrm{d} x
+\]
+
+Končna rešitev je
+
+\[ G_n = \frac{32 a}{\pi ^2 n ^2} \sin ^3 \frac{\pi n}{4} \cos \frac{\pi m}{ 4} = \begin{cases}
+                                                                                   0 &; \mathrm{m} sod \\
+                                                                                   \frac{8a}{\pi ^2 m ^2} \left( -1 \right)^{\frac{m - 1}{2}} &; m \text{ lih}
+                                                                                  \end{cases}
+\]
+
+Za konec vstavimo v prejšnjo delno rešitev.
