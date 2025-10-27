@@ -131,3 +131,154 @@ katere rešitev je
 \]
 
 pa je obrat časa zaznaven. Pri klasični mehaniki, če zanemarimo entropijo, ne ločimo med obratom časa.
+
+Obravnavajmo Schrödingerjevo enačbo, kjer je Hamiltonian neodvisen od časa
+
+\[ \mathrm{i} \hbar \frac{\partial }{\partial t}  \psi(x, t) = H \psi(x, t)
+\]
+
+\( \psi(x, - t) \) ne reši enačbe, medtem kot \( \psi^{\ast} (x, - t) \) pa je. To lahko hitro preverimo, saj
+
+\[ \mathrm{i} \hbar \frac{\partial }{\partial t}  \psi^{\ast} (x, - t) = H \psi^{\ast} (x, - t)
+\]
+
+Uvedemo operator konjugacije \( K \), ki \( z \in \mathbb{C} \) priredi njegovo konjugirano vrednosti:
+
+\[ K z = z^{\ast}
+\]
+
+V splošnem primeru, če \( z \) sledi še kakšna druga zadevščina \( \left\langle \cdot \right\rangle \), ki je lahko kompleksno konjugirana, potem
+
+\begin{equation}
+\label{eq:3}
+ K z \left\langle \cdot \right\rangle  = z^{\ast} K \left\langle \cdot \right\rangle
+\end{equation}
+
+Operator obrata časa v kvantni mehaniki je ravno \( K \). Imamo valovno funkcijo \( \psi(x, t) = \exp \left\{ \mathrm{i} \frac{px}{\hbar} - \mathrm{i} \omega t \right\} \), na katerom delujemo z operatorjem obrata časa
+
+\[K \psi = \psi^{\ast} = \exp \left\{ - \mathrm{i} \frac{p x}{\hbar} + \mathrm{i} \omega t \right\} \\
+\]
+
+Če delujemo z operatorjem časa na valovno funkcijo \( \psi(x, - t) = \exp \left\{ \mathrm{i} \frac{px}{\hbar} + \mathrm{i} \omega t \right\} \), pa dobimo
+
+\[ K \psi(x, - t) =  \exp \left\{ - \mathrm{i} \frac{px}{\hbar} - \mathrm{i} \omega t \right\},
+\]
+
+kjer je \( \omega t = \frac{E t}{\hbar} \). Tukaj tudi pridemo do spoznanja, da operator obrata časa ne obrne časa nazaj, kakor da bi film nazaj vrteli, ampak obrne hitrost!
+
+\begin{align*}
+  \vec{p} & t\to - \vec{p} \\
+\vec{L} &\to - \vec{L}
+\end{align*}
+
+[vstavi sliko primera]
+
+Poglejmo si lastna stacionarna stanja
+
+\[ H \psi = E \psi,
+\]
+
+na katero apliciramo operator obrata časa
+
+\[ K H \psi = H K \psi = H \psi^{\ast} = E \psi^{\ast}
+\]
+
+Rešitve te enačbe so
+
+\[ \psi_{R, I} = \frac{1}{\sqrt{2}} e^{\mathrm{i} \delta} \left( \psi \pm \psi^{\ast} \right)
+\]
+
+kjer je \( \psi_R \in \mathbb{R} \) in \( \psi_I = \frac{\mathrm{i}}{\sqrt{2}} \left( \psi - \psi^{\ast} \right) \in \mathrm{i} \mathbb{R} \). V primeru, če \( E \) ni degenerirana, potem \( \psi \in \mathbb{R} \).
+** Umeritvena transformacija (ang., nem. /gauge/)
+
+Umeritvena transformacija ima sledeč učinek
+
+\[ \psi(x, t) \to e^{\mathrm{i} \delta} \psi(x, t) = \tilde{\psi},
+\]
+
+kjer je \( \delta \in \mathbb{R} \) konstanta. Če imamo umeritveno transformacijo na vse elemente v našem prostoru, ji pravimo, da je globalna umeritvena transformacija
+
+\[ \phi_n \to e^{\mathrm{i} \delta} \phi_n = \tilde{\phi}
+\]
+
+Za umeritvene transformacije velja, da ohranjajo skalarni produkt
+
+\[ \left\langle \phi \middle| A \middle| \psi \right\rangle = \left\langle \tilde{\phi} \middle| A \middle| \tilde{\psi} \right\rangle = e^{- \mathrm{i} \delta} e^{\mathrm{i} \delta} \left\langle \phi \middle| A \middle| \psi \right\rangle
+\]
+* Vrtilna količina
+
+Srečali smo jo (prvič) pri rotacijski simetriji
+
+\[ \vec{L} = \vec{r} \times \vec{p}.
+\]
+
+Za začetek nas zanima, če je operator vrtilne količine hermitski. Pred nadaljevanjem samo spomnimo na nekaj identitet
+
+\begin{align}
+  x^{\dagger} &= x \\
+p ^{\dagger} &= p \\
+\left( AB \right) ^{\dagger} &= A^{\dagger} B^{\dagger}
+\end{align}
+
+Vrtilno količino zapišemo kot
+
+\[ L^{\dagger} = \left( \sum\limits_{\beta, \gamma}^{} \epsilon_{\alpha\beta\gamma} x_{\beta} p_{\gamma} \right) ^{\dagger} = \sum\limits_{\beta \gamma}^{} \epsilon_{\alpha \beta\gamma} p_{\gamma} ^{\dagger} x_{\beta} ^{\dagger} = \sum\limits_{\beta \gamma}^{} \epsilon_{\alpha \beta \gamma} x_{\beta} p_{\gamma} = L
+\]
+
+kjer smo upoštevali nekaj glede komutacije \( x \) in \( p \).
+
+Velikost operatorja vrtilne količine je enaka
+
+\[ L ^2 = \vec{L} \cdot \vec{L} = \sum\limits_{\alpha}^{} L_{\alpha} ^2
+\]
+** (Glavne) lastnosti vrtilne količine
+*** Uvod
+
+Spomnimo
+
+\begin{align*}
+  \left[ x_{\alpha}, x_{\beta} \right] &= 0 \\
+\left[ x_{\alpha}, p_{\beta} \right] &= \mathrm{i} \hbar \delta_{\alpha\beta}
+\end{align*}
+
+Komutacija vrtilnih količin v smeri \( x \) in \( y \) je enaka
+
+\begin{align*}
+  \left[ L_x, L_y \right] &= \left[ y p_z - z p_y, z p_x - x p_z \right] \\
+&= \left[ y p_z, z p_x \right] - \underbrace{\left[ p_y z, zp_x \right]}_{= 0} - \underbrace{\left[ yp_z, xp_z \right]}_{= 0} + \left[ p_y z, x p_z \right] \\
+&= y p_x \left[ p_z, z \right] + x p_y \left[ z, p_z \right] \\
+&= \mathrm{i} \hbar \left( x p_y - y p_x \right) = \mathrm{i} \hbar L_z
+\end{align*}
+
+kjer je \( L_z = xp_y - yp_x \).
+
+V splošnem torej velja
+
+\begin{equation}
+\label{eq:2}
+ \left[ L_{\alpha}, L_{\beta} \right] = \mathrm{i} \hbar \epsilon_{\alpha \beta \gamma} L_{\gamma}
+\end{equation}
+
+Enačba \ref{eq:2} je zelo pomembna zveza.
+
+Velja tudi
+
+\[ \left[ L_{\alpha}, A_{\beta} \right] = \mathrm{i} \hbar \epsilon_{\alpha \beta \gamma} A_{\gamma},
+\]
+
+če je \( \vec{A} \) vektorski operator. Vektorski operator je operator, ki se pri rotaciji prostora, transformira kot vektor (aka uporabiš rotacijsko matriko). Primere takih vektorski operatorjev je so vrtilna količina \( \vec{L} \), radij vektor \( \vec{r} \) in gibalne količine \( \vec{p} \).
+*** z \( \vec{L} \) komutirajoči operatorji
+
+Iščemo operatorje, ki komutirajo z vrtilno količino, saj v tem primeru lahko uporabimo (neke?) lastne vrednosti. Matematično zapisano
+
+\[ \left[ \vec{L}, A \right] = 0
+\]
+
+Rotacijski operator na \( A \) zapišemo kot
+
+\[ U \left( \vec{\phi} \right) A = A U \left( \vec{\phi} \right),
+\]
+
+kjer smo to zapisali za isto lastnost kot \ref{eq:3}. Če za vsako rotacijo \( \phi \) velja \( \left[ U, A \right] = 0 \), potem je \( A \) skalar. Posledično velja \( \left[ \vec{L}, A \right] = 0 \).
+
+Količine \( A = 0 \), \( \vec{r}, \vec{r} = r ^2 \), \( \vec{p} \cdot \vec{p} = p ^2 \), \( V \left( \vec{r} \right) = V(r) \), \( H = \frac{p ^2}{2m} + V(x) \) in \( L ^2 \) komutirajo z vsako komponento.
