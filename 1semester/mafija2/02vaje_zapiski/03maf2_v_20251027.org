@@ -1,0 +1,76 @@
+#+title: 3. vaje iz Matematične fizike
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* 7. naloga
+#+begin_problem
+Imamo neskončno struno, ki ima na točki \( x_0 = 0 \) maso \( m \). Po struni pošljemo valovanje s krožno frekvenco \( \omega \).
+#+end_problem
+
+Imamo valovanje \( \exp \left\{ \mathrm{i} (kx - \omega t) \right\} \), kjer je \( \omega = ck \) in rešujemo valovno enačbo
+
+\[ \partial_x ^2 u = c ^2 \partial_t ^2 u
+\]
+
+Dolžinsko gostoto zapišemo kot
+
+\[ \mu = \mu_0 + m \delta(x)
+\]
+
+Maso bomo premaknili samo, če nanju delujemo z neko silo \( F_m \)
+
+\[ F_m = \left. F \frac{\mathrm{d} u}{\mathrm{d} x} \right|_{0^-}^{0^+}
+\]
+
+Ko valovanje pride do mase, se ga bo določen del odbil, določen del pa prepustil skozi. Torej
+
+\begin{equation}
+\label{eq:1}
+ u(x, t) = \begin{cases}
+             u_L (x, t) = e^{\mathrm{i} (k x- \omega t)} + R e^{\mathrm{i} (-kx - \omega t)}&;  x < 0; \\
+             u_D (x, t) = T e^{\mathrm{i} (k x - \omega t)} &;  x \ge 0
+             \end{cases}
+\end{equation}
+
+Imamo dva robna pogoja
+
+1) zveznost
+
+   \[ u_L (0, t) = u_D (0, t),
+   \]
+
+   saj ne želimo, da se struna strga, ter
+
+2) 2. Newtonov zakon
+
+   \[ m \ddot{u}_L (0, t) = \left. F \frac{\mathrm{d} u}{\mathrm{d} x} \right|_{0^-}^{0^+}
+   \]
+
+Zveznost in enačba \ref{eq:1} nam podasta pogoj
+
+\begin{equation}
+\label{eq:2}
+ 1 + R = T
+\end{equation}
+
+Drugi pogoj lahko prepišemo v
+
+\[ m \ddot{u}_L (0, t) = F \left[ \left. \frac{\mathrm{d} u_D}{\mathrm{d} x} \right|_{x = 0} - \left. \frac{\mathrm{d} u_{L}}{\mathrm{d} x} \right|_{x = 0}  \right]
+\]
+
+Vstavimo nastavke enačb \ref{eq:2} in dobimo še drugo enačbo
+
+\[ \mathrm{i} k F (T - 1 + R) = - m T \omega ^2.
+\]
+
+Vstavimo v enačbo še prvo enačbo \ref{eq:2} in po nekaj matematičnih zablodenj in uvedbo \( \frac{2FF}{m \omega ^2} = \frac{1}{\kappa_0} \) dobimo
+
+\begin{align*}
+  T &= \frac{1}{1 - \frac{k \mathrm{i}}{\kappa_0}} \\
+R &= \frac{- 1}{\frac{\mathrm{i} k}{\kappa_0} + 1}
+\end{align*}
