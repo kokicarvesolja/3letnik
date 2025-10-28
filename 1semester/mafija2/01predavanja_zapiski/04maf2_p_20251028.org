@@ -92,3 +92,88 @@ Za harmonični zvok je
 
 \[ \overline{\vec{\jmath}} = \frac{1}{2} \mathrm{Re} \left( \partial p \vec{v}^{\ast} \right)
 \]
+
+** Zvok v 3D (Goldbart 6.3.4)
+Pri pojemanju amplitude (npr. eksplozija), ki pada s kvadratom razdalje, lahko zapišemo s pomočjo d'Alembertovega principa
+
+\[ \phi \left( r, t \right) = \frac{f(r - ct)}{r} + \frac{g(r + ct)}{r}
+\]
+
+Funkcija \( g(r + ct) \) predstavlja implozijo, ki jo zanemarimo.
+
+[ogled posnetka eksplozije, ki jo sedaj poskušamo razumeti]
+
+Gledamo radialno hitrost \( v = v(r) \), ki jo po definiciji potenciala lahko zapišemo
+
+\[ v = - \frac{\partial \phi}{\partial r} = - \frac{f' \left( r - ct \right)}{r} + \frac{f(r - ct)}{r ^2}
+\]
+
+Prvemu členu se v žargonu reče "far-field", saj ima vpliv šele na večje razdalje, drugemu členu pa "near-field" iz analognega razloga.
+* Difuzijska enačba
+** Izpeljava
+
+Imamo površino, skozi katero izhaja energija navzven. Skozi čas sistem izgublja energije
+
+\[ - \frac{\mathrm{d} E}{\mathrm{d} t} = \int\limits_{}^{} \vec{\jmath} \, \mathrm{d} \vec{S} = \int\limits_{}^{} \rho \, \mathrm{d} V - \int\limits_{}^{} \rho c_{\rho} \frac{\partial T}{\partial t} \, \mathrm{d} V
+\]
+
+kjer je \( \rho \) gostota energije izvorov. \( \rho \, \mathrm{d} V = \mathrm{d}m \), hkrati pa sistem izgublja temperaturo in je koeficient naklona negativen. Površinski integral z gostoto energijskega toka lahko prevedemo na volumnski integral preko identitete
+
+\[ \int\limits_{}^{} \vec{\jmath} \, \mathrm{d} S = \int\limits_{}^{} \mathrm{div} \vec{\jmath} \, \mathrm{d} V
+\]
+
+Imamo tri volumnske integrale in z enačitvijo integrandov, dobimo
+
+\[ \mathrm{div} \vec{\jmath} - q + \rho c_p \frac{\partial T}{\partial t}  = 0
+\]
+
+Preko fenomenološkega Fourierovega zakona
+
+\[ \vec{\jmath} = - \lambda \nabla T
+\]
+
+dobimo
+
+\[ - \lambda \nabla ^2 T - q + \rho c_p \frac{\partial T}{\partial t}  = 0
+\]
+
+in smo prišli do izraza difuzijske enačbe
+
+\[ \frac{\partial T}{\partial t}  = D \nabla ^2 T + \frac{q}{\rho c_p} , \ D = \frac{\lambda}{\rho c_p}
+\]
+
+Difuzijska konstanta \( D \) ima enote \( \left[ \frac{m ^2}{s} \right] \). Preko dimenzijske analize lahko s pomočjo karakteristik telesa tudi dobimo difuzijsko konstanto \( D = \frac{1}{3} \bar{v} \bar{l} \).
+
+V primeru, da smo v premikajočem sistemu postane odvod po času
+
+\[ \frac{\partial T}{\partial t}  \to \frac{\partial T}{\partial t}  + \left( \vec{v} \cdot \nabla \right)T
+\]
+** Robni pogoji
+
+Imamo več različnih robnihh pogojev. Pogoj je lahko, da je na robu temperatura \( T_{rob} = 0 \). Drug možni robni pogoj je \( \frac{\partial T}{\partial n} + \Lambda \left( T - T_0 \right) = 0 \) oziroma, če je izolirano, potem \( \frac{\partial T_{rob }}{\partial n}  = 0 \). Obstaja tudi Newtonov ali Robinov robni pogoj \( \frac{\partial T}{\partial n}  + \alpha T = 0 \) in pa tudi Štefanov (sevalni), nelinearen, robni pogoj \( \frac{\partial T}{\partial n} \sim T ^4 \)
+** Neskončno sredstvo
+
+Rešujemo difuzijsko enačbo v neskončnem sredstvu
+
+\[ \frac{\partial T}{\partial t}  = D \frac{\partial ^2 T}{\partial x ^2}
+\]
+
+Enačba je tudi invariantna na zamenjavi \( t \to k ^2 t \) in \( x \to k x \). Če je enačba invariantna na tako zamenjavo, pravimo, da je /skalirno invariantna/. Z izbiro skalarja \( k = \frac{1}{\sqrt{t}} \) difuzijska enačba postane funkcija ene spremenljivke \( s = \frac{x}{\sqrt{t}} \)
+
+\[ T(x, t) = T \left( k x, k ^2 t \right) = T \left( \frac{x}{\sqrt{t}}, 1 \right) = f \left( \frac{x}{\sqrt{t}} \right) = f(s)
+\]
+
+Odvoda nove spremenljivke sta
+
+\[ \frac{\partial s}{\partial x}  = \frac{1}{\sqrt{t}}, \ \frac{\partial s}{\partial t}  = - \frac{1}{2} \frac{x}{\sqrt{t}} \frac{1}{t} = - \frac{1}{2} s \frac{1}{t}
+\]
+
+Verižno odvajanje nam poda enakost \( \frac{\partial }{\partial t} = \frac{\partial }{\partial s} \frac{\partial s}{\partial t}   \), ki jo uporabimo pri preobrazbi difuzijske enačbe
+
+\[ f' \frac{\partial s}{\partial t}  = D \frac{\partial }{\partial x} \left( \frac{\partial f}{\partial s}  \frac{\partial s}{\partial x}  \right)
+\]
+
+in nadalje
+
+\[ f' \left( - \frac{s}{2t} \right) = D \left( \frac{1}{\sqrt{t}} \right) ^2 f''
+\]
