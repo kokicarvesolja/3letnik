@@ -1,0 +1,94 @@
+#+title: 4. predavanje iz Matematične fizike
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Zvok
+
+Imamo sistem enačb, ki ga sestavljajo Navier-Stokesova enačba, kontinuitetna enačba in gostota funkcije
+
+\begin{align*}
+  \rho \left( \frac{\partial }{\partial t} \vec{v} + \left( \vec{v} \cdot \nabla \right) \vec{v} \right) &= - \nabla p +\eta \nabla ^2 \vec{v} + \vec{f}\\
+\frac{\partial }{\partial t}  \rho + \mathrm{div} \left( \rho \vec{v} \right) &= 0 \\
+\rho &= g (p)
+\end{align*}
+
+V zgornjih enačbah zanemarimo \( \left( v \cdot \nabla \right) v \), saj je \( \frac{v}{c} \ll 1 \), \( \eta \to 0 \), saj \( \frac{\eta}{\rho c} \ll \lambda \), kjer je \( \lambda \) valovna dolžina. Ulomek \( \frac{\eta}{\rho c} \) je v zraku povprečna prosta pot molekule. Zanemarimo tudi \( \vec{f} = 0 \).
+
+Definiramo amplitudo tlaka \( \delta p = p - p_0 \ll p_0 \) ter \( \delta \rho \ll \rho_0 \).
+
+S temi popravki sedaj ponovno zapišemo zgornjo množico enačb
+
+\begin{align*}
+  \rho_0 \vec{v}_t &= - \nabla \delta p \\
+\delta \rho_t + \rho_0 \mathrm{div} \vec{v} &= 0 \\
+\frac{\delta \rho_0}{\rho_0} &= \chi_s \delta p
+\end{align*}
+
+kjer je \( \chi_s = \frac{1}{p \cdot K} \) adiabatna stisljivost.
+
+Želimo izraziti enačbo v odvisnosti od tlaka \( p \). Kontinuitetno enačbo odvajamo po času
+
+\[ \delta \rho_{tt } + \rho_0 \mathrm{div} \vec{v}_t =0
+\]
+
+Nadomestimo \( \vec{v}_t \) z izrazom iz Navier-Stokesa, ter na koncu še namesto \( \delta \rho_{tt } \) upoštevamo gostoto
+
+\[ \delta \rho_{tt } + \rho_0 \mathrm{div} \left( - \frac{1}{\rho_0} \nabla \delta p \right) = \rho_0 \chi_s \delta p_{tt } - \nabla ^2 \delta p = 0
+\]
+
+Dobili smo valovno enačbo
+
+\[ \delta p_{tt} = c ^2 \nabla ^2 \delta p ,  \ c ^2 = \frac{1}{\rho \chi_s}
+\]
+
+Če je \( \mathrm{rot} \vec{v} = 0 \), potem je polje brezvrtinčno in lahko hitrost zapišemo kot
+
+\begin{equation}
+\label{eq:1}
+\vec{v} = - \nabla \phi
+\end{equation}
+
+kjer je \( \phi \) hitrostni potencial. Navier-Stokesa (pokrajšanega) lahko zapišemo kot
+
+\begin{equation}
+\label{eq:2}
+ \rho_0 \left( - \nabla \phi_t \right) = - \nabla \delta p  \implies \rho_o \phi_t = \delta p
+\end{equation}
+
+Odstranili smo odvode, saj sta člena enaka v odvodih, kar pomeni, da sta največ za konstanto narazen po integriranju in za to konstanto lahko rečemo, da je \( 0 \). Če nadaljujemo z valovno enačbo in nadomestimo izraz \( p \) z \ref{eq:2}, da dobimo
+
+\[ \phi_{tt } = c ^2 \nabla ^2 \phi
+\]
+
+Poglejmo si še robni pogoje: pri trdni steni se delci ustavijo, torej bo \( \frac{\partial \phi}{\partial n} = 0 \), kjer je \( n \) normala v smeri stene. Ekvivalenten pogoj, vendar za tlak bi bil \( \frac{\partial \delta p}{\partial n}  = 0 \).
+** Gostota energijskega toka
+
+Gostoto energijske toka \( \vec{\jmath} \) zapišemo po definiciji
+
+\[ \vec{\jmath} = \frac{\mathrm{d} E}{\mathrm{d} t \mathrm{d} S}
+\]
+
+Hkrati pa lahko zapišemo po izpeljavi, ki je ne bomo delali, kot
+
+\[ \vec{\jmath} = \delta p \vec{v}
+\]
+
+Nakaz izpeljave: izhajamo ponovno iz kontinuitetne enačbe, vendar prej uvedemo še količino gostote energije \( w \).
+
+\[ \frac{\partial w}{\partial t} + \mathrm{div} \vec{\jmath} = 0
+\]
+
+Gostota energije pa je definirana tudi preko kinetične energije in pa dela, ki ga zvok opravlja, ko valovanje potiska okoliški zrak
+
+\[ w = \rho_0 \frac{v ^2}{2} + \frac{\left( \delta p \right) ^2}{2 \rho_0 c}
+\]
+
+Za harmonični zvok je
+
+\[ \overline{\vec{\jmath}} = \frac{1}{2} \mathrm{Re} \left( \partial p \vec{v}^{\ast} \right)
+\]
