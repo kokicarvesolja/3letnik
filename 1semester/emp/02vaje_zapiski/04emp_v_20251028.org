@@ -1,0 +1,104 @@
+#+title: 4. vaje iz Elektromagnetnega polja
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Prepolovljena prevodna cev
+
+Nadaljujemo z b) točko, tj. računanje jakosti električnega polja v vodoravni simetrijski ravnini.
+
+Jakost električnega polja ima tri komponente tudi v cilindričnih koordinatah - \( E_r, E_{\phi} \) in \( E_z \).
+
+[slika polja]
+
+Na poljubni točki vodoravni osi simetrijske ravnine kaže električna jakost pravokotno navzdol (ali navzgor) - glej sliko. S premikanje po vodoravni osi je električna jakost vedno pravokotna na \( r \) in na \( z \), kar pomeni, da se te dve komponenti ne spreminjata (skalarni produkt vektorjev je vedno 0). Torej je edina spreminjajoča se komponenta \( E_{\phi} \).
+
+Potencial smo izračunali že na prejšnjih vajah in je enak
+
+\begin{equation}
+\label{eq:1}
+U \left( r, \phi \right) = \sum\limits_{m = 1}^{\infty} \frac{U_0}{m \pi} \left( 1 - \left( -1 \right) ^n \right) \sin \left( n \phi \right) \left( \frac{r}{a} \right) ^m
+\end{equation}
+
+Komponento \( \phi \) električnega polja bomo izračunali preko enačbe
+
+\begin{equation}
+\label{eq:2}
+E_{\phi} = - \right. \frac{1}{r} \frac{\partial U}{\partial \phi} \right|_{\phi = 0}
+\end{equation}
+
+Združimo \ref{eq:1} in \ref{eq:2}, da dobimo
+
+\[ E_{\phi} = \left. - \frac{1}{r} \sum\limits_{m = 1}^{\infty} \frac{U_0}{\mu} \left( \frac{r}{a} \right)^m \frac{1 - \left( -1 \right) ^m}{m} m \cos \left( m \phi \right)\right|_{\phi = 0}
+\]
+
+Vrsto razpišemo
+
+\[ E_{\phi} = - \frac{1}{r} \frac{U_0}{\pi} \sum\limits_{m = 1}^{\infty} \left( \frac{r}{a} \right) ^m \left[ 1 - \left( -1 \right) ^m \right] = - \frac{1}{r} \frac{U_0}{\pi} \left[ 2 \frac{r}{a} + 2 \left( \frac{r}{a} \right) ^3 + 2 \left( \frac{r}{a} \right) ^5 + \ldots \right]
+\]
+
+Izpostavimo faktor \( 2 \left( \frac{r}{a} \right) \) in vsoto v oklepaju prepoznamo kot geometrijsko vsoto s členom \( \left( \frac{r}{a} \right) ^2 \)
+
+\[ E_{\phi} = - \frac{2U_0}{\pi a} \frac{1}{1 - \left( \frac{r}{a} \right) ^2}
+\]
+
+Preverimo še limiti:
+
+- pri \( r = 0 \) kaže električno polje v negativni smeri
+
+  \[ E_{\phi} = \left( r = 0 \right) = - \frac{2 U_0}{\pi a}
+  \]
+
+- pri \( r = a \) pa imamo divergenco, ki je posledica špranjice med poloblama
+* Prevodna krogla v homogenem električnem polju
+
+#+begin_problem
+Prevodno kroglo s polmerom \( a \) postavimo v zunanje homogeno električno polje z jakostjo \( E_0 \), zaradi česar se polje popači.
+
+a) Izračunaj potencial nastalega električnega polja povsod v prostoru. Kvalitativno interpretiraj končni rezultat oziroma razloži obliko obeh dobljenih členov.
+b) Izračunaj površinsko gostoto naboja, ki se inducira na površini krogle, v odvisnosti od polarnega kota \( \theta \), merjenega od smeri zunanjega električnega polja.
+c) Izračunaj električni dipolni moment induciranega naboja. Rezultat preveri tako, da ga prebereš naravnost iz rešitve točke a)
+#+end_problem
+
+Problem rešujemo v sferičnih koordinatah, saj nam je za problem to najbolj naravno. Prav tako lahko zaradi osne simetrije izvzamemo odvisnost od azimutnega kota \( \phi \). Zunaj krogle velja Laplaceova enačba
+
+\[ \nabla ^2 U \left( r, \theta \right) = 0
+\]
+
+Po separaciji spremenljivk in računanju, ki pritiče matematiki 4, dobimo rešitev potenciala
+
+\[ U \left( r, \theta \right) = \sum\limits_{l = 0}^{\infty} \left( A_l r^l + B_l r^{- (l + 1)} \right) P_l \left( \cos \theta \right),
+\]
+
+kjer so \( P_l \left( \cos \theta \right) \) Legendrovi polinomi.
+
+#+begin_note
+Nekaj osnovnih Legendrovih polinomov je
+
+\begin{align*}
+P_0 &= 1 \\
+P_1 &= x \\
+P_2 &= \frac{1}{2} \left( 3 x ^2 - 1 \right) \\
+P_3 &= \frac{1}{2} \left( 5 x ^3 - 3x \right) \\
+& \vdots
+\end{align*}
+
+Legendrovi polinomi so tudi ortogonalni na \( L ^2 \left( [-1, 1] \right) \) (?)
+
+\[ \int\limits_{-1}^1 P_l(x) P_{l '}(x) \, \mathrm{d} x = \frac{2 \delta_{l l'}}{2l + 1}
+\]
+
+To nam tudi podaja faktor, da dobimo ortonormirane Legendrovi polinomi.
+#+end_note
+
+V električnem homogenem polju imamo dva robna pogoja:
+
+- na površini krogle je potencial ničeln \( U (a, \theta) = 0 \) in je ekvipotencialna ploskev
+- neskončno stran od krogle je polje normalno
+
+  \[ U \left( r \to \infty, \theta \right) = - E_0 z = - E_0 r \cos \theta = - E_0 P_1 \left( \cos \theta \right)
+  \]

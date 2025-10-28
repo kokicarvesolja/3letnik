@@ -285,5 +285,5 @@ Enačba \ref{eq:11} je tako
 
 Splošna rešitev je tako
 
-\[ U \left( r, \phi  \right) = \sum\limits_{m = 1}^{\infty} \frac{U_0}{m \pi} \left( 1 - \left( - 1 \right)^n \right) \sigma \left( m \phi \right) \left( \frac{r}{a} \right)^m
+\[ U \left( r, \phi  \right) = \sum\limits_{m = 1}^{\infty} \frac{U_0}{m \pi} \left( 1 - \left( - 1 \right)^m \right) \sin \left( m \phi \right) \left( \frac{r}{a} \right)^m
 \]
