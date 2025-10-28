@@ -208,10 +208,12 @@ Energije so ohranjene in velja
 \]
 ** Končna struna
 
-Obravnavamo struno dolžine \( l \), ki je na obeh koncih vpeta. Vpetost strune predstavljajo robne pogoje za poljuben čas \( t \)
+Obravnavamo struno dolžine \( l \), ki je na obeh koncih vpeta. Vpetost strune predstavljajo homogene robne pogoje za poljuben čas \( t \)
 
 \[ u(0, t) = u(l, t) = 0
 \]
+
+Homogeni robni pogoji so takšni pogoji, da če imamo dve različni rešitvi, ki zadoščata tej enačbi, bo njuna linearna kombinacija tudi rešila enačbo.
 
 Imamo valovno enačbo
 

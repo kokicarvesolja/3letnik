@@ -7,3 +7,141 @@
 #+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
 #+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
 #+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Valovna enačba
+** Končna struna
+
+Imamo homogene robne pogoje za poljuben čas \( t \)
+
+\[ u(0, t) = u(l, t) = 0
+\]
+
+Rešujemo valovno enačbo
+
+\[ u_{tt } = c ^2 u_{xx }
+\]
+
+z nastavkom separacije spremenljivk \( u(x, t) = X(x) T(t) \).
+
+\[ \frac{\ddot{T}}{T} = c ^2 \frac{X''}{X} = - \omega_k ^2 = - c ^2 k ^2 \ge 0
+\]
+
+Časovni del je oblike
+
+\[ T'' + \omega_k ^2 T = 0
+\]
+
+in rešitev je sinusoida
+
+\begin{equation}
+\label{eq:2}
+ T = \alpha_k \cos (k x) + \beta_k \sin (kx) = c_n \Re e^{- \mathrm{i}\omega_n t}, \ c_n \in \mathbb{C}
+\end{equation}
+
+Krajevni del pa ima obliko
+
+\[ X(x) = \gamma_k \cos (kx) + \delta_k \sin (kx).
+\]
+
+Iz robnega pogoja takoj zaključimo \( \gamma_k = 0 \) pri \( x = 0 \). Hkrati pa imamo
+
+\[ \sin (kl) = 0 \implies \ k_n = \frac{n \pi}{l}, \ n = 1,2,3, \ldots
+\]
+
+kjer so \( k_n \) lastne vrednosti. Lastna rešitev krajevnega dela je enaka
+
+\begin{equation}
+\label{eq:1}
+X(x) = \sqrt{\frac{2}{L}} \sin (k_n x)
+\end{equation}
+
+Funkciji \ref{eq:1} pravimo tudi lastna funkcija. Tvorijo kompletni set za funkcije na intervalu \( [0, l] \), ki so \( 0 \) na robu. Te funkcije imajo tudi definiran skalarni produkt, za katere velja
+
+\[ \left\langle x_n, x_m \right\rangle = \int\limits_0^l x_n^{\ast} x_m = \delta_{nm}
+\]
+
+Poljubna rešitev je definicija nastavka ter enačb \ref{eq:1} in \ref{eq:2}
+
+\[ u(x, t) = \sum\limits_{n = 1}^{\infty} X_n (x) \left[ \alpha_n \cos (\omega_n t) + \beta_n \sin (\omega_n t) \right]
+\]
+
+Diskretna fourierova vrsta je enaka
+
+\begin{equation}
+\label{eq:3}
+ f_(x) = \sum\limits_{n = 1}^{\infty} c_n X(x)
+\end{equation}
+
+kjer so členi vrste enaki \( c_n = \left\langle x_n, f \right\rangle\)
+
+Konvergenca vrste \ref{eq:3} je v srednjem. Najmočnejša konvergenca je enakomerna konvergenca, šibkejša konvergenca je po točkah, najslabša pa je v srednjem, kar je ravno naša funkcija.
+
+Če razvijamo Fourierovo vrsto po Heavisodovi funkciji, se bo na skoku konvergiralo k točki \( y = \frac{1}{2} \), hkrati bosta pa amplitudi (ki sta velikosti 10-20% skoka) pred in po skoku enaki.
+
+Če bi bila funkcija gladka, bi bila konvergenca enakomerna.
+
+** Nehomogena enačba
+
+Imamo valovno enačbo, ki pa je nehomogena
+
+\[ u_{tt } = c ^2 u_{xx } + f(x, t).
+\]
+
+Končna struna ima začetne pogoje \( u(x, 0) = \phi(x) \) in \( \dot{u}(x, 0) = \psi(x) \) ter lastne rešitve \( X_n (x) \)
+
+Vse funkcije razvijemo po lastnih vrednosti. Funkcijo \( f(x, t) \) razvijemo v vrsto
+
+\[ f(x, t) = \sum\limits_{n = 1}^{\infty} f_n (t) X_n (x)
+\]
+
+Po lastnih funkcijah razvijemo tudi funkciji v začetnih pogojih in našo rešitev. Torej
+
+\begin{align*}
+  \phi(x) &= \sum\limits_{n = 1}^{\infty} \phi_n X_n (x) \\
+\psi(x) &= \sum\limits_{n = 1}^{\infty} \psi_n X_n (x) \\
+u(x, t) &= \sum\limits_{n = 1}^{\infty} u_n (t) X_n (x)
+\end{align*}
+
+Dane nastavka nesemo v nehomogeno valovno enačbo. Spomnimo, da je \( X_n (x) = \sqrt{\frac{2}{l}} \sin (kx) \).
+
+\[ \sum\limits_{}^{} \ddot{u}_n = \sum\limits_n^{} - \omega_n ^2 c_n + f_n X_n \implies  \ddot{u}_n = - \omega_n ^2 u_n + f_n
+\]
+
+Pridelali smo si nehomogeno ODE. Vemo, da je rešitev sestavljena iz nehomogene in homogene rešitve
+
+\[ u_n (x, t) = u_n^{(hom)} (x, t) + u _n^{(nehom)}
+\]
+
+Rešitev nehomogene enačbe je
+
+\[ u_n^{(nehom)} (t) = \frac{1}{\omega_n} \int\limits_0^t \sin \left( \omega_n (t - \tau) \right) f_n (\tau) \, \mathrm{d} \tau
+\]
+
+Tako funkcijo bomo srečali tudi kasneje v letu in ji bomo rekli Greenovi funkciji. Izbrana je tako, da je \( u_n^{(nehom)} = \dot{u}_n^{(nehom)} = 0 \). Nastavek za homogen del pa je
+
+\[ u_n ^{(hom)} (t) = \phi_n \cos (\omega_n t) + \frac{\psi_n}{\omega_n} \sin (\omega_n t)
+\]
+
+#+name: Nehomogeni robni pogoji
+#+begin_my_example
+Imamo valovno enačbo
+
+\[ u_{tt } = c ^2 u_{ xx }
+\]
+
+z robnimi pogoji \( u(0, t) = \mu_1 (t) \) in \( u(l, t) = \mu_z (t) \). Uporabimo nastavek
+
+\[ u = u_1 + u_2
+\]
+
+kjer je \( u_2 \) tak, da zadosti pogojem ne pa enačbi. Primer je
+
+\[ u_2 (x, t) = \mu_1 (t) + \frac{x}{l} \left( \mu_2 (t) - \mu_1 (t) \right).
+\]
+
+Ta nastavek zadosti robnemu pogoju, vendar ne enačbi in potem \( u_1 \) zapišemo kot
+
+\[ u_{1tt } = c ^2 u_{1 xx } + \tilde{f}(x, t)
+\]
+
+kjer je \( \tilde{f} \) odvisen od \( u_2 \), saj smo vanj skrili vse odvode od nastavka \( u_2 \).
+#+end_my_example
