@@ -54,6 +54,8 @@ Preverimo še limiti:
   \]
 
 - pri \( r = a \) pa imamo divergenco, ki je posledica špranjice med poloblama
+
+Izračun električnega polje v navpični simetrijski ravnini je za domačo nalogo.
 * Prevodna krogla v homogenem električnem polju
 
 #+begin_problem
@@ -102,3 +104,161 @@ V električnem homogenem polju imamo dva robna pogoja:
 
   \[ U \left( r \to \infty, \theta \right) = - E_0 z = - E_0 r \cos \theta = - E_0 P_1 \left( \cos \theta \right)
   \]
+
+Z upoštevanjem prvega robnega pogoja
+
+\[ -E_0 P_1 \left( \cos \theta \right) r = \sum\limits_{l = 0}^{\infty} A_l r^l P_l \left( \cos \theta \right) = A_1 r P_1 \left( \cos \theta \right)
+\]
+
+dobimo enakost \( A_1 = - E_0 \) in \( A_{l \ne 1} = 0 \).
+
+Vmesna rešitev je tako
+
+\begin{equation}
+\label{eq:3}
+U (r, \theta) = - E_0 r P_1 \left( \cos \theta \right) + \sum\limits_{l = 0}^{\infty} B_l r^{- (l + 1)} P_l (\cos \theta)
+\end{equation}
+
+Upoštevamo še drugi robni pogoj
+
+\[ 0 = U(0, \theta) = - E_0 a P_1 (\cos \theta) + \sum\limits_{l = 0}^{\infty} B_l a^{- (l + 1)} P_l (\cos \theta)
+\]
+
+Ortogonalnost Legendrovih polinomov za \( l = 1 \) nam potem poda enakost
+
+\[ B_1 = E_0 a ^3; \ B_{l \ne 1} = 0
+\]
+
+Končna rešitev je tako
+
+\[ U \left( r, \theta \right) = P_1 (\cos \theta) E_0 \left( \frac{a ^3}{r ^2} - r  \right) = \underbrace{-E_0 r \cos \theta}_{(1)} + \underbrace{E_0 a ^3 \frac{\cos \theta}{r ^2}}_{(2)}
+\]
+
+Člen (1) predstavlja potencial homogenega polja, medtem ko člen (2) je potencial, ki izvira iz induciranega naboj (točkastega dipola).
+
+Na predavanjih smo omenili, da je potencial točkastega dipola enak
+
+\[ U_{dip} = \frac{\vec{p}_e \vec{r}}{4 \pi \epsilon_0 r ^3}
+\]
+
+Z upoštevanjem definicije skalarnega produkta \( \vec{p}_e \vec{r} = p_e r \cos \theta \), kar pomeni, da je potencial torej
+
+\[ U_{dip} = \frac{p_e \cos \theta}{4 \pi \epsilon_0 r ^2}
+\]
+
+Opazimo, da je člen (2) enake oblike kot naš potencial točkastega dipola, iz česar lahko tudi hitro izračunamo električni dipolni moment
+
+\[ \frac{p_e}{4 \pi \epsilon_0} = E_0 a ^3 \implies p_e = 4 \pi \epsilon_0 E_0 a ^3
+\]
+** Točka b)
+
+Obravnavamo majhen delček zgornje polsferine površine \( \mathrm{d} S \), ki nosi naboj \( \mathrm{d} q \) in se nahaja pod kotom \( \theta \). Električno polje kaže pravokotno na površino in po Gaussovi diferencialni formi je enako
+
+\[ \mathrm{d} e = \epsilon_0 E_{\perp } \mathrm{d} S - 0 \implies \sigma = \frac{\mathrm{d} e}{\mathrm{d} S} = \epsilon_0 E_{\perp}
+\]
+
+Z izraženim električnim poljem lahko preko definicije potenciala najdemo površinsko napetost
+
+\[ \sigma = \epsilon_0 E_r = \epsilon_0 \left. \left( - \frac{\partial U}{\partial r} \right)\right|_{r = a}
+\]
+
+Površinska napetost je po odvajanju enaka
+
+\[ \sigma (\theta) = 3 \epsilon_0 E_0 \cos \theta
+\]
+** Točka c)
+
+Električni dipolni moment računamo preko
+
+\[ \vec{p}_e = \int\limits_{}^{} \vec{r} \,' \, \mathrm{d} e = \int\limits_{}^{} \vec{r} \, ' \rho \left( \vec{r} \right) \, \mathrm{d} ^3 \vec{r} \, '
+\]
+
+Površinsko gostoto iz točke b) poznamo in torej lahko zapišemo
+
+\[ p_{ez } = \int\limits_{}^{} z' \, \mathrm{d} e = \int\limits_{}^{} a \cos \theta \sigma \, \mathrm{d} S = \int\limits_{}^{} a \cos ^2 \theta 3 \epsilon_0 E_0 \, \mathrm{d} S
+\]
+
+Upoštevamo, da je infinitizimalni element površine enak \( \mathrm{d} S = a ^2 \mathrm{d} \phi \mathrm{d} (\cos \theta) \).
+
+\[ p_{ez} = 3 \epsilon_0 E_0 a ^3  \int\limits_{-1}^1 \int\limits_0^{2\pi} \cos ^2 \theta \, \mathrm{d} (\cos \theta) \, \mathrm{d} \phi = 4 \pi \epsilon_0 E_0 a ^3
+\]
+
+Vidimo, da je rezultat enak, kakor v točki a).
+* Točkast električni dipol v središču prevodne sfere
+#+begin_problem
+V središču votle prevodne sfere polmera \( a \) postavimo točkast električni dipol z električnim dipolnim momentom \( p_e \).
+
+a) Določi potencial električnega polja povsod znotraj sfere
+b) Pokaži, da je električno polje naboj, ki se inducira na notranji površini sfere, homogeno in izračun njegovo velikost.
+c) Izračunaj skupni dipolni moment induciranega naboja. Kakšno smer ima glede na točkasti dipol? Je rezultat presentljiv?
+#+end_problem
+
+Recikliramo enačbe od zgornje naloge, kjer je splošna rešitev
+
+\[ U (r, \theta) = \sum\limits_{l = 0}^{\infty} \left( A_l r^l + B_l r^{- (l + 1)} \right) P_l (\cos \theta)
+\]
+
+Imamo tudi dva robna pogoja
+
+- singularnost v središču
+
+  \[ U (r \to 0, \theta) = \frac{p_e \cos \theta}{4 \pi \epsilon_0 r ^2}
+  \]
+
+- površina ploskve je ekvipotencialna ploskev
+
+  \[ U(a, \theta) = 0
+  \]
+
+** točka a)
+
+Iz prvega robnega pogoja dobimo enakost
+
+\[ U(0, \theta) = \frac{p_e \cos \theta}{4 \pi \epsilon_0 r ^2} = \sum\limits_{l = 0}^{\infty} B_l r^{- (l + 1)} P_l (\cos \theta) \overset{l = 1}{  \implies} B_1 = \frac{p_e}{4 \pi \epsilon_0}, \ B_{l \ne 1} = 0
+\]
+
+Vmesna rešitev je
+
+\[ U(r, \theta) = \sum\limits_{l = 1}^{\infty} A_l r^l P_l (\cos \theta) + \frac{p_e}{4 \pi \epsilon_0} \frac{1}{r ^2} P_1 (\cos \theta)
+\]
+
+Z upoštevanjem drugega robnega pogoja lahko tudi izluščimo enakost za koeficiente \( A_l \)
+
+\[ U(a, \theta) = 0 = \sum\limits_{l = 1}^{\infty} A_l a^l P_l (\cos \theta) + \frac{p_e}{4 \pi \epsilon_0} \frac{1}{a ^2} P_1 (\cos \theta) \overset{l = 1}{ \implies} A_1 = - \frac{1}{a} \frac{p_e }{4\pi \epsilon_0} \frac{1}{a ^2}, \ A_{l \ne 1} = 0
+\]
+
+Rešitev je tako
+
+\[ U(r, \theta) = \underbrace{- \frac{p_e}{a ^3} \frac{1}{4\pi \epsilon_0} r \cos \theta}_{(1)} + \underbrace{\frac{p_e}{4 \pi \epsilon_0} \frac{ \cos \theta}{r ^2}}_{(2)}, \ r \cos \theta = z
+\]
+
+Prispevek (1) k potencialu je ravno prispevek induciranih naboj in po obliki vidimo, da je homogeno polje \( E = \frac{p_e}{4 \pi \epsilon_0 a ^3} \). Prispevek (2) je potencial točkastega dipola v središču.
+** točka b)
+
+Podobno kot v prejšnji nalogi nas ponovno zanima površinska napetost \( \sigma \). Izpeljava je podobna kakor prej, vendar tokrat električno polje kaže proti središču krogle
+
+\[ \sigma = - \epsilon_0 E_{\perp}
+\]
+
+Ponovno izhajamo iz definicije potenciala
+
+\begin{align*}
+  E_{\perp } &= \left. - \frac{\partial U}{\partial r} \right|_{r = a} \\
+&= \right. \frac{p_e}{4 \pi \epsilon_0 a ^3} \cos \theta + \frac{2 p_e}{4 \pi \epsilon_0} \frac{\cos \theta}{r ^3} \left|_{r = a} \\
+\end{align*}
+
+Torej imamo površinsko napetost, ki ima največjo gostoto na polih
+
+\[ \sigma(\theta) = - \frac{3p_e}{4 \pi a ^3} \cos\theta
+\]
+** točka c)
+
+Dipola ne bomo računali preko integrala, ampak bomo uporabili spoznanja iz prejšnje naloge.
+
+\begin{align*}
+  \frac{p_e}{4 \pi \epsilon_0} &= E_0 a ^3 \\
+p_e &= 4 \pi \epsilon_0 a ^3 E_0 \\
+\sigma (\theta) &= 3 \epsilon_0 E_0 \cos \theta
+\end{align*}
+
+Zanima nas induciran električni dipolni moment
