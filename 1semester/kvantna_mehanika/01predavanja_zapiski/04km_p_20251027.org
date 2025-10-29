@@ -516,7 +516,9 @@ Obstaja semi-konvencija, da če je indeks \( m \) zapis kot supskript predstavlj
 
 \[ Y_{ml} = \sqrt{\frac{3}{8 \pi}} \sin \theta \cos \theta \in \mathbb{R}
 \]
-** Zapis operatorja z matriko
+* Zapis operatorja z matriko
+
+To poglavje ne spada pod vrtilno količino, samo uporabili smo jo za primer. Na isti način bi lahko izpeljali tudi za harmonični oscilator.
 
 Operator lahko predstavimo z matriko. Gledamo tako valovno funkcijo, da opazujemo samo kotni del
 
@@ -540,45 +542,195 @@ V nadaljevanju uporabimo enakost \ref{eq:8} in se preobrazi v
 
 Navada je, da se v vektorskem zapisu piše stanja z višjim \( m \) na vrhu. To si lahko zapomnimo intuitivno tako, da je stanje z največjim \( m \) usmerjeno navpično navzgor, medtem ko stanje z najmanjšim \( m \) pa navpično navzdol. Koeficienti so
 
-\[ c_{lm} = \begin{bmatrix} c_{11} \\ c_{10} \\ c_{1,-1} \end{bmatrix}
+\[ c_{lm} = \begin{pmatrix} c_{11} \\ c_{10} \\ c_{1,-1} \end{pmatrix}
 \]
 
 Koeficiente \( L_+ \psi \), ki jih označimo z \( d_{lm} \) zapišemo v matrični obliki kot
 
-\[ \begin{bmatrix} d_{11} \\ d_{10} \\ d_{1, -1} \end{bmatrix} = \begin{bmatrix}
+\[ \begin{pmatrix} d_{11} \\ d_{10} \\ d_{1, -1} \end{pmatrix} = \begin{pmatrix}
                                                                  0 & \sqrt{2} & 0 \\
                                                                  0 & 0 & \sqrt{2} \\
                                                                  0 & 0 & 0
-                                                                 \end{bmatrix} \begin{bmatrix} c_{11} \\ c_{10} \\ c_{1, -1} \end{bmatrix}  \hbar
+                                                                 \end{pmatrix} \begin{pmatrix} c_{11} \\ c_{10} \\ c_{1, -1} \end{pmatrix}  \hbar
 \]
 
 Elementi v stolpcu predstavljajo vrednosti \( m' \), elementi v vrstici pa vrednosti \( m \). Zaradi \( \delta_{m', m + 1} \) je diagonala ničelna.
 
 Torej so matrike lestvičnih operatorjev
 
-\[ L_+ = \hbar \sqrt{2} \begin{bmatrix}
+\[ L_+ = \hbar \sqrt{2} \begin{pmatrix}
                         0 & 1 & 0 \\
                         0 & 0 & 1 \\
                         0 & 0 & 0
-                        \end{bmatrix} = L_x + \mathrm{i} L_y; \quad L_- = \hbar \sqrt{2} \begin{bmatrix}
+                        \end{pmatrix} = L_x + \mathrm{i} L_y; \quad L_- = \hbar \sqrt{2} \begin{pmatrix}
                                                                                          0 & 0 & 0 \\
                                                                                          1 & 0 & 0 \\
                                                                                          0 & 1 & 0
-                                                                                         \end{bmatrix}
+                                                                                         \end{pmatrix}
 \]
 
 Preko definicije \( L_+ \) in \( L_- \) lahko zapišemo tudi
 
 \begin{align*}
-  L_x &= (L_+ + L_- )\frac{1}{2} = \frac{\hbar}{\sqrt{2}} \begin{bmatrix}
+  L_x &= (L_+ + L_- )\frac{1}{2} = \frac{\hbar}{\sqrt{2}} \begin{pmatrix}
                                                           0 & 1 & 0 \\
                                                           1 & 0 & 1 \\
                                                           0 & 1 & 0
-                                                          \end{bmatrix} \\
-L_y &= \frac{\hbar}{\sqrt{2}} \begin{bmatrix}
+                                                          \end{pmatrix} \\
+L_y &= \frac{\hbar}{\sqrt{2}} \begin{pmatrix}
                               0 & -\mathrm{i} & 0 \\
                               \mathrm{i} & 0 & -\mathrm{i} \\
                               0 & \mathrm{i} & 0
-                              \end{bmatrix} \\
-L_z &=
+                              \end{pmatrix} \\
+L_z &= \hbar \begin{pmatrix}
+             1 & 0 & 0 \\
+             0 & 0 & 0 \\
+             0 & 0 & -1
+             \end{pmatrix}
 \end{align*}
+* Centralni potencial
+
+Klasično smo imeli potencial \( V(r) \) in potem je bila sila
+
+\[ \vec{F} = - \frac{\partial V}{\partial r} \frac{\vec{r}}{r},
+\]
+
+iz česar sledi, da je vrtilna količina \( \vec{L} = \mathrm{konst} \). V kvantni mehaniki pa imamo Hamiltonian \( H = \frac{p ^2}{2m} + V(r) \), ki komutira
+
+\[ \left[ H, L_z \right] = 0, \ \left[ H, L ^2 \right] = 0
+\]
+
+Hamiltonian lahko prevedemo iz kartezičnih tudi v sferične koordinate
+
+\[ H = - \frac{\hbar ^2 \nabla ^2}{2m} + V(r) = - \frac{\hbar}{2m} \left( \frac{1}{r ^2} \frac{\partial }{\partial r} r ^2 \frac{\partial }{\partial r}  \right) + \frac{L ^2}{2m r ^2} + V(r)
+\]
+
+#+begin_quote
+Problem je v tem, da ko mi začne padati [flomaster], si ga ne upam loviti, ker imam potem roke čisto črne.
+#+end_quote
+
+Drugi del si je precej enostavno zapomniti, vendar dokazovali pa ne bomo. Uporabimo nastavek
+
+\[ \Psi (r, \theta, \phi) = \psi(r) Y_l^m (\theta, \phi)
+\]
+
+v Schrödingerjevi enačbi s Hamiltonianom v sferičnih koordinatah
+
+\[ \left[ - \frac{\hbar ^2}{2m} \left( \frac{1}{r ^2} \frac{\partial }{\partial r}  r ^2 \frac{\partial }{\partial r}  \right) + \underbrace{\left( \frac{l(l + 1) \hbar ^2}{2m r ^2} + V(r) \right)}_{V_{ef}} \right] \psi Y_l ^m = E \psi Y_l ^m
+\]
+
+Uporabimo še nastavek za radialno funkcijo \( \psi(r) = \frac{u(r)}{r} \).
+
+\[ \left[ - \frac{\hbar ^2}{2m} \left( \frac{1}{r ^2} \frac{\partial }{\partial r} r ^2 \frac{\partial }{\partial r} \right)+ \left( \frac{l(l+ 1) \hbar ^2}{2m r ^2} + V(r) \right)  \right] \frac{u(r)}{r} = E \frac{u}{r}
+\]
+
+Prvi seštevanec se poenostavi
+
+\[ \frac{1}{r ^2}\frac{\partial }{\partial r}  r ^2 \frac{\partial }{\partial r} \left( \frac{u}{r}  \right) = \frac{1}{r ^2} \frac{\partial }{\partial r}  r ^2 \left( \frac{u'}{r} - \frac{u}{r ^2} \right) = \frac{1}{r ^2} \frac{\partial }{\partial r} \left( r u' - u \right) = \frac{u''}{r} = \frac{1}{r} \frac{\partial ^2 u}{\partial r ^2}
+\]
+
+To pomeni, da rešujemo enačbo oblike
+
+\begin{equation}
+\label{eq:7}
+ -\frac{\hbar ^2}{2m} \frac{\mathrm{d} ^2 }{\mathrm{d} r ^2} u(r) + \left( \frac{l(l + 1) \hbar ^2}{2m r ^2} + V(r) \right) u(r) = E u(r)
+\end{equation}
+
+
+** Lastnosti rešitev \( u(r) \)
+
+Za razliko od matematikov si ne bomo pogledali vseh vrednosti za \( r \), ampak samo tiste, ki so nam smiselne, ker za več nimamo časa.
+
+Prvi primer, ki ga pogledamo, je \( r\to 0 \), kjer predpostavimo \( \lim_{r \to 0} v ^2 V(r) = 0 \). To za nas pomeni, da v enačbi \ref{eq:7} zanemarimo \( V(r) \), saj pada počasneje kot \( \frac{1}{r ^2} \). Koeficienti se pokrajšajo s koeficienti skritimi v \( E \).
+
+Ostane nam zgolj
+
+\[ \frac{\mathrm{d} ^2 }{\mathrm{d} r ^2} u = \frac{l (l + 1)}{r ^2} u.
+\]
+
+Uporabimo nastavek \( u = C r^{\lambda} \) in dobimo enačbo
+
+\[ \lambda (\lambda - 1) r ^{\lambda - 2} = \frac{l(l + 1)}{r ^2} r^{\lambda},
+\]
+
+katere rešitve so
+
+\[ \lambda_{1, 2} = l + 1, - 1.
+\]
+
+Rešitve uporabimo v nastavku in je splošna rešitev diferencialne enačbe
+
+\[ u(r) = C_l r^{l + 1} + D \frac{1}{r^l}, l = 0,1, 2, \ldots
+\]
+
+Vrnemo se nazaj k nastavku za sferične rešitve
+
+\begin{align*}
+  \left\langle \Psi \middle| \Psi \right\rangle &= 1\\
+&= \int\limits_0^{\infty} \left| \psi \right| ^2 r ^2 \, \mathrm{d} r \underbrace{\int\limits_0^{2\pi} \, \mathrm{d} \phi \int\limits_0^{\pi} \sin \theta \, \mathrm{d} \theta \left| Y_l^m \right| ^2}_1 \\
+&= \int\limits_0^{\infty} \left| u \right|^2 \, \mathrm{d} r
+\end{align*}
+
+Za \( l > 0 \) sledi, da
+
+\[ D_l ^2 \int\limits_0^{\infty} \frac{1}{r^{2l}} \, \mathrm{d} r \to \infty \implies \ D_l = 0
+\]
+
+Če pa je \( l = 0 \), pa je naš nastavek
+
+\[ u(r) = C_0 r + C_0.
+\]
+
+Radialna funkcija je
+
+\[ \psi(r) = \frac{u}{r} = C_0 + \frac{D_0}{r}
+\]
+
+Uporabimo Gaussov zakon
+
+\[ \nabla \cdot \vec{E} = \frac{\rho \left( \vec{r} \right)}{\epsilon_0} ,
+\]
+
+definicijo potenciala \( \vec{E} = - \nabla \phi \) in imamo točkast naboj \( \rho \left( \dot{r} \right) = e \delta ^3 \left( \vec{r} \right) \). Poissonova enačba je
+
+\[ - \nabla ^2 \frac{e}{4 \pi \epsilon_0 r} = \frac{e \delta ^3 \left( \vec{r} \right)}{\epsilon_0}
+\]
+
+Isto logiko uoprabimo na naši radialni funkciji
+
+\[ \nabla ^2 \psi = - 4 \pi D_0 \delta ^3 \left( \vec{r} \right) = 0 \implies \ D_0 0
+\]
+
+Zaključimo, da je radialna funkcija za majhne \( r \) enaka
+
+\[ \psi(r) = C_l r^l; \ l = 0,1,2 , \ldots
+\]
+
+Poglejmo si še, kako je z velikimi razdaljami, ko \( r \to \infty \). Gledamo primer, ko je \( E > 0 \) in potencial \( V \) pada proti 0 "dovolj hitro".
+
+Rešujemo torej enačbo
+
+\[ - \frac{\hbar ^2}{2m} \frac{\mathrm{d} ^2 }{\mathrm{d} r ^2} u = E u,
+\]
+
+ki ima rešitev
+
+\[ u(r) = C_+ e^{\mathrm{i} k r} + C_- e^{-\mathrm{i} k r} = r \begin{cases}
+                                                                j_l \sim \sin \left( kr - \frac{\pi}{2} l \right)\\
+                                                                n_l \sim \cos \left( kr - \frac{\pi}{2} l \right)
+                                                               \end{cases}
+\]
+
+Energija je \( E_{\gamma} = \frac{p ^2}{2m} \) za \( p = \hbar k \)
+
+Tretje možnost je \( E_n < 0 \). Potem bo rešitev
+
+\[ u = D_- e^{- \kappa_n r} + D_+ e^{\kappa _n r}
+\]
+
+Ko gre \( r \to \infty \), mora biti integral
+
+\[ \int\limits_0^{\infty} \left| u \right|  ^2 \, \mathrm{d} r < \infty
+\]
+
+omejen. Iz tega sledi, da je \( D_+ = 0 \).
