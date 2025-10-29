@@ -424,3 +424,161 @@ Lastno stanje zapišemo
 
 \[ L_+ \left| lm \right\rangle  = c \left| l, m + 1 \right\rangle
 \]
+
+Potem sledi
+
+\[ \left\langle L_+ \psi_{lm} \middle| L_+ \psi_{lm} \right\rangle = \left| c \right| ^2 \left\langle \psi_{l, m + 1}, \middle| \psi_{l, m + 1} \right\rangle
+\]
+
+in nadalje
+
+\begin{equation}
+\label{eq:6}
+L_{\pm} \left| lm \right\rangle = \hbar \sqrt{l (l + 1) - m (m \pm 1)} \left| l, m \pm 1 \right\rangle
+\end{equation}
+
+Odgovoriti moramo še vprašanje, kaj so lastne vrednosti \( l \)? Gledamo najvišje možno stanje \( \left| ll \right\rangle \), ki ga nižamo z lestvičnim operatorjem
+
+\begin{align*}
+  L_- \left| ll \right\rangle &= c_{l, l - 1} \left| l, l - 1 \right\rangle \\
+L_-^2 \left| ll \right\rangle &= c_{l-1, l - 2} \left| l, l - 2 \right\rangle \\
+& \vdots \\
+L_- ^k \left| ll \right\rangle &= c_{l - k + 1, l - k} \left| l, l - k \right\rangle
+\end{align*}
+
+Najmanjše stanje, do katerega lahko pridemo brez divergence zaradi omejitve \( -l \le m \le m \), je
+
+\[ l - k = - l \implies \ 2l = k \in \mathbb{N}_{0}
+\]
+
+Iz tega sledi, da \( l = \frac{k}{2} = 0, \frac{1}{2}, 1, \frac{3}{2}, 2, \ldots \).
+
+\[ l = \begin{cases}
+       0, 1, 2, \ldots &; k \text{ sod} \\
+       \frac{1}{2}, \frac{3}{2}, \frac{5}{2}, \ldots  &; k \text{ lih}
+       \end{cases} \quad\text{ in }  - l \le m \le l
+\]
+
+Rešitev Schrödingerjeve enačbe, na katero smo delovali z operatorjem
+
+\[ L_z = - \mathrm{i} \hbar \frac{\partial }{\partial \phi} = - \mathrm{i} \hbar \left( x \frac{\partial }{\partial y}  - y \frac{\partial }{\partial y}  \right).
+\]
+
+Enačba je tako
+
+\[ -\mathrm{i} \hbar \frac{\partial }{\partial \phi} \psi_m (\phi) = m \hbar \psi_m (\phi)
+\]
+
+in njena rešitev je
+
+\[ \psi_m (\phi) = C e^{\mathrm{i} m \phi},
+\]
+
+ki je zvezna funkcija. Ker je \( L_z \) operator v odvisnosti od \( \phi \), pomeni, da se sučemo v ravnini okoli osi \( z \). Zveznost naše rešitve \( \psi \), da je periodična
+
+\[ \psi_m (\phi + 2 \pi) = \psi_m (\phi)
+\]
+
+Uporabimo nastavek rešitve in zveznost, da dobimo identiteto
+
+\[ e^{i m (\phi + 2 \pi)} = e^{\mathrm{i} m \phi} \implies \ e^{\mathrm{i} 2 \pi m} = 1,
+\]
+
+iz katere sledi, da je \( m \in \mathbb{Z} \).
+
+Za lihe \( k \) pa \( l \) nima celih vrednosti, kar pomeni, da smo screwed - to predstavlja spin, ki pa ne reši Schrödingerjeve enačbe.
+
+Kot zanimivost za \( l = \frac{1}{2} \) lahko najdemo lastne funkcije, ki rešijo
+
+\[ L ^2 f (\theta, \phi) = \frac{1}{2} \left( \frac{1}{2} + 1 \right) \hbar ^2 f(\theta, \phi),
+\]
+
+kjer je
+
+\[ f(\theta, \phi) = C \begin{cases}
+                        \sin \frac{\theta}{2} e^{\mathrm{i} \frac{\phi}{2}} &; m = \frac{1}{2}\\
+                        \cos \frac{\theta}{2} e^{- \mathrm{i} \frac{\phi}{2}} & ; m = - \frac{1}{2}
+                       \end{cases}
+\]
+
+Rešitev torej obstaja, vendar pa ni zvezna.
+*** Sferične funkcije \( Y_l^m (\theta, \phi) \)
+
+Sferične funkcije ni tako enostavno zgenerirati kakor harmonične funkcije. Nekatere sferične funkcije so
+
+\begin{align*}
+  Y_0^0 &= \frac{1}{\sqrt{4\pi}} \\
+Y_1^0 &= \sqrt{\frac{3}{8 \pi}} \cos \theta \\
+Y_1^\mathbf{1} &= \sqrt{\frac{3}{8 \pi}} \sin \theta e^{\mathrm{i} \phi} \in \mathbb{C}
+\end{align*}
+
+Obstaja semi-konvencija, da če je indeks \( m \) zapis kot supskript predstavlja sferične funkcije v kompleksni ravnini. V primeru, da sta oba indeksa spodaj zapisana, potem je sferična funkcija realna
+
+\[ Y_{ml} = \sqrt{\frac{3}{8 \pi}} \sin \theta \cos \theta \in \mathbb{R}
+\]
+** Zapis operatorja z matriko
+
+Operator lahko predstavimo z matriko. Gledamo tako valovno funkcijo, da opazujemo samo kotni del
+
+\[ \psi = \sum\limits_{l = 0}^{\infty} \sum\limits_{m = -l}^l c_{lm} \left| lm \right\rangle, \quad \left\langle \vec{r} \middle| lm \right\rangle = Y_l^m (\theta, \phi)
+\]
+
+Ne želimo se ukvarjati z reševanjem diferencialne enačbe, ampak z operatorji. Lestvični operator izrazimo v neki bazi
+
+\[ L_+ \sum\limits_{l', l, m', m}^{} \left| l' m' \right\rangle \left( L_+ \right)_{l' l m ' m} \left\langle lm \right|
+\]
+
+Zanima nas, kakšna bo matrika tega operatorja. Opazujmo najprej za \( l = 1 \):
+
+\[ \left( L_+ \right)_{11m' m} = \left\langle 1 m' \middle| L_+ \middle| 1m \right\rangle
+\]
+
+V nadaljevanju uporabimo enakost \ref{eq:8} in se preobrazi v
+
+\[ \left( L_+ \right) = \hbar \sqrt{1(1 + 1) - m (m + 1)} \left\langle 1 m' \middle| 1, m + 1 \right\rangle = \hbar \sqrt{1(1 + 1) - m (m + 1)} \delta_{m', m + 1}
+\]
+
+Navada je, da se v vektorskem zapisu piše stanja z višjim \( m \) na vrhu. To si lahko zapomnimo intuitivno tako, da je stanje z največjim \( m \) usmerjeno navpično navzgor, medtem ko stanje z najmanjšim \( m \) pa navpično navzdol. Koeficienti so
+
+\[ c_{lm} = \begin{bmatrix} c_{11} \\ c_{10} \\ c_{1,-1} \end{bmatrix}
+\]
+
+Koeficiente \( L_+ \psi \), ki jih označimo z \( d_{lm} \) zapišemo v matrični obliki kot
+
+\[ \begin{bmatrix} d_{11} \\ d_{10} \\ d_{1, -1} \end{bmatrix} = \begin{bmatrix}
+                                                                 0 & \sqrt{2} & 0 \\
+                                                                 0 & 0 & \sqrt{2} \\
+                                                                 0 & 0 & 0
+                                                                 \end{bmatrix} \begin{bmatrix} c_{11} \\ c_{10} \\ c_{1, -1} \end{bmatrix}  \hbar
+\]
+
+Elementi v stolpcu predstavljajo vrednosti \( m' \), elementi v vrstici pa vrednosti \( m \). Zaradi \( \delta_{m', m + 1} \) je diagonala ničelna.
+
+Torej so matrike lestvičnih operatorjev
+
+\[ L_+ = \hbar \sqrt{2} \begin{bmatrix}
+                        0 & 1 & 0 \\
+                        0 & 0 & 1 \\
+                        0 & 0 & 0
+                        \end{bmatrix} = L_x + \mathrm{i} L_y; \quad L_- = \hbar \sqrt{2} \begin{bmatrix}
+                                                                                         0 & 0 & 0 \\
+                                                                                         1 & 0 & 0 \\
+                                                                                         0 & 1 & 0
+                                                                                         \end{bmatrix}
+\]
+
+Preko definicije \( L_+ \) in \( L_- \) lahko zapišemo tudi
+
+\begin{align*}
+  L_x &= (L_+ + L_- )\frac{1}{2} = \frac{\hbar}{\sqrt{2}} \begin{bmatrix}
+                                                          0 & 1 & 0 \\
+                                                          1 & 0 & 1 \\
+                                                          0 & 1 & 0
+                                                          \end{bmatrix} \\
+L_y &= \frac{\hbar}{\sqrt{2}} \begin{bmatrix}
+                              0 & -\mathrm{i} & 0 \\
+                              \mathrm{i} & 0 & -\mathrm{i} \\
+                              0 & \mathrm{i} & 0
+                              \end{bmatrix} \\
+L_z &=
+\end{align*}
