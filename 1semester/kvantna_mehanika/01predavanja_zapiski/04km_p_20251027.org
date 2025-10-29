@@ -282,3 +282,145 @@ Rotacijski operator na \( A \) zapišemo kot
 kjer smo to zapisali za isto lastnost kot \ref{eq:3}. Če za vsako rotacijo \( \phi \) velja \( \left[ U, A \right] = 0 \), potem je \( A \) skalar. Posledično velja \( \left[ \vec{L}, A \right] = 0 \).
 
 Količine \( A = 0 \), \( \vec{r}, \vec{r} = r ^2 \), \( \vec{p} \cdot \vec{p} = p ^2 \), \( V \left( \vec{r} \right) = V(r) \), \( H = \frac{p ^2}{2m} + V(x) \) in \( L ^2 \) komutirajo z vsako komponento.
+
+*** Lestvični operator
+
+Uvedemo /lestvični operator/ (ang. /ladder operator/), ki je definiran kot
+
+\[ L_{\pm} = L_x \pm \mathrm{i} L_y
+\]
+
+Hitro lahko preverimo, da velja \( \left( L_{+} \right)^{\dagger} = L_- \) in \( \left[ L_{\pm}, L ^2 \right] = 0 \). Lestvična operatorja nam bosta zviševala/zniževala stanja podobna kot sta to počela \( a^{\dagger} \) in \( a \). Takrat smo uvedli tudi številski operator \( n \). Pri vrtilni količini bo vlogo številskega operatorja prevzel \( L_z \).
+
+\begin{align*}
+  \left[ L_z, L_{\pm} \right] &= \left[ L_z, L_x \pm \mathrm{i} L_y \right] \\
+&= \left[ L_z, L_x \right] \pm \mathrm{i} \left[ L_z, L_y \right] \\
+&= \mathrm{i} \hbar L_y \pm \mathrm{i} \left( - \mathrm{i} \hbar \right) L_x \\
+&= \hbar \left( \pm L_x + \mathrm{i} L_y \right) = - \hbar L_{\pm}
+\end{align*}
+
+Izbrali smo si komponento \( L_z \) zaradi dogovora, saj je problem simetričen na vse 3 osi. Če hitro povzamemo, velja
+
+\[ \left[ L_z, L_{\pm} \right] = \pm \hbar L_{\pm}
+\]
+
+Pogledalo smo si \( a^{\dagger} a \), zato bomo tukaj tudi pogledali rezultat analogen temu:
+
+\begin{equation}
+\label{eq:5}
+\begin{aligned}
+  L_{\pm} L_{mp} &= \left( L_x \pm \mathrm{i} L_y \right) \left( L_x \mp \mathrm{i} L_y \right) \\
+&= L_x ^2 + L_y ^2 \pm \mathrm{i} L_y L_x \mp \mathrm{i} L_x L_y \\
+&= L ^2 - L_z ^2 \pm \hbar L_z
+\end{aligned}
+\end{equation}
+
+Komutirajoče zveze
+
+\[ \left[ L_+, L_- \right] = 2 \hbar L_z
+\]
+
+ne bomo potrebovali according to Ramšak. Spomnimo, da se rezultat razlikuje od komutiranja anihilacijskega in kreacijskega operatorja, ki pa je bil
+
+\[ \left[ a^{\dagger}, a \right] = -1
+\]
+*** Lastne vrednosti vrtilne količine
+
+Operator vrtilne količine je definiran kot
+
+\[ \vec{L} = \vec{r} \times \left( - \mathrm{i} \hbar \nabla \right),
+\]
+
+preko katerega bi lahko iskali s pomočjo Schrödingerjeve enačbe lastne vrednosti. To smo (baje) že delali in bomo namesto tega iskale lastne vrednosti s pomočjo operatorjev.
+
+Uporabili bomo identiteti
+
+\[ \left[ L ^2, L_z \right] = 0, \quad \left[ L_z, L_+ \right] = \hbar L_+ = L_z L_+ - L_+ L_z .
+\]
+
+Naj bo \( m \in \mathbb{R} \) lastna vrednost vrtilne količine
+
+\begin{equation}
+\label{eq:4}
+ L_z \left| m \right\rangle  = m \hbar \left| m \right\rangle
+\end{equation}
+
+Na lastno stanje vplivamo z operatorjem \( L_+ \) in iz zgornje identitete sledi
+
+\[ L_z L_+ \left| m \right\rangle = \left( L_+ L_z + \hbar L_+ \right) \left| m \right\rangle = \hbar (m + 1)L_+ \left| m \right\rangle,
+\]
+
+kjer smo upoštevali \ref{eq:4}.
+
+Zanimajo nas tudi lastnosti lastne vrednosti \( \lambda \), za katere velja
+
+\[ L ^2 \left| m \right\rangle  = \lambda \left| m \right\rangle.
+\]
+
+Operator \( L ^2 = \vec{L} \cdot \vec{L}\) je produkt dveh vektorjev, zato postopamo malo drugače pri lastnih stanjih
+
+\begin{align*}
+  \left\langle m \middle| L ^2 \middle| m \right\rangle &= \left\langle m \middle| \sum\limits_{\alpha}^{} L_{\alpha} ^2 \middle| m \right\rangle \\
+&= \sum\limits_{\alpha}^{} \left\langle L_{\alpha}^{\dagger} m \middle| L_{\alpha} m \right\rangle \ge 0
+\end{align*}
+
+Iz tega sledi, da ker je \( \left\langle m \middle|L ^2 \middle| m \right\rangle \ge 0 \), preko enačbe
+
+\[ \left\langle m \middle| L ^2 \middle| m \right\rangle  = \lambda \left\langle m \middle| m \right\rangle,
+\]
+
+tudi \( \lambda \ge 0 \), saj je vedno \( \left\langle m \middle| m \right\rangle \ge 0 \)
+
+Kakšna pa je \( \lambda \)? Zaradi komutacije velja zveza
+
+\[ L ^2 L_+ \left| m \right\rangle  = L_+ L ^2 \left| m \right\rangle = \lambda L_+ \left| m \right\rangle,
+\]
+
+iz česar skupaj z zgornjim spoznanjem sledi
+
+\[ \lambda = l (l + 1) \hbar ^2 \ge 0
+\]
+
+Če si narišemo graf funkcije \( \lambda(l) \), dobimo parabolo značilno za kvadratno funkcijo. Zaradi pogoja, da je večja ali enaka \( 0 \), sledi, da so primerne lastne vrednosti \( l \) tudi večje ali enake \( 0 \), saj z njimi zadostimo vse možne vrednosti \( \lambda \).
+
+Velja(?)
+
+\[ \left\langle L_+ \psi_{lm} \middle| L_+ \middle| \psi_{lm} \right\rangle = \left\langle lm \middle| L_- L_+ \middle| lm \right\rangle \ge 0
+\]
+
+Preko zveze \ref{eq:5} se nam izraz preobrazi v
+
+\begin{align*}
+  \left\langle lm \middle| L_- L_+\middle| lm \right\rangle  & \ge 0 \\
+\left\langle lm \middle| \left( L ^2 - L_z ^2 - \hbar L_z \right) \middle| L_z \right\rangle  & \ge 0 \\
+\left\langle lm \middle| \left| \left( l (l + 1) \hbar ^2 - m ^2 \hbar ^2 - \hbar ^2 \eta \right)  \right| \middle| lm  \right\rangle & \ge 0 \\
+\left( l(l + 1) - m(m + 1)  \right) \hbar ^2  \left\langle lm \middle| lm \right\rangle &\ge 0
+\end{align*}
+
+Ker je \( \left\langle lm \middle| lm \right\rangle \) vedno večji od \( 0 \), to pomeni, da je tudi funkcija predfaktor večji od \( 0 \).
+
+Iz neenakosti
+
+\[ l(l + 1) - m(m + 1) \ge 0 \implies f(l) = l(l + 1) \ge f(m) = m(m + 1)
+\]
+
+velja \( l \ge m \) za \( m \ge 0 \). Zvezo lahko zapišemo tudi kot \( 0 \le m \le l \).
+
+Kaj pa v primeru, da je \( m \le 0 \)? Potem zapišemo \( m = - \left| m \right| \) in sledi
+
+\begin{align*}
+  l(l + 1) & \ge - \left| m \right| \left( - \left| m \right|  - 1\right) = \left| m \right| \left( \left| m \right|  + 1 \right) \\
+\left| m \right| &\ge l
+\end{align*}
+
+oziroma z drugimi besedami, \( m \) je spodaj omejen z \( -l \) in ko združimo skupaj, dobimo
+
+\[ - l \le m \le l
+\]
+
+Do tega lahko pridemo analogno kakor za pozitivne \( m \), samo da uporabimo zvezo \( \left\langle L_- lm \middle| L_- \middle| lm \right\rangle \)
+
+Lastno stanje zapišemo
+
+\[ L_+ \left| lm \right\rangle  = c \left| l, m + 1 \right\rangle
+\]
