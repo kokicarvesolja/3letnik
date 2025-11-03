@@ -7,7 +7,6 @@
 #+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
 #+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
 #+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
-
 * Formalizem kvantne mehanike
 
 Ponovitev od zadnjič: Lastne funkcije gibalne količine so ravni valovi, vendar ravni valovi niso normirani, kar posledično pomeni, da ni možno integrirati. Dokazali smo, da zaradi določenih lastnosti, če je funkcija v Fourierovem prostoru integrabilna, potem je tudi valovna funkcija gibalne količine (čeprav ni v \( L ^2 \)).

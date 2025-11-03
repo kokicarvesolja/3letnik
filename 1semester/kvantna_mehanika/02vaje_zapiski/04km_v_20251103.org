@@ -1,0 +1,93 @@
+#+title: 4. vaje iz Kvantne mehanike
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+
+* Princip nedoločenosti - nadaljevanje
+
+Rešujemo diferencialno enačbo
+
+\[ \left( - \mathrm{i} \hbar \frac{\mathrm{d} }{\mathrm{d} x} - \left\langle p \right\rangle \right) \psi(x) = \mathrm{i} \mu \left( x - \left\langle x \right\rangle \right) \psi(x)
+\]
+
+Splošna rešitev te diferencialne enačbe je
+
+\[ \psi(x) = A \exp \left\{ \frac{\mathrm{i}}{\hbar} \left[ \left\langle p \right\rangle  - \mathrm{i} \mu \left\langle x \right\rangle\right]x + \mathrm{i} \mu \frac{x ^2}{2} \right\},
+\]
+
+kjer je \( A \) amplituda. Eksponent lahko dopolnimo do popolnega kvadrata in rešitev postane
+
+\[ \psi(x) = A \exp \left\{ - \frac{\mu}{2 \hbar} \left( x - \left\langle x \right\rangle \right)^2 + \frac{\mathrm{i}}{\hbar} \left\langle p \right\rangle x \right\} = \tilde{A} \exp \left\{ - \frac{\mu}{2 \hbar} \left( x - \left\langle x \right\rangle \right) ^2 \right\} e^{\mathrm{i} \frac{\left\langle p \right\rangle x}{\hbar}}
+\]
+
+Vrednost \( \exp \left\{ \left\langle x \right\rangle ^2 \frac{\mu}{2 \hbar} \right\} \) je konstantna in smo jo zato skrili v \( \tilde{A} \).
+
+
+Valovna funkcija mora biti normirana
+
+\[ \int\limits_{- \infty}^{\infty} \left| \psi(x) \right| ^2 \, \mathrm{d} x = 1,
+\]
+
+kjer je v našem primeru
+
+\[ \rho(x) = \left| \psi(x) \right| = \left| \tilde{A} \right|^2 \cdot e^{- \frac{\mu}{\hbar} \left( x - \left\langle x \right\rangle \right) ^2} = \frac{1}{\sqrt{2\pi}\sigma} e^{- \frac{\left( x - \left\langle x \right\rangle \right) ^2}{2 \sigma ^2}}, \ \sigma > 0
+\]
+
+Poslužili smo se znanja iz verjetnosti v fiziki, saj smo prepoznali v verjetnostni gostoti Gaussovo krivuljo. Rešitev naše diferencialne enačbe je 3 parametrična krivulja
+
+\[ \psi(x) = \frac{1}{\left( 2 \pi \sigma ^2 \right)^{\frac{1}{4}}} \exp \left\{ - \frac{\left( x - \left\langle x \right\rangle \right) ^2}{4 \sigma ^2}  \right\} e^{\mathrm{i} \frac{\left\langle p \right\rangle x}{\hbar}},
+\]
+
+ki jim pravimo Gaussov valovni paket. Parametri so \( \sigma, \left\langle x \right\rangle \) in \( \left\langle p \right\rangle \). Člen \( e^{\mathrm{i} \frac{\left\langle p \right\rangle x}{\hbar}} \) je ravni val z valovno dolžino
+
+[narišemo graf Im psi(x), Re psi(x) ter rho(x)]
+
+\[ \frac{\left\langle p \right\rangle}{\hbar} \lambda = 2 \pi  \implies \ \lambda = \frac{h}{p}
+\]
+
+Tej valovni dolžini pravimo de Brogliejeva valovna dolžina.
+* Pričakovane vrednosti in nedoločenosti v odvisnosti od časa
+
+Zanimata nas pričakovana vrednost položaja \( \left\langle x \right\rangle \) in gibalne količine \( \left\langle p \right\rangle \) v odvisnosti od časa. Odvisnost od časa je izražena
+
+\[ \left\langle i, t \right\rangle  = \int\limits_{}^{} \psi^{\ast} (i, t) i \psi(i, t) \, \mathrm{d} i, \quad i = x, p
+\]
+
+Nedoločenost v odvisnosti od časa je
+
+\[ \delta i (t) = \sqrt{\left\langle x ^2, t \right\rangle - \left\langle x, t \right\rangle ^2}, \quad i = x, p
+\]
+
+Vrednosti ob času to \( \left\langle x, 0 \right\rangle = \left\langle  x \right\rangle\) za položaj, \( \left\langle p, 0 \right\rangle = \left\langle p \right\rangle\). Začetna vrednost nedoločenosti položaja je določena preko našega znanja Verjetnosti v fiziki \( \delta x(0) = \sigma \). Zaradi pogoja minimalizirane nedoločenosti
+
+\[ \delta x \delta p = \frac{\hbar}{2}
+\]
+
+pa je začetna vrednost nedoločenosti gibalne količine \( \delta p (0) = \frac{\hbar}{2 \sigma} \)
+** Teorija časovnega razvoja
+*** Valovna funkcija
+
+Časovni razvoj valovne funkcije dobimo tako, da rešimo stacionarno Schrödingerjevo enačbo
+
+\[ H \left| \psi_n \right\rangle  = E_n \left| \psi_n \right\rangle
+\]
+
+Začetno stanje \( \psi(x, 0) \) razvijemo po lastni baznih funkcijah
+
+\[ \psi(x , 0) = \left| \psi, 0 \right\rangle = \sum\limits_n^{} c_n \psi_n (x) = \sum\limits_n^{} c_n \left| \psi_n \right\rangle,
+\]
+
+kjer \( n \)-ti koeficient časovnega razvoja izračunamo preko
+
+\[ c_n = \left\langle \psi, 0 \middle| \psi_n \right\rangle
+\]
+
+Časovni razvoj valovne funkcije je dobljen tako, da dodamo časovno odvisen faktor razvoju po lastnih funkcijah
+
+\[ \psi(x, t) = \left| \psi, t \right\rangle = \sum\limits_n^{} c_n \exp \left\{ - \mathrm{i} \frac{E_n}{\hbar} t \right\} \left| \psi_n \right\rangle
+\]

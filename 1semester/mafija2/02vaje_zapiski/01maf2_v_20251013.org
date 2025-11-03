@@ -11,7 +11,7 @@
 
 Rešujemo PDE 1. reda oblike
 
-\[ a(x, y, u) \frac{\partial u}{\partial x}  + b (x, y, u) \frac{\partial u}{\partial y}  &= \phi (x, y, u)
+\[ a(x, y, u) \frac{\partial u}{\partial x}  + b (x, y, u) \frac{\partial u}{\partial y}  = \phi (x, y, u)
 \]
 
 Enačbo rešujemo preko karakteristike (grafično jih predstavimo s črtami) z uvedbo novih spremenljivk \( x(s) \) in \( y(s) \). Parcialno odvajanje

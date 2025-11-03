@@ -28,7 +28,7 @@ Komponento \( \phi \) električnega polja bomo izračunali preko enačbe
 
 \begin{equation}
 \label{eq:2}
-E_{\phi} = - \right. \frac{1}{r} \frac{\partial U}{\partial \phi} \right|_{\phi = 0}
+E_{\phi} = - \left. \frac{1}{r} \frac{\partial U}{\partial \phi} \right|_{\phi = 0}
 \end{equation}
 
 Združimo \ref{eq:1} in \ref{eq:2}, da dobimo
@@ -244,7 +244,7 @@ Ponovno izhajamo iz definicije potenciala
 
 \begin{align*}
   E_{\perp } &= \left. - \frac{\partial U}{\partial r} \right|_{r = a} \\
-&= \right. \frac{p_e}{4 \pi \epsilon_0 a ^3} \cos \theta + \frac{2 p_e}{4 \pi \epsilon_0} \frac{\cos \theta}{r ^3} \left|_{r = a} \\
+&= \left. \frac{p_e}{4 \pi \epsilon_0 a ^3} \cos \theta + \frac{2 p_e}{4 \pi \epsilon_0} \frac{\cos \theta}{r ^3} \right|_{r = a}
 \end{align*}
 
 Torej imamo površinsko napetost, ki ima največjo gostoto na polih

@@ -1,4 +1,4 @@
-#+title: 04emp P 20251022
+#+title: 4. predavanje iz Elektromagnetnega polja
 #+startup: nolatexpreview
 #+startup: entitiespretty nil
 #+startup: show2levels

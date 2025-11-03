@@ -136,7 +136,7 @@ in predefiniramo nastavke \ref{eq:4}, saj valovni funkciji oscilirata in ne more
 
 s pripadajočima verjetnostima tokovoma
 
-\[ j_1 (x) = \left| A_1 \right| ^2 - \left| B_1 \right| ^2, \quda j_2 (x) = \left| B_2 \right| ^2 - \left| A_2 \right| ^2
+\[ j_1 (x) = \left| A_1 \right| ^2 - \left| B_1 \right| ^2, \quad j_2 (x) = \left| B_2 \right| ^2 - \left| A_2 \right| ^2
 \]
 
 Za področje s potencialom \( V_3 \) potrebujemo bolj splošen nastavek, ker ne poznamo lastnosti potenciala \( V_3 (x) \). Ker imamo opravka z diferencialno enačbo drugega reda, vemo, da bo splošna oblika rešitve linearna kombinacija dveh neodvisnih funkcij
@@ -260,7 +260,7 @@ nas zanima soda valovna funkcija
 
 Iz sodega potenciala dobimo enakost \( k_1 = k_2 \equiv k \) in \( v_1 = v_2  \equiv v \). Valovni funkciji \ref{eq:5} bosta tako pri \( \Psi(-x) \) enaki
 
-\[ \Psi_1 = B_2 \frac{e^{- \mathrm{k} x}}{\sqrt{v}} + A_2 \frac{e^{\mathrm{i} k x}}{\sqrt{v}} \quad  \Psi_2 = A_1 \frac{e^{- \mathrm{k} x}}{\sqr\sqrt{v}}} + B_1 \frac{e^{\mathrm{i} k x}}{\sqr\sqrt{v}}}
+\[ \Psi_1 = B_2 \frac{e^{- \mathrm{k} x}}{\sqrt{v}} + A_2 \frac{e^{\mathrm{i} k x}}{\sqrt{v}} \quad \Psi_2 = A_1 \frac{e^{- \mathrm{k} x}}{\sqrt{v}} + B_1 \frac{e^{\mathrm{i} k x}}{\sqrt{v}}
 \]
 
 Zgornje lahko zapišemo v matrični obliki kot

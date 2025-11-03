@@ -177,7 +177,7 @@ Nastavka \ref{eq:4} in \ref{eq:5} vstavimo v začetne pogoje in integriramo odvo
 
 \begin{align*}
   u_1 (- c_1 t) + u_r (c_1 t) &= u_2 (- c_2 t) \\
-u_1 ' (- c_1 \tilde{t}) + u_r '(c_1 \tilde{t}) &= u_t (- c_2 \tilde{t}) && \left/ \int\limits_{-\infty}^t \, \mathrm{d} \tilde{t}
+u_1 ' (- c_1 \tilde{t}) + u_r '(c_1 \tilde{t}) &= u_t (- c_2 \tilde{t}) && \left/ \int\limits_{-\infty}^t \, \mathrm{d} \tilde{t} \right.
 \end{align*}
 
 Opomnik, da indeks \( t \) označuje tranzitivnost in ne odvoda po času.
