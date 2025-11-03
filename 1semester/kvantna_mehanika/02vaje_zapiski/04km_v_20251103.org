@@ -77,7 +77,7 @@ pa je začetna vrednost nedoločenosti gibalne količine \( \delta p (0) = \frac
 \[ H \left| \psi_n \right\rangle  = E_n \left| \psi_n \right\rangle
 \]
 
-Začetno stanje \( \psi(x, 0) \) razvijemo po lastni baznih funkcijah
+Začetno stanje \( \psi(x, 0) \) razvijemo po lastnih baznih funkcijah
 
 \[ \psi(x , 0) = \left| \psi, 0 \right\rangle = \sum\limits_n^{} c_n \psi_n (x) = \sum\limits_n^{} c_n \left| \psi_n \right\rangle,
 \]
@@ -91,7 +91,75 @@ kjer \( n \)-ti koeficient časovnega razvoja izračunamo preko
 
 \[ \psi(x, t) = \left| \psi, t \right\rangle = \sum\limits_n^{} c_n \exp \left\{ - \mathrm{i} \frac{E_n}{\hbar} t \right\} \left| \psi_n \right\rangle
 \]
-*** ...
+*** Časovno odvisen operator
+
+Funkcija operatorja \( A \) je definirana s pomočjo Taylorjevega razvoja te funkcije
+
+\begin{equation}
+\label{eq:3}
+ F(A) = \sum\limits_n^{} \frac{1}{n!} f^{(n)} (A) A^n
+\end{equation}
+
+Povedali smo že v prejšnjem podpoglavju, da je časovni razvoj funkcije enak
+
+\[ \left| \psi, t \right\rangle = \sum\limits_n^{} c_n \exp \left\{- \mathrm{i} \frac{E_n}{\hbar} t \right\} \left| \psi_n \right\rangle
+\]
+
+Sedaj bomo dokazali, da dobimo enak rezultat, če na začetno stanje \( \left| \psi, 0 \right\rangle \) delujemo s časovnim operatorjem \( e^{- \mathrm{i} \frac{H t}{\hbar}} \), ki smo ga izpeljali na predavanjih.
+
+#+begin_theorem
+Dokazujemo
+
+\[ \left| \psi, t \right\rangle = \sum\limits_n^{} c_n \exp \left\{ - \mathrm{i} \frac{E_n}{\hbar}t  \right\}\left| \psi_n \right\rangle= \exp \left\{ - \mathrm{i} \frac{Ht}{\hbar} \right\} \left| \psi, 0 \right\rangle
+\]
+#+end_theorem
+
+#+begin_proof
+Začetno stanje valovne funkcije, na katerega vplivamo s časovnim operatorjem, razvijemo časovno
+
+\[ e^{- \mathrm{i} \frac{Ht}{\hbar}} \left| \psi, 0 \right\rangle = \sum\limits_n^{} c_n e^{- \mathrm{i} \frac{Ht}{\hbar}} \left| \psi_n \right\rangle.
+\]
+
+Eksponent je neodvisen od vsote in ga lahko premaknemo znotraj vsote. Upoštevamo Taylorjev razvoj funkcije z operatorjem \ref{eq:3}. Naša funkcija je eksponentna, torej
+
+\[ e^{- \mathrm{i} \frac{H t}{\hbar}} \left| \psi, 0 \right\rangle = \sum\limits_n^{} c_n \left[ \sum\limits_m^{} \frac{1}{m!} \left( - \mathrm{i} \frac{t}{\hbar} \right) ^m H^m \left| \psi_n \right\rangle \right]
+\]
+
+Spomnimo, da so \( \left| \psi_n \right\rangle \) lastna stanja Hamiltoniana preko Schrödingerjeve enačbe. Tako operator pretvorimo v skalar
+
+\[ H^m \left| \psi_n \right\rangle = H^{m - 1} \cdot H \left| \psi_n \right\rangle = H^{m - 1} \cdot E_n \left| \psi_n \right\rangle = \ldots = E_n^m \left| \psi_n \right\rangle
+\]
+
+Zgornja vsota po definiciji Taylorjevega razvoja eksponentne funkcije postane
+
+\[ e^{- \mathrm{i} \frac{Ht}{\hbar}} \left| \psi, 0 \right\rangle = \sum\limits_n^{} c_n e^{- \mathrm{i} \frac{E_n t}{\hbar} } \left|\psi_n \right\rangle
+\]
+#+end_proof
+*** Časovno odvisna pričakovana vrednost
+
+Zanima nas pričakovana vrednost operatorja \( A \) ob času \( t \). S spoznanjem prejšnjega podpoglavja zapišemo pričakovano po definiciji
+
+\[ \left\langle A, t \right\rangle = \left\langle \psi, t \middle| A \middle| \psi, t \right\rangle
+\]
+
+Ket lahko zapišemo kot
+
+\[ \left| \psi, t \right\rangle = e ^{- \mathrm{i} \frac{Ht}{\hbar}} \left| \psi, 0 \right\rangle,
+\]
+
+medtem ko bra zapišemo na podoben način s pomočjo kompleksne konjugacije
+
+\[ \left\langle \psi, t \right| = \left\langle \psi, 0 \right| \left( e^{- \mathrm{i} \frac{Ht}{\hbar}} \right) ^{\dagger} = \left\langle \psi, 0 \right| e^{\mathrm{i} \frac{Ht}{\hbar}}.
+\]
+
+Pričakovano vrednost operatorja \( A \) ob času \( t \) tako zapišemo
+
+\[ \left\langle A, t \right\rangle = \left\langle \psi, 0 \middle| A(t) \middle| \psi, 0 \right\rangle,
+\]
+
+kjer je \( A(t) = e^{\mathrm{i} \frac{Ht}{\hbar}} A e^{- \mathrm{i} \frac{Ht}{\hbar}}  \).
+
+S podanim začetnim stanjem \( \left| \psi, 0 \right\rangle \) lahko sedaj preko časovnega operatorja izračunamo časovno odvisne pričakovane vrednosti, kar je precej lažje kot iskanje časovnega razvoja valovne funkcije \( \left| \psi, t \right\rangle \). Prvemu načinu iskanja pričakovanih vrednosti pravimo Heisenbergov pristop (slika), slednjemu pa Schrödingerjev pristop (slika).
 *** Operator
 
 Zanima nas časovni razvoj operatorja \( A \). Rešujemo diferencialno enačbo
@@ -112,7 +180,45 @@ Zanima nas časovni razvoj operatorja \( A \). Rešujemo diferencialno enačbo
 \end{equation}
 
 z začetnim pogojem \( A(0)= A \).
+
+Pri operatorjih omenimo še naslednje identitete:
+
+- \( \left( \alpha A + \beta B \right)(t) = \alpha A(t) + \beta B(t) \) za \( \alpha, \beta \in \mathbb{C} \), saj
+
+  \[ \left( \alpha A + \beta B \right)(t) = e^{\mathrm{i} \frac{Ht}{\hbar}} \left( \alpha A + \beta B \right) e^{- \mathrm{i} \frac{Ht}{\hbar}} = \alpha \left( e^{\mathrm{i} \frac{Ht}{\hbar}} A e^{- \mathrm{i} \frac{Ht}{\hbar}} \right) + \beta \left( e^{\mathrm{i} \frac{Ht}{\hbar}} B e^{- \mathrm{i} \frac{Ht}{\hbar}} \right) = \alpha A(t) + \beta B(t)
+  \]
+
+- \( \left( AB \right) (t) = A(t) B(t) \), saj
+
+  \[ \left( AB \right) (t) = e^{\mathrm{i} \frac{Ht}{\hbar}} AB e^{- \mathrm{i} \frac{Ht}{\hbar}} = e^{\mathrm{i} \frac{Ht}{\hbar}} A e^{- \mathrm{i} \frac{Ht}{\hbar}} e^{\mathrm{i} \frac{Ht}{\hbar}} B e^{- \mathrm{i} \frac{Ht}{\hbar}} = A(t) B(t)
+  \]
+
+- \( \left( A^{\dagger} \right)(t) = \left( A(t) \right)^{\dagger} \), saj
+
+  \[ \left( A^{\dagger} \right) (t) = e^{\mathrm{i} \frac{Ht}{\hbar}} A^{\dagger} e^{-\mathrm{i} \frac{Ht}{\hbar}} = \left( e^{\mathrm{i} \frac{Ht}{\hbar}} A e^{- \mathrm{i} \frac{Ht}{\hbar}} \right) ^{\dagger} = \left( A(t) \right)^{\dagger}
+  \]
+
 ** Reševanje naloge
+
+Imamo Hamiltonian \( H = \frac{p ^2}{2m} + V(x) \), kjer je potencial \( V(x) = 0 \). Bazne funkcije prostega delca so zvezne, zato bomo namesto indeksa \( n \), s katerim označujemo diskretni spekter, uporabili indeks \( k \). Valovna funkcija prostega delca je
+
+\[ \psi_k (x) = \frac{e^{\mathrm{i} k x}}{\sqrt{2\pi}} \text{ in } E_k = \frac{\hbar ^2 k ^2}{2m} .
+\]
+
+Funkcijo smo normirali s faktorjem \( \frac{1}{\sqrt{2 \pi}} \), saj ob normalizaciji dobimo navadno delta funkcijo. Začetno stanje \( \left| \psi, 0 \right\rangle \) bomo razvili po lastnih stanjih, vendar ker smo v zveznem spektru, bo vsoto nadomestil integral
+
+\[ \psi(x, 0) = \frac{1}{\sqrt{2\pi}} \int\limits_{}^{} c_k e^{\mathrm{i} k x} \, \mathrm{d} k
+\]
+
+Posamezen koeficient v razvoju dobimo tako, da v zgornjem integralu prepoznamo Fourierovo transformacijo funkcije \( c(k) \) iz \( k \) v \( x \). \( c(k) \) bo tako inverzna Fourierova transformacija
+
+\[ c(k) = \frac{1}{\sqrt{2 \pi}} \int\limits_{}^{} \psi(x, 0) e^{- \mathrm{i} k x} \, \mathrm{d} x
+\]
+
+Časovni razvoj funkcije bi tako bil
+
+\[ \psi(x, t) = \frac{1}{\sqrt{2\pi}}\int\limits_{}^{} c(k) e^{- \frac{E_k t}{\hbar}} e^{\mathrm{i} kx} \, \mathrm{d} k
+\]
 
 Imamo operatorje \( x, p, x ^2 \) in \( p ^2 \). Kvadrata operatorjev sta povezana z operatorji preko identitete
 
@@ -124,7 +230,7 @@ Imamo operatorje \( x, p, x ^2 \) in \( p ^2 \). Kvadrata operatorjev sta poveza
 \[ \frac{\mathrm{d} }{\mathrm{d} t}x(t) = \frac{\mathrm{i}}{\hbar} \left[ H, x \right] (t).
 \]
 
-Imamo Hamiltonian \( H = \frac{p ^2}{2m} + V(x) \), kjer je potencial \( V(x) = 0 \). Za nadaljevanje reševanja diferencialne enačbe uporabimo identiteto
+Za nadaljevanje reševanja diferencialne enačbe uporabimo identiteto
 
 \[ \left[ AB, C \right] = A \left[ B, C \right] + \left[ A,C \right] B.
 \]
@@ -195,5 +301,9 @@ Pričakovana vrednost kraja je
 
 Medtem ko pri kvadratu pričakovane vrednosti kraja pa moramo biti pozorna na vrstni red operatorjev
 
-\[ \left\langle x ^2, t \right\rangle = \left\langle \left[ x(t) \right] ^2, 0 \right\rangle
-\]
+\begin{align*}
+  \left\langle x ^2, t \right\rangle = \left\langle \left[ x(t) \right] ^2, 0 \right\rangle &= \left\langle \left[ \frac{p t}{m} + x \right] ^2, 0 \right\rangle  \\
+&= \frac{t ^2}{m ^2} \left\langle p ^2, 0 \right\rangle + \frac{t}{m} \left\langle px, 0 \right\rangle+ \frac{t}{m} \left\langle xp, 0 \right\rangle + \left\langle x ^2, 0 \right\rangle
+\end{align*}
+
+Nadaljujemo naslednjič.
