@@ -1,0 +1,73 @@
+#+title: 4. vaje iz Matematične fizike
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Naloga 11 (Prinčič 3.6) - končna struna z maso
+
+#+begin_problem
+Imamo struno dolžine \( l \), ki je na levem koncu vpeta, na desnem koncu pa ima prost konec, na katerem je masa \( m \). Iščemo lastna nihanja.
+#+end_problem
+
+Začnemo z valovno enačbo
+
+\[ \frac{\partial ^2 u}{\partial t ^2} = c ^2 \frac{\partial ^2 u}{\partial x ^2}.
+\]
+
+Na levem koncu imamo Dirichletov robni pogoj
+
+\[ u(0, t) = 0,
+\]
+
+na desnem pa je robni pogoj Newtonov zakon za maso
+
+\[ m \frac{\partial ^2 u}{\partial t ^2} (L, t) = \left. - F \frac{\partial u}{\partial x} \right|_{x = L},
+\]
+
+ki je homogen. Sila ima negativen predznak, saj če ima masa negativen pospešek, bo sila pozitivna. Problem bi bil samo, če bi \( u \propto x \) in \( u \not \propto t \), saj bi dobili nehomogeno enačbo \( \mathcal{L} \left( u_1 + u_2 \right) = 0 \).
+
+Problem rešujemo s separacijo spremenljivk \( u(x, t) = X(x) T(t) \). Splošne rešitve diferencialne enačbe
+
+\[ c ^2 \frac{X ''}{X} = \frac{\ddot{T}}{T} = - \omega ^2
+\]
+
+so
+
+\[ X(x) = A \sin (kx) + B \cos(kx) \ \text{in } T(t) = C \sin (kx) + D \cos (kx),
+\]
+
+kjer je \( k = \frac{\omega}{c} \). Iz prvega robnega pogoja dobimo, da je \( B = 0 \). Drugi robni pogoj nam poda enačbo
+
+\[ m X(L) \ddot{T}(t) = - F \cdot X' (L) T(t) \implies \ \tan (kL) = \frac{F}{mk c^2} = \frac{Fl}{m \xi c ^2},
+\]
+
+kjer smo definirali \( \xi = kL \). Rešujemo transcendentalno enačbo
+
+\[ \tan \xi = \frac{Fl}{m c ^2} \frac{1}{\xi}
+\]
+
+Rešitve transcendentalne enačbe so na [[file:~/Documents/02Areas/Sola/FMF/3letnik/1semester/mafija2/03viri/mafija2_latex_vaje.pdf][sliki 15, str. 23]]. Rešitve so simetrične za \( \epsilon \) glede na ordinatno os. Za \( \xi \to \infty \) opazimo, da velja
+
+\[ \xi_n = n \cdot \pi, \ n \in \mathbb{N}
+\]
+
+Splošna rešitev je take enačbe je
+
+\[ u(x, t) = \sum\limits_{n = 1}^{\infty} \left[ \tilde{c}_n \sin \left( \frac{c}{l} \xi_n t \right) + \tilde{D}_n \cos \left( \frac{c}{l} \xi_n t \right) \right] \cdot \sin \left( \frac{\xi_n}{l} \cdot x \right)
+\]
+
+Te funkcije so kompleten sistem in za njih velja
+
+\[ \left\langle f, g \right\rangle = \int\limits_0^L w(x) f(x) g(x) \, \mathrm{d} x, \ w(x) = \mu + m \delta(x - l)
+\]
+
+To direktno sledi iz Sturm-Liouvilleovega izreka.
+
+Poglejmo še dve limiti:
+
+- \( m = 0 \) (krajišče je prosto), iz česar sledi \( \xi_n = \frac{\pi}{2} + n \pi, \ n \in \mathbb{N}_0 \)
+- \( m \to \infty \)(krajišče je vpeto v steno), iz česar sledi \( \xi_n = n \pi, \ n \in \mathbb{N} \)
