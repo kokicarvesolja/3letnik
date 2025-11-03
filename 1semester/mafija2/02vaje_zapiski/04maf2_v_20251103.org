@@ -71,3 +71,195 @@ Poglejmo še dve limiti:
 
 - \( m = 0 \) (krajišče je prosto), iz česar sledi \( \xi_n = \frac{\pi}{2} + n \pi, \ n \in \mathbb{N}_0 \)
 - \( m \to \infty \)(krajišče je vpeto v steno), iz česar sledi \( \xi_n = n \pi, \ n \in \mathbb{N} \)
+
+** Teorija o vrsti robnih pogojev
+
+Razlika med homogenimi in nehomogenimi robnimi pogoji je sledeča. Pri homogenih pogojih imamo
+
+\[ u(x = 0, t) = 0.
+\]
+
+Če rešitev razvijemo po lastnih funkcijah
+
+\[ u(x, t) = \sum\limits_n^{} A_n u_n (x, t),
+\]
+
+in velja \( u_n (0, t) = 0 \), potem sledi \( u(x, t)= 0 \).
+
+Za nehomogen pogoj
+
+\[ u(x = 0, t) = 4
+\]
+
+pa iz \( u_n (0, t) = 4 \) ne sledi \( u(0, t) = 4 \). Separacija spremenljivk ne bo šla skozi, če je pogoj nehomogen, kar je naš način preverjanja homogenosti.
+* Naloga 12 (Prinčič 3.7) - nehomogena valovna enačba
+#+begin_problem
+Zanima nas oblika strune dolžine \( l \), ki je vpeta na obeh koncih, nanjo pa deluje gostota zunanje sile \( f(x, t) = f_0 \cos (\omega t) \)
+#+end_problem
+** Teorija reševanja nehomogenih valovnih enačb
+
+Nehomogeno valovno enačbo rešimo tako, da najprej rešimo homogen problem, torej \( f(x, t) = 0 \). Rešitev zapišemo kot
+
+\[ u_{homo} (x, t) = \sum\limits_n^{} A_n X_n(x) T_n (t).
+\]
+
+Nehomogenost nato razvijemo po lastnih funkcijah \( X_n \)
+
+\[ f(x, t) = \sum\limits_n^{} f_n(t) X_n (x).
+\]
+
+Uporabimo nastavek
+
+\[ u(x, t) = \sum\limits_n^{} u_n (t) X_n (x),
+\]
+
+ki ga nesemo v PDE
+
+\[ \sum\limits_n^{} \ddot{u}_n (t) X_n (x) = c ^2 \sum\limits_n^{} \left( - k_n ^2 \right) u_n X_n + \sum\limits_n^{} k_n X_n.
+\]
+
+Iz njega sledi navadna diferencialna enačba
+
+\[ \ddot{u}_n = - c ^2 k_n ^2 + f_n,
+\]
+
+ki jo lahko rešimo.
+** Reševanje
+
+Začnemo z reševanjem homogene diferencialne enačbe, katera krajevna rešitev je
+
+\[ X_n = \sin \left( n \frac{\pi}{l} x \right), \ k_n = \frac{n \pi}{l}
+\]
+
+Nadaljujemo z razvojem nehomogenosti po lastnih funkcijah
+
+\begin{equation}
+\label{eq:1}
+ f(x, t) = \sum\limits_n^{} f_n (t) X_n (x) \quad \left/ \int\limits_0^L X_m (x) \, \mathrm{d} x \right.
+\end{equation}
+
+kjer upoštevamo, da velja
+
+\[ f_n = \frac{\left\langle f(x, t), X_n \right\rangle}{\left\langle X_m, X_n \right\rangle}, \quad \int\limits_0^L \sin \left( \frac{n \pi}{L} x \right) \sin \left( \frac{n \pi}{L} x \right) \, \mathrm{d} x = \frac{L}{2} \delta_{n, m}.
+\]
+
+Zaradi normiranosti bo \ref{eq:1}
+
+\[ f_n (t) = \frac{2}{L} \int\limits_0^L f(x, t) X_n (x) \, \mathrm{d} x = \frac{2}{L} \int\limits_0^L f_0 \cos (\omega t) \sin \left( \frac{n \pi}{L} x \right) \, \mathrm{d} x
+\]
+
+Uvedemo novo spremenljivko \( u = \frac{n \pi}{L} x \) in po izračunu dobimo, da je
+
+\[ f_n(t) = F_n \cos (\omega t), \quad F_n = - \frac{2 f_0}{n \pi} \left( (-1)^m - 1 \right)
+\]
+
+Uporabimo torej nastavek
+
+\[ u(x, t) = \sum\limits_n^{} u_n (t) \sin (k_n x),
+\]
+
+ki ga nesemo v PDE
+
+\[ \sum\limits_n^{} \ddot{u}(t) \sin (k_n x) = c ^2 \sum\limits_n^{} k_n ^2 u_n (t) \sin (k_n x) + \sum\limits_n^{} F_n \cos (\omega t) \sin (k_n x)
+\]
+
+in nato rešujemo nehomogeno navadno diferencialno enačbo
+
+\[ \ddot{u}(t) = - c ^2 k_n ^2 u(t) + F_n \cos (\omega t)
+\]
+
+Spomnimo, da se nehomogeno ODE reši kot linearno kombinacijo
+
+\[ u_n (t) = u_n ^{(homo)} (t) + u_n^{(part)} (t)
+\]
+
+Rešitev homogenega dela enačbe
+
+\[ \ddot{u}_n = - c ^2 k_n ^2 u_n (t)
+\]
+
+je
+
+\[ u_n^{(h)} = A_n \sin \left( c k_n t \right) + B_n \cos (c k_n t)
+\]
+
+Partikularni del enačbe pa rešimo z ugibanjem nastavka - delovala bi tudi variacija konstante, vendar se ne splača. Prav tako rabimo najti zgolj eno partikularno rešitev zaradi eksistenčnega izreka. Naše ugibanje nastavka je
+
+\[ u_n^{(p)} = C \cos (\omega t),
+\]
+
+ki ga vstavimo v enačbo
+
+\begin{equation}
+\label{eq:2}
+ \ddot{u}_n^{(p)} = - c ^2 k_n ^2 u_n^{(p)} + F_0 \cos (\omega t).
+\end{equation}
+
+Dobimo
+
+\[ - \omega ^2 C \cos (\omega t) = - c ^2 k_n ^2 C \cos (\omega t) + F_n \cos (\omega t) \implies \ C = \frac{F_n}{\omega_n ^2 - \omega ^2}.
+\]
+
+Partikularna rešitev je torej
+
+\[ u_n^{(p)} = \frac{F_n}{\omega_n ^2 - \omega ^2} \cos (\omega t),
+\]
+
+za katero mora velja \( \omega_n \ne \omega \).
+
+V primeru, da \( \omega_n = \omega \), potem uporabimo nastavek oblike
+
+\[ u_n ^{(p)} = C t \sin (\omega t),
+\]
+
+ki ga vstavimo v enačbo \ref{eq:2}. Analogno prejšnjemu reševanju je rešitev
+
+\[ u_n = \frac{F_n}{2 \omega} t \sin \left( \omega_n t \right)
+\]
+
+Rešitev ODE je tako
+
+\[ u_n (t) = A_n \sin (\omega_n t) + B_n \cos (\omega_n t) + \begin{cases}
+                                                              \frac{F_n}{\omega_n ^2 - \omega ^2} \cos (\omega t) &; \omega \ne \omega_n \\
+                                                              \frac{F_n}{2 \omega_n} t \sin (\omega t) &; \omega = \omega_n
+                                                             \end{cases}
+\]
+
+Rešitev naše diferencialne enačbe je
+
+\[ u(x, t) = \sum\limits_{n = 1}^{\infty} \sin (k_n x) \left[ A_n \sin (\omega_n t) + B_n \cos (\omega_n t) + \begin{cases}
+                                                              \frac{F_n}{\omega_n ^2 - \omega ^2} \cos (\omega t) &; \omega \ne \omega_n \\
+                                                              \frac{F_n}{2 \omega_n} t \sin (\omega t) &; \omega = \omega_n
+                                                             \end{cases} \right]
+\]
+
+Edina prosta parametra sta \( A_n \) in \( B_n \).
+* Naloga 13 (Prinčič 3.8) - nehomogen robni pogoj
+#+begin_problem
+Struna dolžine \( l \) je na enem koncu vpeta, na drugem koncu pa niha \( u(l, t) = u_0 \cos (\omega t) \).
+#+end_problem
+
+Robni problemi so torej
+
+- konec vrvi je vpet, \( u(x = 0, t) = 0 \) ter
+- drug konec vrvi niha, \( u(x = l, t) = u_0 \cos (\omega t) \)
+
+Nehomogen robni pogoj prevedmo na nehomogeno diferencialno enačbo z uvedbo
+
+\[ \tilde{u} (x, t) = u(x, t) - \frac{x}{L} u_0 \cos (\omega t).
+\]
+
+Ključ tega nastavka je, da se bosta nihajoč robni pogoj ter nastavek odštela. Valovna enačba je tako
+
+\[ \frac{\partial ^2 \tilde{u}}{\partial t ^2} = c ^2 \frac{\partial ^2 \tilde{u}}{\partial x ^2}  + \omega ^2 \frac{x}{L} u_0 \cos (\omega t)
+\]
+
+Prvi robni pogoj nam da
+
+\[ \tilde{u}(x = 0, t) = u(x = 0, t) - \frac{0}{l} u_0 \cos (\omega t) = 0 ,
+\]
+
+drugi robni pogoj pa
+
+\[ \tilde{u}(x = l, t) = u(x = l, t) - \frac{l}{l} u_0 \cos (\omega t) = u_0 \cos (\omega t) - u_0 \cos(\omega t) = 0
+\]
