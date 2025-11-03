@@ -91,3 +91,109 @@ kjer \( n \)-ti koeficient časovnega razvoja izračunamo preko
 
 \[ \psi(x, t) = \left| \psi, t \right\rangle = \sum\limits_n^{} c_n \exp \left\{ - \mathrm{i} \frac{E_n}{\hbar} t \right\} \left| \psi_n \right\rangle
 \]
+*** ...
+*** Operator
+
+Zanima nas časovni razvoj operatorja \( A \). Rešujemo diferencialno enačbo
+
+\[ \frac{\mathrm{d} }{\mathrm{d} t} A(t) = e^{\mathrm{i} \frac{H t}{\hbar}} \cdot \frac{\mathrm{i} H}{\hbar} A e^{- \mathrm{i} \frac{Ht}{\hbar}} + e^{\mathrm{i} \frac{Ht}{\hbar}} A e^{- \mathrm{i} \frac{Ht}{\hbar}} \left( - \frac{\mathrm{i} H}{\hbar} \right).
+\]
+
+Člena \( e^{- \mathrm{i} \frac{Ht}{\hbar}} \) in \( \left( - \mathrm{i} \frac{H}{\hbar} \right) \) lahko zamenjamo, saj komutirata. To se da tudi preveriti tako, da zapišemo Taylorjev razvoj in preverimo komutacijo z vsakim členom. Komutacija nam omogoči, da izpostavimo eksponent
+
+\[ \frac{\mathrm{d} }{\mathrm{d} t} A(t) = e^{\mathrm{i} \frac{Ht}{\hbar}} \left(\mathrm{i} \frac{H}{\hbar} A - A \mathrm{i} \frac{H}{\hbar} \right) e^{- \mathrm{i} \frac{Ht}{\hbar}} = \frac{\mathrm{i}}{\hbar} \left[ H, A \right] e^{- \mathrm{i} \frac{H t}{\hbar}} = - \frac{\mathrm{i}}{\hbar} \left[ H, A \right](t)
+\]
+
+Časovni razvoj operatorja torej dobimo z reševanjem diferencialne enačbe
+
+\begin{equation}
+\label{eq:1}
+ \frac{\mathrm{d} }{\mathrm{d} t} A(t) = - \frac{\mathrm{i}}{\hbar} \left[ H, A \right](t)
+\end{equation}
+
+z začetnim pogojem \( A(0)= A \).
+** Reševanje naloge
+
+Imamo operatorje \( x, p, x ^2 \) in \( p ^2 \). Kvadrata operatorjev sta povezana z operatorji preko identitete
+
+\[ x ^2 (t) = \left[ x(t) \right] ^2 \ \text{ in } \ p ^2 (t) = \left[ p(t) \right] ^2
+\]
+
+Časovni razvoj operatorja kraja je po enačbi \ref{eq:1} enak
+
+\[ \frac{\mathrm{d} }{\mathrm{d} t}x(t) = \frac{\mathrm{i}}{\hbar} \left[ H, x \right] (t).
+\]
+
+Imamo Hamiltonian \( H = \frac{p ^2}{2m} + V(x) \), kjer je potencial \( V(x) = 0 \). Za nadaljevanje reševanja diferencialne enačbe uporabimo identiteto
+
+\[ \left[ AB, C \right] = A \left[ B, C \right] + \left[ A,C \right] B.
+\]
+
+S to identiteto potem velja
+
+\[ \left[ H, x \right] = \left[ \frac{p ^2}{2m}, x \right] = \frac{1}{2m} \left[ p ^2, x \right] = \frac{1}{2m} \left( p \left[ p, x \right] + \left[ p, x \right] p \right) = - \frac{\mathrm{i} \hbar p}{m},
+\]
+
+saj \( \left[ p, x \right] = - \mathrm{i} \hbar \). Torej dobimo
+
+\begin{equation}
+\label{eq:2}
+ \frac{\mathrm{d} }{\mathrm{d} t} x(t) = \frac{p(t)}{m}
+\end{equation}
+
+Izračunajmo sedaj še \( p(t) \) ponovno preko \ref{eq:1}
+
+\[ \frac{\mathrm{d} }{\mathrm{d} t} p(t) = \frac{\mathrm{i}}{\hbar} \left[ H, p \right] (t) = \frac{\mathrm{i}}{\hbar} \left[ \frac{p ^2}{2m}, p \right](t) = 0
+\]
+
+Dobili smo dve sklopljeni enačbi. Gibalna količina je konstantna, saj je njen odvod ničeln. Označimo \( p(t) = p \). Rešimo \ref{eq:2}
+
+\[ \frac{\mathrm{d} x}{\mathrm{d} t}(t) = \frac{p}{m} \implies \ x(t) = \frac{p}{m} t + D
+\]
+
+in z upoštevanjem začetnega pogoja \( x(0) = x \) sledi \( x(0) = D = x \), kar pomeni, da je časovni razvoj operatorja kraja
+
+\[ x(t) = \frac{p}{m} t + x.
+\]
+
+Pričakovana vrednost položaja je
+
+\[ \left\langle x, t \right\rangle  = \left\langle x(t), 0 \right\rangle = \left\langle \frac{p}{m}t + x, 0 \right\rangle= \frac{t}{m} \left\langle p, 0 \right\rangle + \left\langle x, 0 \right\rangle = \frac{t}{m} \left\langle p \right\rangle + \left\langle x \right\rangle.
+\]
+
+To pomeni, da se gostota porazdelitve premika premo enakomerno. Pričakovana vrednost gibalne količine
+
+\[ \left\langle p, t \right\rangle  = \left\langle p(t), 0 \right\rangle = \left\langle p, 0 \right\rangle = \left\langle p \right\rangle
+\]
+
+pa se ne spreminja.
+
+Nedoločenost gibalne količine je, ponovno spomnimo,
+
+\[ \delta p (t) = \sqrt{\left\langle p ^2, t \right\rangle - \left\langle p, t \right\rangle ^2}
+\]
+
+Kvadrat pričakovane vrednosti
+
+\[ \left\langle p ^2, t \right\rangle  = \left\langle p ^2 (t), 0 \right\rangle = \left\langle \left[ p(t) \right]^2, 0 \right\rangle = \left\langle p ^2, 0 \right\rangle
+\]
+
+se tako kot pričakovana vrednost gibalne količine ne spreminja. Ker se ne ena, ne druga količina ne spreminjata, je tudi nedoločenost gibalne količine konstantna
+
+\[ \delta p(t) = \delta p(0) = \frac{\hbar}{2 \sigma}
+\]
+
+Analogno postopamo tudi pri nedoločenosti kraja
+
+\[ \delta x ^2 (t) = \left\langle x ^2, t \right\rangle - \left\langle x, t \right\rangle ^2
+\]
+
+Pričakovana vrednost kraja je
+
+\[ \left\langle x, t \right\rangle  = \frac{\left\langle p \right\rangle}{m} t + \left\langle x \right\rangle.
+\]
+
+Medtem ko pri kvadratu pričakovane vrednosti kraja pa moramo biti pozorna na vrstni red operatorjev
+
+\[ \left\langle x ^2, t \right\rangle = \left\langle \left[ x(t) \right] ^2, 0 \right\rangle
+\]
