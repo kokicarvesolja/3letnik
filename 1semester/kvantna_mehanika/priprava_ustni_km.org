@@ -69,6 +69,39 @@ Delec bomo v vsem prostoru \( V \) zagotovo detektirali \( P = 1 \), zato je val
 \[ \int\limits_V^{} \left| \Psi \left( \vec{r}, t \right) \right| ^2 \, \mathrm{d} ^3 \vec{r} = 1.
 \]
 
+* Drugi set vprašanj - stacionarna stanja in časovni razvoj
+
+# To vključujem najprej, saj se vprašanje o lastnostih valovne funkcije dotikajo snovi tega vprašanja.
+
+#+begin_problem
+Kaj so stacionarna stanja? Poveži s fizikalno interpretacijo!
+#+end_problem
+
+Valovna enačba ima določene rešitve stoječega valovanja. To so rešitve, kjer se valovanje na koncu medija odbije in potuje nazaj, pri čemer se vpadni in odbiti val srečata in seštejeta. Tako valovanje ne potuje, ampak valovi potujejo navzgor in navzdol. Schrödingerjeva enačba ima tudi kvantnomehansko rešitev, ki je ekvivalent stoječega valovanja. To so rešitve, kjer lahko valovno funkcijo zapišemo kot produkt krajevnega (amplitudnega) in časovnega dela
+
+\[ \Psi \left( \vec{r}, t \right) =  \psi \left( \vec{r} \right) f(t).
+\]
+
+Takim rešitvam pravimo stacionarna stanja valovne funkcije.
+
+Predpostavimo, da je potencialna energija neodvisna od časa. Upoštevajoč definicijo stacionarnega stanje je Schrödingerjeva enačba
+
+\[ \mathrm{i} \hbar \frac{\partial f(t)}{\partial t}  \psi \left( \vec{r} \right) = - \frac{\hbar ^2}{2m} \nabla ^2 \psi \left( \vec{r} \right) f(t) + V \left( \vec{r} \right) \psi \left( \vec{r} \right) f(t)  \implies \quad \mathrm{i} \hbar \frac{1}{f(t)} \frac{\partial  f(t)}{\partial t } = - \frac{\hbar ^2}{2m} \frac{\nabla ^2 \psi \left( \vec{r} \right)}{\left( \vec{r} \right)} + V \left( \vec{r} \right) = E
+\]
+
+Uspešno smo ločili spremenljivke in to velja za vsak položaj in vsak čas. Posledično je rešitev lahko samo konstantna \( E \). Iz tega tako sledi stacionarna Schrödingerjeva enačba
+
+\[ - \frac{\hbar ^2}{2m} \nabla ^2 \psi \left( \vec{r} \right) + V \left( \vec{r} \right) \psi \left( \vec{r} \right) = E \psi \left( \vec{r} \right),
+\]
+
+kjer je \( \psi \) lastna funkcija in \( E \) lastna energija.
+* Tretji set vprašanj
+
+#+begin_problem
+Izpelji kontinuitetno enačba za verjetnost. Ali je valovna funkcija vedno normirana? Kaj so lastnosti valovne funkcije?
+#+end_problem
+** Kontinuitetna enačba
+
 Želimo dokazati, da je valovna funkcija normirana tudi ob drugih časih, če je že ob danem. Gostoto verjetnosti odvajamo po času z odvodom produkta
 
 \[ \frac{\partial \rho \left( \vec{r}, t \right)}{\partial t} = \frac{\left| \Psi \left( \vec{r}, t \right) \right| ^2}{\partial t} = \frac{\partial \Psi \left( \vec{r}, t \right)}{\partial t} \Psi^{\ast} \left( \vec{r}, t \right) + \frac{\partial \Psi^{\ast} \left( \vec{r}, t \right)}{\partial t} \Psi \left( \vec{r}, t \right)
@@ -95,5 +128,14 @@ da prepišemo zgornji dobljeni rezultat v obliko kontinuitetne enačbe za gostot
 
 kjer je
 
-\[ \vec{\jmath} \left( \vec{r}, t \right) = \frac{\hbar}{2 \mathrm{i} m} \left[ \Psi^{\ast} \nabla \Psi \left( \vec{r}, t \right) - \Psi \left( \vec{r}, t \right) \nabla \Psi ^{\ast} \left( \vec{r}, t \right) \right]
+\[ \vec{\jmath} \left( \vec{r}, t \right) = \frac{\hbar}{2 \mathrm{i} m} \left[ \Psi^{\ast} \nabla \Psi \left( \vec{r}, t \right) - \Psi \left( \vec{r}, t \right) \nabla \Psi ^{\ast} \left( \vec{r}, t \right) \right],
 \]
+
+*gostota verjetnostnega toka*.  \( q \left( \vec{r}, t \right) = \frac{2}{\hbar} \mathrm{Im} \left( V \left( \vec{r}, t \right) \right) \rho \left( \vec{r}, t \right) \) je gostota izvorov verjetnosti. Kontinuitetna enačba je konstantna, če je
+
+\[ \int\limits_{}^{} q \left( \vec{r}, t \right) \, \mathrm{d} \vec{r} = 0 \quad \forall \rho \left( \vec{r}, t \right)
+\]
+
+To velja za realne potencialne energije \( V \left( \vec{r}, t \right) \).
+** Lastnosti valovne funkcije
+
