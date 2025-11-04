@@ -88,3 +88,101 @@ S spremenljivko \( u = \rho ^2 + d ^2 \) je naš integral
 #+begin_problem
 Na razdalji \( d \) nad ozemljeno prevodno ploščo se nahaja točkasti naboj \( e \). Z uporabo napetostnega tenzorja izračunaj električno silo na točkasti naboj. Rezultat primerjaj s silo med točkastima nabojema \( e \) in \( -e \) v medsebojni razdalji \( 2d \).
 #+end_problem
+** Teorija
+
+Električna sila \( \vec{F} \), ki deluje na naboje v zaprtem prostoru \( V \) z električnim poljem \( \vec{E} \) je
+
+\[ \vec{F} = \epsilon_0 \iint\limits_{\partial V}^{} \left[ \vec{E} \left( \vec{E} \cdot \vec{n} \right) - \frac{1}{2} E ^2 \cdot \vec{n} \right] \, \mathrm{d} S,
+\]
+
+kjer je \( \vec{n} \) normala na površino prostora \( V \). Silo lahko zapišemo tudi z napetostnim tenzorjem
+
+\[ \vec{F}_e = \epsilon_0 \iint\limits_{\partial V}^{} \left[ \vec{E} \otimes \vec{E} - \frac{1}{2} E ^2 \underline{I} \vec{n} \right]
+\]
+** Reševanje
+
+Za reševanje si izberemo polsfero, kjer je naša prevodna plošča del ravnine polsfere. Premer te polsfere gre proti neskončnosti.
+
+Dokažemo lahko (z malo mahanja rok), da je sila na ukrivljenem delu polsfere ničelna, ko \( R \to \infty \).
+
+Sila je premosorazmerna z električnim poljem in površino. Električno polje pada kot pri dipolu, torej
+
+\[ F_{ukrivljeno} \sim \left. \epsilon_0 E ^2 S \right|_{R \to \infty} \sim \left. \epsilon_0 \left( \frac{p_e}{r ^3} \right) 2 \pi r ^2 \right|_{R \to \infty} = \left. \frac{1}{r ^4} \right|_{R \to \infty} = 0
+\]
+
+Za površino, ki je vzporedna naši prevodni plošči, sta normala površine in električno polje vzporedna (navzdol). Njun skalarni produkt bo tako enak \( \vec{E} \cdot \vec{n} = E \). Sila je tako
+
+\[ \vec{F}_e = \epsilon_0 \iint\limits_{S}^{} \left( E ^2 \vec{n} - \frac{1}{2} E ^2 \vec{n} \right) \, \mathrm{d} S = \frac{\epsilon_0 \vec{n}}{2} \iint\limits_S^{} E ^2 \, \mathrm{d} S
+\]
+
+Integriramo v mejah od \( [0, 2\pi) \) in \( (- \infty, \infty) \). Upoštevamo izraz za \( E_{\perp } \)
+
+\[ \vec{F}_e = \vec{n} \frac{e ^2 \epsilon_0 2\pi}{4 \pi ^2 \epsilon_0 ^2 d ^2 2} \int\limits_0^{\infty} \frac{\rho}{d} \frac{1}{\left( 1 + \frac{\rho ^2}{\rho ^2} \right)^{-3}} \frac{\mathrm{d} \rho}{d} = \frac{e ^2 \vec{n}}{16 \pi \epsilon_0 d ^2} = \frac{e ^2}{4 \pi \epsilon_0 \left( 2 d \right) ^2} \cdot \left( - \hat{e}_n \right)
+\]
+
+Zadnji enačaj nam pove, da lahko na to električno silo gledamo kot električna sila med pozitivinim in negativnim nabojem, ki sta na razdalji \( 2d \).
+* Električna sila na polovico prevodne krogle
+
+#+begin_problem
+Prevodno kroglo polmera \( a \) postavimo v navpično homogeno električno polje jakosti \( E_0 \). Izračunaj električno silo, ki deluje na zgornjo polovico krogle. V katero smer kaže ta sila?
+#+end_problem
+
+Naj električno polje kaže v navpični smeri navzgor. Prispevka k električni sili imamo dva. Zaradi električnega polja ima prevodna krogla v zgornji polovici na površini pozitiven naboj, na spodnji polovici pa negativen naboj. Zanima nas sila na zgornjo polovico krogle.
+
+Ne moremo se poslužiti neskončne polsfere kot v prejšnjem primeru, saj nam integral po ukrivljeni površini v resnici divergira. Namesto tega bomo uporabili površino, ki tesno objame površino, ki nas zanima. V tem primeru ima tudi dodaten bonus, da točno poznamo smer električne polja (pravokotno na površino).
+
+Ravnina polsfere ne prispeva k sili, saj znotraj ni električnega polja.
+
+Pri računanju sile postopamo podobno kot prej
+
+\[ \vec{F}_e = \frac{\epsilon_0}{2} \iint\limits_S^{} E ^2 \hat{n} \, \mathrm{d} S
+\]
+
+Tokrat normale ne nesemo iz integrala, saj je tesno povezana s delčkom površine, po katerem integriramo.
+
+Recikliramo rezultat prejšnjih vaj, kjer je električno polje te krogle
+
+\[ \left. E_r \right|_{r = a} = 3 E_0 \cos \theta
+\]
+
+Enotsko normala ima v sferičnih koordinatah sledeče komponente
+
+\[ \vec{n} = \begin{bmatrix} \sin \theta \cos \phi \\ \sin \theta \sin \phi \\ \cos \theta \end{bmatrix},
+\]
+
+medtem ko je površinski element pri radiju \( r = a \) enak
+
+\[ \mathrm{d} S = a ^2 \mathrm{d} \phi \sin \theta \, \mathrm{d} \theta
+\]
+
+Ob upoštevanju tega je električna sila
+
+\[ \vec{F}_e  = \frac{\epsilon_0}{2} \int\limits_0^1 \int\limits_0^{2\pi} \left( 3 E_0 \cos \theta \right) ^2 \begin{bmatrix} \sin \theta \cos \phi \\ \sin \theta \sin\phi \\ \cos \theta \end{bmatrix} a ^2 \, \mathrm{d} \phi \, \mathrm{d} \left( \cos \theta \right)
+\]
+
+Integrala po prvih dveh komponentah bosta zaradi integrala kosinusa ali sinus po mejah \( [0, 2\pi) \) ničelna. Integral po tretji komponenti pa je
+
+\[ \vec{F}_{e z } = \frac{9 \epsilon_0 E_0 ^2 a ^2}{2 } 2\pi \int\limits_0^1 \cos ^2 \theta \, \mathrm{d} \left( \cos \theta \right) = \frac{9 \pi}{4} \epsilon_0 E_0 ^2 a ^2
+\]
+
+Sila v tretji komponenti je pozitivna, torej kaže navzgor.
+* Točkasti naboj v kotu med dvema pravokotnima prevodnima ploščama
+
+#+begin_problem
+Točkasti naboj \( e \) sr nahaja v kotu med dvema razsežnima prevodnima ozemljenima ploščama, ki sta pravokotni drga na drugo, tako da je od vsake oddaljen za razdaljo \( a \).
+
+a) Izračunaj kvadrupolni moment nastale porazdelitve nabojev.
+b) Kako se obnaša potencial električnega polja v veliki oddaljenosti \( r \), kjer je \( r \gg a \)?
+
+Potencial električnega polja, ki ga povzroči lokalizirana porazdelitev nabojev v točki \( \vec{r} \), v multipolnem razvoju zapišemo kot
+
+\[ U \left( \vec{r} \right) = \frac{1}{ 4\pi \epsilon_0} \left( \frac{e}{r} + \sum\limits_i^{} p_i \frac{ r_i}{r ^3} + \sum\limits_{i j}^{} Q_{ij} \frac{r_i r_j}{r ^5} \right),
+\]
+
+kjer so \( p_i = \int\limits_{}^{} \rho \left( \vec{r} \, ' \right) \vec{r}_i \, ' \, \mathrm{d} ^3 \vec{r} \, ' \) komponente vektorja dipolnega momenta in
+
+\[ Q_{ij} = \int\limits_{}^{} \rho \left( \vec{r} \, ' \right) \left[ 3 r_i ' r_j ' - \delta_{ij} r' ^2 \right] \, \mathrm{d} ^3 \vec{r} \, '
+\]
+
+komponente tenzorja kvadrupolnega momenta, \( \rho \left( \vec{r} \, ' \right) \) pa je prostorninska gostota naboja v točki \( \vec{r} \,' \)
+#+end_problem
