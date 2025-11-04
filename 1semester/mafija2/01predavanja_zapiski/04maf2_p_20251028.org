@@ -1,4 +1,4 @@
-#+title: 4. predavanje iz Matematične fizike
+#+title: 4. predavanje iz Matematične fizike 2
 #+startup: nolatexpreview
 #+startup: entitiespretty nil
 #+startup: show2levels

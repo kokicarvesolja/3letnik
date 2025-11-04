@@ -1,0 +1,117 @@
+#+title: 5. predavanje iz Matematične fizike 2
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Difuzijska enačba
+** Neskončno sredstvo (Goldbart 6.4.3 Duhamelov princip)
+
+Rešujemo difuzijsko enačbo
+
+\begin{equation}
+\label{eq:1}
+ \frac{\partial  T}{\partial t } = D \frac{\partial ^2 T}{\partial x ^2}.
+\end{equation}
+
+Z izbiro skalarja \( k = \frac{1}{\sqrt{t}} \) smo prevedli difuzijsko enačbo na funkcijo ene spremenljivke \( s = \frac{x}{\sqrt{t}} \). Prejšnjič smo ostali pri enačbi, kjer ločimo spremenljivke
+
+\[ f' \left( - \frac{s}{2t} \right) = D \left( \frac{1}{\sqrt{t}} \right) ^2 f'' \implies \ \frac{f''}{f'} = - \frac{s}{2D}
+\]
+
+Po prvem integriranju je vmesni rezultat
+
+\[ \ln \left( f' \right)  = - \frac{s ^2}{4D} + \tilde{C},
+\]
+
+in po drugem integriranju je enako
+
+\[ f(s) = C \int\limits_0^s e^{- \frac{\bar{s} ^2}{4D}} \, \mathrm{d} \bar{s} + C'
+\]
+
+Dobili smo dva parametra za diferencialno enačbo 2. reda, kar je v redu.
+
+Novo spremenljivko \( k \) smo lahko uvedli, saj je bila enačba skalarno invariantna. Nismo pa omenili in sedaj omenjamo, da mora biti začetni pogoj tudi skalarno invarianten.
+
+Preko začetnega pogoja /step-function/-a
+
+\[ T_1 (x, t = 0) = \begin{cases}
+                    1 &; x > 0 \\
+                    -1 &; x < 0
+                    \end{cases}
+\]
+
+bomo določili \( C \) in \( C' \).
+
+\begin{align*}
+  T_1 (x, t) &= f\left(\frac{x}{\sqrt{t}}\right)\\
+& = \frac{1}{\sqrt{\pi D}} \int\limits_0^{\frac{x}{\sqrt{t}}} e^{- \frac{s ^2}{4D}} \, \mathrm{d} s \\
+&= \mathrm{erf} \left( \frac{x}{\sqrt{4 D t}} \right)
+\end{align*}
+
+Odvod in integral sta tudi linearni operaciji, torej bo tudi odvod \( T_1 \) rešil difuzijsko enačbo
+
+\begin{equation}
+\label{eq:3}
+ T_2 (x, t) \equiv = \frac{1}{2} \frac{\partial }{\partial x} T_1 (x, t) = \frac{1}{\sqrt{4  \pi D t}} e^{- \frac{x ^2}{4D t}},
+\end{equation}
+
+Faktor \( \frac{1}{2} \) smo uvedli v definiciji funkcije \( T_2 \) zaradi estetskih razlogov. Izbrali smo si odvod ravno zato, ker je odvod /error function/-a Gaussova funkcija
+
+:sparkles: It's all about vanity, people! :sparkles:
+
+Rešitev enačbe \ref{eq:1} je tudi superpozicija \( T_2 \)
+
+\begin{equation}
+\label{eq:2}
+ T(x, t) = \int\limits_{- \infty}^{ \infty} g(x_0) T_2 (x - x_0, t) \, \mathrm{d} x_0,
+\end{equation}
+
+kjer je \( g(x_0) \) utež. Enačba \ref{eq:2} je definicija konvolucije. Zanima nas limita, ko gre \( t \) proti \( 0 \). Pri mafiji 1 smo Diracovo \( \delta \) funkcijo zapisali na več načinov takšne funkcije, da je vsaka iteracija funkcija višja, ožja, njen integral pa je \( 1 \). Primera sta
+
+\[ \delta(x) = \lim_{\epsilon \to 0} \begin{cases}
+                                      \frac{\exp\{- \frac{x ^2}{4 \epsilon}\}}{\sqrt{4 \pi \epsilon}} &; \text{case } 1\\
+                                      \frac{1}{\pi} \frac{\epsilon}{\epsilon ^2 + x ^2} &; \text{case } 2
+                                     \end{cases}
+\]
+
+Za \( t \to 0 \) je posledično \ref{eq:2}
+
+\[ T(x, t \to 0) = \int\limits_{}^{} g(x_0) \delta (x - x_0) \, \mathrm{d} x_0 = g(x)
+\]
+
+Decembra se bomo vrnili k tem tipom rešitev - Greenove funkcije, fundamentalna rešitev.
+
+\[ G(x, x_0, t) = \frac{1}{\sqrt{4 \pi D t}} \exp \left\{ - \frac{(x -x_0)}{4Dt} \right\} \theta(t),
+\]
+
+and
+
+\[ \left( \frac{\partial }{\partial t}  - D \frac{\partial ^2 }{\partial x ^2}  \right) G(x, x_0, t) = \delta(x - x_0) \delta(t)
+\]
+
+Fizikalna interpretacija je to, da če imamo špicov temperaturi, se bo toplota širila preko Gaussove funkcije, kjer je širina odvisna od \( \sqrt{t} \).
+
+Enačba \ref{eq:3} krši /kavzalnost/. Če imamo temperaturo v \( \delta \) funkciji, bo v infinitezimalno kratkem času rešitev tudi Gaussova funkcija. Gaussova funkcija pa ima repe že takrat neničelne. Zaradi eksponenta bodo res majhni, vendar ne bodo ničelni. Če se nam rešitev čudno obnaša, je to mogoče problem.
+
+Imejmo poltrak na pozitivni osi, kjer je robni pogoj \( T(x = 0, t) = h (t) \) z začetnim pogojem \( T(x, 0) = 0 \), Zanima nas rešitev.
+
+Če je \( h(t) = 1 \) (konstantna), potem je rešitev difuzijske enačbe
+
+\[ T(x, t) = \left[ 1- T_1 (x, t) \right] \Theta(t) = w (x, t)
+\]
+
+Ideja, ki bi jo radi izvedli je, da z \( w(x, t) \) zapišemo rešitev za poljuben \( h(t) \). Temu se reče Duhamelov [du-a-mel] princip.
+
+Za začetek zapišemo poljubno funkcijo \( h(t) \) kot superpozicijo majhnih prispevkov
+
+\[ h(t) = h(0) + \int\limits_{}^{} \dot{h} (\tau) \Theta(t - \tau) \, \mathrm{d} \tau,
+\]
+
+kjer je \( \dot{h} (\tau) \mathrm{d} \tau \) skok(ec) v funkciji, stopničasta funkcija pa poskrbi za stopničastost. Konvolucija med \( w \) in \( \dot{h} \) nam preko per partesa poda splošno rešitev
+
+\[ T(x, t) = \int\limits_0^t h(\tau) \frac{\partial }{\partial t}  w(x, t - \tau) \, \mathrm{d} \tau
+\]
