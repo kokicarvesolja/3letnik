@@ -97,6 +97,8 @@ Fizikalna interpretacija je to, da če imamo špicov temperaturi, se bo toplota 
 
 Enačba \ref{eq:3} krši /kavzalnost/. Če imamo temperaturo v \( \delta \) funkciji, bo v infinitezimalno kratkem času rešitev tudi Gaussova funkcija. Gaussova funkcija pa ima repe že takrat neničelne. Zaradi eksponenta bodo res majhni, vendar ne bodo ničelni. Če se nam rešitev čudno obnaša, je to mogoče problem.
 
+** Polneskončno sredstvo
+
 Imejmo poltrak na pozitivni osi, kjer je robni pogoj \( T(x = 0, t) = h (t) \) z začetnim pogojem \( T(x, 0) = 0 \), Zanima nas rešitev.
 
 Če je \( h(t) = 1 \) (konstantna), potem je rešitev difuzijske enačbe
@@ -115,3 +117,111 @@ kjer je \( \dot{h} (\tau) \mathrm{d} \tau \) skok(ec) v funkciji, stopničasta f
 
 \[ T(x, t) = \int\limits_0^t h(\tau) \frac{\partial }{\partial t}  w(x, t - \tau) \, \mathrm{d} \tau
 \]
+
+Glavna stvar, ki jo odneseš od difuzijske enačbe je
+
+\[ x \sim \sqrt{t}
+\]
+
+(Posledično ima temperatura na 4m globine Zemlje nasprotno fazo od zunanjega zraka)
+** Končna 2D domena
+
+Imejmo kvadratno domena dolžine \( L \), kjer imajo spodnja, leva in desna stranica temperaturo \( T = 0 \). Zgornja stranica ima odvod ničeln \( \vec{\jmath} = 0 \). Začetni pogoj opišemo s
+
+\[ T \left( \vec{r}, 0 \right) = f \left( \vec{r} \right)
+\]
+
+Še zmeraj rešujemo difuzijsko enačbo
+
+\[ \frac{\partial T}{\partial t}  = \nabla ^2 T.
+\]
+
+Predpostavili smo \( D = 1 \). Za reševanje bomo uporabili separacijo spremenljivk in nastavek \( T(x, y, t) = \phi(x, y) u(t) = X(x) Y(y) u(t) \). Vstavimo nastavek v difuzijsko enačbo in dobimo
+
+\[ \frac{\dot{u}}{u} = \frac{\nabla ^2 \phi}{\phi} = \frac{X''}{X} + \frac{Y''}{Y} = - \lambda
+\]
+
+Obravnavamo 3 primere: \( \lambda = 0, \pm \lambda \).
+*** \( \lambda = 0 \)
+
+V primeru, da je \( \lambda = 0 \), je rešitev časovnega dela
+
+\[ \frac{\dot{u}}{u} = 0 \implies \ u(t) = \mathrm{konst}
+\]
+
+Rešujemo krajevi del in dobimo Laplaceovo enačbo
+
+\[ \nabla ^2 \phi = 0
+\]
+
+Rešitev, ki zadosti robnim pogojem, je
+
+\[ \phi(x, y) = 0.
+\]
+
+Taka rešitev je tudi v redu, zgolj in izključno, če \( f = 0 \). V splošnem rešitev ni v redu.
+*** \( \lambda < 0 \)
+
+Rešitev časovnega dela je v tem primeru
+
+\[ u(t) = A \exp \left\{ \left| \lambda \right| t \right\}
+\]
+
+Iz enačbe
+
+\[ \frac{X''}{X} + \frac{Y''}{Y} = - \lambda
+\]
+
+sledi, da mora biti vsaj eden od členov večji od 0, da je njuna vsota večja od \( 0 \). Predpostavimo \( \frac{X''}{X} > 0 \). Rešitev enega od krajevnih delov je
+
+\[ X (x) = \alpha \mathrm{ch} (x) + \beta \mathrm{sh } (x)
+\]
+
+Ker je hiperbolični kosinus neničeln in ima hiperbolični sinus izključno eno ničlo, ne moremo zadostiti robnim pogojev, iz tega sledi, da ne moremo zadostiti robnim pogojev. Fizikalno gledano bi rešitev lahko že s časovnih delom zavrgli, saj eksponentno narašča. V splošnem rešitev ni v redu.
+*** \( \lambda > 0 \)
+
+Časovni del je
+
+\[ u(t) = A e ^{- \lambda t}.
+\]
+
+V krajevnih delih imamo oscilirajoče funkcije \( \cos  \) in \( \sin  \). Zavržemo kosinus, saj v ni ničeln v točki \( (0, 0) \). Da zadostimo stranskima začetnima pogojema \( T = 0 \), je krajevni del v \( x \)-smeri enak
+
+\[ X_n = \sqrt{\frac{2}{L}} \sin \left( \frac{n \pi x}{L} \right), \ n = 1, 2, \ldots
+\]
+
+Za \( y \)-os imamo na spodnji stranici enak začetni pogoj \( T = 0 \), vendar pri \( y = L \) pa imamo hrbet. Torej bo rešitev
+
+\[ Y_m = \sqrt{\frac{2}{L}} \sin \left( \frac{\left( m + \frac{1}{2} \right) \pi y}{L} \right), \ m = 0, 1, 2, \ldots
+\]
+
+Sledi, da je
+
+\[ \lambda_{n, m} = \left( \frac{\pi}{L} \right) ^2 \left[ n ^2 + \left( m + \frac{1}{2} \right) ^2 \right],
+\]
+
+čemur rečemo lastna vrednost. Funkciji
+
+\[ \phi_{n, m} = X_n Y_m
+\]
+
+pravimo lastna funkcija.
+
+Enačbi, ki združi dano lastno vrednost in lastno funkcijo,
+
+\[ \nabla ^2 \phi_{n, m} = - \lambda_{n, m} \phi_{n, m}
+\]
+
+Helmholtzova ali amplitudna enačba.
+
+Splošna rešitev je
+
+\[ T(x, t) = \sum\limits_{n, m}^{} c_{n, m} \phi_{n, m} (x, y) e^{- \lambda_{n, m} t}
+\]
+
+Iz začetnega pogoja dobimo, da je
+
+\[ c_{n, m} = \left\langle \phi_{n, m} \middle| f \right\rangle
+\]
+
+Funkcija doseže maksimum ob času \( 0 \) (zaradi eksponentnega padanja) ali ob robu (zaradi robnih pogojev).
