@@ -1,0 +1,90 @@
+#+title: 5. vaje iz Elektromagnetnega polja
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Točkasti naboj nad prevodno ploščo
+
+#+begin_problem
+Na razdalji \( d \) nad veliko ozemljeno prevodno ploščo se nahaja točkasti naboj \( e \).
+
+a) Določi potencial električnega polja povsod v prostoru. Kakšno je električno polje pod ploščo, se pravi na drugi strani?
+
+b) Izračunaj površinsko gostoto naboja, ki se inducira na plošči, v odvisnosti od oddaljenosti od točke na plošči, ki je najbližje točkastemu naboju. Pokaži, da se celotni induciran naboj na plošči znaša ravno \( - e \). ali lahko do tega rezultata prideš tudi na enostaven način?
+#+end_problem
+
+[[file:figures/8naloga.jpg]]
+** Točka a
+
+Pri reševanju si bomo kot na sliki predstavljali, da imamo negativen naboj \( -e \) na drugi strani plošče. Potencialno polje je tako enako električnemu dipolu.
+
+Za poljubno točko \( \vec{r} \) je njen potencial
+
+\[ U \left( \vec{r} \right) = \frac{e}{4 \pi \epsilon_0} \left( \frac{1}{r_+} - \frac{1}{r_-} \right)
+\]
+
+Vektorja od pozitivnega in negativnega naboja do naše poljubne točke v prostoru zapišemo kot
+
+\[ \vec{r}_+ = \vec{r} - \vec{d} \text{ in } \vec{r}_- = \vec{r} + \vec{d}
+\]
+
+Hkrati pa velja, da je dolžina do naše poljube točke enaka
+
+\[ r ^2 = z ^2 + \rho ^2 \implies \ r ^2_{\pm} = \left( z \mp d \right) ^2 + \rho ^2.
+\]
+
+Potencial je tako
+
+\[ U \left( \vec{r} \right) = \frac{e}{4 \pi \epsilon_0} \left( \frac{1}{\sqrt{\left( z - d \right) ^2 + \phi ^2}}  - \frac{1}{\sqrt{\left( z + d \right) ^2 + \phi ^2}\right)
+\]
+
+Električno polje pod ploščo je v resnici \( \vec{E} = 0 \), saj tam ni naboja, zato tam tudi ni potenciala.
+** Točka b.1
+
+Želimo izračunati površinsko gostoto naboja, ki se inducira na plošči. Za izračun uporabimo Gaussov zakon za košček površine
+
+\[ \sigma = \frac{\mathrm{d} e}{\mathrm{d} S} = - \sigma E_{\perp } = \epsilon_0 \left. E_z \right|_{z = 0}
+\]
+
+Za izračun tega moramo odvajati potencial po \( z \)
+
+\[ \left. E_z \right|_{z = 0} = \left. \frac{\partial }{\partial z}  U \left( \vec{r} \right) \right|_{z = 0}
+\]
+
+Po odvajanju dobimo
+
+\[ \left. E_z  \right|_{z = 0} = - \frac{e}{4 \pi \epsilon_0} \left[ - \frac{1}{2} \left( \left( z - d \right)^2 + \phi ^2 \right)^{- \frac{3}{2}} + \frac{1}{2} \left( \left( z + d \right)^2 + \rho ^2 \right) ^{- \frac{3}{2}} \cdot 2 \left( z + d \right)  \right] = - \frac{ed}{2 \pi \epsilon_0} \left( \rho ^2 + d ^2 \right)^{- \frac{3}{2}}
+\]
+
+Torej je površinska gostota naboja
+
+\[ \sigma_{ind} = - \frac{ed}{ 2 \pi} \left( \rho ^2 + d ^2 \right)^{- \frac{3}{2}}
+\]
+
+Pogledamo še limiti:
+
+- za \( \rho \gg d \) je naboj \( \sim \rho ^{-3} \)
+- za \( \rho \ll d \) je po razvoju \( \sim - \rho ^2 \)
+
+  \[ \left[ d ^2 \left( 1 + \frac{\rho ^2}{d ^2} \right) \right]^{- \frac{3}{2}} = d^{- 3} \left( 1- \frac{3}{2} \frac{\rho ^2}{d ^2} + \ldots \right)
+  \]
+** Točka b.2
+
+Celoten induciran naboj je enostavno integral po površini z upoštevanjem površinske gostote naboja.
+
+\[ e_{plosca} = \iint\limits_S^{} \sigma \,\mathrm{d S} = \int\limits_0^{- \infty} \frac{-e d}{2\pi\left( \rho ^2 + d ^2 \right)^{\frac{3}{2}}} \cdot 2 \pi \rho \, \mathrm{d} \rho
+\]
+
+S spremenljivko \( u = \rho ^2 + d ^2 \) je naš integral
+
+\[ e_{ind} = - \frac{ed}{2} \int\limits_{d ^2}^{\infty} u ^{- \frac{3}{2}} \, \mathrm{d} u = - \frac{ed}{2} \cdot \left( - \frac{1}{2} \right) \left. u^{- \frac{1}{2}} \right|_{d ^2}^{\infty} =  - e
+\]
+* Električna sila na točkasti naboj nad prevodno ploščo
+
+#+begin_problem
+Na razdalji \( d \) nad ozemljeno prevodno ploščo se nahaja točkasti naboj \( e \). Z uporabo napetostnega tenzorja izračunaj električno silo na točkasti naboj. Rezultat primerjaj s silo med točkastima nabojema \( e \) in \( -e \) v medsebojni razdalji \( 2d \).
+#+end_problem

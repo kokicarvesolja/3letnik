@@ -158,7 +158,7 @@ Rešujemo difuzijsko enačbo v neskončnem sredstvu
 \[ \frac{\partial T}{\partial t}  = D \frac{\partial ^2 T}{\partial x ^2}
 \]
 
-Enačba je tudi invariantna na zamenjavi \( t \to k ^2 t \) in \( x \to k x \). Če je enačba invariantna na tako zamenjavo, pravimo, da je /skalirno invariantna/. Z izbiro skalarja \( k = \frac{1}{\sqrt{t}} \) difuzijska enačba postane funkcija ene spremenljivke \( s = \frac{x}{\sqrt{t}} \)
+Enačba je tudi invariantna na zamenjavi \( t \to k ^2 t \) in \( x \to k x \). Če je enačba invariantna na tako zamenjavo, pravimo, da je /skalarno invariantna/. Z izbiro skalarja \( k = \frac{1}{\sqrt{t}} \) difuzijska enačba postane funkcija ene spremenljivke \( s = \frac{x}{\sqrt{t}} \)
 
 \[ T(x, t) = T \left( k x, k ^2 t \right) = T \left( \frac{x}{\sqrt{t}}, 1 \right) = f \left( \frac{x}{\sqrt{t}} \right) = f(s)
 \]
