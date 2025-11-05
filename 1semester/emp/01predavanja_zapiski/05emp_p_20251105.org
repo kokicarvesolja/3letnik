@@ -271,3 +271,5 @@ Torej je konstanta \( C = \frac{a ^2}{2} \) in vektorski potencial je tako
 
 \[ \vec{A} = \frac{a ^2}{2} \vec{B}_0 \times \frac{\vec{r}}{r ^2}
 \]
+
+Tak \( \vec{A} \) je močno prostorsko odvisna funkcija, čeprav je \( \vec{B} = 0 \), vendar na meji je zvezen.
