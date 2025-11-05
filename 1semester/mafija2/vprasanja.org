@@ -1,0 +1,65 @@
+#+title: Vprasanja
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Kolokvij 1, 1999/2000
+
+V rešitvah po uporabi nastavka \( u(x, t) = z(x) e^{- \mathrm{i} \omega t} \) dobi enačbo
+
+\[ \frac{\mathrm{d} ^2 z }{\mathrm{d} x ^2} + k ^2 z = 0.
+\]
+
+Nastavek, ki naj bi rešil to enačbo, je potem zapisan kot
+
+\[ z (x) = \sin (kx) + \alpha \cos (kx).
+\]
+
+Moje vprašanje je, zakaj ima sinus koeficient 1 in kosinus poljuben koeficient? Nisem našel načina, kako bi iz robnih pogojev prišel do takega spoznanja. So ti koeficienti posledica fizikalne interpretacije?
+* Kolokvij 1, 2000/2001
+** 1. vprašanje
+Valovni vektor \( k_2 \) ima v rešitvah vrednosti \( k_2 = \sqrt{2} k_1 \), ko se valovanje loči na razpleteni struni. Zakaj?
+
+Razumem, da \( \sqrt{2} \) pride iz \( \sin / \cos \frac{\pi}{4} \), vendar kam izgine \( \frac{1}{2} \)?
+
+Je mogoče to posledica tega, da je celoten valovni vektor v \( x \)-smeri, ki je usmerjena vzporedno z valovanjem, vsota posameznih dveh? Torej
+
+\[ k_{2x} = 2 \cdot \frac{\sqrt{2}}{2} k_1?
+\]
+** 2. vprašanje
+
+Ko iščemo oddaljenost \( a \) in maso \( m \), ki se nahaja pri \( x = 0 \), da se val ne odbije, je drugi Newtonov zakon za utež
+
+\begin{equation}
+\label{eq:1}
+ \left. m \ddot{u}_{pred} \right|_{x = 0} = - F_0 \left. \frac{\partial u_{pred}}{\partial x} \right|_{x = 0} + F_0 \left. \frac{\partial u_{po}}{\partial x} \right|_{x = 0},
+\end{equation}
+
+kjer je
+
+\[ u(x, t) = \begin{cases}
+              u_{pred} (x, t) = e^{\mathrm{i} (k_1 x - \omega t)} + R e^{\mathrm{i} (- k_1 x - \omega t)} &; x < 0 \\
+              u_{po} (x, t) = T_1e^{\mathrm{i} (k_1 x - \omega t)} + R_1 e^{\mathrm{i} (-k_1 x - \omega t)} & ; a < x < 0 \\
+              u_{Y} (x, t) = Te^{\mathrm{i} (k_2 x - \omega t)} &; a < x
+             \end{cases}
+\]
+
+Torej \( u_{pred} \) je pred maso, \( u_{po} \) je po masi in \( u_Y \) je valovanje na razpletenih strunah.
+
+Newtonov zakon potem po upoštevanju definicij, odvajanju in \( x = 0 \) postane
+
+\[ - \omega ^2 m (1 + R) = \mathrm{i} k_1 F_0 \left( -1 + R + T_1 - R_1 \right).
+\]
+
+V rešitvah prvega faktorja \( (1 + R) \) ni. So rešitve napačne ali jaz kje počnem matematično katastrofo?
+
+Ali je pri Newtonovem zakonu \ref{eq:1} važno, kateri nastavek za rešitev uporabimo pri masi? Bosta zapis \ref{eq:1} ter
+
+\[  \left. m \ddot{u}_{po} \right|_{x = 0} = - F_0 \left. \frac{\partial u_{pred}}{\partial x} \right|_{x = 0} + F_0 \left. \frac{\partial u_{po}}{\partial x} \right|_{x = 0},
+\]
+
+pripeljala do istega rezultata?

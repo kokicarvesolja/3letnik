@@ -186,3 +186,5 @@ kjer so \( p_i = \int\limits_{}^{} \rho \left( \vec{r} \, ' \right) \vec{r}_i \,
 
 komponente tenzorja kvadrupolnega momenta, \( \rho \left( \vec{r} \, ' \right) \) pa je prostorninska gostota naboja v točki \( \vec{r} \,' \)
 #+end_problem
+
+Člen \( \delta_{ij} r' ^2 \) zagotovi brezslednost tenzorja.

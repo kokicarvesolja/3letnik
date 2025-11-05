@@ -1,0 +1,90 @@
+#+title: 7. predavanje iz Kvantne mehanike
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Coulombski potencial
+
+Rešujemo Schrödingerjevo enačbo za Coulumbski problem
+
+\begin{equation}
+\label{eq:1}
+ \left( - \frac{\hbar ^2}{2m} \frac{\mathrm{d} ^2 }{\mathrm{d} r ^2} + \frac{l (l + 1)\hbar ^2}{2m r ^2} - \frac{e ^2}{4 \pi \epsilon_0 r}   \right) u(r) = E u  (r)
+\end{equation}
+
+za vezana stanja \( E = - \left| E \right| \). Enačbe ne bomo reševali, kakor jo je Schrödinger. Enačbo prevedemo na brezdimenzijske enote z uvedbo spremenljivke \( \rho = \kappa r \), kjer velja \( \left| E \right| = \frac{\hbar ^2 \kappa ^2}{2m} \). Enačbo \ref{eq:1} pomnožimo s faktorjem \( \frac{1}{\kappa ^2} \frac{2m}{\hbar ^2} \)
+
+\[ \left( - \frac{\mathrm{d} ^2 }{\mathrm{d} \rho ^2} + \frac{l(l + 1)}{\rho ^2} + \frac{2m e ^2}{4 \pi \epsilon_0 \hbar ^2 \kappa} \frac{1}{\rho} \right) u(r) = \frac{E}{\left| E \right|} = - \frac{\left| E \right|}{\left| E \right|} u(r)
+\]
+
+Uvedemo konstanto \( \rho_0 = \frac{m e ^2}{ 2 \pi \epsilon_0 \hbar ^2 \kappa} \) in enačba je bolj pregledno zapisana
+
+\begin{equation}
+\label{eq:2}
+ u'' + \frac{l(l + 1)}{\rho ^2} u + \frac{\rho_0}{\rho} u - u = 0.
+\end{equation}
+
+Za rešitev bomo uporabili nastavek
+
+\begin{equation}
+\label{eq:4}
+ u \left( r \kappa \right) = \rho^{l + 1} v(r \kappa) e^{- \rho},
+\end{equation}
+
+ki ga dvakrat odvajaš in rezultate vstaviš v \ref{eq:2}. Po čiščenju členov nam preostane enačba
+
+\begin{equation}
+\label{eq:3}
+ \rho v'' + 2 (l + 1 - \rho) v ' + (\rho_0 - 2 (l + 1)) v = 0
+\end{equation}
+
+Tukaj naše poti divergirajo z načinom, ki ga je uporabil Schrödinger. On je uporabil
+
+\[ \sum\limits_{m = 0}^2 \left( a_m + b_m x \right)y^{(m)}(x) = 0,
+\]
+
+kar je zgornjo enačbo spremenilo v Laplaceovo enačbo. Mi bomo uporabili razvoj v vrsto (Frobenius)
+
+\begin{align*}
+  v(\rho) &= \sum\limits_{k = 0}^{\infty} c_k \rho^k \\
+v' &= \sum\limits_{k = 0}^{\infty} k c_k \rho^{k + 1} \overset{k \to k + 1}{\longrightarrow} \sum\limits_{k = 0}^{\infty} (k + 1)c_{k + 1} \rho^k \\
+v'' &= \sum\limits_{k = 0}^{\infty} k (k + 1) c_{k + 1} \rho^{k - 1}
+\end{align*}
+
+Želimo, da imajo vse spremenljivke \( \rho \) potenco \( k \)
+
+\[ \sum\limits_{k = 0}^{\infty} \left[ \left( k (k + 1) + 2(l + 1) (k + 1) \right) c_{k + 1} + (- 2k + (\rho_0 - 2(l + 1))) c_k \right] \rho^k = 0
+\]
+
+Dobili smo rekurzivno zvezo
+
+\[ c_{k + 1} = \frac{2(k + l + 1) - \rho_0}{(k + 1) (k + 2l + 2)} c_k.
+\]
+
+Zvezo si poglejmo v limiti \( k \gg 1 \). Vodilni vrednosti bosta \( c_{k + 1} = \frac{2k}{k ^2} c_k = \frac{2}{k} c_k \).
+
+Eksponent razvijemo v vrsto
+
+\[ e^{2x} = \sum\limits_{k = 0}^{\infty} \frac{2^k x^k}{k !}.
+\]
+
+Kvocientni kriterij nam poda enako koeficient kot naša rekurzivna zveza za \( k \gg 1 \)
+
+\[ \frac{2^{k + 1}}{(k + 1)!} \frac{k!}{2^k} = \frac{2}{k + 1} \overset{k \gg 1}{\longrightarrow} \frac{k}{2}.
+\]
+
+Iz tega lahko zaključimo, da se funkcij \( v(\rho) \) obnaša podobno kot \( e^{2 \rho} \) za \( k \gg  1 \). Nadalje sledi, da bo funkcija \ref{eq:4} divergirala, saj
+
+\[ \left. u (\rho) \right|_{k \gg 1, \rho \gg 1} = \rho^{l + 1} e^{2 \rho} e^{-\rho} \longrightarrow e^{\rho}.
+\]
+
+Ker nam divergenca ni všeč, želimo doseči to, da bo \( c_k = 0 \) za \( k > k_{maks} \). Koeficient \( c_{k_{maks} + 1} \) je ničeln, ko je števec v rekurzivni zvezi ničeln, torej
+
+\[ 2(k_{maks} + l + 1) = \rho_0 = 2n, \ n \in \mathbb{N}
+\]
+
+kjer je \( n \leq 1 \). Ker ima vrsta končno število koeficientov, pomeni, da je polinom.

@@ -1,4 +1,4 @@
-#+title: 1. predavanje iz Kvantne mehanike
+#+title: 1. in 2. predavanje iz Kvantne mehanike
 #+startup: nolatexpreview
 #+startup: entitiespretty nil
 #+startup: show2levels

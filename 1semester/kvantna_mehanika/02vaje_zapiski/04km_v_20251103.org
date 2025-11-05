@@ -306,4 +306,3 @@ Medtem ko pri kvadratu pričakovane vrednosti kraja pa moramo biti pozorna na vr
 &= \frac{t ^2}{m ^2} \left\langle p ^2, 0 \right\rangle + \frac{t}{m} \left\langle px, 0 \right\rangle+ \frac{t}{m} \left\langle xp, 0 \right\rangle + \left\langle x ^2, 0 \right\rangle
 \end{align*}
 
-Nadaljujemo naslednjič.
