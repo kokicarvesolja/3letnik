@@ -177,3 +177,118 @@ Tudi ven iz ravnine ne gre, torej \( \theta = \frac{\pi}{2} \ne \theta(t) \). Ti
 
 \[ \left\langle \phi \right\rangle = \omega t + c
 \]
+
+Elektron iz prejšnjega primer bi po 10 minutah bi razlezen po celotni krožnici. (glej Emin screenshot.)
+* Nabit delec v magnetnem ali električnem polju
+
+Klasično smo preko enačbe
+
+\[ m \oddv{r} = e \vec{E} + e \vec{v} \times \vec{B}
+\]
+
+dobili gibalne enačbe. Kvantno pa imamo Hamiltonian
+
+\begin{equation}
+\label{eq:7}
+ H = \frac{\left( \vec{p} - e \vec{A} \right) ^2}{2m} + e \phi + U,
+\end{equation}
+
+kjer je \( \vec{A} \) vektorski potencial, ki je povezan z magnetnim poljem preko
+
+\[ \vec{B} = \nabla \times \vec{A}
+\]
+
+in z električnim poljem preko
+
+\[ \vec{E} - \nabla \phi - \frac{\partial }{\partial t}  \vec{A}.
+\]
+
+Zapišemo Schrödingerjevo enačbo s Hamiltonianom \ref{eq:7}
+
+\[ \mathrm{i} \hbar \frac{\partial \psi}{\partial t}  = \frac{1}{2m} \left( - \mathrm{i} \hbar \nabla - e \vec{A} \right) ^2 \psi + e \phi \psi + U \psi
+\]
+
+Operatorje v kvadratu vsote razpišemo
+
+\[ \left( \mathrm{i} \hbar \nabla + e \vec{A} \right) ^2 = - \hbar ^2 \nabla ^2 f + \mathrm{i} \hbar e \nabla \cdot \vec{A} f + \mathrm{i} \hbar e \vec{A} \cdot \nabla f + e ^2 A ^2 f = \mathrm{i} \hbar e \left( \left( \nabla \cdot \vec{A} \right)f + \left( \nabla f \right)\cdot \vec{A} \right) + \mathrm{i} \hbar e \vec{A} \cdot \nabla f.
+\]
+
+Z dobljenim pomožnim računom Schrödingerjeva enačba postane
+
+\[ \mathrm{i} \hbar \frac{\partial \psi}{\partial t} = - \frac{\hbar ^2 \nabla ^2}{2m} \psi + \frac{\mathrm{i} \hbar e}{m} \vec{A} \cdot \nabla \psi + \left( \frac{\mathrm{i} \hbar e}{2m} \nabla \cdot \vec{A} + \frac{e ^2}{2m} A ^2 + e \phi + U \right) \psi,
+\]
+
+kar je Schrödingerjeva za nabit delec v magnetnem polju. Zadnji oklepaj predstavlja celoten potencial, ki pa je zaradi prvega člena kompleksen. Spomnimo bralca, da s v tem primeru verjetnostna gostota ne ohranja, vendar za ta specifičen primer, te težave ni.
+** Zeemanova sklopitev
+
+Imejmo homogeno magnetno polje \( \vec{B} \). Obratna enačba identitete \( \nabla \times \vec{A} = \vec{B} = (0, 0, B) \) je
+
+\[ \vec{A} = - \frac{1}{2} \left( \vec{r} \times \vec{B} \right)
+\]
+
+Opazujemo člen
+
+\[ \mathrm{i} \frac{e \hbar}{m} \vec{A} \cdot \nabla \psi = - \frac{\mathrm{i} \hbar e}{2m} \left( \vec{r} \times \vec{B} \right) \cdot \nabla \psi,
+\]
+
+kjer smo upoštevali zgornjo identiteto. Zamenjamo \( \left( \vec{r} \times \vec{B} \right) \cdot \nabla \psi \) z \( - \left( \vec{r} \times \nabla \right) \vec{B} \) in člen zapišemo z vrtilno količino (v katero tudi skrijemo \( \mathrm{i} \hbar \))
+
+\[ \mathrm{i} \frac{e \hbar}{m} = -\frac{e}{2m} \vec{L} \cdot \vec{B} \psi = - \frac{e}{2m} \vec{B} \cdot \vec{L} \psi
+\]
+
+Definiramo Zeemanov [something]
+
+\[ H_z = - \vec{B} \cdot \vec{\mu}, \ \vec{\mu} = \frac{e}{2m} \vec{L},
+\]
+
+kjer je \( \mu_B = \frac{\left| e_0 \right| \hbar}{2m} \) Bohrov magneton.
+
+Drugi člen, ki ga opazujemo, je
+
+\[ \frac{e ^2}{2m} \vec{A} \cdot \vec{A} = \frac{e ^2}{8m} \left( B ^2 r ^2 - \left( \vec{B} \cdot \vec{r} \right) \right) = \frac{e ^2 B ^2}{8m} \left( x ^2 + y ^2 \right) = V_{\vec{A}}
+\]
+** Landauovi nivoji (1930)
+
+Uporabili bomo Landauova umeritev, kjer izberemo vektorski potencial
+
+\begin{equation}
+\label{eq:8}
+ \vec{A} = B(- y, 0, 0).
+\end{equation}
+
+To polje je koristno, saj
+
+\[ \nabla \times \vec{A} = B(0, 0, 1).
+\]
+
+Izbira je po besedah Kerševana, good enough, ker se ne da najti homogenega magnetnega polja, kjer bo vektorski potencial translacijsko invarianten. Rešujemo Schrödingerjevo enačbo za nabiti delec
+
+\[ \frac{\left( \vec{p} - e \vec{A} \right) ^2}{2m} \psi + e \phi \psi = E \psi.
+\]
+
+Zaradi \ref{eq:8} lahko zapišemo
+
+\[ \frac{1}{2m} \left[ \left( - \mathrm{i} \hbar \frac{\partial }{\partial x}  + e B y \right) ^2 + \hbar ^2 \frac{\partial ^2 }{\partial y ^2}  + \hbar ^2 \frac{\partial ^2 }{\partial z ^2}  \right] \psi + e \phi \psi = E \psi.
+\]
+
+Kot nastavek bomo uporabili produkt ravnega vala v smeri \( x \) in \( z \) z neznano funkcjo \( \chi(y) \)
+
+\[ \Psi \left( \vec{r} \right) = \exp \left\{ \mathrm{i} \left( \frac{p_x}{\hbar} x + \frac{p_z}{\hbar} z \right) \right\} \chi(y).
+\]
+
+Imamo funkcijo \( f \) (v našem primeru je to kvadrat), je potem to kar funkcija pri lastni vrednosti
+
+\[ f \left( - \mathrm{i} \hbar \frac{\partial }{\partial x}  \right) \exp \left\{ \mathrm{i} \frac{p_x}{\hbar} x \right\} = f(p_x) \exp \left\{ \mathrm{i} \frac{p_x}{\hbar}x \right\}.
+\]
+
+Torej bo upoštevajoč nastavek Schrödingerjeva enačba postala
+
+\[ \frac{1}{2m} \left( \left[ p_x + e B y\right]^2 - \hbar ^2 \frac{\partial ^2 }{\partial y ^2}  \right) \chi(y) + e \phi \chi(y) = E \chi.
+\]
+
+Trenutno gledamo enačbo skozi oči tega, da \( \phi = 0 \) in \( U = 0 \). Z izpostavitvijo \( e B \) lahko enačbo prevedemo na standardno obliko harmonskega oscilatorja
+
+\[ \left(-\frac{\hbar ^2}{2m} \frac{\mathrm{d} ^2 }{\mathrm{d} y ^2} + \frac{e ^2 B ^2}{2m} \left( \frac{p_x}{eB} + y \right) ^2\right) \chi(y) = \left( - \frac{\hbar ^2}{2m} \frac{\mathrm{d} ^2 }{\mathrm{d} y ^2} + \frac{1}{2} m \omega ^2 \left( y - y_0 \right) ^2 \right) \chi(y) = E \chi(y),
+\]
+
+kjer je \( \omega ^2 = \frac{e ^2 B ^2}{m ^2} \) in \( y_0 = - \frac{\hbar k}{e B} = - \frac{p_x}{eB} \).
