@@ -63,9 +63,10 @@ Ta integral poznamo tudi pod imenom Biot-Savartov zakon. S tako uvedenim magnetn
 \]
 ** Magnetne silnice
 
-Magnetne silnice so vedno zaključene.
+Magnetne silnice so vedno zaključene. Do tega spoznanja smo prišli eksperimentalno.
 
 [[file:figures/silnice_magnetnoPolje.png]]
+
 ** Magnetna cirkulacija
 
 Magnetno cirkulacijo uvedemo kot
@@ -84,3 +85,76 @@ Iz tega sledi, da je
 \]
 
 kar pomeni, da je magnetno polje vrtinčno.
+** Magnetni pretok
+
+Magnetni pretok uvedemo kot
+
+\[ \phi_M = \int\limits_S^{} \vec{B} \cdot \mathrm{d} \vec{S},
+\]
+
+kjer je \( S \) poljubna površina. Velja pa, da je magnetni pretok skozi zaključeno površino
+
+\[ \oint\limits_S^{} \vec{B} \cdot \mathrm{d} \vec{S} = 0
+\]
+
+To je posledica tega, da ne obstajajo monopoli oziroma so vse magnetne silnice sklenjene. V diferencialni obliki pretok zapišemo
+
+\[ 0 = \oint\limits_{S = \partial V}^{} \vec{B} \cdot \mathrm{d} \vec{S} = \int\limits_V^{} \nabla \cdot \vec{B} \, \mathrm{d} V = 0,
+\]
+
+iz česar zaključimo, da je magnetno polje brezizvorno, saj
+
+\[ \nabla \cdot \vec{B} = 0
+\]
+** Gostota električnega toka
+
+Električni tok, ki je vezan na žice, se posploši z uvedbo gostote električnega toka. In sicer
+
+\[ I = \int\limits_S^{} \vec{\jmath} \cdot \mathrm{d} \vec{S}
+\]
+
+Gostota električnega toka \( \vec{\jmath} \) ima lahko poljubno smer v prostoru in ni nujno vezan na vodnike - gostota toka ne teče nujno vzdolž žice in Zemljino jedro ni sestavljeno iz vodnikov.
+** Primeri gostote toka
+*** Zvezno porazdeljen naboj
+
+Imamo električen naboj z gostoto \( \rho \left( \vec{r} \right) \) in hitrostno polje \( \vec{v} \left( \vec{r} \right) \), ki poganja naboje. Izhajamo iz diferencialne oblike definicije gostote električnega toka
+
+\[ \mathrm{d} I = \vec{\jmath} \cdot \mathrm{d} \vec{S}
+\]
+
+Z upoštevanjem definicije toka lahko povežemo gostoto električnega toka s hitrostnim poljem
+
+\[ \mathrm{d} I = \frac{\mathrm{d} e}{\mathrm{d} t} = \frac{\rho \mathrm{d} V}{\mathrm{d} t} = \frac{\rho \mathrm{d} S \mathrm{d} x}{\mathrm{d} t} = \rho \mathrm{d} S \vec{v} = \vec{\jmath} \mathrm{d} \vec{S}.
+\]
+
+Torej je gostota električnega toka enaka
+
+\[ \vec{\jmath} = \rho \vec{v}
+\]
+*** Linearni vodnik
+
+Gostoto električnega toka zapišemo kot
+
+\[ \vec{\jmath} = I \delta ^2 \left( \vec{\rho} - \vec{\rho}_0 \right) \hat{t},
+\]
+
+kjer sta \( \vec{\rho} \) in \( \vec{\rho}_0 \) radij vektorja v 2D, pravokotna na enotski vektor \( \hat{t} \), ki kaže vzporedno z vodnikom.
+*** Točkast naboj
+
+Gostota električnega toka je
+
+\[ \vec{\jmath} = e \delta ^2 \left( \vec{r} - \vec{r}_0 (t) \right) \vec{v}(t),
+\]
+
+kjer je \( \vec{r}_{0} \) tir naboja, \( \vec{v} \) pa hitrost naboja.
+*** Površinska gostota toka
+
+\[ \vec{\jmath} \left( \vec{r} \right) = \sigma \cdot \vec{v} \delta \left( z - z_0 \right),
+\]
+
+kjer je \( \sigma \) površinska gostota naboja in \( z_0 \) lega površine. Pogosto se označi tudi
+
+\[ \vec{\jmath}_S = \sigma \vec{v},
+\]
+
+kjer je površinska gostota toka.
