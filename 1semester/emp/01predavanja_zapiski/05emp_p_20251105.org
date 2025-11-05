@@ -158,3 +158,116 @@ kjer je \( \sigma \) površinska gostota naboja in \( z_0 \) lega površine. Pog
 \]
 
 kjer je površinska gostota toka.
+** Amperov izrek
+
+Imejmo tokovno zanko \( c' \), ki jo opisuje parametrizacija \( \vec{r} (l') \). Element zanke označimo z \( \mathrm{d} \vec{l} \, ' \). Predstavljajmo si (navidezno) zanko \( c \), ki objame dejansko tokovno zanko in jo opisuje krivulja s parametrizacijo \( \vec{r}(l) \). Majhen element virtualne zanke je opisan z \( \mathrm{d} \vec{l} \).
+
+Zanima nas cirkulacija magnetnega polja po zanki \( c \). Uporabili bomo definicijo magnetne cirkulacije ter Biot-Savartov zakon
+
+\[ \Gamma_M = \oint\limits_c^{} \vec{B} \cdot \mathrm{d} \vec{l} = \oint\limits_c^{} \left[ \frac{\mu_0 I}{4 \pi} \oint\limits_{c'}^{} \, \mathrm{d} \vec{l}\,' \times \frac{\left( \vec{r} (l) - \vec{r} (l') \right)}{\left| \vec{r} (l) - \vec{r} (l') \right| ^3} \right] \cdot \mathrm{d} \vec{l}
+\]
+
+Ciklično smemo zamenjati vrstni red
+
+\[ \Gamma_M = \oint\limits_{c}^{} \oint\limits_{c'}^{} \frac{\mu_0 I }{4 \pi} \left( \mathrm{d} \vec{l} \times \mathrm{d} \vec{l} \, ' \right) \cdot \frac{\vec{r} (l) - \vec{r} (l')}{\left| \vec{r} (l) - \vec{r} (l') \right| ^3}.
+\]
+
+Z uvedbo posplošene površine \( \mathrm{d} S = \mathrm{d} \vec{l} \times \mathrm{d} \vec{l}' \) se integral prepiše v
+
+\[ \Gamma_M = \frac{\mu_0 I}{4 \pi} \oint\limits_{S}^{} \mathrm{d} \vec{S} \cdot \frac{\left( \vec{r} (l) - \vec{r} (l') \right)}{\left| \vec{r} (l) - \vec{r} (l') \right|^3}
+\]
+
+Vrednost integrala po uvedbi sferičnih koordinat je
+
+\[ \Delta = \oint\limits_{S}^{} \, \mathrm{d} \Omega = 4\pi
+\]
+
+iz česar tako sledi
+
+\[ \Gamma_M = \mu_0 I,
+\]
+
+kar je Amperov izrek. Magnetna cirkulacija je enaka zaobjemetemu električnemu toku.
+
+Integral lahko preko Stokesovega izreka prepišemo v integral po površini
+
+\begin{equation}
+\label{eq:1}
+ \oint\limits_{\partial S = c}^{} \vec{B} \cdot \mathrm{d} \vec{r} = \int\limits_S^{} \nabla \times \vec{B} \, \mathrm{d} S
+\end{equation}
+
+Iz Amperovega zakona in \ref{eq:1} ter definicije gostote električnega toka dobimo enakost
+
+\[ \int\limits_{}^{} \nabla \times \vec{B} \, \mathrm{d} \vec{S} = \mu_0 I = \mu_0 \int\limits_S^{} \vec{\jmath} \cdot \mathrm{d} \vec{S}
+\]
+
+Torej velja
+
+\[ \nabla \times \vec{B} = \mu_0 \vec{\jmath},
+\]
+
+kar je diferencialno obliko Amperovega zakona.
+** Magnetni potencial
+
+Magnetno polje je vrtinčno, kar pomeni, da ga ne moremo zapisati s skalarnim potencialom. Vemo pa, da je \( \vec{B} \) brezizvorno \( \nabla \cdot \vec{B} = 0 \). Vemo pa, da je v splošnem
+
+\[ \nabla \cdot \left( \nabla \times \vec{A} \right) = 0.
+\]
+
+Zato uvedemo vektorski magnetni potencial kot
+
+\[ \vec{B} = \nabla \times \vec{A}.
+\]
+
+Magnetni pretok se tako zapiše
+
+\begin{equation}
+\label{eq:3}
+ \phi_M = \int\limits_S^{} \vec{B} \cdot \mathrm{d} \vec{S} = \int\limits_S^{} \left( \nabla \times \vec{A} \right) \, \mathrm{d} \vec{S} = \int\limits_{\partial S}^{} \vec{A} \, \mathrm{d} \vec{r}
+\end{equation}
+
+To naj nam bi pomagalo predstavljati vektorski potencial - je potencial, ki gre skozi površino zanke, kakor kaže zgornja enačba.
+** Vektorski potencial tuljave
+
+Imamo tuljavo s premerom \( a \), po kateri teče tok \( I \). Znotraj tuljave se nam pojavi homogeno polje \( \vec{B}_0 \), medtem ko zunaj tuljave pa je \( \vec{B} = 0 \). Magnetno polje vektorsko zapišemo kot
+
+\[ \vec{B}_0 \left( 0, 0, B_0 \right).
+\]
+
+Da ima naše magnetno polje \( \vec{B}_0 \) takšne komponente in velja \( \vec{B}_0 = \nabla \times \vec{A} \), mora biti \( \vec{A} \) oblike
+
+\begin{equation}
+\label{eq:2}
+ \vec{A} = \frac{1}{2} \vec{B}_0 \times \vec{r}.
+\end{equation}
+
+Enačba \ref{eq:2} nam definira vektorski potencial znotraj tuljave.
+
+Zunaj tuljave bi pričakovali, da je \( \vec{A} \) ničeln ali konstanten, saj je \( \vec{B} = 0 \).
+
+Predstavljajmo si zanko, ki je tik ob zunanjem robu tuljave. Za to zanko bomo računali pretok skozi njo. Po definiciji magnetnega pretoka je
+
+\[ \phi_M = \int\limits_S^{} \vec{B} \cdot \mathrm{d} \vec{S} = B_0 \pi a ^2
+\]
+
+Uporabimo enačbo \ref{eq:3}, in prepišemo magnetni pretok
+
+\[ \phi_M = \int\limits_{\partial S}^{} \vec{A} \cdot \mathrm{d} \vec{r} \propto A_{zunaj} \cdot 2 \pi r_{zunaj},
+\]
+
+kjer je \( r_{zunaj} = a + \mathrm{d} r \). Iz tega lahko zaključimo, da \( \vec{A}_{zunaj} \ne 0 \).
+
+Uganemo obliko \( \vec{A} \) zunaj tuljave kot
+
+\[ \vec{A} = C \cdot \vec{B}_0 \times \frac{\vec{r}}{r ^2}.
+\]
+
+Za to enačbo velja \( \nabla \times A = 0 \). Določimo \( C \), da je \( \vec{A} \) na meji med notranjostjo in zunanjostjo tuljave zvezen
+
+\[ \oint\limits_{\partial S}^{}\vec{A} \cdot \mathrm{d} \vec{r} = \int\limits_{\partial S}^{}  C \left( \vec{B}_0 \times \frac{\vec{r}}{r} \right) \, \mathrm{d} \vec{r} = 2\pi B_0 = \int\limits_S^{} \vec{B} \cdot \mathrm{d} \vec{S} = B_0 \pi a ^2
+\]
+
+Torej je konstanta \( C = \frac{a ^2}{2} \) in vektorski potencial je tako
+
+\[ \vec{A} = \frac{a ^2}{2} \vec{B}_0 \times \frac{\vec{r}}{r ^2}
+\]
