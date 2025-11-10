@@ -1,0 +1,111 @@
+#+title: 5. vaje iz Kvantne mehanike
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Pričakovane vrednosti in nedoločenosti časa Gaussovega paketa
+
+Pričakovane vrednosti kraja in gibalne količine od prejšnje ure so
+
+\begin{align*}
+  \left\langle x, t \right\rangle &= \frac{t}{m} \left\langle p, 0 \right\rangle + \left\langle x, 0 \right\rangle \\
+\left\langle x ^2, t  \right\rangle &= \frac{t ^2}{m ^2} \left\langle p ^2, 0 \right\rangle + \frac{t}{m} \left\langle px, 0 \right\rangle + \frac{t}{m} \left\langle xp, 0 \right\rangle - \left\langle x ^2, 0 \right\rangle,
+\end{align*}
+
+kjer sta \( \left\langle p ^2, t \right\rangle = \left\langle p ^2, 0 \right\rangle\) in \( \left\langle p, t \right\rangle = \left\langle p, 0 \right\rangle \). Ne vemo, kako bi zapisali člen z \( \left\langle xp + px, 0 \right\rangle \). To težavo bomo razrešili s pomočjo nekaj identitet. Vemo, da velja
+
+\[ \left( xp \right) ^{\dagger} = px
+\]
+
+Hkrati velja, da je hermitirana pričakovana vrednost enaka kompleksni vrednosti
+
+\[ \left\langle A ^{\dagger} \right\rangle  = \left\langle \psi \middle| A^{\dagger} \psi \right\rangle = \left\langle A \psi \middle| \psi \right\rangle = \left( \left\langle \psi \middle| A \psi \right\rangle \right)^{\ast} = \left\langle A \right\rangle^{\ast}
+\]
+
+Vsota dveh pričakovanih vrednosti pa je vsota posameznih pričakovanih vrednosti in kakor povedano na vajah
+
+\[ \left\langle A  + A ^{\dagger} \right\rangle  = \left\langle A \right\rangle + \left\langle A^{\dagger} \right\rangle = \left\langle A \right\rangle  + \left\langle A \right\rangle^{\ast} = 2 \mathrm{Re} \left\langle A \right\rangle
+\]
+
+Naš izraz se tako posodobi v
+
+\begin{equation}
+\label{eq:2}
+ \delta ^2 x (t) = \left\langle x ^2, t \right\rangle - \left\langle t, x \right\rangle ^2 = \frac{t ^2}{m ^2} \left( \frac{\hbar ^2}{2\sigma} \right) ^2 + \sigma ^2 + \frac{t}{m}2 \left[ \mathrm{Re} \left\langle xp, 0 \right\rangle  - \left\langle p, 0 \right\rangle \left\langle x, 0 \right\rangle\right]
+\end{equation}
+
+Za funkcijo
+
+\[ \psi(x, 0) = \frac{1}{\sqrt[4]{2 \pi \sigma ^2}} \exp \left\{ - \frac{(x - \left\langle x \right\rangle) ^2}{4 \pi ^2} \right\} \exp \left\{ \mathrm{i} \frac{\left\langle p \right\rangle}{\hbar} x \right\},
+\]
+
+bo njen odvod po \( x \) enak
+
+\begin{equation}
+\label{eq:1}
+ \frac{\mathrm{d} }{\mathrm{d} x} \psi(x, 0) = \left( \mathrm{i} \frac{\left\langle p \right\rangle}{\hbar} - \frac{2 \left( x - \left\langle x \right\rangle \right)}{4 \sigma ^2} \right) \psi(x, 0).
+\end{equation}
+
+Poglejmo si sedaj člen \( \mathrm{Re} \left\langle xp, 0 \right\rangle \):
+
+\[ \mathrm{Re} \left\langle xp, 0 \right\rangle = \left\langle \psi, 0 \middle| xp \middle| \psi, 0 \right\rangle = \int\limits_{-\infty}^{\infty} \psi^{\ast} (x, 0) x \left( - \mathrm{i} \hbar \right) \frac{\mathrm{d} }{\mathrm{d} x} \psi(x, 0) \, \mathrm{d} x = \int\limits_{- \infty}^{\infty} \psi^{\ast} x \left\langle p \right\rangle \psi(x, 0) \, \mathrm{d} x = \left\langle p \right\rangle \left\langle x \right\rangle
+\]
+
+Upoštevali smo, da kaj je realni del odvoda \ref{eq:1}, ko ga pomnožimo z imaginarno enoto, ki izhaja iz definicija gibalne količine.
+
+V enačbi \ref{eq:2} odpade zadnji člen stran. Nedoločenost paketa lahko sedaj izrazimo v odvisnosti od širine paketa \( \sigma \)
+
+\[ \delta x (t) = \sigma \sqrt{1 + \left( \frac{t \hbar}{2m \sigma ^2} \right)}.
+\]
+
+Značilen čas \( t_0 \) je na začetku enak
+
+\[ t_0 = \frac{2m \sigma ^2}{\hbar} = \frac{\hbar}{\frac{\hbar ^2}{2 m \sigma ^2}} = \frac{\hbar}{E_0}
+\]
+
+kar smo dobili iz tega, da je \( \delta x(t = 0) = \sigma \). V večini primerov velja, da je velja identiteta \( t_0 \cdot \hbar = E_0 \)
+
+[[file:figures/gauss_wave_dxt.png]]
+
+[dodaj informacija, da Gaussov paket ni vec Gaussov paket]
+* Harmonski oscilator
+** Teorija
+* Časovni razvoj delca v Harmonskem oscilatorju
+
+#+begin_problem
+Imamo funkcijo delca v harmoničnem oscilatorju
+
+\[ \left| \psi, 0  \right\rangle = \frac{1}{\sqrt{2}} \left| 0 \right\rangle + \frac{\mathrm{i}}{\sqrt{2}} \left| 1 \right\rangle
+\]
+
+Zanimajo nas časovni razvoji \( \left\langle x, t \right\rangle, \left\langle p, t \right\rangle \)  in nedoločenosti \( \delta x(t), \delta p (t) \).
+#+end_problem
+
+Nalogo bomo rešili najprej v Schrödingerjevi sliki, kjer funkcijo pomnožimo s časovnim faktorjem. Energije v eksponentu nadomestimo z energijami harmonskega oscilatorja \( E_0 = \frac{\hbar \omega}{2} \) ter \( E_1 = \frac{3}{2}\hbar \omega \)
+
+\[ \left| \psi, t \right\rangle  = \frac{1}{\sqrt{2}} \exp \left\{ - \mathrm{i}\frac{E_0 t}{\hbar} \right\} + \mathrm{i} \frac{1}{\sqrt{2}} \exp \left\{ \mathrm{i} \frac{E_1 t}{\hbar} \right\} = \frac{1}{\sqrt{2}} \exp \left\{ - \mathrm{i} \frac{\omega t}{2} \right\} + \frac{\mathrm{i}}{\sqrt{2}} \exp \left\{ - \mathrm{i} \frac{3 \omega t}{2} \right\}
+\]
+
+Pričakovana vrednost kraja je ob upoštevanju, da je operator kraja zapisan z anihilacijskim in kreacijskim faktorjem enak \( x = \frac{x_0}{\sqrt{2}} \left( a + a^{\dagger} \right) \).
+
+\[ \left\langle x, t \right\rangle = \left\langle \psi, t \middle| x \middle| \psi, t \right\rangle = \left\langle \psi, t \middle| \frac{x_0}{\sqrt{2}} \middle| \psi, t \right\rangle= \frac{x_0}{\sqrt{2}} \mathrm{Re} \left\langle a, t \right\rangle.
+\]
+
+Pričakovana vrednost za gibalno količine pa je z upoštevanjem identitete \( p = \frac{p_0}{\sqrt{2} \mathrm{i}} (a - a^{\dagger}) \) enaka
+
+\[ \left\langle p, t \right\rangle  = \frac{p_0}{\sqrt{2} \mathrm{i}} 2 \mathrm{i} \mathrm{Im} \left\langle a, t \right\rangle = \frac{p_0}{\sqrt{2}} 2 \mathrm{Im} \left\langle a, t \right\rangle.
+\]
+
+Vse, kar nam sedaj ostane je to, da najdemo časovni razvoj pričakovane vrednosti anihilacijskega operatorja
+
+\[ \left\langle a, t \right\rangle = \left\langle \psi, t  \middle| a \middle| \psi, t \right\rangle = \left\langle \psi, t \middle| \left( \frac{1}{\sqrt{2}} \exp \left\{ - \mathrm{i} \frac{\omega t}{2} \right\} a \left| 0 \right\rangle + \frac{\mathrm{i}}{\sqrt{2}} \exp \left\{ - \mathrm{i} \frac{3 \omega t}{2} \right\} a \left| 1 \right\rangle\right) \right\rangle
+\]
+
+Po definiciji anihilacijskega operatorja, izniči osnovno stanje \( a \left| 0 \right\rangle = 0 \) in spremeni prvo stanje v osnovno stanje \( a \left| 1 \right\rangle = \left| 0 \right\rangle\). Časovni razvoj anihilacijskega operatorja
+
+\[ \left\langle a, t \right\rangle =  \left( \frac{1}{\sqrt{2}} \exp \left\{ \mathrm{i} \frac{\omega t}{2} \right\} - \frac{\mathrm{i}}{\sqrt{2}} \exp \left\{ \mathrm{i} \frac{3}{2} \omega t \right\} \left\langle 1 \right|  \right) \left( \frac{\mathrm{i}}{\sqrt{2}} \exp \left\{ - \mathrm{i} \frac{3 \omega t}{2} \right\} \left| 0 \right\rangle \right) = \mathrm{i} \frac{1}{2} \exp \left\{ \mathrm{i} \frac{\omega t}{2} - \mathrm{i} \frac{3}{2} \omega t \right\} = \frac{\mathrm{i}}{2} \exp \left\{ - \mathrm{i} \omega t \right\} = \frac{\mathrm{i}}{2} \cos \omega t + \frac{1}{2} \sin \omega t
+\]

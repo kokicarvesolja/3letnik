@@ -39,7 +39,7 @@ Hkrati pa velja, da je dolžina do naše poljube točke enaka
 
 Potencial je tako
 
-\[ U \left( \vec{r} \right) = \frac{e}{4 \pi \epsilon_0} \left( \frac{1}{\sqrt{\left( z - d \right) ^2 + \phi ^2}}  - \frac{1}{\sqrt{\left( z + d \right) ^2 + \phi ^2}\right)
+\[U \left( \vec{r} \right) = \frac{e}{4 \pi \epsilon_0} \left( \frac{1}{\sqrt{\left( z - d \right) ^2 + \phi ^2}}  - \frac{1}{\sqrt{\left( z + d \right) ^2 + \phi ^2}}\right)
 \]
 
 Električno polje pod ploščo je v resnici \( \vec{E} = 0 \), saj tam ni naboja, zato tam tudi ni potenciala.

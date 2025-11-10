@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-11-08 Sat 15:29 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>7. predavanje iz Kvantne mehanike</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">7. predavanje iz Kvantne mehanike</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgd2d8afd">1. Coulombski potencial</a></li>
+<li><a href="#orgf10c1f3">2. Kvantni Laplace-Runge-Lenzov vektor (Pauli, 1926)</a></li>
+<li><a href="#org182e71d">3. Klasična limita</a></li>
+<li><a href="#orgd702cb2">4. Nabit delec v magnetnem ali električnem polju</a>
+<ul>
+<li><a href="#org79caf3f">4.1. Zeemanova sklopitev</a></li>
+<li><a href="#orga8db155">4.2. Landauovi nivoji (1930)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd2d8afd" class="outline-2">
+<h2 id="orgd2d8afd"><span class="section-number-2">1.</span> Coulombski potencial</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Rešujemo Schrödingerjevo enačbo za Coulumbski problem
+</p>
+
+\begin{equation}
+\label{eq:1}
+ \left( - \frac{\hbar ^2}{2m} \frac{\mathrm{d} ^2 }{\mathrm{d} r ^2} + \frac{l (l + 1)\hbar ^2}{2m r ^2} - \frac{e ^2}{4 \pi \epsilon_0 r}   \right) u(r) = E u  (r)
+\end{equation}
+
+<p>
+za vezana stanja \( E = - \left| E \right| \). Enačbe ne bomo reševali, kakor jo je Schrödinger. Enačbo prevedemo na brezdimenzijske enote z uvedbo spremenljivke \( \rho = \kappa r \), kjer velja
+</p>
+
+\begin{equation}
+\label{eq:5}
+ \left| E \right| = \frac{\hbar ^2 \kappa ^2}{2m}
+\end{equation}
+
+<p>
+Enačbo \ref{eq:1} pomnožimo s faktorjem \( \frac{1}{\kappa ^2} \frac{2m}{\hbar ^2} \)
+</p>
+
+<p>
+\[ \left( - \frac{\mathrm{d} ^2 }{\mathrm{d} \rho ^2} + \frac{l(l + 1)}{\rho ^2} + \frac{2m e ^2}{4 \pi \epsilon_0 \hbar ^2 \kappa} \frac{1}{\rho} \right) u(r) = \frac{E}{\left| E \right|} = - \frac{\left| E \right|}{\left| E \right|} u(r)
+\]
+</p>
+
+<p>
+Uvedemo konstanto
+</p>
+
+\begin{equation}
+\label{eq:6}
+ \rho_0 = \frac{m e ^2}{ 2 \pi \epsilon_0 \hbar ^2 \kappa}
+\end{equation}
+
+<p>
+in enačba je bolj pregledno zapisana
+</p>
+
+\begin{equation}
+\label{eq:2}
+ u'' + \frac{l(l + 1)}{\rho ^2} u + \frac{\rho_0}{\rho} u - u = 0.
+\end{equation}
+
+<p>
+Za rešitev bomo uporabili nastavek
+</p>
+
+\begin{equation}
+\label{eq:4}
+ u \left( r \kappa \right) = \rho^{l + 1} v(r \kappa) e^{- \rho},
+\end{equation}
+
+<p>
+ki ga dvakrat odvajaš in rezultate vstaviš v \ref{eq:2}. Po čiščenju členov nam preostane enačba
+</p>
+
+\begin{equation}
+\label{eq:3}
+ \rho v'' + 2 (l + 1 - \rho) v ' + (\rho_0 - 2 (l + 1)) v = 0
+\end{equation}
+
+<p>
+Tukaj naše poti divergirajo z načinom, ki ga je uporabil Schrödinger. On je uporabil
+</p>
+
+<p>
+\[ \sum\limits_{m = 0}^2 \left( a_m + b_m x \right)y^{(m)}(x) = 0,
+\]
+</p>
+
+<p>
+kar je zgornjo enačbo spremenilo v Laplaceovo enačbo. Mi bomo uporabili razvoj v vrsto (Frobenius)
+</p>
+
+\begin{align*}
+  v(\rho) &= \sum\limits_{k = 0}^{\infty} c_k \rho^k \\
+v' &= \sum\limits_{k = 0}^{\infty} k c_k \rho^{k + 1} \overset{k \to k + 1}{\longrightarrow} \sum\limits_{k = 0}^{\infty} (k + 1)c_{k + 1} \rho^k \\
+v'' &= \sum\limits_{k = 0}^{\infty} k (k + 1) c_{k + 1} \rho^{k - 1}
+\end{align*}
+
+<p>
+Želimo, da imajo vse spremenljivke \( \rho \) potenco \( k \)
+</p>
+
+<p>
+\[ \sum\limits_{k = 0}^{\infty} \left[ \left( k (k + 1) + 2(l + 1) (k + 1) \right) c_{k + 1} + (- 2k + (\rho_0 - 2(l + 1))) c_k \right] \rho^k = 0
+\]
+</p>
+
+<p>
+Dobili smo rekurzivno zvezo
+</p>
+
+<p>
+\[ c_{k + 1} = \frac{2(k + l + 1) - \rho_0}{(k + 1) (k + 2l + 2)} c_k.
+\]
+</p>
+
+<p>
+Zvezo si poglejmo v limiti \( k \gg 1 \). Vodilni vrednosti bosta \( c_{k + 1} = \frac{2k}{k ^2} c_k = \frac{2}{k} c_k \).
+</p>
+
+<p>
+Eksponent razvijemo v vrsto
+</p>
+
+<p>
+\[ e^{2x} = \sum\limits_{k = 0}^{\infty} \frac{2^k x^k}{k !}.
+\]
+</p>
+
+<p>
+Kvocientni kriterij nam poda enako koeficient kot naša rekurzivna zveza za \( k \gg 1 \)
+</p>
+
+<p>
+\[ \frac{2^{k + 1}}{(k + 1)!} \frac{k!}{2^k} = \frac{2}{k + 1} \overset{k \gg 1}{\longrightarrow} \frac{k}{2}.
+\]
+</p>
+
+<p>
+Iz tega lahko zaključimo, da se funkcij \( v(\rho) \) obnaša podobno kot \( e^{2 \rho} \) za \( k \gg  1 \). Nadalje sledi, da bo funkcija \ref{eq:4} divergirala, saj
+</p>
+
+<p>
+\[ \left. u (\rho) \right|_{k \gg 1, \rho \gg 1} = \rho^{l + 1} e^{2 \rho} e^{-\rho} \longrightarrow e^{\rho}.
+\]
+</p>
+
+<p>
+Ker nam divergenca ni všeč, želimo doseči to, da bo \( c_k = 0 \) za \( k > k_{maks} \). Koeficient \( c_{k_{maks} + 1} \) je ničeln, ko je števec v rekurzivni zvezi ničeln, torej
+</p>
+
+<p>
+\[ 2(k_{maks} + l + 1) = \rho_0 = 2n, \ n = k_{maks} + l + 1 \in \mathbb{N},
+\]
+</p>
+
+<p>
+kjer je \( n \leq 1 \). Ker ima vrsta končno število koeficientov, pomeni, da je polinom. Nastavek sedaj ne divergira več, saj je funkcija \( v_k(\rho) \) polinom stopnje \( k \) in
+</p>
+
+<p>
+\[ u(\rho) = \rho^{l + 1} v_k (\rho) e^{- \rho} \propto \rho^{k + l + 1} e^{- \rho}
+\]
+</p>
+
+<p>
+Zanima nas še energije, kjer izhajamo iz začetne zveze za energijo \ref{eq:5} ter smo \( \kappa \) izrazili iz \ref{eq:6}
+</p>
+
+<p>
+\[ E = - \frac{\hbar ^2 \kappa ^2}{2m} = - \frac{m e ^2}{8 \pi ^2 \epsilon_0 ^2 \hbar ^2 \rho_0 ^2}
+\]
+</p>
+
+<p>
+V diskretnem spektru lahko zapišemo torej
+</p>
+
+<p>
+\[ E_n = - \frac{m}{2 \hbar ^2} \left( \frac{e}{4 \pi \epsilon_0} \right) ^2 \frac{1}{n ^2} = - \frac{\left| E_1 \right|}{n ^2}
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-orgf10c1f3" class="outline-2">
+<h2 id="orgf10c1f3"><span class="section-number-2">2.</span> Kvantni Laplace-Runge-Lenzov vektor (Pauli, 1926)</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Operator
+</p>
+
+<p>
+\[ \hat{\vec{A}} = \frac{1}{2} \left( \hat{\vec{p}} \times \hat{\vec{L}} + \left( \hat{\vec{p}} \times \hat{\tilde{L}} \right)^{\dagger} \right) - \frac{m e ^2}{4 \pi \epsilon_0} \frac{\vec{r}}{r} = \vec{A} ^{\dagger}
+\]
+</p>
+
+<p>
+je hermitski. LRL vektor ne komutira z gibalno količino, saj
+</p>
+
+<p>
+\[ \left[ L_{\alpha}, A_{\beta} \right] = \mathrm{i} \hbar \epsilon_{\alpha\beta\gamma} A_{\gamma}.
+\]
+</p>
+
+<p>
+Komutira pa z Hamiltonianom \( \left[ \vec{A}, H \right] = 0 \).
+</p>
+
+<p>
+Uvedemo pojem degeneracije, ki je število funkcij pri isti lastni vrednosti.
+</p>
+
+<p>
+\[\begin{array}{|c|c|c|c|c|} \hline
+n = k + l + 1 & l & k & u & \mathrm{deg} \\ \hline
+1 & 0 & 0 & e^{-\rho} & 1 \\ \hline
+2 & 0 & 1 & \rho e^{- \rho} Y_0^0 & 2 \\
+2 & 1 & 0 & e^{-\rho} Y_1^m & 2\\ \hline
+3 & 0 & 2 & & 3 \\
+3 & 1 & 1 & \rho e^{-\rho} Y_1^m & 3 \\
+3 & 2 & 0 & e^{-\rho} Y_2^m & 3 \\ \hline
+\end{array}
+\]
+</p>
+
+<p>
+kjer \( \mathrm{deg} \) označuje degeneracijo. Zanima nas degeneracija poljubnega \( n \)-tega energijskega stanja. \( m \) zaseda vrednosti od \( -l \) do \( l \), kar pomeni, da imamo \( 2l + 1 \) stanj. Torej
+</p>
+
+<p>
+\[ \mathrm{deg} E_n = \sum\limits_{l = 0}^{n - 1} (2l + 1) = \ldots = n ^2
+\]
+</p>
+
+<p>
+Imamo torej \( n ^2 \) različnih funkcij.
+</p>
+</div>
+</div>
+<div id="outline-container-org182e71d" class="outline-2">
+<h2 id="org182e71d"><span class="section-number-2">3.</span> Klasična limita</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Vemo, da so rešitve klasične limite Keplerjeve orbite. Pod klasično limito uvrščamo stvari, kjer za tipično razdaljo \( R \) velja
+</p>
+
+<p>
+\[ \Delta r ^2 = \left\langle r  ^2 \right\rangle - \left\langle r \right\rangle ^2 \le R.
+\]
+</p>
+
+<p>
+Za klasično limito tudi velja, da so kvantna števila kot so \( n, l \) in \( m \) veliko večja od \( 1 \).
+</p>
+
+<p>
+Zanima nas, ko valovni paket kroži po ravnini. Iz definicije to pomeni, da gledamo valovno funkcijo, katere \( l \) ima največjo vrednost
+</p>
+
+<p>
+\[ \psi_{n, l} = \psi_{n, n - 1} = C_n r^{n - 1} \exp \left\{ -\frac{r}{n a_0} \right\},
+\]
+</p>
+
+<p>
+kjer je \( a_0 \) Bohrov radij.
+</p>
+
+
+<div id="orga110e87" class="figure">
+<p><img src="figures/KroznicaBrown1973.png" alt="KroznicaBrown1973.png" />
+</p>
+</div>
+
+<p>
+Velja
+</p>
+
+<p>
+\[ \frac{\Delta r}{\left\langle r \right\rangle} \sim \frac{1}{\sqrt{n}}.
+\]
+</p>
+
+<p>
+Če vzamemo za primer elektron, ki kroži na \( \left\langle r \right\rangle = 1 \mathrm{cm} \) z natančnostjo \( \Delta r = 0.1 \mathrm{mm } \) je \( n = 10^4 \). Gledamo 3 stvari našega valovnega paketa. Lupina z radij \( \left\langle r \right\rangle \) se ne spreminja skozi čas \( \Delta r \ne \Delta r (t) \).
+</p>
+
+<p>
+Tudi ven iz ravnine ne gre, torej \( \theta = \frac{\pi}{2} \ne \theta(t) \). Tisto, kar pa ni značilno za klasično limito pa je, da se bo valovni paket razširil tekom časa
+</p>
+
+<p>
+\[ \left\langle \phi \right\rangle = \omega t + c
+\]
+</p>
+
+<p>
+Elektron iz prejšnjega primer bi po 10 minutah bi razlezen po celotni krožnici. (glej Emin screenshot.)
+</p>
+</div>
+</div>
+<div id="outline-container-orgd702cb2" class="outline-2">
+<h2 id="orgd702cb2"><span class="section-number-2">4.</span> Nabit delec v magnetnem ali električnem polju</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Klasično smo preko enačbe
+</p>
+
+<p>
+\[ m \oddv{r} = e \vec{E} + e \vec{v} \times \vec{B}
+\]
+</p>
+
+<p>
+dobili gibalne enačbe. Kvantno pa imamo Hamiltonian
+</p>
+
+\begin{equation}
+\label{eq:7}
+ H = \frac{\left( \vec{p} - e \vec{A} \right) ^2}{2m} + e \phi + U,
+\end{equation}
+
+<p>
+kjer je \( \vec{A} \) vektorski potencial, ki je povezan z magnetnim poljem preko
+</p>
+
+<p>
+\[ \vec{B} = \nabla \times \vec{A}
+\]
+</p>
+
+<p>
+in z električnim poljem preko
+</p>
+
+<p>
+\[ \vec{E} - \nabla \phi - \frac{\partial }{\partial t}  \vec{A}.
+\]
+</p>
+
+<p>
+Zapišemo Schrödingerjevo enačbo s Hamiltonianom \ref{eq:7}
+</p>
+
+<p>
+\[ \mathrm{i} \hbar \frac{\partial \psi}{\partial t}  = \frac{1}{2m} \left( - \mathrm{i} \hbar \nabla - e \vec{A} \right) ^2 \psi + e \phi \psi + U \psi
+\]
+</p>
+
+<p>
+Operatorje v kvadratu vsote razpišemo
+</p>
+
+<p>
+\[ \left( \mathrm{i} \hbar \nabla + e \vec{A} \right) ^2 = - \hbar ^2 \nabla ^2 f + \mathrm{i} \hbar e \nabla \cdot \vec{A} f + \mathrm{i} \hbar e \vec{A} \cdot \nabla f + e ^2 A ^2 f = \mathrm{i} \hbar e \left( \left( \nabla \cdot \vec{A} \right)f + \left( \nabla f \right)\cdot \vec{A} \right) + \mathrm{i} \hbar e \vec{A} \cdot \nabla f.
+\]
+</p>
+
+<p>
+Z dobljenim pomožnim računom Schrödingerjeva enačba postane
+</p>
+
+<p>
+\[ \mathrm{i} \hbar \frac{\partial \psi}{\partial t} = - \frac{\hbar ^2 \nabla ^2}{2m} \psi + \frac{\mathrm{i} \hbar e}{m} \vec{A} \cdot \nabla \psi + \left( \frac{\mathrm{i} \hbar e}{2m} \nabla \cdot \vec{A} + \frac{e ^2}{2m} A ^2 + e \phi + U \right) \psi,
+\]
+</p>
+
+<p>
+kar je Schrödingerjeva za nabit delec v magnetnem polju. Zadnji oklepaj predstavlja celoten potencial, ki pa je zaradi prvega člena kompleksen. Spomnimo bralca, da s v tem primeru verjetnostna gostota ne ohranja, vendar za ta specifičen primer, te težave ni.
+</p>
+</div>
+<div id="outline-container-org79caf3f" class="outline-3">
+<h3 id="org79caf3f"><span class="section-number-3">4.1.</span> Zeemanova sklopitev</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Imejmo homogeno magnetno polje \( \vec{B} \). Obratna enačba identitete \( \nabla \times \vec{A} = \vec{B} = (0, 0, B) \) je
+</p>
+
+<p>
+\[ \vec{A} = - \frac{1}{2} \left( \vec{r} \times \vec{B} \right)
+\]
+</p>
+
+<p>
+Opazujemo člen
+</p>
+
+<p>
+\[ \mathrm{i} \frac{e \hbar}{m} \vec{A} \cdot \nabla \psi = - \frac{\mathrm{i} \hbar e}{2m} \left( \vec{r} \times \vec{B} \right) \cdot \nabla \psi,
+\]
+</p>
+
+<p>
+kjer smo upoštevali zgornjo identiteto. Zamenjamo \( \left( \vec{r} \times \vec{B} \right) \cdot \nabla \psi \) z \( - \left( \vec{r} \times \nabla \right) \vec{B} \) in člen zapišemo z vrtilno količino (v katero tudi skrijemo \( \mathrm{i} \hbar \))
+</p>
+
+<p>
+\[ \mathrm{i} \frac{e \hbar}{m} = -\frac{e}{2m} \vec{L} \cdot \vec{B} \psi = - \frac{e}{2m} \vec{B} \cdot \vec{L} \psi
+\]
+</p>
+
+<p>
+Definiramo Zeemanov [something]
+</p>
+
+<p>
+\[ H_z = - \vec{B} \cdot \vec{\mu}, \ \vec{\mu} = \frac{e}{2m} \vec{L},
+\]
+</p>
+
+<p>
+kjer je \( \mu_B = \frac{\left| e_0 \right| \hbar}{2m} \) Bohrov magneton.
+</p>
+
+<p>
+Drugi člen, ki ga opazujemo, je
+</p>
+
+<p>
+\[ \frac{e ^2}{2m} \vec{A} \cdot \vec{A} = \frac{e ^2}{8m} \left( B ^2 r ^2 - \left( \vec{B} \cdot \vec{r} \right) \right) = \frac{e ^2 B ^2}{8m} \left( x ^2 + y ^2 \right) = V_{\vec{A}}
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-orga8db155" class="outline-3">
+<h3 id="orga8db155"><span class="section-number-3">4.2.</span> Landauovi nivoji (1930)</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Uporabili bomo Landauova umeritev, kjer izberemo vektorski potencial
+</p>
+
+\begin{equation}
+\label{eq:8}
+ \vec{A} = B(- y, 0, 0).
+\end{equation}
+
+<p>
+To polje je koristno, saj
+</p>
+
+<p>
+\[ \nabla \times \vec{A} = B(0, 0, 1).
+\]
+</p>
+
+<p>
+Izbira je po besedah Kerševana, good enough, ker se ne da najti homogenega magnetnega polja, kjer bo vektorski potencial translacijsko invarianten. Rešujemo Schrödingerjevo enačbo za nabiti delec
+</p>
+
+<p>
+\[ \frac{\left( \vec{p} - e \vec{A} \right) ^2}{2m} \psi + e \phi \psi = E \psi.
+\]
+</p>
+
+<p>
+Zaradi \ref{eq:8} lahko zapišemo
+</p>
+
+<p>
+\[ \frac{1}{2m} \left[ \left( - \mathrm{i} \hbar \frac{\partial }{\partial x}  + e B y \right) ^2 + \hbar ^2 \frac{\partial ^2 }{\partial y ^2}  + \hbar ^2 \frac{\partial ^2 }{\partial z ^2}  \right] \psi + e \phi \psi = E \psi.
+\]
+</p>
+
+<p>
+Kot nastavek bomo uporabili produkt ravnega vala v smeri \( x \) in \( z \) z neznano funkcjo \( \chi(y) \)
+</p>
+
+<p>
+\[ \Psi \left( \vec{r} \right) = \exp \left\{ \mathrm{i} \left( \frac{p_x}{\hbar} x + \frac{p_z}{\hbar} z \right) \right\} \chi(y).
+\]
+</p>
+
+<p>
+Imamo funkcijo \( f \) (v našem primeru je to kvadrat), je potem to kar funkcija pri lastni vrednosti
+</p>
+
+<p>
+\[ f \left( - \mathrm{i} \hbar \frac{\partial }{\partial x}  \right) \exp \left\{ \mathrm{i} \frac{p_x}{\hbar} x \right\} = f(p_x) \exp \left\{ \mathrm{i} \frac{p_x}{\hbar}x \right\}.
+\]
+</p>
+
+<p>
+Torej bo upoštevajoč nastavek Schrödingerjeva enačba postala
+</p>
+
+<p>
+\[ \frac{1}{2m} \left( \left[ p_x + e B y\right]^2 - \hbar ^2 \frac{\partial ^2 }{\partial y ^2}  \right) \chi(y) + e \phi \chi(y) = E \chi.
+\]
+</p>
+
+<p>
+Trenutno gledamo enačbo skozi oči tega, da \( \phi = 0 \) in \( U = 0 \). Z izpostavitvijo \( e B \) lahko enačbo prevedemo na standardno obliko harmonskega oscilatorja
+</p>
+
+<p>
+\[ \left(-\frac{\hbar ^2}{2m} \frac{\mathrm{d} ^2 }{\mathrm{d} y ^2} + \frac{e ^2 B ^2}{2m} \left( \frac{p_x}{eB} + y \right) ^2\right) \chi(y) = \left( - \frac{\hbar ^2}{2m} \frac{\mathrm{d} ^2 }{\mathrm{d} y ^2} + \frac{1}{2} m \omega ^2 \left( y - y_0 \right) ^2 \right) \chi(y) = E \chi(y),
+\]
+</p>
+
+<p>
+kjer je \( \omega ^2 = \frac{e ^2 B ^2}{m ^2} \) in \( y_0 = - \frac{\hbar k}{e B} = - \frac{p_x}{eB} \).
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2025-11-08 Sat 15:29</p>
+</div>
+</body>
+</html>
