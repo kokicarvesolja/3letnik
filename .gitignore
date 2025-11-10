@@ -1,3 +1,5 @@
 ./1semester/mafijski_praktikum/*
 *.sync-conflict*
 *03viri/
+*.stfolder/
+*.stversions/
