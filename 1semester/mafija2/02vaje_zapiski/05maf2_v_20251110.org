@@ -1,0 +1,184 @@
+#+title: 05maf2 V 20251110
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Teorija difuzijske enačbe
+
+* Naloga 14 (Prinčič 4.2)
+
+#+begin_problem
+
+#+end_problem
+
+Rešujemo difuzijsko enačbo
+
+\[ \frac{\partial T}{\partial t} = D \nabla ^2 T + \frac{q}{\rho c}, \ \rho = \mathrm{konst}
+\]
+
+Iščemo stacionarno rešitev.
+
+Robna pogoja sta
+
+1) \( j(x = 0) = 0 \)
+2) \( j(x = a) = \sigma \left( T ^4 (x = a) - T_0 ^4 \right) \) - bralca tukaj spomnimo, da če je pozabil, da snov seva ven s temperaturo \( T(x = a) \), medtem ko zunanjost pri temperaturi \( T_0 \) seva v telo.
+
+Za stacionarno rešitev velja \( \frac{\partial T}{\partial t} = 0 \). Radiacija izhaja v \( x \) smeri in se difuzijska enačba poenostavi v
+
+\[ D \frac{\partial ^2 T}{\partial x ^2} + \frac{q}{\rho c} = 0.
+\]
+
+Po dvojni integraciji dobimo splošno rešitev
+
+\[ T(x) = - \frac{q}{2D \rho c} x ^2 + C x + D = - \frac{q}{2 \lambda} x ^2 + C x + D,
+\]
+
+kjer smo upoštevali definicijo iz Fourierovega zakona \( D = \frac{\lambda}{\rho c} \).
+
+Prvi robni pogoj nam preko enačbe
+
+\[ \vec{\jmath} = - \lambda \nabla T
+\]
+
+poda določi \( C = 0 \). Drugi robni pogoj pri \( x = a \) nam poda
+
+\[ \sigma \left( \left[ - \frac{q}{2 \lambda} a ^2 + D \right]  ^4 - T_0 ^4 \right) = - \lambda \left[ - \frac{q}{\lambda} a \right].
+\]
+
+Izrazimo \( D \) in dobimo, da je enak
+
+\[ D = \pm \sqrt[4]{T_0 ^4 + \frac{q}{\sigma} a} + \frac{q}{2\lambda} a ^2
+\]
+
+Rešitev difuzijske enačbe je tako
+
+\[ T(x) = - \frac{q}{2 \lambda} x ^2 + \left( \pm \sqrt[4]{T_0 ^4 + \frac{q}{\sigma} a} + \frac{q}{2\lambda} a ^2  \right) = \frac{q}{2 \lambda} \left( a ^2 - x ^2 \right) + \sqrt[4]{T_0 ^4 + \frac{q}{\sigma} a}
+\]
+
+Upoštevali smo limitni primer za \( q = 0 \), kjer dobimo, da mora veljati \( T = T_1 \).
+* Naloga 15  (Prinčič 4.3)
+
+#+begin_problem
+Imamo kocko z robom \( a \) z začetno temperaturo \( T_1 \). Obdana je s snovjo s temperaturo \( T_0 \).
+#+end_problem
+
+Rešujemo difuzijsko enačbo
+
+\[ D \nabla ^2 T = \frac{\partial T}{\partial t}
+\]
+
+z začetnim pogojem \( T \left( \vec{r}, t = 0 \right)= T_1 \) ter robnim pogojem \( T(x = 0, y, z) = T(x = a, y, z) = T_0 \).
+
+Slednji robni pogoj je nehomogen, zato tako kakor na prejšnjih predavanjih uvedemo novo funkcijo \( \tilde{T} = T - T_0 \). Enačba, ki jo rešujemo, postane
+
+\begin{equation}
+\label{eq:1}
+ \frac{\partial \tilde{T}}{\partial t}  =  D \nabla ^2 \tilde{T}
+\end{equation}
+
+z robnim pogojem \( \left. \tilde{T}\right|_{\partial} = 0 \). Pri reševanju se bomo poslužili separacije spremenljivk, zato zapišemo
+
+\[ T (\vec{r}, t) = X(x) Y(y) Z(z) \phi(t) + T_0.
+\]
+
+Vstavimo v enačbo \ref{eq:1} in po separaciji spremenljivke, dobimo
+
+\[ \frac{1}{D} \frac{\dot{\phi}}{\phi} = \frac{X''}{X} + \frac{Y''}{Y} + \frac{Z ''}{Z} = - \lambda ^2.
+\]
+
+Rešimo najprej časovni del, torej
+
+\[ \frac{1}{D} \frac{\dot{\phi}}{\phi} = - \lambda ^2.
+\]
+
+Rešitev je eksponentno padanje
+
+\[ \phi (t) = Ce^{- D \lambda ^2 t}.
+\]
+
+Za krajevni del postopamo malo drugače, saj imamo več kot smo navajeni spremenljivk. Definiramo \( \lambda_x \), za katero velja
+
+\[ \lambda ^2 + \frac{Y''}{Y} + \frac{Z''}{Z} = - \frac{X''}{X} = \lambda_x ^2.
+\]
+
+Rešitve \( x \) koordinate so
+
+\[ X(x) = E \cos \left( \lambda_x x \right) + F \sin \left( \lambda_x x \right).
+\]
+
+Z upoštevanjem robnega pogoja \( X (x = 0) = 0 \), dobimo, da je \( E = 0  \). Robni pogoj \( X(x = a) = 0 \) pa nam poda enačbo
+
+\[ 0 = F \sin \left( \lambda_x a \right),
+\]
+
+katere rešitve so \( \lambda_x a = \lambda n \) in nadalje \( \lambda_x = \frac{\pi}{a} n \).
+
+Za \( y \) koordinato ponovno priredimo enačbo z uvedbo \( \lambda_y ^2 \)
+
+\[ \frac{Y''}{Y} = \lambda_x ^2 - \lambda ^2 - \frac{Z''}{Z} =  \lambda_y ^2.
+\]
+
+Splošne rešitve te enačbe so
+
+\[ Y (y) = G \cos \left( \lambda_y y \right) + H \sin \left( \lambda_y y \right).
+\]
+
+Ob upoštevanju robnih pogojem določimo \( G = 0 \) in \( \lambda_y = \frac{\pi}{a} m \). Analogno postopamo tudi za \( z \) koordinato
+
+\[ - \frac{Z''}{Z} = - \lambda_y ^2 - \lambda_x ^2 + \lambda ^2 = \lambda_z ^2
+\]
+
+in tako je \( \lambda_z = \frac{\pi}{a} l \). Za \( n, m, l \in \left\{ 1, 2, \ldots \right\} \).
+
+Naša delna rešitev je
+
+\[ T(\vec{r}, t) = \sum\limits_{n, m, l}^{\infty} C_{nml} e^{- D \lambda ^2 t} \sin \left( \frac{\pi n}{a}x \right) \sin \left( \frac{\pi m}{a} y \right) \sin \left( \frac{\pi l}{a} z \right) + T_0
+\]
+
+s pogojem za \( \lambda \), ki je
+
+\[ \lambda ^2 = \lambda_x ^2 + \lambda_y ^2 + \lambda_z = \left( \frac{\pi}{2} \right) ^2 \left( n ^2 + m ^2 + l ^2 \right)
+\]
+
+Upoštevamo še začetni pogoj \( T \left( \vec{r}, 0 \right) = T_1 \), ki nam poda enačbo
+
+\[ T_1 - T_0 = \sum\limits_{n, m, l}^{\infty} C_{nml} \sin \left( \frac{\pi n}{a} x \right) \sin \left( \frac{\pi m}{x} \right) \sin \left( \frac{\pi l}{a} z \right).
+\]
+
+Upoštevamo KONS in da velja
+
+\[ \int\limits_0^a \sin \left( \frac{\pi n}{a} x \right) \sin \left( \frac{\pi m}{a}x \right) \, \mathrm{d} x = \frac{a}{2} \delta_{n, m}.
+\]
+
+Rešujemo torej enačbo
+
+\[ C_{nml} = (T_1 - T_0) \frac{a ^3}{2 ^3} \iiint\limits_{[0, a] ^3}^{}  \sin \left( \frac{\pi n}{a} x \right) \sin \left( \frac{\pi m}{x} \right) \sin \left( \frac{\pi l}{a} z \right) \,\mathrm{d} ^3 \vec{r},
+\]
+
+katere rešitev je
+
+\[ C_{nml} = (T_1 - T_0) \frac{8}{\pi ^3 nml} \left( 1 - (-1) ^n \right) \left( 1 - (-1)^m \right) \left( 1 - (-1) ^l \right).
+\]
+
+Celotna rešitev je tako
+
+\[ T \left( \vec{r}, t \right) = \sum\limits_{n, m, l = 1}^{} \frac{8 (T_1 - T_0)}{\pi ^3 nml}  \left( 1 - (-1) ^n \right) \left( 1 - (-1)^m \right) \left( 1 - (-1) ^l \right)  e^{- D \frac{\pi ^2}{a ^2} \left( n ^2 +m  ^2 + l ^2 \right) t} \sin \left( \frac{\pi n}{a}x \right) \sin \left( \frac{\pi m}{a} y \right) \sin \left( \frac{\pi l}{a} z \right) + T_0.
+\]
+
+Po dolgem času \( t \) so vsi koeficienti v vrsti zadušeni, saj je eksponent zelo majhen, bo temperatura telesa enaka \( T (\vec{r}, t \to \infty) = T_0 \). Zanima nas karakteristični čas \( \tau \). Členi v eksponentu so
+
+\[ - D \frac{\pi ^2}{a ^2} (n ^2  + m ^2 + l ^2) t = \frac{1}{\tau} t \implies \tau = \frac{a ^2}{D \pi ^2 \left( n ^2 + m ^2 + l ^2 \right)}
+\]
+
+Največje vrednosti eksponenta bodo pri najmanjših možnih vrednostih \( n, m, l \), kar je \( 1 \). Pozorni moramo biti, da pri teh vrednostih nobeden od oklepajev \( \left( 1 - \left( -1 \right)^i \right) \) za \( i = n, m, l \) niso ničelni.
+
+Asimptotsko obnašanje bo torej
+
+\[ T \left( \vec{r}, t \to \infty \right) = T_0 + \frac{8 (T_1 - T_0)}{\pi ^3} \cdot 8 \cdot e^{- 3 D \frac{\pi ^2}{a ^2}t} \sin \left( \frac{\pi}{a} x \right) \sin \left( \frac{\pi}{a} y \right) \sin \left( \frac{\pi}{a} z \right)
+\]
+
+Takšno obnašanje nas lahko zanima na kolokvijih.
