@@ -182,3 +182,50 @@ Asimptotsko obnašanje bo torej
 \]
 
 Takšno obnašanje nas lahko zanima na kolokvijih.
+* Naloga 16 (Prinčič 4.1)
+
+#+begin_problem
+Nihanje temperature v Zemlji. Predpostavimo nihanje temperature \( T = T_0 e^{\mathrm{i} \omega t} \). Zanima nas propagiranje temperature v globino \( z \).
+#+end_problem
+
+Rešujemo difuzijsko enačbo
+
+\[ \frac{\partial T}{\partial t} = D \nabla ^2 T.
+\]
+
+Zanima nas \( T(z, t) \) za \( z \ge 0 \) z robnim pogojem
+
+\[ T(z = 0, t) = T_0 e^{\mathrm{i} \omega t}
+\]
+
+Te naloge se ne moremo lotiti s pomočjo separacije spremenljivke, saj imamo neskončno območje, kar pomeni, da ne moremo dobiti diskretnih verjetnosti rešitev sinusov. Lahko bi se poslužili D'Alembertove rešitve, vendar bomo raje uporabili nastavek \( T(z, t) = f(z) e^{\mathrm{i} \omega t} \).
+
+Vstavimo nastavek v PDE in dobimo enačbo
+
+\[ \frac{f'' (z)}{f(z)} = \mathrm{i} \frac{\omega}{D}
+\]
+
+Uporabimo nastavek \( f(z) = A e^{- \lambda z} \) za zgornjo enačbo. Dobimo rešitev za \( \lambda \), ki je
+
+\[ \lambda = \pm \sqrt{ \frac{\mathrm{i} \omega}{D}} = \pm e^{\mathrm{i} \frac{3}{4}} \sqrt{\frac{\omega}{D}}
+\]
+
+Splošna rešitev je
+
+\[ T(z, t) = \left( A e^{+ \left( 1 + \mathrm{i} \right) \sqrt{ \frac{\omega}{2D}z}} + B e^{- \left( 1 + \mathrm{i} \right) \sqrt{\frac{\omega}{2D}} z} \right) e^{\mathrm{i} \omega t}
+\]
+
+Ker v globini zemlje, kjer \( z \to \infty \) temperatura ne divergira, torej \( T < \infty \), bo \( A = 0 \). Iz robnega pogoja pa dobimo, da je \( B = T_0 \). Rešitev je tako
+
+\[ T(z, t) = T_0 \exp \left\{ - \sqrt{\frac{\omega}{2D}} z \right\} \exp \left\{ \mathrm{i} \omega t - \sqrt{\frac{\omega}{2D}} z \right\}
+\]
+
+Obrat faze je tako, ko velja
+
+\[ \sqrt{ \frac{\omega}{2D}} z = \pi \implies z = \pi\sqrt\frac{2D}{\omega} = \begin{cases}
+                                                                              0.25 \mathrm{m} &; \mathrm{dan } \\
+                                                                              4.7 \mathrm{m} &; \mathrm{leto}
+                                                                              \end{cases}
+\]
+
+Z nastavkom, ki smo ga na začetku uporabili, smo dobili partikularno rešitev. V primeru, če imamo pa začetne pogoje, pa se bolj splača separacija spremenljivk.
