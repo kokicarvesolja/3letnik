@@ -1,0 +1,69 @@
+#+title: 6. predavanje iz Matematične fizike 2
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Laplaceova enačba
+
+Laplaceova enačba je enačba oblike
+
+\[ \nabla ^2 \phi =0
+\]
+
+Primeri poddomen fizike, kjer se Laplaceova enačba pojavlja so elektrostatika, stacionarna difuzijska enačba, minimalne površine (milnica), hidrodinamika - hitrostni potencial. Ne da se vsakega hitrostnega toka opisati s potencialom, vendar ko se da, pravimo, da je tok potencialen.
+
+Površina, ki jo bo zasedla milnica bo minimalna zaradi minimizacije energije. V eni dimenziji je dolžina krivulje, ki jo opisuje poljubna funkcija \( z(x) \) izračunana preko
+
+\[ \int\limits_0^l \sqrt{1 + z' ^2 } \, \mathrm{d} x.
+\]
+
+Dvodimenzionalen ekvivalent za površino je
+
+\[ S = \int\limits_{}^{} \sqrt{1 + (\nabla z) ^2} \, \mathrm{d} x \mathrm{d} y.
+\]
+
+Minimiziramo površino z odvodom
+
+\[ \mathrm{div} \left( \frac{\nabla z}{\sqrt{ 1 + \left( \nabla z \right) ^2}} \right) = 0
+\]
+
+in wham bam Laplaceova enačba.
+** Matematični komentarji
+
+Rešitev Laplaceove enačbe ima ničelno ukrivljenost. To pomeni, da sta ukrivljenosti različno predznačeni pri koordinatah - smo na sedlo. V nadaljevanju bomo srečali, da če imamo oscilirajočo funkcijo (npr. \( \sin  \)) v eni koordinati, bo v drugi koordinati eksponenta funkcija (npr. \( \mathrm{sh} \)).
+
+Takim funkcijam, ki zadoščajo enačbi, pravimo harmonične funkcije. Imamo tudi izrek, da je vrednost v točki enaka povprečju v \( \epsilon \) okolici - to nam pove, da ni ekstremov znotraj območja. V dveh dimenzijah so analitične funkcije konformne preslikave (?). Realni in imaginarni del posebej rešitva Laplaceovo enačbo.
+
+#+begin_my_example
+Za \( z \in \mathbb{C} \) vzamemo kompleksen logaritem \( \ln z \). Realni del je \( \ln r \), imaginarni del pa je \( \phi = \arctan \frac{y}{x} \).
+#+end_my_example
+
+Laplaceova enačba je ekstrem variacijskega računa
+
+\begin{equation}
+\label{eq:1}
+ S = \int\limits_{}^{} \left( \nabla \phi \right) ^2 \, \mathrm{d} V
+\end{equation}
+
+Numerično je včasih lažje računati \ref{eq:1} kakor Laplaceovo enačbo.
+
+Za Neumannov robni pogoj velja, da je integral po smernih odvodih roba površine ničeln.
+
+\[ \int\limits_{\partial \mathcal{D}}^{} \frac{\partial \phi}{\partial \vec{n}} \, \mathrm{d} S = 0.
+\]
+
+Upoštevamo definicijo smernega odvoda
+
+\[ \frac{\partial \phi}{\partial \vec{n}} = \nabla \phi \cdot \vec{n},
+\]
+
+in funkcijo lahko preko Gaussovega izreka zapišemo kot
+
+\[ \int\limits_{\partial \mathcal{D}}^{} \left( \nabla \phi \right) \cdot \mathrm{d} \vec{S} = \int\limits_{\mathcal{D}}^{} \nabla ^2 \phi \, \mathrm{d} V = 0.
+\]
+
+Nam to pove, da je pretok ničeln?
