@@ -67,3 +67,99 @@ in funkcijo lahko preko Gaussovega izreka zapišemo kot
 \]
 
 Nam to pove, da je pretok ničeln?
+** Separacija spremenljivk v kartezičnih koordinatah
+*** Kvadrat z Dirichletovimi robnimi pogoji
+
+Imamo kvadrat s stranico \( L \). Na levi in desni stranici kvadrata imamo homogen robni pogoj \( \phi(x = 0, y) = \phi(x = L, y) = 0 \). Na zgornji in spodnji stranici kvadrata pa imamo nehomogene robne pogoje \( \phi(x, y = 0) = f(x) \) in \( \phi(x, y = L) = g(x) \).
+
+Separacije spremenljivk ima obliko \( \phi(x, y) = X(x) Y(y) \), kar preobrazi Laplaceovo enačbo v
+
+\[ \frac{X''}{X} + \frac{Y''}{Y} = 0
+\]
+
+Najprej bomo reševali v tisti koordinati, kjer imamo homogene robne pogoje. Zaradi homogenih robnih pogojev nas zanima oscilirajoča funkcija, saj imamo dve ničli na razdalji \( L \) med sabo. Torej je baza rešitev enačbe
+
+\[ X'' + k X = 0,
+\]
+
+\( \left\{ \sin (kx), \cos (kx) \right\} \). Diskretne rešitve so ob upoštevanju robnih pogojev
+
+\[ X_n (x) = \sqrt{ \frac{2}{L}} \sin \left( \frac{n \pi}{L} x \right).
+\]
+
+Rešimo še v koordinati \( y \). Kakor smo prej napisali, bodo sedaj tukaj eksponentne funkcije
+
+\[ Y_n (y) = \alpha_n \mathrm{sh} \left( \frac{n \pi}{L} y \right) + \beta_n \mathrm{ch} \left( \frac{n \pi}{L} y \right).
+\]
+
+Skupna rešitev je tako
+
+\begin{equation}
+\label{eq:2}
+ \phi = \sum\limits_n^{} \left( \alpha_n \mathrm{sh} \left( \frac{n \pi}{L} y \right) + \beta_n \mathrm{ch} \left( \frac{n \pi}{L} y \right) \right) X_n (x).
+\end{equation}
+
+Koeficienta \( \alpha_n \) in \( \beta_n \) določimo iz robnih pogojev
+
+\[ y = 0: f(x) = \sum\limits_n^{} \beta_n \cdot 1 \cdot X_n (x), \quad y= L: \ g(x) = \sum\limits_n^{} \left( \alpha_n \mathrm{sh} (n \pi) + \beta_n \mathrm{ch} (n \pi) \right) X_n,
+\]
+
+which is ugly as fuck. Rešili bomo to grdoto nehomogenih robnih pogojev z uvedbo funkcijo
+
+\begin{align*}
+  u_n (y) &= \mathrm{sh} \left( \frac{n \pi}{L} y \right) \mathrm{ch} \left( \frac{n \pi}{L} 0 \right) - \mathrm{ch} \left( \frac{n \pi}{L} y \right) \mathrm{sh} \left( \frac{n \pi}{L} 0 \right) \\
+v_n (y) &= \mathrm{sh} \left( \frac{n \pi}{L} y \right) \mathrm{ch} \left( \frac{n \pi}{L} L \right) - \mathrm{ch} \left( \frac{n \pi}{L}y \right) \mathrm{sh} \left( \frac{n \pi}{L} \cdot L \right)
+\end{align*}
+
+Taki funkciji sta kul, ker iz nehomogenih robnih pogojev ustvarita homogene robne pogoje. Namesto \( \mathrm{sh} \) in \( \mathrm{ch} \) v enačbi \ref{eq:2} nadomestimo s funkcijama \( u_n \) in \( v_n \).
+*** Neumannov robni pogoj
+
+Neumannov robni pogoj pomeni, da imamo v robnih pogojih predpisane odvode. Imamo kvadrat s stranico \( L \). Desna in leva stranica imata homogen Neumannov robnih pogoj \( \phi_x (x = 0, y) = \phi_x (x = L, 0) = 0 \). Na zgornji in spodnji stranici pa imamo nehomogen robni pogoj \( \phi_y (x, y = 0) = f(x) \) in \( \phi_y (x, y = L) = g(x) \).
+
+Rešimo na podoben način kakor pri Dirichletovih robnih pogojih, vendar je tukaj razlika, da bosta \( u_n \) in \( v_n \) definirani tako, da bodo njuni odvodi ustvarili homogene robne pogoje.
+** Separacija spremenljivk v polarnih koordinatah
+
+Spomnimo bralca, da je Laplaceov operator v polarnih koordinatah enak
+
+\[ \nabla ^2 \psi = \frac{\partial ^2 \psi}{\partial r ^2} + \frac{1}{r} \frac{\partial \psi}{\partial r} + \frac{1}{r ^2} \frac{\partial ^2 \psi}{\partial \phi ^2}
+\]
+
+Separacija spremenljivk bo oblike \( \psi(r, \phi) = R(r) \Phi(\phi) \). Enačba za \( \phi \) se glasi
+
+\[ \Phi'' + m ^2 \Phi = 0,
+\]
+
+hkrati imamo pa periodičnost na \( 2 \pi \), ker tako delujejo krožnice. Rešitev te enačbe bomo zapisali z eksponentnim zapisom
+
+\[ \Phi_m = e^{\mathrm{i} m \phi},  \ \phi \in [0, 2\pi), m \in \mathbb{Z}
+\]
+
+V primeru, da je \( m = 0 \), sta linearno neodvisni rešitvi \( \left\{ 1, \phi \right\} \) (konstanta in linearna funkcija).
+
+Radialni del ima enačbo
+
+\[ R'' + \frac{R'}{r} - \frac{m ^2}{r ^2}R = 0,
+\]
+
+katere rešitev je \( R (r) = r^{\pm \left| m \right|} \). V primeru, da je \( m = 0 \) sta bazi \( \left\{ 1, \ln r \right\} \)- to je zato, ker logaritem narašča počasneje kot katerakoli potenca.
+
+Splošna rešitev, ki vsebuje vse napisano je
+
+\[ \psi(r, \phi) = \left( A_0 + B_0 \ln r \right) \left( a_0 + b_0 \phi \right) + \sum\limits_{m \ne 0, m = -\infty}^{\infty} \left( A_m r^{\left| m \right|} + B_m r^{- \left| m \right|}  \right) e^{\mathrm{i} m \phi}
+\]
+
+Želimo rešiti enačbo z Dirichletovimi robnimi pogoji \( \psi(r = a, \phi) = f(\phi) \), kjer je \( a \) polmer kroga, na katerem rešujemo enačbo. Konstanti \( B_0 \) in \( B_m \) sta ničelna, hkrati pa je zaradi periodičnosti \( b_0 = 0 \). Upoštevamo še robni pogoj
+
+\[ f(\phi) = A_0 + \sum\limits_m^{} A_m a^{\left| m \right|} e^{\mathrm{i} m \phi}.
+\]
+
+Preko Fourierove transformacije se priborimo do vrednosti koeficientov
+
+\[ A_m = \frac{1}{2 \pi} \frac{1}{a ^{\left| m \right|}} \int\limits_0^{2\pi} e^{- \mathrm{i} m \phi '} f(\phi ') \, \mathrm{d} \phi '
+\]
+
+Ker veljajo matematični pogoji, lahko zamenjamo integral in vsoto, da je končna rešitev enaka
+
+\[ \psi(r, f) = \frac{1}{2 \pi} \int\limits_0^{2\pi} \frac{\left( a ^2 - r ^2 \right) f(\phi')}{a ^2 - 2ar \cos (\phi - \phi') + r ^2} \, \mathrm{d} \phi'
+\]
+** Komentar
