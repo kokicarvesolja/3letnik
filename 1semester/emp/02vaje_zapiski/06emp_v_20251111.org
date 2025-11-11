@@ -69,6 +69,9 @@ Tenzor \( Q \) tako izgleda
 
 Dopolni nalogo.
 * Magnetno polje krožne tokovne zanke
+#+begin_problem
+Izračunaj vektorski potencial magnetnega polja krožne zanke s polmerom \( a \) in električnim tokom \( I \) v veliki oddaljenosti od zanke \( r \gg a \). Rezultat podaj z oddaljenostjo \( r \) od središča zanke in s kotom \( \theta \) glede na os zanke. Pri računu obdr>zi le vodilni člen v razvoju po \( r \). Pokaži, da ima tako dobljeni rezultat obliko vektorskega potenciala magnetnega dipola z magnetnim dipolnim momentom \( \pi a ^2 I \).
+#+end_problem
 ** Teorija magnetostatike
 
 Za magnetostatiko velja, da je \( I = \mathrm{konst} \). K naši zbirki enačb bomo dodali še dve Maxwellovi enačbi. Prva je
@@ -111,4 +114,111 @@ To je tridimenzionalna enačba, katere ekvivalent v elektrostatiki je
 \]
 
 \[ \vec{A} \left( \vec{r} \right) = \frac{\mu_0}{4 \pi} \int\limits_{}^{}\frac{\mathrm{d} ^3 \vec{r} \, ' \vec{\jmath} \left( \vec{r}\, ' \right)}{\left| \vec{r} - \vec{r} \, ' \right|}
+\]
+*** Vodnik
+
+Gostota električnega toka je neničeln v smeri vodnika. To pomeni, da ga lahko zapišemo kot
+
+\[ \vec{\jmath} \left( \vec{r} \, ' \right) \mathrm{d} ^3 \vec{r}\,' = \vec{\jmath} S' \, \mathrm{d} l' = I \, \mathrm{d} \vec{l}\, ',
+\]
+
+kjer smo upoštevali, da za vodnik velja \( \mathrm{d} ^3 \vec{r} \, ' = S' \, \mathrm{d} l' \) in definicijo gostote električnega toka \( \vec{J} S' = I \vec{t} \). \( \vec{t} \) je enotski vektor.
+
+Magnetni vektorski potencial za vodnik je tako
+
+\[ \vec{A} \left( \vec{r} \right) = \frac{\mu_0 I}{4 \pi} \int\limits_{}^{} \frac{\mathrm{d} \vec{l} \,'}{\left| \vec{r} - \vec{r} \, ' \right|}
+\]
+** Reševanje naloge
+
+Reševanje začnemo z integralom izpeljanim v prejšnjem podpoglavju
+
+\[ \vec{A} \left( \vec{r} \right) = \frac{\mu_0 I}{4 \pi} \int\limits_{}^{} \frac{\mathrm{d} \vec{l} \, '}{\left| \vec{r} - \vec{r} \, ' \right|}.
+\]
+
+Določiti moramo \( \mathrm{d} \vec{l} \, ' \), \( \vec{r} \) in \( \vec{r} \, ' \). Predpostavimo, da naša tokovna zanka leži v \( xy \) ravnini. Zanko zasučemo okrog kota \( \phi \) tako, da je vektor \( \vec{r} \) v ravnini \( xz \) in posledično je \( \phi = 0 \). To nam olajša računanje, saj imamo samo kot \( \theta \) med \( z \) in \( x \) osjo. Torej bo v polarnih koordinatah \( \vec{r} \) enak
+
+\begin{equation}
+\label{eq:4}
+ \vec{r} = \left( r \sin \theta, 0, r \cos \theta \right),
+\end{equation}
+
+Radij vektor, ki teče po naši krožni zanki, je zapisan v polarnih koordinatah s
+
+\begin{equation}
+\label{eq:5}
+ \vec{r} \, ' = a \left( \cos \phi, \sin \phi , 0\right).
+\end{equation}
+
+Majhen delček zanke \( \mathrm{d} \vec{l} \, ' = \mathrm{d} l' \hat{t} \) je tangenten na radij vektor \( \vec{r} \, ' \), kar pomeni, da ga zapišemo kot
+
+\[ \mathrm{d} \vec{l} \, ' = a \mathrm{d} l' \left( - \sin \phi , \cos \phi, 0 \right)
+\]
+
+Sedaj lahko s pomočjo enačb \ref{eq:4} in \ref{eq:5} zapišemo \( \left| \vec{r} - \vec{r} \, ' \right| \) preko definicije absolutne vrednosti vektorjev
+
+\[ \left| \vec{r} - \vec{r} \, ' \right| = \left| \left( \sin \theta, 0, \cos \theta \right) r - a \left( \cos \phi, \sin \phi, 0 \right) \right|  = \sqrt{r ^2 + a ^2 - 2ra \sin \theta \cos \phi} \approx r \sqrt{1 - \frac{2a}{r} \sin \theta \cos \phi},
+\]
+
+kjer smo nadalje še upoštevali \( r \gg a \). Zaradi tega lahko izraz
+
+\[ \frac{1}{\left| \vec{r} - \vec{r} \, ' \right|} = \frac{1}{r} \left( 1 - \frac{2a}{r} \sin \theta \cos \phi \right) ^{- \frac{1}{2}} \approx \frac{1}{r} \left( 1 + \frac{1}{2} \frac{2a}{r} \sin \theta \cos \phi \right),
+\]
+
+tudi razvijemo.
+
+Integral za vektorski potencial postane ob zamenjavi z vsemi izpeljanimi členi
+
+\[ \vec{A} \left( \vec{r}  \right) = \frac{\mu_0 I }{4 \pi} \frac{a}{r} \int\limits_0^{2\pi} \left( - \sin \phi, \cos \phi, 0 \right) \frac{a \mathrm{d} \phi}{r} \left( 1 + \frac{a}{r} \sin \theta \cos \phi \right)
+\]
+
+Zaradi sinusnih in kosinusnih funkcij pri integraciji do \( 2 \pi \) sta komponenti \( A_x \) in \( A_z \) ničelni. Edina preostala komponenta je
+
+\[ A_y (r) = \frac{\mu_0 I}{4 \pi} \frac{a}{r} \int\limits_0^{2\pi} \frac{a \sin \theta}{r} \cos ^2 \phi \, \mathrm{d} \phi = \frac{\mu_0 I}{4} \frac{a ^2}{r ^2} \sin \theta
+\]
+
+Vektorsko lahko zapišemo
+
+\[ \vec{A} \left( \vec{r} \right) = \frac{\mu_0 I \pi a ^2}{4 \pi} \frac{\sin \theta}{r ^2} \hat{e}_y,
+\]
+
+kjer označimo \( p_m = IS \). Hkrati pa velja, da \( \hat{e}_y \) lahko nadomestimo z izrazom \( \hat{e}_z \times \frac{\vec{r}}{r} \) in posledično lahko definiramo dipolni člen magnetnega multipolnega razvoja
+
+\[ \vec{p}_m = p_m \hat{e}_z.
+\]
+
+Vektorski potencial lahko tudi zapišemo z vektorskim zapisom kot
+
+\[ \vec{A} \left( \vec{r} \right) = \frac{\mu_0}{4 \pi} \frac{\vec{p}_m \times \vec{r}}{r ^3}
+\]
+
+[dopolni]
+* Magnetno polje nabite vrteče se okrogle plošče
+#+begin_problem
+Tanko okroglo ploščo polmera \( a \) enakomerno premažemo z nabojem površinskeg gostote \( \sigma \) in jo v vodoravnem položaju zavrtimo z enakomerno kotno hitrostjo \( \omega \) okrog navpične osi, ki poteka skozi središče plošče.
+
+a) Z uporabo Biot-Savartove enačbe izračunaj velikost gostote magnetnega polja \( B \) na navpični osi plošče kot funkcijo oddaljenosti \( z \) od središča plošče.
+b) Pokaži, da je magnetni pretok dipolni moment plošče \( p_m = \frac{\pi}{4} \sigma \omega a ^4 \).
+c) V razvoju pod a točko izračunanega izraza za \( B(z) \) v Taylorjevo vrsto določi člen, ki najpočasneje pada z \( z \). Utemelji, zakaj je to dipolni člen. Iz njegove oblike preberi magnetni dipolni moment plošče in ga primerjaj z izrazom pod točko b.
+#+end_problem
+
+Problem začnemo reševti tako, da določimo, da je disk v ravnini \( xy \) in je vektor kroženja zapisan z \( \vec{\omega} = (0, 0, \omega) \).
+
+Začnemo s splošnim Biot-Savartovim zakonom
+
+\[ \vec{B} \left( \vec{r} \right) = \frac{\mu_0}{4 \pi} \int\limits_{}^{} \frac{\vec{\jmath} \left( \vec{r} \, ' \right) \times \left( \vec{r} - \vec{r} \, ' \right)}{\left| \vec{r} - \vec{r} \, ' \right| ^3} \, \mathrm{d} ^3 \vec{r} \, '
+\]
+
+Omenimo, nepomembno za to nalogo, da je diskretna verzija Biot-Savartovega zakona
+
+\[ B \left( \vec{r}  \right) = \frac{\mu_0 I}{4 \pi} \int\limits_{}^{} \frac{\mathrm{d} \vec{l} \, ' \times \left( \vec{r} - \vec{r}\, ' \right)}{\left| \vec{r} - \vec{r} \, ' \right| ^3}
+\]
+
+Opazujmo kolobar širina \( \mathrm{d} \vec{r} \, ' \) na razdalji \( \vec{r} \, ' \) od središča. Naboj na tem kolobarju je
+
+\[ \mathrm{d} e = \sigma 2 \pi r' \mathrm{d} r'. = \sigma S
+\]
+
+Prispevek k toku je celoten naboj, ki gre skozi dano površino - celoten tok na kolobarju gre skozi presek ravno v obhodnem času \( \frac{2 \pi }{\omega} = t_0 \). Torej bo prispevek k toku
+
+\[ \mathrm{d} I = \frac{\mathrm{d} e}{t_0} = \frac{\mathrm{d} e}{\frac{2\pi}{\omega}} = \frac{\omega}{2\pi} \sigma 2 \pi r' \mathrm{d} r' = \sigma \omega r' \mathrm{d} r'
 \]
