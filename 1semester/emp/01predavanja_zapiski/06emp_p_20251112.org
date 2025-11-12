@@ -141,8 +141,11 @@ Posplošimo integral z gostoto toka \( \vec{\jmath} \) preko identitete \( I \ma
 
 kjer je (2) zanka po premiku in (1) zanka pred premikom. Torej je energija \( \vec{\jmath} \) v zunanjem magnetnem polju \( \vec{A} \), ki ni odvisen od \( \vec{\jmath} \)
 
-\[ W = - \int\limits_{}^{} \vec{\jmath} \cdot \vec{A} \, \mathrm{d} ^3 \vec{r}
-\]
+\begin{equation}
+\label{eq:1}
+ W = - \int\limits_{}^{} \vec{\jmath} \cdot \vec{A} \, \mathrm{d} ^3 \vec{r}
+\end{equation}
+
 *** Magnetna energija kot funkcional toka
 
 Iz Kirchoffove enačbe vemo, da velja
@@ -176,4 +179,79 @@ W &= -\int\limits_0^{1} \alpha \, \mathrm{d} \alpha \int\limits_{}^{} \vec{\jmat
 iz česar sledi energija celotnega magnetnega polja
 
 \[ W = - \frac{1}{2} \vec{\jmath} \vec{A} \, \mathrm{d} ^3 \vec{r}
+\]
+
+Prejšnji izraz ne upošteva, da je za vzpostavitev toka \( \vec{\jmath} \) potrebna energija - we need some energy, da se elektroni začnejo premikati. V elektrostatiki tega ni bilo, saj nabit delec ima električno polje.
+
+Moč je po definiciji
+
+\[ P = - U \cdot I =  - I \int\limits_{C}^{} \vec{E} \cdot \mathrm{d} \vec{r},
+\]
+
+kjer je \( C \) zanka, po kateri teče tok \( I \).
+
+Uporabimo indukcijski zakon
+
+\begin{align*}
+  \int\limits_{}^{} \vec{E} \cdot \mathrm{d} \vec{r} &= - \frac{\partial }{\partial t} \int\limits_{}^{} \vec{B} \cdot \mathrm{d} \vec{S} \\
+\nabla \times \vec{E} = - \frac{\partial \vec{B}}{\partial t}
+\end{align*}
+
+Spreminjanje magnetnega polja skozi čas ustvarja električno polje. To pretvori integral moči v
+
+\[ P = I \frac{\partial }{\partial t}  \int\limits_{C}^{} \vec{B} \cdot \mathrm{d} \vec{S} = \frac{\partial W}{\partial t}
+\]
+
+Preko te enačbo prepoznamo, da velja
+
+\[ W = I \int\limits_{}^{} \vec{B} \cdot \mathrm{d} \vec{S} = I \int\limits_{}^{} \nabla \times \vec{A} \cdot \mathrm{d} \vec{S} = I \int\limits_{}^{} \vec{A} \cdot \mathrm{d} \vec{r} = \int\limits_{}^{} \vec{\jmath} \cdot \vec{A} \, \mathrm{d} ^3 \vec{r}
+\]
+
+Celotna energija magnetnega toka je
+
+\[ W = - \frac{1}{2} \int\limits_V^{} \vec{\jmath} \cdot \vec{A} \, \mathrm{d} ^3 \vec{r} + \int\limits_V^{} \vec{\jmath} \cdot \vec{A} \, \mathrm{d} ^3 \vec{r} = \frac{1}{2} \int\limits_V^{} \vec{\jmath} \cdot \vec{A} \, \mathrm{d} ^3 \vec{r}
+\]
+
+Poudarimo, da je napram enačbi \ref{eq:1} vektorski magnetni potencial \( \vec{A} \) ustvarjen s strani toka \( \vec{\jmath} \), s katerim je skupaj v integralu.
+*** Gostota magnetnega polja
+
+Celotno energijo želimo prepisati v odvisnost od \( \vec{B} \). Uporabili bomo Maxwellovo enačbo
+
+\[ \nabla \times \vec{B} = \mu_0 \vec{\jmath},
+\]
+
+ter identiteto
+
+\[ \nabla \cdot \left( \vec{B} \times \vec{A} \right) = \vec{A} \cdot \left( \nabla \times \vec{B} \right) - \vec{B} \cdot \left( \nabla \times \vec{A} \right).
+\]
+
+Zapišemo prej povedano celotno energijo
+
+\begin{align*}
+  W &= \frac{1}{2} \int\limits_V^{} \vec{\jmath} \cdot \vec{A}  \, \mathrm{d} ^3 \vec{r} \\
+&= \frac{1}{2 \mu_0} \int\limits_V^{} \left( \nabla \times \vec{B} \right) \cdot \vec{A} \, \mathrm{d} ^3 \vec{r} \\
+&= \frac{1}{2\mu_0} \int\limits_V^{} \nabla \left( \vec{B} \times \vec{A} \right) \, \mathrm{d} ^3 \vec{r} + \frac{1}{2 \mu_0} \int\limits_V^{} \vec{B} \cdot \left( \nabla \times \vec{B} \right) \, \mathrm{d} ^3 \vec{r} \\
+&= \frac{1}{2\mu_0} \left[ \int\limits_V^{} B ^2 \, \mathrm{d} ^3 \vec{r} + \int\limits_{\partial V}^{} \left( \vec{B} \times \vec{A} \right) \, \mathrm{d} \vec{S} \right]
+\end{align*}
+
+Rob naše prostornine \( \partial V \) je lahko v neskončnosti. Magnetno polje \( \vec{B} \) (žice) ima odvisnost \( \frac{1}{r} \). Po definiciji ima vektorski potencial odvisnost \( \frac{1}{r ^2} \). Hkrati je tudi površine našega volumna z odvisnost \( r ^2 \). Torej je celoten drugi integral obratnosorazmeren \( r \) in ko \( r \to \infty \) je integral \( 0 \).
+
+Za divje primere, ko je žica neskončna, ima žica tudi neskončno energijo, in integral razumno divergira.
+
+Torej zapišemo celotno energijo magnetnega polja z \( \vec{B} \) kot
+
+\[ W = \frac{1}{2 \mu_0} \int\limits_V^{} B ^2 \, \mathrm{d} ^3 \vec{r}
+\]
+*** Sila kot funkcional magnetnega polja
+
+Imamo zanko/krompir s tokom \( \vec{\jmath} \) (porazdelitev toka), ki se nahaja v zunanjem magnetnem polju \( \vec{B}_Z \). Magnetno polje, ki ga izmerimo, pa je vsota zunanjega magnetnega toka \( \vec{B}_Z \) in magnetnega polja \( \vec{B}_L \), ki je posledica toka po zanki.
+
+Zanima nas, kakšna sila deluje na \( \vec{\jmath} \). Za silo velja
+
+\[ \vec{F} = \int\limits_V^{} \vec{\jmath} \times \vec{B}_Z \, \mathrm{d} ^3 \vec{r},
+\]
+
+kjer je \( V \) volumen zanke/krompirja. Gostoto toka zapišemo preko Amperovega zakona z lastnim magnetnim poljem \( \nabla \times \vec{B}= \mu_0 \vec{\jmath} \). Silo zapišemo torej kot
+
+\[ \vec{F} = \frac{1}{\mu_0} \int\limits_{}^{} \left( \nabla \times \vec{B}_L \right) \times \vec{B}_Z \, \mathrm{d} ^3 \vec{r}
 \]
