@@ -1,0 +1,91 @@
+#+title: 8. predavanje iz Kvantne mehanike
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Nabit delec v magnetnem ali električnem polju
+
+Spomnimo se od zadnjič, da smo opazovali homogeno magnetno polje \( \vec{B} = (0, 0, 1) \) ter si izbrali Landauovo umeritev vektorskega potenciala \( \vec{A} = B(-y, 0, 0) \).
+
+Iščemo lastna stanja enačbe
+
+\[ \left( \frac{\left( \vec{p} - e \vec{A} \right)^2}{2m} + e \phi + U \right) \psi = E \psi,
+\]
+
+kjer sta funkciji \( U = U(y)  \) in \( \phi = \phi(y) \). Edina komponenta odvisna od \( x \) spremenljivke je \( p = p(x) \). Rešitve v \( x \) in \( z \) koordinati so zaradi neodvisnosti operatorjev od \( y \) samo ravna valova za prost delec
+
+\[ \psi(x, y, z) = \exp \left\{ \mathrm{i} \left( \frac{p_x}{\hbar} x + \frac{p_z}{\hbar}z \right) \right\} \chi(y)
+\]
+
+S tem nastavkom rešujemo diferencialno enačbo
+
+\[ \left[ - \frac{\hbar ^2}{2m} \frac{\mathrm{d} ^2 }{\mathrm{d} y ^2} + \frac{1}{2} m \omega ^2 \left( y - y_0  \right)^2 + V(y) \right] \chi(y) = E \chi(y),
+\]
+
+kjer sta \( \omega = \frac{eB}{m} \) ciklotronska frekvenca in \( y_0 = - \frac{p_0}{eB} \).
+
+Potencial \( V(y) = 0 \), zato so rešitve te diferencialne enačbe rešitve harmonskega oscilatorja
+
+\[ E_n = \hbar \omega \left( n + \frac{1}{2} \right) + \frac{p_z ^2}{2m} = E_{n p_x p_z}
+\]
+
+(Normirano) valovno funkcijo zapišemo
+
+\[ \psi_{n p_x p_z} = \frac{1}{\sqrt{2 \pi \hbar} ^2} \exp \left\{ \mathrm{i} \left( \frac{p_x}{\hbar} x + \frac{p_z}{\hbar} z \right) \right\} \phi_n (y - y_0).
+\]
+
+Funkcija \( \phi_n  \) je premaknjena za \( p_x \) zaradi definicije \( y_0 \).
+
+[[file:figures/08landau_resitve.png]]
+
+Kakor vidimo na zgornji sliki, je rešitev premaknjena za faktor \( \frac{p_x}{eB} \) v negativen \( y \) in hkrati so rešitve \( \phi_n \) odvisne od valovne dolžine rešitve ravnega vala v \( x \) smeri.
+
+Imejmo energije, ki so neodvisne od \( p_x \), torej \( E_{n p_x p_z} = E_{n p_z} \). Začetno stanje
+
+\[ \psi(x, 0) = \int\limits_{-\infty}^{\infty} \tilde{\psi}(p_x) \frac{\exp \left\{ \mathrm{i} \frac{p_x}{\hbar} x \right\}{\sqrt{2 \pi\hbar}} \, \mathrm{d} p_x
+\]
+
+razvijemo po času
+
+\[ \psi(x, t) = \int\limits_{- \infty}^{\infty} \tilde{\psi} (p_x) \frac{\exp \left\{ \mathrm{i} \frac{p_x}{\hbar} x - \mathrm{i} \frac{E}{\hbar} t \right\}{\sqrt{2 \pi \hbar}} \, \mathrm{d} p_x = \exp \left\{ - \mathrm{i} \frac{E_n p_z}{\hbar} t \right\} \psi(x, 0)
+\]
+
+Upoštavli smo, da je energija neodvisna od \( p_x \). Tak ravni val delca v magnetnem polju se ne bo ne premikal niti ne bo spreminjal oblike skozi čas, ampak bo isto kot je bilo ob začetnem stanju. (primerjaj rešitev z delcem, ko je energija odvisna od \( p_x \)!). Razlog za to je /degeneracija/ - Landauovi nivoji.
+
+Degeneracija je posledica izbrane umeritve, saj ni simetrična. Lahko bi si izbrali simetrično obliko umeritve
+
+\[ \vec{A} = \frac{1}{2} \vec{r} \times \vec{B} = \frac{B}{2} \left( - y, x, 0 \right) = \frac{1}{2} B \left[ (-y, 0, 0) + (0, x, 0) \right]
+\]
+
+Rešitev te simetrične umeritve so za \( z = x + \mathrm{i}y \) oblike
+
+\[ \psi(x, y) = C \exp \left\{ - \frac{1}{4 \xi ^2} \left(\left| z \right| ^2 - 2z z_0 + \left| z_0 \right| ^2\right) \right\}, \quad \xi = \sqrt{\frac{\hbar}{e B}}
+\]
+
+kar je ravni val, ki kroži s krožno frekvenco \( \omega \). Rešitev je koherentno stanje (what does that mean?).
+* Lokalne umeritvene transformacije
+
+Imamo magnetno polje
+
+\begin{equation}
+\label{eq:1}
+ \vec{B} = \nabla \times \vec{A},
+\end{equation}
+
+ter električno polje
+
+\begin{equation}
+\label{eq:2}
+ \vec{E} = - \nabla \phi - \frac{\partial \vec{A}}{\partial t}.
+\end{equation}
+
+\( \vec{A} \) nas v tem primeru ne zanima, saj sta \( \vec{B} \) in \( \vec{E} \) merljivi količini. Posledično lahko definiramo nove vektorske potenciale in električne potenciale tako, da so oblike
+
+\[ \vec{A}\, ' = \vec{A} + \nabla \Lambda \left( \vec{r}, t \right), \quad \phi' = \phi - \frac{\partial }{\partial t} \Lambda
+\]
+
+Nove potenciale lahko uvedemo, saj ostaneta enačbi \ref{eq:1} in \ref{eq:2} ostaneta nespremenjeni. Vendar z uvedbo nove umeritve spremenimo bazo rešitve in posledično nas zanima, kakšne so nove rešitve valovne funkcije \( \psi' \).
