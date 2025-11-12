@@ -102,3 +102,78 @@ Ker \( \nabla \) vpliva na \( \vec{r} \) in ne na \( \vec{r} \, ' \) lahko zapi�
 
 \[ \vec{B} \left( \vec{r} \right)= \frac{\mu_0}{4 \pi}  \int\limits_{}^{} \frac{\vec{\jmath} \times \left( \vec{r} - \vec{r} \, ' \right)}{\left| \vec{r} - \vec{r} \, ' \right|} \, \mathrm{d} ^3 \vec{r} \, '
 \]
+** Magnetna energija
+*** Magnetna energija v zunanjem polju
+
+Zamislimo si električno zanko poljubne oblike \( C \), po kateri teče tok \( I \), ki se nahaja v zunanjem magnetnem polju \( \vec{B} \). Zanko premaknemo za \( \mathrm{d} \vec{r} \). Zanima nas, koliko se je spremenila energija zanke, kar je količini dela, ki smo ga opravili.
+
+Sila na zanko je preko definicije magnetne sile
+
+\[ \vec{F} = \int\limits_C^{} I \, \mathrm{d} \vec{l} \times \vec{B} = I \int\limits_C^{} \hat{t} \times \vec{B} \, \mathrm{d} l,
+\]
+
+kjer je \( \hat{t} \) enotski vektor na zanki. Delo, ki ga opravimo pri tem premiku, je
+
+\begin{align*}
+  \mathrm{d} A &= - \vec{F} \cdot \mathrm{d} \vec{r} \\
+&= - I \int\limits_C^{} \left[ \left( \hat{t} \times \vec{B} \right) \cdot \mathrm{d} \vec{r} \right] \, \mathrm{d} l \\
+&= - I \int\limits_C^{} \left( \mathrm{d} \vec{r} \times \hat{t} \right) \cdot \vec{B} \, \mathrm{d} l
+\end{align*}
+
+\( \left(\mathrm{d} \vec{r} \times \hat{t} \right) \mathrm{d}l = \mathrm{d} S \), kjer je \( \mathrm{d} S \) diferencial površine, ki jo opiše zanka ob premiku.
+
+Torej je delo po integriranju
+
+\[ A = - I \int\limits_S^{} \vec{B} \cdot \mathrm{d} S = - I \phi_m
+\]
+
+Magnetno energijo želimo zapisati tudi z vektorskim magnetnim potencialnim poljem
+
+\[ A = - I \int\limits_S^{} \left( \nabla \times \vec{A} \right) \, \mathrm{d} \vec{S} = - I \int\limits_{C_2}^{} \vec{A} \cdot \mathrm{d} ^3 \vec{r} + I \int\limits_{C_1}^{} \vec{A} \cdot \mathrm{d} \vec{r},
+\]
+
+Zanko smo premaknili za \( \mathrm{d} \vec{r} \). Površina \( S \) je površina plašča valja, ki ga omejujeta zanka \( C_1 \) pred premikom in zanka \( C_2 \), ki je \( C_1 \) premaknjena za \( \mathrm{d} \vec{r} \).
+
+Posplošimo integral z gostoto toka \( \vec{\jmath} \) preko identitete \( I \mathrm{d}\vec{r} = \vec{\jmath} \, \mathrm{d} ^3\vec{r} \)
+
+\[ A = - \int\limits_{(2)}^{} \vec{\jmath} \cdot \vec{A} \, \mathrm{d} ^3 \vec{r} + \int\limits_{(1)}^{} \vec{\jmath} \cdot \vec{A} \, \mathrm{d} ^3 \vec{r},
+\]
+
+kjer je (2) zanka po premiku in (1) zanka pred premikom. Torej je energija \( \vec{\jmath} \) v zunanjem magnetnem polju \( \vec{A} \), ki ni odvisen od \( \vec{\jmath} \)
+
+\[ W = - \int\limits_{}^{} \vec{\jmath} \cdot \vec{A} \, \mathrm{d} ^3 \vec{r}
+\]
+*** Magnetna energija kot funkcional toka
+
+Iz Kirchoffove enačbe vemo, da velja
+
+\[ \vec{A} \left( \vec{r} \right) = \frac{\mu_0}{4 \pi} \int\limits_{}^{} \frac{\vec{\jmath} \left( \vec{r} \, ' \right)}{\left| \vec{r} - \vec{r} \, ' \right|} \, \mathrm{d} ^3 \vec{r} \, '.
+\]
+
+Potem lahko zapišemo energijo kot
+
+\[ W = \frac{\mu_0}{4 \pi} \int\limits_V^{} \int\limits_{V'}^{} \frac{\vec{\jmath} \left( \vec{r} \right) \vec{\jmath} \left( \vec{r} \, '\right)}{\left| \vec{r} - \vec{r} \, ' \right|} \, \mathrm{d} ^3 \vec{r} \, \mathrm{d} ^3 \vec{r} \, '
+\]
+
+Ta enačba nam pove energijo tokov \( \vec{\jmath} \) v magnetnem polju, ki ga ustvarja tok \( \vec{\jmath} \, ' \).
+*** Celotna magnetna energija
+
+Zanima nas celotna energija polja/potenciala \( \vec{A} \), ki ga ustvari gostota toka \( \vec{\jmath} \). Uvedemo parameter \( \alpha \in [0, 1] \), ki spremeni magnetni vektorski potencial \( \vec{A} \) iz \( 0 \) do \( \vec{A} \). Ker gostota električnega toka \( \vec{\jmath} \) ustvari vektorski magnetni potencial \( \vec{A} \). Pri nekem \( \alpha \) gostota toka \( \hat{\jmath} = \alpha \vec{\jmath} \) ustvari polje \( \hat{A}, \left| \hat{A} \right| \le \left| \vec{A}\right|  \). Opazujemo spremembo \( \hat{A} \), če povečamo gostoto toka za \( \mathrm{d} \vec{\jmath} \).
+
+Uporabili bomo linearnost Kirchoffove enačb
+
+\[ \nabla ^2 \left( \hat{A} \right) = \nabla ^2 \left( \vec{A} \right) = - \mu_0 \left( \vec{\jmath} \cdot \alpha \right),
+\]
+
+da je sprememba energije enaka
+
+\begin{align*}
+  \mathrm{d} W &= \int\limits_V^{} - \mathrm{d} \vec{\jmath} \cdot \hat{A} \, \mathrm{d} ^3\vec{r}  && \mathrm{d} \vec{\jmath} = \vec{\jmath} \, \mathrm{d} \alpha; \ \hat{A} = \alpha \vec{A} \\
+&= \int\limits_V^{} - \mathrm{d} \alpha \alpha \vec{\jmath} \vec{A}\, \mathrm{d} ^3 \vec{r} \\
+W &= -\int\limits_0^{1} \alpha \, \mathrm{d} \alpha \int\limits_{}^{} \vec{\jmath} \cdot \vec{A} \, \mathrm{d} ^3 \vec{r}
+\end{align*}
+
+iz česar sledi energija celotnega magnetnega polja
+
+\[ W = - \frac{1}{2} \vec{\jmath} \vec{A} \, \mathrm{d} ^3 \vec{r}
+\]
