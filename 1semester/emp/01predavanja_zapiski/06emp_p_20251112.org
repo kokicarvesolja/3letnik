@@ -1,0 +1,104 @@
+#+title: 6. predavanje iz Elektromagnetnega polja
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Magnetostatika
+** Vektorski magnetni potencial tuljave
+
+Za precej fizikalno lepo homogeno magnetno polje \( \vec{B} \) znotraj tuljave, je vektorski potencial \( \vec{A} \) grdoba, saj ima prostorsko odvisnost tudi zunaj tuljave
+
+[[file:figures/magnetnoPoljeTuljave.jpg]]
+
+Po besedah profesorja želimo narediti bolj pohleven vektorski potencial, zaradi se poslužimo umeritve. Uvedemo nov magnetni potencial \( \vec{A} \, ' \)
+
+\[ \vec{A} \, ' = \vec{A} + \nabla \zeta \left( \vec{r} \right)
+\]
+
+Taka vpeljava je precej priročna, saj oba vektorska polja ustrezata istemu magnetnemu polju \( \vec{B} \)
+
+\[ \vec{B} = \nabla \times \vec{A} = \nabla \times \vec{A} \, '
+\]
+
+Kot primer za \( \zeta \) lahko uporabimo
+
+\[ \zeta \left( \vec{r} \right) = - \frac{B_0 a ^2}{2} \arctan \frac{y}{x}.
+\]
+
+\( \vec{A} \) je potem definiran kot
+
+\[ \vec{A} \, ' = \frac{a ^2}{2} \vec{B}_0 \times \frac{\vec{r}}{r ^2} - \nabla \left( - \frac{B_0 a ^2}{2} \arctan \frac{y}{x} \right) = \frac{B_0 a ^2}{2} \frac{2 \pi}{a} \delta (\phi - \pi) \hat{e}_{\phi}
+\]
+
+#+begin_quote
+Vedno lepši potencial, kajne?
+#+end_quote
+
+Z dano umeritvijo je \( \vec{A} \, ' \) nič skoraj povsod, razen pri \( \phi = \pi \). Z uvedbo/uporabo umeritve lahko spreminjaš potencial \( \vec{A} \) ne da bi pri tem vplival na dejansko magnetno polje \( \vec{B} \).
+** Magnetna sila
+
+Magnetna silo na vodnik se zapiše kot
+
+\[ \vec{F} = \int\limits_{L}^{} I \, \mathrm{d} \vec{l} \times \vec{B} \left( \vec{r} (l) \right)
+\]
+
+kjer je \( L \) integral po žici. Za splošno gostoto toka nadomestimo izraz \( I \, \mathrm{d} \vec{l} \) z \( \vec{\jmath} \, \mathrm{d} ^3 \vec{r} \). Naša sila se tako prevede na
+
+\[ \vec{F} = \int\limits_V^{} \vec{\jmath} \times \vec{B} \, \mathrm{d} ^3 \vec{r}
+\]
+
+#+name: sila na gibajoč točkast naboj
+#+begin_my_example
+Gostoto električnega toka zapišemo kot
+
+\[ \vec{\jmath} = \rho \vec{v} = e \delta ^3 \left( \vec{r} - \vec{r} \left( t \right) \right) \vec{v}
+\]
+
+Sila je potem
+
+\[ \vec{F} = \int\limits_{}^{} e \delta ^3 \left( \vec{r} - \vec{r} (t) \right) \vec{v} \times \vec{B} \, \mathrm{d} ^3  \vec{r} = e \vec{v} \times \vec{B}
+\]
+#+end_my_example
+** Kirchoffova enačba
+
+Zanima nas osnovna enačba za vektorski magnetni potencial. Uporabimo Amperov zakon in definicijo vektorskega potencial
+
+\[ \mu_0 \vec{\jmath} = \nabla \times \vec{B} = \nabla \times \left( \nabla \times \vec{A} \right) = \nabla \left( \nabla \cdot \vec{A} \right) - \nabla ^2 \vec{A}.
+\]
+
+Hkrati uporabimo tudi Helmholtzov izrek, ki pravi, da lahko vsako vektorsko polje zapišemo kot
+
+\[ \vec{A} = \vec{A} _1 + \vec{A}_2,
+\]
+
+kjer \( \nabla \cdot \vec{A}_1 = 0 \) in \( \nabla \times \vec{A}_2 = 0 \).
+
+Za olajšavo uporabimo umeritev \( \vec{A}_2 = 0 \) Iz tega sledi, da je \( \vec{A} = \vec{A}_1  \) zaradi linearnosti rotorja, iz česar sledi \( \nabla \vec{A} = \nabla \cdot \vec{A}_1 = 0 \).
+
+Dobimo Kirchoffovo enačbo
+
+\[ \nabla ^2 \vec{A} = - \mu_0 \vec{\jmath},
+\]
+
+ki je osnovna enačba za izračun magnetnega vektorskega potenciala. Enačba je podobna Poissonovi enačbi, iz česar sklepamo rešitev
+
+\[ \vec{A} \left( \vec{r} \right) = \frac{\mu_0}{4 \pi} \int\limits_{V}^{} \frac{\vec{\jmath} \left( \vec{r} \, ' \right)}{\left| \vec{r} - \vec{r} \, ' \right|} \, \mathrm{d} ^3 \vec{r} \,'
+\]
+
+Volumnski integral teče tam, kjer je \( \vec{\jmath} \ne 0 \).
+
+Od tod sledi Biot-Savartov zakon
+
+\begin{align*}
+  \vec{B} \left( \vec{r} \right) &= \nabla \times \vec{A} \\
+&= \nabla \times \int\limits_{}^{} \frac{\mu_0}{4 \pi} \frac{\vec{\jmath} \left( \vec{r} \, ' \right)}{\left| \vec{r} - \vec{r} \,' \right|} \, \mathrm{d} ^3 \vec{r} \, '
+\end{align*}
+
+Ker \( \nabla \) vpliva na \( \vec{r} \) in ne na \( \vec{r} \, ' \) lahko zapišemo
+
+\[ \vec{B} \left( \vec{r} \right)= \frac{\mu_0}{4 \pi}  \int\limits_{}^{} \frac{\vec{\jmath} \times \left( \vec{r} - \vec{r} \, ' \right)}{\left| \vec{r} - \vec{r} \, ' \right|} \, \mathrm{d} ^3 \vec{r} \, '
+\]
