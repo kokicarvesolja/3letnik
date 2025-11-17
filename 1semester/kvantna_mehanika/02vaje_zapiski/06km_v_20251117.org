@@ -118,3 +118,125 @@ Upoštevamo enačbo \ref{eq:3} in izrazimo \( a \) z \( \tilde{a} \), iz česar 
 \left( \tilde{a} + \frac{x_1}{\sqrt{2} x_0} \right) \left| \psi, 0 \right\rangle &= 0 \\
 \tilde{a} \left| \psi, 0 \right\rangle = - \frac{x_1}{\sqrt{2} x_0} \left| \psi, 0 \right\rangle
 \end{align*}
+
+Koherentno stanje harmonskega oscilatorja je lastno stanje anihilacijskega operatorja
+
+\[ a \left| \psi \right\rangle  = z \left| \psi \right\rangle, \ z \in \mathbb{C}
+\]
+
+V nadaljevanju ne bomo več pisali \( \tilde{a} \). V izraz za koherentno stanje vstavimo funkcijo razvito po lastnih stanjih
+
+\[ a \sum\limits_n^{} c_n \left| n \right\rangle = z \sum\limits_n^{} c_n \left| n \right\rangle
+\]
+
+Upoštevamo učinek anihilacijskega operatorja
+
+\[ \sum\limits_{n = 1}^{\infty} c_n \sqrt{n} \left| n - 1 \right\rangle  = \sum\limits_{n = 1}^{\infty} z c_n \left| n \right\rangle.
+\]
+
+To confuse the enemy even more, uvedemo novo spremenljivko \( \tilde{n} = n - 1 \)
+
+\[ \sum\limits_{\tilde{n} = 0}^{\infty} c_{\tilde{n} + 1} \sqrt{\tilde{n} + 1} \left| n \right\rangle = \sum\limits_{\tilde{n} = 0}^{\infty}z c_{\tilde{n}} \left| \tilde{n} \right\rangle.
+\]
+
+Confuse the enemy even more, saj \( \tilde{n} \to n \), in imamo
+
+\[ \sum\limits_{n = 0}^{\infty} c_{n + 1} \sqrt{n + 1} \left| n \right\rangle  = \sum\limits_{n = 0}^{} z c_n \left| n \right\rangle.
+\]
+
+iz česar dobimo rekurzivno zvezo za poljuben \( n \)
+
+\[ c_{n + 1} \sqrt{n + 1} = z c_n \implies c_{n + 1} = \frac{z}{\sqrt{n + 1}} c_n
+\]
+
+Za poljuben \( c_0 \) lahko uganemo, da je zveza, ki podaja z poljuben \( n \)-ti koeficient
+
+\[ c_n = \frac{z^n}{\sqrt{n!}} c_0
+\]
+
+Koeficient \( c_0 \) sedaj igra vlogo parametra. Razvoj po lastnih stanjih torej zapišemo kot
+
+\[ \left| \psi \right\rangle = \sum\limits_{n = 0}^{\infty} \frac{z^n}{\sqrt{n!}} c_0 \left| n \right\rangle
+\]
+
+Parameter bomo določili preko normalizacije
+
+\[ \left\langle \psi \middle| \psi \right\rangle  = \left( \sum\limits_{n = 0}^{\infty} \frac{\left( z^n \right)^{\ast}}{\sqrt{n!}} c_0^{\ast} \left\langle n \right| \right) \left( \sum\limits_{n' = 0}^{\infty} \frac{z^{n'}}{\sqrt{n '!}} c_0 \left| n' \right\rangle  \right)
+\]
+
+Velja zveza \( \left\langle n \middle| n' \right\rangle = \delta_{n n'} \) iz česar sledi
+
+\[ \left\langle \psi \middle| \psi \right\rangle = 1 = \sum\limits_{n n'}^{} \frac{\left( z^n \right)^{\ast} z^{n'}}{\sqrt{n!}\sqrt{n'!}} \left| c_0  \right|^2 \left\langle n \middle| n' \right\rangle = \sum\limits_{n = 0}^{\infty} \frac{\left| z \right|^{2n}}{n!} \left| c_0 \right| ^2
+\]
+
+Prepoznamo Taylorjevo vrsto za eskponento funkcijo, kar pomeni, da rešujemo enačbo
+
+\[ \left\langle \psi \middle| \psi \right\rangle  = 1 = e^{\left| z \right| ^2} \left| c_0  \right|^2 \implies \ \left| c_0 \right| = e^{- \frac{1}{2} \left| z \right| ^2}
+\]
+
+Rešitve te enačbe so
+
+\[ c_0 = e^{- \frac{1}{2} \left| z \right| ^2} e^{\mathrm{i} \alpha}, \ \alpha \in \mathbb{R}.
+\]
+
+Razvoj po lastnih stanjih je
+
+\[ \left| \psi \right\rangle = e^{- \frac{1}{2} \left| z \right| ^2} \sum\limits_{n = 0}^{\infty} \frac{z^2}{\sqrt{n!}} \left| n \right\rangle.
+\]
+
+To nam tudi omogoča, da enostavno naredimo razvoj po času
+
+\[ \left| \psi, t \right\rangle = e^{- \frac{1}{2} \left| z \right| ^2} \sum\limits_{n = 0}^{\infty} \frac{z^n}{\sqrt{n!}} e^{- \mathrm{i} \frac{E_n}{\hbar}t} \left| n \right\rangle,
+\]
+
+kjer je energija v harmonskem oscilatorju \( E_n = \left( n + \frac{1}{2} \right)\hbar \omega \). Časovni razvoj se tako posodobi v
+
+\begin{equation}
+\label{eq:4}
+ \left| \psi, t \right\rangle = e^{- \mathrm{i} \frac{\omega}{2} t} e^{- \frac{1}{2} \left| z e^{- \mathrm{i} \omega t} \right| ^2} \sum\limits_{n = 0}^{\infty} \frac{\left( z e^{-\mathrm{i} \omega t} \right)^n}{\sqrt{n!}} \left| n \right\rangle,
+\end{equation}
+
+kjer smo dopolnili do popolnega kvadrata v eksponentu. Vidimo, da koherentno stanje \( z \) po časovnem razvoju postane \( ze^{\mathrm{i} \omega t} \).
+
+Dogovorimo se, da je \( z \) koherentno stanje harmonskega oscilatorja, kar pomeni, da bomo nadomestili izraz kot naslednje
+
+\[ a \left| \psi \right\rangle  = z \left| \psi \right\rangle \implies a \left| z \right\rangle = z \left| z \right\rangle
+\]
+
+Koherentna stanja \ref{eq:4} so še zmeraj koherentna tudi po časovnem razvoju in krajše lahko zapišemo
+
+\[ \left| z, t \right\rangle  = e^{- \mathrm{i} \frac{\omega}{2} t} \left| z e^{-\mathrm{i} \omega t} \right\rangle
+\]
+
+Pričakovano vrednost kraja lahko s posodobljenim zapisom koherentnih stanj zapišemo kot
+
+\begin{align*}
+  \left\langle x \right\rangle &= \left\langle z \middle| x \middle| z \right\rangle \\
+&= \sqrt{2} x_0 \mathrm{Re} \left( \left\langle a \right\rangle \right) \\
+&= \sqrt{2} x_0 \mathrm{Re} \left( \left\langle z \middle| a \middle| z \right\rangle \right) && a \left| z \right\rangle = z \left| z \right\rangle\\
+&= \sqrt{2} x_0 \mathrm{Re} \left( \left\langle z \middle| z \middle| z \right\rangle \right) && \text{sredinski } z \text{ je stevilo} \\
+&= \sqrt{2} x_0 \mathrm{Re} \left( z \left\langle z \middle| z \right\rangle \right) \\
+&= \sqrt{2} x_0 \mathrm{Re} \left( z \right)
+\end{align*}
+
+Analogno zapišemo tudi
+
+\[ \left\langle p \right\rangle  = \sqrt{2} p_0 \mathrm{Im} \left\langle a \right\rangle = \sqrt{2} p_0 \mathrm{Im} \left( z \right).
+\]
+
+Radi bi zapisali \( \left\langle x ^2 \right\rangle \), vendar za to potrebujemo vmesni račun
+
+\begin{align*}
+  \left\langle z \middle| a^{\dagger}^n a^m \middle| z \right\rangle &= \left\langle z \middle| a^{\dagger}^n z^m \middle| z \right\rangle \\
+&= z^m \left\langle z \middle|  a^{\dagger} ^n \middle| \right\rangle \\
+&= z^m \left\langle a^n z \middle| z \right\rangle \\
+&= z^m \left( z^n \right)^{\ast} \left\langle z \middle| z \right\rangle \\
+&= z^m \left( z^n \right)^{\ast}
+\end{align*}
+
+Pri računanju
+
+\[ \left\langle z \middle| a a^{\dagger} \middle| z \right\rangle = \left\langle z \middle| 1 + a^{\dagger} a \middle| z \right\rangle = \left\langle z \middle| z \right\rangle + \left\langle z \middle| a^{\dagger} a \middle| z \right\rangle = 1 + z^{\ast} z = 1 + \left| z \right| ^2,
+\]
+
+smo upoštevali \( a a^{\dagger} - a^{\dagger} a = 1 \).
