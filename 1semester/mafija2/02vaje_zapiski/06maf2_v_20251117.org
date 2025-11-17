@@ -1,0 +1,111 @@
+#+title: 6. vaje iz Matematične fizike 2
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Naloga 17 (Prinčič 4.5)
+
+#+begin_problem
+Iščemo stacionarno porazdelitev temperature v polneskončni cevi. Voda teče v \( z \)-smeri s hitrostjo \( \vec{v}_0 \). Podano imam temperaturo plašča \( \left. T \right|_{u = r_0} = T_0 \) ter temperaturo osnovne plošče \( \left. T \right|_{z = 0} = T_1 (r) \).
+#+end_problem
+
+Rešujemo difuzijsko enačbo
+
+\[ \frac{\mathrm{d} T}{\mathrm{d} t} = D \nabla ^2 T,
+\]
+
+vendar se zaradi premikajoče se snovi temperatura premika s snovjo. To težavo nam reši substancialni odvod
+
+\[ \frac{\mathrm{D} }{\mathrm{D} t} = \frac{\partial }{\partial t}  + \left( \vec{v} \cdot \nabla \right) T.
+\]
+
+Sledeče je bilo izpeljano pri mafiji in bo izpeljano pri Mehaniki kontinuumov. Hitrost v smeri \( z \) zapišemo kot \( \vec{v} = v \hat{e}_z \). Iščemo stacionarno rešitev, torej bo enačba, ki jo rešujemo oblike
+
+\[ \left( v \hat{e}_z \cdot \nabla \right) T = v \frac{\partial T}{\partial z} = \left[ \frac{1}{r} \frac{\partial }{\partial r} \left( r \frac{\partial T}{\partial r}  \right)+ \frac{\partial ^2 T}{\partial z ^2}   \right]D,
+\]
+
+kjer smo upoštevali Laplaceovo operator v cilindričnih koordinatah. Enačbo rešujemo s pomočjo separacije spremenljivke. Zakaj to deluje na polneskončnem primeru, bomo povedali kasneje. S \( T(r, z) = R(r) Z(z) \) difuzijska enačba postane
+
+\[ \frac{v}{D} \frac{z '}{z} - \frac{z''}{z} = \frac{R' + r R''}{r R} = - \lambda
+\]
+
+Reševanje \( z \) dela delamo z nastavkom \( Z = e^{kz} \), saj imamo LDE s konstantnimi koeficienti. Dobimo kvadratno enačbo
+
+\[ k ^2 - \frac{v}{D} k - \lambda = 0,
+\]
+
+katere rešitve so
+
+\[ k_{1, 2} = \frac{\frac{v}{D} \pm \sqrt{\frac{v ^2}{D ^2} + 4 \lambda}}{2}.
+\]
+
+Splošna rešitev je tako
+
+\begin{equation}
+\label{eq:2}
+ Z(z) = A e^{k_1 z} + B e^{k_2 z}.
+\end{equation}
+
+Za radialni del rešujemo enačbo
+
+\[ r R'' + R' + \lambda r R = 0,
+\]
+
+ki jo pomnožimo z \( r \) ter uvedemo spremenljivko \( \tilde{r} = \sqrt{\lambda} r \), da dobimo Besselovo diferencialno enačbo
+
+\[ \tilde{r} ^2 \frac{\mathrm{d} ^2 R}{\mathrm{d} \tilde{r} ^2} + \tilde{r} \frac{\mathrm{d} R}{\mathrm{d} \tilde{r}} + \tilde{r} ^2 R = 0
+\]
+
+Za \( n = 0 \) so so tako splošne rešitve
+
+\begin{equation}
+\label{eq:1}
+ R(r) =  = AJ_0 \left( \sqrt{\lambda} r \right) + B Y_0 \left( \sqrt{\lambda} r \right)
+\end{equation}
+
+Iz robnega pogoja \( \left. T \right_{r = r_0} = T_0 \) z uvedbo nastavka \( T(r, z) = R(r) Z(z) + T_0 \) dobimo homogen robni pogoj \( R(r_0) = 0 \). Ker \( Y_0 \) divergirajo v izhodišču, naše rešitev pa ne, bo \( B = 0 \).
+
+Homogen robni pogoj pa nam poda zvezo za ničle
+
+\[ A J_0 \left( \sqrt{\lambda} r_0 \right) = 0 \implies \ \sqrt{\lambda_{1}} r_0 = \xi_n^{(0)}, \ n = 1, 2, \ldots
+\]
+
+Pri enačbi \ref{eq:2} zavržemo prvi člen, saj člen divergira v neskončnosti, medtem ko naša temperatura pa ne.
+
+Naš ne-še-čisto-točen nastavek je
+
+\[ T(r, z) = \sum\limits_{n = 1}^{\infty} B_n \exp \left\{ \frac{v}{D} - \sqrt{\frac{v ^2}{D ^2}  + 4 \lambda} z \right\} J_0 \left( \frac{\xi_n^{(0)}}{r_0} r \right) + T_0
+\]
+
+Upoštevamo še drugi robni pogoj \( \left. T \right|_{z = 0} = T_1 (r) \), da dobimo enačbo
+
+\begin{equation}
+\label{eq:3}
+ T(r, z = 0) = \sum\limits_{n = 1}^{\infty} B_0 J_0 \left( \frac{\xi_n^{(0)}}{r_0} r \right) + T_0 = T_1 (r)
+\end{equation}
+
+Besselove funkcije \( J_0 \left( \xi_n ^{(0)} \frac{r}{r_0} \right) \) tvorijo KOS (kompletni ortogonalni sistem) v \( L_w ^2 \left( [0, r_0] \right) \). V cilindričnih koordinatah imamo tako utež \( w = r \mathrm{d} r \) in skalarni produkt je definiran kot
+
+\[ \left\langle f, g \right\rangle  = \int\limits_0^{ r_0} r f(r) g(r) \, \mathrm{d} r
+\]
+
+Prav tako velja identiteta
+
+\[ \left\lVert J_0 \left( \xi_n ^{(0)} \frac{r}{r_0} \right) \right\rVert ^2 = \frac{r_0 ^2}{2} J_1 ^2 \left( \xi^{(0)}_n \right)
+\]
+
+Enačbo \ref{eq:3} rešimo z integriranjem v mejah od \( [0, r_0] \)
+
+\[ \int\limits_0^{r_0} \left( T_1 (r) - T_0 \right) r J_0 \left( \xi_n ^{(0)} \frac{r}{r_0} \right) \, \mathrm{d} r = \left( \frac{2}{r_0 ^2 J_1 ^2 \left( \xi_m^{(0)} \right)} \right)^{-1} B_m,
+\]
+
+iz česar sledi
+
+\[ B_m = \frac{2}{r_0 ^2 J_1 ^2 (\xi_m)} \int\limits_0^{r_0} \left( T_1 (r) - T_0 \right) r J_0 \left( \frac{\xi_m}{r_0} r \right) \, \mathrm{d} r
+\]
+
+Ker imamo stacionarno rešitev, lahko drug robni pogoj izrazimo z vrsto, namesto da postopamo po poteh homogenizacije.
