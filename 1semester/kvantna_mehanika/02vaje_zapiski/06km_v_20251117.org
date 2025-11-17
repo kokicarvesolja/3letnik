@@ -1,0 +1,120 @@
+#+title: 6. vaje iz Kvantne mehanike
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Harmonski oscilator
+** Klasična različica
+
+Imajemo delec z maso \( m \) in nabojem \( e \), ki je na vzmeti s koeficientom \( k \). Delec niha vodoravno s tlemi. Prav tako imamo električno polje \( \vec{E} \), ki kaže vzporedno z vzmetjo.
+
+Preko gibalne enačbe
+
+\[ e E - kx = m \ddot{x}
+\]
+
+in začetnih pogojev
+
+\[ x(0) = 0, \quad \dot{x}(0) = 0
+\]
+
+Po integraciji je gibanje v odvisnosti od časa enako
+
+\[ x(t) = x_0 \cos \left( \omega t + \delta \right) + x_1 = x_1 \left( 1 - \cos \omega t \right),
+\]
+
+kjer smo upoštevali \( \delta = \pi \) in  \( x_1 = \frac{F_e}{k} = \frac{eE}{k} \)
+** Kvantna mehanika
+
+Imamo kvantnomehanski delec v harmonskem oscilatorju. Ob času \( t = 0 \) je električno polje izključeno, za \( t > 0 \) pa je električno polje vključeno.
+
+Ob času \( t = 0 \) je Schrödingerjeva enačba
+
+\begin{equation}
+\label{eq:2}
+ -\frac{\hbar ^2}{2m} \frac{\partial ^2 \psi}{\partial x ^2}  + V   \psi = \mathrm{i} \hbar \frac{\partial \psi}{\partial t}, \quad V(x) = k x ^2
+\end{equation}
+
+
+Pri klasičnem modelu smo imeli začetni pogoju \( x(0) = 0 \), ki pa se ne prenese na enak način v kvantno mehaniko. Namesto tega bomo uporabili začetno stanje valovne funkcije, ki je v splošnem napisana kot
+
+\begin{equation}
+\label{eq:1}
+ \psi(x, 0) = \frac{1}{\sqrt[4]{2 \pi \sigma ^2}} \exp \left\{ \frac{x ^2}{4 \sigma ^2} \right\}
+\end{equation}
+
+Kvantnomehanski ekvivalent bo to, da rečemo, da sta pričakovani vrednosti kraja in časa enaki \( \left\langle x \right\rangle = \left\langle p \right\rangle = 0 \). Hkrati pa tudi določimo, da sta nedoločenosti majhni \( \delta x \) in \( \delta p \). Za Gaussov paket velja, da je minimizirana nedoločenost \( \delta x \delta p = \frac{\hbar}{2} \), kjer \( \delta x = \sigma \) in \( \delta p = \frac{\hbar}{2 \sigma} \). Želimo tudi, da je energija minimizirana, kar je osnovno stanje harmonskega oscilatorja \( E = \frac{\hbar \omega}{2} \).
+
+Preko minimizirane energije lahko določimo \( \sigma \) in začetno stanje \ref{eq:1} je enako
+
+\[ \psi(x, 0) = \frac{1}{ \sqrt[4]{\pi x_0}} \exp \left\{ - \frac{x ^2}{2 x_0 ^2} \right\}
+\]
+
+Upoštevali smo teorijo harmonskega oscilatorja.
+
+#+begin_problem
+Želimo izračunati \( \left\langle x, t \right\rangle \), \( \left\langle p, t \right\rangle \) ter nedoločenosti \( \delta x(t) \) in \( \delta p (t) \).
+#+end_problem
+
+Na začetno stanje \( \left| \psi, 0 \right\rangle = \left| 0 \right\rangle\) ima anihilacijski operator sledeč učinek
+
+\begin{equation}
+\label{eq:3}
+ a \left| \psi, 0 \right\rangle  = a \left| 0 \right\rangle = 0
+\end{equation}
+
+Če imamo valovno funkcijo razvito po lastnih stanjih
+
+\[ \left| \psi \right\rangle  = \sum\limits_{n = 0}^{\infty} c_n \left| n \right\rangle,
+\]
+
+bo anihilacijski operator učinkoval na sledeči način
+
+\[ a \left| \psi \right\rangle  = \sum\limits_{n = 0}^{\infty} \sqrt{n} c_n \left| n - 1 \right\rangle
+\]
+
+Če se nahajamo v osnovnem stanju, so \( c_n = 0 \) za \( n \ge 1 \) in \( c_0 \ne 0 \).
+
+Ob času \( t > 0 \) se naš Hamiltonian posodobi iz \ref{eq:2} z električnim poljev \( \vec{E} \) v
+
+\[ \tilde{H} = \frac{p ^2}{2m} + \frac{1}{2} k x ^2 - e E x,
+\]
+
+ki ga posodobimo do popolnega kvadrata
+
+\[ \tilde{H} = \frac{p ^2}{2m} + \frac{k}{2} \left( x - x_1 \right) ^2 - x_1 ^2 \frac{k}{2} = \frac{p ^2}{2m} + \tilde{V} (x),
+\]
+
+kjer smo upoštevali \( x _1 = \frac{e E}{k} \) iz klasičnega razdelka. Novi potencial \( \tilde{V}(x) \) je premaknjen za \( - \frac{1}{2} k x_1 ^2 \) proti negativni neskončnosti navzdol ter za \( x_1 \) v desno.
+
+Definiramo novo spremenljivko \( \tilde{x} = x - x_1 \) in izrazimo s tem Hamiltonian. Velja \( \tilde{p} (\tilde{x}) = p(x) \).
+
+\[ \tilde{H} = \frac{\hbar ^2}{2m} \frac{\mathrm{d} ^2 }{\mathrm{d} \tilde{x} ^2} + \frac{k}{2} \tilde{x} ^2 - x_1 ^2 \frac{k}{2}
+\]
+
+Anihilacijski operator za \( x \) je iz sekcija za teorijo enak
+
+\[ a = \frac{1}{\sqrt{2}} \left( \frac{x}{x_0} + \mathrm{i} \frac{p}{p_0} \right).
+\]
+
+Anihilacijski operator za \( \tilde{x} \) pa je podobno
+
+\[ \tilde{a} = \frac{1}{\sqrt{2}} \left( \frac{\tilde{x}}{x_0} + \mathrm{i} \frac{\tilde{p}}{p_0} \right)
+\]
+
+Anihilacijski operator \( \tilde{a} \) lahko povežemo s starim anihilacijskim operatorjem \( a \) preko upoštevanja definicije \( \tilde{x} = x - x_1 \)
+
+\[ \tilde{a} = \frac{1}{\sqrt{2}} \left( \frac{x - x_1}{x_0} + \mathrm{i} \frac{p}{p_0} \right) = \frac{1}{\sqrt{2}} \left( \frac{x}{x_0} + \mathrm{i} \frac{p}{p_0} \right) - \frac{1}{\sqrt{2}} \frac{x_1}{x_0} = a - \frac{x_1}{\sqrt{2}x_0}
+\]
+
+Upoštevamo enačbo \ref{eq:3} in izrazimo \( a \) z \( \tilde{a} \), iz česar sledi
+
+\begin{align*}
+  a \left| \psi, 0 \right\rangle &= 0 \\
+\left( \tilde{a} + \frac{x_1}{\sqrt{2} x_0} \right) \left| \psi, 0 \right\rangle &= 0 \\
+\tilde{a} \left| \psi, 0 \right\rangle = - \frac{x_1}{\sqrt{2} x_0} \left| \psi, 0 \right\rangle
+\end{align*}
