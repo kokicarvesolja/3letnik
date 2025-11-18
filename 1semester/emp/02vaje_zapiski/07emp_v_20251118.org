@@ -131,31 +131,32 @@ Zanima nas dolžinska gostota sile plašča \( f_1 = \frac{F_1}{l} \).
 
 [[file:figures/15Koaksialc.png]]
 
-Na plašč delujeta dve sili - magnetna sila, ki je posledica toka, ki teče po žili koaksialnega kabla. Druga sila, ki kaže navznoter, pa je posledica toka, ki teče po plašču in predstavlja površinsko napetost - kakor napiše Mastnak, str. 36, predstavljamo si, da je plašč sestavljen iz veliko vzporednih žic, po katerih teče tok in se med seboj privlačijo.
+Na plašč delujeta dve sili - magnetna sila, ki kaže navzven in je posledica odbijajočih se magnetnih polj. Magnetna polja sta odbijajoča, saj je električnik različno usmerjen. Druga sila, ki kaže navznoter, pa je posledica toka, ki teče po plašču in predstavlja površinsko napetost - kakor napiše Mastnak, str. 36, predstavljamo si, da je plašč sestavljen iz veliko vzporednih žic, po katerih teče tok in se med seboj privlačijo.
 
 Kakor vidimo na sliki, je silo na majhen delček plašča precej grdo izračunati. Raje uporabimo podoben trik kakor pri nalogah površinske napetosti, kjer uporabimo polovico plašča, saj takrat velja \( F_m = 2 F_1 \).
 
-S pomočjo Amperovega zakon lahko določimo magnetno polje znotraj in zunaj plašča
+S pomočjo Amperovega zakona lahko določimo magnetno polje znotraj in zunaj plašča
 
 \[ \oint\limits_{}^{} \vec{B} \, \mathrm{d} \vec{l} = \mu_0 I_{tot},
 \]
 
 kjer je \( I_{tot} \) celoten zaobjet tok. Označimo tok po žili z \( I_z \), tok po plašču pa je \( I_p \).
 
-Zunaj plašča, kjer se nahajamo na točki \( r > a \) (zelena črtkana črta), je totalen zaobjet tok \( I_{tot} = I_z - I_p = 0 \). Iz tega sledi, da je magnetno polje zunaj žile ničelno \( \vec{B} = 0 \). Znotraj žile, v točki \( r < a \) (modra črtkana črta), pa je zaobjet tok samo tok žile, iz česar sledi magnetno polje
+Zunaj plašča, kjer se nahajamo na točki \( r > a \) (zelena črtkana črta, spodaj desno na sliki), je totalen zaobjet tok \( I_{tot} = I_z - I_p = 0 \). Iz tega sledi, da je magnetno polje zunaj žile ničelno \( \vec{B} = 0 \). Znotraj žile, v točki \( r < a \) (modra črtkana črta, spodaj desno na sliki), pa je zaobjet tok samo tok žile, iz česar sledi magnetno polje
 
 \begin{equation}
 \label{eq:2}
  B \cdot 2 \pi r = \mu_0 I \implies B = \frac{\mu_0 I}{2 \pi r}
 \end{equation}
 
+Ker zunaj plašča ni magnetnega polja, pomeni, da tudi ni magnetne sile.
 
-Ker zunaj ni magnetnega polja, pomeni, da tudi ni magnetne sile. Majhno površino plašča \( \mathrm{d} S \) zapišemo kot
+Izračunajmo še magnetno silo znotraj plašča. Majhno površino plašča \( \mathrm{d} S \) zapišemo kot
 
 \[ \mathrm{d} S = a \mathrm{d} \phi l
 \]
 
-Ker integriramo po ploskvi, ki tesno objema površino plašča, velja, da sta magnetno polje \( \vec{B} \) in normala ploskve \( \vec{n} \) pravokotna. Iz tega sledi, da je njun skalarni produkt \( \vec{B} \cdot \vec{n} = 0 \). Splošna formula za magnetno silo
+Ker integriramo po ploskvi, ki tesno objema površino plašča (modra črta, spodaj levo na sliki), velja, da sta magnetno polje \( \vec{B} \) in normala ploskve \( \vec{n} \) pravokotna. Magnetno polje \( \vec{B} \) je tangentno na polkrožnico. Če si predstavljamo plašč iz velikega števila žic, bo vsaka žica imela svoje magnetno polje, ki jo obkroža. Ko naredimo superpozicijo teh magnetni polj, ostane samo tangentna komponenta. Iz tega sledi, da je njun skalarni produkt \( \vec{B} \cdot \vec{n} = 0 \). Splošna formula za magnetno silo
 
 \[ \vec{F}_m = \frac{1}{\mu_0} \oint\limits_S^{} \left[ \vec{B} \left( \vec{B} \cdot \vec{n} \right) - \frac{1}{2} B ^2  \vec{n}\right] \, \mathrm{d} S
 \]
