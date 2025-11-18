@@ -8,7 +8,6 @@
 #+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
 #+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
 * Magnetno polje nabite vrteče se okrogle plošče :1_kolokvij:
-
 ** Točka a)
 
 Operiramo z Biot-Savartovim zakonom
@@ -51,12 +50,12 @@ Nadomestimo izračunane stvari v Biot-Savartovem zakonu
 
 Iz tega sledi, da sta \( B_x = B_y = 0 \).
 
-Izračunamo magnetno polje še \( B_z \), katere integral je
+Izračunamo magnetno polje še \( B_z \), katerega integral je
 
 \[ B_z (z) = \frac{\mu_0 \sigma \omega}{2} \int\limits_0^a \frac{r' ^3}{\left( r' ^2 + z ^2 \right)^{\frac{3}{2}}} \, \mathrm{d} r'
 \]
 
-Z uvedbo nove spremenljivke \( u = r ' + z ^2 \), katere diferencial je \( \mathrm{d} u = 2 r' \, \mathrm{d} r ' \) se naš integral preobrazi v
+Z uvedbo nove spremenljivke \( u = r ' + z ^2 \), katere diferencial je \( \mathrm{d} u = 2 r' \, \mathrm{d} r ' \), se naš integral preobrazi v
 
 \begin{align*}
  B_z &= \frac{\mu_0 \sigma \omega}{4} \int\limits_{z ^2}^{a ^2 + z ^2} \frac{u - z ^2}{u^{\frac{3}{2}}} \, \mathrm{d} u \\
@@ -66,7 +65,7 @@ Z uvedbo nove spremenljivke \( u = r ' + z ^2 \), katere diferencial je \( \math
 \end{align*}
 ** Točka c)
 
-Opazujemo limitni primer \( z \ge a \) oziroma \( \frac{a}{z} \ll 1 \) pri polju
+Opazujemo limitni primer \( z \gg a \) oziroma \( \frac{a}{z} \ll 1 \) pri polju
 
 \[ B_z (z) = \frac{\mu_0 \omega \sigma}{2} \left( \frac{a ^2 + 2 z ^2}{z \sqrt{1 + \frac{a ^2}{z ^2}}} - 2z \right)
 \]
@@ -125,7 +124,7 @@ Drugi način je, da izračunamo po prispevkih kolobarja, saj
 \]
 
 Lahko pa tudi preberemo iz enačbe \ref{eq:1} skupaj z rezultatom iz točke c.
-* Magnetna sila v koaksialnem kablu :dodaj_navodila:
+* Magnetna sila v koaksialnem kablu
 #+begin_problem
 Dolg koaksialni kabel je sestavljen iz tanke prevodne cevi polmera \( a \), po osi katere poteka tanek prevodni vodnik. Po vodniku spustimo električni tok \( I \), ki se v nasprotni smeri vrača enakomerno porazdeljen po plašču. Izračunaj silo na dolžinsko enoto, s katero je po obodu napeta cev koaksialnega kabla.
 #+end_problem
@@ -134,7 +133,7 @@ Zanima nas dolžinska gostota sile plašča \( f_1 = \frac{F_1}{l} \).
 
 [[file:figures/15Koaksialc.png]]
 
-Na plašč delujeta dve sili - magnetna sila, ki kaže navzven in je posledica odbijajočih se magnetnih polj. Magnetna polja sta odbijajoča, saj je električnik različno usmerjen. Druga sila, ki kaže navznoter, pa je posledica toka, ki teče po plašču in predstavlja površinsko napetost - kakor napiše Mastnak, str. 36, predstavljamo si, da je plašč sestavljen iz veliko vzporednih žic, po katerih teče tok in se med seboj privlačijo.
+Na plašč delujeta dve sili - magnetna sila, ki kaže navzven in je posledica odbijajočih se magnetnih polj. Magnetna polja sta odbijajoča, saj je električni tok različno usmerjen. Druga sila, ki kaže navznoter, pa je posledica toka, ki teče po plašču in predstavlja površinsko napetost - kakor napiše Mastnak, str. 36, predstavljamo si, da je plašč sestavljen iz veliko vzporednih žic, po katerih teče tok in se med seboj privlačijo.
 
 Kakor vidimo na sliki, je silo na majhen delček plašča precej grdo izračunati. Raje uporabimo podoben trik kakor pri nalogah površinske napetosti, kjer uporabimo polovico plašča, saj takrat velja \( F_m = 2 F_1 \).
 
@@ -143,7 +142,7 @@ S pomočjo Amperovega zakona lahko določimo magnetno polje znotraj in zunaj pla
 \[ \oint\limits_{}^{} \vec{B} \, \mathrm{d} \vec{l} = \mu_0 I_{tot},
 \]
 
-kjer je \( I_{tot} \) celoten zaobjet tok. Označimo tok po žili z \( I_z \), tok po plašču pa je \( I_p \).
+kjer je \( I_{tot} \) celoten zaobjet tok. Označimo tok po žili z \( I_z \), tok po plašču pa je \( I_p \), ki sta po velikosti enaka.
 
 Zunaj plašča, kjer se nahajamo na točki \( r > a \) (zelena črtkana črta, spodaj desno na sliki), je totalen zaobjet tok \( I_{tot} = I_z - I_p = 0 \). Iz tega sledi, da je magnetno polje zunaj žile ničelno \( \vec{B} = 0 \). Znotraj žile, v točki \( r < a \) (modra črtkana črta, spodaj desno na sliki), pa je zaobjet tok samo tok žile, iz česar sledi magnetno polje
 
@@ -217,7 +216,7 @@ Magnetno polje \( \vec{B} \) je usmerjeno pravokotno na zanko. Preko pravila des
 
 Magnetna sila \( \vec{F}_m \) je po definiciji
 
-\[ \vec{F}_m = \frac{1}{\mu_0} \oiint\limits_S^{} \left[ \vec{B} \left( \vec{B} \cdot \vec{n} \right) - \frac{1}{2} B ^2 \vec{n} \right] \, \mathrm{d} s
+\[ \vec{F}_m = \frac{1}{\mu_0} \oint_S^{} \left[ \vec{B} \left( \vec{B} \cdot \vec{n} \right) - \frac{1}{2} B ^2 \vec{n} \right] \, \mathrm{d} S
 \]
 
 Ploskva, po kateri integriramo je polovica valja, kjer polkrožnica zanke definira plašč - na sliki je plašč označen z oranžno barvo.
