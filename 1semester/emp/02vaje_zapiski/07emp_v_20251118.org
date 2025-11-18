@@ -90,6 +90,8 @@ Zanemarili smo člen z \( \frac{1}{z ^5} \), saj pada hitreje kot \( \frac{1}{z 
 \[ - \frac{\mu_0 \sigma \omega a ^4}{4 z ^3} \quad \text{NAPAČEN REZULTAT !!!!}
 \]
 
+** Točka b)
+
 Magnetno polje dipola je
 
 \[ \vec{B}_{dip} = \frac{\mu_0}{4 \pi} \frac{3 \left( \vec{r} \cdot \vec{p}_m \right)\vec{r} - \vec{p}_m r ^2}{r ^5}.
@@ -102,10 +104,72 @@ Po definiciji vektorskega potenciala je potem
 
 Opazujemo magnetni dipol v osi dipola, torej \( \vec{p}_m \parallel \vec{r} \). Magnetno polje je takrat
 
-\[ B_{dip} = \frac{\mu_0}{4 \pi} \frac{3 ^2 p_m- r ^2 p_m}{r ^5} = \frac{\mu_0}{2 \pi} \frac{p_m}{r ^3}
-\]
+\begin{equation}
+\label{eq:1}
+ B_{dip} = \frac{\mu_0}{4 \pi} \frac{3 ^2 p_m- r ^2 p_m}{r ^5} = \frac{\mu_0}{2 \pi} \frac{p_m}{r ^3}
+\end{equation}
 
 V ekvatorialni ravnini pa velja \( \vec{r} \perp \vec{p}_m \) in magnetno polje je
 
 \[ B_{dip} = - \frac{\mu_0}{4 \pi} \frac{p_m}{r ^3}
 \]
+
+Magnetni dipol lahko izračunamo preko enačbe
+
+\[ \vec{p}_m = \frac{1}{2} \int\limits_{}^{} \vec{r} \, ' \times \vec{\jmath} \left( \vec{r} \, ' \right) \, \mathrm{d} ^3 \vec{r}\, '
+\]
+
+Drugi način je, da izračunamo po prispevkih kolobarja, saj
+
+\[ \mathrm{d} p_m = S' \, \mathrm{d} I = \pi r' ^2 \sigma \omega r' \, \mathrm{d} r\, ' \implies p_m = \pi \sigma \omega \int\limits_0^a r' ^3 \, \mathrm{d} r\, ' = \frac{\pi \sigma \omega}{4} a ^4
+\]
+
+Lahko pa tudi preberemo iz enačbe \ref{eq:1} skupaj z rezultatom iz točke c.
+* Magnetna sila v koaksialnem kablu
+
+Zanima nas dolžinska gostota sile plašča \( f_1 = \frac{F_1}{l} \).
+
+[[file:figures/15Koaksialc.png]]
+
+Na plašč delujeta dve sili - magnetna sila, ki je posledica toka, ki teče po žili koaksialnega kabla. Druga sila, ki kaže navznoter, pa je posledica toka, ki teče po plašču in predstavlja površinsko napetost - kakor napiše Mastnak, str. 36, predstavljamo si, da je plašč sestavljen iz veliko vzporednih žic, po katerih teče tok in se med seboj privlačijo.
+
+Kakor vidimo na sliki, je silo na majhen delček plašča precej grdo izračunati. Raje uporabimo podoben trik kakor pri nalogah površinske napetosti, kjer uporabimo polovico plašča, saj takrat velja \( F_m = 2 F_1 \).
+
+S pomočjo Amperovega zakon lahko določimo magnetno polje znotraj in zunaj plašča
+
+\[ \oint\limits_{}^{} \vec{B} \, \mathrm{d} \vec{l} = \mu_0 I_{tot},
+\]
+
+kjer je \( I_{tot} \) celoten zaobjet tok. Označimo tok po žili z \( I_z \), tok po plašču pa je \( I_p \).
+
+Zunaj plašča, kjer se nahajamo na točki \( r > a \) (zelena črtkana črta), je totalen zaobjet tok \( I_{tot} = I_z - I_p = 0 \). Iz tega sledi, da je magnetno polje zunaj žile ničelno \( \vec{B} = 0 \). Znotraj žile, v točki \( r < a \) (modra črtkana črta), pa je zaobjet tok samo tok žile, iz česar sledi magnetno polje
+
+\begin{equation}
+\label{eq:2}
+ B \cdot 2 \pi r = \mu_0 I \implies B = \frac{\mu_0 I}{2 \pi r}
+\end{equation}
+
+
+Ker zunaj ni magnetnega polja, pomeni, da tudi ni magnetne sile. Majhno površino plašča \( \mathrm{d} S \) zapišemo kot
+
+\[ \mathrm{d} S = a \mathrm{d} \phi l
+\]
+
+Ker integriramo po ploskvi, ki tesno objema površino plašča, velja, da sta magnetno polje \( \vec{B} \) in normala ploskve \( \vec{n} \) pravokotna. Iz tega sledi, da je njun skalarni produkt \( \vec{B} \cdot \vec{n} = 0 \). Splošna formula za magnetno silo
+
+\[ \vec{F}_m = \frac{1}{\mu_0} \oint\limits_S^{} \left[ \vec{B} \left( \vec{B} \cdot \vec{n} \right) - \frac{1}{2} B ^2  \vec{n}\right] \, \mathrm{d} S
+\]
+
+postane tako
+
+\[ \vec{F}_{m2} = - \frac{1}{2 \mu_0} \int\limits_0^{\pi} B ^2 \vec{n} a l \, \mathrm{d} \phi,
+\]
+
+kjer je normala tangentna na površino, ki jo opišemo s cilindričnimi koordinatami \( \vec{n} = [\cos \phi, \sin \phi] \). Upoštevamo \ref{eq:2} in dobimo
+
+\[ \vec{F}_{m2} =
+\]
+
+[dopolni]
+
+* Magnetna sila v toroidni tuljavi
