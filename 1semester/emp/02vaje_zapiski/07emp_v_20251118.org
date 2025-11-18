@@ -1,0 +1,111 @@
+#+title: 7. vaje iz Elektromagnetnega polja
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Magnetno polje nabite vrteče se okrogle plošče :1_kolokvij:
+
+** Točka a)
+
+Operiramo z Biot-Savartovim zakonom
+
+\[ \vec{B}\left( \vec{r} \right) = \frac{\mu_0}{4 \pi} \int\limits_{}^{} \frac{\vec{\jmath} \left( \vec{r} \, ' \right) \times \left( \vec{r} - \vec{r} \, ' \right)}{\left| \vec{r} - \vec{r} \, ' \right| ^3} \, \mathrm{d} ^3 \vec{r} \, '
+\]
+
+Napisali smo, da je tok kolobarja enak
+
+\[ \mathrm{d} I = \frac{\mathrm{d} e}{t_0} = \sigma \omega r' \, \mathrm{d} r'
+\]
+
+[[file:figures/14okroglaPlosca.png]]
+
+V Biot-Savartovem zakonu lahko zapišemo
+
+\begin{align*}
+  \vec{\jmath} \left( \vec{r} \, ' \right) \mathrm{d} ^3 \vec{r} \, ' &= \vec{\jmath} \left( \vec{r} \, ' \right) \, \mathrm{d} S ' \, \mathrm{d} l' \\
+&= \mathrm{d} I \cdot \hat{t} \cdot r' \mathrm{d} \phi,
+\end{align*}
+
+kjer smo upoštevali \( \vec{\jmath} \mathrm{d} S = \mathrm{d} I \cdot \hat{t} \) ter \( \mathrm{d} l = r' \mathrm{d} \phi \).
+
+Računamo za vektor \( \vec{r} = (0, 0, z) \). Radij vektor na plošči ima komponente \( \vec{r} \, ' = (r' \cos \phi, r' \sin t, 0) \). Tangentni vektor na kolobar pa je \( \hat{t} = (- \sin \phi, \cos \phi, 0) \).
+
+Izračunajmo najprej vektorski produkt
+
+\[ \hat{t} \times \left( \vec{r} - \vec{r} \,' \right) = \left( z \cos \phi, z \sin \phi, r \right).
+\]
+
+Velja tudi
+
+\[ \left| \vec{r} - \vec{r} \, ' \right| ^3 = \left( r ' ^2 + z ^2 \right)^{\frac{3}{2}}.
+\]
+
+Nadomestimo izračunane stvari v Biot-Savartovem zakonu
+
+\[ \vec{B} = \frac{\mu_0}{4 \pi} \int\limits_0^{2 \pi} \int\limits_0^a \begin{bmatrix} z \cos \phi \\ z \sin \phi \\ r' \end{bmatrix} \frac{\sigma \omega r ^2 \, \mathrm{d} r' \mathrm{d} \phi}{\left( r '^2 + z ^2\right)^{\frac{3}{2}}}
+\]
+
+Iz tega sledi, da sta \( B_x = B_y = 0 \).
+
+Izračunamo magnetno polje še \( B_z \), katere integral je
+
+\[ B_z (z) = \frac{\mu_0 \sigma \omega}{2} \int\limits_0^a \frac{r' ^3}{\left( r' ^2 + z ^2 \right)^{\frac{3}{2}}} \, \mathrm{d} r'
+\]
+
+Z uvedbo nove spremenljivke \( u = r ' + z ^2 \), katere diferencial je \( \mathrm{d} u = 2 r' \, \mathrm{d} r ' \) se naš integral preobrazi v
+
+\begin{align*}
+ B_z &= \frac{\mu_0 \sigma \omega}{4} \int\limits_{z ^2}^{a ^2 + z ^2} \frac{u - z ^2}{u^{\frac{3}{2}}} \, \mathrm{d} u \\
+&= \frac{\mu_0 \sigma \omega}{4} \int\limits_{z ^2}^{a ^2 + z ^2} \left[ u^{- \frac{1}{2}} - z ^2 u^{- \frac{3}{2}} \right] \, \mathrm{d} u \\
+&= \left.  \frac{\mu_0 \omega \sigma}{4} \left[ 2 u^{\frac{1}{2}} + 2 z ^2 u^{- \frac{1}{2}} \right] \right|_{z ^2}^{a ^2 + z ^2} \\
+&= \frac{\mu_0 \sigma \omega}{2} \left(\frac{a ^2 + 2 z ^2}{\sqrt{a ^2 + z ^2}} - 2z\right)
+\end{align*}
+** Točka c)
+
+Opazujemo limitni primer \( z \ge a \) oziroma \( \frac{a}{z} \ll 1 \) pri polju
+
+\[ B_z (z) = \frac{\mu_0 \omega \sigma}{2} \left( \frac{a ^2 + 2 z ^2}{z \sqrt{1 + \frac{a ^2}{z ^2}}} - 2z \right)
+\]
+
+Razvijemo koren v imenovalcu preko zveze, ki smo jo že večkrat povedali
+
+\[ \left( 1 + \frac{a ^2}{z ^2} \right)^{ - \frac{1}{2}} = 1 - \frac{1}{2} \frac{a ^2}{z ^2} + \frac{3}{8} \frac{a ^4}{z ^4},
+\]
+
+kjer smo upoštevali \( \binom{- \frac{1}{2}}{2} = \frac{3}{8} \). Razvili smo za dodaten člen, saj se nam bodo členi pokrajšali. Ekstra člen bo označen z *odebeljenim* fontom.
+
+\begin{align*}
+  B(z) &= \frac{\mu_0 \omega \sigma}{2} \left( \frac{1}{z} \left( a ^2 + 2 z ^2 \right) \left[ 1 - \frac{1}{2} \frac{a ^2}{z ^2} + \mathbf{\frac{3}{8} \frac{a ^4}{z ^4}} + \ldots \right] - 2z \right) \\
+&= \frac{\mu_0 \omega \sigma}{2} \left( \frac{1}{z} \left[ a ^2 - \frac{1}{2} \frac{a ^4}{z ^2 + \mathrm{\frac{3}{8} \frac{a ^6}{z ^4}}} + 2 z ^2 - a ^2 + \mathbf{\frac{3}{4} \frac{a ^4}{z ^2}} \right] - 2 z \right) \\
+&= \frac{\mu_0 \omega \sigma}{2} \left( \frac{a ^2}{z} - \frac{1}{2} \frac{a ^4}{z ^3} - \frac{a ^3}{z} + \mathbf{\frac{3}{8} \frac{a ^6}{z ^5}} + \mathbf{  \frac{3}{4} \frac{a ^4}{z ^3}}  \right) \\
+&= \frac{\mu_0 \omega \sigma a ^2}{8 z ^3}
+\end{align*}
+
+Zanemarili smo člen z \( \frac{1}{z ^5} \), saj pada hitreje kot \( \frac{1}{z ^3} \). V primeru, če ne bi upoštevali dodatnega člena, bi dobili napačno predznačen in dvakrat večji rezultat
+
+\[ - \frac{\mu_0 \sigma \omega a ^4}{4 z ^3} \quad \text{NAPAČEN REZULTAT !!!!}
+\]
+
+Magnetno polje dipola je
+
+\[ \vec{B}_{dip} = \frac{\mu_0}{4 \pi} \frac{3 \left( \vec{r} \cdot \vec{p}_m \right)\vec{r} - \vec{p}_m r ^2}{r ^5}.
+\]
+
+Po definiciji vektorskega potenciala je potem
+
+\[ \vec{A}_{dip} = \frac{\mu_0}{4\pi} \frac{\vec{p}_m \times \vec{r}}{r ^3}
+\]
+
+Opazujemo magnetni dipol v osi dipola, torej \( \vec{p}_m \parallel \vec{r} \). Magnetno polje je takrat
+
+\[ B_{dip} = \frac{\mu_0}{4 \pi} \frac{3 ^2 p_m- r ^2 p_m}{r ^5} = \frac{\mu_0}{2 \pi} \frac{p_m}{r ^3}
+\]
+
+V ekvatorialni ravnini pa velja \( \vec{r} \perp \vec{p}_m \) in magnetno polje je
+
+\[ B_{dip} = - \frac{\mu_0}{4 \pi} \frac{p_m}{r ^3}
+\]
