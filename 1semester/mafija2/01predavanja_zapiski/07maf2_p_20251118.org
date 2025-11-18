@@ -106,3 +106,82 @@ Pridelali smo Greenovo formulo
 \]
 
 Vidimo sedaj, kdaj so operatorji sebi adjungirani - takrat, ko bosta oba člena iz Greenove formule ničelna.
+
+Pokazali smo, da je \( 0 = 1 \), če imamo komutacijo operatorjev \( [x, p] = \mathrm{i} \hbar \) in je \( a \) lastna vrednost operatorja \(x \left| a \right\rangle = a \left| a \right\rangle\). Več o nesmiselnosti najdemo na [[https://arxiv.org/abs/quant-ph/9907069][Mathematical Surprises and Dirac's formalism in quantum mechanics (https://arxiv.org/abs/quant-ph/9907069)]].
+
+\( \mathcal{L} \) je sebi-adjungiran za
+
+\begin{equation}
+\label{eq:2}
+ \alpha_a u(a) + \beta_a u'(a) = 0, \quad \alpha_b u(b) + \beta_b u'(b) = 0.
+\end{equation}
+
+Posebna primera, ki smo jo že spoznali, sta Dirichletovi robni pogoji, kjer \( u(a) = u(b) = 0 \) in Neumannovi robni pogoji \( u'(a) = u'(b) =0  \). Za zgornje robne pogoje velja, da so homogeni.
+
+Druga možnost za sebi-adjungirane robne pogoje so periodični robni pogoji (ang. /periodic boundary conditions/ (PCB)) \( u(a) = u(b) \).
+
+Sturm-Liouvilleovemu problemu s pogoji oblike \ref{eq:2} pravimo regularni Sturm-Liouvilleov problem, ki ima nedegenerirane lastne vrednosti \( \lambda \). Poleg tega ima vsaka naslednja lastna funkcija ničlo več.
+** Lastnosti in posledice
+
+Imejmo dve lastni funkciji \( u \) in \( v \). Zapišemo razliko skalarnih produktov
+
+\[ 0 = \left\langle u, \mathcal{L} v \right\rangle - \left\langle \mathcal{L} u, v \right\rangle
+\]
+
+Upoštevamo prej izpeljano in zapišemo
+
+\[ \left\langle u, \mathcal{L} v \right\rangle  - \left\langle \mathcal{L} u, v \right\rangle = \left\langle u, - \lambda_v w v \right\rangle - \left\langle - \lambda_u w u, v \right\rangle.
+\]
+
+Nadalje zapišemo definicijo skalarnega produkta, da dobimo
+
+\begin{align*}
+  \left\langle u, \mathcal{L} v \right\rangle  - \left\langle \mathcal{L} u, v \right\rangle  &= - \lambda_v \int\limits_a^b u^{\ast} v w \, \mathrm{d} x + \lambda_u^{\ast} \int\limits_a^b u^{\ast} v w \, \mathrm{d} x \\
+&= \left( \lambda_u^{\ast} - \lambda_v \right) \int\limits_a^b w u^{\ast} v \, \mathrm{d} x
+\end{align*}
+
+Če sta lastni funkciji enaki, torej \( u = v \), potem je lastna vrednost \( \lambda_u \in \mathbb{R} \). Če imamo različni lastni vrednosti \( \lambda_v \ne \lambda_u \), je skalarni produkt ničeln
+
+\[ \left\langle u, v \right\rangle _w = \int\limits_a^b w u^{\ast} v \, \mathrm{d} x = 0
+\]
+
+Ko rešujemo kakšen problem (npr. za zaključno nalogo), lahko pogledamo razliko skalarnih produkt in zahtevamo, da je tisto, kar nam ostane na desni strani po integraciji ničelno.
+*** Kompletnost
+
+Vsako funkcijo \( f \) se da razviti po lastnih funkcijah
+
+\[ f(x) = \sum\limits_{n = 0}^{\infty} c_n u_n (x).
+\]
+
+Konvergenca je v srednjem, enakost v smislu mer oz. integralov.
+
+Končna vrsta
+
+\[ \sum\limits_{n = 0}^N c_n u_n(x)
+\]
+
+je najbližji približek \( f(x) \) v smislu minimuma
+
+\[ \int\limits_{}^{} \left( f(x) - \sum\limits_{n = 0}^N c_n u_n (x) \right) ^2 w \, \mathrm{d} x
+\]
+*** Variacijska formulacija
+
+Formuliramo
+
+\[ S = \int\limits_{}^{} \left( p u' ^2 + q u ^2 \right) \, \mathrm{d} x.
+\]
+
+Lastne funkcije so ekstremi funkcionala \( S \) ob upoštevanju vezi
+
+\[ \int\limits_{}^{} w \left| u \right|  ^2 \, \mathrm{d} x = 1
+\]
+
+Temu pravimo vrednost Lagrangeevega multiplikatorja \( S (u_n) = \lambda_n \).
+*** Sth
+
+Linearni operator
+
+\[ \mathcal{L} u = f u'' + g u + h u, \ g \ne f'
+\]
+
+se prevede na standarno obliko, če jo pomnožimo s faktorjem \( \frac{1}{f} \exp \left( \int_a^b \frac{g}{f} \, \mathrm{d} x \right)  \).
