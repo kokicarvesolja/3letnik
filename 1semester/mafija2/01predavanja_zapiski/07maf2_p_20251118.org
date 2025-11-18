@@ -1,0 +1,108 @@
+#+title: 7. predavanje iz Matematične fizike 2
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Sturm-Liouvilleov problem
+
+Imejmo linearni operator \( \mathcal{L} \). Zanima nas, kdaj in zakaj dobimo kompletni ortogonalni sistem (KOS).
+
+Primer linearnega operatorja je npr. \( \mathcal{L}u = - \frac{\mathrm{d} ^2 }{\mathrm{d} x ^2} u \).
+
+Da se lahko pogovarjamo o sebi-adjungiranosti, potrebujemo skalarni produkt, ki je definiran kot
+
+\[ \left\langle u, v \right\rangle = \int\limits_a^b u^{\ast} (x) v(x) \, \mathrm{d} x
+\]
+
+Operator je sebi adjungiran, če velja
+
+\[ \left\langle u, \mathcal{L} v \right\rangle  = \left\langle \mathcal{L} ^{\dagger} u, v \right\rangle.
+\]
+
+Takrat velja \( \mathcal{L} = \mathcal{L}^{\dagger} \) in definicijska območja operatorjev sta enaka \( \mathcal{D} \left( \mathcal{L} \right) = \mathcal{D} \left( \mathcal{L}^{\dagger} \right) \). V tem primeru so lastne vrednosti operatorja realne, lastne funkcije pa so kompleten in ortogonalen set.
+
+V primeru simetričnih (ali celo hermitskih) operatorjev pa še zmeraj velja \( \mathcal{L} = \mathcal{L}^{\dagger} \), medtem ko za definicijsko območje velja \( \mathcal{D} \left( \mathcal{L} \right) \subset \mathcal{D} \left( \mathcal{L}^{\dagger} \right) \). Opazimo torej, da sebi-adjungiran operator =! simetričnega operatorja zaradi različnih definicijskih območij operatorjev.
+
+V naših, fizikalnih, primerih se tisto, kar določa KOS skriva v robnih pogojih, ki potem določajo definicijska območja operatorjev.
+
+#+name: Neskončna jama
+#+begin_my_example
+Nahajamo se v neskončni potencialni jami. Zanima nas, ali je operator gibalne količine \( p = \frac{\hbar}{\mathrm{i}} \frac{\mathrm{d} }{\mathrm{d} x} \). Trdimo, da operator ni sebi-adjungiran.
+
+Nahajamo se v Hilbertovem prostoru \( \mathcal{H} \), ki je določen s \( L ^2 [0, 1] \). Definicijsko območje operatorja so funkcije, za katere velja, da je njihov odvod še zmeraj v našem Hilberovem prostoru ter, da je funkcija v mejah jame enaka \( 0 \). Matematično zapisano
+
+\[ \mathcal{D} (p) = \left\{ \psi \middle| \ \psi' \in \mathcal{H}, \psi(0) = \psi(1) = 0 \right\}.
+\]
+
+Odvod mora biti v Hilbertovem prostoru, saj operator gibalne količine vsebuje odvod.
+
+Izhajamo iz definicije skalarnega produkta za funkciji \( \phi, \psi \in \mathcal{H} \).
+
+\[ \left\langle \psi, p \phi \right\rangle  = \int\limits_0^1 \psi^{\ast} \frac{\hbar}{\mathrm{i}}\phi' \, \mathrm{d} x
+\]
+
+Integral rešimo s pomočjo per partes in dobimo
+
+\[ \left\langle \psi, p \phi \right\rangle = \left. \frac{\hbar}{\mathrm{i}} \left( \psi^{\ast} \phi \right) \right|_0^1 - \int\limits_0^1 \frac{\hbar}{\mathrm{i}} \psi^{\ast} ' \phi \, \mathrm{d} x = \int\limits_0^1 \left( p^{\dagger} \psi \right)^{\ast} \phi \, \mathrm{d} x
+\]
+
+Prvi del per partes je vedno nič zaradi robnih pogojev naših funkcij in je neodvisen od lastnosti \( \psi^{\ast} \). Posledično je definicijsko območje operatorja \( p^{\dagger} \) samo
+
+\[ \mathcal{D} \left( p^{\dagger} \right) = \left\{ \psi \middle| \psi' \in \mathcal{H} \right\}.
+\]
+
+Zaradi tega je v potencialni jami samo simetričen in ne sebi-adjungiran.
+
+Robnih pogoj lahko razširimo v \( \psi(1) = \psi(0) \exp \left\{ \mathrm{i} \alpha \right\} \) in s tem postane operator gibalne količine tudi sebi-adjungiran.
+#+end_my_example
+
+
+Imejmo operator
+
+\begin{equation}
+\label{eq:1}
+ \mathcal{L} u = \left( p(x) u' (x) \right) ' - q(x) u(x)
+\end{equation}
+
+Rešujemo lastni problem, ki ima obliko
+
+\[ \mathcal{L} u + \lambda w(x) u (x) = 0,
+\]
+
+kjer je \( w(x) \ge 0  \) utež, funkcije \( p(x), q(x) \) in \( w(x) \) so realne funkcije.
+
+Primer fizikalnega lastnega problema prihaja iz enačbe
+
+\[ - \left( \kappa T' \right)' = - \rho c_p \frac{\partial T}{\partial t}
+\]
+
+z nastavkom \( T(x, t) = u(x) \exp \left\{ - \lambda t \right\} \). Dobimo
+
+\[ \left( \kappa(x) u' \right)' + \lambda \rho c_p u  = 0.
+\]
+
+Funkcija \( p(x) \) je v našem primeru \( p(x) \), \( q(x) = 0 \) in utež je \( \rho c_p = w \ne w(x) \).
+
+Sebi-adjungiranost lahko zapišemo tudi kot
+
+\[ \left\langle u, \mathcal{L} v \right\rangle - \left\langle L^{\dagger} u, v \right\rangle = 0.
+\]
+
+Z upoštevanjem definicije operatorja \ref{eq:1} in z izpuščanjem integralov, lahko zapišemo
+
+\begin{align*}
+  u^{\ast} \mathcal{L} v - \left( \mathcal{L} u \right)^{\ast} v &= u^{\ast} \left[ \left( p v' \right)' - q v \right] - \left( p u^{\ast} '  \right)' v + q u^{\ast} v \\
+&= u^{\ast} \left( p v' \right)' - \left( p u^{\ast}' \right) ' v \\
+&= \left[ p u^{\ast} v' - p u^{\ast} ' v \right] '
+\end{align*}
+
+Pridelali smo Greenovo formulo
+
+\[ \int\limits_a^b \left( u^{\ast} \mathcal{L} v - \left( \mathcal{L} u \right)^{\ast} v \right) \, \mathrm{d} x = \left. \left( p u^{\ast} v' - p u^{\ast} ' v \right) \right|_a^b .
+\]
+
+Vidimo sedaj, kdaj so operatorji sebi adjungirani - takrat, ko bosta oba člena iz Greenove formule ničelna.
