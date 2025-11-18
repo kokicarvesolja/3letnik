@@ -125,7 +125,10 @@ Drugi način je, da izračunamo po prispevkih kolobarja, saj
 \]
 
 Lahko pa tudi preberemo iz enačbe \ref{eq:1} skupaj z rezultatom iz točke c.
-* Magnetna sila v koaksialnem kablu
+* Magnetna sila v koaksialnem kablu :dodaj_navodila:
+#+begin_problem
+Dolg koaksialni kabel je sestavljen iz tanke prevodne cevi polmera \( a \), po osi katere poteka tanek prevodni vodnik. Po vodniku spustimo električni tok \( I \), ki se v nasprotni smeri vrača enakomerno porazdeljen po plašču. Izračunaj silo na dolžinsko enoto, s katero je po obodu napeta cev koaksialnega kabla.
+#+end_problem
 
 Zanima nas dolžinska gostota sile plašča \( f_1 = \frac{F_1}{l} \).
 
@@ -156,21 +159,106 @@ Izračunajmo še magnetno silo znotraj plašča. Majhno površino plašča \( \m
 \[ \mathrm{d} S = a \mathrm{d} \phi l
 \]
 
-Ker integriramo po ploskvi, ki tesno objema površino plašča (modra črta, spodaj levo na sliki), velja, da sta magnetno polje \( \vec{B} \) in normala ploskve \( \vec{n} \) pravokotna. Magnetno polje \( \vec{B} \) je tangentno na polkrožnico. Če si predstavljamo plašč iz velikega števila žic, bo vsaka žica imela svoje magnetno polje, ki jo obkroža. Ko naredimo superpozicijo teh magnetni polj, ostane samo tangentna komponenta. Iz tega sledi, da je njun skalarni produkt \( \vec{B} \cdot \vec{n} = 0 \). Splošna formula za magnetno silo
+Ker integriramo po ploskvi, ki tesno objema površino plašča (modra črta, spodaj levo na sliki), velja, da sta magnetno polje \( \vec{B} \) in normala ploskve \( \vec{n} \) pravokotna. Magnetno polje \( \vec{B} \) je tangentno na polkrožnico. Če si predstavljamo plašč iz velikega števila žic, bo vsaka žica imela svoje magnetno polje, ki jo obkroža. Ko naredimo vsoto teh magnetnih polj, ostane samo tangentna komponenta. Iz tega sledi, da je njun skalarni produkt \( \vec{B} \cdot \vec{n} = 0 \). Splošna formula za magnetno silo
 
 \[ \vec{F}_m = \frac{1}{\mu_0} \oint\limits_S^{} \left[ \vec{B} \left( \vec{B} \cdot \vec{n} \right) - \frac{1}{2} B ^2  \vec{n}\right] \, \mathrm{d} S
 \]
 
-postane tako
+postane
 
 \[ \vec{F}_{m2} = - \frac{1}{2 \mu_0} \int\limits_0^{\pi} B ^2 \vec{n} a l \, \mathrm{d} \phi,
 \]
 
 kjer je normala tangentna na površino, ki jo opišemo s cilindričnimi koordinatami \( \vec{n} = [\cos \phi, \sin \phi] \). Upoštevamo \ref{eq:2} in dobimo
 
-\[ \vec{F}_{m2} =
+\[ \vec{F}_{m2} = \frac{a l}{2 \mu_0} \left( \frac{\mu_0 I}{2 \pi a} \right) ^2 \int\limits_0^{\pi} \begin{bmatrix} \cos \phi \\ \sin \phi \end{bmatrix} \, \mathrm{d} \phi.
 \]
 
-[dopolni]
+Vrednost integrala \( \int_0^{\pi} \cos \phi \, \mathrm{d} \phi \) je \( 0 \), vrednost drugega integrala \( \int_0^{\pi} \sin \phi \, \mathrm{d} \phi \) pa je \( 2 \).
+
+Dolžinska gostota sile je tako
+
+\[ \frac{\vec{F}_{m2}}{l} = \frac{\mu_0 I}{4 \pi ^2 a} \begin{bmatrix} 0 \\ 1 \end{bmatrix}
+\]
+
+Sila ima pozitivno \( y \) komponento, torej kaže navzgor za zgornjo polovico plašča. To pomeni, da sila magnetna sila razpenja
+
+\[ \frac{F_1}{l} = \frac{\mu_0 I ^2}{8 \pi ^2 a}
+\]
 
 * Magnetna sila v toroidni tuljavi
+
+#+begin_problem
+Po toroidni tuljavi s številom ovojev \( N \) teče električni tok \( I \). Polmer ovojev tuljave je \( r_1 \), os tuljave pa opisuje krog s polmerom \( r_2 \) v vodoravni ravnini.
+
+a) Pokaži, da je gostota magnetnega polja znotraj tuljave odvisna le od oddaljenosti od navpične osi torusa \( r \) in jo izračunaj. Pokaži, da zunaj tuljave ni polja.
+b) Za primer \( r_2 \gg r_1 \) z uporabo napetostnega tenzorja izračunaj, s kakšno silo je napet posamezni ovoj tuljave.
+#+end_problem
+
+[[file:figures/16toroidnaTuljava.png]]
+
+S pomočjo Amperovega zakona in zaprte krivulje na razdalji \( r_1 < r < r_2 \) okrog središča torusa, ki leži v njegovi ravnini.
+
+\begin{equation}
+\label{eq:3}
+ B_{in} 2 \pi r = \mu_0 N I \implies \, B_{in} = \frac{\mu_0 NI}{2 \pi r}
+\end{equation}
+
+Zunaj tuljave za zaprto krivuljo \( r > r_2 \) v torusovi ravnini velja
+
+\[ B_{zunaj} 2 \pi r = \mu_0 \left( NI + N (-I) \right) = 0 \implies B_{zunaj} = 0
+\]
+
+V nadaljevanju bomo opazovali zgornji polkrog ene tuljavine zanke. Opazuj spodnjo sliko
+
+[[file:figures/16toroidnaTuljavaEnaZanka.png]]
+
+Magnetno polje \( \vec{B} \) je usmerjeno pravokotno na zanko. Preko pravila desne roke hitro pridemo do zaključka, da magnetna sila deluje navzgor. Sili \( F_1 \), ki držita zanko skupaj, pa kažeta navzdol in velikost ene sile \( F_1 \) je ravno polovica magnetne sile \( F_m \).
+
+Magnetna sila \( \vec{F}_m \) je po definiciji
+
+\[ \vec{F}_m = \frac{1}{\mu_0} \oiint\limits_S^{} \left[ \vec{B} \left( \vec{B} \cdot \vec{n} \right) - \frac{1}{2} B ^2 \vec{n} \right] \, \mathrm{d} s
+\]
+
+Ploskva, po kateri integriramo je polovica valja, kjer polkrožnica zanke definira plašč - na sliki je plašč označen z oranžno barvo.
+
+Integracijo po površini razdelimo na 4 dele - levo osnovno ploskev polvalja, desno osnovno ploskev polvalja, plašč ter spodnjo, pravokotno površino.
+
+Plašč se nahaja malo nad zanko in kakor smo prej povedali, zunaj magnetnega polja ni, torej tudi ni sile.
+
+Osnovni ploskvi polvalja imata enaki velikosti magnetnega polja, vendar nasprotno predznačeni in se zato pokrajšata.
+
+Edina netrivialna stranica je torej spodnji pravokotnik. Normala pravokotnika kaže ven, navzdol iz valja in je pravokotna z magnetnim polje \( \vec{B} \). Magnetni sili tako ostane zgolj
+
+\[ \vec{F}_{ms} = -\frac{1}{2 \mu_0} \iint\limits_{\square}^{} B ^2 S \hat{n}_s
+\]
+
+Zaradi predpostavke \( r_2 \gg r_1 \) se magnetno polje \ref{eq:3} zapiše kot
+
+\[ B = \int\limits_{r_1}^{r_1 + r_2} \frac{\mu_0 NI}{2 \pi r} \, \mathrm{d} r \approx \frac{\mu_0 NI}{2 \pi r_2}.
+\]
+
+Površina pravokotnika pa je zmnožek dolžine \( 2 r_1 \) ter širine, ki je ravno ena \( N \)-tina obsega zanke, kar pomeni, da se ne rabimo mučiti z integralom!
+
+Torej
+
+\[ \vec{F}_{ms} = - \frac{1}{2} \left(-\vec{n}_s\right)  \frac{1}{2 \mu_0} B ^2 S = \vec{n}_s \frac{\mu_0 ^2 N ^2 I ^2 \cdot 2 r_1 \cdot 2 \pi r_2}{4 \pi ^2 r_2 ^2 \cdot 2 \mu_0 N} = \vec{n}_s \frac{\mu_0 N I ^2 r_1}{2 \pi r_2}
+\]
+
+Magnetna sila kaže v navzgor in ovoj razteguje. Sila napetosti je potem
+
+\[ F_1 = \frac{F_m}{2} = \frac{\mu_0 N I ^2}{4 \pi} \frac{r_2}{r_1}
+\]
+* Opomnik h kolokviju
+
+Osnovnih enačb, kakor so sila vodnika
+
+\[ \vec{F}_m = I \vec{l} \times \vec{B}
+\]
+
+in sila za naboj
+
+\[ \vec{F}_e = e \vec{E},
+\]
+
+na listu kolokvija ni, vendar je pričakovano, da jih poznaš.
