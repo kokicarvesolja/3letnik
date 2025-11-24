@@ -116,7 +116,7 @@ Upoštevamo enačbo \ref{eq:3} in izrazimo \( a \) z \( \tilde{a} \), iz česar 
 \begin{align*}
   a \left| \psi, 0 \right\rangle &= 0 \\
 \left( \tilde{a} + \frac{x_1}{\sqrt{2} x_0} \right) \left| \psi, 0 \right\rangle &= 0 \\
-\tilde{a} \left| \psi, 0 \right\rangle = - \frac{x_1}{\sqrt{2} x_0} \left| \psi, 0 \right\rangle
+\tilde{a} \left| \psi, 0 \right\rangle &= - \frac{x_1}{\sqrt{2} x_0} \left| \psi, 0 \right\rangle
 \end{align*}
 
 Koherentno stanje harmonskega oscilatorja je lastno stanje anihilacijskega operatorja
@@ -227,8 +227,8 @@ Analogno zapišemo tudi
 Radi bi zapisali \( \left\langle x ^2 \right\rangle \), vendar za to potrebujemo vmesni račun
 
 \begin{align*}
-  \left\langle z \middle| a^{\dagger}^n a^m \middle| z \right\rangle &= \left\langle z \middle| a^{\dagger}^n z^m \middle| z \right\rangle \\
-&= z^m \left\langle z \middle|  a^{\dagger} ^n \middle| \right\rangle \\
+  \left\langle z \middle| a^{\dagger n} a^m \middle| z \right\rangle &= \left\langle z \middle| a^{\dagger n} z^m \middle| z \right\rangle \\
+&= z^m \left\langle z \middle|  a^{\dagger n} \middle| \right\rangle \\
 &= z^m \left\langle a^n z \middle| z \right\rangle \\
 &= z^m \left( z^n \right)^{\ast} \left\langle z \middle| z \right\rangle \\
 &= z^m \left( z^n \right)^{\ast}

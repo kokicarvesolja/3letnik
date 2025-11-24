@@ -60,7 +60,7 @@ Zanimata nas pričakovana vrednost položaja \( \left\langle x \right\rangle \) 
 
 Nedoločenost v odvisnosti od časa je
 
-\[ \delta i (t) = \sqrt{\left\langle x ^2, t \right\rangle - \left\langle x, t \right\rangle ^2}, \quad i = x, p
+\[ \delta i (t) = \sqrt{\left\langle i ^2, t \right\rangle - \left\langle x, t \right\rangle ^2}, \quad i = x, p
 \]
 
 Vrednosti ob času to \( \left\langle x, 0 \right\rangle = \left\langle  x \right\rangle\) za položaj, \( \left\langle p, 0 \right\rangle = \left\langle p \right\rangle\). Začetna vrednost nedoločenosti položaja je določena preko našega znanja Verjetnosti v fiziki \( \delta x(0) = \sigma \). Zaradi pogoja minimalizirane nedoločenosti
