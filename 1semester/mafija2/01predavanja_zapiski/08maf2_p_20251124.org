@@ -1,0 +1,80 @@
+#+title: 8. predavanje iz Matematične fizike 2
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Sturm-Liouvilleov problem
+** Cilindrični koordinatni sistem
+
+Laplaceov operator v cilindričnih koordinatah je
+
+\[ \nabla ^2 = \frac{\partial ^2 }{\partial r ^2} + \frac{1}{r} \frac{\partial }{\partial r}  + \frac{1}{r ^2} \frac{\partial ^2 }{\partial \phi ^2} + \frac{\partial ^2 }{\partial z ^2}.
+\]
+
+Rešujemo Helmholtzovo enačbo
+
+\begin{equation}
+\label{eq:1}
+\nabla ^2 u + \lambda u = 0,
+\end{equation}
+
+z nastavkom separacije spremenljivk
+
+\[ u (r, \phi, z) = R(r) \Phi(\phi) Z(z).
+\]
+
+Reševanje v \( \phi \) koordinati je enačba
+
+\[ \frac{\Phi''}{\Phi} = - m ^2,
+\]
+
+katere rešitev je \( \Phi_m = \left\{ \sin (m \phi), \cos (m \phi) \right\} \). Za \( m = 0 \) je baza razširjena z \( {1, \phi} \).
+
+Reševanje v \( z \) koordinati poda enačbo
+
+\[ \frac{Z''}{Z} = \begin{cases}
+                   +\beta ^2 \\
+                   -\beta ^2
+                   \end{cases}
+\]
+
+Za \( + \beta ^2 \) je baza rešitev \( \left\{ \mathrm{ch} (\beta z), \mathrm{sh} (\beta z) \right\} \), za \( - \beta ^2 \) je baza rešitev \( \left\{ \cos (\beta z), \sin (\beta z) \right\} \). Če je \( \beta = 0 \), potem je baza rešitev še \( \left\{ 1, z \right\} \).
+
+Za \( r \) rešujemo enačbo
+
+\[ r ^2 R'' + r R' - m ^2 R \pm \beta ^2 R r ^2 + r ^2 \lambda R = 0,
+\]
+
+ki jo lahko pretvorimo na Besselovo diferencialno enačbo
+
+\[ r ^2 R'' + r R' + \left( r ^2 \left( \lambda \pm \beta ^2 \right)- m ^2 \right) R = 0
+\]
+
+V primeru, če je \( \lambda \pm \beta ^2 = 0 \), sta neodvisni rešitvi \( \left\{ r^m , r^{-m} \right\} \) in dodatno, če je \( m = 0 \), potem je baza dodatno še \( \left\{ 1, \ln r \right\} \). To rešitev smo že srečali pri rešitvi Laplaceove enačbe v dveh dimenzijah.
+
+Če je \( \lambda \pm \beta ^2 > 0 \), definiramo \( k ^2 = \lambda + \pm \beta ^2 \) in sta neodvisni rešitvi Besselova funkcija \( J_m (kx) \) in Neumannova funkcija \( Y_m (kx) \). Konvencija je, da \( m \) označuje celo število, medtem ko indeks \( \nu \) označuje necela števila.
+
+Asimptotsko obnašanje Besselove funkcije za \( x \ll 1 \) je sorazmerno z \( x^{\nu} \), medtem ko je za \( x \gg 1 \) oscilirajoče
+
+\[ J_{\nu} (x) \sim \sqrt{\frac{2}{\pi x}} \cos \left( x - \frac{1}{2} \nu \pi - \frac{\pi}{4} \right)
+\]
+
+Za isti asimptoti je Neumannova funkcija
+
+\[ Y_{\nu} (x) = \begin{cases}
+                 Y_{\nu} (x) \sim \frac{1}{x^{\nu}} &; x \ll 1 \\
+                 Y_0 \sim \ln x &; x \ll 1 \\
+                Y_{\nu} (x) \sim \sqrt{\frac{2}{\pi x}} \sin \left( x- \frac{1}{2} \nu \pi - \frac{\pi}{4} \right) &; x \gg 1
+                 \end{cases}
+\]
+
+Lastnosti teh funkcij se najde v t.i. 'malem Bronštajnu', katerega avtor je Abramovitz, dostopna na [[https://dlmf.nist.gov/][dlmf.nist.gov]].
+
+Obstajajo različne oblike generatris Besselovih funkcij, vendar bomo omenili
+
+\[ \exp \left\{ \frac{x}{2} (t - \frac{1}{t}) \right\} = \sum\limits_{n = - \infty}^{\infty} t^n J_n (x)
+\]
