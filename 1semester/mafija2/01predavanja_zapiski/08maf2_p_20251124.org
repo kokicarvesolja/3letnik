@@ -51,10 +51,15 @@ Za \( r \) rešujemo enačbo
 
 ki jo lahko pretvorimo na Besselovo diferencialno enačbo
 
-\[ r ^2 R'' + r R' + \left( r ^2 \left( \lambda \pm \beta ^2 \right)- m ^2 \right) R = 0
-\]
+\begin{equation}
+\label{eq:2}
+ r ^2 R'' + r R' + \left( r ^2 \left( \lambda \pm \beta ^2 \right)- m ^2 \right) R = 0
+\end{equation}
 
+**** \(\lambda \pm \beta ^2 = 0 \)
 V primeru, če je \( \lambda \pm \beta ^2 = 0 \), sta neodvisni rešitvi \( \left\{ r^m , r^{-m} \right\} \) in dodatno, če je \( m = 0 \), potem je baza dodatno še \( \left\{ 1, \ln r \right\} \). To rešitev smo že srečali pri rešitvi Laplaceove enačbe v dveh dimenzijah.
+
+**** \( \lambda \pm \beta ^2 > 0 \)
 
 Če je \( \lambda \pm \beta ^2 > 0 \), definiramo \( k ^2 = \lambda + \pm \beta ^2 \) in sta neodvisni rešitvi Besselova funkcija \( J_m (kx) \) in Neumannova funkcija \( Y_m (kx) \). Konvencija je, da \( m \) označuje celo število, medtem ko indeks \( \nu \) označuje necela števila.
 
@@ -78,3 +83,86 @@ Obstajajo različne oblike generatris Besselovih funkcij, vendar bomo omenili
 
 \[ \exp \left\{ \frac{x}{2} (t - \frac{1}{t}) \right\} = \sum\limits_{n = - \infty}^{\infty} t^n J_n (x)
 \]
+
+Ena od rekurzivnih zvez je
+
+\[ 2 J_n ' = J_{n - 1} - J_{n + 1}.
+\]
+
+Povejmo prav tako adicijski izrek, kjer velja
+
+\[ J_n (x + y) = \sum\limits_{n = - \infty}^{\infty} J_{\nu} (x) J_{\nu - 1} (y).
+\]
+
+Spomnimo, da ima Sturm-Liouville obliko
+
+\[ \left( pu ' \right)' + qu + \lambda w u = 0
+\]
+
+Če primerjamo obliko enačbe \ref{eq:2} s Sturm-Liouvilleom bo utež tisto, kar je pred \( \lambda \) pri členu z \( R \). V tem primeru je to \( r \). Za ničlo \( \xi_{\nu, n} \) velja \( J_{\nu} \left( \xi_{\nu, n} \right)= 0 \) in z identifikacijo uteži lahko izračunamo
+
+\[ \int\limits_0^a r  \left[ J_{\nu} \left( \xi_{\nu, n} \frac{r}{a} \right) \right] ^2 \, \mathrm{d} r = \frac{a ^2}{2}   \left[ J_{\nu} ' \left( \xi_{\nu, n} \right) \right] ^2 = \frac{a ^2}{2} \left[ J_{\nu, n} \left( \xi_{\nu, n} \right) \right] ^2
+\]
+**** \( \lambda \pm \beta ^2 < 0 \)
+
+Definiramo \( k ^2 = - \left( \lambda \pm \beta ^2 \right) \) in baza rešitev so modificirane Besselove funkcije \( \left\{ I_m (kr), K_m (kr) \right\} \). Asimpototsko obnašanje prve rešitve modificirane Besselove funkcije so
+
+\[ I_{\nu} (x) = \begin{cases}
+                 I_{\nu} \sim x^{\nu} &; x \ll 1 \\
+                 I_{\nu} \sim \frac{1}{\sqrt{2 \pi x}} e^x &; x \gg 1
+                 \end{cases}
+\]
+
+Podobno je tudi za drugo funkcijo
+
+\[ K_{\nu} = \begin{cases}
+             K_{\nu} \sim \frac{1}{x^{\nu}} &; x \ll 1 \\
+             K_0 \sim \ln x &; x \ll 1 \\
+             K_{\nu} \sim \frac{\pi}{\sqrt{2 \pi x}} e^{-x} &; x \gg 1
+             \end{cases}
+\]
+*** Primer: lastne funkcije cilindra
+
+Imejmo cilinder polmera \( a \) in višine \( h \). V valju rešujemo Helmholtzovo enačbo
+
+\[ \nabla ^2 u + \lambda u = 0
+\]
+
+z robnimi Dirichletovimi pogoji
+
+\[ u(z = 0, h) = 0, \quad u(r = a ) = 0
+\]
+
+V kotni smeri so rešitve oblike \( \Phi_m = \exp \left\{ \mathrm{i} m \phi \right\} \). V smeri \( z \) so rešitve \( Z_n = \sin \left( \frac{n \pi z}{h} \right) \), kjer je \( n = 0, 1, 2, \ldots \).
+
+Reševanje v smeri \( r \) pa imamo primer, ko \( \lambda \pm\beta ^2 > 0 \) z zahtevkom, da je oscilirajoče. Ker v \( r = 0 \) ni divergence, potemni da je rešitev radialnega dela \( R = J_m (kr) \) z robnim pogojem \( R(a) = J_m (ka) = 0 \), iz česar določimo, da je
+
+\[ ka = \xi_{\mu, p} \implies \ k = \frac{\xi_{m, p}}{a}
+\]
+
+Rešitve so torej
+
+\[ R_p = J_m \left( \xi_{m, p} \frac{r}{a} \right).
+\]
+
+Iz normalizacije velja
+
+\[ \int\limits_0^a R_p ^2 r \, \mathrm{d} r = \ldots.
+\]
+
+Lastna funkcije je tako
+
+\[ u_{p, n, m} \sim e^{\mathrm{i} m \phi } \sin \left( \frac{n \pi a}{h} \right) J_m \left( \xi_{m, p} \frac{r}{a} \right)
+\]
+
+Z vedenjem, da je \( \beta ^2 = \frac{n \pi}{h} \), lahko izrazimo \( \lambda \) iz enačbe
+
+\[ \lambda - \beta ^2 = k ^2 \implies \ \lambda = k ^2 + \beta ^2
+\]
+
+Pripadajoče lastno stanje je tako
+
+\[ \lambda_{p, m, n} = \left( \frac{\xi_{m, p}}{a} \right) ^2 + \left( \frac{n \pi}{h} \right) ^2
+\]
+
+Funkcije posameznih spremenljivk so ortogonalne - \( \Phi \) je ortogonalna po \( m \), \( Z \) je ortogonalna po \( n \) in v radialni smeri je pri fiksnem \( m \) ortogonalna pri \( p \).

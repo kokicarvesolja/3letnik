@@ -201,7 +201,7 @@ b) Pokaži, da je magnetni pretok dipolni moment plošče \( p_m = \frac{\pi}{4}
 c) V razvoju pod a točko izračunanega izraza za \( B(z) \) v Taylorjevo vrsto določi člen, ki najpočasneje pada z \( z \). Utemelji, zakaj je to dipolni člen. Iz njegove oblike preberi magnetni dipolni moment plošče in ga primerjaj z izrazom pod točko b.
 #+end_problem
 
-Problem začnemo reševti tako, da določimo, da je disk v ravnini \( xy \) in je vektor kroženja zapisan z \( \vec{\omega} = (0, 0, \omega) \).
+Problem začnemo reševati tako, da določimo, da je disk v ravnini \( xy \) in je vektor kroženja zapisan z \( \vec{\omega} = (0, 0, \omega) \).
 
 Začnemo s splošnim Biot-Savartovim zakonom
 
@@ -218,7 +218,7 @@ Opazujmo kolobar širina \( \mathrm{d} \vec{r} \, ' \) na razdalji \( \vec{r} \,
 \[ \mathrm{d} e = \sigma 2 \pi r' \mathrm{d} r'. = \sigma S
 \]
 
-Prispevek k toku je celoten naboj, ki gre skozi dano površino - celoten tok na kolobarju gre skozi presek ravno v obhodnem času \( \frac{2 \pi }{\omega} = t_0 \). Torej bo prispevek k toku
+Prispevek k toku je celoten naboj, ki gre skozi dan presek - celoten tok na kolobarju gre skozi presek ravno v obhodnem času \( \frac{2 \pi }{\omega} = t_0 \). Torej bo prispevek k toku
 
 \[ \mathrm{d} I = \frac{\mathrm{d} e}{t_0} = \frac{\mathrm{d} e}{\frac{2\pi}{\omega}} = \frac{\omega}{2\pi} \sigma 2 \pi r' \mathrm{d} r' = \sigma \omega r' \mathrm{d} r'
 \]

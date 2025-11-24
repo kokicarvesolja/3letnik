@@ -1,4 +1,4 @@
-#+title: 05maf2 V 20251110
+#+title: 5. vaje iz Matematične fizike 2
 #+startup: nolatexpreview
 #+startup: entitiespretty nil
 #+startup: show2levels

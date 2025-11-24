@@ -227,8 +227,11 @@ Upoštevamo še zadnji, tretji, pogoj
 
 Enačbo \ref{eq:5} skalarno pomnožimo, da dobimo
 
-\[ \left\langle u(x, t = 0), \sin \left( \frac{m \pi}{l} x \right) \right\rangle = \int\limits_0^l \sin \left( \frac{m \pi}{l} x \right) u(x, t = 0) \, \mathrm{d} x = \int\limits_0^l \sum\limits_n^{} G_n \sin \left( \frac{n \pi}{l} x \right) \sin \left( \frac{m \pi}{l} x \right) \, \mathrm{d} x = \frac{l}{2} \delta_{mn}
-\]
+\begin{align*}
+ \left\langle u(x, t = 0), \sin \left( \frac{m \pi}{l} x \right) \right\rangle &= \int\limits_0^l \sin \left( \frac{m \pi}{l} x \right) u(x, t = 0) \, \mathrm{d} x \\
+&= \int\limits_0^l \sum\limits_n^{} G_n \sin \left( \frac{n \pi}{l} x \right) \sin \left( \frac{m \pi}{l} x \right) \, \mathrm{d} x \\
+&= \frac{l}{2} \delta_{mn}
+\end{align*}
 
 #+begin_quote
 Integral na levi strani lahko prepišemo, malo poračunamo in potem obupamo.
