@@ -1,0 +1,256 @@
+#+title: 7. vaje iz Matematične fizike
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Laplaceova enačba
+** Naloga 20 (Prinčič 5.1)
+
+#+begin_problem
+Zanima nas rešitev Laplaceove enačbe
+
+\[ \nabla ^2 u = 0
+\]
+
+v kvadratu s stranico \( a \). Robni pogoji so
+
+\[ u \left( - \frac{a}{2}, y \right) = u \left( \frac{a}{2}, y \right) = f(y),
+\]
+
+kjer je \( f(y) \) soda funkcija glede na izhodišče koordinatnega in
+
+\[ u \left( x, - \frac{a}{2} \right) = u \left( x, \frac{a}{2} \right) = 0
+\]
+#+end_problem
+
+Problem bomo reševali s separacijo spremenljivk \( u(x, y) = X(x) Y(y) \). Po separaciji nam ostane enačba
+
+\[ \frac{X''}{X} = - \frac{Y''}{Y} = k ^2
+\]
+
+V \( y \) smeri je splošna rešitev
+
+\[ Y(y) = A \sin (ky) + B \cos (ky),
+\]
+
+vendar zaradi sodosti funkcije \( f(x) \) in lihosti sinusa le-tega prečrtamo. Drugi robni pogoj \( B \cos \left( k \frac{a}{2} \right) = 0 \) nam definira vrednosti, ki jih \( k \) lahko zavzame in sicer \( k_n = \frac{2 \pi}{a} \left( n + \frac{1}{2} \right) \). Rešitev je v \( y \) smeri je
+
+\[ Y(y) = B_n \cos \left( \frac{2 \pi}{a} \left[ n + \frac{1}{2} \right] y \right)
+\]
+
+Splošna rešitev v \( x \) smeri je
+
+\[ X(x) = C \mathrm{sinh} (kx) + D \mathrm{cosh} (kx),
+\]
+
+kjer ponovno zaradi sodosti ponovno zavržemo liho funkcijo.
+
+Rešitev celotnega problema je vrsta
+
+\[ u(x, y) = \sum\limits_{n = 0}^{\infty} C_n \mathrm{cosh} (k_n x) \cos (k_n y)
+\]
+
+Upoštevamo še robni pogoj funkcije
+
+\[ \sum\limits_{n = 0}^{\infty} C_n \mathrm{cosh} \left(k_n \frac{a}{2}\right) \cos (k_n y) = f(y)
+\]
+
+Upoštevamo tudi ortogonalnost kosinusnih funkcij na intervalu \( \left[ - \frac{a}{2}, \frac{a}{2} \right] \)
+
+\[ \int\limits_{-\frac{a}{2}}^{\frac{a}{2}} \cos (k_n y) \cos (k_m y) \, \mathrm{d} y = \frac{a}{2} \delta_{n, m},
+\]
+
+iz česar sledi
+
+\[ \frac{a}{2} C_n \cos \left( k_n \frac{a}{2} \right) = \int\limits_{- \frac{a}{2}}^{\frac{a}{2}} f(y) \cos(k_n y) \, \mathrm{d} y.
+\]
+
+Sedaj lahko dobimo vrednost posameznih koeficientov
+
+\[ C_n = \frac{2}{a \mathrm{cosh} \left( \frac{a}{2} k_n \right)} \int\limits_{- \frac{a}{2}}^{\frac{a}{2}} f(y) \cos (k_n y) \, \mathrm{d} y
+\]
+
+#+begin_note
+  Naj bo rešitev \( u_f \) kvadrata z robnimi pogojimi
+
+  \[ u \left( - \frac{a}{2}, y \right) = u \left( \frac{a}{2}, y \right) = f(y)
+  \]
+
+  in
+
+  \[ u \left( x, - \frac{a}{2} \right) = u \left( x, \frac{a}{2} \right) = 0.
+  \]
+
+  Naj bo rešitev \( u_g \) kvadrata z robnimi pogoji
+
+  \[ u \left( x, - \frac{a}{2} \right) = u \left( x, \frac{a}{2} \right) = g(x),
+  \]
+
+  in
+
+  \[ u \left( - \frac{a}{2}, y \right) = u \left( \frac{a}{2}, y \right) = 0
+  \]
+
+  V primeru, če imamo kvadrat, ki ima robne pogoje
+
+  \[ u \left( - \frac{a}{2}, y \right) = u \left( \frac{a}{2}, y \right) = f(y)
+  \]
+
+  in
+
+  \[ u \left( x, - \frac{a}{2} \right) = u \left( x, \frac{a}{2} \right) = g(x),
+  \]
+
+  lahko rešimo problem kot vsoto dveh Laplaceovih enačb za kvadrata:
+
+  \[ u = u_f + u_g
+  \]
+#+end_note
+** Naloga 21 (Prinčič 5.2)
+
+#+begin_problem
+Imejmo dve polneskončni plošči, ki ju povezuje trak širina \( a \). Potencial plošč je ničeln, trak pa ima potencial \( U_0 \). Zanima nas potencial \( U \) v vseh treh dimenzijah.
+#+end_problem
+
+Rešujemo torej Laplaceovo enačbo
+
+\[ \nabla ^2 U = 0,
+\]
+
+saj nimamo električnih izvorov. Robni pogoj je
+
+\[ U(x = 0, y, z) = \begin{cases}
+                    0 &; \left| y \right| > \frac{a}{2}\\
+                    U_0 &; \left| y \right| \le \frac{a}{2}
+                    \end{cases}
+\]
+
+K reševanju tega bomo pristopili s separacijo spremenljivk, vendar postopek ne bo podoben prejšnjim postopkom.
+
+Rešujemo enačbo oblike
+
+\[ \frac{X''}{X} = - \frac{Y''}{Y} = k ^2
+\]
+
+in splošni rešitvi za posamezno spremenljivko sta
+
+\[ X = A e^{kx} + B e^{- kx} = A e^{- \left| k \right|\left| x \right|} \text{ in } Y = Ce^{\mathrm{i} k y} + D e^{- \mathrm{i} k y}
+\]
+
+Imamo nehomogen robni pogoj, zato ne moremo reševati problema kot do sedaj. Prav tako nimamo načina, kako bi kvantizirali \( k \) - namesto vsote, bomo pisali integral. Napisali bomo splošno rešitev in postopali naprej s pomočjo Fourierove transformacije
+
+\begin{equation}
+\label{eq:1}
+ u(x, y) = \int\limits_{-\infty}^{\infty} C(k) \exp \left\{ - \left| k \right|  \left| x \right| + \mathrm{i} k y \right\} \, \mathrm{d} y.
+\end{equation}
+
+Iz matematike 4 vemo, da velja
+
+\begin{equation}
+\label{eq:2}
+ \int\limits_{- \infty}^{\infty} e^{\mathrm{i} k y} \, \mathrm{d} y = 2 \pi \delta(k).
+\end{equation}
+
+Robni pogoj splošne rešitve \ref{eq:1}
+
+\[ U(0, y) = \int\limits_{-\infty}^{\infty} C(k) e^{\mathrm{i} k y} \, \mathrm{d} k.
+\]
+
+prestavimo v Fourierov prostor z množenjem enačb s \( \int_{-\infty}^{\infty} e^{-\mathrm{i}k' y} \, \mathrm{d} y \), kjer je \( k' \ne k \).
+
+Robni pogoj tako postane
+
+\[ \int\limits_{- \infty }^{\infty} U(0,y) e^{- \mathrm{i} k' y} \, \mathrm{d} y = \int\limits_{- \infty}^{\infty} \int\limits_{- \infty}^{\infty} C(k) e^{\mathrm{i} (k - k')y} \, \mathrm{d} y.
+\]
+
+Upoštevamo identiteto \ref{eq:2} in rešitev postane
+
+\[ \int\limits_{-\infty}^{\infty} U(0, y) e^{- \mathrm{i} k' y} \, \mathrm{d} y = \int\limits_{-\infty}^{\infty} C(k) \cdot 2\pi \delta(k - k') \, \mathrm{d} k = 2 \pi C(k').
+\]
+
+Sedaj lahko izrazimo vrednost koeficienta preko dobljene enačbe
+
+\[ C(k) = \frac{1}{2 \pi} \int\limits_{- \infty}^{\infty} U(0, y) e^{- \mathrm{i} k y} \, \mathrm{d} y = \frac{1}{2\pi} \int\limits_{- \frac{a}{2}}^{\frac{a}{2}} U_0 e^{- \mathrm{i} k y} \, \mathrm{d}y
+\]
+
+Integral se izenači v
+
+\[ \int\limits_{- \frac{a}{2}}^{\frac{a}{2}} \left( \cos (ky) - \mathrm{i} \sin (ky) \right) \, \mathrm{d} y = - \frac{1}{\mathrm{i} k } \left( \exp \left( - \mathrm{i} \frac{a}{2} \right) - \exp \left\{ \mathrm{i} k \frac{a}{2} \right\} \right) = \frac{\sin \left( k \frac{a}{2} \right)}{k}
+\]
+
+Torej je koeficient enak
+
+\[ C(k) = \frac{U_0}{\pi} \frac{\sin \left( k \frac{a}{2} \right)}{k}.
+\]
+
+Splošna rešitev se tako spremeni v grd, vendar še zmeraj rešljiv integral
+
+\[ U(x, y) = \frac{U_0}{\pi} \int\limits_{- \infty}^{\infty} \frac{\sin \left( k \frac{a}{2} \right)}{k} \exp \left\{ - \left| kx \right| \right\} e^{\mathrm{i} k y} \, \mathrm{d} k.
+\]
+
+Pri reševanju postopamo tako, da najprej opazimo sodost funkcije \( \frac{\sin \left( k \frac{a}{2} \right)}{k} \). Prav tako se poslužimo identitete
+
+\[ \int\limits_{- \infty}^{\infty} e^{\mathrm{i} k y} \, \mathrm{d}k = \int\limits_{-\infty}^0 e^{\mathrm{i} k y} \, \mathrm{d} k + \int\limits_0^{\infty} e^{\mathrm{i}k y} \, \mathrm{d} k =  \int\limits_0^{\infty} \left( e^{- \mathrm{i} k y} + e^{\mathrm{i} k y} \right) \, \mathrm{d} k = 2 \int\limits_0^{\infty} \cos (ky) \, \mathrm{d} k
+\]
+
+Definiramo integral
+
+\[ I(z) = \frac{2U_0}{\pi} \int\limits_0^{\infty} e^{- k z} \sin \left( k \frac{a}{2} \right) \cos (ky) \, \mathrm{d} k,
+\]
+
+kjer lahko zapišemo zvezo
+
+\[ \int\limits_{\alpha}^{ \beta} I(z) \, \mathrm{d} z = \frac{2 U_0}{\pi} \int\limits_0^{\infty} \frac{\sin \left( k \frac{a}{2} \right) \cos \left( ky \right)}{k} \left( e^{- k\alpha} - e^{- k \beta} \right) \, \mathrm{d} k.
+\]
+
+Velja torej zveza
+
+\[ U(x, y) = \int\limits_{\left| x \right|}^{\infty} I(z) \, \mathrm{d} z
+\]
+
+[dopolni rešitev]
+* Hidrodinamika
+
+Rešujemo Navier-Stokesovo enačbo
+
+\[ \rho \frac{\mathrm{d} \vec{v}}{\mathrm{d} t} = \vec{f} - \nabla p + \eta \nabla ^2 \vec{v} + \left( \zeta + \frac{\eta}{3} \right) \nabla \left( \nabla \cdot \vec{v} \right),
+\]
+
+kjer je \( \eta \) viskoznost in \( \zeta \) volumenska viskoznost. Podobno kot smo že srečali, ker imamo opravka z nestacionarno tekočino se odvodi spremenijo na substancialne oblike
+
+\[ \frac{\mathrm{d} }{\mathrm{d} t} = \frac{\partial }{\partial t}  + \left( \vec{v} \cdot \nabla \right).
+\]
+
+Ne rešujemo samo Navier-Stokesovo enačbo, ampak rešujemo sklopljen sistem diferencialnih enačb skupaj s kontinuitetno enačbo
+
+\[ \frac{\partial \rho}{\partial t}  = - \nabla \left( \rho \vec{v} \right)
+\]
+
+Reševanje enačbe si še dodatno olajšamo, če rešujemo enačbo za nestisljive tekočine, kjer velja \( \frac{\partial \rho}{\partial t} = 0 \), iz česar sledi \( \nabla \vec{v} = 0 \). Hkrati predpostavimo tudi brezvrtinčnost \( \nabla \times \vec{v} = 0 \), kar pomeni, da je naše območje enostavno povezano in lahko hitrost izrazimo s hitrostnim potencialom \( \vec{v} = - \nabla \phi \).
+** Naloga 22 (Prinčič 6.1)
+
+#+begin_problem
+Laminaren tok neviskozne (\( \eta = 0 \)) vode, ki teče s hitrostjo \( v_0 \), obliva steber polmera \( R \). Zanima nas hitrostni profil vode, kjer upoštevamo njeno nestistljivost.
+#+end_problem
+
+Ob predpostavki brezvrtinčnosti \( \nabla \times \vec{v} = 0 \) dobimo nastavek \( \vec{v} = - \nabla \phi \) in nestisljivosti \( \nabla \cdot \vec{v} = 0 \) nam poda Laplaceovo enačbo
+
+\[ \nabla ^2 \phi = 0
+\]
+
+Določimo robne pogoje:
+- daleč stran od stebra je tok vode enak \( v_0 \)
+
+  Zapišemo torej
+
+  \[ \vec{v} \left( r \to \infty \right) = v_0 \hat{e}_x \implies \ \phi(x, y) = - v_0 x = - v_0 r \cos \phi
+  \]
+
+- Radialni tok ob stebru je ničeln (voda ne teče skozi steber)
+
+  \[ \vec{v} \left( r = R  \right) \hat{e}_r = 0 \implies \ \frac{\partial \phi}{\partial r} (r = R) = 0
+  \]
