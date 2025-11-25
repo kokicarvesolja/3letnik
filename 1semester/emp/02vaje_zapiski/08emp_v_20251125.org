@@ -1,0 +1,151 @@
+#+title: 8. vaje iz Elektromagnetnega polja
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Upornost prevodne ploščice
+
+[[file:figures/08upornostPrevodnePloscice.png]]
+
+Napišemo EMP-jevsko različico Ohmovega zakona, ki je stacionarni tok
+
+\[ \vec{\jmath} = \sigma \vec{E},
+\]
+
+kjer je \( \sigma \) specifična prevodnost. Spomnimo, da je električno polje definirano preko potenciala kot \( \vec{E} = - \nabla U \), iz česar sledi
+
+\begin{equation}
+\label{eq:1}
+ \vec{\jmath} = - \sigma \nabla U.
+\end{equation}
+
+Uporabimo še kontinuitetno enačbo, ki je definirana kot
+
+\[ \frac{\partial \rho}{\partial t} + \nabla \cdot \vec{\jmath} = 0 \implies \ \nabla \cdot \vec{\jmath} = 0
+\]
+
+Člen \( \frac{\partial \rho}{\partial t} = 0  \) povsod na prevodniku, saj nimamo nikjer na prevodniku izvora ali ponora.
+
+Z vstavitvijo enačbe \ref{eq:1} v kontinuitetno enačbo dobimo Laplaceovo enačbo v cilindričnih koordinatah
+
+\[ \nabla \cdot \vec{\jmath} = - \sigma \nabla ^2 U = 0.
+\]
+
+Na prevodniku torej velja
+
+\[ \nabla ^2 U = 0.
+\]
+
+Splošna rešitev Laplaceove enačbe v valjni geometriji je
+
+\begin{equation}
+\label{eq:2}
+ U \left( r, \phi \right) = \sum\limits_{m = 1}^{\infty} \left( A_m \cos (m\phi) + B_m \sin (m \phi) \right) \left( C_m r^m + D_m r^{-m} \right)
+\end{equation}
+
+Tokrat si bomo ogledali tudi rešitev za \( m = 0 \), saj nimamo periodične situacije. Nastavek \( U(r, \phi) = R(r) \Phi(\phi) \) vstavimo v Laplaceovo enačbo, da dobimo sistem dveh enačb
+
+\[ r ^2 R'' + r R' - \cancel{m ^2 R} = 0 \implies R = c \ln r + d
+\]
+
+ter
+
+\[ \Phi '' + \cancel{m ^2 \Phi} = 0 \implies \Phi + a \phi + b
+\]
+
+Splošno rešitev \ref{eq:2} razširimo z dobljenimi rezultati
+
+\begin{equation}
+\label{eq:6}
+ U \left( r, \phi \right) = \sum\limits_{m = 1}^{\infty} \left( A_m \cos (m\phi) + B_m \sin (m \phi) \right) \left( C_m r^m + D_m r^{-m} \right) + \left( a\phi + b \right) \left( c \ln r + d \right)
+\end{equation}
+
+Desno elektrodo postavimo na potencial \( 0 \), torej bo naš prvi robni pogoj
+
+\begin{equation}
+\label{eq:3}
+U \left( r, 0 \right) = 0.
+\end{equation}
+
+Drugi robni pogoj je leva elektroda, ki mora biti na manjše potencialu, da tok teče (?)
+
+\begin{equation}
+\label{eq:4}
+U (r, \pi) = - U_0.
+\end{equation}
+
+Električni tok teče tangentno na polmer in zahtevamo, da na ukrivljenih delih ploščice ne odhaja ven - torej bo radialna gostota električnega toka in električnega polja ničelna.
+
+\begin{align} \label{eq:tok}
+ \vec{\jmath}_r (r_{1, 2} \phi)&= 0  \\ \label{eq:polje}
+E_r (r_{1, 2}) &= 0
+\end{align}
+
+Enačba \ref{eq:polje} poda robni pogoj
+
+\begin{equation}
+\label{eq:5}
+\frac{\partial U}{\partial r}  (r_{1, 2}, \phi) = 0.
+\end{equation}
+
+Zaradi radialne neodvisnosti pomeni, da bo naša splošna rešitev \ref{eq:6} tudi neodvisna od radija. Posledično bodo členi \( C_m \), \( D_m \) in \( c \) enaki \( 0 \). Preostane nam torej enačba
+
+\[ U(r, \phi) = (a\phi + b) d =  A \phi + B
+\]
+
+Robni pogoj \ref{eq:3} nam sedaj za našo oskrunjeno rešitev poda enakost \( B = 0 \). Z upoštevanjem robnega pogoja \ref{eq:4} dobimo enakost
+
+\[ U(r, \pi) = A \pi = - U_0 \implies \ A = - \frac{U_0}{\pi}.
+\]
+
+Opravka imamo torej s potencialom oblike
+
+\[ U (r, \phi) = - \frac{U_0}{\pi} \phi.
+\]
+
+Za izračun upora \( R = \frac{U_0}{I} \) moramo poračunati še tok.
+
+Tok bomo poračunali preko gostote električnega toka
+
+\[ I = \int\limits_{}^{} \vec{\jmath} \cdot \mathrm{d} \vec{S}.
+\]
+
+Diferencial površine \( \mathrm{d} S \) je produkt debeline ploščice in diferenciala radija \( h \mathrm{d} r \). Električno gostoto toka \( \vec{\jmath} \) dobimo preko enačbo
+
+\[ \vec{\jmath} = \sigma E_{\phi},
+\]
+
+kjer bomo električno polje pridobili preko enačbo
+
+\[ E_{\phi} = - \frac{1}{r} \frac{\partial U}{\partial \phi}.
+\]
+
+Torej tok bo
+
+\[ I = - \int\limits_{r_1}^{r_2}  \sigma \frac{1}{r} \frac{\partial U}{\partial \phi}  h \, \mathrm{d} r = - \int\limits_{r_1}^{r_2} \frac{\sigma}{r} \left( - \frac{U_0}{\pi} \right) h \, \mathrm{d} r = + \frac{\sigma U_0 h}{\pi} \int\limits_{r_1}^{r_2} \frac{\mathrm{d} r}{r} = \frac{\sigma U_0 h}{\pi} \ln \frac{r_2}{r_1}.
+\]
+* Cabrerov eksperiment
+
+[[file:figures/08CabrerovEksperiment.png]]
+
+Magnetni monopol gre skozi središče zanke ob času \( t = 0 \).
+Magnetno polje monopola zapišemo kot
+
+\[ \vec{B}_{monopol} = \frac{\mu_0}{4 \pi} \frac{g}{r ^2} \frac{\vec{r}}{r}
+\]
+
+kjer je \( g \) magnetni naboj, ki ima enote \( [\mathrm{Am}] \). Spomnimo, da ima gostota magnetnega polja enota \( \left[ \frac{\mathrm{Vs}}{\mathrm{m} ^2} \right] \) in \( \mu_0 \) ima enote \( \left[ \frac{\mathrm{Vs}}{\mathrm{Am}} \right] \).
+
+Magnetni pretok je po definiciji enak integralu skozi presek
+
+\[ \Phi_m = \int\limits_{}^{}\vec{B} \cdot \mathrm{d} \vec{S}.
+\]
+
+Diferencial površine je zaradi osne simetrije enak \( \mathrm{d} S = 2 \pi \rho \mathrm{d} \rho \). Magnetno polje monopola bo
+
+\[ B = \frac{\mu_0}{4 \pi} \frac{g}{\left( \rho ^2 + d ^2 \right)}
+\]
