@@ -132,6 +132,8 @@ Torej tok bo
 
 [[file:figures/08CabrerovEksperiment.png]]
 
+** Točka a
+
 Magnetni monopol gre skozi središče zanke ob času \( t = 0 \).
 Magnetno polje monopola zapišemo kot
 
@@ -147,5 +149,126 @@ Magnetni pretok je po definiciji enak integralu skozi presek
 
 Diferencial površine je zaradi osne simetrije enak \( \mathrm{d} S = 2 \pi \rho \mathrm{d} \rho \). Magnetno polje monopola bo
 
-\[ B = \frac{\mu_0}{4 \pi} \frac{g}{\left( \rho ^2 + d ^2 \right)}
+\[ B = \frac{\mu_0}{4 \pi} \frac{g}{\left( \rho ^2 + d ^2 \right)}.
+\]
+
+Za samo indukcijo je pomembno magnetno polje vzporedno normali preseka zanke, torej \( B_x \), ki je preko definicije kosinusa enak
+
+\[ B_x = B \cdot \frac{d}{\sqrt{\rho ^2 + d ^2}} = \frac{\mu_0 g}{4\pi} \frac{d}{ \left( \rho ^2 + d ^2 \right)^{\frac{3}{2}}}.
+\]
+
+Izražene vrednosti vstavimo v enačbo za magnetni pretok in kakor že mnogokrat do sedaj rešimo problem z novo spremenljivko \( u = \rho ^2 + d ^2 \).
+
+\[ \Phi_m = \int\limits_0^a B_x \, \mathrm{d} S = \frac{\mu_0 g}{2} \left( 1 - \frac{d}{\sqrt{d ^2 + a ^2}} \right)
+\]
+** Točka b
+
+Pred prehodom skozi središče zanke velja \( t <0 \). Razdalja \( d \) se časovno spreminja kot \( d = - v t \). Po prehodu skozi središče zanke \( t > 0 \), pa se razdalja spreminja kot \( d = v t \). Po prehodu skozi zanko, se spremeni tudi smer pretoka.
+
+\[ \Phi_m (t) = \begin{cases}
+                \frac{\mu_0 g}{2} \left( 1 + \frac{v t}{\sqrt{(vt) ^2 + a ^2}} \right) &; t < 0 \\
+                 -\frac{\mu_0 g}{2} \left( 1 - \frac{vt}{\sqrt{(vt) ^2 + a ^2}} \right) &; t > 0
+                \end{cases}
+\]
+
+Graf pretoka je take oblike kot na sliki
+
+[[file:figures/08CabrerovEksperimentPretok.png]]
+** Točka c
+
+Indukcijsko napetost izračunamo preko indukcijskega zakona
+
+\begin{equation}
+\label{eq:7}
+ U_i = - \frac{\partial \Phi}{\partial t}
+\end{equation}
+
+Posplošen Amperov zakon ima obliko
+
+\[ \nabla \times \vec{B} = \mu_0 \vec{\jmath} + \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t},
+\]
+
+in nam bo služil kot inspiracija modificirano Maxwellovo enačbo, kjer smo ji dodali člen \( \mu_0 \vec{\jmath}_m \), kjer je \( \vec{\jmath}_m  \) gostota magnetnega toka ob predpostavki, da je obstajajo monopoli. Enačba se bo tako glasila
+
+\[ \nabla \times \vec{E} = - \frac{\partial \vec{B}}{\partial t}  - \mu_0 \vec{\jmath}_m
+\]
+
+Integralska oblika Faradayjevega zakona bo
+
+\[ \int\limits_{}^{} \left( \nabla \times \vec{E} \right) \, \mathrm{d} \vec{S} = - \frac{\partial }{\partial t}  \int\limits_{}^{} \vec{B} \cdot \mathrm{d} \vec{S} - \mu_0 \int\limits_{}^{} \vec{\jmath}_m \, \mathrm{d} \vec{S}.
+\]
+
+Ob upoštevanju Stokesovega izreka in izračunu integralov dobimo enačbo
+
+\[ \oint\limits_{}^{} \vec{E} \cdot \mathrm{d} \vec{l} = - \frac{\partial }{\partial t}  \Phi - \mu_0 I_m,
+\]
+
+kjer je \( I_m = g \delta(t) \) magnetni tok. Integral električnega polja po zaključeni zanki je ravno inducirana napetost \ref{eq:7} z dodatnim členom magnetnega toka. Bolj berljivo zapišemo
+
+\[ U_i = - \dot{\Phi} - \mu_0 g \delta(t) = L \dot{I},
+\]
+
+kjer je \( L \) induktivnost zanke.
+
+To integriramo po časovnem intervalu \( (-\infty, t) \), ko je bil delec daleč stran in dobimo
+
+\[ - \left[ \Phi(t) - \Phi(- \infty) \right] - \mu_0 g \Theta(t) = L \left[ I(t) - I(-\infty) \right].
+\]
+
+Magnetni pretok in magnetni tok ob času \( t = - \infty \) sta ničelna. Enačba je torej
+
+\[ - L I(t) = \Phi(t) + \mu_0 g \Theta(t)
+\]
+* Induciran tok v okvirju
+** Točka a
+
+Magnetni pretok prve zanke označimo \( \Phi_1 \), po kateri teče tok \( I_1 \), ki gre skozi zanko.
+
+\[ \Phi_1 = L_{11} I_1,
+\]
+
+kjer je \( L_{11} \) lastna induktivnost zanke.
+
+Za dve bližnji zanki, bo magnetno polje prve zanke vplivalo na drugo zanko, katere pretok magnetnega polja je \( \Phi_2 \).
+
+\[ \Phi_2 = L_{21} I_{1},
+\]
+
+kjer je \( L_{21} \) vzajemna induktivnost.
+
+Induktivnost je po definiciji, ki bo še izpeljano na predavanjih, enaka
+
+\[ L_{ij} = \frac{\mu_0}{4 \pi} \oiint\limits_{}^{} \frac{\mathrm{d} \vec{l}_i \cdot \mathrm{d} \vec{l}_j}{ \left| \vec{r}_i - \vec{r}_j \right|}.
+\]
+
+Iz tega sledi, da je vzajeman induktivnost enaka med obema žicama \( L_{ij} = L_{ji} \).
+
+Magnetni pretok skozi kvadratno zanko (na sliki označeno z rdečo) je po definiciji
+
+\[ \Phi_2 = \int\limits_{}^{} \vec{B} \cdot \mathrm{d} \vec{S}
+\]
+
+Magnetno polje v odvisnosti od višine je enako
+
+\[ B(y) = \frac{\mu_0 I}{2 \pi y} + \frac{\mu_0 I}{2 \pi (d - y)}.
+\]
+
+Diferencial površine \( \mathrm{d} S \) pa je enak
+
+\[ \mathrm{d} S = 2 y \mathrm{d} y2 y \mathrm{d} y.
+\]
+
+Zaradi simetrije bomo integrirali samo do polovice višine kvadrata (drugače bi morali upoštevati, da se površina z večanjem višina zmanjšuje po polovici višine kvadrata).
+
+\[ \Phi_2 = 2 \frac{\mu_0 I_1}{2 \pi} \int\limits_0^{\frac{d}{2}} \left( \frac{1}{y} + \frac{1}{d - y} \right) 2y \mathrm{d} y
+\]
+
+I_1ntegrand postavimo na isti imenovalec
+
+\[ \Phi_2 = 2 \frac{\mu_0 I_1}{\pi} \int\limits_0^{\frac{d}{2}} \frac{d - y + y}{y (d - y)} y \, \mathrm{d} y  = \frac{2 \mu_0 d}{\pi} \int\limits_0^{\frac{d}{2}} (-1) \frac{\mathrm{d}(d - y)}{d - y} = \left. - \frac{2 \mu_0 I_1 d}{ \pi} \ln \left( d - y \right) \right|_0^{\frac{d}{2}}
+\]
+
+Magnetni pretok je tako enak
+
+\[ \Phi_2 = - \frac{2 \mu_0 I_1 d}{\pi} \ln 2
 \]
