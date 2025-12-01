@@ -1,0 +1,109 @@
+#+title: 8. vaje iz Kvantne mehanike
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Harmonski oscilator v dveh dimenzijah
+
+
+Imamo prvo vzbujeno stanje, ki ima dve degenerirani stanji \( \left| 1, 0 \right\rangle \) in \( \left| 0, 1 \right\rangle \). Želimo najti linearno kombinacijo teh dveh stanj tako, da bosta tudi lastni stanji operatorja \( L_z \).
+
+Spomnimo, da velja
+
+\[ L_z = \frac{e^{\mathrm{i} m \phi}}{\sqrt{2\pi}} = \hbar m \frac{e^{\mathrm{i} m \phi}}{\sqrt{2\pi}}, \ m \in \mathbb{Z},
+\]
+
+kjer je \( L_z = -\mathrm{i} \hbar \frac{\partial }{\partial \phi}  \). Vemo, da obstajata identiteti
+
+\[ e^{\mathrm{i} \phi} = \cos \phi + \mathrm{i} \sin \phi \text{ in } e^{- \mathrm{i} \phi}  = \cos \phi - \mathrm{i} \sin \phi
+\]
+
+[dopolni]
+** Drugi pristop
+
+Iščemo lastna stanja operatorja \( L_z \), ki so hkrati tudi lastna stanja Hamiltoniana z energijo \( E = 2 \hbar \omega \).
+
+\begin{equation}
+\label{eq:1}
+\left| \psi \right\rangle = \alpha \left| 10 \right\rangle + \beta \left| 01 \right\rangle
+\end{equation}
+
+Izpeljali so do tega, da je
+
+\[ L_z = - \mathrm{i} \hbar \left( a_x ^{\dagger} a_y - a_x a_y ^{\dagger} \right)
+\]
+
+Če je naše stanje lastno stanje \( L_z \), potem lahko zapišemo kot
+
+\[ L_z \left( \alpha \left| 10 \right\rangle + \beta \left| 01 \right\rangle\right) = \gamma \left( \alpha \left| 10 \right\rangle + \beta \left| 01 \right\rangle \right),
+\]
+
+kjer bo \( \gamma \) sorazmeren z \( \hbar \omega \). Vplivajmo z izpeljanim \( L_z \) na naše prvo vzbujeno stanje \ref{eq:1}.
+
+
+\begin{align*}
+  L_z \left( \alpha \left| 10 \right\rangle + \beta \left| 01 \right\rangle\right) &= \mathrm{i} \hbar \left( a_x a_y ^{\dagger} - a_x ^{\dagger} a_y \right) \left( a \left| 1 \right\rangle \left| 0 \right\rangle + \beta \left| 0 \right\rangle \left| 1 \right\rangle\right) \\
+&= \mathrm{i} \hbar \left[ \alpha a_x \left| 1 \right\rangle + a_y^{\dagger} \left| 0 \right\rangle + \beta a_x \left| 0 \right\rangle a_y^{\dagger} \left| 1 \right\rangle - \alpha a_x^{\dagger} \left| 1 \right\rangle a_y \left| 0 \right\rangle - \beta a_x ^{\dagger} \left| 0 \right\rangle a_y \left| 1 \right\rangle \right]  \\
+&= \mathrm{i} \hbar \left[ a \left| 0 \right\rangle \left| 1 \right\rangle - \beta \left| 1 \right\rangle \left| 0 \right\rangle \right] = \gamma \left[ \alpha \left| 10 \right\rangle + \beta \left| 01 \right\rangle\right]
+\end{align*}
+
+Dobimo sistem sklopljenih enačb, kjer velja
+
+\begin{align*}
+  \left| 10 \right\rangle: \quad - \mathrm{i} \hbar \beta &= \gamma \alpha \\
+\left| 01 \right\rangle: \quad - \mathrm{i} \hbar \alpha &= \gamma \beta.
+\end{align*}
+
+Sistem lahko zapišemo tudi v matrični obliki kot
+
+\[ \mathrm{i} \hbar \begin{bmatrix}
+                    0 & -1 \\
+                    1 & 0
+                     \end{bmatrix} \begin{bmatrix} \alpha \\ \beta \end{bmatrix} = \gamma \begin{bmatrix} \alpha \\ \beta \end{bmatrix}
+\]
+
+Matriko lahko zapišemo tudi z matričnimi elementi \( L_z \)
+
+\[ \begin{bmatrix}
+   \left\langle 10 \middle| L_z \middle| 10 \right\rangle & \left\langle 10 \middle| L_z \middle| 01 \right\rangle \\
+   \left\langle 01 \middle| L_z \middle| 10 \right\rangle& \left\langle 01 \middle| L_z \middle| 01 \right\rangle
+    \end{bmatrix} = \mathrm{i} \hbar \begin{bmatrix}
+                                     0 & -1 \\
+                                     1 & 0
+                                      \end{bmatrix}
+\]
+
+Preverimo en člen, ostali so prepuščeni za domačo nalogo
+
+\[ \left\langle 01 \middle| \mathrm{i} \hbar \left( a_x a_y ^{\dagger} - a_x ^{\dagger} a_y \right) \middle| 10 \right\rangle = \mathrm{i} \hbar \left\langle 01 \middle| 01 \right\rangle = \mathrm{i} \hbar
+\]
+
+Z reševanjem matričnega sistema se priborimo do lastnih vrednosti, ki nam bodo potem dali lastne vektorje teh stanj, ki bi morali biti enaki tistim iz prejšnjega poglavja. Lastne vrednosti dobimo iz izračuna determinante
+
+\[ \begin{bmatrix}
+   -\gamma & - \mathrm{i} \hbar \\
+\mathrm{i}\hbar    &  - \gamma
+        \end{bmatrix}  = \gamma ^2 - \hbar ^2 \implies \ \gamma = \pm \hbar
+\]
+
+Za \( \gamma = \hbar \) dobimo sistem
+
+\[ \begin{bmatrix}
+0 & - \mathrm{i}\hbar \\
+\mathrm{i} \hbar & 0
+    \end{bmatrix} \begin{bmatrix} \alpha \\ \beta \end{bmatrix} = \hbar \begin{bmatrix} \alpha \\ \beta \end{bmatrix},
+\]
+
+ki nam poda enakost \( \beta = \mathrm{i} \alpha \) in pripadajoč lastni vektor je \( (1, \mathrm{i}) \). V Diracovem zapisu tako dobimo direktno enak rezultat kot v prejšnjem poglavju
+
+\[ \left| m = 1 \right\rangle = \frac{1}{\sqrt{2}} \left( \left| 10 \right\rangle + \mathrm{i} \left| 01 \right\rangle\right).
+\]
+
+Drug lastni vektor je \( (\mathrm{i}, 1) \), kjer pa se stanje v Diracovem zapisu razlikuje v fazi, vendar to ni problem, saj
+
+\[ \left| m = -1 \right\rangle  = \frac{1}{\sqrt{2}} \left( \mathrm{i} \left| 10 \right\rangle  + \left| 01 \right\rangle\right) = \mathrm{i} \frac{1}{\sqrt{2}} \left( \left| 10 \right\rangle - \mathrm{i} \left| 01 \right\rangle\right)
+\]
