@@ -107,3 +107,178 @@ Drug lastni vektor je \( (\mathrm{i}, 1) \), kjer pa se stanje v Diracovem zapis
 
 \[ \left| m = -1 \right\rangle  = \frac{1}{\sqrt{2}} \left( \mathrm{i} \left| 10 \right\rangle  + \left| 01 \right\rangle\right) = \mathrm{i} \frac{1}{\sqrt{2}} \left( \left| 10 \right\rangle - \mathrm{i} \left| 01 \right\rangle\right)
 \]
+* Vrtilna količina
+** Teorija
+
+Operator vrtilne količine je definirana kot
+
+\[ \vec{L} = \vec{r} \times \vec{p}.
+\]
+
+Vrtilna količina ima tri komponente \( L_x, L_y \) in \( L_z \), ki med seboj ne komutirajo, saj velja \( \left[ L_{\alpha}, L_{\beta} \right]= \mathrm{i} \hbar \sum\limits_{\alpha \beta \gamma}^{} L_{\gamma}  \). Velikost vrtilne količin je enaka \( L ^2 = \vec{L} ^2 \), ki pa komutira s posameznimi komponentami \( \left[ L ^2, L_{\alpha} \right] = 0 \).
+
+Posledično velja tudi \( \left[ L ^2, L_z \right] = 0 \). Operator \( L ^2 \), ki vpliva na lastno stanje \( \left| lm \right\rangle \), nam da enakost
+
+\[ L ^2 \left| lm \right\rangle  = \hbar ^2 l (l + 1) \left| lm \right\rangle.
+\]
+
+Lastno stanje istega stanja operatorja \( L_z \) pa ima lastno vrednost
+
+\[ L_z \left| lm \right\rangle  = \hbar m \left| lm \right\rangle.
+\]
+
+Stanja \( \left| lm \right\rangle \) so predstavljena s sferičnimi harmoniki
+
+\[ Y_{lm}  \left( \theta, \phi \right) = P_{lm} \left( \cos \theta \right) e^{\mathrm{i} m \phi},
+\]
+
+kjer so \( P_{lm} (\cos \theta) \) Legendrovi polinomi.
+
+Definiramo tudi lestvična operatorja
+
+\[ L_{\pm} = L_x \pm \mathrm{i} L_y,
+\]
+
+za katera tudi velja \( L_+ = L_- ^{\dagger} \) in
+
+\[ L_{\pm} \left| lm \right\rangle = \hbar \sqrt{l(l + 1) - m (m \pm 1)} \left| l, m \pm 1 \right\rangle.
+\]
+
+Operatorja \( L_x \) in \( L_y \) lahko tudi izrazimo preko lestvičnih operatorjev in velja
+
+\begin{equation}
+\label{eq:2}
+ L_x = \frac{L_+ + L_-}{2}, \quad L_y = \frac{L_+ - L_-}{2 \mathrm{i}}
+\end{equation}
+
+** Naloga
+
+#+begin_problem
+Imamo delec z vrtilno količino \( l = 1 \) in magnetnim momentom \( \mu \), ki se nahaja v magnetnem polju \( \vec{B} = B \hat{e}_z \). Magnetni moment \( \vec{\mu} \) in magnetno polje med seboj tvorita kot \( \theta \).
+#+end_problem
+
+Hamiltonian delca z magnetnim momentom \( \vec{\mu} \) v zunanjem magnetnem polju \( \vec{B} = B \hat{e}_z \) je
+
+\[ H = - \vec{\mu} \cdot \vec{B} = - \lambda \vec{L} \cdot \vec{B}
+\]
+
+#+begin_note
+  Če je neko stanje \( \left| \psi \right\rangle \) lastno stanje operatorja \( \vec{L} \cdot \hat{e} \) tako, da velja
+
+  \[ \vec{L} \hat{e} \left| \psi \right\rangle = \hbar \left| \psi \right\rangle,
+  \]
+
+  potem pravimo, da vrtilna količina kaže v smeri \( \hat{e} \). Opomba, da je lastna vrednost tega stanja, največja možna lastna vrednost.
+#+end_note
+
+Zapišemo začetni pogoj \( \vec{L} \hat{e} \left| \psi, 0 \right\rangle = \hbar \left| \psi, 0 \right\rangle\), kjer \( \hat{e} \) kaže v smer, v katero je na začetku kazal magnetnim moment \( \vec{\mu} \). Predpostavimo lahko, da se je magnetnim moment \( \vec{\mu} \) na začetku nahajal v \( xz \)  ravnini, kar nam olajša zapis smeri \( \hat{e} \) v sferičnih koordinatah v
+
+\[ \hat{e} = \begin{bmatrix} \sin \theta \\ 0 \\ \cos \theta \end{bmatrix}
+\]
+
+Tretja komponenta vrtilne količine \( m \) zaseda vrednosti od \( -l \) do \( l \), kar pomeni, da moramo za določitev začetnega stanja najti vrednosti \( \alpha, \beta \) in \( \gamma \) v linearni kombinaciji
+
+\[ \left| \psi, 0 \right\rangle  = \alpha \left| 1,- 1 \right\rangle + \beta \left| 1, 0 \right\rangle + \gamma \left| 1,  1 \right\rangle
+\]
+
+Naš sistem je lastno stanje Hamiltoniana
+
+\[ H \left| 1 m \right\rangle  = - \lambda B \hbar m \left| 1m \right\rangle,
+\]
+
+kar pomeni, da lahko začetno stanje razvijemo po času
+
+\[ \left| \psi, t \right\rangle = \alpha \exp \left\{ \mathrm{i} \lambda B  (-1) \right\} \left| 1, -1 \right\rangle + \beta \exp \left\{ - \mathrm{i} \lambda B \cdot 0 \right\} \left| 10 \right\rangle + \gamma \exp \left\{ \mathrm{i} \lambda B (+1) \right\} \left| 11 \right\rangle
+\]
+
+\( \vec{L} \hat{e} \) lahko po definiciji skalarnega produkta zapišemo kot
+
+\[ \left( \vec{L} \cdot \hat{e} \right) = L_x \sin \theta + L_z \cos \theta.
+\]
+
+Na začetno stanje vplivamo s tem operatorjem in dobimo
+
+\begin{equation}
+\label{eq:3}
+ \left( \vec{L} \cdot \hat{e} \right) \left| \psi, 0 \right\rangle = \left( L_x \sin \theta + L_z \cos \theta \right) \left[ \alpha \left| 1, -1 \right\rangle + \beta \left| 1, 0 \right\rangle + \gamma \left| 1, 1 \right\rangle\right] = \hbar \left( \alpha \left| 1, -1  \right\rangle + \beta \left| 1, 0 \right\rangle + \gamma \left| 1, 1 \right\rangle\right)
+\end{equation}
+
+
+Za olajšanje kasnejših računov, si izračunajmo vmesne vrednosti, ki jih povzročijo operatorji \( L_+, L_- \) in \( L_z \) na stanja \( \left| 1, -1 \right\rangle, \left| 1, 0 \right\rangle\) in \( \left| 1, 1 \right\rangle \).
+
+- Operator \( L_+ \) poda vrednosti
+
+  \begin{align*}
+    L_+ \left| 1, - 1 \right\rangle &= \sqrt{2} \hbar \left| 1, 0 \right\rangle \\
+        L_+ \left| 1, 0 \right\rangle &= \sqrt{2} \hbar \left| 1, 1 \right\rangle \\
+        L_+ \left| 1, 1 \right\rangle &= 0
+  \end{align*}
+
+  \( L_+ \) bi pri stanju \( \left| 1, 1 \right\rangle \) ustvaril stanje \( \left| 1, 2 \right\rangle \), ki pa zaradi omejitve \( m \) ni mogoče in to težavo nam reši lastna vrednost stanja, saj je enaka \( 0 \).
+
+- Operator \( L_- \) poda vrednosti
+
+  \begin{align*}
+    L_- \left| 1, -1 \right\rangle  &= 0 \\
+        L_- \left| 1, 0 \right\rangle &= \sqrt{2} \hbar \left| 1, -1 \right\rangle \\
+        L_- \left| 1, 1 \right\rangle &= \sqrt{2} \hbar \left| 1, 0 \right\rangle
+  \end{align*}
+
+- Operator \( L_z \) poda vrednosti
+
+  \begin{align*}
+    L_z \left| 1, -1 \right\rangle &= - \hbar \left| 1, - 1 \right\rangle \\
+        L_z   \left| 1, 0 \right\rangle &= 0 \\
+        L_z \left| 1, 1 \right\rangle &= \hbar \left| 1, 1 \right\rangle
+  \end{align*}
+
+Z dobljenimi vrednostmi lahko sedaj preko enačbe \ref{eq:2} izrazimo \( L_x \) in \( L_y \)
+
+\begin{align*}
+  L_x \left| 1, -1 \right\rangle &= \\
+L_x \left| 1,  0\right\rangle &= \\
+L_x \left| 1, 1 \right\rangle &=
+\end{align*}
+
+Posledično lahko enačbo \ref{eq:3} posodobimo v
+
+\[ \left( L_x \sin \theta + L_z \cos \theta \right) \left( \alpha \left| 1, -1 \right\rangle + \beta \left| 1, 0 \right\rangle + \gamma \left| 1, 1 \right\rangle\right) = \alpha \sin \theta \frac{\sqrt{2}}{2} \hbar \left| 1, 0 \right\rangle + \beta \sin \theta \frac{\sqrt{2}}{2} \hbar \left( \left| 1, 1 \right\rangle + \left| 1, -1 \right\rangle\right) + \gamma \sin \theta \frac{\sqrt{2}}{2} \hbar \left| 1, 0 \right\rangle - \cos \theta \hbar \left| 1, -1 \right\rangle - \gamma \cos \theta \hbar \left| 1, 1 \right\rangle
+\]
+
+Dobimo sistem enačb, za katerega predpostavimo, da je rešljiv, ker nimamo časa tega dokazovati (?)
+
+\begin{align*}
+  \left\langle 1, - 1 \right|: \quad \alpha \hbar &= \beta \sin \theta \frac{\sqrt{2}}{2} \hbar - \cos \theta \alpha \hbar \\
+\left\langle 1, 0 \right|: \quad \beta \hbar &= \alpha \sin \theta \frac{\sqrt{2}}{2} \hbar + \gamma \theta  \frac{\sqrt{2}}{2} \hbar \\
+\left\langle 1, 1 \right|: \quad \gamma\hbar &= \beta \sin \theta \frac{\sqrt{2}}{2} \hbar + \gamma \cos \theta \hbar
+\end{align*}
+
+Ta sistem nam ne more podati določiti vseh konstant, zato bomo iz prve in tretje enačbe preko polovičnih kotov določili \( \alpha \) in \( \gamma \) kot
+
+\[ \alpha = \frac{\beta \sin \theta \frac{\sqrt{2}}{2}}{1 + \cos \theta} = \frac{\sqrt{2}}{2} \beta \tan \frac{\theta}{2}, \quad \gamma = \frac{\beta \sin \theta \frac{\sqrt{2}}{2}}{1 - \cos \theta} = \frac{\sqrt{2}}{2} \beta \mathrm{ctg} \frac{\theta}{2}
+\]
+
+Konstanto \( \beta \) bomo določili preko normalizacije. Osnovno stanje je tako
+
+\[ \left| \psi, 0 \right\rangle = \frac{\sqrt{2}}{2} \beta \tan \frac{\theta}{2} \left| 1, - 1 \right\rangle + \beta \left| 1, 0 \right\rangle + \frac{\sqrt{2}}{2} \beta \mathrm{ctg} \frac{\theta}{2} \left| 1, 1 \right\rangle
+\]
+
+In iz normalizacije sledi
+
+\begin{align*}
+  \left\langle \psi, 0 \middle| \psi, 0 \right\rangle &= \left| \beta \right| ^2 \left( \left[ \frac{\sqrt{2}}{2} \tan \frac{\theta}{2} \right] ^2 + \left[ \frac{\sqrt{2}}{2} \mathrm{ctg} \frac{\theta}{2} \right] ^2 \right) \\
+&= \left| \beta \right| ^2 \left( \frac{\sin ^4 \frac{\theta}{2} + 2 \cos  ^2 \frac{\theta}{2} \sin ^2 \frac{\theta}{2} + \cos ^4 \frac{\theta}{2}}{2 \cos ^2 \frac{\theta}{2} \sin ^2 \frac{\theta}{2}} \right) \\
+&= \left| \beta \right| ^2 \frac{1}{2 \cos ^2 \frac{\theta}{2} \sin ^2 \frac{\theta}{2}},
+\end{align*}
+
+da je \( \beta = \sqrt{2} \cos \frac{\theta}{2} \sin \frac{\theta}{2} \).
+
+Začetno stanje je torej
+
+\[ \left| \psi, 0 \right\rangle  = \sin ^2 \frac{\theta}{2} \left| 1, - 1 \right\rangle + \sqrt{2} \cos  \frac{\theta}{2} \sin \frac{\theta}{2} \left| 1, 0 \right\rangle + \cos ^2 \frac{\theta}{2} \left| 1, 1 \right\rangle,
+\]
+
+katerega časovni razvoj je
+
+\[ \left| \psi, t \right\rangle  = \sin ^2 \frac{\theta}{2} \exp \left\{ - \mathrm{i} \lambda B t \right\} \left| 1, - 1 \right\rangle + \sqrt{2} \cos  \frac{\theta}{2} \sin \frac{\theta}{2} \left| 1, 0 \right\rangle + \cos ^2 \frac{\theta}{2} \exp \left\{ \mathrm{i} \lambda B t \right\} \left| 1, 1 \right\rangle.
+\]
