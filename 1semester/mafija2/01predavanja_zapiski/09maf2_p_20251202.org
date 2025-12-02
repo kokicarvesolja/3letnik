@@ -1,0 +1,40 @@
+#+title: 9. predavanje iz Matematične fizike 2
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Sturm-Liouvilleov problem
+** Cilindrični koordinatni sistem
+
+Rešujemo Laplaceovo enačbo v cilindričnih koordinatah
+
+\[ \nabla ^2 u =0.
+\]
+
+Problem bomo reševali s separacijo spremenljivk \( u(r, \phi, z) = R(r) \Phi(\phi) Z(z) \). Kot primer, na katerem rešujemo naš problem, je cilinder polmera \( a \) in širine \( a \) z Dirichletovimi robnimi pogoji na vseh ploskvah razen na zgornji, kjer imamo funkcijo \( f(r, \phi) \).
+
+V smeri \( \phi \) bo zaradi periodičnosti problema baza rešitev \( \left\{ \cos (m\phi), \sin (m\phi) \right\} \). V koordinati \( r \) bomo imeli neko oscilirajočo rešitev, ki zadosti Dirichletovim robnih pogojom - baza rešitev bodo Besselove funkcija \( J_m \left( \xi_{m, n} \frac{r}{a} \right) \).
+
+Do baze rešitve v \( z \) smeri pridemo preko naslednjega razmisleka: iščemo funkcijo(-e) \( h( \alpha z), \alpha \in \mathbb{C} \), ki bo zadostila Laplaceovi enačbi in se bo njen odvod odštel z odvodom radialnega dela v nič. Drugače povedano, razlika funkcij \( u_{zz} \sim \alpha ^2 h(z) J_m   \) in \( \nabla_r ^2 u \sim - \frac{\xi_{m, n} ^2}{a ^2} h(z) J_m \) bo ničelna.
+
+Drugi odvod oscilirajoče funkcije je negativen, zato je \( \nabla_r ^2 u \) negativno predznačena.
+
+Preproste funkcije, ki jih poznamo in za njih velja \( \frac{\mathrm{d} ^2 h}{\mathrm{d} z ^2} = h(z) \) so kotne in hiperbolične funkcije. Drugi odvod kotnih funkcij je drugačno predznačen, kakor njihova osnovna funkcija, kar pomeni, da so edino eksponentne funkcije take, ki zadostijo našim zahtevam.
+
+Baza funkcijo v \( z \) smeri je torej \( \left\{ \mathrm{ch} \left( \frac{\xi_{m, n}}{a} z \right), \mathrm{sh} \left( \frac{\xi_{m, n}}{a} z \right) \right\} \). Robnemu pogoju \( u(r, \phi, a) = f(r, \phi) \) zadosti zgolj hiperbolični sinus.
+
+Nastavek bo torej oblike
+
+\[ u(r, \phi, z) = \sum\limits_{m = 0}^{\infty} \sum\limits_{n = 1}^{\infty} J_m \left( \xi_{m, n} \frac{r}{a} \right) \mathrm{sh} \left( \frac{\xi_{m, n}}{a} z \right) \left[ \alpha_{m, n} \cos (m \phi) + \beta_{m, n} \sin (m \phi) \right]
+\]
+
+V primeru, če bi imeli funkcijski robni pogoj na plašču, torej \( u(a, \phi, z) = f(\phi, z) \) in drugje \( u(r, \phi, 0) = u(r, \phi, h) = 0 \), potem preko analognega razmisleka pridemo do nastavka
+
+\[ u(r, \phi, z) = \sum\limits_{m = 0}^{\infty} \sum\limits_{n = 1}^{\infty} \sin \left( \frac{\pi n z}{h} \right) I \left( \frac{n \pi}{h} r \right)  \left[ \alpha_{m, n} \cos (m \phi) + \beta_{m, n} \sin (m \phi) \right],
+\]
+
+kjer je \( I \) modificirana Besselova funkcija.
