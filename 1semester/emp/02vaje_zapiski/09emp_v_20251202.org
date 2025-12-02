@@ -102,6 +102,116 @@ a) Pokaži, da impedanco traku v opisani postavitvi lahko zapišemo kot
 b) Izračunaj faktor, za katerega se pri visokih frekvencah (zaradi kožnega pojava) upornost traku poveča glede na njegovo statično upornost. Kolikšna pa je upornost traku pri nizkih frekvencah?
 #+end_problem
 
+Indukcijski zakon v diferencialni obliki je
+
+\begin{equation}
+\label{eq:2}
+ \nabla \times \vec{E} = - \frac{\partial \vec{B}}{\partial t}.
+\end{equation}
+
+Hkrati vzamemo še eno Maxwellovo enačbo, ki smo jo zapisali prejšnji teden
+
+\[ \nabla \times \vec{B} = \mu_0 \vec{\jmath} + \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t} \simeq \mu_0 \vec{\jmath}
+\]
+
+Za naš primer obravnavamo kvazi-statično aproksimacijo, kar pomeni, da \( \frac{\partial \vec{E}}{\partial t}  = 0 \). Gostota električnega toka \( \vec{\jmath} \) pa je z električnim poljem zapisana kot
+
+\[ \vec{\jmath} = \sigma \vec{E}
+\]
+
+Rotor enačbe \ref{eq:2} nam z upoštevanjem identitete za \( \nabla \times \left( \nabla \times \vec{E} \right) \) poda enakost
+
+\[ \nabla \times \left( \nabla \times \vec{E} \right) = \nabla \left( \underbrace{\nabla \cdot \vec{E}}_{= 0} \right) - \nabla ^2 \vec{E} = - \mu_0 \sigma \frac{\partial \vec{E}}{\partial t} = - \frac{\partial }{\partial t} \nabla \times \vec{B}
+\]
+
+Dobimo difuzijsko enačbo
+
+\begin{equation}
+\label{eq:3}
+ \nabla ^2 \vec{E} - \mu_0 \sigma \frac{\partial \vec{E}}{\partial t}  = 0.
+\end{equation}
+
+Trak je priključen na izmenično napetost, ki jo zapišemo
+
+\[ U = U_0 e^{\mathrm{i} \omega t}.
+\]
+
+Posledično bo podobno odvisnost imela tudi jakost električnega polja, kar pomeni, da \( \frac{\partial \vec{E}}{\partial t} = \mathrm{i} \omega \vec{E} \). Difuzijska enačba \ref{eq:3} postane
+
+\[ \nabla ^2 \vec{E} - \mathrm{i} \omega \mu_0 \vec{E} = \nabla ^2 \vec{E} - \kappa ^2 \vec{E} = 0,
+\]
+
+kjer smo definirali \( \kappa = \sqrt{\mathrm{i} \omega \mu_0 \sigma} = \frac{1}{\sqrt{2}} \left( 1 + \mathrm{i} \right) \sqrt{\omega \mu_0 \sigma}  \). Ker se nahajamo na traku, kjer sta širina in višina traka precej manjši od dolžine traku, lahko zanemarimo odvoda po \( x \) in \( y \) v Laplaceovem operatorju. Izmenjujoč tok teče po dolžini traku, torej \( \vec{E} = E(x) \hat{e}_z \). Posledično rešujemo enačbo
+
+\[ E_z '' - \kappa ^2 E_z = 0.
+\]
+
+Zaradi simetrije preko \( y \) osi, ko tok teče samo po površini prevodnega traku, bo pomenilo, da zavržemo hiperbolični sinus zaradi lihosti.
+
+\[ E_z (x) = A \mathrm{ch} (\kappa x) .
+\]
+
+Konstanto \( A \) določimo iz robnih pogojev \( E_z \left( x = \pm \frac{a}{2} \right) = E_0 \), iz česar sledi, da je električno polje
+
+\[ E_{z, 0} (x) = \frac{E_0}{\mathrm{ch} \left( \frac{\kappa a}{2} \right)} \mathrm{ch} \left( \kappa x \right)
+\]
+
+[[file:figures/20KozniPojavE.png]]
+
+Izračunajmo še tok \( I \) in iz njega impedanco \( Z \).
+
+Tok bomo izračunali preko gostote električnega toka
+
+\[ I_0 = \int\limits_{}^{} j_0 \, \mathrm{d} S,
+\]
+
+kjer je \( j_0 = \sigma E_{z, 0} \).
+
+Integral je torej
+
+\begin{align*}
+  I_0 &= \sigma \int\limits_{- \frac{a}{2}}^{\frac{a}{2}} \frac{E_0}{\mathrm{ch} \frac{\kappa a}{2}} \mathrm{ch} \left( \kappa x \right) b \, \mathrm{d} x \\
+&= \left. \frac{\sigma E_0 b}{\kappa \mathrm{ch} \left( \frac{\kappa a}{2} \right)} \mathrm{sh} \left( \kappa x \right) \right|_{- \frac{a}{2}}^{\frac{a}{2}} \\
+&= \frac{\sigma E_0 b}{\kappa \mathrm{ch} \left( \frac{\kappa a}{2} \right)} 2 \mathrm{sh} \left( \frac{\kappa a}{2} \right)
+\end{align*}
+
+Tok po površini traku je torej
+
+\[ I_0 = \frac{2 \sigma E_0 b}{\kappa} \mathrm{th} \frac{\kappa a}{2}.
+\]
+
+Napetost po površini traku je samo
+
+\[ U_0 = E_0 l,
+\]
+
+kar pomeni, da je impedanca po definiciji
+
+\[ Z = \frac{U_0}{I_0} = R \frac{\frac{\kappa a}{2}}{\mathrm{th} \left( \frac{\kappa a}{2} \right)} ,
+\]
+
+kjer smo definirali \( R = \frac{\xi l}{S} = \frac{l}{\sigma a b} \).
+** Točka b
+
+Uporabna bo zveza razvoja hiperboličnega tangensa za majhne \( x \):
+
+\[ \mathrm{th} x = x - \frac{x ^3}{3!} + \ldots
+\]
+
+Za majhne frekvence \( \omega \) velja \( \kappa \ll \frac{1}{a} \). Posledično je
+
+\[ Z = R
+\]
+
+Za visoke frekvence \( \omega \) pa velja \( \kappa \ll \frac{1}{a} \), iz česar sledi \( \kappa a \gg 1 \). Hiperbolični tangens je \( \mathrm{th} \frac{\kappa a}{2} \approx 1 \). Impedanca je tako
+
+\[ Z = R \frac{\kappa a}{2} = \frac{R a \frac{1}{\sqrt{2}} \left( 1 + \mathrm{i} \right) \sqrt{\omega \mu_{0} \sigma}}{2}
+\]
+
+Impedanca za visoke frekvence je tako
+
+\[ Z_R = \frac{R a}{2 \sqrt{2}} \sqrt{\omega \mu_{0} \sigma}
+\]
 
 * Energijski tok v koaksialnem vodniku in v valjastem vodniku
 #+begin_problem
