@@ -9,6 +9,10 @@
 #+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
 * Upornost prevodne ploščice
 
+#+begin_problem
+Iz kovinske plošče debeline \( d \) s specifično prevodnostjo \( \sigma \) izrežemo ploščico v obliki polovice kolobarja z notranjim polmerom \( r_1 \) in zunanjim polmerom \( r_2 \). Na ravni stranici ploščice naparimo elektrodi iz zelo dobrega prevodnika, mednju pa priključimo izvor konstantne napetosti \( U_0 \), kakor prikazuje slika. Določi potencial električnega polja v ploščici in s pomočjo tega izračunaj upor ploščice.
+#+end_problem
+
 [[file:figures/08upornostPrevodnePloscice.png]]
 
 Napišemo EMP-jevsko različico Ohmovega zakona, ki je stacionarni tok
@@ -54,7 +58,7 @@ Tokrat si bomo ogledali tudi rešitev za \( m = 0 \), saj nimamo periodične sit
 
 ter
 
-\[ \Phi '' + \cancel{m ^2 \Phi} = 0 \implies \Phi + a \phi + b
+\[ \Phi '' + \cancel{m ^2 \Phi} = 0 \implies \Phi = a \phi + b
 \]
 
 Splošno rešitev \ref{eq:2} razširimo z dobljenimi rezultati
@@ -71,25 +75,25 @@ Desno elektrodo postavimo na potencial \( 0 \), torej bo naš prvi robni pogoj
 U \left( r, 0 \right) = 0.
 \end{equation}
 
-Drugi robni pogoj je leva elektroda, ki mora biti na manjše potencialu, da tok teče (?)
+Drugi robni pogoj je leva elektroda, ki mora biti na manjšem potencialu, zato da tok teče v smeri naraščajočega kota \( \phi \).
 
 \begin{equation}
 \label{eq:4}
 U (r, \pi) = - U_0.
 \end{equation}
 
-Električni tok teče tangentno na polmer in zahtevamo, da na ukrivljenih delih ploščice ne odhaja ven - torej bo radialna gostota električnega toka in električnega polja ničelna.
+Električni tok teče tangentno na polmer in zahtevamo, da na ukrivljenih delih ploščice ne odhaja ven - torej bosta radialna gostota električnega toka in jakost električnega polja ničelna.
 
 \begin{align} \label{eq:tok}
  \vec{\jmath}_r (r_{1, 2} \phi)&= 0  \\ \label{eq:polje}
 E_r (r_{1, 2}) &= 0
 \end{align}
 
-Enačba \ref{eq:polje} poda robni pogoj
+Enačba \ref{eq:polje} poda robni pogoj po definiciji potenciala
 
 \begin{equation}
 \label{eq:5}
-\frac{\partial U}{\partial r}  (r_{1, 2}, \phi) = 0.
+E_r = - \frac{\partial U}{\partial r}  (r_{1, 2}, \phi) = 0.
 \end{equation}
 
 Zaradi radialne neodvisnosti pomeni, da bo naša splošna rešitev \ref{eq:6} tudi neodvisna od radija. Posledično bodo členi \( C_m \), \( D_m \) in \( c \) enaki \( 0 \). Preostane nam torej enačba
@@ -114,21 +118,39 @@ Tok bomo poračunali preko gostote električnega toka
 \[ I = \int\limits_{}^{} \vec{\jmath} \cdot \mathrm{d} \vec{S}.
 \]
 
-Diferencial površine \( \mathrm{d} S \) je produkt debeline ploščice in diferenciala radija \( h \mathrm{d} r \). Električno gostoto toka \( \vec{\jmath} \) dobimo preko enačbo
+Diferencial površine \( \mathrm{d} S \) je produkt debeline ploščice in diferenciala radija \( h \mathrm{d} r \). Električno gostoto toka \( \vec{\jmath} \) dobimo preko enačbe
 
 \[ \vec{\jmath} = \sigma E_{\phi},
 \]
 
-kjer bomo električno polje pridobili preko enačbo
+kjer je jakost električnega polja v odvisnosti od kota \( \phi \) podana z definicijo potenciala v cilindričnih koordinatah
 
 \[ E_{\phi} = - \frac{1}{r} \frac{\partial U}{\partial \phi}.
 \]
 
-Torej tok bo
+Tok bo torej
 
 \[ I = - \int\limits_{r_1}^{r_2}  \sigma \frac{1}{r} \frac{\partial U}{\partial \phi}  h \, \mathrm{d} r = - \int\limits_{r_1}^{r_2} \frac{\sigma}{r} \left( - \frac{U_0}{\pi} \right) h \, \mathrm{d} r = + \frac{\sigma U_0 h}{\pi} \int\limits_{r_1}^{r_2} \frac{\mathrm{d} r}{r} = \frac{\sigma U_0 h}{\pi} \ln \frac{r_2}{r_1}.
 \]
 * Cabrerov eksperiment
+
+#+begin_problem
+Blas Cabrera je leta 1982 poročal o eksperimentu, v katerem je v 151 dneh opazovanja domnevno zaznal magnetni monopol. Za zaznavo magnetnega monopola je uporabil krožno kovinsko zanko v superprevodnem stanju, skozi katero je meril električni tok. Predpostavi, da magnetni monopol z magnetnim nabojem \( g \) potuje s hitrostjo \( v \) po osi takšne krožne zanka polmera \( a \) in induktivnosti \( L \).
+
+a) Izračunaj in nariši časovni potek magnetnega pretoka skozi zanko. Magnetno polje monopola je v točki \( \vec{r} \) glede na monopol podano z enačbo
+
+   \[ \vec{B} (\vec{r}) = \frac{\mu_0 g}{4 \pi} \frac{\vec{r}}{r}
+   \]
+
+b) Izračunaj in nariši časovni potek v zanki induciranega električnega toka. Posplošeno Faradayjev zakon za primer obstoja magnetnih monopolov zapišemo kot
+
+   \[ \nabla \times \vec{E} = - \frac{\partial B}{\partial t}  - \mu_0 \vec{\jmath}_m,
+   \]
+
+   kjer je \( \vec{\jmath}_m \) vektor gostote toka magnetnih nabojev.
+
+c) Iz rezultata pod b) sledi, da pri prečkanju magnetnega monopola magnetni pretok skozi zanko skoči za vrednost \( \mu_0 g \). Pokaži, da to ustreza ravno dvema kvantoma magnetnega pretoka \( \frac{h}{e} \). Kvantizacijo magnetnega pretoka po Diracu zapišemo kot \( \frac{1}{2} \mu_0 g e = h \).
+#+end_problem
 
 [[file:figures/08CabrerovEksperiment.png]]
 
@@ -188,7 +210,7 @@ Posplošen Amperov zakon ima obliko
 \[ \nabla \times \vec{B} = \mu_0 \vec{\jmath} + \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t},
 \]
 
-in nam bo služil kot inspiracija modificirano Maxwellovo enačbo, kjer smo ji dodali člen \( \mu_0 \vec{\jmath}_m \), kjer je \( \vec{\jmath}_m  \) gostota magnetnega toka ob predpostavki, da je obstajajo monopoli. Enačba se bo tako glasila
+in nam bo služil kot inspiracija za modificirano Maxwellovo enačbo, ki smo ji dodali člen \( \mu_0 \vec{\jmath}_m \). \( \vec{\jmath}_m  \) je gostota magnetnega toka ob predpostavki, da je obstajajo monopoli. Enačba se bo tako glasila
 
 \[ \nabla \times \vec{E} = - \frac{\partial \vec{B}}{\partial t}  - \mu_0 \vec{\jmath}_m
 \]
@@ -220,6 +242,17 @@ Magnetni pretok in magnetni tok ob času \( t = - \infty \) sta ničelna. Enačb
 \[ - L I(t) = \Phi(t) + \mu_0 g \Theta(t)
 \]
 * Induciran tok v okvirju
+
+#+begin_problem
+Kvadratni okvir iz tankega vodnika postavimo med dva vzporedna dolga tanka ravna vodnika, tako da ravnina okvirja sovpada z ravnino, ki jo definirata vodnika, diagonala okvirja je pravokotna na vodnika, skrajni točki okvirja pa se ravno še ne dotikata vodnikov (glej prvo sliko). Razdalja med dolgima vodnikoma in dolžina diagonale okvirja znašata po \( d \).
+
+a) Pokaži, da je medsebojna induktivnost okvirja in para vodnikov
+
+   \[ L_{12} = \frac{2 \ln 2}{\pi} \mu_0 d
+   \]
+b) Okvir napajamo z izmeničnim tokom amplitude \( I_1 \). Kakšna je amplituda toka \( I_2 \), ki se inducira v vzporednih vodnikih, če ju daleč stran sklenemo (druga slika)? Pri tem delu naloge upoštevaj, da imata vodnika debelino \( 2a \) in dolžino \( l \), tako da je \( a \ll d \) in \( l \gg d \). Rezultat za \( \frac{I_2}{I_1} \) izrazi s parametri \( d, a \) in \( l \)  in ga numerično izvrednosti za \( \frac{l}{d} = \frac{d}{a} = 10 \).
+#+end_problem
+
 ** Točka a
 
 Magnetni pretok prve zanke označimo \( \Phi_1 \), po kateri teče tok \( I_1 \), ki gre skozi zanko.
@@ -238,7 +271,7 @@ kjer je \( L_{21} \) vzajemna induktivnost.
 
 Induktivnost je po definiciji, ki bo še izpeljano na predavanjih, enaka
 
-\[ L_{ij} = \frac{\mu_0}{4 \pi} \oiint\limits_{}^{} \frac{\mathrm{d} \vec{l}_i \cdot \mathrm{d} \vec{l}_j}{ \left| \vec{r}_i - \vec{r}_j \right|}.
+\[ L_{ij} = \frac{\mu_0}{4 \pi} \oint\limits_{}^{} \frac{\mathrm{d} \vec{l}_i \cdot \mathrm{d} \vec{l}_j}{ \left| \vec{r}_i - \vec{r}_j \right|}.
 \]
 
 Iz tega sledi, da je vzajeman induktivnost enaka med obema žicama \( L_{ij} = L_{ji} \).
@@ -263,12 +296,17 @@ Zaradi simetrije bomo integrirali samo do polovice višine kvadrata (drugače bi
 \[ \Phi_2 = 2 \frac{\mu_0 I_1}{2 \pi} \int\limits_0^{\frac{d}{2}} \left( \frac{1}{y} + \frac{1}{d - y} \right) 2y \mathrm{d} y
 \]
 
-I_1ntegrand postavimo na isti imenovalec
+Integrand postavimo na isti imenovalec
 
 \[ \Phi_2 = 2 \frac{\mu_0 I_1}{\pi} \int\limits_0^{\frac{d}{2}} \frac{d - y + y}{y (d - y)} y \, \mathrm{d} y  = \frac{2 \mu_0 d}{\pi} \int\limits_0^{\frac{d}{2}} (-1) \frac{\mathrm{d}(d - y)}{d - y} = \left. - \frac{2 \mu_0 I_1 d}{ \pi} \ln \left( d - y \right) \right|_0^{\frac{d}{2}}
 \]
 
 Magnetni pretok je tako enak
 
-\[ \Phi_2 = - \frac{2 \mu_0 I_1 d}{\pi} \ln 2
+\[ \Phi_2 = \frac{2 \mu_0 I_1 d}{\pi} \ln 2,
+\]
+
+kar pomeni, da je vzajemna induktivnost
+
+\[ L_{21} = 2\ln 2 \frac{\mu_0 d}{ \pi}
 \]
