@@ -1,0 +1,184 @@
+#+title: 11. predavanje iz Kvantne mehanike
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Teorija motenj
+
+Hamiltonian razstavimo na dva dela - na Hamiltonian \( H_0 \), ki predstavlja Keplerjevo gibanje in pa perturbacijo \( H_1 = \lambda \hat{V} \), kjer \( V \ne V(t) \)
+
+\[ H = H_0 + H_1.
+\]
+
+Rešitve Keplerjevega že poznamo, to so lastne energije enačbe
+
+\[ H_0 \left| n^0 \right\rangle = E_n^{(0)} \left| n^0 \right\rangle,
+\]
+
+kjer je \( \left\{ \left| n^0 \right\rangle \right\} \) nedegenerirana baza, za katero velja
+
+\[ \left\langle m^0 \middle| n^0 \right\rangle  = \delta_{mn}.
+\]
+
+Za Hamiltonian s perturbacijo pa rešujemo enačbo
+
+\begin{equation}
+\label{eq:1}
+ H \left| n \right\rangle = E_n \left| n \right\rangle,
+\end{equation}
+
+kjer je vektor \( \left| n \right\rangle = \left| n^0 \right\rangle + \lambda \left| n^0 \right\rangle + \lambda ^2 \left| n^0 \right\rangle \) in lastne energije zapišemo kot
+
+\[ E_n = E_n^{(0)} + \lambda E_n ^{(1)} + \lambda ^2 E_n ^{(2)} + \ldots.
+\]
+
+Postavimo pogoj normiranosti, da velja \( \left\langle n \middle| n^0 \right\rangle = 1 \), iz česar direktno sledi \( \left\langle n^0 \middle| n^j \right\rangle = 0 \) za \( j \ne 0 \). Nastavka za vektor \( \left| n \right\rangle \) in energijo vstavimo v enačbo \ref{eq:1}
+
+\[ \left( H_0 + \lambda V \right) \left( \left| n^0 \right\rangle + \lambda \left| n \right\rangle + \lambda ^2 \left| n^2 \right\rangle + \ldots \right) = \left( E_n^{(0)}+ \lambda E_n^{(1)}+ \lambda ^2 E_n ^{(2)} + \ldots \right) \left( \left| n^0 \right\rangle + \lambda \left| n^1 \right\rangle + \lambda ^2 \left| n^2 \right\rangle + \ldots \right), \ \forall \lambda
+\]
+
+Dobimo sistem sklopljenih enačb
+
+\begin{align*}
+  \lambda^0: \quad H_0 \left| n^0 \right\rangle &= E_n ^{(0)} \left| n^0 \right\rangle \\
+  \lambda^1: \quad H_0 \left| n^1 \right\rangle + V \left| n^0 \right\rangle &= E_n ^{(0)} \left| n^1 \right\rangle + E_n ^{(1)} \left| n^0 \right\rangle \\
+  \lambda^2: \quad H_0 \left| n^2 \right\rangle + V \left| n^1 \right\rangle &= E_n ^{(0)} \left| n^2 \right\rangle + E_n ^{(1)} \left| n^1 \right\rangle + E_n ^{(2)} \left| n^0 \right\rangle\\
+& \vdots\\
+  \lambda^j: \quad H_0 \left| n^j \right\rangle + V \left| n^{j - 1} \right\rangle &= E_n ^{(0)} \left| n^j \right\rangle + \ldot s+ E_n ^{(j)} \left| n^0 \right\rangle
+\end{align*}
+
+V prvem približku \( \lambda^1 \), ko množimo s funkcionalom \( \left\langle n^0 \right| \) in z upoštevanjem definiranosi skalarnega produkta
+
+\begin{align*}
+ \left\langle n^0 \middle| H_0 \middle| n^1 \right\rangle + \left\langle n^0 \middle| V \middle| n^0 \right\rangle &= E_n^{(0)} \left\langle n^0 \middle| n^1 \right\rangle + E_n ^{(1)} \left\langle n^0 \middle| n_1 \right\rangle \\
+E_n ^{(0)} \underbrace{\left\langle n^0 \middle| n^1 \right\rangle}_{= 0 } + V_{nn} &= E_n ^{(0)} \underbrace{\left\langle n^0 \middle| n^1 \right\rangle}_{= 0} + E_n ^{(1)}
+\end{align*}
+
+Iz tega sledi, da je energija v prvem redu
+
+\[ E_n^{(1)} = \left\langle n^0 \middle| V \middle| n^0 \right\rangle = V_{nn}
+\]
+
+Baza \( \left| m^0 \right\rangle \) je ortonormirana, saj velja
+
+\[ \sum\limits_m^{} \left| m^0 \right\rangle \left\langle m^0 \right| = I.
+\]
+
+Vektor \( \left| n^1 \right\rangle \) torej zapišemo kot
+
+\[ \left| n^1 \right\rangle = \sum\limits_{m \ne n}^{} \left| m^0 \right\rangle \left\langle m^0 \middle| n^1 \right\rangle,
+\]
+
+kjer skalarni produkt predstavlja koeficient. Ponovno vzamemo enačbe prvega približka, vendar jo tokrat množimo s funkcionalom \( \left\langle m^0 \right| \) in dobimo
+
+\begin{align*}
+  \left\langle m^0 \middle| H_0 \middle| n^1 \right\rangle + \left\langle m^0 \middle| V \middle| n^0 \right\rangle &= E_n ^{(0)} \left\langle m^0 \middle| n^1 \right\rangle + E_n ^{(1)} \underbrace{\left\langle m^0 \middle| n^0 \right\rangle}_{= 0} \\
+E_m ^0 \left\langle m^0 \middle| n^1 \right\rangle + V_{mn} &= E_n ^{(0)} \left\langle m^0 \middle| n^1 \right\rangle
+\end{align*}
+
+kjer smo upoštevali, da ker sta \( \left| m^0 \right\rangle \) in \( \left| n^0 \right\rangle \) ortogonalna, velja \( \left\langle m^0 \middle| n^0 \right\rangle = 0 \). Sledi, da je potencial v bazi \( m \) enak
+
+\[ V_{mn} = \left( E_n ^{(0)} - E_n^{(0)} \right).
+\]
+
+Dobimo torej zvezo za vektor \( \left| n^1 \right\rangle \)
+
+\begin{equation}
+\label{eq:2}
+ \left| n^1 \right\rangle  = \sum\limits_{m \ne n}^{} \frac{V_{mn}}{E_n ^{(0)} - E_m ^{(0)}} \left| m^0 \right\rangle.
+\end{equation}
+
+Do analognih rezultatov pridemo v višjih redih. Po množenju drugega reda s funkcionalom \( \left\langle n^0 \right| \) dobimo enačbo
+
+\[ \left\langle n^0 \middle| H_0 \middle| n^2 \right\rangle + \left\langle n^0 \middle| V \middle| n^1 \right\rangle = E_n ^{(0)} \left\langle n^0 \middle| n ^2 \right\rangle + E_n ^{(1)} \left\langle n^0 \middle| n^1 \right\rangle + E_n ^{(2)} \left\langle n^0 \middle| n^0 \right\rangle
+\]
+
+Ob upoštevanju \ref{eq:2} in z malo poenostavljanja dobimo
+
+\[ E_n ^{(2)} = \left\langle n^0 \right| V \sum\limits_{m \ne n}^{} \frac{V_{mn}}{ E_n^{(0)} - E_m ^{(0)}} \left| m^0 \right\rangle = \sum\limits_{m \ne n}^{} \frac{\left\langle n^0 \middle| V \middle| m^0 \right\rangle \left\langle m^0 \middle| V \middle| n ^0 \right\rangle}{E^{(0)}_n - E_m ^{(0)}}
+\]
+
+Energija drugega reda bo torej
+
+\[ E_n ^{(2)} = \sum\limits_{m \ne n}^{} \frac{\left| V_{mn} \right| ^2}{E_n ^{(0)} - E_m ^{(0)}}
+\]
+
+Osnovno stanje \( E_n ^{(0)} \) ima najnižjo energijo
+
+\[ E_n^{(0)} < E_{n  + 1}^{(0)} < E_{n + 2}^{(0)} < \ldots
+\]
+
+Stanje \( E_m^{(0)} \) bo vedno večje od \( E_n^{(0)} \) iz česar sledi, da je \( E_n^{(2)} \) stanje negativno predznačeno in še zmanjša osnovno stanje.
+
+Večino časa bomo potrebovali maksimalno energije do drugega reda.
+
+Nekatere opombe
+
+- V primeru, če je \( V(x) = -V(-x) \) liha funkcija, bo sledilo, da je \( V_{nn} = 0 = E_n^{(0)} \), kar pomeni, da potrebujemo energijo drugega reda \( E_n ^{(2)} \).
+- pomožni parameter \( \lambda \) je običajno enak \( 1 \). Tako bomo začetni zapis Hamiltoniana poenostavili v
+
+  \[ H = H_0 + \lambda V \implies \ H = H_0 + V,
+  \]
+
+  in predpostavimo \( V \to 0 \). Uvedli smo \( \lambda \), saj je konceptualno težje, da je operator \( V \) majhen in je lažje reči, da je skalar \( \lambda \) majhen.
+- Omenili smo, da velja \( \left\langle n^0 \middle| n \right\rangle = 1\). Hkrati pa zaradi tega, ker počnemo stvari samo do prvega reda, lahko predpostavimo tudi \( \left\langle n \middle| n \right\rangle = 1 \), saj
+
+  \[ \left\langle n \middle| n \right\rangle = \left( \left\langle n^0 \right| + \lambda \left| n^1 \right\rangle + o \left( \lambda ^2 \right) \right) \left( \left| n^0 \right\rangle + \lambda \left| n^1 \right\rangle + \lambda ^2 \left| n^2 \right\rangle + \ldots \right) = 1 + o \left( \lambda ^2 \right)
+  \]
+** Degeneracija
+
+Še zmeraj delamo s Hamiltonianom
+
+\[ H = H_0 + \lambda V
+\]
+
+z energijami
+
+\[ E_n = E_n^{(0)} + \lambda E_n ^{(1)} + \lambda ^2 E_n^{(2)} + \ldots,
+\]
+
+kjer pa imamo sedaj \( N \) degeneriranih stanj
+
+\[ H_0 \left| n_{\alpha}^0 \right\rangle = E_n ^{(0)} \left| n_{\alpha}^0 \right\rangle, \ \alpha = 1, 2, 3, \ldots, N
+\]
+
+Za primer stanja z \( N = 2 \) je vektor
+
+\[ \left| n \right\rangle = c_1 \left| n_1^0 \right\rangle + c_2 \left| n_2^0 \right\rangle + \lambda \left| n^1 \right\rangle + \ldots.
+\]
+
+Ponovno pogledamo samo do prvega reda
+
+\begin{align*}
+  \lambda_0: \quad H_0 \left| n^0_1 \right\rangle &= E_n ^{(0)} \left| n_1 ^0 \right\rangle \\
+H_0 \left| n_2 ^0 \right\rangle &= E_n^{(0)} \left| n_2^0 \right\rangle \\
+\lambda_1: \quad H_0 \left| n^1 \right\rangle + c_1 V \left| n_1^0 \right\rangle  + c_2 V \left| n_2^0 \right\rangle &= E_n ^{(0)} \left| n^1 \right\rangle + E_n ^{(1)} \left( c_1 \left| n_1^0 \right\rangle + c_2 \left| n_2 ^0 \right\rangle\right)
+\end{align*}
+
+Prvi red pomnožimo s funkcionalom \( \left\langle n_1^0 \right| \) in dobimo enačbo
+
+\[ \left\langle n_1^0 \middle| H_0 \middle| n^1 \right\rangle + c_1 \left\langle n_1^0 \middle| V \middle| n_1^0 \right\rangle + c_2 \left\langle n_1^0 \middle| V \middle| n_2^0 \right\rangle = E_n ^{(0)} \left\langle n_1^0 \middle| n^1 \right\rangle + E_n ^{(1)} \left( c_1 \left\langle n_1^0 \middle| n_1^0 \right\rangle + c_2 \left\langle n_1^0 \middle| n_2^0 \right\rangle\right),
+\]
+
+kjer velja
+
+\[ \left\langle n_1^0 \middle| n_{^1} \right\rangle = \left\langle n_{1^0} \middle| n_2^0 \right\rangle = 0.
+\]
+
+Preostane nam
+
+\begin{equation}
+\label{eq:3}
+ V_{11} c_1 + V_{12} c_2 = E_n ^{(1)} c_1,
+\end{equation}
+
+kjer smo definirali \( V_{11} = \left\langle n_1^0 \middle| V \middle| n_1^0 \right\rangle \) ter \( V_{12} = \left\langle n_1^0 \middle| V \middle| n_2^0 \right\rangle \). Drugi red lahko pomnožimo tudi s funkcionalom \( \left| n_2^0 \right\rangle \) in na podoben način pridemo do druge enačbe
+
+\begin{equation}
+\label{eq:4}
+V_{21} c_1 + V_{22} c_2 = E_n ^{(1)} c_2
+\end{equation}
