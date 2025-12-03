@@ -116,3 +116,71 @@ iz česar dobimo enačbi
   \nabla ^2 \vec{E} &= \mu_0 \sigma \frac{\partial \vec{E}}{\partial t}  \\
 \nabla ^2 &= \mu_0 \sigma \frac{\partial \vec{B}}{\partial t}
 \end{align}
+
+Dobljeni enačbi sta oblike, ki je značilna za difuzijske enačbe.
+
+Rešitev iščemo s separacijo spremenljivk
+
+\[ \vec{E} (\vec{r}, t) = \vec{E} (\vec{r}) e^{- \mathrm{i} \omega t} \quad \vec{B} (\vec{r}, t) = \vec{B}(\vec{r}) e^{- \mathrm{i} \omega t}
+\]
+
+Tak časovni faktor smo si izbrali, saj lahko poljubno časovno odvisnost zapišemo kot vsoto po ravnih valovih. Nastavka vstavimo v enačbi in dobimo
+
+\[ \nabla ^2 \vec{E} = k ^2 \vec{E} \quad \nabla ^2 \vec{B} = k ^2 \vec{B},
+\]
+
+kjer je \( k ^2 = \frac{(1 - \mathrm{i})}{\sqrt{2}} \sqrt{\omega \mu_{0}} \sigma \).
+
+V eni dimenziji ima rešitev oblike
+
+\[ \vec{E} (z, t), \vec{B} (z, t) \sim e^{- k z} = \exp \left\{ - \sqrt{\frac{\omega \mu_0 z}{2}} z \right\} \exp \left\{ - \mathrm{i} \sqrt{\frac{\omega \mu_0 \sigma}{2} z}  \right\}.
+\]
+
+Rešitev je zmnožek oscilirajoče funkcije za čas in eksponentno padajoče funkcije za kraj. Količina \( \sqrt{\frac{\omega \mu_0 \sigma}{2}} \) je značilna dolžina. Obratni vrednosti bomo rekli udarna globina \( \frac{\sqrt{2}}{\sqrt{\omega \mu_0 \sigma}} \).
+
+#+begin_my_example
+Za baker pri frekvenci \( 50 \mathrm{Hz} \) z notranjo uporabnostjo \( \sigma_{Cu} = 5.8 \cdot 10^7 \frac{\mathrm{S}}{\mathrm{m}} \) je udorna globina približno \( 2 \mathrm{cm} \).
+
+Za frekvenco \( 750 \mathrm{Hz} \) (gigaherzčni internet) je udorna globina \( 2 \mu \mathrm{m} \).
+#+end_my_example
+
+Kožni pojav se zgodi zaradi indukcije kot posledica izmeničnega toka.
+*** Geometrija polj in rešitev
+
+Obravnavamo cilindrični vodnik polmera \( r \). Gostota električnega toka kaže vzdolž vodnika, v smeri \( z \):
+
+\[ \vec{\jmath} = j_0 \hat{e}_z
+\]
+
+Nahajamo se v cilindričnih koordinatah \( (r, \phi, z) \) s cilindrično bazo. Posledično so neničelne komponente samo
+
+\[ E_z (r, t) = E_z (r) e^{- \mathrm{i} \omega t} \quad B_{\phi} (r, t) = B_{\phi} (r) e^{- \mathrm{i} \omega t}
+\]
+
+Ob upoštevanju Laplaceovega operatorja v cilindričnih koordinatah dobimo navidezno nesklopljeni enačbi
+
+\begin{align*}
+  \frac{1}{r} \frac{\partial }{\partial r} \left( r \frac{\partial B_{\phi}}{\partial r}  \right) - \frac{B_{\phi}}{r ^2} &= - \mathrm{i} \omega \mu_0 \sigma B_{\phi} \\
+\frac{1}{r} \left( r \frac{\partial E_{r}}{\partial r}  \right) &= - \mathrm{i} \omega \mu_0 \sigma E_r
+\end{align*}
+
+Velja še vez med \( \vec{E} \) in \( \vec{B} \)
+
+\[ \nabla \times \vec{E} = - \frac{\partial \vec{B}}{\partial t}  \implies \ - \mathrm{i} \omega B_{\phi} = - \frac{\partial E_r}{\partial r} .
+\]
+
+Rešitev enačb je
+
+\[ E_z (r) = A J_0 (kr) \quad B_{\phi} = - \mathrm{i} A \frac{k}{\omega} J_1 (kr),
+\]
+
+kjer je \( k = \frac{1 - \mathrm{i}}{\sqrt{2}} \sqrt{\omega \mu_{0}} \sigma \). Imamo modificrane Besslove funkcije, ker je \( k \) kompleksno število.
+
+Ustrezajoča gostota električnega toka
+
+\[ \vec{\jmath} = \sigma \vec{E} \implies \ \vec{\jmath} = \hat{e}_z \sigma A J_0 (kr),
+\]
+
+kjer je \( A \) določen iz robnega pogoja.
+
+Loči se šibek in močan kožni pojav glede na velikost frekvence.
