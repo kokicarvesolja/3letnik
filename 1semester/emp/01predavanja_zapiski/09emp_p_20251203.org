@@ -184,3 +184,145 @@ Ustrezajoča gostota električnega toka
 kjer je \( A \) določen iz robnega pogoja.
 
 Loči se šibek in močan kožni pojav glede na velikost frekvence.
+* Maxwellove enačbe
+
+Maxwellova teorija elektromagnetnega polja povezuje osrednji dve polji - električno polje \( \vec{E} \) in magnetno \( \vec{B} \) - med seboj in z njunimi izvori. Izvora sta
+- gostota naboja \( \rho (\vec{r}, t) \)
+- gostota električnega toka \( \vec{\jmath} (\vec{r}, t) \)
+
+Zavedajmo se Helmholtzovega teorema, ki trdi, da je poljubno vektorsko polje popolnoma določeno, če poznamo njegovo divergenco in rotor.
+
+Vsled tega so Maxwellove enačbe oblike
+
+\begin{align*}
+  \nabla \cdot \vec{E} = ? &\quad \text{in } \nabla \cdot \vec{B} = ? \\
+\nabla \times \vec{E} = ? & \quad \text{in } \nabla \times \vec{B} = ?
+\end{align*}
+** Ohranjanje naboja - kontinuitetna enačba
+
+Imejmo poljuben volumen \( V_0 \), v katerem imamo naboj določen z gostoto \( \rho(\vec{r}) \). Iz volumna lahko izteka in priteka neka gostota električnega toka \( \vec{\jmath} \). Po dogovoru normala tega volumna kaže izven tega volumna.
+
+Celoten naboj volumna \( V_0 \) zaradi pritekanja in odtekanja naboja skozi površino ni konstanten in se lahko skozi čas spreminja
+
+\[ \int\limits_{V_0}^{} \rho (\vec{r}, t) , \mathrm{d} ^3 \vec{r} = e(t)
+\]
+
+Spreminjanje naboja skozi čas predstavimo z integralom po zaključeni ploskvi \( \partial V_0 \) volumna \( V_0 \)
+
+\begin{equation}
+\label{eq:4}
+ \frac{\mathrm{d} e}{\mathrm{d} t} = - \oint\limits_{\partial V_0}^{} \vec{\jmath} \cdot \vec{n} \, \mathrm{d} S = - \int\limits_{V_0}^{} \nabla \cdot \vec{\jmath} \, \mathrm{d} ^3 \vec{r}
+\end{equation}
+
+Skalarni produkt \( \vec{\jmath} \cdot \vec{n} \) je pozitiven za odtekajoč tok in negativno predznačen za pritekajoč tok.
+
+Upoštevamo definicijo naboja preko gostote naboja
+
+\begin{equation}
+\label{eq:5}
+ \frac{\mathrm{d} e}{\mathrm{d} t} = \frac{\partial }{\partial t}  \int\limits_{V_0}^{} \rho(\vec{r}, t) \, \mathrm{d} ^3 \vec{r} = \int\limits_{V_0}^{} \frac{\partial }{\partial t} \frac{\rho(\vec{r}, t)}{t} \, \mathrm{d} ^3 \vec{r}.
+\end{equation}
+
+Z enačenjem enačb \ref{eq:4} in \ref{eq:5}, izenačimo integrande in dobimo kontinuitetno enačbo
+
+\[ \nabla \cdot \vec{\jmath} + \frac{\partial \rho}{\partial t}  = 0
+\]
+
+Kontinuitetna enačba upošteva, da tokovnice (električnega toka) niso več nujno sklenjene. Naboj se lahko na nekem mestu nabira oziroma prazni.
+** Maxwellov premikalni tok
+
+Osnovne Maxwellove enačbe v kvazistatičnem približku so oblike
+
+\begin{align*}
+  \nabla \cdot \vec{E} = \frac{\rho}{\epsilon_0} & \quad \nabla \cdot \vec{B} = 0 \\
+\nabla \times \vec{E} = - \frac{\partial \vec{B}}{\partial t} & \quad \nabla \times \vec{B} = \mu_0 \vec{\jmath}
+\end{align*}
+
+Rotor magnetnega polja implicira
+
+\[ 0 = \nabla \cdot (\nabla \times \vec{B}) = \mu_0 \nabla \cdot \vec{\jmath},
+\]
+
+ne sovpada s kontinuitetno enačbo. Problem rešimo z uvedbo premikalnega toka \( \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t}  \).
+
+Enačba tako v resnici izgleda
+
+\begin{equation}
+\label{eq:6}
+ \nabla \times \vec{B} = \mu_0 \vec{\jmath} + \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t}.
+\end{equation}
+
+Če na enačbo \ref{eq:6} sedaj delujemo z divergenco, dobimo
+
+\[ \nabla \cdot (\nabla \times \vec{B}) = 0 = \mu_0 \nabla \cdot \vec{\jmath} + \mu_0 \epsilon_0 \nabla \frac{\partial \vec{E}}{\partial t} = \mu_0 \nabla \cdot \vec{\jmath} + \mu_0 \epsilon_0 \frac{\partial }{\partial t} \left(\nabla \cdot \vec{E}\right).
+\]
+
+Sedaj izpolnjujemo kontinuitetno enačbo
+
+\[ \nabla \cdot \vec{\jmath} + \frac{\partial \rho}{\partial t}  = 0.
+\]
+** Popoln set Maxwellovih enačb
+
+1. enačba ali Gaussov zakon
+
+   \[ \nabla \cdot \vec{E} = \frac{\rho}{\epsilon_0}
+   \]
+
+2. enačba
+
+   \[ \nabla \cdot \vec{B} = 0
+   \]
+
+3. enačba
+
+   \[ \nabla \times \vec{E} = - \frac{\partial \vec{B}}{\partial t}
+   \]
+
+4. enačba ali Amperov zakon
+
+   \[ \nabla \times \vec{B} = \mu_0 \vec{\jmath} + \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t}
+   \]
+
+Enačbe izpolnjujejo tudi kontinuitetno enačbo.
+
+Drugi in tretji enačbi pravimo kinematični enačbi, medtem ko prva in četrta enačba povezujeta polja z izvori. To so enačbe, ki določajo klasičen elektromagnetizem.
+** Ohranitveni zakoni
+
+Maxwellove enačbe ohranjajo naboj, gibalno količino, vrtilno količino in energijo.
+*** Ohranjanje energije
+
+Sledi iz kontinuitetne enačbe. Vzamemo 3. in 4. Maxwellovoo enačbo, ki ju pomnožimo z magnetnim poljem \( \vec{B} \) in električnim polje \( \vec{E} \).
+
+\begin{align*}
+  \vec{B} \cdot \left( \nabla \times  \vec{E} \right) &= - \vec{B} \cdot \frac{\partial \vec{B}}{\partial t} \\
+\vec{E} \cdot \left( \nabla \times \vec{B} \right) &= \mu_0 \vec{\jmath} \cdot \vec{E} + \mu_0 \epsilon_0 \vec{E} \cdot \frac{\partial \vec{E}}{\partial t} ,
+\end{align*}
+
+ki ju odštejemo
+
+\[ \mu_0 \epsilon_0 \vec{E} \frac{\partial \vec{E}}{\partial t}  + \vec{B} \frac{\partial \vec{B}}{\partial t}  = \vec{E} \cdot \left( \nabla \times \vec{B} \right) - \vec{B} \left( \nabla \times \vec{E} \right) - \mu_0 \vec{\jmath} \cdot \vec{E}
+\]
+
+Enačbo delimo z \( \mu_0 \) ter ponesemo časovni odvod tako, da vsebuje oba električna/ magnetna polja
+
+\[ \vec{E} \frac{\partial \vec{E}}{\partial t}  = \frac{1}{2} \frac{\partial }{\partial t}  \epsilon_0 E ^2 .
+\]
+
+Sledi enačba
+
+\[ \frac{\partial }{\partial t}  \left( \frac{1}{2} \epsilon_0 E ^2 + \frac{1}{2 \mu_0} B ^2 \right) = - \frac{1}{\mu_0} \nabla \cdot \left( \vec{E} \times \vec{B} \right) - \vec{\jmath} \cdot \vec{E}
+\]
+
+Dobimo
+
+\[ \frac{\partial w}{\partial t}  + \nabla \cdot \vec{P} + \vec{\jmath} \cdot \vec{E} = 0,
+\]
+
+kjer je \( w = \frac{1}{2} \epsilon_0 E ^2 + \frac{1}{2\mu_0} B ^2  \) gostota energije elektromagnetnega polja ter \( \vec{P} = \frac{1}{\mu_0} \vec{E} \times \vec{B} \) Poyntingov vektor (vektor energijskega toka).
+
+V integralski obliki
+
+\[ \frac{\partial }{\partial t}  \int\limits_V^{} w \, \mathrm{d} ^3 \vec{r} + \int\limits_{\partial V}^{} \vec{P} \cdot \vec{n} \, \mathrm{d} S + \int\limits_{}^{} \vec{\jmath} \cdot \vec{E} \, \mathrm{d} ^3 \vec{r} = 0
+\]
+
+Prvi integral je energija v nekem volumnu, ki se spremina kot posledica toka skozi površine tega volumna (integral Poyntingovega vektorja) ali pa kot posledica Joulovega gretja v volumnu (zadnji integral).
