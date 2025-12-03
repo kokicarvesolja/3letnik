@@ -1,0 +1,118 @@
+#+title: 9. predavanje iz Elektromagnetnega polja
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Kvazi-statično električno polje
+** Induktivnost
+
+Imamo \( i = 1, 2, \ldots, N \) tokovnih vodnikov - zank. Po vsaki teče električni tok \( I_i \). Računamo energijo magnetnega polja
+
+- prvi način je po enačbi
+
+  \[ W = \frac{1}{2} \int\limits_{}^{} \vec{\jmath} \cdot \vec{A} \, \mathrm{d} ^3 \vec{r}.
+  \]
+
+  Upoštevamo enakost \( \vec{\jmath} \, \mathrm{d} ^3 \vec{r} = I \cdot \mathrm{d} \vec{l} \), saj nimamo toka po volumnu, ampak diskretne toke po zankah. Enačba mora hkrati upoštevati tudi tokove vseh krožnih zank
+
+  \[ W = \frac{1}{2} \sum\limits_i^{} I_i \oint\limits_{}^{} \vec{A} \cdot \mathrm{d} \vec{l}_i.
+  \]
+
+  Krivuljni integral lahko prevedemo na integral po ploskvi, s čimer dobimo magnetni pretok
+
+  \[ W = \frac{1}{2} \sum\limits_i^{} I_i \int\limits_{}^{} \vec{B} \cdot \mathrm{d} \vec{S} = \frac{1}{2} \sum\limits_i^{} I_i \Phi_i
+  \]
+
+- pri drugem načinu se poslužimo Kirchoffove enačbe, ki nam vektorski potencial pretvori v
+
+  \[ W = \frac{1}{2} \int\limits_{}^{} \vec{\jmath} (\vec{r}) \cdot \vec{A} \, \mathrm{d} ^3 \vec{r} = \frac{1}{2} \frac{\mu_0}{4 \pi} \iint\limits_{}^{} \frac{\vec{\jmath} (\vec{r}) \cdot \vec{\jmath} (\vec{r}\, ')}{\left| \vec{r} - \vec{r} \, ' \right|} \, \mathrm{d} ^3 \vec{r} \, \mathrm{d} ^3 \vec{r} \, '
+  \]
+
+  (Opomba, da sta \( \vec{\jmath} (\vec{r}) \) in \( \vec{\jmath} (\vec{r} \, ') \) isti gostoti toka po različnih koordinatah).
+
+  Na enak način, ker nimamo toka po volumnu, ampak tok po krožnih zankah, lahko zapišemo
+
+  \[ W = \frac{\mu_0}{8 \pi} \sum\limits_{i, k}^{} I_i I_k \oint\limits_i^{} \oint\limits_k^{} \frac{\mathrm{d} \vec{l}_i \cdot \mathrm{d} \vec{l}_k}{\left| \vec{r} \left( l_i \right) - r(l_k) \right|}
+  \]
+
+Enačimo rezultata prvega in drugega načina
+
+\[ W_m = \frac{1}{2} \sum\limits_i^{} I_i \Phi_i = \frac{1}{2} \frac{\mu_0}{4 \pi} \sum\limits_{i, k}^{} I_i I_k \oint\limits_i^{} \oint\limits_k^{} \frac{\mathrm{d} \vec{l}_i \cdot \mathrm{d} \vec{l}_k}{\left| \vec{r} (l_i) - \vec{r}(l_k) \right|}
+\]
+
+Uvedemo (tenzor) induktivnosti kot
+
+\[ L_{ik} = \frac{\mu_0}{4 \pi} \oint\limits_i^{} \oint\limits_k^{} \frac{\mathrm{d} \vec{l}_i \cdot \mathrm{d} \vec{l}_k}{\left| \vec{r} (l_i) - \vec{r}(l_k) \right|}.
+\]
+
+Opazimo, da je induktivnost neodvisna od \( i \) in \( k \) in lahko sta celo ista! V tem primeru imamo koeficient \( L_{ii} \), ki ji pravimo lastna induktivnost.
+
+Velja
+
+\[ \Phi_i = \sum\limits_k^{} L_{ik} I_i.
+\]
+
+Dodatno opazimo tudi to, da je induktivnost odvisna samo od geometrije.
+** Kožni pojav
+
+Ko *izmenični* tok teče skozi prevodnik (žico), se razporedi tako, da je gostota toka največja blizu sten prevodnika. Temu pojavu se reče kožni pojavi (ang. /skin effect/).
+
+*** Osnovne enačbe kožnega pojava
+
+Uporabili bomo Maxwellove enačbe ter Ohmov zakon za prevodnik.
+
+Znotraj prevodnika je gostota naboja \( \rho = 0 \). Iz tega sledi, da je
+
+\begin{equation}
+\label{eq:1}
+\nabla \cdot \vec{E} = 0.
+\end{equation}
+
+Druga enačba za električno polje pa je še
+
+\begin{equation}
+\label{eq:2}
+ \nabla \times \vec{E} = - \frac{\partial \vec{B}}{\partial t}.
+\end{equation}
+
+Maxwellovi enačbi za magnetno polje pa sta
+
+\begin{align}
+  \nabla \cdot \vec{B} &= 0 \label{eq:B1} \\
+\nabla \times \vec{B} &= \mu_0 \vec{\jmath} \cancel{\left( + \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t}  \right)} \label{eq:B2}
+\end{align}
+
+Prečrtan člen lahko zanemarimo za \( \omega < 10^{18} / s \). Gostoti magnetnega polja \( \vec{B} \) omejimo izvir (tok) z Ohmovim zakonom in enačba \ref{eq:B2} postane
+
+\begin{equation}
+\label{eq:3}
+ \nabla \times \vec{B} = \mu_0 \sigma \vec{E}
+\end{equation}
+
+Na enačbi \ref{eq:2} in \ref{eq:3} delujemo z rotorjem
+
+\[ \nabla \times \left( \nabla \times \vec{E} \right) = - \frac{\partial }{\partial t}  \nabla \times \vec{B} = - \mu_0 \sigma \frac{\partial \vec{E}}{\partial t}
+\]
+
+ter
+
+\[ \nabla \times \left( \nabla \times \vec{B} \right) = \nabla \times \left( \mu_0 \sigma \vec{E} \right) = - \mu_0 \sigma \frac{\partial \vec{B}}{\partial t}
+\]
+
+Navidezno smo razklopili enačbi (saj sta leva in desna stran odvisni od iste količine). Pri računanju tako lahko uporabimo katerokoli izmed enačb, vendar se moramo zavedati, da sta količini \( \vec{E} \) in \( \vec{B} \) sklopljeni preko Maxwellovih enačb.
+
+Uporabimo identiteto
+
+\[ \nabla \times \left( \nabla \times \vec{A} \right) = \nabla \left( \nabla \cdot \vec{A} \right) - \nabla ^2 \vec{A},
+\]
+
+iz česar dobimo enačbi
+
+\begin{align}
+  \nabla ^2 \vec{E} &= \mu_0 \sigma \frac{\partial \vec{E}}{\partial t}  \\
+\nabla ^2 &= \mu_0 \sigma \frac{\partial \vec{B}}{\partial t}
+\end{align}
