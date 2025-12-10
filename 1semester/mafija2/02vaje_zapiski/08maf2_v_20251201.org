@@ -20,8 +20,8 @@ kjer je \( \Phi \) hitrostni potencial.
 Določili smo tudi robna pogoja, ki sta nam podali enačbi
 
 \begin{align}\label{eq:rp1}
-  \Phi (r \to \infty, \phi) = - v_0 r \cos \phi \\ \label{eq:rp2}
-left. \frac{\partial \Phi}{\partial r}  \right|_{r = R} &= 0
+  \Phi (r \to \infty, \phi) &= - v_0 r \cos \phi \\ \label{eq:rp2}
+\left. \frac{\partial \Phi}{\partial r}  \right|_{r = R} &= 0
 \end{align}
 
 Splošna rešitev Laplaceove enačbe je
@@ -29,7 +29,7 @@ Splošna rešitev Laplaceove enačbe je
 \[ \Phi (r, \phi) = \left( A_0 + B_0 \ln r \right) \left( a + b\phi \right) + \sum\limits_{n = 1}^{\infty} \left( A_n r^n + B_n r^{-n}  \right)\left( C_n \sin (n \phi) + D_m \cos (n \phi) \right)
 \]
 
-Zaradi periodičnosti problema velja \( b = 1 \). Problem nam ne divergira v izhodišču, torej bo \( B_0 = 0 \). Robni pogoj \ref{eq:rp1} je odvisen samo od kosinusa, torej bo \( C_n = 0 \). Iz istega robnega pogoja tudi sledi \( A_1 = - v_0 \) in \( A_{n \ne 1} = 0 \).
+Zaradi periodičnosti problema velja \( b = 0 \). Problem nam ne divergira v izhodišču, torej bo \( B_0 = 0 \). Robni pogoj \ref{eq:rp1} je odvisen samo od kosinusa, torej bo \( C_n = 0 \). Iz istega robnega pogoja tudi sledi \( A_1 = - v_0 \) in \( A_{n \ne 1} = 0 \).
 
 Ostane nam torej
 
@@ -94,9 +94,8 @@ Iz tega nato sledi rešitev
 \[ \vec{v} \left( r, \theta, \phi \right) = v_0 \cos \theta \left( 1 - \frac{R ^3}{r ^3} \right) \hat{e}_r - v_0 \sin \theta \left( 1 - \frac{R ^3}{2 r ^3} \right) \hat{e}_{\theta}
 \]
 ** Naloga 23 (Prinčič, 6. 2)
-
 #+begin_problem
-
+Opazujemo Poiseuilloev zakona za viskozno in nestisljivo tekočino v tanki kvadratni cevi s stranico \( a \). Cev je dolga \( L \) in razlika tlakov med začetkom in koncem je \( \Delta p \). Zanima nas porazdelitev hitrosti, povprečno hitrost in pretok skozi cev.
 #+end_problem
 
 Fizikalni razmisleki, ki jih moramo narediti, da bo naš problem postal rešljiv. Zaradi dolžine cevi predpostavimo, da je hitrost neodvisna od dolžine cevi oz. \( \vec{v} \ne \vec{v} (z) \). Iščemo najpreprostejšo rešitev brez vrtincev, kar pomeni, da velja \( v_x = v_y = 0 \).
@@ -130,9 +129,10 @@ v_z(z, y = 0) &= v_z (x, y = a) = 0
 
 Spomnimo, da bomo problem reševali tako, da bomo najprej rešili Poissonovo enačbo, nato pa bomo rešili problem s homogenimi robnimi pogoji tako, da jih razvijemo po lastnih funkcijah.
 
+#+begin_note
 Iz problema
 
-\[ \nabla ^2 v_n (x, y) = - \lambda_n v_n (x, y),
+\[ \nabla ^2 v_n (x, y) = - \lambda_n ^2 v_n (x, y),
 \]
 
 z nastavkom \( u = \sum\limits_{n = 0}^{\infty} c_n v_n \) dobimo PDE oblike
@@ -144,6 +144,7 @@ iz česar sledi
 
 \[ c_n = - \frac{\left\langle f, v_n \right\rangle}{\lambda_n ^2 \left\langle v_n, v_n \right\rangle}
 \]
+#+end_note
 
 Za \( u = XY \) rešimo enačbo
 
@@ -184,8 +185,11 @@ Dobljeno pomnožimo s skalarnim produktom, kjer upoštevamo, da velja
 
 Dobimo torej
 
-\[ \sum\limits_{n = 1}^{\infty} - \frac{a ^2}{4} \frac{\pi ^2}{2} \left( n ^2 + m ^2 \right) \delta_{n, n'} \delta_{m, m'} B_{n, m} = \frac{\Delta p}{ \eta L} \int\limits_0^a \sin \left( n \pi \frac{x}{a} \right)\, \mathrm{d} x \int\limits_0^a \sin \left( n \pi \frac{y}{a} \right) \, \mathrm{d} y  = \frac{a ^2}{\pi ^2 n' m'} \left( 1 - (- 1)^{n'} \right) \left( 1 - (-1) ^{m'} \right).
-\]
+\begin{align*}
+ \sum\limits_{n = 1}^{\infty} - \frac{a ^2}{4} \frac{\pi ^2}{2} \left( n ^2 + m ^2 \right) \delta_{n, n'} \delta_{m, m'} B_{n, m} &= \frac{\Delta p}{ \eta L} \int\limits_0^a \sin \left( n \pi \frac{x}{a} \right)\, \mathrm{d} x \int\limits_0^a \sin \left( n \pi \frac{y}{a} \right) \, \mathrm{d} y  \\
+&= \frac{a ^2}{\pi ^2 n' m'} \left( 1 - (- 1)^{n'} \right) \left( 1 - (-1) ^{m'} \right).
+\end{align*}
+
 
 Iz enačbe
 
@@ -199,8 +203,10 @@ lahko izrazimo \( B_{n', m'} \), kar pomeni, da je nastavek
 
 Na koncu dneva nas zanima pretok
 
-\[ \Phi = \int\limits_0^a \int\limits_0^a \left| v_z \right|  \, \mathrm{d} x \, \mathrm{d} y
+\[ \Phi = \int\limits_0^a \int\limits_0^a \left| v_z \right|  \, \mathrm{d} x \, \mathrm{d} y = C \frac{\Delta p a ^4}{L},
 \]
+
+kjer je \( C \) povprečenje ali pa seštevek vsote v rešitvi.
 * Lastne funkcije
 
 Če poznamo lastne funkcije \( u_n \) in pripadajoče lastne vrednosti \( \lambda_n \) enačbe
@@ -280,3 +286,5 @@ potem znamo rešiti naslednje probleme:
     kar je nehomogena enačba z robnimi pogoji.
 
 - cilindrične koordinate
+
+  ~ nehal sem pisati, ker je bila samo ponovitev vsega že povedanega ~

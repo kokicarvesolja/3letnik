@@ -54,7 +54,7 @@ Rešitev celotnega problema je vrsta
 \[ u(x, y) = \sum\limits_{n = 0}^{\infty} C_n \mathrm{cosh} (k_n x) \cos (k_n y)
 \]
 
-Upoštevamo še robni pogoj funkcije
+Upoštevamo še robni pogoj problema
 
 \[ \sum\limits_{n = 0}^{\infty} C_n \mathrm{cosh} \left(k_n \frac{a}{2}\right) \cos (k_n y) = f(y)
 \]

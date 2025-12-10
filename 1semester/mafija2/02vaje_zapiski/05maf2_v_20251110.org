@@ -7,12 +7,9 @@
 #+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
 #+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
 #+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
-* Teorija difuzijske enačbe
-
 * Naloga 14 (Prinčič 4.2)
-
 #+begin_problem
-
+Iščemo temperaturni profil snovi s širino \( a \), ki se ohlaja z radiacijo. Pri \( x = 0 \) je snov izolirana, medtem ko seva pri \( x = a \). Zunanja okolica ima temperaturo \( T_1 \).
 #+end_problem
 
 Rešujemo difuzijsko enačbo
@@ -166,10 +163,13 @@ katere rešitev je
 
 Celotna rešitev je tako
 
-\[ T \left( \vec{r}, t \right) = \sum\limits_{n, m, l = 1}^{} \frac{8 (T_1 - T_0)}{\pi ^3 nml}  \left( 1 - (-1) ^n \right) \left( 1 - (-1)^m \right) \left( 1 - (-1) ^l \right)  e^{- D \frac{\pi ^2}{a ^2} \left( n ^2 +m  ^2 + l ^2 \right) t} \sin \left( \frac{\pi n}{a}x \right) \sin \left( \frac{\pi m}{a} y \right) \sin \left( \frac{\pi l}{a} z \right) + T_0.
-\]
+\begin{align*}
+ T \left( \vec{r}, t \right) = &\sum\limits_{n, m, l = 1}^{} \frac{8 (T_1 - T_0)}{\pi ^3 nml}  \left( 1 - (-1) ^n \right) \left( 1 - (-1)^m \right) \left( 1 - (-1) ^l \right) \\
+& \cdot e^{- D \frac{\pi ^2}{a ^2} \left( n ^2 +m  ^2 + l ^2 \right) t} \sin \left( \frac{\pi n}{a}x \right) \sin \left( \frac{\pi m}{a} y \right) \sin \left( \frac{\pi l}{a} z \right) + T_0.
+\end{align*}
 
-Po dolgem času \( t \) so vsi koeficienti v vrsti zadušeni, saj je eksponent zelo majhen, bo temperatura telesa enaka \( T (\vec{r}, t \to \infty) = T_0 \). Zanima nas karakteristični čas \( \tau \). Členi v eksponentu so
+
+Po dolgem času \( t \) so vsi koeficienti v vrsti zadušeni, saj je eksponent zelo majhen. Temperatura telesa bo tako enaka \( T (\vec{r}, t \to \infty) = T_0 \). Zanima nas karakteristični čas \( \tau \). Členi v eksponentu so
 
 \[ - D \frac{\pi ^2}{a ^2} (n ^2  + m ^2 + l ^2) t = \frac{1}{\tau} t \implies \tau = \frac{a ^2}{D \pi ^2 \left( n ^2 + m ^2 + l ^2 \right)}
 \]

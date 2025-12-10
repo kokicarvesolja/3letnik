@@ -30,7 +30,7 @@ Sledeče je bilo izpeljano pri mafiji in bo izpeljano pri Mehaniki kontinuumov. 
 
 kjer smo upoštevali Laplaceovo operator v cilindričnih koordinatah. Enačbo rešujemo s pomočjo separacije spremenljivke. Zakaj to deluje na polneskončnem primeru, bomo povedali kasneje. S \( T(r, z) = R(r) Z(z) \) difuzijska enačba postane
 
-\[ \frac{v}{D} \frac{z '}{z} - \frac{z''}{z} = \frac{R' + r R''}{r R} = - \lambda
+\[ \frac{v}{D} \frac{Z '}{Z} - \frac{Z''}{Z} = \frac{R' + r R''}{r R} = - \lambda
 \]
 
 Reševanje \( z \) dela delamo z nastavkom \( Z = e^{kz} \), saj imamo LDE s konstantnimi koeficienti. Dobimo kvadratno enačbo
@@ -64,10 +64,10 @@ Za \( n = 0 \) so so tako splošne rešitve
 
 \begin{equation}
 \label{eq:1}
- R(r) =  = AJ_0 \left( \sqrt{\lambda} r \right) + B Y_0 \left( \sqrt{\lambda} r \right)
+ R(r) =  AJ_0 \left( \sqrt{\lambda} r \right) + B Y_0 \left( \sqrt{\lambda} r \right)
 \end{equation}
 
-Iz robnega pogoja \( \left. T \right_{r = r_0} = T_0 \) z uvedbo nastavka \( T(r, z) = R(r) Z(z) + T_0 \) dobimo homogen robni pogoj \( R(r_0) = 0 \). Ker \( Y_0 \) divergirajo v izhodišču, naše rešitev pa ne, bo \( B = 0 \).
+Iz robnega pogoja \( \left. T \right|_{r = r_0} = T_0 \) z uvedbo nastavka \( T(r, z) = R(r) Z(z) + T_0 \) dobimo homogen robni pogoj \( R(r_0) = 0 \). Ker \( Y_0 \) divergirajo v izhodišču, naše rešitev pa ne, bo \( B = 0 \).
 
 Homogen robni pogoj pa nam poda zvezo za ničle
 
@@ -195,7 +195,6 @@ Rešitev toplotne enačbe je tako
 
 \[ T \left( \vec{x}, t \right) = \frac{1}{\sqrt{\pi}} f \frac{\left| x \right|}{2 D} \left( \frac{\exp \left\{ - \frac{x ^2}{4 D t} \right\} \sqrt{4 D t}}{\left| x \right|} + \sqrt{\pi} \left( \mathrm{erf} \left( \frac{\left| x \right|}{\sqrt{4 D t}} \right) - 1 \right) \right)
 \]
-* Laplaceova enačba
 * Naloga 19 (Prinčič 5.3)
 
 #+begin_problem
@@ -226,8 +225,10 @@ Po integriranju dobimo
 
 Po ponovnem integriranju dobimo pa
 
-\[ u = \int\limits_{}^{} \left( \frac{r}{2} \frac{\mu g}{\gamma} + \frac{C_0}{r} \right) \, \mathrm{d} r = \frac{r ^2}{4} + C_0 \ln r + C_1
-\]
+\begin{equation}
+\label{eq:5}
+ u = \int\limits_{}^{} \left( \frac{r}{2} \frac{\mu g}{\gamma} + \frac{C_0}{r} \right) \, \mathrm{d} r = \frac{r ^2}{4} \frac{\mu g}{\gamma} + C_0 \ln r + C_1
+\end{equation}
 
 Naravni logaritem divergira v izhodišču, zato \( C_0 = 0 \). Iz robnega pogoja \( u (r = a) = 0 \) pa dobimo
 
@@ -237,4 +238,33 @@ Naravni logaritem divergira v izhodišču, zato \( C_0 = 0 \). Iz robnega pogoja
 Rešitev je tako
 
 \[ u \left( r \right) = \frac{\mu g}{4 \gamma} \left( r ^2 - a ^2 \right)
+\]
+
+Na opno sedaj položimo kovanec s polmerom \( R_k \) in maso \( m_k \). Sedaj imamo nov robni pogoj na obsegu kovanca.
+
+Zaradi gravitacije kovanec upogiba opna in posledično opna deluje na delec s silo nazaj. Enakost sil je \( m g = F \sin \alpha \), kjer je \( \alpha \) kot med horizontalo in naklonom opne. Sila \( F \) je enaka \( l \gamma \), kjer je \( l = 2 \pi R_k \) obseg kovanca. \( \sin \alpha \) pa lahko zaradi majhnosti in simetričnosti zapišemo preko zveze \( \sin \alpha = \left. \frac{\mathrm{d} u}{\mathrm{d} r} \right|_{r = R_k} \).
+
+Združimo sedaj vse skupaj, da dobimo drugi robni pogoj
+
+\[ m_k g = \left. 2 \pi R_k \gamma \frac{\partial u}{\partial r} \right|_{r = R_k} \implies \left. \frac{\partial u}{\partial r} \right|_{r = R_k} = \frac{m_k g}{2 \pi R_k \gamma}
+\]
+
+Splošna rešitev \ref{eq:5} je še zmeraj enaka, vendar tokrat \( C_0 \) ne bo ničeln. Po upoštevanju prvega robnega pogoja je konstanta \( C_1 \) enaka
+
+\[ C_1 = - \frac{\mu g}{ 4\gamma } a ^2 - C_0 \ln a.
+\]
+
+Preobrazimo splošno rešitev
+
+\[ u(r) = \frac{\mu g}{4 \gamma} \left( r ^2 - a ^2 \right) + C_0 \ln \frac{r}{a},
+\]
+
+ki jo vstavimo v drugi robni pogoj in izrazimo \( C_0 \).
+
+\[ \frac{\mu g}{4 \gamma} \cdot 2 R_k + \frac{C_0}{R_k} = \frac{m_k g}{2 \pi R_k \gamma} \implies  C_0 = \frac{m_k g + \pi R_k ^2 \mu g}{2 \pi \gamma}.
+\]
+
+Rešitev opne s kovancem je
+
+\[ u(r) = \frac{\mu g}{4 \gamma} \left( r ^2 - a ^2 \right) + \frac{g}{2 \pi \gamma} \left( m - \pi \mu R_k ^2  \right) \ln \frac{r}{a}.
 \]
