@@ -37,6 +37,8 @@ Kvadrat operatorja položaja za harmonski oscilator je po definiciji \( x ^2 = \
 
 Intuicija nam pravi, da se bo energija znižala, saj se valovna funkcija zaradi nižjega potenciala na levi premakne v levo.
 
+[[file:figures/QHO3Pert.png]]
+
 Dokazujemo, da je prvi red popravka perturbacije ničeln. Naj bo \( \psi_n (x) \) lastna funkcija osnovnega harmonskega oscilatorja. Za nedegenerirana stanja je lastno stanje lahko soda ali liha funkcija. Zaradi lihosti perturbacije \( \lambda x ^3 \) bo
 
 \[ \left\langle n \middle| \lambda x ^3 \middle| n \right\rangle = \int\limits_{- \infty}^{\infty} \psi_n^{\ast} (x) \lambda x ^3 \psi_n(x) \, \mathrm{d} x = 0.
@@ -88,3 +90,56 @@ Vsota postane razlika polinomov
 \sum\limits_{m \ne n}^{} \frac{\left| \left\langle m \middle| \lambda x ^3 \middle| n \right\rangle \right| ^2}{E_n - E_m} &= \frac{\lambda ^2 x_0 ^6}{8} \left( \frac{9n ^3}{\hbar \omega} + \frac{9 (n ^3 + 3 n ^2 + 3n + 1)}{(- \hbar \omega)} + \frac{n ^3 + 5n ^2 + 6n + n ^2 + 5n + 6}{(- 3\hbar \omega)} + \frac{n ^3 - 3n ^2 + 2n}{3 \hbar \omega} \right) \\
 &= - \frac{\lambda ^2 x_0 ^6}{8 \hbar \omega} \left( 30n ^2 + 30 n + 11 \right)
 \end{align*}
+
+[polinome zamenjaj s produkti]
+
+Želimo preveriti ali se je verjetnostna porazdelitev res premaknila v levo. Lastne funkcije perturbacije so po definiciji
+
+\[ \left| n \right\rangle = \left| n_0 \right\rangle + \sum\limits_{m \ne n}^{} \frac{\left\langle m \middle| \lambda x ^3 \middle| n \right\rangle}{E_n - E_m} \left| m \right\rangle,
+\]
+
+kjer je \( \left| n_0 \right\rangle \) lastna funkcija osnovnega harmonskega oscilatorja. Vsota predstavlja popravek osnovnega stanja. Upoštevajoč matrični element \( \left\langle m \middle| \lambda x ^3 \middle| n \right\rangle \), je popravljeno osnovno stanje
+
+\[ \left| n \right\rangle  = \left| n_0 \right\rangle + \frac{\lambda x_0 ^3}{\sqrt{8}} \left( \frac{\sqrt{n (n - 1) (n - 2)}}{3 \hbar \omega} \left| n_0 - 3 \right\rangle + \frac{3n\sqrt{n}}{\hbar \omega} \left| n_0 - 1 \right\rangle - \frac{3(n + 1) \sqrt{n + 1}}{\hbar \omega} \left| n_0 + 1 \right\rangle - \frac{\sqrt{(n + 1) (n + 2) (n + 3)}}{3 \hbar \omega} \left| n_0 + 3 \right\rangle \right)
+\]
+
+Osnovno stanje perturbacije je
+
+\[ \left| 0 \right\rangle = \left| 0_0 \right\rangle + \frac{\lambda x_0 ^3}{\sqrt{8} \cdot 3 \hbar \omega} \left( -9 \left| 1 \right\rangle - \sqrt{6} \left| 3 \right\rangle  \right) + o \left( \lambda ^2 \right)
+\]
+
+Slednje stanje ni normirano, saj
+
+\[ \left\langle 0 \middle| 0 \right\rangle = 1 + \frac{\lambda ^2 x_0 ^6}{8 \cdot 9 \hbar ^2 \omega ^2} \left( 81 + 6 \right) + o \left( \lambda ^2 \right).
+\]
+
+Osnovno stanje zapišemo
+
+\[ \frac{\left| 0 \right\rangle}{\sqrt{1 + \frac{\lambda ^2 x_0 ^2}{\hbar ^2\omega ^2} \frac{87}{72}}} = \left| 0 \right\rangle \left( 1 - o \left( \lambda ^2 \right) \right)
+\]
+
+Popravek, ki je posledica normiranosti, se skriva znotraj približka \( o \left( \lambda ^2 \right) \), ki smo ga že tako ali tako zanemarili.
+
+Za odgovor na vprašanje, kaj se zgodi z valovno funkcijo po perturbaciji, moramo izračunati pričakovano osnovnega stanja perturbacije
+
+\begin{align*}
+  \left\langle 0 \middle| x \middle| 0 \right\rangle &= \frac{x_0}{\sqrt{2}} \left\langle 0 \middle| \left( a + a ^{\dagger} \right) \middle| 0 \right\rangle \\
+&=  0 + \left\langle 0 \right| \left[ \frac{\lambda x_0 ^3}{\sqrt{8} \cdot 3 \hbar \omega} \left( -9 \left| 0 \right\rangle_0 - \sqrt{6} \left| 2 \right\rangle_0 - 9 \sqrt{2} \left| 2 \right\rangle_0 - \sqrt{24} \left| 4 \right\rangle_0 \right) \right] \\
+&= - \frac{3 \lambda x_0 ^4}{2 \hbar \omega} + o \left( \lambda ^2 \right) = - \frac{3}{2} \left( \frac{\lambda x_0 ^3}{\hbar \omega} \right) x_0
+\end{align*}
+
+Vidimo torej, da se osnovno stanje tega stanja dejansko premakne v levo.
+* Degenerirana teorija perturbacije
+
+#+begin_problem
+
+#+end_problem
+
+Hamiltonian vodikovega delca v električnem polju je
+
+\[ H = \frac{p ^2}{2m} - \frac{e ^2}{4 \pi \epsilon_0} \frac{1}{r} - e \epsilon z,
+\]
+
+kjer je \( \vec{\epsilon} = (0, 0, \epsilon) \) električno polje v smeri \( z \).
+
+Osnovno stanje vodikovega atoma nižje kot osnovno stanje \( E_0 = -13.6 \mathrm{eV} \).
