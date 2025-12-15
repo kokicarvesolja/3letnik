@@ -1,0 +1,149 @@
+#+title: 8. vaje iz Matematične fizike 2
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Naloga xx (Prinčič 7.3)
+
+#+begin_problem
+Zanima nas hitrostni profil dolge cevi s polmerom \( R \), skozi katero teče nestisljiva tekočina z viskoznostjo \( \eta \).
+
+a) \( \nabla p = \frac{\Delta p}{L} \hat{e}_z \)
+b) \( \nabla p = \frac{\Delta p}{L} e^{\mathrm{i} \omega t} \hat{e}_z \)
+#+end_problem
+
+Robni pogoj je \( \vec{v} (r = R) = 0 \). Hitrost ima komponento samo v \( z \) smeri, torej \( \vec{v} = v(r, t) \hat{e}_z \).
+
+Navier-Stokesova enačba
+
+\[ \rho \left( \frac{\partial \vec{v}}{\partial t}  + \left( \vec{v} \cdot \nabla \right) \vec{v} \right) = - \nabla p + \eta \nabla ^2 \vec{v},
+\]
+
+se nam ob upoštevanju lastnosti tekočin preobrazi v
+
+\begin{equation}
+\label{eq:1}
+ \rho \frac{\partial \vec{v}}{\partial t} = - \left( \nabla p \right) \cdot \hat{e}_z + \eta \nabla ^2 v
+\end{equation}
+
+Za a) primer iščemo hitrost po dolgem času, torej \( \frac{\partial \vec{v}}{\partial t} = 0 \).
+
+Za b) zaradi znane časovne odvisnosti gradienta tlaka uporabimo nastavek \( v(r, t) = R(r) e^{\mathrm{i} \omega t} \). Navier-Stokes \ref{eq:1} postane nehomogena diferencialna enačba 2. reda
+
+\begin{equation}
+\label{eq:2}
+ \rho R \mathrm{i} \omega - \eta \nabla ^2 R= - \frac{\Delta p}{L} .
+\end{equation}
+
+Homogeni del diferencialne enačbe je Helmholtzova enačba
+
+\[ \nabla ^2 R_H = \frac{\rho \mathrm{i} \omega}{\eta} R_H,
+\]
+
+kjer je \( -k ^2 = \frac{\rho \mathrm{i} \omega}{\eta} \). Rešitev Helmholtzove enačbe je
+
+\[ R_H (r) = A J_0 (kr) + B Y_0 (kr).
+\]
+
+Rešitev nam ne divergira v izhodišču, torej je \( B = 0 \). Izrazimo sedaj \( k \)
+
+\[ - k ^2 = \frac{\rho \mathrm{i} \omega}{\eta} \implies k = \pm \sqrt{\frac{\rho \omega}{\eta}} \sqrt{- \mathrm{i}}.
+\]
+
+Koren od \( - \mathrm{i} \) lahko zapišemo v polarnim zapisom kot
+
+\[ \sqrt{- \mathrm{i}} = \sqrt{e^{- \mathrm{i} \frac{\pi}{2}}} = e^{- \mathrm{i} \frac{\pi}{4}} = \frac{1}{\sqrt{2}} (1- \mathrm{i}).
+\]
+
+Koeficient \( k \) je tako enak
+
+\[ k = \pm \sqrt{\frac{\rho \omega}{2 \eta}} (1 - \mathrm{i}).
+\]
+
+Zaradi identitet kot sta
+
+\[ J_0 (x) = J_0 (-x) \text{ in } J_n (-x) = (-1)^n J_n (x),
+\]
+
+ni važno ali izberemo pozitivno ali negativno vrednost \( k \). Zaradi ljubezni do sebe izberemo pozitiven \( k \).
+
+Izračunajmo še partikularno rešitev \( R_P \). Nehomogeni del enačbe je neodvisen od \( r \), kar pomeni, da želimo enako odvisnost imeti tudi pri funkcijah od \( R_P \). Torej bo partikularna rešitev
+
+\[ R_P = \mathrm{i} \frac{\Delta p}{ L \rho \omega}
+\]
+
+Splošna rešitev enačbe \ref{eq:2} je
+
+\[ R(r) = A J_0 (kr) + \mathrm{i} \frac{\Delta p}{L \rho \omega} .
+\]
+
+Preko robnega pogoja \( v(r = R) = 0 \) določimo, da je \( A = - \frac{\mathrm{i} \Delta p }{L \rho \omega J_0 (kR)} \). Končna rešitev je
+
+\[ v(r, t) = - \mathrm{i} \frac{\Delta p}{L \rho \omega} \left( \frac{J_0 (kr)}{J_0 (k R)} - 1 \right) e^{\mathrm{i} \omega t}
+\]
+** Limite
+
+Opazujemo rešitve za majhne \( \omega \). Besslovo funkcijo lahko razvijemo v vrsto
+
+\begin{equation}
+\label{eq:3}
+ J_0 (x) = 1 - \frac{x ^2}{4} + o \left( x ^4 \right).
+\end{equation}
+
+Lahko tudi pogledamo, kakšne morajo biti vrednosti za majhne \( \omega \). Zaradi korenske premosorazmernosti sledi
+
+\[ \left| k r \right| \ll 1,
+\]
+
+iz česar sledi
+
+\[ \sqrt{\frac{\omega \rho}{\eta}} R \ll 1 \implies \ \omega \ll \frac{\eta}{\rho R ^2}.
+\]
+
+Hitrost pa je ob upoštevanju razvojev enaka
+
+\begin{align*}
+  v(r, t) &= - \mathrm{i} \frac{\Delta p}{L \rho \omega} e^{\mathrm{i} \omega t} \left( \frac{1 - \frac{k ^2 r ^2}{4}}{1 - \frac{k ^2 R ^2}{4}} - 1 \right) \\
+&= - \mathrm{i} \frac{\Delta p}{ L \rho \omega} e^{\mathrm{i} \omega t} \left[ \left( 1- \frac{k ^2 r ^2}{4} \right) \left( 1 + \frac{k ^2 R ^2}{4} \right) - 1 \right]
+\end{align*}
+
+Pri razvoju v vrsto \ref{eq:3} smo šli zgolj do 2. reda. Zmnožek v zgornji vrsti pa nam bo dal člen s \( k ^4 \), ki ga zanemarimo. Če bi ga želeli upoštevati, bi morali pri \ref{eq:3} upoštevati četrti red. Torej
+
+\begin{align*}
+  v(r, t) &= - \mathrm{i} \frac{\Delta p}{L \rho \omega} e^{\mathrm{i} \omega t} \left( 1 + \frac{k ^2}{4} \left[ R ^2 - r ^2 \right] - \cancel{\frac{k ^4 R ^2 r ^2}{16}} - 1 \right) \\
+&= \frac{\Delta p}{4 \eta L} e^{\mathrm{i} \omega t} \left( r ^2 - R ^2 \right)
+\end{align*}
+
+Za velike \( \omega \) bo veljalo
+
+\[ \omega \gg \frac{\eta}{\rho R ^2}.
+\]
+
+Upoštevamo asimptoto za velike \( \omega \)
+
+\[ J_m (x) \approx \sqrt{\frac{2}{\pi x}} \cos \left( x - \frac{1}{2} m \pi - \frac{\pi}{4} \right) .
+\]
+
+Hitrost zapišemo torej
+
+\[ v(r, t) = - \mathrm{i} \frac{\Delta p}{L \rho \omega} e^{\mathrm{i} \omega t} \left[ \sqrt{\frac{R}{r}} \frac{\cos \left( kr - \frac{\pi}{4} \right)}{\cos \left( k R - \frac{\pi}{4} \right)} - 1 \right] .
+\]
+
+Zaradi \( \omega \gg 1 \) velja tudi \( kr \sim k R \) in posledično bo \( \sqrt{\frac{R}{r}} \approx 1 \). Kosinus lahko zapišemo kot vsoto polarnih števil
+
+\[ \cos \left( x + \mathrm{i} y \right) = \frac{1}{2} \left[ e^{\mathrm{i} (x + \mathrm{i} y)} + e^{- \mathrm{i} (x + \mathrm{i} y)} \right]  \underset{\left| y \right| \gg 1}{\approx} \frac{1}{2} \begin{cases}
+                                                                                                                                                                                                     e^{\mathrm{i} x - y} &; y < 0 \\
+                                                                                                                                                                                                     e^{\mathrm{i} x + y} &; y > 0
+                                                                                                                                                                                                     \end{cases}
+\]
+
+Torej bo \( y = \mathrm{Im} k R = \sqrt{\frac{\omega \rho}{2 \eta} R} < 0 \)
+
+Iz tega sledi rešitev v limiti, ki je ravno v nasprotni fazi od toka
+
+\[ v(r, t) = - \mathrm{i} \frac{\Delta p}{L \rho \omega} e^{\mathrm{i} \omega t} \left( \frac{\exp \left\{ \mathrm{i} \left( \sqrt{\frac{\rho  \omega}{2 \eta}} r - \frac{\pi}{4}\right) + \sqrt{\frac{\rho \omega}{2 \eta} r} \right\}}{\exp \left\{ \mathrm{i} \left( \sqrt{\frac{\omega \rho}{\eta}} R - \frac{\pi}{4} \right) + \sqrt{\frac{\omega \rho}{2 \eta} R} \right\} - 1 \right)
+\]
