@@ -67,7 +67,7 @@ Anihilacijski operator \( a \) ima na začetno stanje sledeče učinek
 
 Novi anihilacijski operator \( \tilde{a} \) pa modificira začetno stanje v
 
-\[ \tilde{a} \left| \psi, 0 \right\rangle = -- \frac{x_1{\sqrt{2}x_0} \left| \psi, 0 \right\rangle.
+\[\tilde{a} \left| \psi, 0 \right\rangle = - \frac{x_1}{\sqrt{2}x_0} \left| \psi, 0 \right\rangle.
 \]
 
 Označimo torej

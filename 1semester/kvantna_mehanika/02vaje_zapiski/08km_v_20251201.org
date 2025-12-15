@@ -316,7 +316,7 @@ katerega časovni razvoj je
 \end{equation}
 
 
-Pričakovano vrednost operatorja \( L_z \) skozi čas je precej enostavna, saj bo vrnilo enako stanje pomnoženo z vrednostjo lastne vrednosti.
+Pričakovana vrednost operatorja \( L_z \) skozi čas je precej enostavna, saj vrne enako stanje pomnoženo z lastno vrednostjo.
 
 \[ L_z \left| lm \right\rangle = \hbar m \left| lm \right\rangle.
 \]
@@ -380,3 +380,12 @@ V primeru, da funkcija še ni razvita po lastnih stanjih (npr. na kolokviju), jo
 *** Meritev \( L_z \) ob času \( t \)
 
 Po aksiomih kvantne mehanike je pred meritvijo valovna funkcija v vseh možnih stanjih, ki jih določa enačba \ref{eq:4}. V primeru, da izvedemo meritev ob času \( t = 0 \), bo valovna funkcija kolapsirala in bo za vse čase \( t_+ = 0 + \epsilon \) za \( \epsilon > 0 \) v opaženem stanju.
+
+\[
+\begin{array}{|c|c|c|} \hline
+\text{rezultat meritve} & \text{verjetnost} & \left| \psi, t_+ \right\rangle \\ \hline
+-\hbar & \sin ^4 \frac{\theta}{2} & \left| 1, -1 \right\rangle \\
+0 & 2 \sin ^2 \frac{\theta}{2} \cos ^2 \frac{\theta}{2} & \left| 1, 0 \right\rangle \\
+\hbar & \cos ^4 \frac{\theta}{2} & \left| 1, 1 \right\rangle \\ \hline
+\end{array}
+\]
