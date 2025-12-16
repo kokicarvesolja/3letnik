@@ -481,3 +481,89 @@ Specifično za naš primer
 \end{align*}
 
 Tem integralom se reče \( \delta \) funkcije površine. Več je na voljo v Križaničevi knjigi Parcialne diferencialne enačbe.
+** Naloga kk
+
+#+begin_problem
+Imamo sfero s polmerom \( R \) in toplotno prevodnostjo \( \lambda_k \). Sfero obdamo z lakom toplotne prevodnosti \( \lambda_l \) majhne debeline \( d \). Temperatura okolice je \( T_0 \). Temperatura sfere je ob času \( t = 0 \) enaka \( T_1 \).
+#+end_problem
+
+Rešujemo difuzijsko enačbo
+
+\[ D \nabla ^2 T = \frac{\partial T}{\partial t}
+\]
+
+z začetnim pogojem \( T(t = 0) = T_1 \).
+
+Toplotni tok skozi lak je zaradi majhne debeline enak
+
+\[ j_l = \lambda_l \cdot\frac{ \Delta T}{d} = \lambda_l \frac{T_0 - T_{(r = R)}}{d}
+\]
+
+Tok, ki gre skozi stranico krogle, mora biti enak toku skozi lak, kar nam poda naš robni pogoj
+
+\[ \left. \lambda_k \partial_r T \right|_{r = R} = \lambda_l \frac{T_0 - T(r = R)}{d}
+\]
+
+Robni pogoj še zmeraj precej enostavno homogeniziramo z nastavkom
+
+\[ T(r, t) = R(r) \tau(t) + T_0.
+\]
+
+Nastavek vstavimo v difuzijsko enačbo in dobimo
+
+\[ \frac{\nabla ^2 R}{R} = \frac{1}{D} \frac{\dot{\tau}}{\tau} = - k ^2
+\]
+
+Rešitev časovnega dela je eksponentno pojemanje
+
+\[ \tau(t) = A \cdot e^{- D k ^2 t}.
+\]
+
+Radialni del je neodvisen od kotov, kar pomeni, da je \( m = l = 0 \). Po teoretičnem uvodu so rešitve torej samo
+
+\[ R(r) = A j_0 (kr) + B y_0 (kr).
+\]
+
+Člen \( B = 0 \), saj divergira v izhodišču. V robne pogoje torej vstavimo \( R(r) = A j_0 (kr) \) in dobimo
+
+\[ \lambda_k \tau A j_0 ' (kR) k = \lambda_l \left( - \frac{A j_0 (kR) \tau}{d} \right).
+\]
+
+Upoštevamo definicijo \( j_0 (x) = \frac{\sin x}{x} \), ki jo vstavimo v enačbo, kjer smo še pokrajšali časovne komponente.
+
+\[ \lambda_k \left( \frac{\cos (kR)}{kR} - \frac{\sin (kR)}{(kR) ^2} \right)k = - \lambda_l \frac{\sin (kR)}{kR d}
+\]
+
+Enačbo delimo s \( \cos (kR) \) in uvedemo spremenljivko \( \xi = kR \)
+
+\[ \lambda_k \left( \frac{1}{\xi} - \tan (\theta) \frac{1}{\xi ^2} \right) \frac{\xi}{R} = - \lambda_l \tan (\xi) \frac{1}{\xi d}
+\]
+
+Dobili smo transcendentno enačbo
+
+\[ \tan (\xi) \left( \frac{\lambda_l}{ \lambda_k} \frac{R}{d} - 1 \right) = \xi.
+\]
+
+Uvedemo spremenljivko \( \alpha = \frac{\lambda_l }{\lambda_k} \frac{R}{d} \), ki ji pravimo /snovna konstanta/.
+
+Rešitve enačbe
+
+\begin{equation}
+\label{eq:6}
+ \tan (\xi) \left( \alpha - 1 \right) = \xi,
+\end{equation}
+
+so \( \xi_n \) za \( n = 1, 2, \ldots \) in rešitev je
+
+\[ T(r, t) = \sum\limits_{n = 1}^{\infty} A j_0 \left( \xi_n \frac{r}{R} \right) \exp \left\{ - D \left( \xi \frac{r}{R} \right) ^2 t \right\} + T_0
+\]
+
+Upoštevamo še začetni pogoj \( T( t= 0 ) = T_1 \)
+
+\[ T_1 - T_0 = \sum\limits_{n = 1}^{\infty} A j_0 \left( \xi_n \frac{r}{R} \right).
+\]
+
+\( \xi_n \) sicer niso ničle \( j_0 \), ampak nam Sturm-Liouvilleov izrek nam pove, da so rešitve enačbe \ref{eq:6} ortogonalne med seboj v danem skalarnem produktu. **Pomembno**: robni pogoji morajo biti tipa Sturm-Liouville.
+
+\[ \int\limits_{}^{} (T_1 - T_0) j_0 \left( \xi_n \frac{r}{R} \right) r ^2 \, \mathrm{d} r = A_n \int\limits_{}^{} j_0 ^2 \left( \xi_n \frac{r}{R} \right) r ^2 \, \mathrm{d} r
+\]
