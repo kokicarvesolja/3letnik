@@ -68,8 +68,10 @@ Vektorski zapi pa je
 
 Do rezultata lahko pridemo tudi hitreje. Gostoto vseh nabojev (vezanih in zunanjih) lahko zapišemo kot
 
-\[ \rho = \vec{\nabla} \cdot \epsilon_0 \vec{E}.
-\]
+\begin{equation}
+\label{eq:3}
+ \rho = \vec{\nabla} \cdot \epsilon_0 \vec{E}.
+\end{equation}
 
 Za naš primer velja, da je \( \rho \) enaka gostoti vseh vezanih nabojev \( \rho_v \), iz česar sledi
 
@@ -152,3 +154,113 @@ Planparalelna plošča pa ima
 
 Faktorjem \( \frac{1}{3}, \frac{1}{2} \) in \( 1 \) pravimo depolarizacijski faktor.
 ** Točka c)
+
+Sfero prepolovimo in pri zgornji polovici imamo negativne naboje z normalo, ki kaže v negativno smer \( z \), medtem ko na spodnji polovici pa so pozitivni naboji z normalo, ki kaže navzgor.
+
+Električno polje je sestavljeno iz oboda krogle in ploščatega kondenzatorja, ki je posledica špranje. \( \vec{E} \) kondenzatorja je drugače usmerjeno od oboda krogle.
+
+Površinska gostota nabojev na ravninah sfer je še zmeraj \( \sigma \), iz česar sledi \( P = \sigma \).
+
+Električno polje špranje je torej
+
+\[ \vec{E}_{gap } = - \frac{\vec{P}}{3 \epsilon_0} + \frac{\sigma}{\epsilon_0} \hat{e}_z = - \frac{\vec{P}}{3 \epsilon_0} + \frac{\vec{P}}{\epsilon_0} = \frac{2}{3} \frac{\vec{P}}{\epsilon_0}
+\]
+* Ploščica iz anizotropnega dielektrika
+
+Pred nadaljevanjem naloge uvedemo novo količino \( \vec{D} = \epsilon_0 \vec{E} + \vec{P} \), ki je gostota električnega naboja in je razlika gostot vseh \ref{eq:3} in vezanih nabojev \ref{eq:2}
+
+\[ \rho - \rho_v = \vec{\nabla} \left( \epsilon_0 \vec{E} + \vec{P} \right) = \vec{\nabla} \cdot \vec{D}.
+\]
+
+Za dielektriko je empirično določeno, da \( \vec{D} \propto \vec{E} \), iz česar sledi
+
+\[ \vec{D} = \epsilon_0 \underline{\epsilon} \vec{E},
+\]
+
+kjer je \( \underline{\epsilon} \) tenzor dielektrika.
+
+Če plošči priključimo na napetost, lahko hitro dokažemo, da je jakost električnega polja nima komponente vzporedne s stranicama kondenzatorja.
+
+Zamislimo si majhen presek stranice kondenzatorja, ki je v ravnini slike. Uporabimo Maxwellovo enačbo za magnetni prekot
+
+\[ \vec{\nabla} \times \vec{E} = - \frac{\partial \vec{B}}{\partial t} = 0.
+\]
+
+Slednje integriramo po dani površini in preko Stokesovega izreka prevedemo na integral po zaključeni zanki površine.
+
+\[ \int\limits_S^{} \vec{\nabla} \times \vec{E} \, \mathrm{d} S = \oint\limits_{\partial S}^{} \vec{E} \cdot \mathrm{d} \vec{l} = 0.
+\]
+
+Električno polje, ki dejansko šteje, je tisto, ki je vzporedno stranicam, iz česar sledi
+
+\[ \left (\vec{E}_{zun}^{\parallel}  - \vec{E}_{not}^{\parallel} \right) \mathrm{d} l = 0
+\]
+
+in ker je \( \vec{E}_{zun}^{\parallel} = 0 \), je potem tudi \( \vec{E}_{not}^{\parallel} = 0 \).
+
+Količina, ki bo v vzporedna s tenzorjem, je gostota električnega naboja \( \vec{D} \). Za izračun kapacitivnost (milost, prosim), potrebujemo naboj na kondenzatorskih ploščah \( e_p \).
+
+Uporabimo Maxwellovo relacijo
+
+\[ \vec{\nabla} \cdot \vec{D} = \rho_p,
+\]
+
+ki jo integriramo po tanki površini, ki dobro zaobjame kondenzatorsko ploščo. Preko Gaussovega izreka dobimo enakost
+
+\[ \int\limits_V^{} \vec{\nabla} \cdot \vec{D} \, \mathrm{d} V = \int\limits_{\partial V}^{} \vec{D} \cdot \mathrm{d} \vec{S} = e_p.
+\]
+
+Rezultat ploščinskega integrala je
+
+\[ \int\limits_{\partial V}^{} \vec{D} \cdot \mathrm{d} \vec{S} = \left[ D_{zun}^{\perp } - D_{not}^{\perp }  \right] S = e_p .
+\]
+
+Zunaj kondenzatorja ni električnega polja in posledično tudi ni gostote električnega polja \( \vec{D} \). Znotraj plošče velja \( D_{not}^{\perp } = D_y \).
+
+Tenzor lahko iz lastnega sistema pretvorimo v kartezični sistem
+
+\[ \underline{\epsilon} = \begin{bmatrix}
+                          \cos \alpha & \sin\alpha \\
+                          -\sin \alpha & \cos \alpha
+                           \end{bmatrix} \begin{bmatrix}
+                                         \epsilon_{1} &  \\
+                                          & \epsilon_{2}
+                                          \end{bmatrix} \begin{bmatrix}
+                                                        \cos \alpha & \sin \alpha \\
+                                                        -\sin \alpha & \cos \alpha
+                                                         \end{bmatrix}
+\]
+
+Jakost električnega polja ima, kakor smo dokazali na začetku naloge, samo eno komponento \( \vec{E} = (0, E)^T \). Po definiciji gostote električnega polja lahko torej izračunamo
+
+\[ \begin{bmatrix} D_{x} \\ D_{y} \end{bmatrix} = \epsilon_0 \begin{bmatrix}
+                                                             \epsilon_{1} \cos ^2 \alpha + \epsilon_2 \sin ^2\alpha & (\epsilon_2 - \epsilon_1) \sin \alpha \cos \alpha  \\
+                                                             (\epsilon_2 - \epsilon_1) \sin \alpha \cos \alpha & \epsilon_1 \sin ^2 \alpha + \epsilon_2 \cos ^2 \alpha
+                                                              \end{bmatrix} \begin{bmatrix} 0 \\ E \end{bmatrix}
+\]
+
+Iz enačbe
+
+\[ \frac{e_p}{S} = \epsilon_0 \left( \epsilon_1 \sin ^2 \alpha + \epsilon_2 \cos ^2 \alpha \right) \frac{U}{d}
+\]
+
+izračunamo, da je kapacitivnost kondenzatorja
+
+\[ C = \frac{e_p}{U}  \frac{\epsilon_0 S}{d} \left( \epsilon_1 \sin ^2 \alpha+ \epsilon_2 \cos ^2 \alpha \right).
+\]
+
+V primeru, ko \( \epsilon_1 = \epsilon_2 = 1 \), dobimo kapacitivnost praznega kondenzatorja \( C_0 = \frac{\epsilon_0 S}{d} \).
+* Točkast dipol v krogelni lupini dielektrika
+
+Pri reševanju bomo uporabili nastavek za potencial. Električni potencial električnega dipola je
+
+\[ U_{dip} = \frac{p_e}{4 \pi \epsilon_0} \frac{\cos \theta}{r ^2},
+\]
+
+ki vsebuje Legendrov polinom stopnje \( l = 1 \). Iz tega sledi, da bo nastavek vseboval le \( l = 1 \) člene.
+
+\[ U(r, \theta) = \begin{cases}
+                  \frac{p_e}{4 \pi \epsilon_0} \frac{\cos \theta}{r ^2} + A_1 r \cos \theta &; r < a \\
+                  B_1 \frac{1}{r ^2} \cos \theta &; r > a.
+                  \end{cases}
+\]
