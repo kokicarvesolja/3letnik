@@ -23,15 +23,18 @@ Navier-Stokesova enačba
 \[ \rho \left( \frac{\partial \vec{v}}{\partial t}  + \left( \vec{v} \cdot \nabla \right) \vec{v} \right) = - \nabla p + \eta \nabla ^2 \vec{v},
 \]
 
-se nam ob upoštevanju lastnosti tekočin preobrazi v
+se nam ob upoštevanju lastnosti tekočin (nestisljivost in viskoznost) preobrazi v
 
 \begin{equation}
 \label{eq:1}
  \rho \frac{\partial \vec{v}}{\partial t} = - \left( \nabla p \right) \cdot \hat{e}_z + \eta \nabla ^2 v
 \end{equation}
 
-Za a) primer iščemo hitrost po dolgem času, torej \( \frac{\partial \vec{v}}{\partial t} = 0 \).
 
+** Točka a)
+Iščemo hitrost po dolgem času, torej \( \frac{\partial \vec{v}}{\partial t} = 0 \).
+
+** Točka b)
 Za b) zaradi znane časovne odvisnosti gradienta tlaka uporabimo nastavek \( v(r, t) = R(r) e^{\mathrm{i} \omega t} \). Navier-Stokes \ref{eq:1} postane nehomogena diferencialna enačba 2. reda
 
 \begin{equation}
