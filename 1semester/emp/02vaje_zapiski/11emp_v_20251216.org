@@ -9,12 +9,23 @@
 #+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
 * Radialno polarizirana krogla
 
+#+begin_problem
+Krogla polmera \( a \) je spontano polarizirana tako, da ima vektor polarizacije znotraj krogle krajevno odvisnost \( \vec{P} \left( \vec{r} \right)= k \vec{r} \), kjer je \( k \) znana konstanta. Izračunaj:
+
+a) prostorninsko gostoto vezanega naboja v krogli, površinsko gostoto vezanega naboja na površini krogle in skupni naboj krogle,
+b) jakost električnega polja povsod po prostoru.
+
+Rezultat pod b) pokaže, da je električno polje v krogli kar sorazmerno s polarizacijo. Zakaj?
+#+end_problem
+
 Polarizacija krogle je podana z
 
 \begin{equation}
 \label{eq:1}
  \vec{P} = k \vec{r}, \ k > 0
 \end{equation}
+
+[[file:figures/24radialnoPolariziranaKrogla.png]]
 
 Zanima nas prostorninska gostota vezanega naboja, ki je definirana kot
 
@@ -23,10 +34,24 @@ Zanima nas prostorninska gostota vezanega naboja, ki je definirana kot
  \rho_v = - \vec{\nabla} \cdot \vec{P}.
 \end{equation}
 
-Izpeljali smo tudi površinsko gostoto naboja, ki je definirana kot
+Če se posvetujemo slike, lahko opazimo, da je gostota vezanega naboja negativna, saj imajo dipoli usmerjene pozitivne naboje navzven in negativne naboje proti središču sfere. Negativni naboji so torej bolj skoncentrirani proti središču in posledično je gostota vezanega naboja negativna.
+
+Površinska gostota naboja je povezana s polarizacijo preko
 
 \[ \sigma_v = \vec{P} \cdot \vec{n}.
 \]
+
+Do te zveze pridemo preko volumnske integracije enačbe \ref{eq:2} in Gaussovega izreka
+
+\[ \iiint\limits_V^{} \rho_v \,\mathrm{d V} = - \iiint\limits_V^{} \nabla \cdot \vec{P} \,\mathrm{d V} = - \iint\limits_S^{} \vec{P} \cdot \,\mathrm{d } \vec{S} = - \vec{P} \cdot \vec{n} (S_{zun} - S_{not}) = e
+\]
+
+Polarizacija zunaj sfere je ničelna in velja \( \vec{S} = S \cdot \vec{n} \). Po definiciji površinske gostote naboja potem sledi
+
+\[ \sigma_v = \frac{e}{S} = \vec{P} \cdot \vec{n}
+\]
+
+Površinska gostota naboja je pozitivna, saj kažejo pozitivni konci električnih dipolov navzen.
 
 V prostorninsko gostoto naboja lahko samo vstavimo radialno odvisnost \ref{eq:1} in dobimo
 
@@ -61,7 +86,7 @@ Jakost električnega polja je tako
 \[ E(r) = - \frac{kr}{\epsilon_0} = - \frac{P}{\epsilon_0}.
 \]
 
-Vektorski zapi pa je
+Vektorski zapis pa je
 
 \[ \vec{E} \left( \vec{r} \right) = - \frac{\vec{P} \left( \vec{r} \right)}{\epsilon_0}
 \]
@@ -78,6 +103,13 @@ Za naš primer velja, da je \( \rho \) enaka gostoti vseh vezanih nabojev \( \rh
 \[ \rho = \rho_v \implies \ - \vec{\nabla} \cdot \vec{P} = \vec{\nabla} \cdot \epsilon_0 \vec{E}
 \]
 * Homogeno polarizirana krogla
+
+#+begin_problem
+Kroglo, izdelano iz snovi s homogeno spontano polarizacijo \( \vec{P} \), prerežemo na pol tako, da gre rez skozi središče krogle in je pravokoten na \( \vec{P} \). Obe polovici krogle malenkost razmaknemo, tako da je razmik zelo majhen v primerjavi s polmerom krogle. Izračunaj gostoto električnega polja v špranji med polovicama krogle. Nalogo najprej reši za primer neprerezane krogl in si z rezultatom pomagaj pri računu za primer prerezane krogle.
+#+end_problem
+
+[[file:figures/24razpolovljenaKrogla.png]]
+
 ** Točka a)
 
 Polarizacijo zapišemo
@@ -90,7 +122,7 @@ Gostota vezanih nabojev bo po definiciji \ref{eq:2}
 \[ \rho_v = - \vec{\nabla} \cdot \vec{P} = 0,
 \]
 
-kar je smiselno, saj imamo homogeno polje in odvajamo konstanto.
+kar je smiselno, saj imamo homogeno polje in odvajamo konstanto. To nam pove, da nimamo vezanih nabojev v volumnu sfere.
 
 Površinska gostota nabojev bo različna od \( 0 \), saj drugače nimamo naloge. Normalni vektor bomo zapisali v sferičnih koordinatah
 
