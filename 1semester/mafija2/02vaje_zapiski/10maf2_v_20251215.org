@@ -308,3 +308,176 @@ Celotna rešitev je tako
 Za čas \( t = 0 \) je vrsta dobro definirana v srednjem (lokalni členi bodo konvergirali). Za \( t > 0  \) bodo členi eksponentno zadušeni in takrat vrsta absolutno konvergira.
 
 Do take konvergence (v srednjem) pride takrat, ko imamo nezvezne začetne pogoje.
+** Naloga zz (Prinčič 7.5)
+
+#+begin_problem
+Imamo tanko polsfero, ki se dotika ravnine s temperaturo \( T_0 \). Začetna temperatura polsfere je \( T_1 \).
+#+end_problem
+
+Rešujemo difuzijsko enačbo
+
+\begin{equation}
+\label{eq:4}
+ D \nabla ^2 T = \frac{\partial T}{\partial t}
+\end{equation}
+
+z robnimi pogoji \( T \left( \theta = \frac{\pi}{2}, t \right)= T_0 \) in začetnim pogojem \( T \left( \theta, t = 0 \right)= T_1 \).
+
+Problem bomo reševali s separacijo spremenljivk, ki nam hkrati uredi še težave z robnim pogojem
+
+\[ T = T_0 + \Theta(\theta) \tau (t).
+\]
+
+Nastavek vstavimo v enačbo \ref{eq:4} in nam preostane enačba
+
+\[ \frac{\nabla ^2 \Theta}{\Theta} = \frac{1}{D} \frac{\dot{\tau}}{\tau} = - \lambda
+\]
+
+Časovni del ima enačbo
+
+\[ \frac{\dot{\tau}}{\tau} = - \lambda D,
+\]
+
+ z eksponentno rešitvijo
+
+ \[ \tau(t) = A e^{- \lambda D t} .
+ \]
+
+ Kotni del ima enačbo
+
+ \[ \nabla ^2 \Theta = - \lambda \Theta.
+ \]
+
+ Enačbo lahko napišemo z operatorjem vrtilne količine, kakor smo povedali v teoretičnem delu višje gor. Enačba je torej
+
+ \begin{equation}
+ \label{eq:5}
+ -\frac{L ^2}{R ^2} \Theta = - \lambda \Theta.
+ \end{equation}
+
+ Ker nimamo kotne odvisnosti za \( \phi \), bodo rešitve samo navadni Legendrovi polinomi
+
+ \[ \Theta(\theta) = A P_l (\theta) + B Q_l (\theta).
+ \]
+
+ Vemo pa tudi, da velja identiteta
+
+ \[ L ^2 \Theta = l (l + 1),
+ \]
+
+ ki jo uporabimo v modificirani enačbi za kot \ref{eq:5}
+
+ \[ \frac{- l (l + 1)}{R ^2} \Theta = -\lambda \Theta \implies \ \lambda = \frac{l (l + 1)}{R ^2}
+ \]
+
+ Zaradi divergence v \( \cos \theta = - 1 \) je koeficient \( A = 0 \) in nam preostane samo
+
+ \[ \Theta (\theta) = B P_l (\cos \theta) .
+ \]
+
+ Nahajamo se na polsferi, kar pomeni, da ne poznamo, katere vrednosti \( l \)-jev pridejo v poštev. Te vrednosti bomo dobili iz robnih pogojev
+
+ \[ T_0 = T_0 + \tau B P_l (0) \implies \ P_l (0) = 0 .
+ \]
+
+ Ničle tega Legendrovega polinoma so lihi \( l = 1, 3, 5, \ldots \).
+
+Splošna rešitev je tako
+
+\[ T = T_0 + \sum\limits_{l = 1,3,5, \ldots}^{\infty} C_l P_l (\cos \theta) \exp \left\{ - \frac{l(l + 1)}{R ^2} D t \right\}.
+\]
+
+Upoštevamo še začetni pogoj ter definicijo skalarnega produkta
+
+\begin{align*}
+  T_1 - T_0 &= \sum\limits_{l = 1}^{\infty} C_l P_l (\cos \theta) && \left/ \int\limits_0^1 P_l (\cos \theta) \, \mathrm{d} \cos \theta \\
+(T_1 - T_0) \int\limits_0^1 P_l (\cos \theta) \, \mathrm{d} (\cos \theta) &= C_l \int\limits_0^1 P_l ^2 (\cos \theta) \, \mathrm{d} \cos \theta
+\end{align*}
+
+Vrednosti, ki jih \( l \) zaseda so lihe - torej so tudi Legendrovi polinomi v naši vrsti lihi.
+
+Če vzamemo sodo funkcijo na sodem intervalu \( [-1, 1] \), integral lahko zapišemo kot dvakratni integral po intervalu \( [0, 1] \). Za lihe funkcije pa je potem integral po intervalu \( [0, 1] \) ravno polovica integrala po intervalu \( [-1, 1] \).
+
+Poznamo identiteto
+
+\[ \int\limits_{-1}^1 P_l ^2 (\cos \theta) \, \mathrm{d} (\cos \theta) = \frac{2}{(2l + 1)}
+\]
+
+Iz tega sledi, da je koeficient enak
+
+\[ C_l = (2l + 1) (T_1 - T_0) \int\limits_0^1 P_l (\cos \theta) \, \mathrm{d} \cos \theta
+\]
+** Naloga ww :the_power_of_sturm_liouvile:
+
+#+begin_problem
+Imamo sfero s polmerom \( R \), ki ima v ekvatorialni ravnini grelec z močjo \( P \). Zunaj sfere je temperatura \( T_0 \). Iščemo stacionarno rešitev difuzijske enačbe.
+#+end_problem
+
+Iščemo stacionarno rešitev, torej velja \( \frac{\partial T}{\partial t} = 0 \). Od difuzijske enačbe nam torej ostane samo krajevni del in izvori
+
+\[ \nabla ^2 T = - \frac{q}{\lambda}.
+\]
+
+Izvor je po definiciji \( q = \frac{\mathrm{d} P}{\mathrm{d} V} \). Naš grelec se nahaja v ekvatorialni ravnini sfere, kar pomeni, da se poslužimo \( \delta (z) \) funkcije.
+
+Zapišemo torej
+
+\[ q = \frac{\mathrm{d} P}{\mathrm{d} V} = C \delta(z) = C \delta \left( r \cos \theta \right).
+\]
+
+Konstantno \( C \) določimo tako, da pointegriramo po volumnu krogle, saj vemo, da je celotna moč po volumnu krogle samo naš grelec z močjo \( P \).
+
+\begin{align*}
+  P &= C \int\limits_V^{} \delta \left( r \cos \theta \right) \, \mathrm{d} V  \\
+&= C \int\limits_0^R \int\limits_{-1}^1 \int\limits_0^{2 \pi} \delta \left( r \cos \theta \right) r ^2 \cos \theta \, \mathrm{d} r \, \mathrm{d} \cos \theta \, \mathrm{d} \phi \\
+&= C \int\limits_0^R \int\limits_{-1}^1 r ^2 \frac{\delta \left( r \cos \theta \right)}{r} \, \mathrm{d} (\cos \theta) \, \mathrm{d} r \\
+&= 2 \pi C \frac{R ^2}{2} \implies C = \frac{P}{\pi R ^2}
+\end{align*}
+
+Rešujemo Poissonovo enačbo
+
+\[ \nabla ^2 T = - \frac{P}{\pi R ^2 \lambda} \delta \left( r \cos \theta \right)
+\]
+
+z nastavkom, ki nam tudi homogenizira naše robne pogoje.
+
+\[ T = \sum\limits_{n = 1}^{\infty} \sum\limits_{l = 0}^{\infty} c_{n, l} j_l \left( \xi_n^{(l)} \frac{r}{R} \right) P_l \left( \cos \theta \right) + T_0
+\]
+
+(glej predavanja)
+
+Nastavek vstavimo v difuzijsko enačbo
+
+\[ \sum\limits_n^{} \sum\limits_l^{} c_{n, l} \nabla ^2 \left( j_l \left[ \xi_n^{(l)} \right] P_l (\cos \theta) \right)  = - \frac{P}{\pi R ^2 \lambda} \delta \left( r \cos \theta \right).
+\]
+
+Uporabimo eno fino zadevo Poissonove rešitve, da velja \( \nabla ^2 u  = - \lambda u \) - odvod nam poda lastne vrednosti. Nastavek tako postane
+
+\[ \sum\limits_n^{} \sum\limits_l^{} c_{n, l} \left( \frac{\xi_n^{(l)}}{R} \right) ^2 j_l \left( \frac{\xi_n^{(l)}}{R} r \right) P_l (\cos \theta) = - \frac{P}{\pi R ^2 \lambda} \delta (r \cos \theta)
+\]
+
+S pomočjo skalarnega produkta lahko izračunamo
+
+\begin{align*}
+ -c_{n, l} \left( \frac{\xi_n^{(l)}}{R} \right) ^2 \int\limits_0^R \int\limits_{-1}^1 j_l ^2 \left( \xi_n^{(l)} \frac{r}{R} \right) P_l ^2 \left( \cos \theta \right) r ^2 \, \mathrm{d} r \, \mathrm{d} (\cos \theta) &= - \frac{P}{\pi R ^2 \lambda} \int\limits_0^R \int\limits_{-1}^1 \frac{\delta (r \cos \theta)}{r} r ^2 j_l \left( \xi_n^{(l)} \frac{r}{R} \right) P_l (\cos \theta) \, \mathrm{d} r \, \mathrm{d} (\cos \theta) \\
+&= - \frac{P}{\pi R ^2 \lambda} P_l (0) \int\limits_0^{R} j_l \left( \xi_n^{(l)} \frac{r}{R} \right) \, \mathrm{d} r
+\end{align*}
+
+Iz tega lahko sedaj izrazimo koeficiente
+
+\[ C_{n, l} = \frac{P (2l + 1)}{2 \pi \lambda \left( \xi_n^{(l)} \right) ^2} P_l (0) \frac{\int\limits_0^R r j_l \left( \xi_n ^{(l)} \frac{r}{R} \right) \, \mathrm{d} r }{\int\limits_0^R r ^2 j_l ^2 \left( \xi_n ^{(l)} \frac{r}{R} \right) \, \mathrm{d} r}
+\]
+*** Poseben primer
+
+Za \( \delta \) funkcijo, ki se nahaja v volumnu, zmeraj velja
+
+\[ \iiint\limits_{\mathbb{R} ^3}^{} f \left( \vec{r} \right) \partial_S \,\mathrm{d } ^3 \vec{r} = \iint\limits_S^{} f \left( \vec{r} \right) \,\mathrm{d} ^2 S.
+\]
+
+Specifično za naš primer
+
+\begin{align*}
+  \iiint\limits_{\mathbb{R} ^3}^{} f \left( \vec{r} \right) \delta_S r_s ^2 \, \mathrm{d} r_s \, \mathrm{d} \phi \,\mathrm{d } (\cos \theta) = \int\limits_0^R \int\limits_0^{2\pi} f \left( \vec{r} \right) r \, \mathrm{d} r \, \mathrm{d} \phi
+\end{align*}
+
+Tem integralom se reče \( \delta \) funkcije površine. Več je na voljo v Križaničevi knjigi Parcialne diferencialne enačbe.
