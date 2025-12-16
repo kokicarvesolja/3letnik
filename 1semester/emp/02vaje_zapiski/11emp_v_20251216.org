@@ -189,7 +189,7 @@ Faktorjem \( \frac{1}{3}, \frac{1}{2} \) in \( 1 \) pravimo depolarizacijski fak
 
 Sfero prepolovimo in pri zgornji polovici imamo negativne naboje z normalo, ki kaže v negativno smer \( z \), medtem ko na spodnji polovici pa so pozitivni naboji z normalo, ki kaže navzgor.
 
-Električno polje je sestavljeno iz oboda krogle in ploščatega kondenzatorja, ki je posledica špranje. \( \vec{E} \) kondenzatorja je drugače usmerjeno od oboda krogle.
+Električno polje je sestavljeno iz oboda krogle in ploščatega kondenzatorja, ki je posledica špranje. \( \vec{E} \) kondenzatorja je drugače predznačeno od oboda krogle.
 
 Površinska gostota nabojev na ravninah sfer je še zmeraj \( \sigma \), iz česar sledi \( P = \sigma \).
 
@@ -199,36 +199,48 @@ Električno polje špranje je torej
 \]
 * Ploščica iz anizotropnega dielektrika
 
-Pred nadaljevanjem naloge uvedemo novo količino \( \vec{D} = \epsilon_0 \vec{E} + \vec{P} \), ki je gostota električnega naboja in je razlika gostot vseh \ref{eq:3} in vezanih nabojev \ref{eq:2}
+#+begin_problem
+Med plošči ploščatega kondenzatorja kapacitete \( C_0 \) vstavimo ploščico anizotropnega dielektrika, tako da ploščica zapolnjuje celotno prostornino kondenzatorja. Dielektrična konstanta ima lastne vrednosti \( \epsilon_1, \epsilon_1 \) in \( \epsilon_2 \), ploščica pa je odrezana tako, da je ena lastna os, ki ji ustreza lastna vrednosti \( \epsilon_1 \), vzporedna s ploščama, lastna os, ki ji ustreza lastna vrednost \( \epsilon_2 \), pa z normalo plošč oklepa kot \( \phi \). Izračunaj kapaciteto tako zapolnjenega kondenzatorja.
+#+end_problem
+
+[[file:figures/25kondenzatorDielektrik.png]]
+
+Pri prejšnjih dveh nalogah smo imeli polarizacijo, ki je bila vgrajena v material kot posledica tega, da je material fero-električen. V tej nalogi imamo opravka z dielektričnimi materiali, v katerih nastopi polarizacija samo ob aktivnem zunanjem električnem polju.
+
+Pred nadaljevanjem naloge uvedemo novo količino \( \vec{D} = \epsilon_0 \vec{E} + \vec{P} \), ki je gostota električnega polja in je razlika gostot vseh \ref{eq:3} in vezanih nabojev \ref{eq:2}
 
 \[ \rho - \rho_v = \vec{\nabla} \left( \epsilon_0 \vec{E} + \vec{P} \right) = \vec{\nabla} \cdot \vec{D}.
 \]
 
-Za dielektriko je empirično določeno, da \( \vec{D} \propto \vec{E} \), iz česar sledi
+Za dielektrik je empirično določeno, da \( \vec{D} \propto \vec{E} \), iz česar sledi
 
 \[ \vec{D} = \epsilon_0 \underline{\epsilon} \vec{E},
 \]
 
 kjer je \( \underline{\epsilon} \) tenzor dielektrika.
 
+Zaradi tenzorja \( \underline{\epsilon} \), katere lastne osi niso vzporedne normalam plošč kondenzatorja, jakost električnega toka \( \vec{E} \) in gostota električnega polja \( \vec{D} \) nista vzporedni.
+
 Če plošči priključimo na napetost, lahko hitro dokažemo, da je jakost električnega polja nima komponente vzporedne s stranicama kondenzatorja.
 
-Zamislimo si majhen presek stranice kondenzatorja, ki je v ravnini slike. Uporabimo Maxwellovo enačbo za magnetni prekot
+Zamislimo si majhen presek stranice kondenzatorja, ki je v ravnini slike. Uporabimo Maxwellovo enačbo za magnetni pretok
 
 \[ \vec{\nabla} \times \vec{E} = - \frac{\partial \vec{B}}{\partial t} = 0.
 \]
 
-Slednje integriramo po dani površini in preko Stokesovega izreka prevedemo na integral po zaključeni zanki površine.
+Zaradi statičnega primer velja \( \frac{\partial \vec{B}}{\partial t} = 0 \).
+
+Slednje integriramo po površini, ki tesno objema eno od kondenzatorskih plošč (glej sliko) in preko Stokesovega izreka prevedemo na integral po zaključeni zanki površine - pravokotniku, ki tesno objema kondenzatorske plošče.
 
 \[ \int\limits_S^{} \vec{\nabla} \times \vec{E} \, \mathrm{d} S = \oint\limits_{\partial S}^{} \vec{E} \cdot \mathrm{d} \vec{l} = 0.
 \]
 
-Električno polje, ki dejansko šteje, je tisto, ki je vzporedno stranicam, iz česar sledi
+Integral zazna samo komponente jakosti električnega polja, ki so vzporedne kondenzatorskim ploščam.
 
 \[ \left (\vec{E}_{zun}^{\parallel}  - \vec{E}_{not}^{\parallel} \right) \mathrm{d} l = 0
 \]
 
-in ker je \( \vec{E}_{zun}^{\parallel} = 0 \), je potem tudi \( \vec{E}_{not}^{\parallel} = 0 \).
+in ker je \( \vec{E}_{zun}^{\parallel} = 0 \) zunaj kondenzatorja, je potem tudi \( \vec{E}_{not}^{\parallel} = 0 \).
 
 Količina, ki bo v vzporedna s tenzorjem, je gostota električnega naboja \( \vec{D} \). Za izračun kapacitivnost (milost, prosim), potrebujemo naboj na kondenzatorskih ploščah \( e_p \).
 
@@ -249,7 +261,7 @@ Rezultat ploščinskega integrala je
 
 Zunaj kondenzatorja ni električnega polja in posledično tudi ni gostote električnega polja \( \vec{D} \). Znotraj plošče velja \( D_{not}^{\perp } = D_y \).
 
-Tenzor lahko iz lastnega sistema pretvorimo v kartezični sistem
+Tenzor iz lastnega sistema zasukamo za \( \alpha \) v sistem kondenzatorja preko rotacijskim matrik.
 
 \[ \underline{\epsilon} = \begin{bmatrix}
                           \cos \alpha & \sin\alpha \\
@@ -258,8 +270,8 @@ Tenzor lahko iz lastnega sistema pretvorimo v kartezični sistem
                                          \epsilon_{1} &  \\
                                           & \epsilon_{2}
                                           \end{bmatrix} \begin{bmatrix}
-                                                        \cos \alpha & \sin \alpha \\
-                                                        -\sin \alpha & \cos \alpha
+                                                        \cos \alpha & -\sin \alpha \\
+                                                        \sin \alpha & \cos \alpha
                                                          \end{bmatrix}
 \]
 
