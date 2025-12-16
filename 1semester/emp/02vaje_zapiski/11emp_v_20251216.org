@@ -1,0 +1,154 @@
+#+title: 11. vaje iz Elektromagnetnega polja
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Radialno polarizirana krogla
+
+Polarizacija krogle je podana z
+
+\begin{equation}
+\label{eq:1}
+ \vec{P} = k \vec{r}, \ k > 0
+\end{equation}
+
+Zanima nas prostorninska gostota vezanega naboja, ki je definirana kot
+
+\begin{equation}
+\label{eq:2}
+ \rho_v = - \vec{\nabla} \cdot \vec{P}.
+\end{equation}
+
+Izpeljali smo tudi površinsko gostoto naboja, ki je definirana kot
+
+\[ \sigma_v = \vec{P} \cdot \vec{n}.
+\]
+
+V prostorninsko gostoto naboja lahko samo vstavimo radialno odvisnost \ref{eq:1} in dobimo
+
+\[ \rho_v = - \vec{\nabla} \cdot \vec{P} = - \vec{\nabla} \cdot k \vec{r} = - k \vec{\nabla} \cdot \vec{r} = - 3k.
+\]
+
+Radij vektor \( \vec{r} \) in normalni vektor v površinski gostoti naboja sta vzporedna
+
+\[ \sigma_v = \left. \vec{P} \cdot \vec{n} \right|_{r = a} = \left. k \vec{r} \cdot \vec{n} \right|_{r = a} = ka.
+\]
+
+Celoten naboj je vsota gostote prostorninske in površinske gostote naboja
+
+\begin{align*}
+  e_{tot} &= \int\limits_{}^{}\rho_v \, \mathrm{d} V + \int\limits_{}^{} \sigma_v \, \mathrm{d} S \\
+&= \int\limits_{}^{} -3k \, \mathrm{d} V + \int\limits_{}^{} ka \, \mathrm{d} S \\
+&= - 3k \frac{4 \pi a ^3}{3} + ka 4 \pi a ^2 = 0
+\end{align*}
+
+To nam pove, da so v krogli res sami dipoli.
+** točka b)
+
+Do električnega polja se lahko priborimo preko naboja
+
+\[ e(r) = \epsilon_0 \int\limits_{}^{} E(r) \, \mathrm{d} S
+\]
+
+Celoten zaobjet naboj na poljubni razdalji \( r < a \) je \( e (r) = - k 4 \pi r ^3 \), dana površina pa  \( S = 4 \pi r ^2 \).
+
+Jakost električnega polja je tako
+
+\[ E(r) = - \frac{kr}{\epsilon_0} = - \frac{P}{\epsilon_0}.
+\]
+
+Vektorski zapi pa je
+
+\[ \vec{E} \left( \vec{r} \right) = - \frac{\vec{P} \left( \vec{r} \right)}{\epsilon_0}
+\]
+
+Do rezultata lahko pridemo tudi hitreje. Gostoto vseh nabojev (vezanih in zunanjih) lahko zapišemo kot
+
+\[ \rho = \vec{\nabla} \cdot \epsilon_0 \vec{E}.
+\]
+
+Za naš primer velja, da je \( \rho \) enaka gostoti vseh vezanih nabojev \( \rho_v \), iz česar sledi
+
+\[ \rho = \rho_v \implies \ - \vec{\nabla} \cdot \vec{P} = \vec{\nabla} \cdot \epsilon_0 \vec{E}
+\]
+* Homogeno polarizirana krogla
+** Točka a)
+
+Polarizacijo zapišemo
+
+\[ \vec{P} = P \hat{e}_z.
+\]
+
+Gostota vezanih nabojev bo po definiciji \ref{eq:2}
+
+\[ \rho_v = - \vec{\nabla} \cdot \vec{P} = 0,
+\]
+
+kar je smiselno, saj imamo homogeno polje in odvajamo konstanto.
+
+Površinska gostota nabojev bo različna od \( 0 \), saj drugače nimamo naloge. Normalni vektor bomo zapisali v sferičnih koordinatah
+
+\[ \sigma_v = \vec{P} \cdot \vec{n} = P \hat{e}_z \begin{bmatrix} \sin \theta \cos \phi \\ \sin \theta \sin \phi \\ \cos \theta \end{bmatrix} = P \cos \theta.
+\]
+
+Površinska gostota je prvi Legendrov polinom \( P_1 (\cos \theta) \). Spomnimo, da je splošna rešitev potenciala v sferičnih koordinatah enaka
+
+\[ U(r, \theta) = \sum\limits_{l = 0}^{\infty} \left( A_l r^l + B_l r^{-(l + 1)} \right) P_l (\cos \theta).
+\]
+
+Iz površinskega naboja sledi, da so v rešitvah potenciala \( l = 1 \). Nastavek potenciala je tako
+
+\[ U(r, \theta) = \begin{cases}
+                  A_1 r \cos \theta &; r < a \\
+                  B_1 r^{-2} \cos \theta &; r > a
+                  \end{cases}
+\]
+
+Iz robnega pogoja za zveznost pri \( r = a \), dobimo enakost \( B_1 = a ^3 A_1 \). Drugi robni pogoj pa je Gaussov izrek na površini
+
+\[ \frac{\sigma_v}{\epsilon_0} = \left. E_{zun}^{\perp } \right_{r = a} - \left. E_{not }^{\perp } \right_{r = a}.
+\]
+
+Upoštevamo \( \vec{E} = - \nabla U \) in dobimo enačbo
+
+\[ \frac{\sigma_v}{\epsilon_0} = \left \partial_r U_{zun } \right_{r = a} + \left. \partial_r U_{not } \right|_{r = a},
+\]
+
+iz česar po odvajanju in prvega robnega pogoja sledi \( A_1 = \frac{P}{3 \epsilon_0} \).
+
+Rešitev je torej
+
+\[ U(r, \theta) = \begin{cases}
+                  \frac{P}{3 \epsilon_0} r \cos \theta &; r \le a \\
+                  \frac{P a ^3}{3 \epsilon_0} r^{-2} \cos \theta &; r \ge a
+                  \end{cases}
+\]
+** Točka b)
+
+Električna jakost v notranjosti krogle je preko upoštevanja rešitve iz točke a)
+
+\[ \vec{E}_{not} = - \nabla \left( \frac{P}{3 \epsilon_0} r \cos \theta \right) .
+\]
+
+Pred zaletavanjem z glavo v zid v sferičnem gradientu, v enačbi vidimo, da je \( r \cos \theta = z \).
+
+\[ \vec{E}_{not} = - \frac{P}{3 \epsilon_0} \hat{e}_z = - \frac{\vec{P}}{3 \epsilon_0}
+\]
+*** Notes
+
+Notranja jakost električnega polja je polovična polarizaciji v valju
+
+\[ \vec{E}_{not} = - \frac{\vec{P}}{2 \epsilon_0}.
+\]
+
+Planparalelna plošča pa ima
+
+\[ \vec{E}_{not} = - \frac{\vec{P}}{1 \epsilon_0}
+\]
+
+Faktorjem \( \frac{1}{3}, \frac{1}{2} \) in \( 1 \) pravimo depolarizacijski faktor.
+** Točka c)
