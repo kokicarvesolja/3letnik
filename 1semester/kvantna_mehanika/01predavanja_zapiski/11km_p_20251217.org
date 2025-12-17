@@ -170,13 +170,18 @@ ki jo množimo z bra \( \left\langle m \right| \). Drugi člen leve strani se po
 
 Definiramo časovno odvisne matrične elemente
 
-\[ \tilde{V}_{mn} (t) = \left\langle m \middle| V(t) \middle| n \right\rangle \exp \left\{ - \mathrm{i} \frac{E_n - E_m}{\hbar} t \right\}.
-\]
+\begin{equation}
+\label{eq:4}
+ \tilde{V}_{mn} (t) = \left\langle m \middle| V(t) \middle| n \right\rangle \exp \left\{ - \mathrm{i} \frac{E_n - E_m}{\hbar} t \right\}.
+\end{equation}
+
 
 Opravka imamo torej z enačbo
 
-\[ \mathrm{i} \hbar \frac{\partial c_{m}}{\partial t} = \lambda\sum\limits_n^{} \tilde{V}_{mn} (t) c_n (t) \ \forall m,
-\]
+\begin{equation}
+\label{eq:2}
+ \mathrm{i} \hbar \frac{\partial c_{m}}{\partial t} = \lambda\sum\limits_n^{} \tilde{V}_{mn} (t) c_n (t) \ \forall m,
+\end{equation}
 
 ki jo lahko zapišemo tudi v matrični obliki
 
@@ -215,4 +220,107 @@ Druga predpostavka pa je, da začetno stanje v poljubnem lastnem stanju \( \left
 \[ \left| \psi(0) \right\rangle  = \left| m \right\rangle.
 \]
 
-Zanima nas verjetnost, da se sistem preide iz začetnega stanja \( \left| m \right\rangle \) v poljubno stanje \( \left| k \right\rangle \).
+Zanima nas verjetnost, da se sistem preide iz začetnega stanja \( \left| m \right\rangle \) v poljubno stanje \( \left| k \right\rangle \). Zaradi šibke motnje bo \( m \)-ti nivo večinsko zaseden, \( k \)-ti nivo pa zelo malo. To se v nadaljevanju pozna tudi na koeficientih.
+
+Primer takega dogodka je obsevanje atoma in kakšna je verjetno, da elektron zamenja stanje. Potencial je v tem primeru \( V(t) = \beta \vec{r} \cdot \vec{E} (t) \), kjer je \( \vec{E}_0 e^{\mathrm{i} \omega t} + \vec{E}^{\ast} e^{- \mathrm{i} \omega t} \).
+
+Začetno stanje označimo kot
+
+\[ c_k^{(0)} = \delta_{km},
+\]
+
+kar vstavimo v časovni razvoj
+
+\[ \left| \psi(t) \right\rangle = \sum\limits_k^{} c_k (t) \exp \left\{ - \mathrm{i} \frac{E_k}{\hbar} t \right\} \left| k \right\rangle = \exp \left\{ - \mathrm{i} \frac{E_m}{\hbar} t \right\} \left|  m\right\rangle.
+\]
+
+Koeficiente zapišemo s popravki
+
+\begin{equation}
+\label{eq:3}
+ c_k (t) = c_k^{(0)} + \lambda c_k ^{(1)} + \lambda ^2 c_k^{(2)} + \ldots, \quad c_k^{(0)} = \delta_{km} .
+\end{equation}
+
+Predpostavimo, da je \( c_k^{(0)} \sim 1 \) za \( k = m \), saj \( \lambda \to 0 \). Za stanja \( k \ne m \), bodo koeficienti \( c_k \to 0 \).
+
+Pri računanju nas zanima prvi red
+
+\[ \mathrm{i} \hbar \frac{\partial c_{k}^{(1)}}{\partial t} = \lambda \sum\limits_n^{} \tilde{V}_{kn} (t) c_k (t) = \lambda \sum\limits_n^{} \tilde{V}_{kn} (t) c_n^{(0)},
+\]
+
+kjer smo upoštevali definicijo \ref{eq:3}. Ker velja \( c_n^{(0)} \sim 1 \) za \( m = n \) in \( c_n^{(0)} \sim 0 \) za \( m \ne n \) sledi iz enačbe
+
+\[ \lambda \mathrm{i} \hbar \frac{\partial c_{k}^{(1)}}{\partial t} = \lambda \tilde{V}_{km} + o \left( \lambda ^2 \right).
+\]
+
+Po integriranju dobimo relacijo za prvi popravek \( k \)-tega nivoja
+
+\[ c_k^{(1)} (t) = \frac{1}{\mathrm{i} \hbar} \int\limits_0^t \tilde{V}_{km} (t') \, \mathrm{d} t'
+\]
+
+To velja samo za \( \left| c_k^{(1)} \right| \ll 1 \). Splošni koeficient pa bi potem po definiciji \ref{eq:3} bil
+
+\[ c_k (t) \approx \delta_{km} + \frac{1}{\mathrm{i} \hbar} \int\limits_0^t \tilde{V}_{km} \, \mathrm{d} t', \ \lambda = 1
+\]
+* Fermijevo zlato pravilo
+
+Imamo motnjo, ki je časovno neodvisna. Vključi se ob času \( t = 0 \). Torej
+
+\[ V(t) = \begin{cases}
+          0 &; t < 0 \\
+          V = \mathrm{konst} &; t > 0
+          \end{cases}
+\]
+
+Popravek prvega reda koeficienta stanja \( k \) je
+
+\[ c_k ^{(1)} (t) = \frac{1}{\mathrm{i} \hbar} \int\limits_0^t V_{km} \exp \left\{ - \mathrm{i} \frac{E_n - E_m}{\hbar} t' \right\} \, \mathrm{d} t'
+\]
+
+Integrand je take oblike zaradi \ref{eq:4}, ki je časovno neodvisen. Po integraciji dobimo
+
+\[ c_k^{(1)} (t) = \frac{V_{km}}{\mathrm{i} \hbar} \frac{\exp \left\{ - \mathrm{i} \omega_{mk} t \right\} - 1}{- \mathrm{i} \omega_{mk}}, \ \omega_{mk} = \frac{E_m - E_k}{\hbar}
+\]
+
+Verjetnost, da se dan dogodek zgodi je ravno absolutna vrednost kvadrata koeficienta.
+
+\[ P_{km} (t) = \left| c_k^{(1)} (t) \right| ^2 = \frac{\left| V_{km} \right| ^2}{\hbar ^2} \cdot \frac{\left| \frac{2 \mathrm{i}}{2 \mathrm{i}} \left( \left( e^{- \mathrm{i} \frac{\omega_{mk}}{2} t} - e^{\mathrm{i} \frac{\omega_{mk}}{2} t} \right)  \right) \right|}{\omega_{mk} ^2}.
+\]
+
+Števec drugega člena smo simetrizirali in ga lahko izrazimo s sinusno funkcijo.
+
+\[ P_{km} (t) = \frac{\left| V_{km} \right| ^2}{\hbar ^2} \cdot \frac{\sin ^2 \left( \frac{1}{2} \omega_{km} t \right)}{\left( \frac{1}{2} \omega_{mk} t \right) ^2} .
+\]
+
+#+begin_note
+Imamo funkcijo
+
+\[ \delta_t (x) = \frac{1}{\pi} \frac{\sin ^2 (xt)}{x ^2 t},
+\]
+
+ki se dejansko tudi pojavi v zgornji enačbi.
+
+Uporabimo znanje mafije, da to funkcijo narišemo. Za \( x \to 0 \) ima je približek funkcije
+
+\[ \delta_t(x \to 0) = \frac{1}{\pi} \frac{x ^2 t ^2}{x ^2 t} = \frac{t}{\pi}.
+\]
+
+Funkcija ima ničle pri \( xt = n \pi \) oziroma pri vrednosti \( x = \frac{n \pi}{t} \).
+
+Za dano funkcijo velja
+
+\[ \int\limits_{- \infty}^{\infty} \delta_t (x) \, \mathrm{d} x = 1
+\]
+#+end_note
+
+Vrnimo se nazaj na našo verjetnost. Definiramo \( x = \frac{1}{2} \omega_{mk}  \). Z novo spremenljivko imamo
+
+\[ P_{km} (t) = \frac{\left| V_{km} \right| ^2}{\hbar ^2} \frac{\sin ^2 (xt)}{x ^2 t} \cdot t.
+\]
+
+Za \( t \to \infty \) velja \( \delta_t(x) \to \delta(x) \). Verjetnost razširimo z \( \frac{ \pi}{\pi} \) in dobimo
+
+\[ \left. P_{km} (t) \right|_{t \to \infty} = \frac{\left| V_{km} \right| ^2}{\hbar ^2} \delta \left( \frac{1}{2} \frac{E_m - E_k}{\hbar} \right)
+\]
+
+Nadaljujemo naslednjič.
