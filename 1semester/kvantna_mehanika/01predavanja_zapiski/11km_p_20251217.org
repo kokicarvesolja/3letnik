@@ -1,0 +1,109 @@
+#+title: 12. predavanje iz Kvantne mehanike
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Teorija motenj
+
+Do sedaj smo si ogledovali časovno neodvisne motnje \( \lambda V(\vec{r}) \). Obravnavali smo nedegeneriran spekter, katerega popravek drugega reda je
+
+\[ E_n^{(2)} = \sum\limits_{m \ne n}^{} \frac{\left| V_{nm} \right| ^2}{E_n^{(0)} - E_m ^{(0)}}.
+\]
+
+Dani metodi pravimo Rayleigh-Schrödingerjeva metoda.
+
+Obravnavali smo degeneriran spekter, katerih lastnost je, da je več funkcij stanj, ki imajo isto energijo. Pogledali smo si primer dvakrat degeneriranega spektra in rezultat je bil
+
+\[ \begin{bmatrix}
+   V_{11} & V_{21} \\
+   V_{12} & V_{22}
+    \end{bmatrix} \begin{bmatrix} c_{1} \\ c_{2} \end{bmatrix} = E_{1, 2} \begin{bmatrix} c_{1} \\ c_{2} \end{bmatrix}
+\]
+
+Nedegenerirana metoda Brillouin-Wignerja definira \( n \)-to energijo motnje kot
+
+\[ E_n = E_n^{(0)} + \lambda V_{nn} + \lambda ^2 \sum\limits_m^{} \frac{\left| V_{nm} \right| ^2}{E_n - E_m^{(0)}} + \lambda ^3 \ldots.
+\]
+*** Konvergence perturbativne vrste (nedegeneriranega spektra)
+
+Imamo energijo perturbativne motnje
+
+\[ E(\lambda) = E^{(0)} + \sum\limits_{k = 1}^{\infty} c_k \lambda^k,
+\]
+
+kjer so \( c_k \) koeficienti. V našem primeru Rayleigh-Schrödingerjeve metode, so bile to pripadajoče energije \( E^{(k)} \).
+
+#+begin_quote
+Matematika velja.
+#+end_quote
+
+Vrsta bo konvergiralo, če velja \( \left| \lambda \right| < \lambda_R, \) kjer je \( \lambda_R \) konvergenčni radij. Kriterija, ki ju ne bomo uporabili, sta
+
+- kvocientni kriterij
+
+  \[ \lambda_R = \lim_{k \to \infty} \frac{c_{k}}{c_{k + 1}}
+  \]
+
+- korenski kriterij
+
+  \[ \frac{1}{\lambda_R} = \lim_{k \to \infty} \sqrt[k]{\left| c_k \right|}
+  \]
+
+Poglejmo si sedaj primere, kjer te teorije ne bomo uporabili.
+
+#+begin_my_example
+Imejmo Hamiltonian harmonskega oscilatorja
+
+\[ H_0 = \frac{p ^2}{2m} + \frac{1}{2} m \omega ^2 x ^2
+\]
+
+Naj bo primer motnje \( H_1 = V = \lambda x \). Hamiltonian je potem
+
+\[ H = H_0 + H_1 = \frac{p ^2}{2m} + \frac{1}{2} m \omega ^2 \left( x - \frac{\lambda}{m \omega ^2} \right) ^2 - \frac{\lambda ^2}{2m \omega ^2} .
+\]
+
+Kakor smo izračunali, je \( n \)-ta lastna energija
+
+\[ E_n = \hbar \omega \left( n + \frac{1}{2} \right) - \frac{\lambda ^2}{2m \omega ^2}, \quad \forall \lambda
+\]
+
+Koeficient \( c_2 \) je \( E_n^{(2)} = \frac{- 2 m \omega ^2}{1} \), vsi členi s \( k \ne 1  \) pa so ničelni. Ob aplikaciji kvocientnega kriterija, npr. \( \frac{c_2}{c_3} \), je konvergenčni radij \( \lambda_R = \infty \).
+#+end_my_example
+
+#+begin_my_example
+Vzemimo za motnjo
+
+\[ H_2 = V = \lambda x ^2.
+\]
+
+Hamiltonian oscilatorja
+
+\[ H = H_0 + H_1 = \frac{p ^2}{2m} + \frac{1}{2} m \omega ^2 \left( 1 + \frac{2 \lambda}{m \omega ^2} \right) x ^2
+\]
+
+Energije stanj so
+
+\[ E_n = \hbar \omega \sqrt{1 + \frac{2 \lambda}{m \omega ^2}} \left( n + \frac{1}{2} \right)
+\]
+
+V primeru, če velja \( 1 = \frac{2 \lambda}{m \omega ^2} \), potem lahko koren razvijemo v Taylorjevo vrsto
+
+\[ \left( 1 + x \right)^{\alpha} = 1 + \alpha x + o \left( x ^2 \right), \ \left| x \right| < 1.
+\]
+
+Izkaže se, da nam ta razvoj poda ravno vrsto, ki bi nam jo dala teorija motnje, in sicer
+
+\[ E_n = \hbar \omega \left( n + \frac{1}{2} \right) \left( 1 + \sum\limits_{k  = 1}^{\infty} \binom{\frac{1}{2}}{k} \left( \frac{2\lambda}{m \omega ^2} \right)^k \right).
+\]
+
+Slednja vrsta ima končen konvergenčni radij
+
+\[ 0 < \lambda_R = \frac{m \omega ^2}{2} < \infty.
+\]
+
+Če je \( \lambda < - \lambda_R \), so stanja v harmonskem stanju labilna, saj je harmonski oscilator obrnjen na glavo. To ni nujno ok, nisem ujel razlage.
+#+end_my_example
