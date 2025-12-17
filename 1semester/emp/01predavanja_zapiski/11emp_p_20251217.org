@@ -95,5 +95,141 @@ S tenzorji \( \vec{D} \) in \( \vec{B} \) nista nujno vzporedna njunima pripadaj
 V nelinearnih snoveh (npr. nelinearna optika)
 
 \begin{align*}
-  \vec{D} &= _ \vec{E} + _ \vec{E} \cdot \vec{E} + _ \vec{E} \vec{E} \vec{E} + \ldots
+  \vec{D} &= \_ \vec{E} + \_ \vec{E} \cdot \vec{E} + \_ \vec{E} \vec{E} \vec{E} + \ldots \\
+  \vec{B} &= \_ \vec{H} + \_ \vec{H} \cdot \vec{H} + \_ \vec{H} \vec{H} \vec{H} + \ldots
 \end{align*}
+** Ohranitveni zakoni v snovi
+*** Ohranjevanje energije
+
+Kontinuitetna enačba (ohrani obliko)
+
+\[ \frac{\partial w}{\partial t} + \nabla \cdot \vec{P} + \vec{\jmath}\cdot \vec{E} = 0,
+\]
+
+(definiraj, kaj so posamezni členi)
+
+kjer pa zdaj
+
+\[ w = \int\limits_0^{\vec{D}} \vec{E} \left( \vec{D} \right) \, \mathrm{d} \vec{D} + \int\limits_0^B \vec{H} \left( \vec{B} \right) \, \mathrm{d} \vec{B}
+\]
+
+gostota energije.
+
+\[ \vec{\mathcal{P}} = \vec{E} \times \vec{H}
+\]
+
+pa je posplošen Poyntingov vektor.
+*** Energija elektromagnetnega polja v snovi
+
+Zanima nas, kolikšna je razlika energije elektromagnetnega polja, če damo v del prostora snov, za katero velja \( \epsilon = 1 \) in \( \mu = 1 \).
+
+Energija električnega polja je
+
+\begin{align*}
+  W - W_0 &= \int\limits_V^{} \left( \int\limits_0^D \vec{E} \left( \vec{D} \right) \, \mathrm{d} \vec{D} \right) \, \mathrm{d} ^3 \vec{r} - \int\limits_V^{} \left( \int\limits_0^{D_0} \vec{E}_0 \left( \vec{D}_0 \right) \, \mathrm{d} \vec{D}_0 \right) \, \mathrm{d} ^3 \vec{r} \\
+&= \frac{1}{2} \int\limits_V^{} \vec{E} \cdot \vec{D} \, \mathrm{d} ^3 \vec{r} - \frac{1}{2} \int\limits_V^{} \vec{E} _0 \cdot \vec{D}_0 \, \mathrm{d} ^3 \vec{r}
+\end{align*}
+
+Pri računanju notranjih integralov smo upoštevali linearno konstitutivno zvezo. Prvi integral je polje, ko prostor vsebuje snov, drugi integral pa je energija praznega prostora. Razliko energij prepišemo v
+
+\[ W - W_0 = \frac{1}{2} \int\limits_V^{} \left( \vec{E} \cdot \vec{D}_0 - \vec{E}_0 \cdot \vec{D} \right) \, \mathrm{d} ^3 \vec{r} + \frac{1}{2} \int\limits_{}^{} \left( \vec{E} + \vec{E}_0 \right) \left( \vec{D} - \vec{D}_0 \right) \, \mathrm{d} ^3 \vec{r}
+\]
+
+Predpostavimo, da se zunanji izvori ne spremenijo \( \rho = \rho_0 \) in velja
+
+\[ \nabla \cdot \left( \vec{D} - \vec{D}_0 \right) = 0.
+\]
+
+Vsoto jakosti električnih polj \( \vec{E} + \vec{E}_0 \) zapišemo s potencialom \( \phi \).
+
+Drugi integral se tako pretvori
+
+\begin{align*}
+  \frac{1}{2} \int\limits_{}^{} \left( \vec{E} + \vec{E}_0 \right) \left( \vec{D} - \vec{D}_0 \right) \, \mathrm{d} ^3 \vec{r} &= \frac{1}{2} \int\limits_{}^{} \nabla \phi \left( \vec{D} - \vec{D}_0 \right) \, \mathrm{d} ^3 \\
+&= - \frac{1}{2} \int\limits_{}^{}\nabla \cdot \left( \phi \left( \vec{D} - \vec{D}_0 \right) \right) \, \mathrm{d} ^3 \vec{r} + \frac{1}{2} \int\limits_{}^{} \underbrace{\nabla \cdot \left( \vec{D} - \vec{D}_0 \right)}_{= 0} \phi \, \mathrm{d} ^3 \vec{r}
+\end{align*}
+
+Preostal integral po volumnu prevedemo na površinski integral. Za slednji integral sledi, da je predpostavki končne snovi, daleč stran od nje \( \vec{D} = \vec{D}_0 \), iz česar sledi, da je integral ničeln.
+
+Če je prostor izven snovi vakuum, sledi
+
+\[ W - W_0 = \frac{1}{2} \int\limits_V^{} \epsilon_0 \left( \epsilon - 1 \right) \vec{E}_0 \vec{E} \, \mathrm{d} ^3 \vec{r} = -\frac{1}{2} \int\limits_V^{} \vec{P} \cdot \vec{E}_0 \, \mathrm{d} ^3 \vec{r}
+\]
+
+\( \vec{E}_0 \) predstavlja električno polje brez snovi, medtem ko je \( \vec{P} \) polarizacija v snovi.
+
+Razlika energij magnetnega polja ob linearni konstitutivni relaciji velja
+
+\begin{align*}
+  W - W_0 &= \frac{1}{2} \int\limits_V^{} \vec{H} \cdot \vec{B} \, \mathrm{d} ^3 \vec{r} - \frac{1}{2} \int\limits_V^{} \vec{H}_0 \cdot \vec{B}_0 \, \mathrm{d} ^3 \vec{r}  \\
+&= \frac{1}{2} \int\limits_V^{} \left( \vec{B} \cdot \vec{H}_0 - \vec{B}_0 \cdot \vec{H} \right) \, \mathrm{d} ^3 \vec{r} + \frac{1}{2} \int\limits_{V}^{} \left( \vec{B} + \vec{B}_0 \right) \left( \vec{H} - \vec{H}_0 \right) \, \mathrm{d} ^3 \vec{r}
+\end{align*}
+
+Ob predpostavkah, da
+
+- so tokovni izviri nespreminjajoči in
+- snov je končna
+
+\[ W - W_0 = \frac{1}{2} \int\limits_V^{} \mu_0 \left( \vec{\mu}- 1 \right) \vec{H} \cdot \vec{H}_0 \, \mathrm{d} ^3 \vec{r} = \frac{1}{2} \int\limits_{}^{} \vec{M} \cdot \vec{B}_0 \, \mathrm{d} ^3 \vec{r}
+\]
+
+*** Ohranjanje gibalne količine
+
+Definirali smo Cauchyjevo kontinuitetno enačbo za gibalno količino in linearni konstitutivni relaciji.
+
+\[ \frac{\partial g_{i}}{\partial t}  - \frac{\partial T_{ik}}{\partial x_{k}} + f_i = 0,
+\]
+
+kjer je zdaj
+
+\[ \vec{g} = \vec{D}\times \vec{B}
+\]
+
+gostota gibalne količine. Napetostni tenzor \( \underline{T} \) pa je
+
+\[ T_{ik} = E_i D_k - \frac{1}{2} \left( \vec{E} \cdot \vec{D} \right) \delta_{ik} + B_i H_k - \frac{1}{2} \left( \vec{B} \cdot \vec{H} \right) \delta_{ik}
+\]
+
+Za poljubne konstitutivne relacije ni nujno, da še lahko uvedeš napetostni tenzor. Ni možno napisati oblike
+
+\[ \frac{\partial \vec{g}}{\partial t} = \nabla \cdot \left( \ \_ \ \right) ,
+\]
+
+zato se pogosto uvaja približne zapise napetostnega tenzorja.
+** Robni pogoji za Maxwellove enačbe
+
+Predpostavimo, da imamo dve snovi, ki se stikata. Vsaka snov ima svojo lokalno normalo \( \vec{n}_1 \) in \( \vec{n}_2 \), ki je pravokotno na površino in kaže v snov.
+
+Velja
+
+\begin{align*}
+  D_{1n} - D_{2n} = \sigma & \qquad E_{1t} - E_{2t} = 0 \\
+B_{1n} - B_{2n} = 0 & \qquad H_{1t} - H_{2t} = K,
+\end{align*}
+
+kjer je \( \sigma \) površinska gostota naboja in \( K \) površinska gostota toka. Indeks \( n \) označuje vektorske komponente, ki so vzporedne normalam snovi, indeks \( t \) pa označuje tangentne komponente, ki so pravokotne na normalo snovi.
+*** Robni pogoji za \( \vec{B} \)
+
+[vstavi skico]
+
+V diferencialni obliki velja
+
+\[ \nabla \cdot \vec{B} = 0 \iff \int\limits_{}^{} \nabla \cdot \vec{B} \, \mathrm{d} ^3 \vec{r} = 0
+\]
+
+Iz volumnskega integrala velja
+
+\[ 0 = \int\limits_V^{} \nabla \cdot \vec{B} \, \mathrm{d} ^3 \vec{r} = \oint\limits_{\partial V}^{} \vec{B} \cdot \mathrm{d} \vec{S}
+\]
+
+Izberemo valjast volumen, katerega osnovni ploskvi sta vsaka v svoji snovi. Osnovna ploskev v snovi 1 ima normalo \( \vec{n}_1 \), osnovna ploskev v snovi 2 pa ima normalo \( \vec{n}_2 \). Obe normali kažeta v snov. Predpostavimo majhno višino valja.
+
+\begin{align*}
+  0 &= \int\limits_{(1)}^{} \vec{B}_1 \cdot \vec{n}_1 \, \mathrm{d} S + \int\limits_{(2)}^{} \vec{B}_2 \cdot \vec{n}_2 \, \mathrm{d} \vec{S} + \int\limits_{\text{plasc}}^{} \vec{B}_{pl} \cdot \vec{n}_{pl} \, \mathrm{d} S && \mathrm{d}l \to 0 \\
+&= \int\limits_{(1)}^{} \vec{B}_1 \vec{n}_1 \, \mathrm{d} S + \int\limits_{(2)}^{} \vec{B}_2 \cdot \vec{n}_2 \, \mathrm{d} S
+\end{align*}
+
+Torej
+
+\[ \vec{B}_1 \cdot \vec{n}_1 + \vec{B}_2 \cdot \vec{n}_2 = 0 \implies B_{1n} - B_{2n} = 0.
+\]
