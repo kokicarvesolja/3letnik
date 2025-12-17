@@ -107,3 +107,112 @@ Slednja vrsta ima končen konvergenčni radij
 
 Če je \( \lambda < - \lambda_R \), so stanja v harmonskem stanju labilna, saj je harmonski oscilator obrnjen na glavo. To ni nujno ok, nisem ujel razlage.
 #+end_my_example
+
+Motnja \( V = \lambda x ^3 \) ima konvergenčni radij \( \lambda_R = 0 \).
+
+#+begin_my_example
+Obravnavamo Hamiltonian
+
+\[ H = \frac{p ^2}{2m} + \frac{1}{2} m \omega ^2 + \lambda x ^4.
+\]
+
+S to enačbe se je ukvarjal Dyson leta 1952.
+
+Klasičen primer je masa \( m \), ki je pripeta na dve neraztegnjeni vzmeti s koeficientom \( k \) med dvema zidovoma. Nihanje pravokotno na vzmeti (torej gor-dol) bo opisoval ravno dan Hamiltonian. Preko enačbe gibanje se pripelje do zaključke, da je nihajni časi \( t \) obratno sorazmeren začetni amplitudi \( A \).
+
+Za \( \lambda < 0 \) stvar ne deluje, kar pomeni, da je konvergenčni radij \( \lambda_R = 0 \).
+#+end_my_example
+** Časovno odvisne perturbacije
+
+Časovno odvisni Hamiltonian s perturbacijo zapišemo kot
+
+\[ H(t) = H_0 + \lambda V(t)
+\]
+
+Rešujemo Schrödingerjevo enačbo Hamiltoniana brez perturbacije
+
+\[ H_0 \left| n \right\rangle  = E_n \left| n \right\rangle,
+\]
+
+kjer je \( \left\{ n \right\} \) baza lastnih stanj, ki so ortogonalne \( \left\langle n \middle| m \right\rangle = \delta_{nm} \).
+
+Začetno stanje zapišemo
+
+\[ \left| \psi(0) \right\rangle = \sum\limits_n^{} c_n (0) \left| n \right\rangle.
+\]
+
+Za \( \lambda= 0 \) časovni razvoj zapišemo kot
+
+\[ \left| \psi(t) \right\rangle = \sum\limits_n^{} c_n(0) \exp \left\{ - \mathrm{i} \frac{E_n}{\hbar}t \right\} \left| n \right\rangle.
+\]
+
+V primeru, da \( \lambda \ne 0 \), lahko rešitev še zmeraj razvijemo po bazi, vendar bodo koeficienti časovno odvisni
+
+\begin{equation}
+\label{eq:1}
+ \left| \psi(t) \right\rangle  = \sum\limits_n^{} c_k(t) \exp \left\{ - \mathrm{i} \frac{E_n}{\hbar} t \right\} \left| n \right\rangle.
+\end{equation}
+
+Koeficiente \( c_k(t) \) bomo izračunali tako, da nesemo nastavek \ref{eq:1} v Schrödingerjevo enačbo
+
+\[ \mathrm{i} \hbar \frac{\partial }{\partial t} \left| \psi(t) \right\rangle  = H(t) \left| \psi(t) \right\rangle.
+\]
+
+Dobimo enačbo
+
+\[ \mathrm{i} \hbar \sum\limits_n^{} \left( \frac{\partial }{\partial t} c_k(t) \exp \left\{ - \mathrm{i} \frac{E_n}{\hbar}t \right\} - \mathrm{i} \frac{E_n}{\hbar} c_n(t) \exp \left\{ - \mathrm{i} \frac{E_n}{\hbar}t \right\} \right) \left| n \right\rangle = \sum\limits_n^{} \left( E_n + \lambda V(t)\right) \exp \left\{ - \mathrm{i} \frac{E_n}{\hbar}t \right\} c_n (t)  \left| n \right\rangle,
+\]
+
+ki jo množimo z bra \( \left\langle m \right| \). Drugi člen leve strani se pokrajša s prvim členom leve strani. Ostane nam
+
+\[ \mathrm{i} \hbar \frac{\partial }{\partial t} c_m (t) \exp \left\{ - \mathrm{i} \frac{E_m}{\hbar}t \right\} = \lambda \sum\limits_n^{} \left\langle m \middle| V(t) \middle| n \right\rangle \exp \left\{ - \mathrm{i} \frac{E_n}{\hbar}t \right\} c_n (t), \ \forall m.
+\]
+
+Definiramo časovno odvisne matrične elemente
+
+\[ \tilde{V}_{mn} (t) = \left\langle m \middle| V(t) \middle| n \right\rangle \exp \left\{ - \mathrm{i} \frac{E_n - E_m}{\hbar} t \right\}.
+\]
+
+Opravka imamo torej z enačbo
+
+\[ \mathrm{i} \hbar \frac{\partial c_{m}}{\partial t} = \lambda\sum\limits_n^{} \tilde{V}_{mn} (t) c_n (t) \ \forall m,
+\]
+
+ki jo lahko zapišemo tudi v matrični obliki
+
+\[ \mathrm{i} \hbar \frac{\partial }{\partial t} \begin{bmatrix} c_{1} \\ c_{2} \\ \vdots \\ c_{m} \\ \vdots \end{bmatrix} = \begin{bmatrix}
+                                                                                                                             \tilde{V}_{11} & \tilde{V}_{12} & \ldots & V_{1m} & \ldots \\
+                                                                                                                              \vdots & \tilde{V}_{22} & \ddots & & \\
+                                                                                                                               &  & \ddots && \\
+                                                                                                                              &&& \tilde{V}_{mn} & \\
+                                                                                                                              &&&& \ddots
+                                                                                                                             \end{bmatrix} \begin{bmatrix} c_{1} \\ c_{2} \\ \vdots \\ c_{n} \\ \vdots \end{bmatrix}.
+\]
+
+oziroma
+
+\[ \mathrm{i} \hbar \dot{\mathbf{c}} = \lambda \tilde{\mathbf{V}} \mathbf{c}.
+\]
+
+Dana rešitev je točna.
+** Šibka motnja
+
+Do sedaj nas je zanimala točna rešitev, vendar sedaj bomo opazovali šibko motnjo, za katero velja \( \lambda \to 0 \), in vpliva na sistem od časa \( t = 0 \) dalje. Primer takega potenciala je
+
+\[ V(t) = \alpha \vec{L} \cdot \vec{B} (t).
+\]
+
+Prva predpostavka je torej, da imamo časovno odvisen potencial, za katerega velja
+
+\[ V(t) = \begin{cases}
+          0 &; t < 0 \\
+          V(t) &; t > 0
+          \end{cases}.
+\]
+
+Druga predpostavka pa je, da začetno stanje v poljubnem lastnem stanju \( \left| m \right\rangle \). Matematično povedano
+
+\[ \left| \psi(0) \right\rangle  = \left| m \right\rangle.
+\]
+
+Zanima nas verjetnost, da se sistem preide iz začetnega stanja \( \left| m \right\rangle \) v poljubno stanje \( \left| k \right\rangle \).
