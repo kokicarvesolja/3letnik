@@ -25,7 +25,6 @@ Hilbertov prostor \( \mathcal{H} \) je tenzorski prostor Hilbertovega prostora k
 \[ \mathcal{H} = \mathcal{H}_r \otimes \mathcal{H}_s.
 \]
 
-
 Valovna funkcija v Hilbertovem prostoru \( \mathcal{H} \) je
 
 \[ \left| \psi  \right\rangle = \left| \psi_r \right\rangle \otimes \left| \psi_2 \right\rangle
@@ -124,4 +123,52 @@ kjer iščemo funkciji \( \left| \psi_{\uparrow} \right\rangle \) in \( \left| \
 
 Upoštevamo definicijo Hamiltoniana in nastavek
 
-[video ostal pri 41.58]
+\[ \left( \frac{p_x ^2 + p_y ^2}{2m} + \lambda \left( p_x S_y - p_y S_x \right)  \right) \left( \left| \psi_{\uparrow}\right\rangle  \left| \uparrow \right\rangle + \left| \psi_{\downarrow} \right\rangle \left| \downarrow \right\rangle \right) = E \left( \left| \psi_{\uparrow}\right\rangle  \left| \uparrow \right\rangle + \left| \psi_{\downarrow} \right\rangle \left| \downarrow \right\rangle \right)
+\]
+
+Operatorja gibalne količine delujeta na \( \left| \psi_{\uparrow} \right\rangle \) in \( \left| \psi_{\downarrow} \right\rangle \), medtem ko operatorja spina delujte na \( \left| \uparrow \right\rangle \) ter \( \left| \downarrow \right\rangle \). Za operatorja gibalne količine ne vemo točnega rezultata, kakšen bo učinek.
+
+Našo enačbo pomnožimo in razpišemo
+
+\begin{align*}
+   E \left( \left| \psi_{\uparrow}\right\rangle  \left| \uparrow \right\rangle + \left| \psi_{\downarrow} \right\rangle \left| \downarrow \right\rangle \right) = & \frac{1}{2m} \left[ \left| \uparrow \right\rangle \left( p_x ^2 \left| \psi_{\uparrow} \right\rangle + p_y ^2 \left| \psi_{\uparrow} \right\rangle \right) + \left| \downarrow \right\rangle \left( p_x ^2 \left| \psi_{\downarrow} \right\rangle + p_y ^2 \left| \psi_{\downarrow} \right\rangle \right) \right] \\
+& + \lambda \left[ p_x \left| \psi_{\uparrow} \right\rangle \cdot \left( - \frac{\hbar}{2 \mathrm{i}} \right)\left| \downarrow \right\rangle + p_x \left| \psi_x \right\rangle \frac{\hbar}{2 \mathrm{i}} \left| \uparrow \right\rangle - p_y \left| \psi_{\uparrow} \right\rangle \frac{\hbar}{2} \left| \downarrow \right\rangle - p_y \left| \psi_{\downarrow} \right\rangle \cdot \frac{\hbar}{2} \left| \uparrow \right\rangle \right]
+\end{align*}
+
+Dobljeno pomnožimo z \( \left\langle \uparrow \right| \)
+
+\[ \frac{1}{2m} \left( p_x ^2 \left| \psi_{\uparrow} \right\rangle + p_y ^2 \left| \psi_{\uparrow} \right\rangle \right) + \lambda \left( p_x \left| \psi_{\downarrow}\right\rangle  \cdot \frac{\hbar}{2 \mathrm{i}} - p_y \left| \psi_{\downarrow} \right\rangle \frac{\hbar}{2} \right) = E \cdot \left| \psi_{\uparrow} \right\rangle.
+\]
+
+Analogno pomnožimo tudi z \( \left\langle \psi_{\downarrow} \right| \)
+
+\[ \frac{1}{2m} \left( p_x ^2 \left| \psi_{\downarrow} \right\rangle + p_y ^2 \left| \psi_{\downarrow} \right\rangle \right) + \lambda \left( p_x \left| \psi_{\uparrow}\right\rangle  \cdot\left( -  \frac{\hbar}{2 \mathrm{i}}\right) - p_y \left| \psi_{\uparrow} \right\rangle \frac{\hbar}{2} \right) = E \cdot \left| \psi_{\downarrow} \right\rangle.
+\]
+
+Dobili smo sistem diferencialnih enačb, ki jih lahko z upoštevanjem definicijo operatorjev zapišemo
+
+\begin{align*}
+ -\frac{\hbar ^2}{2m} \nabla ^2 \psi_{\uparrow} \left( \vec{r} \right) + \lambda \left( - \frac{\mathrm{i} \hbar \partial_x \psi_{\downarrow} \hbar}{2 \mathrm{i} } + \mathrm{i} \hbar \partial_y \psi_{\downarrow} \cdot \frac{\hbar}{2} \right) &= E \psi_{\uparrow} \left( \vec{r} \right) \\
+ -\frac{\hbar ^2}{2m} \nabla ^2 \psi_{\downarrow} \left( \vec{r} \right) + \lambda \left( \frac{\mathrm{i} \hbar \partial_x \psi_{\uparrow} \hbar}{2 \mathrm{i} } + \mathrm{i} \hbar \partial_y \psi_{\uparrow} \cdot \frac{\hbar}{2} \right) &= E \psi_{\downarrow} \left( \vec{r} \right).
+\end{align*}
+
+Ne bomo reševali tega sistema, ampak bomo ubrali lažjo pot, ki vključuje simetrije.
+
+Za začetek bomo dokazali, da velja
+
+\[ \left[ H, \vec{p} \right] = 0.
+\]
+
+Za dokaz moramo dokazati, da hamiltonian \( H \) komutira z vsako komponento \( \vec{p} \).
+
+\[ \left[ H, p_x \right] = \left[ \frac{p_x ^2 + p_y ^2}{2m} + \lambda \left( p_x S_y - p_y S_x  \right), p_x \right]
+\]
+
+Operatorja \( p_x ^2 \) in \( p_x \) komutirata in prav tako \( p_y ^2 \) in \( p_x \). Poglejmo si še člen Rashbove sklopitve \( \left( p_x S_y - p_y S_x \right) \). \( p_x \) in \( p_y \) komutirata s \( p_x \). Spinska operatorja \( S_{x, y} \) delujeta na Hilbertov prostor \( \mathcal{H}_s \), medtem ko \( p_x \) deluje na Hilbertov prostor \( \mathcal{H}_p \).
+
+Vsak operator iz enega Hilbertovega prostora komutira z vsakim operatorjem iz drugega Hilbertovega prostora. Sledi
+
+\[ \left[ H, p_x \right] = \left[ H, p_y \right] = 0
+\]
+
+Za dva operatorja, ki komutirata, lahko najdemo lastne funkcije, ki so hkrati lastne funkcije obeh operatorjev. Z drugimi besedamo, lastne funkcije gibalne količine so prav tako lastne funkcije Hamiltoniana. Velja tudi obratno, vendar je lastne funkcije \( \vec{p} \) lažje najti.
