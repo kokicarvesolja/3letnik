@@ -172,3 +172,170 @@ Vsak operator iz enega Hilbertovega prostora komutira z vsakim operatorjem iz dr
 \]
 
 Za dva operatorja, ki komutirata, lahko najdemo lastne funkcije, ki so hkrati lastne funkcije obeh operatorjev. Z drugimi besedamo, lastne funkcije gibalne količine so prav tako lastne funkcije Hamiltoniana. Velja tudi obratno, vendar je lastne funkcije \( \vec{p} \) lažje najti.
+
+Lastne funkcije gibalne količine operatorja gibalne količine \( \vec{p} = - \mathrm{i} \hbar \nabla \) so rešitve enačbe
+
+\[ \vec{p} \left| \psi_1 \right\rangle = \alpha \left| \psi_1 \right\rangle.
+\]
+
+Lastne funkcije gibalne količine so ravni valovni oblike \( e^{\mathrm{i} \vec{k} \cdot \vec{r}} \). V koordinatni reprezentaciji je rešitev
+
+\[ \vec{p} e^{\mathrm{i} \vec{k} \cdot \vec{r}} = - \mathrm{i} \hbar \left( \mathrm{i} \vec{k} \right)e^{\mathrm{i} \vec{k} \cdot \vec{r}} = \hbar \vec{k} e^{\mathrm{i} \vec{k} \cdot \vec{r}}.
+\]
+
+Rešitev lahko zapišemo tudi v Diracovem zapisu, kjer je \( \hbar \vec{k} = \hbar \left( k_x, k_y \right) \) kvantno število dane valovne funkcije, saj je presorazmerno z valovno funkcijo
+
+\[ \vec{p} \left| \vec{k} \right\rangle  = \hbar \vec{k} \left| \vec{k} \right\rangle.
+\]
+
+Pri reševanju Schrödingerjeve enačbe, kjer nadomestimo \( \left| \psi_p \right\rangle = \left| \vec{k} \right\rangle\).
+
+\[ H \left( \left| \vec{k} \right\rangle \otimes \left| \psi_s \right\rangle\right) = \left( \left| \vec{k} \right\rangle \otimes \left| \psi_s \right\rangle\right).
+\]
+
+Preverimo, če ta nastavek res reši našo enačbo, vendar bomo zaradi krajšega zapisali izpuščali tenzorski znak \( \otimes \).
+
+\begin{align*}
+  H \left( \left| \vec{k} \left| \psi_s \right\rangle \right\rangle \right) &= \\
+\left[ \frac{p ^2}{2m} + \lambda \left( p_x S_y - p_y S_x \right) \right] \left( \left| \vec{k} \right\rangle \left| \psi_s \right\rangle\right) &= \\
+\left( \frac{p ^2}{2m} \left| \vec{k} \right\rangle \right) \left| \psi_s \right\rangle  + \lambda \left( p_x \left| \vec{k} \right\rangle S_y \left| \psi_s \right\rangle  - p_y  \left| \vec{k} \right\rangle S_x \left| \psi_s \right\rangle  \right) &= \\
+\frac{\hbar ^2 k ^2}{2m} \left| \vec{k} \right\rangle \left| \psi_s   \right\rangle+ \lambda \hbar k_x \left| \vec{k} \right\rangle S_y \left| \psi_s \right\rangle - \lambda \hbar k_y \left| \vec{k} \right\rangle S_x \left| \psi_s \right\rangle &= E \left| \vec{k} \right\rangle \left| \psi_s \right\rangle
+\end{align*}
+
+V zgornji enačbi sedaj nastopajo samo števila razen operatorjev \( S_y \) in \( S_x \). Zgornjo enačbo pomnožimo z \( \left\langle \vec{k} \right| \), kar nam poda enačbo, ki se sedaj nahaja zgolj v Hilbertovem prostoru \( \mathcal{H}_s \).
+
+\[ \frac{\hbar ^2 k ^2}{2m} \left| \psi_s \right\rangle + \lambda \hbar \left( k_x S_y - k_y S_x \right) \left| \psi_s \right\rangle = E \left| \psi_s \right\rangle.
+\]
+
+Z upoštevanjem rezultatov iz teoretičnega uvoda za funkcijo \( \left| \psi_s \right\rangle = \left( \alpha \left| \uparrow \right\rangle + \beta \left| \downarrow \right\rangle\right)\) dobimo
+
+\[ \frac{h ^2}{2m} \left( \alpha \left| \uparrow \right\rangle + \beta \left| \downarrow \right\rangle\right) + \frac{\lambda \hbar ^2 k_x}{2 \mathrm{i}} \left( - \alpha  \left| \downarrow \right\rangle + \beta \left| \uparrow  \right\rangle\right) - \frac{\lambda \hbar ^2 k_y}{2} \left( \alpha \left| \downarrow \right\rangle + \beta \left| \uparrow \right\rangle\right) = E \left( \alpha \left| \uparrow \right\rangle + \beta \left| \downarrow \right\rangle\right).
+\]
+
+Dobljena enačba je sestavljena zgolj iz skalarjev ter dveh linearno neodvisnih stanj \( \left| \uparrow \right\rangle \) in \( \left| \downarrow \right\rangle \).
+
+Dobimo lahko sistem enačb tako, da zgornjo enačbo pomnožimo z \( \left\langle \uparrow \right| \) in \( \left| \downarrow \right\rangle \) in upoštevamo ortogonalnost stanj
+
+\begin{align*}
+  \frac{\hbar ^2 k ^2}{2m} \alpha + \frac{\lambda \hbar ^2 k_x}{2 \mathrm{i}} \beta - \frac{\lambda \hbar ^2 k_y}{2} \beta &= E \alpha  \\
+\frac{\hbar ^2 k ^2}{2m} \beta - \frac{\lambda \hbar ^2 k_x}{2 \mathrm{i}} \alpha - \frac{\lambda \hbar ^2 k_y}{2} \alpha &= E \beta,
+\end{align*}
+
+kjer iščemo vrednosti \( \alpha \) in \( \beta \). Hkrati so nam tudi vrednosti lastnih energij neznane. Drugače povedano, imamo problem lastnih vrednosti za matrični sistem
+
+\[ \begin{bmatrix}
+   \frac{\hbar ^2 k ^2}{2m} & \frac{ \lambda\hbar ^2 }{2 \mathrm{i}} \left( k_x - \mathrm{i} k_y \right) \\
+    -\frac{\lambda \hbar ^2}{2 \mathrm{i}} \left( k_x + \mathrm{i} k_y \right) & \frac{\hbar ^2 k ^2}{2m}
+    \end{bmatrix}  \begin{bmatrix} \alpha \\ \beta \end{bmatrix} = E \begin{bmatrix} \alpha \\ \beta \end{bmatrix}
+\]
+
+Pred nadaljevanjem reševanja problema bomo prepisali vektor \( \vec{k} = (k_x, k_y) \) v polarne koordinate
+
+\[ k_x + \mathrm{i} k_y = k e^{\mathrm{i} \phi} \text{ in } k_x - \mathrm{i} k_y = e^{ -\mathrm{i} k \phi}.
+\]
+
+Problem lastnih vrednosti je torej
+
+
+\[ \begin{bmatrix}
+   \frac{\hbar ^2 k ^2}{2m} & \frac{ \lambda\hbar ^2 }{2 \mathrm{i}} ke^{-\mathrm{i} \phi} \\
+    -\frac{\lambda \hbar ^2}{2 \mathrm{i}} ke^{\mathrm{i} \phi} & \frac{\hbar ^2 k ^2}{2m}
+    \end{bmatrix}  \begin{bmatrix} \alpha \\ \beta \end{bmatrix} = E \begin{bmatrix} \alpha \\ \beta \end{bmatrix}.
+\]
+
+Lastne vrednosti dobimo iz karakterističnega polinoma
+
+\begin{equation}
+\label{eq:3}
+ \det \begin{vmatrix}
+      \frac{\hbar ^2 k ^2}{2m} - E & \frac{ \lambda\hbar ^2 }{2 \mathrm{i}} ke^{-\mathrm{i} \phi} \\
+         -\frac{\lambda \hbar ^2}{2 \mathrm{i}} ke^{\mathrm{i} \phi} & \frac{\hbar ^2 k ^2}{2m} - E
+         \end{vmatrix} = \left( \frac{\hbar ^2 k ^2}{2m} - E \right) ^2 - \left( \frac{\lambda \hbar ^2 k }{2} \right) ^2 = 0.
+\end{equation}
+
+Po korenjenju in izražavi \( E \) dobimo
+
+\begin{equation}
+\label{eq:2}
+ E_{\pm} = \frac{\hbar ^2 k}{2m} \pm \frac{\lambda \hbar ^2 k}{2}.
+\end{equation}
+
+Za \( \lambda = 0 \), ko Rashbove sklopitve ni, je energija enaka \( E = \frac{\hbar ^2 k ^2}{2m} \). Dobili smo prost delec, ki je dvakrat degeneriran za vsak \( \vec{k} \).
+
+V primeru \( \lambda \ne 0 \), bomo izraz dopolnili do popolnega kvadrata
+
+\[ E = \frac{\hbar ^2}{2m} \left( k \pm \frac{m \lambda }{2} \right) ^2 - \frac{\hbar ^2 m \lambda ^2}{8}.
+\]
+
+Vidimo, da degeneracije v tem primeru ni, saj imamo za stanji \( \pm k \) dve različni energiji \( E_{\pm} \), ki sta premaknjeni za \( \frac{\lambda \hbar ^2 k}{2}\) višje ali nižje od energij dvakrat degeneriranega prostega delca..
+
+[[file:figures/rashbovaSklopitev.png]]
+
+V besedišču lastnih stanj in pripadajočih energij pravimo:
+
+Pri \( \lambda = 0 \) imamo poljubno linearno kombinacijo \( \alpha \left| \uparrow \right\rangle + \beta \left| \downarrow \right\rangle \ \forall \alpha, \beta\), ki imajo isto energijo \( \frac{\hbar ^2 k ^2}{2m} \). Drugače zapisano
+
+\[ H \left| \vec{k} \right\rangle  \left( \alpha \left| \uparrow \right\rangle + \beta \left| \downarrow  \right\rangle\right) = \frac{\hbar ^2 k ^2}{2m} \left( \alpha \left| \uparrow \right\rangle + \beta \left| \downarrow \right\rangle\right).
+\]
+
+Za \( \lambda \ne 0 \) pa bosta dve točno določeni linearni kombinaciji lastna stanja tega problema, vse ostale linearne kombinacije pa ne bodo lastna stanja. Poiščimo sedaj ta lastna stanja.
+
+V izraz \ref{eq:3} vstavimo naše energije \ref{eq:2} in nam ostane
+
+\[ \begin{bmatrix}
+   \mp \frac{\lambda \hbar ^2 k}{2} &  \frac{\lambda \hbar ^2}{2 \mathrm{i}} e^{- \mathrm{i} \phi} \\
+     -\frac{\lambda \hbar k}{2 \mathrm{i}} e^{\mathrm{i} \phi} & \mp \frac{\lambda \hbar k}{2m}
+    \end{bmatrix} \begin{bmatrix} \alpha \\ \beta \end{bmatrix} = 0
+\]
+
+Po množenju energij dobimo enačbo
+
+\[ \mp \frac{\lambda \hbar ^2 k}{2} \alpha + \frac{\lambda \hbar ^2 k}{2 \mathrm{i}} e^{- \mathrm{i} \phi} \beta =0 \implies \ \beta = \pm \alpha \mathrm{i} e^{\mathrm{i} \phi}.
+\]
+
+Normalizirana lastna vektorja sta torej
+
+\[ \begin{bmatrix} \alpha \\ \beta \end{bmatrix} = \frac{1}{\sqrt{2}} \begin{bmatrix} 1 \\ \pm \mathrm{i} e^{\mathrm{i} \phi} \end{bmatrix}
+\]
+
+Pripadajoči lastni funkciji za lastne vrednosti \( E_{\pm} \) sta
+
+\[ \left| \psi_+ \right\rangle  = \left| \vec{k} \right\rangle \frac{\left| \uparrow \right\rangle + \mathrm{i} e^{\mathrm{i} \left| \downarrow \right\rangle}}{\sqrt{2}} \text{ in } \left| \psi_- \right\rangle = \left| \vec{k} \right\rangle \frac{\left| \uparrow \right\rangle - \mathrm{i} e^{\mathrm{i} \phi} \left| \downarrow \right\rangle}{\sqrt{2}}.
+\]
+** Spin v prostoru
+
+Če projekcija \( \vec{S} \cdot \hat{e} \) spina \( \vec{S} \) v smeri \( \hat{e} \) deluje na funkcijo \( \left| \psi_s \right\rangle \) tako, da velja
+
+\begin{equation}
+\label{eq:4}
+ \vec{S} \cdot \hat{e} \left| \psi_s \right\rangle = \frac{\hbar}{2} \left| \psi_s \right\rangle,
+\end{equation}
+
+potem pravimo, da spin delca kaže v smeri \( \hat{e} \).
+
+Za smer \( \hat{e} \) v sferičnih koordinatah
+
+\[ \hat{e} = \left( \sin \theta \cos \phi, \sin \theta \sin\phi , \cos \theta\right),
+\]
+
+potem je rešitev zgornje enačbe
+
+\[ \left| \psi_s \right\rangle = \cos \left( \frac{\theta}{2} \right) \left| \uparrow \right\rangle + \sin \left( \frac{\theta}{2} \right) e^{\mathrm{i} \Phi} \left| \downarrow \right\rangle.
+\]
+
+Torej za naši lastni funkciji \( \psi_{\pm} \) lahko določimo \( \theta \) in \( \phi \) s primerjavo argumentov.
+
+\[ \frac{1}{\sqrt{2}} \left| \uparrow \right\rangle + \mathrm{i} e^{\mathrm{i} \phi} \left| \downarrow \right\rangle = \frac{1}{\sqrt{2}} \left| \uparrow \right\rangle + \frac{1}{\sqrt{2}} e^{\mathrm{i} \left( \phi \pm \frac{\pi}{2} \right)} \left| \downarrow \right\rangle.
+\]
+
+Iz enakosti
+
+\[ \cos \left(  \frac{\theta}{2} \right) = \frac{1}{\sqrt{2}} \implies \theta = \frac{\pi}{2}
+\]
+
+ter
+
+\[ e^{\mathrm{i} \left( \phi \pm \frac{\pi}{2} \right)} = e^{\mathrm{i} \Phi} \implies \Phi = \phi \pm \frac{\pi}{2}.
+\]
+
+[[file:figures/rashbovaSklopitevSpin.png]]
