@@ -339,3 +339,45 @@ ter
 \]
 
 [[file:figures/rashbovaSklopitevSpin.png]]
+** Paulijeve matrike
+
+Spinski operator \( \vec{S} \) bomo predstavili z vektorjem Paulijevih matrik \( \vec{\sigma} = \left( \sigma_x, \sigma_y, \sigma_z \right) \)
+
+\[ \vec{S} = \frac{\hbar}{2} \vec{\sigma}.
+\]
+
+Za zapis linearnega operatorja kot matriko moramo izbrati neko bazo. V našem primeru bo baza \( \left| \uparrow \right\rangle, \left| \downarrow \right\rangle \), Paulijeve matrike pa so
+
+\[ \sigma_x = \begin{pmatrix}
+              0 & 1 \\
+              1 & 0
+               \end{pmatrix} \quad \sigma_y = \begin{pmatrix}
+                                              0 & - \mathrm{i} \\
+                                              \mathrm{i} & 0
+                                               \end{pmatrix} \quad \sigma_z = \begin{pmatrix}
+                                                                              1 & 0 \\
+                                                                              0 & - \mathrm{i}
+                                                                               \end{pmatrix}.
+\]
+
+Pri prejšnji rešitvi smo rešitev zapisali kot \( \left| \psi_s \right\rangle = \alpha \left| \uparrow \right\rangle + \beta \left| \downarrow \right\rangle\). Ko imamo opravka s Paulijevimi matrikami, zapišemo valovno funkcijo s t.i. spinorjem
+
+\[ \begin{pmatrix} \alpha \\ \beta \end{pmatrix}.
+\]
+
+** Reševanje naloge s Paulijevimi spinskimi matrikami
+
+Hamiltonian, ki vsebuje Rashbovo sklopitev, bo s pomočjo Paulijevih matrik zapisan kot
+
+\[ H = \frac{p ^2}{2m} + \lambda \frac{\hbar}{2} \left( p_x \sigma_y - p_y \sigma_x \right).
+\]
+
+Ponovno napišemo valovno funkcijo v koordinatnem zapisu
+
+\[ \psi = e^{\mathrm{i} \vec{k} \cdot \vec{r}} \begin{bmatrix} \alpha \\ \beta \end{bmatrix}.
+\]
+
+Schrödingerjeva enačba \( H \psi = E \psi \) se glasi
+
+\[ H \psi = \frac{\hbar ^2 k ^2}{2m} e^{\mathrm{i} \vec{k} \cdot \vec{r}} \begin{bmatrix} \alpha \\ \beta \end{bmatrix} + \frac{\lambda \hbar}{2} \left( \hbar k_x \sigma_y - \hbar k_y \sigma_x  \right) e^{\mathrm{i} \vec{k} \cdot \vec{r}} \begin{bmatrix} \alpha \\ \beta \end{bmatrix} = E \psi = E e^{\mathrm{i} \vec{k} \cdot \vec{r}} \begin{bmatrix} \alpha \\ \beta \end{bmatrix}
+\]
