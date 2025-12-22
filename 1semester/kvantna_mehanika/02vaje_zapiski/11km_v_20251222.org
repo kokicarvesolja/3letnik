@@ -1,0 +1,129 @@
+#+title: 11. vaje iz Kvantne mehanike
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Degenerirana teorija perturbacije
+
+Imamo Hamiltonian vodikovega atoma \( H_0 = \frac{p ^2}{2m} - \frac{e ^2}{4 \pi \epsilon_0 r} \) z motnjo električnega polja
+
+\[ H = \frac{p ^2}{2m} - \frac{e ^2}{4 \pi \epsilon_0 r} - e \epsilon z,
+\]
+
+kjer je os \( z \) poravnana z magnetnim poljem.
+
+Osredotočali se bomo na prvo vzbujeno stanje vodikovega atoma, ki je osemkrat degenerirano.
+
+Bazo spina \( m_s \) bomo predstavili s puščicami \( \uparrow, \downarrow \).
+
+\begin{align*}
+  \left| 200 \right\rangle \left| \uparrow \right\rangle &\quad \left| 200 \right\rangle \left| \downarrow \right\rangle \\
+\left| 2 1 -1 \right\rangle \left| \uparrow \right\rangle &\quad \left| 2 1 -1 \right\rangle \left| \downarrow \right\rangle \\
+\left| 2 1 0 \right\rangle \left| \uparrow \right\rangle &\quad \left| 2 1 0 \right\rangle \left| \downarrow \right\rangle \\
+\left| 2 1 1 \right\rangle \left| \uparrow \right\rangle &\quad \left| 2 1 1 \right\rangle \left| \downarrow \right\rangle \\
+\end{align*}
+
+Vsako degenerirano stanje ob prisotni motnji zapišemo v matriko velikosti \( 8 \times 8 \) (vstavi matrik). Po diagonalizaciji dobimo lastne vrednosti in lastne vektorje te matrike.
+
+Lastne vrednosti nam bodo povedale, kako se bodo degenerirana stanja razcepila ob prisotnosti električnega polja.
+
+V splošnem bomo računali člen \( \left\langle n l m_l m_s \middle| H' \middle| n l', m_l ', m_s' \right\rangle \). Ker imamo prvo vzbujeno stanje, bo \( n = 2 \) v bra in ketu matričnega elementa.
+
+Spina gor in dol tvorita ortonormirano bazo, kar pomeni, da lahko en del matričnega elementa, ki ne vpliva na spin, predstavimo z \( \delta_{m_s m_s '} \)
+
+\[ \left\langle 2 l m_l  m_s \middle| H' \middle| 2 l' m_l ' m_s ' \right\rangle = \delta_{m_s m_s '} \left\langle 2 l m_l \middle| H ' \middle| 2 l' m_l ' \right\rangle
+\]
+
+Zaradi ortogonalnosti spina se naša matrika poenostavi v bločno matriko
+
+\[ \begin{bmatrix}
+   \left\langle \uparrow \middle| \uparrow \right\rangle & 0 \\
+   0 & \left\langle \downarrow \middle| \downarrow \right\rangle
+    \end{bmatrix},
+\]
+
+kjer sta neničelna bloka \( 4 \times 4 \) matrika. Če diagonaliziramo en blok in pridobimo njene lastne vrednosti, bomo pridobili tudi lastne vrednosti druge matrike (?). Zapišimo sedaj zgornji blok matrik
+
+\[ D = \begin{bmatrix}
+       \left\langle 200 \middle| H' \middle| 200 \right\rangle & \left\langle 200 \middle| H' \middle| 21 -1 \right\rangle & \left\langle 200 \middle| H' \middle| 210 \right\rangle & \left\langle 200 \middle| H' \middle| 211 \right\rangle \\
+       \left\langle 21 -1 \middle| H' \middle| 200 \right\rangle & \left\langle 21-1 \middle| H' \middle| 21 -1 \right\rangle & \left\langle 21 -1 \middle| H' \middle| 210 \right\rangle & \left\langle 21 -1 \middle| H' \middle| 211 \right\rangle \\
+       \left\langle 210 \middle| H' \middle| 200 \right\rangle & \left\langle 210 \middle| 21 - 1 \right\rangle & \left\langle 210 \middle| H' \middle| 210 \right\rangle & \left\langle 210 \middle| H' \middle| 211 \right\rangle \\
+       \left\langle 211 \middle| H ' \middle| 200 \right\rangle & \left\langle 211 \middle| H' \middle| 21-1 \right\rangle & \left\langle 211 \middle| H' \middle| 210 \right\rangle & \left\langle 211 \middle| H' \middle| 211 \right\rangle
+       \end{bmatrix}
+\]
+
+V koordinatnem zapisu je naključni matrični element
+
+\[ \left\langle 210 \middle| - e \epsilon z \middle| 21 -1\right\rangle  = \int\limits_{}^{} R^{\ast}_{21} (r) Y_{10}^{\ast} (\phi, \theta) \left[ - e \epsilon z \right] R_{21} (r) Y_{1, -1}(\phi, \theta) \, \mathrm{d} \vec{r}
+\]
+
+Računanje 16 takih integralov je precej nadležna naloga, še posebej zaradi tega, ker nam leta zmanjkuje. Namesto tega se bomo poslužili hermitskosti operatorja
+
+\[ \left\langle \psi \middle| H \middle| \Phi \right\rangle = \left\langle \Phi \middle| H \middle| \Psi \right\rangle ^{\ast} \implies H = H^{\ast}
+\]
+
+To pomeni, da imamo v resnici simetrično bločno matriko in namesto 16 integralov, nam jih sedaj ostane samo še 10. Bolje, ampak še zmeraj ne dovolj dobro.
+
+Uvedemo operator parnosti \( P: \vec{r} \to - \vec{r} \), ki komutira s \( H_0 \).
+
+Pri izbiri operatorjev, ki komutirajo s Hamiltonianom \( H_0 \), morajo ti tudi komutirati med seboj. Kot primer težave navedemo operatorja \( L_x \) in \( L_z \), ki komutirata s \( H_0 \), vendar ne komutirata med seboj. To pomeni, da rešitve, niso lastna stanja obeh operatorjev (glej Rashba coupling).
+
+Operatorji, ki komutirajo s \( H_0 \) so operator vrtilne količine \( L ^2 \), \( L_z \), spina \( S ^2 \), \( S_z \) in parnost \( P \). Spinski operatorji nas zaradi postavitve problema (aka matrike) ne zanimajo.
+
+Enostavno lahko preverimo, če tudi \( L_i, \, i = x, y, z\) komutirajo z operatorjem parnosti.
+
+\[ \left[ L_i, P \right] = 0, \ i = x, y, z \implies \, \left[ L ^2, P \right] = \left[ \sum\limits_{i = x, y, z}^{} L_i ^2, P \right] = 0
+\]
+
+Torej imamo kombinacijo operatorjev, ki med seboj komutirajo: \( H_0, L ^2, L_z, P \). Lastne vrednosti enega operatorja bodo tudi lastne vrednosti ostalih operatorjev (?).
+
+Dodatno se izkaže, da so sferični harmoniki že lastne funkcije operatorja parnosti, saj velja
+
+\[ P \left\langle n, l, m_l \right\rangle = \left( -1 \right)^l \left| n, l, m_l  \right\rangle
+\]
+
+\( s \) orbitale, ki imajo kvantno število vrtilne količine \( l = 0 \), imajo sodo parnost, \( p \) orbitale, s kvantnim številom \( l = 1 \), imajo pa liho parnost. To izrazoslovje se posploši tudi na splošen sodi ali lihi \( l \).
+
+Poglejmo še lastnosti komutacij motnje \( H' = - e \epsilon z \) z izbranimi operatorji \( L ^2, L_z, P \)
+
+\begin{align*}
+  \left[ H', P \right] &\ne 0 \\
+\left[ H', L_z \right] = \left[ - e \epsilon z, xp_y - yp_x \right] &= 0 \\
+\left[ H', L ^2 \right] &\ne 0
+\end{align*}
+
+V kratkem: to nam (skoraj) nič ne pomaga. Poglejmo si, kaj pa lahko dosežemo z antikomutacijo
+
+\[ \left\{ H', P \right\} = H' P + P H' = H' P + \left( - H' \right) P = 0.
+\]
+
+Poglejmo si sedaj matrični element
+
+\begin{align*}
+  \left\langle 2 lm \middle| \left[ H', L_z \right] \middle| 2 l' m' \right\rangle &= \left\langle 2lm \middle| \left( H' L_z - L_z H' \right) \middle| 2 l' m' \right\rangle \\
+0 &= \left\langle 2lm \middle| H' L_z \middle| 2l' m' \right\rangle - \left\langle 2 lm \middle| L_z  H' \middle| 2l' m' \right\rangle \\
+\end{align*}
+
+Operator \( L_z \) deluje na stanje \( \left| 2 l' m' \right\rangle \) v prvem členu in zaradi hermitskosti, bo deloval na stanje \( \left\langle 2 l m \right| \) v drugem členu. Velja
+
+\[ L_z \left| l m_l  \right\rangle = \hbar m \left| l m_l \right\rangle
+\]
+
+\[ \left\langle 2lm \middle| \left[ H ', L_z \right] \middle| 2 l' m' \right\rangle = 0 = \hbar (m' - m) \left\langle 2lm \middle| H' \middle| 2l' m' \right\rangle
+\]
+
+Razlika \( m' - m \) ni ničelna, kar pomeni, da bo za zadoščenost ničelne enakosti desne strani enačbe, moral biti matrični element enak ničeln.
+
+Torej se naše matrika poenostavi iz 10 na 5 integralov.
+
+\[ D = \begin{bmatrix}
+       \left\langle 200 \middle| H' \middle| 200 \right\rangle & 0 & \left\langle 200 \middle| H' \middle| 210 \right\rangle &  0 \\
+       0 & \left\langle 21-1 \middle| H' \middle| 21-1 \right\rangle & 0 & 0 \\
+       \left\langle 210 \middle| H' \middle| 200 \right\rangle & 0 & \left\langle 210 \middle| H' \middle| 210 \right\rangle & 0 \\
+       0 & 0 & 0 & \left\langle 211 \middle| H' \middle| 211 \right\rangle
+       \end{bmatrix}
+\]
