@@ -1,0 +1,147 @@
+#+title: 12. predavanje iz Matematične fizike
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Greenove funkcije
+
+Rešujemo problem
+
+\[ \nabla ^2 u + k ^2 u = \delta \left( \vec{r} - \vec{r}_0 \right)
+\]
+** Trodimenzionalni problem
+
+Za \( k = 0 \) je Greenova funkcija, ki reši problem
+
+\[ G \left( \vec{r}, \vec{r}_0 \right) = \frac{1}{4 \pi} \frac{1}{\left| \vec{r} - \vec{r}_0 \right|},
+\]
+
+saj poznamo
+
+\[ G \left( \vec{r}, \vec{r} _0 \right) = - \frac{1}{4 \pi} \frac{1}{r_s} \sum\limits_{k = 0}^{\infty} \left( \frac{r_l}{r_s} \right) ^l P_l \left( \cos \theta \right).
+\]
+
+Za \( k ^2 > 0 \) v izhodišču je Greenova funkcija
+
+\[ G \left( \vec{r}, 0 \right) = \begin{cases}
+                                  -\frac{1}{4 \pi r} e^{\pm\mathrm{i} k r}&; \text{potujoci} \\
+                                   -\frac{\cos (kr)}{2 \pi r} &; \text{ stojeci}
+                                 \end{cases}.
+\]
+
+Ne moremo zapisati \( k ^2 < 0 \), saj bi to pomenilo, da je \( k \in \mathrm{Im} \). Namesto tega bomo rekli, da rešujemo enačbo
+
+\[ \left( \nabla ^2 - k ^2 \right) u = \delta,
+\]
+
+katere rešitve so
+
+\[ G \left( \vec{r}, 0 \right) = - \frac{e^{\pm k r}}{4 \pi r}
+\]
+** Končno območje
+
+Na končnem območju (krompirju) \( \mathcal{D} \) Greenova funkcija \( G \left( \vec{r}, \vec{r}_0 \right) \) ne zadosti robnim pogojem.
+
+Rešujemo problem
+
+\[ \mathcal{L} u = \delta \left( \vec{r}- \vec{r}_0 \right)
+\]
+
+in potrebujemo Greenovo funkcijo \( G \left( \vec{r}, \vec{r}_0 \right) \), ki je na robu \( 0 \) (torej zadosti Dirichletovemu problemu).
+
+\[ G \left( \vec{r}, \vec{r}_0 \right) = G_{\infty} \left( \vec{r}, \vec{r}_0 \right) + g \left( \vec{r}, \vec{r}_0 \right),
+\]
+
+kjer velja \( \mathcal{L} g = 0 \) in robni pogoj za Dirichleta je \( g \left( \vec{r}_B, \vec{r}_0 \right) = - G_{\infty} \left( \vec{r}_B, \vec{r}_0 \right) \),
+
+kjer je \( \vec{r}_B \) radij vektor, ki teče po \( \partial \mathcal{D} \).
+
+Ko izračunamo \( G \), uporabimo Greenovo zvezo, da dobimo rešitev.
+
+Operator je definiran kot
+
+\[ \mathcal{L} u = \nabla ^2 u + q \left( \vec{r} \right) u.
+\]
+
+Greenova zveza je
+
+\[ \int\limits_{\mathcal{D}}^{} \left( u \mathcal{L} v - v \mathcal{L} u \right) \, \mathrm{d} V = \int\limits_{\partial D}^{} \left( u \frac{\partial v}{\partial n} - v \frac{\partial u}{\partial n}   \right)\, \mathrm{d} S
+\]
+
+Dirichletov problem te vrste je
+
+\[ \mathcal{L} u = f \left( \vec{r} \right), \, \vec{r} \in \mathcal{D}
+\]
+
+z robnim pogojem \( u \left( \vec{r}_B \right) = g \left( \vec{r}_B \right) \) za \( \vec{r}_B \in \partial \mathcal{D} \).
+
+Za Greenovo funkcijo bo veljalo
+
+\[ \mathcal{L}_{\vec{r}} G = \delta \left( \vec{r} - \vec{r}_0 \right),
+\]
+
+in \( G \left( \vec{r}_B, \vec{r}_0 \right) = 0 \). Uporabimo Greenovo zvezo
+
+\begin{align*}
+  \int\limits_{\mathcal{D}}^{} \left( u \mathcal{L} G - G \mathcal{L} u \right) \, \mathrm{d} V &= \int\limits_{\partial \mathcal{D}}^{} \left( u \frac{\partial G}{\partial n}  - G \frac{\partial y}{\partial n}  \right) \, \mathrm{d} S\\
+\int\limits_{\mathcal{D}}^{} \left( u \delta - G f \right) &= \int\limits_{\partial \mathcal{D}}^{} g \frac{\partial G}{\partial n}  \, \mathrm{d} S
+\end{align*}
+
+Po postopku izrazimo funkcijo \( u \)
+
+\[ u \left( \vec{r} \right) = \int\limits_{\mathcal{D}}^{} G \left( \vec{r}, \vec{r}_0 \right) f \left( \vec{r}_0 \right) \, \mathrm{d} V_0 + \int\limits_{\partial \mathcal{D}}^{} g \left( \vec{r}_B \right) \frac{\partial G \left( \vec{r} , \vec{r}_B \right)}{\partial \vec{r}_B} \cdot \mathrm{d} \vec{S}_B
+\]
+
+V primeru Neumannovega problema imamo
+
+\[ \nabla ^2 u = f \left( \vec{r} \right)
+\]
+
+z robnim pogojem
+
+\[ \frac{\partial u \left( \vec{r}_B \right)}{\partial n} = g \left( \vec{r}_B \right), \ \vec{r}_B \in \partial \mathcal{D}.
+\]
+
+Uvedemo vez, ki nam fizikalno sporoča, da je vsota izvirov v volumnu, enaka toku po robu
+
+\[ \int\limits_{\partial \mathcal{D}}^{} g \left( \vec{r}_B \right) \, \mathrm{d} S_B = \int\limits_{\mathcal{D}}^{} f \left( \vec{r} \right) \, \mathrm{d} V
+\]
+
+Greenova funkcija je
+
+\begin{equation}
+\label{eq:1}
+ \mathcal{L} G = \delta
+\end{equation}
+
+in
+
+\begin{equation}
+\label{eq:2}
+ \frac{\partial G \left( \vec{r}_B, \vec{r}_0 \right)}{\partial \vec{r}_B} = 0.
+\end{equation}
+
+Pogoja Greenova funkcije sta prestroga, saj za \ref{eq:1} velja
+
+\[ \int\limits_{\partial \mathcal{D}}^{} \frac{\partial G}{\partial n}  \, \mathrm{d} S = 1,
+\]
+
+medtem ko pridemo do neenakosti pri Greenovi zvezi \ref{eq:2}.
+
+Zrahljali bomo pogoj \ref{eq:2} tako, da
+
+\begin{align*}
+  \nabla ^2 G_N &= \delta \left( \vec{r} - \vec{r}_0 \right) - \frac{1}{V} \\
+\left. \frac{\partial G_{N}}{\partial n} \right|_{\partial \mathcal{D}} &= 0.
+\end{align*}
+
+Slednjemu se reče Neumann Greenova funkcija.
+
+Greenova zveza nam poda
+
+\[ u \left( \vec{r} \right) = \int\limits_{\mathcal{D}}^{} G_N \left( \vec{r}, \vec{r}_0 \right) f \left( \vec{r}_0 \right) \, \mathrm{d} V_0 - \int\limits_{\partial \mathcal{D}}^{} g \left( \vec{r}_B \right) G_N \left( \vec{r}, \vec{r}_B \right) \, \mathrm{d} S_B + \mathrm{konst}
+\]
