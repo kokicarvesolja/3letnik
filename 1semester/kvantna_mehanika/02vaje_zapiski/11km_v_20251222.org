@@ -58,8 +58,11 @@ kjer sta neničelna bloka \( 4 \times 4 \) matrika. Če diagonaliziramo en blok 
 
 V koordinatnem zapisu je naključni matrični element
 
-\[ \left\langle 210 \middle| - e \epsilon z \middle| 21 -1\right\rangle  = \int\limits_{}^{} R^{\ast}_{21} (r) Y_{10}^{\ast} (\phi, \theta) \left[ - e \epsilon z \right] R_{21} (r) Y_{1, -1}(\phi, \theta) \, \mathrm{d} \vec{r}
-\]
+\begin{equation}
+\label{eq:2}
+ \left\langle 210 \middle| - e \epsilon z \middle| 21 -1\right\rangle  = \int\limits_{}^{} R^{\ast}_{21} (r) Y_{10}^{\ast} (\phi, \theta) \left[ - e \epsilon z \right] R_{21} (r) Y_{1, -1}(\phi, \theta) \, \mathrm{d} \vec{r}
+\end{equation}
+
 
 Računanje 16 takih integralov je precej nadležna naloga, še posebej zaradi tega, ker nam leta zmanjkuje. Namesto tega se bomo poslužili hermitskosti operatorja
 
@@ -83,8 +86,10 @@ Torej imamo kombinacijo operatorjev, ki med seboj komutirajo: \( H_0, L ^2, L_z,
 
 Dodatno se izkaže, da so sferični harmoniki že lastne funkcije operatorja parnosti, saj velja
 
-\[ P \left\langle n, l, m_l \right\rangle = \left( -1 \right)^l \left| n, l, m_l  \right\rangle
-\]
+\begin{equation}
+\label{eq:1}
+ P \left\langle n, l, m_l \right\rangle = \left( -1 \right)^l \left| n, l, m_l  \right\rangle
+\end{equation}
 
 \( s \) orbitale, ki imajo kvantno število vrtilne količine \( l = 0 \), imajo sodo parnost, \( p \) orbitale, s kvantnim številom \( l = 1 \), imajo pa liho parnost. To izrazoslovje se posploši tudi na splošen sodi ali lihi \( l \).
 
@@ -96,7 +101,9 @@ Poglejmo še lastnosti komutacij motnje \( H' = - e \epsilon z \) z izbranimi op
 \left[ H', L ^2 \right] &\ne 0
 \end{align*}
 
-V kratkem: to nam (skoraj) nič ne pomaga. Poglejmo si, kaj pa lahko dosežemo z antikomutacijo
+V kratkem: to nam (skoraj) nič ne pomaga.
+
+Poglejmo si, kaj pa lahko dosežemo z antikomutacijo
 
 \[ \left\{ H', P \right\} = H' P + P H' = H' P + \left( - H' \right) P = 0.
 \]
@@ -126,4 +133,117 @@ Torej se naše matrika poenostavi iz 10 na 5 integralov.
        \left\langle 210 \middle| H' \middle| 200 \right\rangle & 0 & \left\langle 210 \middle| H' \middle| 210 \right\rangle & 0 \\
        0 & 0 & 0 & \left\langle 211 \middle| H' \middle| 211 \right\rangle
        \end{bmatrix}
+\]
+
+Vrnimo se nazaj h antikomutaciji \( \left\{ H', P \right\} \). Vemo, da velja
+
+\begin{align*}
+  \left\langle 2 lm \middle| \left\{ H', P \right\}\middle| 2 l' m' \right\rangle &= 0 \\
+\left\langle 2 lm \middle| H' P + P H' \middle| 2 l' m' \right\rangle &= 0 \\
+\left\langle 2 lm \middle| H' P \middle| 2 l' m' \right\rangle + \left\langle 2lm \middle| P H' \middle| 2l' m' \right\rangle &= 0\\
+\left\langle 2 lm \middle| H' \left( -1 \right)^{l'} \middle|2l ' m' \right\rangle + \left( -1 \right)^l \left\langle 2lm \middle| H' \middle| 2l' m' \right\rangle &= 0 \\
+\left\langle 2lm \middle| H' \middle| 2l' m' \right\rangle \left( \left( -1 \right)^{l'} + \left( -1 \right)^l \right) &= 0
+\end{align*}
+
+Upoštevali smo lastnost \ref{eq:1}, in velja
+
+\[ \left( \left( -1 \right)^{l'} + \left( -1 \right)^l \right) \ne 0 \implies \left\langle nlm \middle|  H' \middle|nl' m' \right\rangle = 0
+\]
+
+Brez antikomutatorja lahko pridemo do istega spoznanja tako, da pogledamo \ref{eq:2}. Člen \( R^{\ast} Y^{\ast} \) ima parnost \( \left( -1 \right)^l \), operator ima liho parnosti \( -1 \) in zadnji, nekonjugiran člen ima parnost \( \left( -1 \right)^l \).
+
+Iz tega sledi, za liho parnost je celoten integral enak 0. Najti moramo samo kombinacije vrednosti \( l \) in \( l' \), kjer je parnost liha.
+
+Vrnimo se nazaj k matriki \( D \). Oskrunjena oblika je
+
+\[ D = \begin{bmatrix}
+       0 & 0 & \left\langle 200 \middle| H' \middle| 210 \right\rangle & 0\\
+       0 & 0 & 0 & 0 \\
+        \left\langle 210 \middle| H' \middle| 200 \right\rangle& 0 & 0 & 0 \\
+        0& 0 & 0 & 0
+       \end{bmatrix}
+\]
+
+Izračunajmo sedaj zgornji matrični element
+
+\[   \left\langle 200 \middle| H' \middle| 210 \right\rangle &= \int\limits_{}^{} R_{20} ^{\ast} Y_{00}^{\ast} \left( - \epsilon r \cos \theta \right) R_{21} Y_{10} \, \mathrm{d} \vec{r}
+\]
+
+Iz tabel (*ki jih prinesi s seboj na kolokvij*) odčitamo radialne in sferične funkcije. V našem primeru je to
+
+\begin{align*}
+  \int\limits_{}^{} R_{20} ^{\ast} Y_{00}^{\ast} \left( - \epsilon r \cos \theta \right) R_{21} Y_{10} \, \mathrm{d} \vec{r} = &\int\limits_{}^{} 2 \left( \frac{1}{2a} \right)^{\frac{3}{2}} \left( 1 - \frac{r}{2a} \right) e^{- \frac{r}{2a}} \cdot \frac{1}{\sqrt{4 \pi}} \cdot \left( - \epsilon e r \cos \theta \right) \\
+ & \cdot \frac{1}{\sqrt{3}} \left( \frac{1}{2a} \right)^{\frac{3}{2}} \left( \frac{r}{a} \right) e^{- \frac{r}{2a}} \cdot \sqrt{\frac{3}{4 \pi}} \cos \theta \, \mathrm{d} \vec{r}
+\end{align*}
+
+Posamezne člene \( R_{20}^{\ast}, Y_{00}^{\ast}, R_{21} \) in \( Y_{10} \) sem med seboj ločil z \( \cdot \). \( a \) je Bohrov radij. Nadalje razpišemo
+
+\begin{align*}
+    \int\limits_{}^{} R_{20} ^{\ast} Y_{00}^{\ast} \left( - \epsilon r \cos \theta \right) R_{21} Y_{10} \, \mathrm{d} \vec{r} = & -2 \left( \frac{1}{2a} \right)^{\frac{3}{2}} \frac{1}{\sqrt{4 \pi}} e \epsilon \frac{1}{\sqrt{3}} \left( \frac{1}{2a} \right)^{\frac{3}{2}} \frac{1}{a} \sqrt{\frac{3}{4 \pi}} \int\limits_0^{\infty} \left( 1 - \frac{r}{2a} \right) r e^{- \frac{2r}{2a}} r \cdot r ^2 \, \mathrm{d} r  \int\limits_{-1}^1 \cos ^2 \theta \, \mathrm{d} \left( \cos \theta \right) \int\limits_0^{2 \pi} \, \mathrm{d} \phi \\
+&= - \frac{2}{4 \pi } \cdot \left( \frac{1}{4a ^2} \right)^{\frac{3}{2}} e\epsilon \frac{1}{a} \int\limits_0^{\infty} \left( r ^4 - \frac{r^5}{2a} \right) e^{- \frac{r}{a}} \, \mathrm{d} r \cdot \left. \frac{1}{3} \left[ \cos ^3 \theta \right] \right|_{-1}^1 \cdot 2 \pi\\
+\end{align*}
+
+Uvedemo spremenljivko \( u = \frac{r}{a} \), kjer potem dobimo integral \( \Gamma \) funkcije \( \int\limits_0^{\infty} u^n e^{- u} \, \mathrm{d} u = n! \).
+
+\begin{align*}
+  \int\limits_0^{\infty} \left( a ^4 u ^4 - \frac{a^5 u ^5}{2a} \right) e^{-u} a \, \mathrm{d} u &= a ^5 \left( \int\limits_0^{\infty} u^4 e^{-u} \, \mathrm{d} u - \frac{1}{2} \int\limits_0^{\infty} u^5 e^{-u} \, \mathrm{d} u \right)  \\
+&= - 36 a ^5
+\end{align*}
+
+To pomeni, da je vrednost integrala
+
+\begin{align*}
+   \int\limits_{}^{} R_{20} ^{\ast} Y_{00}^{\ast} \left( - \epsilon r \cos \theta \right) R_{21} Y_{10} \, \mathrm{d} \vec{r} &= \frac{1}{8 a ^3} e \epsilon \frac{1}{a} a^5 \left( - 36 \right) \frac{1}{3} \cdot 2 \\
+&= 3 \epsilon e a
+\end{align*}
+
+Matriko prepišemo v bazo, kjer so stolpci v vrstnem redu \( \left| 200 \right\rangle, \left| 210 \right\rangle, \left| 21-1 \right\rangle, \left| 211 \right\rangle\). Sedaj bločnost pride še bolj do izraza
+
+\[ D = \begin{bmatrix}
+       0 & \left\langle 200 \middle| H' \middle| 210 \right\rangle = B & 0 & 0 \\
+       \left\langle 210 \middle| H' \middle| 200 \right\rangle = B^{\ast} & 0 & 0 & 0 \\
+       0 & 0 & 0 & 0 \\
+       0 & 0 & 0 & 0
+       \end{bmatrix}
+\]
+
+Determinanta \( 2 \times 2 \) matrike, ki vključuje \( B \), je
+
+\[ \det \begin{bmatrix}
+        -\lambda & B \\
+        B & -\lambda
+         \end{bmatrix} = \left( - \lambda \right) ^2 - B ^2 = 0 \implies \lambda_{\pm} = \pm B.
+\]
+
+Torej so lastne vrednosti
+
+- \( \lambda = 0 \), ki nam da štirikrat degenerirano stanja
+
+  \[ \left| 21-1 \right\rangle \left| \uparrow \right\rangle, \, \left| 211 \right\rangle \left| \uparrow \right\rangle, \, \left| 21 -1 \right\rangle \left| \downarrow \right\rangle, \, \left| 211 \right\rangle \left| \downarrow \right\rangle
+  \]
+
+- \( \lambda = + B \), ki nam da dvakrat degenerirano stanje ter
+- \( \lambda = - B \), ki nam prav tako poda dvakrat degenerirano stanje
+
+Za ostali lastni vrednosti moramo poiskati pripadajoče lastne vektorje lastnih vrednosti \( \lambda _{\pm} = \pm B \).
+
+Lastni vektor vrednosti \( \lambda = - B \) je \( \left[ 1, -1 \right]^T \), kar pomeni, da je funkcija stanja
+
+\[ \psi= \frac{1}{\sqrt{2}} \left( \left| 200 \right\rangle  - \left| 210 \right\rangle\right) ,
+\]
+
+za \( \lambda = B \) je lastni vektor \( \left[ 1, 1 \right]^T \), da je funkcija stanja
+
+\[ \psi = \frac{1}{\sqrt{2}} \left( \left| 200 \right\rangle + \left| 210 \right\rangle\right) .
+\]
+
+Torej sta dvakrat degenerirana stanje za \( \lambda = -B \) (ki ima višjo energijo od osnovnega stanja):
+
+\[ \frac{1}{\sqrt{2}} \left(\left| 200 \right\rangle  - \left| 210 \right\rangle \right) \left| \uparrow \right\rangle \text{ in } \frac{1}{\sqrt{2}} \left(\left| 200 \right\rangle  - \left| 210 \right\rangle \right) \left| \downarrow \right\rangle
+\]
+
+Stanje \( \lambda = B \) z nižjo energijo pa je stanje
+
+
+\[ \frac{1}{\sqrt{2}} \left(\left| 200 \right\rangle  + \left| 210 \right\rangle \right) \left| \uparrow \right\rangle \text{ in } \frac{1}{\sqrt{2}} \left(\left| 200 \right\rangle  + \left| 210 \right\rangle \right) \left| \downarrow \right\rangle
 \]
