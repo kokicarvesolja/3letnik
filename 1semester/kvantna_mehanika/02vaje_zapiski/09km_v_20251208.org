@@ -223,11 +223,13 @@ Dobimo lahko sistem enačb tako, da zgornjo enačbo pomnožimo z \( \left\langle
 
 kjer iščemo vrednosti \( \alpha \) in \( \beta \). Hkrati so nam tudi vrednosti lastnih energij neznane. Drugače povedano, imamo problem lastnih vrednosti za matrični sistem
 
-\[ \begin{bmatrix}
+\begin{equation}
+\label{eq:5}
+ \begin{bmatrix}
    \frac{\hbar ^2 k ^2}{2m} & \frac{ \lambda\hbar ^2 }{2 \mathrm{i}} \left( k_x - \mathrm{i} k_y \right) \\
     -\frac{\lambda \hbar ^2}{2 \mathrm{i}} \left( k_x + \mathrm{i} k_y \right) & \frac{\hbar ^2 k ^2}{2m}
     \end{bmatrix}  \begin{bmatrix} \alpha \\ \beta \end{bmatrix} = E \begin{bmatrix} \alpha \\ \beta \end{bmatrix}
-\]
+\end{equation}
 
 Pred nadaljevanjem reševanja problema bomo prepisali vektor \( \vec{k} = (k_x, k_y) \) v polarne koordinate
 
@@ -379,5 +381,163 @@ Ponovno napišemo valovno funkcijo v koordinatnem zapisu
 
 Schrödingerjeva enačba \( H \psi = E \psi \) se glasi
 
-\[ H \psi = \frac{\hbar ^2 k ^2}{2m} e^{\mathrm{i} \vec{k} \cdot \vec{r}} \begin{bmatrix} \alpha \\ \beta \end{bmatrix} + \frac{\lambda \hbar}{2} \left( \hbar k_x \sigma_y - \hbar k_y \sigma_x  \right) e^{\mathrm{i} \vec{k} \cdot \vec{r}} \begin{bmatrix} \alpha \\ \beta \end{bmatrix} = E \psi = E e^{\mathrm{i} \vec{k} \cdot \vec{r}} \begin{bmatrix} \alpha \\ \beta \end{bmatrix}
+\[ H \psi = \frac{\hbar ^2 k ^2}{2m} e^{\mathrm{i} \vec{k} \cdot \vec{r}} \begin{bmatrix} \alpha \\ \beta \end{bmatrix} + \frac{\lambda \hbar}{2} \left( \hbar k_x \sigma_y - \hbar k_y \sigma_x  \right) e^{\mathrm{i} \vec{k} \cdot \vec{r}} \begin{bmatrix} \alpha \\ \beta \end{bmatrix} = E \psi = E e^{\mathrm{i} \vec{k} \cdot \vec{r}} \begin{bmatrix} \alpha \\ \beta \end{bmatrix}.
 \]
+
+Krajevni del valovne funkcije lahko pokrajšamo in nam ostane
+
+\[ \frac{ \hbar ^2 k ^2}{2m} \begin{bmatrix} \alpha \\ \beta \end{bmatrix} + \frac{\lambda \hbar ^2}{2} \left( k_x \begin{bmatrix}
+                                                                                                                   0 & -\mathrm{i} \\
+                                                                                                                   \mathrm{i} & 0
+                                                                                                                    \end{bmatrix}  - k_y \begin{bmatrix}
+                                                                                                                                                0 & 1 \\
+                                                                                                                                                1 & 0
+                                                                                                                                                 \end{bmatrix} \right) \begin{bmatrix} \alpha \\ \beta \end{bmatrix} = E \begin{bmatrix} \alpha \\ \beta \end{bmatrix}
+\]
+
+Rešujemo sistem enačb
+
+\[ \begin{bmatrix}
+   \frac{\hbar ^2 k ^2}{2m}  & \frac{\lambda \hbar ^2}{2} \left( - \mathrm{i} k_x - k_y \right) \\
+    \frac{\lambda \hbar ^2}{2} \left( \mathrm{i} k_x - k_y \right) & \frac{\hbar ^2 k ^2}{2m}
+    \end{bmatrix} \begin{bmatrix} \alpha \\ \beta \end{bmatrix}= E \begin{bmatrix} \alpha  \\ \beta \end{bmatrix}
+\]
+
+Vidimo, da je problem identičen \ref{eq:5}, kar pomeni, da bi do rešitve postopali enako kakor prej.
+* Simetrija na obrat časa z Rashbovo sklopitvijo
+
+Imamo Hamiltonian
+
+\[ H = \frac{p ^2}{2m} + \lambda \frac{\hbar}{2} \left( p_x \sigma_y - p_y \sigma_x \right).
+\]
+
+Nalogo rešujemo s Paulijevimi matrikami.
+** Teorija - simetrija na obrat časa
+
+To, da imamo simetrijo na obrat časa, pomeni, da imamo operator obrata časa \( \mathcal{T} \), ki komutira s Hamiltonianom \( \left[ H, \mathcal{T} \right] = 0 \).
+
+Komutativnost operatorja ni nič novega, kar pa je, je to, da je \( \mathcal{T} \) antikomutitaren. To pomeni, da konjugira skalaren produkt
+
+\[ \left\langle \mathcal{T} \psi_1 \middle| \mathcal{T} \psi_2 \right\rangle = \left\langle \psi_1 \middle| \psi_2 \right\rangle^{\ast}.
+\]
+
+Spomnimo, da unitaren operator \( U \) ohranja skalarni produkt
+
+\[ \left\langle U \psi_1 \middle| U \psi_2 \right\rangle = \left\langle U^{\dagger} U \psi_1 \middle| \psi_2 \right\rangle= \left\langle \psi_1 \middle| \psi_2 \right\rangle.
+\]
+
+Iz tega sledi, da velja \( U^{\dagger} U = I \), kjer je \( I \) identiteta.
+
+Definirajmo operator kompleksne konjugacije \( K: \psi \mapsto \psi^{\ast} \). Dokazujemo, da če lahko zapišemo \( \mathcal{T} \) kot produkt operatorjev \( U \) in \( K \), potem je \( \mathcal{T} \) antikomutitaren.
+
+\begin{align*}
+  \left\langle \mathcal{T} \psi_1 \middle| \mathcal{T} \psi_2 \right\rangle &= \left\langle U K \psi_1 \middle| U K \psi_2 \right\rangle \\
+&= \left\langle U^{\dagger} U K \psi_1 \middle| K \psi_2 \right\rangle \\
+&= \left\langle  K \psi_1 \middle| K \psi_2 \right\rangle \\
+&= \int\limits_{}^{} \left( K \psi_1 (\vec{r}) \right)^{\ast} \left( K \psi_2 (\vec{r}) \right) \, \mathrm{d} \vec{r} \\
+&= \int\limits_{}^{} \left( \psi_1^{\ast} (\vec{r}) \right)^{\ast} \psi_2 ^{\ast} (\vec{r}) \, \mathrm{d} \vec{r} \\
+&= \int\limits_{}^{} \psi_2^{\ast} (\vec{r}) \psi_1 (\vec{r}) \, \mathrm{d} \vec{r} = \left\langle \psi_2 \middle| \psi_1 \right\rangle = \left\langle \psi_1 \middle| \psi_2 \right\rangle^{\ast}
+\end{align*}
+
+Iz predavanj vemo, da za delce s spinom \( S = \frac{1}{2} \), da je operator obrata časa oblike
+
+\[ \mathcal{T} = \mathrm{i} \sigma_y K.
+\]
+
+Dokazujemo, da to velja. Iz definicije produkta operatorjev razberemo, da je \( U = \mathrm{i} \sigma_y \). Z dokazom, da je \( U \) unitaren, dokažemo, da je \( \mathcal{T} \) antikomutitativen.
+
+\[ U^{\dagger} U = \left[ \sigma_y ^{\dagger} \left( \mathrm{i} \right)^{\dagger} \right] \mathrm{i} \sigma_y = \sigma_y (- \mathrm{i}) \mathrm{i} \sigma_y = \sigma_y ^2 = I
+\]
+** Reševanje naloge
+
+Za začetek dokazujemo, da Hamiltonian \( H \) komutira z operatorjem obrata časa \( \left[ H, \mathcal{T} \right] = 0 \). Upoštevamo definicijo komutacije ter pomnožimo enačbo z desne s \( \mathcal{T}^{-1} \). Dobimo enakost
+
+\[ H = \mathcal{T} H \mathcal{T}^{-1}.
+\]
+
+Če velja ta enakost, \( H \) in \( \mathcal{T} \) komutirata. Operator obrata časa nadomestimo s \( \mathcal{T} = \mathrm{i} \sigma_y K \)
+
+\[ H = \mathrm{i} \sigma_y K H \left( K^{-1} \sigma_y^{-1} i^{-1} \right).
+\]
+
+Za operator kompleksne konjugacije in Paulijevo matriko velja \( K ^2 = 1 \), iz česar sledi \( K^{-1} = K \). Iz iste lastnosti za Paulijevo matriko sledi \( \sigma_y = \sigma_y^{-1} \). Hkrati sledi \( \mathrm{i}^{-1} = -\mathrm{i} \).
+
+\[ \mathcal{T} H \mathcal{T} ^{-1} = \left( \mathrm{i} \sigma_y K \right) H \left( K \sigma_y (- \mathrm{i}) \right)
+\]
+
+Levi operator kompleksne konjugacije \( K \) najprej vpliva na Hamiltonian \( H \), nato pa še na vse, kar je desno od njega.
+
+\[ \mathcal{T} H \mathcal{T} ^{-1} =  \left( \mathrm{i} \sigma_y \right) H^{\ast} K K \sigma_y (- \mathrm{i}) = \left( \mathrm{i} \sigma_y \right) H^{\ast} \underbrace{K ^2}_{= I} \sigma_y (- \mathrm{i})
+\]
+
+Sledi
+
+\begin{align*}
+  \mathcal{T} H \mathcal{T}^{-1} &= \mathrm{i} \sigma_y H^{\ast} \sigma_y (- \mathrm{i}) \\
+&= \sigma_y H^{\ast} \sigma_y
+\end{align*}
+
+Pred izločitvijo operatorjev \( K \) nismo smeli pokrajšati imaginarnih enot \( \mathrm{i} \) zaradi učinka, ki jih ima operator \( K \) na njih.
+
+Hamiltonianom nadomestimoz izrazom za Rashbovo sklopitev
+
+\begin{align*}
+  \mathcal{T} H \mathcal{T} &= \left[ \frac{p ^2}{2m} + \lambda \frac{\hbar}{2} \left( p_x \sigma_y - p_y \sigma_x \right) \right]^{\ast} \sigma_y \\
+&= \sigma_y \left[ \frac{p ^2}{2m} + \lambda \frac{\hbar}{2} \left( (- p_x) (- \sigma_y) - (- p_y) (\sigma_x) \right) \right] \sigma_y.
+\end{align*}
+
+Upoštevali smo definicijo \( p ^2 = - \hbar ^2 \left( \partial_x ^2 + \partial _y ^2 \right) \), iz česar sledi \( p^{2 \ast} = p ^2 \). Analogno sledi \( p_{x, y}^{\ast} = - p_{x, y} \), \( \sigma_y^{\ast} = - \sigma_y \) ter \( \sigma_x ^{\ast} = \sigma_x \).
+
+Opomniti moramo, da Paulijeve matrike ne komutirajo, kar pomeni, da moramo ohraniti vrstni red
+
+\[ \mathcal{T} H \mathcal{T}^{-1} = \frac{p ^2}{2m} \sigma_y ^2  + \lambda \frac{\hbar}{2} \left( p_x \sigma_y ^3 + p_y \sigma_y \sigma_x \sigma_y \right).
+\]
+
+Velja antikomutacija \( \left\{ \sigma_{\alpha}, \sigma_{\beta} \right\}= 2 \delta_{\alpha \beta} \cdot I \). Iz definicije antikomutacije tako sledi
+
+\[ \sigma_x \sigma_y + \sigma_y \sigma_x = 0 \implies \, \sigma_y \sigma_x = - \sigma_x \sigma_y.
+\]
+
+in
+
+\[ \sigma_y ^2 = I.
+\]
+
+V dokazu komutacije bomo zapisali \( \sigma_y ^3 = \sigma_y \cdot I = \sigma_y \) ter obrat vrstnega reda
+
+\begin{align*}
+   \mathcal{T} H \mathcal{T}^{-1}  &= \frac{p ^2}{2m} + \lambda \frac{\hbar}{2} \left( p_x \sigma_y + p_y\left( - \sigma_x \sigma_y \right) \sigma_y \right) \\
+&= \frac{p ^2}{2m} + \lambda\frac{\hbar}{2} \left( p_x \sigma_y - p_y \sigma_x \right) = H
+\end{align*}
+
+Dokazali smo torej, da je \( H \) invarianten na obrat časa.
+
+Oglejmo si fizikalne lastnosti, ki so posledica te invariantnosti. Začnemo s Schrödingerjevo enačbo \( H \left| \psi \right\rangle = E \left| \psi \right\rangle\), kjer je \( \left| \psi \right\rangle \) lastna funkcija, na katero vplivamo s \( \mathcal{T} \). Iz komutativnosti tako sledi
+
+\[ H \mathcal{T} \left| \psi \right\rangle  = \mathcal{T}H \left| \psi \right\rangle = \mathcal{T} E \left| \psi \right\rangle = E \mathcal{T} \left| \psi \right\rangle.
+\]
+
+Iz tega sledi, če je \( \left| \psi \right\rangle \) lastna funkcija Hamiltoniana, potem bo tudi \( \mathcal{T} \left| \psi \right\rangle \) lastna funkcija.
+
+Oglejmo si skalarni produkt \( \left\langle \psi \middle| \mathcal{T} \psi \right\rangle \). Če najdemo rešitev, lastno funkcijo, \( \left| \psi \right\rangle \), potem je tudi \( T \left| \psi \right\rangle \) rešitev z isto lastno energijo. Rešitvi sta tako ortogonalni in linearno neodvisni.
+
+\begin{align*}
+  \left\langle \psi \middle| T \psi \right\rangle &= \left\langle T \psi \middle| T (T \psi) \right\rangle^{\ast} \\
+&= \left\langle T \psi \middle| T ^2 \psi \right\rangle^{\ast},
+\end{align*}
+
+kjer smo upoštevali definicijo antikomutativnosti. Za \( T = \mathrm{i} \sigma_y K \) velja
+
+\[ T ^2 = \mathrm{i} \sigma_y K \mathrm{i} \sigma_y K = \mathrm{i} \sigma_y (-\mathrm{i}) (- \sigma_y) K ^2 = - \sigma_y ^2 = -I .
+\]
+
+Zgornji skalarni produkt tako postane
+
+\[ \left\langle \psi \middle| T \psi \right\rangle = \left\langle T \psi \middle| - \psi \right\rangle^{\ast} = - \left\langle T \psi \middle| \psi \right\rangle^{\ast} = - \left\langle \psi \middle| T \psi \right\rangle.
+\]
+
+To je možno samo, če velja \( \left\langle \psi \middle| T \psi \right\rangle = 0 \).
+
+Vsak energijski nivo je tako vsaj dvakrat degeneriran. Taki degeneraciji se reče Kramersova deneracija. Ortogonalen par \( \left| \psi \right\rangle \) in \( \mathcal{T} \left| \psi \right\rangle \) pa je Kramersov par.
+
+[ostal pri 49.10]
