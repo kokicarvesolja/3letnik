@@ -145,3 +145,109 @@ Greenova zveza nam poda
 
 \[ u \left( \vec{r} \right) = \int\limits_{\mathcal{D}}^{} G_N \left( \vec{r}, \vec{r}_0 \right) f \left( \vec{r}_0 \right) \, \mathrm{d} V_0 - \int\limits_{\partial \mathcal{D}}^{} g \left( \vec{r}_B \right) G_N \left( \vec{r}, \vec{r}_B \right) \, \mathrm{d} S_B + \mathrm{konst}
 \]
+** Primer
+
+Imejmo polneskončno domeno \( \mathcal{D} \). Rešujemo Laplaceovo enačbo
+
+\[ \nabla ^2 u = f(x, y)
+\]
+
+z robnim problemom \( u(x = 0, y)= h(y) \).
+
+Greenova funkcija je
+
+\[ \nabla ^2 G = \delta,
+\]
+
+kjer je
+
+\[ G = G_{\infty} + g, \, G_{\infty} = \frac{1}{2 \pi} \ln \left| \vec{r} - \vec{r}_0 \right|.
+\]
+
+Funkcija \( g(0, y) \) je
+
+\[ g(0, y) = - \frac{1}{2 \pi} \ln \left| (0, y) - \vec{r}_0 \right|
+\]
+
+z
+
+\[ \nabla ^2 g = 0.
+\]
+
+Zrcaljenje \( \vec{r} = (-x_0, y_0) \). Greenova funkcija je
+
+\[ G = \frac{1}{2 \pi} \ln \frac{\left| \vec{r} - \vec{r}_0 \right|}{\left| \vec{r} - \vec{r}_0 \right|}
+\]
+** Primer b) (Haberman 11.3, Hassani)
+
+Imamo diferencialni operator
+
+\[ \mathcal{L} = \left( \frac{\partial }{\partial t} - D \nabla ^2 \right)
+\]
+
+Rešujemo enačbo
+
+\[ \mathcal{L} u = f \left( \vec{r}, t \right)
+\]
+
+z začetnim pogojem \( u \left( \vec{r} , t= 0 \right) = h \left( \vec{r} \right) \) in Dirichletovim robnim pogojem \( u \left( \vec{r}_B, t \right) = g \left( \vec{r}_B, t \right) \). Greenova funkcija je
+
+\[ \mathcal{L} G \left( \vec{r}, t \right) = \delta \left( \vec{r} - \vec{r}_0 \right) \delta(t).
+\]
+
+Posplošena Greenova zveza poda
+
+\begin{align*}
+  u \left( \vec{r}, t \right) = & \int\limits_{\mathcal{D}}^{} G \left( \vec{r}, \vec{r}_0, t \right) h \left( \vec{r}_0 \right) \, \mathrm{d} V_0 + \iint\limits_{\mathcal{D}}^{} G \left( \vec{r}, \vec{r}_0, t - \tau \right) f \left( \vec{r}_0, \tau \right) \,\mathrm{d } V_0 \\
+&- D \int\limits_{\partial D}^{} \frac{\partial G}{\partial n}  \left( \vec{r}, \vec{r}_B, t  \tau \right) g \left( \vec{r}_B, \tau \right) \, \mathrm{d} S_B \, \mathrm{d} \tau
+\end{align*}
+
+Prvi integral poskrbi za začetne pogoje, drugi integral nehomogenosti in tretji robne pogoje.
+** Primer: disk, Laplace
+
+Imejmo disk s polmerom \( R \). Greenova funkcija naj bo
+
+\[ G = G_{\infty} + g, \, G_{\infty} = \frac{\ln r}{2 \pi}.
+\]
+
+Rešujemo
+
+\[ \nabla ^2 g = 0
+\]
+
+z robnimi pogoji
+
+\[ \left. g \right|_{\partial \mathcal{D}} = - \left. G_{\infty} \right|_{\partial D} = - \frac{1}{4 \pi} \ln \left( R ^2 + r_0 ^2 - 2 R r_0 \cos \left( \phi - \phi_0 \right) \right)
+\]
+
+Splošna rešitev je
+
+\[ g = c_0 + \sum\limits_{m = 1}^{\infty} \left[ c_m \cos (m \phi) + d_m \sin (m\phi) \right] r^m
+\]
+
+Velja
+
+\[ \ln \left( 1 + x ^2 - 2x \cos \alpha \right) = - \sum\limits_{n = 1}^{\infty} \frac{2}{n} x^n \cos (n \alpha).
+\]
+
+Zapišemo
+
+\[ \ln \left[ (1 - z) (1 - z ^n) \right] , \ z = \lambda e^{\mathrm{i} \alpha}.
+\]
+
+Iz tega velja
+
+\[ g = - \frac{\ln R ^2}{4 \pi} - \frac{1}{4 \pi }\left[ \sum\limits_{n = 1}^{\infty} - \left( \frac{r_0}{R} \right) ^2 \frac{2}{n} \left\{ \cos (n \phi) \cos (n \phi_0) + \sin (n\phi) \sin (n \phi_0) \right\} \right]
+\]
+
+Odčitamo \( c_n \) in \( d_n \). Vrsta za \( g \) istega tipa kot \( \ln \left( \ldots \right) \) in jo nazaj seštejemo
+
+\[ g = - \frac{1}{4 \pi} \ln \left[ R ^2 + \frac{\left( r_0 r \right) ^2}{R ^2} - 2 r r_0 \cos (\phi - \phi_0) \right].
+\]
+
+Imamo zrcaljenje
+
+\[ G = G_{\infty} + g = \frac{1}{4 \pi}  \frac{\left| \vec{r} - \vec{r}_0 \right| ^2}{\left( \frac{r_0}{R} \right)^2 \left| \vec{r} - \vec{r}_0 \right|}
+\]
+
+Kvocient v imenovalcu poskrbi, da je Greenova funkcija na robu res \( 0 \). Slednja funkcija nam poda zrcaljenje čez mejo roba.
