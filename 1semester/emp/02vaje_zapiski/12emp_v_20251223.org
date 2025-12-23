@@ -1,0 +1,150 @@
+#+title: 12. vaje iz Elektromagnetnega polja
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Točkast dipol v krogelni lupini dielektrika
+
+Zadnjič smo rešili Poissonovo enačbo v sferični koordinatah in dobili, da je potencial električnega dipola
+
+\[ U (r, \theta) = \begin{cases}
+                   \frac{p_e}{4 \pi \epsilon_0} \frac{\cos \theta}{r ^2} + A_1 r \cos \theta &; r < a \\
+                   B_1 \frac{1}{r ^2} \cos \theta &; r > a
+                   \end{cases}
+\]
+
+Zahtevamo zveznost za \( U \), saj brez nje imamo na določenih točkah neskončno električno polje.
+
+\begin{equation}
+\label{eq:1}
+U_{not} (a, \theta) = U_{zun} (a, \theta).
+\end{equation}
+
+Drugi robni pogoj dobimo iz rotorja električnega polja \( \nabla \times \vec{E} = 0 \). Po ploskovnem integralu preseka lahko preko Stokesovega izreka pretvorimo na integral po zaključeni zanki.
+
+\begin{align*}
+  \nabla \times \vec{E} &= 0 && \left/ \int\limits_{}^{} \mathrm{d} \vec{S} \right. \\
+\oint\limits_{}^{} \vec{E} \cdot \mathrm{d} \vec{l} = 0.
+\end{align*}
+
+Iz tega sledi \( E_{zun}^{\parallel} = E_{not}^{\parallel} \). Do enakega rezultata smo prišli pri prejšnji nalog. Zaradi definicij potenciala in cikličnih odvodov funkcij, dobimo pogoj
+
+\[ \frac{\partial U_{zun}}{\partial \theta}  = \frac{\partial U_{not}}{\partial \theta},
+\]
+
+kar pa je ekvivalenten pogoj zveznosti.
+
+Lahko pa uporabimo pogoj
+
+\[ \nabla \cdot \vec{D} = 0,
+\]
+
+ki velja povsod razen v središču. Po integraciji, ki je ekvivalentna b) delu dobimo
+
+\[ D_{zun}^{\perp} - D_{not}^{\perp} = 0 \implies \epsilon E_{zun}^{\perp } = E_{not} ^{\perp },
+\]
+
+Z električnim potencialom zapišemo pogoj kot
+\begin{equation}
+\label{eq:2}
+\left. \epsilon \left( - \frac{\partial U_{zun}}{\partial r}   \right)\right|_a = - \left. \frac{\partial U}{\partial r} \right|_a
+\end{equation}
+
+kar pa je sedaj naš delujoč drugi pogoj.
+
+Iz robnega pogoja \ref{eq:1} dobimo enakost
+
+\begin{equation}
+\label{eq:3}
+ \frac{p_e}{4 \pi \epsilon_0} = B_1 - A_1 a ^3.
+\end{equation}
+
+Iz robnega pogoja \ref{eq:2} pa dobimo
+
+\begin{align*}
+  \epsilon \left( + 2 B_1 \frac{\cos \theta}{a ^3} \right) = \frac{p_e}{4 \pi \epsilon_0} \frac{2 \cos \theta}{a ^3} - A_1 \cos \theta \\
+2 \epsilon B_1 &= \frac{p_e}{4 \pi \epsilon_0} \cdot 2 - A_1 a ^3
+\end{align*}
+
+Upoštevamo \ref{eq:3}, katerega izraz nadomestimo v zgornji enačbi, da dobimo enakost
+
+\[ 2 \epsilon B_1 = \frac{p_e}{2 \pi \epsilon_0 } + \frac{p_e}{4 \pi \epsilon_0} - B_1,
+\]
+
+in izrazimo koeficient
+
+\[ B = \frac{3 p_e}{4 \pi \epsilon_0} \frac{1}{2 \epsilon + 1} .
+\]
+
+Drugi koeficient je
+
+\[ A = - \frac{p_e}{4 \pi \epsilon_0 a ^3} \frac{2 (\epsilon - 1)}{2 \epsilon + 1} .
+\]
+
+Električni potencial dipola je tako
+
+\[ U (r, \theta) = \begin{cases}
+                   \frac{p_e}{4 \pi \epsilon_0} \frac{\cos \theta}{r ^2} - \frac{p_e}{4 \pi \epsilon_0 a ^2} \frac{2 (\epsilon - 1)}{2 \epsilon  + 1} r \cos \theta &; r < a \\
+                   \frac{3p_e}{4 \pi \epsilon_0} \frac{1}{2 \epsilon + 1} \frac{\cos \theta}{r ^2} &; r > a
+                   \end{cases}
+\]
+
+Preverimo, če je rezultat validen. Ob predpostavki, da je \( \epsilon = 1 \), bi morali dobiti potencial električnega dipola.
+
+Popravek znotraj sfere za \( \epsilon = 1 \) je
+
+\[ U_2 =\left. - \frac{p_e}{4 \pi \epsilon_0 a ^2} \frac{2 (\epsilon - 1)}{2 \epsilon  + 1} r \cos \theta \right|_{\epsilon = 1} = 0.
+\]
+
+Zunaj sfere pa je
+
+\[  \frac{3p_e}{4 \pi \epsilon_0} \frac{1}{2 \epsilon + 1} \frac{\cos \theta}{r ^2} = \frac{p_e}{4 \pi \epsilon_0} \frac{\cos \theta}{r ^2}.
+\]
+
+Oba rezultata za \( \epsilon = 1 \) se ujemata z dipolom.
+
+\( U_2 \) je homogeno polje, ki izvira iz vezanih nabojev na površini.
+
+Če definiramo \( p_e' = \frac{3 p_e}{2\epsilon + 1} \), potem ima polje zunaj krogle točno dipolno obliko.
+* Točka b)
+
+Postopamo preko divergence polja, saj velja
+
+\[ \nabla \cdot \vec{E} = \rho_v,
+\]
+
+kjer so \( \rho_v \) vezani naboji. Po volumnskem integralu kvadra, ki tesno objema rob sfere, dobimo enakost
+
+\[ E_{zun}^{\perp } - E_{not}^{\perp } = \frac{\sigma_v}{\epsilon_0}
+\]
+
+Drugače povedano, velja
+
+\[ \sigma_v = \epsilon_0 \left( E_{zun}^{\perp } - E_{not}^{\perp } \right) = \left( -\left. \frac{\partial U_{zun}}{\partial r} \right|_{r = a} + \left. \frac{\partial U_{r}}{\partial r} \right|_{ r = a}  \right) .
+\]
+
+Upoštevamo potencial izpeljan v prejšnji podnalogi
+
+\begin{align*}
+  \sigma_v &= \epsilon_0 \left( - \frac{p_e}{4 \pi \epsilon_0} \frac{2 \cos \theta}{a ^3} - \frac{p_e}{4 \pi \epsilon_0 a ^3} \frac{2 (\epsilon - 1)}{2 \epsilon + 1} \cos \theta + \frac{3}{2} \frac{6p_e}{4 \pi \epsilon_0} \frac{1}{2\epsilon + 1} \frac{\cos \theta}{a ^3} \right) \\
+&= \frac{p_e}{4 \pi} \frac{\cos \theta}{a ^3} \left( -2 - \frac{2(\epsilon - 1)}{2 \epsilon + 1} + \frac{6}{(2 \epsilon+ 1)} \right) \\
+&= \frac{p_e}{4 \pi} \frac{\cos \theta}{a ^3} \left( \frac{-2(2 \epsilon + 1) - 2(\epsilon - 1) + 6}{(2 \epsilon + 1)} \right) \\
+&= \frac{p_e}{4 \pi} \frac{\cos \theta}{a ^3}\left( \frac{-6 \epsilon + 6}{(2\epsilon + 1)} \right) \\
+&= \frac{-3 p_e}{2 \pi} \frac{\cos \theta}{a ^3} \left( \frac{\epsilon - 1}{2 \epsilon + 1} \right)
+\end{align*}
+
+Če je \( \epsilon = 1 \), ni dielektrika in vezanih nabojev.
+
+Preko gostote električnega naboja \( \vec{D} = \epsilon_0 \vec{E}+ \vec{P} = \epsilon \epsilon_0 \vec{E} \) dobimo polarizacijo
+
+\[ \vec{P} = \epsilon_0 (\epsilon - 1) \vec{E}.
+\]
+
+Gostoto vezanih nabojev dobimo preko
+
+\[ \rho_v = - \nabla \cdot \vec{P} = - \epsilon_0 (\epsilon - 1) \nabla \cdot \vec{E} = 0
+\]
