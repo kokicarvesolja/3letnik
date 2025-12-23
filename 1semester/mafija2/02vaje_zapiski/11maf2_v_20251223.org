@@ -1,0 +1,195 @@
+#+title: 11. vaje iz Matematične fizike 2
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Greenove funkcije
+** Teorija
+
+Imamo diferencialni operator \( \mathcal{L} \) in rešujemo enačbe oblike
+
+\[ \mathcal{L}_x u(x) = f(x).
+\]
+
+Želimo rešitve, ki so oblike
+
+\[ u(x) = \int\limits_{}^{} G(x, y) f(y) \, \mathrm{d} y.
+\]
+
+V primeru, da je \( f = 0 \), potem je tudi \( u =0  \).
+
+Za robne pogoje velja \( u(a) = u(b) = 0 \).
+
+Greenova funkcija je definirana tako, da velja
+
+\[ \mathcal{L}_x G(x, y) = \delta(x - y).
+\]
+
+Hkrati mora veljati tudi
+
+\[ G(a, y) = G(b, y) = 0.
+\]
+
+Rešitve, ki jih iščemo, so potem
+
+\[ u(x) = \int\limits_a^b G(x, y) f(y) \, \mathrm{d} y.
+\]
+
+Primer iz EMPja, je to da je imamo rešitev, ki opisuje naboj v prostoru. Z integral pa dobimo porazdelitev nabojev po prostoru.
+
+\begin{equation}
+\label{eq:1}
+ u(a) = \int\limits_a^b G(a, y) f(y) \, \mathrm{d} y = u(b) = \int\limits_a^b G(b, y) f(y) \, \mathrm{d} y = 0
+\end{equation}
+
+Nadalje
+
+\begin{align*}
+  \mathcal{L}_x u (x) &= \int\limits_a^b L_x G(x, y) f(y) \, \mathrm{d} y \\
+&= \int\limits_a^b \delta(x - y) f(y) \, \mathrm{d} y = f(x).
+\end{align*}
+
+To skupaj z \ref{eq:1} pomeni, da Greenova funkcija reši naš ODE.
+** Naloga
+
+#+begin_problem
+Naj bo diferencialni operator definiran kot \( \mathcal{L}_x = \frac{\mathrm{d} ^2 }{\mathrm{d} x ^2} \) na intervalu \( a = 0 \) in \( b = 1 \) z robnimi pogoji \( u(0) = u(1) = 0 \).
+#+end_problem
+
+Zapišemo problem
+
+\[ \frac{\mathrm{d} ^2 }{\mathrm{d} x ^2} G(x, y) = \delta(x - y).
+\]
+
+Če je \( x = y \), potem bo rešitev te enačbe
+
+\[ G(x, y) = \begin{cases}
+             A x + B&; x < 0 \\
+             Cx + D&; x > 0
+             \end{cases}
+\]
+
+Iz robnega pogoja \( u(0) = 0 \) dobimo \( G(0, y) = 0 = B \). Iz drugega robnega pogoja \( u(1) = 0 \) pa velja
+
+\[ G(1, y) = C + D = 0 \implies \, D = - C
+\]
+
+Z integriranjem v majhni okolici \( \epsilon \) okoli \( y \), dobimo pogoj iz prvega odvoda. Integriramo torej na intervalu \( [y - \epsilon, y + \epsilon] \).
+
+\begin{align*}
+  \int\limits_{y - \epsilon}^{y + \epsilon} \frac{\mathrm{d} ^2 }{\mathrm{d} x ^2} G(x, y) \, \mathrm{d} x &=  \int\limits_{y - \epsilon}^{y + \epsilon} \delta(x - y) \, \mathrm{d} x \\
+\frac{\mathrm{d} }{\mathrm{d} x} G(y + \epsilon, y) - \frac{\mathrm{d} }{\mathrm{d} x} G(y - \epsilon, y ) &= 1
+\end{align*}
+
+Dobimo enakost
+
+\[ C - A = 1.
+\]
+
+Zadnji pogoj pa je še integral po splošnem \( x \)
+
+\begin{align*}
+  \int\limits_0^x \frac{\mathrm{d} ^2 }{\mathrm{d} x ^2} G(x, y) \, \mathrm{d} x &= \int\limits_0^x \delta(x - y) \, \mathrm{d} x \\
+\frac{\mathrm{d} }{\mathrm{d} x} G(x, y) - <sth> = H(x - y)
+\end{align*}
+
+Določimo še parameter.
+
+\begin{align*}
+  G(y, y) &= A y =  (A + 1) y - A - 1 \\
+0&= Ay - Ay - y + A + 1 \\
+y - 1 &= A.
+\end{align*}
+
+Rešitev je torej
+
+\[ G(x, y) = \begin{cases}
+             (y - 1)x &; x < y \\
+             y(x - 1) &; x > y
+             \end{cases} = (y - 1) x + (x - y) H(x - y)
+\]
+
+Za \( f(x) = 1 \) je potem rešitev integral
+
+\[ u(x) = \int\limits_0^1 G(x, y) \, \mathrm{d} y.
+\]
+
+\begin{align*}
+  u(x) &= \int\limits_0^x y(x - 1) \, \mathrm{d} y + \int\limits_x^1 (y - 1)x \, \mathrm{d} y\\
+&= (x - 1) \frac{x ^2}{2} + x \left( \frac{1}{2} - \frac{x ^2}{2} + x \right) \\
+&= \frac{x ^2}{2} - \frac{x}{2} = \frac{x}{2} \left( x - 1 \right)
+\end{align*}
+** Posplošena Greenova funkcija
+
+Obstaja integral
+
+\[ \int\limits_a^b \left[ v^{\ast} \mathcal{L} u - u \left( \mathcal{L}_x v\right)^{\ast} \right] \, \mathrm{d} x = \left. Q[u, v^{\ast}] \right|_a^b,
+\]
+
+kjer je \( Q \) funkcional. Zvezdica označuje adjungiranost.
+
+Za sebi-adjungiran operator \( \mathcal{L}_x = \mathcal{L}_x = \frac{\mathrm{d} }{\mathrm{d} x} \left( p \frac{\mathrm{d} }{\mathrm{d} x} \right) + q \), potem je funkcional oblike
+
+\[ Q = p (v u' - u v ')
+\]
+** Naloga (zgornja)
+
+Posplošena Greenova funkcija za naš problem je potem
+
+\[ \int\limits_0^1 \left[ v u'' -  u v'' \right] \, \mathrm{d} x = Q \left. \left[ u, v \right] \right|_0^1 = \left. (v u' - u v') \right|_0^1
+\]
+
+Rešujemo
+
+\begin{equation}
+\label{eq:2}
+ \frac{\mathrm{d} ^2 }{\mathrm{d} x ^2} u(x) = f(x)
+\end{equation}
+
+z robnimi pogoji \( u(0) = \alpha \) in \( u(1) = \beta \). Izberemo si \( v(x) = G(x, y) \).
+
+Integral postane
+
+\[ \int\limits_0^1 \left[ G(x, y) u''(x) - u(x) \frac{\partial ^2 G}{\partial x ^2} (x, y) \right] \, \mathrm{d} x = \left. \left[ G(x, y) u'(x) - u(x) \frac{\partial G}{\partial x}  (x, y) \right] \right|_0^1
+\]
+
+V prvem členu integranda prepoznamo \ref{eq:2}, drugi odvod Greenove funkcije pa je \( \delta (x - y) \). Leva stran enačbe je
+
+\[ \left. \left[ G(x, y) u'(x) - u(x) \frac{\partial G}{\partial x}  (x, y) \right] \right|_0^1 =\left[ G(1, y) u'(1) - u(1) \frac{\partial }{\partial x}  G(1, y) \right] - \left[ G(0, y) u'(0) - u(0) \frac{\partial }{\partial x} G(0, y)  \right] = - \beta \frac{\partial }{\partial x} G(1, y) - \alpha \frac{\partial }{\partial x} G(0, y)
+\]
+
+Združimo z integralom in dobimo
+
+\[ \int\limits_0^1 G(x, y) f(x) \, \mathrm{d} x - u(y) = \alpha \frac{\partial }{\partial x} G(0, y) - \beta \frac{\partial }{\partial x} G(1, y).
+\]
+
+Za našo funkcijo velja \( G(x, y) = G(y, x) ^{\ast} \), kar pomeni, da lahko izrazimo
+
+\[ u(x) = - \left. \frac{\partial }{\partial y} G(x, y) \right|_{y = 0} + \left \frac{\partial }{\partial x} G(x, y) \right|_{y = 1} + \int\limits_0^1 G(x, y) f(x, y) \, \mathrm{d} y.
+\]
+
+V primeru, da ne bi veljala sebi-adjungiranost, bi bilo to potrebno upoštevati ob zamenjavi spremenljivk.
+
+Izračunajmo še konkretne vrednosti
+
+\[ \frac{\partial }{\partial x} G(x, y) = \begin{cases}
+                                          x &; x < y \\
+                                          x -1 &; x > y
+                                          \end{cases}.
+\]
+
+Omenimo,da imamo težavo pri \( x = 1 \), vendar nas to ne moti, saj nas odvodi zanimajo ob robovih intervala.
+
+Rešitev je torej
+
+\[ u(x) = \underbrace{- \alpha (x - 1) + \beta x }_{\text{homogena}}+ \underbrace{\int\limits_0^1 G(x, y) f(y) \, \mathrm{d} y}_{\text{partikularna}}.
+\]
+
+Povzetek reševanja z Greenovimi funkcijami:
+
+- rešimo nehomogeno enačbo s homogenimi robnimi pogoji
+- preko Greenovo formule pa nato lahko rešimo še nehomogeno enačbo z nehomogenimi robnimi pogoji.
