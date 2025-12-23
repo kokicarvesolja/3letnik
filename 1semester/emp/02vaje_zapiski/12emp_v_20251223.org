@@ -148,3 +148,139 @@ Gostoto vezanih nabojev dobimo preko
 
 \[ \rho_v = - \nabla \cdot \vec{P} = - \epsilon_0 (\epsilon - 1) \nabla \cdot \vec{E} = 0
 \]
+* Elektromagnetno valovanje v hladni plazmi
+
+Plazma je plin nabitih delcev. S pridevnikom hladno želimo povzročiti, da ni termičnega gibanja. Imamo velika pozitivno nabita jedar, ki v Bohrnovi aproksimaciji mirujejo, medtem ko manjši elektroni se gibljejo. Elektromagnetno polje bomo predstavili z ravnim valom
+
+\[ \vec{E} = \vec{E}_0 e^{\mathrm{i} (k  z - \omega t)}
+\]
+
+Po novih smernicah (?) se ne reče več dielektrična kostantna \( \epsilon \), ampak relativna dielektričnost.
+
+Gibalna enačba elektrona z maso \( m \) in nabojem \( -e \) jedar
+
+\[  m \ddot{r} = - e \vec{E} \implies \ddot{r} = - \frac{e}{m} \vec{E}_0 e^{\mathrm{i} (kz - \omega t)}.
+\]
+
+kjer \( \vec{r} \) odmik od mirovne lege. Za rešitev enačbe uporabimo nastavek \( \vec{r} = \vec{r}_0 e^{\mathrm{i} (kz - \omega t)} \). Nastavek vstavimo v gibalno enačbo
+
+\[ - \vec{r} _0 \omega ^2 e^{\mathrm{i} (kz -- \omega t)} = - \frac{e}{m} \vec{E}_0 e^{\mathrm{i} (kz - \omega t)},
+\]
+
+iz česar dobimo amplitudo nihanja okrog mirovne lege
+
+\[ \vec{r}_0 = \frac{e}{m \omega ^2} \vec{E}_0.
+\]
+
+Oscilacije mimo mirovne lege ustvari polarizacijo z amplitudo \( \vec{p}_e = - \vec{r} e  \). Nadomestimo amplitudo nihanja s prej izračunanim
+
+\[ \vec{p}_e = - \frac{e ^2}{m \omega ^2} \vec{E}_0 e^{\mathrm{i} (kz - \omega t)}
+\]
+
+Časovno neodvisna amplituda je
+
+\[ \vec{p}_{e0} = - \frac{e ^2}{m \omega ^2} \vec{E}_0 .
+\]
+
+Izračunamo še polarizacijo \( \vec{P} \), ki jo povezuje gostota elektronov \( n \) in dipolni moment
+
+\[ \vec{P} = n \vec{p}_e
+\]
+
+Enačimo
+
+\[ \vec{P}_0 = - \frac{n e ^2}{m \omega ^2} \vec{E}_0 = \epsilon_0 (\epsilon - 1) \vec{E}_0 \implies \ \epsilon  = -\frac{n e ^2}{m \omega ^2 \epsilon_0} + 1.
+\]
+
+Definiramo plazemsko frekvenco \( \omega_p \) kot
+
+\[ \omega_p = \sqrt{\frac{n e ^2}{m \epsilon_0}},
+\]
+
+in res smo prišli do relativne dielektričnosti v odvisnosti od frekvence valovanja
+
+\begin{equation}
+\label{eq:5}
+ \epsilon \left( \omega \right) = 1 - \left( \frac{\omega_p}{\omega} \right) ^2
+\end{equation}
+** Izpeljava valovne enačbe
+
+Izhajamo iz Maxwellovih zakonov
+
+\begin{align*}
+  \nabla \cdot \vec{E} = 0 & \quad \nabla \times \vec{E} = - \mu_0 \frac{\partial \vec{H}}{\partial t}  \\
+\nabla \cdot \vec{H} = 0 & \quad \nabla \times \vec{H} = \epsilon_0 \epsilon \frac{\partial \vec{E}}{\partial t}
+\end{align*}
+
+Z operatorjem vplivamo na drugo enačbo \( \nabla \times \vec{E} \)
+
+\begin{align*}
+  \nabla \times \left( \nabla \times \vec{E} \right) &= - \mu_0 \frac{\partial }{\partial t} \nabla \times \vec{H} \\
+\nabla \left( \nabla \cdot \vec{E} \right) - \nabla ^2 \vec{E} &= - \mu_0 \epsilon_0 \epsilon \frac{\partial }{\partial t}  \frac{\partial \vec{E}}{\partial t}
+\end{align*}
+
+Iz prve Maxwellove enačbe se nam enačba poenostavi v
+
+\begin{equation}
+\label{eq:4}
+ \nabla ^2 \vec{E} - \mu_0 \epsilon_0 \epsilon \frac{\partial ^2 \vec{E}}{\partial t ^2} = 0,
+\end{equation}
+
+kar pa je valovna enačba, kjer velja \( \frac{1}{c ^2} = \mu_0 \epsilon_0 \epsilon \).
+** Naloga
+
+V valovno enačbo \ref{eq:4} vstavimo naše časovno odvisno polje \( \vec{E} = \vec{E}_0 e^{\mathrm{i} \omega t} \).
+
+Dobimo
+
+\[ - k ^2 \vec{E} - \frac{1}{c ^2}\left( - \omega ^2 \right) \vec{E} = 0 \implies \ \vec{E} \left( - k ^2 + \frac{\omega ^2}{c ^2} \right) = 0
+\]
+
+Zgornja enakost velja samo, če \( \omega = ck \).
+
+Za prazen prostor je \( c = c_0 \), kar pomeni, da imamo linearno zvezo \( \omega = c_0 k \).
+
+V nepraznem prostoru pa ponovno izhajamo iz zgornje zveze
+
+\[ \mu_0 \epsilon_0 \epsilon  \omega ^2 - k ^2  = 0  \implies \ \omega ^2 = k ^2 \frac{c_0 ^2}{\epsilon}.
+\]
+
+Izraz za relativno dielektričnost \ref{eq:5} vstavimo v zgornjo enačbo
+
+\[ \omega ^2 \left( 1 - \frac{\omega_p ^2}{\omega ^2} \right) = k ^2 c_0 ^2
+\]
+
+Nazadnje lahko izrazimo frekvenco v odvisnosti od valovnega vektorja in pridobili smo disperzijsko relacijo
+
+\[ \omega (k) = \sqrt{k ^2 c_0 ^2 + \omega_p ^2}
+\]
+
+Poglejmo si še limitne primer. Za velike \( k \) velja \( kc_0 \gg \omega_p \) velja \( \omega = kc_0 \).
+
+Za majhne \( k \) razvijemo
+
+\begin{align*}
+  \omega (k) &= \omega_p \sqrt{1 + \left( \frac{c_0}{\omega_p} k \right) ^2} \\
+&= \omega_p \left( 1 + \frac{1}{2} \left( \frac{c_0}{\omega_p}k  \right)^2 \right) \\
+&= \omega_p + \frac{1}{2} \frac{c_0 ^2}{\omega_p} k ^2.
+\end{align*}
+** Točka d)
+
+Fazna hitrost je definirana kot \( v_F = \frac{\omega}{k} \), medtem ko grupna hitrosti, ki lahko nosi informacije pa je \( v_g = \frac{\partial \omega}{\partial k}  \).
+
+Za zgornje izračunane rezultate je fazna hitrost
+
+\[ v_F = \sqrt{c_{0} ^2 - \left( \frac{\omega_p}{k} \right) ^2}.
+\]
+
+Slednji rezultat je sicer večji od \( c_0 \), vendar ker z njo ne moremo prenašati informacije, vse štima - whatever that means.
+
+Grupna hitrost je odvod
+
+\[ v_G = \frac{c_0}{\sqrt{1 + \left( \frac{\omega_p}{c_0 k} \right) ^2}}.
+\]
+
+Produkt hitrosti je
+
+\[ v_F \cdot v_G = c_0 ^2
+\]
