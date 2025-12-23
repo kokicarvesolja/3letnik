@@ -193,3 +193,106 @@ Povzetek reševanja z Greenovimi funkcijami:
 
 - rešimo nehomogeno enačbo s homogenimi robnimi pogoji
 - preko Greenovo formule pa nato lahko rešimo še nehomogeno enačbo z nehomogenimi robnimi pogoji.
+* Neskončna območja \( \mathbb{R} ^n \)
+
+Rešujemo enačbo
+
+\[ \nabla ^2 _{\vec{r}} G \left( \vec{r}, \vec{r}_0 \right) + \lambda G \left( \vec{r}, \vec{r}_0 \right) = \delta \left( \vec{r} - \vec{r}_0 \right).
+\]
+
+V dveh dimnzijah imamo rešitve za različne vrednosti \( \lambda \).
+
+- \( \lambda = 0 \), rešitev je
+
+  \[ G(\vec{r}, \vec{r}_0) = \frac{1}{2 \pi} \ln \left( \vec{r} - \vec{r}_0 \right)
+  \]
+
+- za \( \lambda = k ^2 \)
+
+  \begin{align*}
+    G \left( \vec{r} , \vec{r}_0 \right) &= \frac{1}{4} Y_0 \left( k \left| \vec{r} - \vec{r}_0 \right| \right) \\
+           G \left( \vec{r} , \vec{r}_0 \right) &= - \frac{1}{4} H_0^{(1)} \left( k \left| \vec{r} - \vec{r}_0 \right| \right) \\
+            G \left( \vec{r} , \vec{r}_0 \right) &= \frac{1}{4} H_0^{(2)} \left( k \left| \vec{r} - \vec{r}_0 \right| \right)
+  \end{align*}
+
+- za \( \lambda = - k ^2 \) pa imamo
+
+  \[ G(\vec{r}, \vec{r}_0) = - \frac{1}{2 \pi} K_0 \left( k \left| r - \vec{r}_0 \right| \right)
+  \]
+
+Asimptotska obnašanja funkcij so
+
+\begin{align*}
+  Y_0 (x) &\approx \sqrt{\frac{2}{\pi x}} \sin \left( x - \frac{\pi}{4} \right) \\
+ H_0^{(1)} &\approx \sqrt{\frac{2}{\pi x}} e^{\mathrm{i} \left(x - \frac{\pi}{4}\right)} \\
+H_0^{(2)} &\approx \sqrt{\frac{2}{ \pi x}} e^{-\mathrm{i} \left( x - \frac{\pi}{4} \right)}
+\end{align*}
+
+V treh dimenzijah pa imamo
+
+- \( \lambda = 0 \)
+
+  \[ G(\vec{r}, \vec{r}_0) = -\frac{1}{4 \pi} \frac{1}{\left| \vec{r} - \vec{r}_0 \right|}
+  \]
+
+- \( \lambda = k ^2 \)
+
+  \begin{align*}
+    G \left( \vec{r}, \vec{r}_0 \right) &= - \frac{1}{2\pi} \frac{\cos \left( k \left| \vec{r} - \vec{r}_0 \right| \right)}{\left| \vec{r} - \vec{r}_0 \right|} \\
+       G \left( \vec{r}, \vec{r}_0 \right) &= - \frac{1}{4 \pi} \frac{e^{\pm \mathrm{i} k \left| \vec{r} - \vec{r}_0 \right|}}{\left| \vec{r} - \vec{r}_0 \right|}
+  \end{align*}
+
+- \( \lambda = - k ^2 \)
+
+  \[ G \left( \vec{r}, \vec{r}_0 \right) = - \frac{1}{4 \pi} \frac{e^{- k \left| \vec{r} - \vec{r}_0 \right|}}{\left| \vec{r} - \vec{r}_0 \right|}
+  \]
+** Naloga
+
+Imamo dve točki \( (0,0) \) in \( (a, 0) \), ki predstavljata naše izvore valovanja in rešujemo valovno enačbo
+
+\[ - \frac{\partial ^2 }{\partial t ^2}  + c ^2 \nabla ^2 u = A c ^2 \left[ \delta \left( \vec{r} \right) - \delta \left( \vec{r} - \begin{bmatrix} a \\ 0 \end{bmatrix} \right) \right] e^{\mathrm{i} \omega t}
+\]
+
+Nalogo rešujemo z nastavkom \( u = R(x, y) e^{\mathrm{i} \omega t} \), ki jo vstavimo v enačbo
+
+\[ \omega ^2 R \left( \vec{r} \right) + c ^2 \nabla ^2 R \left( \vec{r} \right) = A c ^2 \left[ \delta \left( \vec{r} \right) - \delta \left( \vec{r} - \begin{bmatrix} a \\ 0 \end{bmatrix} \right) \right].
+\]
+
+Z deljenjem s \( c ^2 \), dobimo Helmholtoztovo enačbo
+
+\[ \nabla ^2 R \left( \vec{r} \right) = A \left[ \delta \left( \vec{r} \right) - \delta \left( \vec{r} - \begin{bmatrix} a \\ 0 \end{bmatrix} \right) \right]- \frac{\omega ^2}{c ^2} R \left( \vec{r} \right).
+\]
+
+Skupaj z nastavkom, bo rešitev Greenove funkcije \( H_0^{(1)} \) v neskončnosti \( \exp \left\{ \mathrm{i} \left( k \vec{r} - \omega t \right) \right\} \), kar je valovanje, ki se ṧiri navzen. Rešitev \( H_0^{(2)} \) pa nam poda asimptotsko obnašanje \( \exp \left\{ -\mathrm{i} \left( k \vec{r} - \omega t \right) \right\} \), kar je valovanje, ki se širi navznoter. Prva bo torej naša rešitev.
+
+Greenova funkcija je torej
+
+\[ G =  - \frac{1}{4} H^{(1)}_0 \left( k \left| \vec{r} - \vec{r}_0 \right| \right).
+\]
+
+Rešimo integral
+
+\[ R \left( \vec{r}  \right) = \int\limits_{}^{} G \left( \vec{r} ,\vec{r}_0 \right) f(\vec{r}_0) \, \mathrm{d} \vec{r} = - \frac{1}{4} \int\limits_{}^{} H_0^{(1)} \left( k \left| \vec{r} - \vec{r}_0 \right| \right) A \left[ \delta \left( \vec{r} \right) - \delta \left( \vec{r} - \begin{bmatrix} a \\ 0 \end{bmatrix} \right) \right] \, \mathrm{d} \vec{r}
+\]
+
+
+*Possible, da je \( \mathrm{i}/4 \)*
+
+Po integriranju velja
+
+\[ R \left( \vec{r} \right)= - \frac{\mathrm{i} A}{4} H_0^{(1)} \left( k \left| \vec{r} \right| \right) = \frac{\mathrm{i} A}{4} H_0^{(1)}\left( k \left| \vec{r} - \begin{bmatrix} a \\ 0 \end{bmatrix} \right| \right)
+\]
+
+Poglejmo si asimptotsko obnašanje za \( r \gg a \).
+
+Razdaljo torej zapišemo kot
+
+\begin{align*}
+  \left| \vec{r} - \vec{r}_0 \right| &= \left| \begin{bmatrix} x \\ y \end{bmatrix} - \begin{bmatrix} a \\ 0 \end{bmatrix} \right| = \sqrt{(x - a) ^2 + y ^2} \\
+&= \sqrt{r ^2 - 2ax }
+\end{align*}
+
+Splošna formula za odvode je
+
+\[ \frac{\partial }{\partial z}   H_n^{(1)} (z) =
+\]
