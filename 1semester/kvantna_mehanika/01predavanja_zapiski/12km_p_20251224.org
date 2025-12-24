@@ -1,0 +1,69 @@
+#+title: 13. predavanje iz Kvantne mehanike
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Fermijevo zlato pravilo
+
+Izpeljali smo verjetnost, da delec po dolgem času skoči iz \( n \)-tega lastnega stanja v \( k \)-ti lastno stanje ob prisotnosti motnje \( V \), ki je neodvisna od časa, vendar se pojavi ob času \( t > 0 \).
+
+Verjetnost je
+
+\[ P_{km} (t) = \frac{\left| V_{km} \right|^2}{\hbar ^2} \delta \delta_t \left( \frac{1}{2 \hbar} \left( E_k - E_m \right) \right)t,
+\]
+
+kjer je \( V_{km} = \left\langle k \middle| V \middle| m \right\rangle \).
+
+[[file:figures/fermiGoldenRule.png]]
+
+Priporočam bralcu, da si nariše \( \delta_t(x) \) in opazuje, kako se spreminja v odvisnosti od parametra \( t \). Opazil bo, da se funkcija oža in viša proti neskončnosti okoli izhodišča \( x = 0 \).
+
+Širina med izhodiščem in krivuljo, ki vodi do prve ničle. Širina je \( \Delta x \), ki je
+
+\[ \Delta x = \frac{\pi}{t} = \frac{\Delta E}{2 \hbar},
+\]
+
+kjer je \( \Delta E \) definirana kot razlika lastne energije \( E_k = E_1 ' + E_2 ' \) lastnega stanja \( \left| k \right\rangle \) in lastne energije \( E_m = E_1 + E_2 \) lastnega stanja \( \left| m \right\rangle \).
+
+\[ \Delta E = E_k - E_m
+\]
+
+Iz tega sledi \( \Delta E t \approx \hbar \).
+
+Z minevanjem časa \( t \to \infty \) se oblika krivulje oža in viša proti neskončnosti. To pomeni, da \( \Delta E \to 0 \).
+
+Iz tega sledi, da so skoki med stanjema \( n \) in \( k \) ob krajšem času večji, saj je \( \Delta E \) večji. Z večanjem časa se manjša \( \Delta E \), kar pomeni, da je manjša verjetnost, da najdemo delec v drugem stanju kakor \( \left| m \right\rangle \).
+
+Delec bomo vedno našli, saj je \( P_m (t = 0) = 1 \).
+
+To se ne uporablja pri harmonskem oscilatorju, ampak pri sipanju delcev.
+
+Imejmo končno stanje \( E_k \), ki ima v svoji okolici \( \epsilon > 0 \) veliko drugih možnih energij. Naj bo na intervalu \( \mathrm{d} E_k = E_k \pm \epsilon \) možnih \( \mathrm{d} N \) energijskih stanj.
+
+To lahko opišemo z gostoto stanj
+
+\[ \rho_k = \frac{\mathrm{d} N}{\mathrm{d}  E_{k}} \cdot \frac{1}{N_k} = \frac{\mathrm{d} P}{\mathrm{d} E_k}
+\]
+
+Zanima nas, v katerem stanju \( k \), ki je različen od osnovnega stanja \( m \), bo delec po času \( t \). Do tega rezultata bomo prišli preko verjetnosti
+
+\[ P = \sum\limits_{k \ne m}^{} P_{kn} \to \int\limits_{- \infty}^{\infty} P_{km} (t) \rho \left( E_k \right) \mathrm{d} E_k,
+\]
+
+kjer smo predpostavili zvezen spekter energijskih nivojev. To predpostavko lahko tudi drugače ubesedimo: matrični element \( V_{km} \) se ne spreminja veliko oz. \( E_k \approx E_m \).
+
+Upoštevamo prej izpeljano verjetnost \( P_{km} \) in ko čas \( t \to \infty \) integral postane
+
+\[ P \overset{t \to \infty}{=} \int\limits_{- \infty}^{\infty} \frac{\left| V_{km} \right| ^2}{\hbar ^2} 2 \pi \hbar \delta \left( E_k - E_m \right) \rho \left( E_k \right) \, \mathrm{d} E_k = \frac{2 \pi}{\hbar} \left| V_{km} \right| ^2 \rho \left( E_m \right) t.
+\]
+
+Po dolgem času verjetnost za prehod v neko bližnje stanje \( E_k \) narašča linearno.
+
+Iz tega sledi Fermijevo zlato pravilo
+
+\[ w = \frac{\mathrm{d} P}{\mathrm{d} t} = \frac{2 \pi}{\hbar} \left| V_{km} \right| ^2 \rho \left( E_m \right)
+\]
