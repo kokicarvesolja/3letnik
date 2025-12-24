@@ -221,6 +221,51 @@ Uporabi se Debyjev model pri nizkih frekvenca in Lorentzov pri višjih
 \]
 
 kjer so \( d_i, \tau_i, f_i, \omega_i \) in \( g_i \) fenomenološke konstante.
-
-
 #+end_my_example
+
+* Elektromagnetno valovanje
+** Valovna enačba v vakuumu
+
+Predpostavimo, da v prostoru ni izvorov \( \vec{\jmath} = 0 \) in \( \rho = 0 \). Zapišimo torej Maxwellove enačbe
+
+\begin{align*}
+  \nabla \cdot \vec{E} = 0 &\quad \nabla \cdot \vec{B} = 0 \\
+\nabla \times \vec{E} = - \frac{\partial \vec{B}}{\partial t}  &\quad \nabla \times \vec{B} =  \mu_0\epsilon_0 \frac{\partial \vec{E}}{\partial t}
+\end{align*}
+
+Rotoriziramo rotor električnega polja
+
+\begin{align*}
+  \nabla \times \vec{E} &= - \frac{\partial \vec{B}}{\partial t} && \left/ \nabla \times \right. \\
+\nabla \times \left( \nabla \times \vec{E} \right) &= - \frac{\partial }{\partial t} \nabla \times \vec{B}\\
+\nabla \left( \nabla \cdot \vec{E} \right) - \nabla ^2 \vec{E} &= - \frac{\partial }{\partial t} \nabla \times \vec{B}
+\end{align*}
+
+Upoštevamo, da velja \( \nabla \cdot \vec{E} = 0 \) in dobimo
+
+\[ \nabla ^2 \vec{E} - \epsilon_0 \mu_0 \frac{\partial ^2 \vec{E}}{\partial t ^2}  = 0.
+\]
+
+Analogno dobimo tudi
+
+\[ \nabla ^2 \vec{B} - \epsilon_0 \mu_0 \frac{\partial ^2 \vec{B}}{\partial t ^2} = 0.
+\]
+
+Dobljeno sta valovni enačbi, in definiramo hitrost valovanja
+
+\[ c ^2 = \frac{1}{\epsilon_0 \mu_0}.
+\]
+
+Iščemo rešitve valovne enačbe v obliki ravnih valov ob predpostavki ene frekvence in neskončnega praznega prostora.
+
+\begin{align*}
+  \vec{E} \left( \vec{r}, t \right) &= \vec{E} \left( \vec{r} \right) e^{- \mathrm{i} \omega t} = E_0 e^{\mathrm{i} \left( \vec{k} \vec{r} - \omega t \right)} \\
+\vec{B} \left( \vec{r}, t \right) &= B \left( \vec{r} \right) e^{-\mathrm{i} \omega t} = \vec{B}_0 e^{\mathrm{i} \left( \vec{k} \vec{r} - \omega t \right)}
+\end{align*}
+
+V praznem prostoru sta \( \vec{E}(\vec{r}) \) in \( \vec{B}(\vec{r}) \) konstanti.
+
+Najti želimo še zvezo med \( \omega \) in \( \vec{k} \), ki jo dobimo s tem, da rešitve vstavimo v valovno enačbo
+
+\[ \left( - \mathrm{i} k  \right)^2 - \frac{1}{ c ^2} \left( - \mathrm{i} \omega \right) ^2 = 0   \implies \omega = kc
+\]
