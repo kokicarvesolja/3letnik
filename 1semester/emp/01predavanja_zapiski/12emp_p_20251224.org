@@ -126,3 +126,101 @@ s čimer smo izrezali pol, ki nastane pri \( \omega = \omega' \) in preprečili 
 Kramers-Kronigove relacije se izpelje z uporabo integrala glavne prednosti in Plemljeve enačbe.
 
 Relacije so pomembne v spektroskopskih tehnikah kot so odboj, prepustnostin absorpcija svetlobe.
+** Modeli \( \epsilon(\omega) \)
+*** Gibalna enačba za vezan naboj
+
+V dielektriku imamo vezan naboj, ki se ne more prosto gibati. Obravnavamo v klasičnem režimu. Vezan naboj je vezan preko harmonskega potenciala frekvence \( \omega_0 \), iz ravnovesnega položaja pa ga premika zunanje polje \( e \vec{E}(t) \). Da ne pride do resonance zaradi \( t \propto \omega \), saj se v realnem svetu to ne dogaja, je še dodaten člen, ki predstavlja disipacijo (dušenje nihanja) kot posledico viskoznosti ali sipanja v kristalih.
+
+\[ m \frac{\mathrm{d} ^2 \vec{r}}{\mathrm{d} t ^2} = - m \gamma \frac{\mathrm{d} \vec{r}}{\mathrm{d} t} - m \omega_0 ^2 \vec{r} + e \vec{E} \left( \vec{r} \right)
+\]
+
+kjer \( \vec{r} \) predstavlja položaj vezanega naboja.
+
+Uporabimo Fourierovo transformacijo
+
+\[ \vec{r} \left( t \right) = \int\limits_{}^{} \vec{r} (\omega) \exp \left\{ - \mathrm{i} \omega t \right\} \, \mathrm{d} \omega
+\]
+
+in enačba postane
+
+\[ - m \omega ^2 \vec{r} (\omega) = m \gamma \cdot \mathrm{i} \omega \vec{r} (\omega) - m \omega_0 ^2 \vec{r} (\omega) + e \vec{E}(\omega).
+\]
+
+Rešimo enačbo za \( \vec{r}(\omega) \)
+
+\[ \vec{r} (\omega) = \frac{e}{m} \frac{\vec{E}(\omega)}{\omega_0 ^2 - \omega ^2 - \mathrm{i} \gamma \omega},
+\]
+
+in prepoznamo resonančnost.
+
+Na koncu dneva nas zanima \( \epsilon \), do katerega pridemo preko električnega dipolnega momenta. Zgornja rešitev je rešitev enega delca, mi pa imamo \( N \) delcev v končnem volumnu \( V \), ki nam definirajo volumsko številsko gostot \( n \). Polarizacija bo
+
+\[ \vec{P}(\omega) = n \cdot e \vec{r}(\omega) = \frac{n e ^2}{m} \cdot \frac{\vec{E}(\omega)}{\omega_0 ^2 - \omega ^2 + \mathrm{i} \gamma \omega}.
+\]
+
+Velja tudi
+
+\[ \vec{P}(\omega) = \epsilon_0 \left( \epsilon(\omega) - 1 \right) \vec{E}(\omega),
+\]
+
+in iz enačenja dobimo splošno odvisnost
+
+\[ \epsilon_0 \left( \epsilon(\omega) - 1 \right) = \frac{n e ^2}{m} \cdot \frac{1}{\omega_0 ^2 - \omega ^2 - \mathrm{i} \gamma \omega}
+\]
+
+V realnih snove imaš tipično lahko več virov harmonskih potencialov (več \( \omega_0 \)) in več virov disipacij \( \gamma \). Obstaja več režimo (približkov) kot so Debyjeva, Lorentzova in plazemska relaksacija.
+*** Debyjeva relaksacija
+
+Ta relaksacija je relavantna pri nizkih frekvencah, kjer zanemarimo \( \omega ^2 \). Enačba tako izgleda
+
+\[ \vec{P}(\omega) = \frac{n e ^2}{m} \cdot \frac{\vec{E}(\omega)}{\omega_0 ^2 - \mathrm{i} \gamma \omega} .
+\]
+
+Pomembna je pri relaksacija dipolnega momenta v molekulah, kjer so frekvence reda velikosti \( \omega \sim 10^7 - 10^9 \mathrm{Hz} \).
+*** Lorentzova relaksacija
+
+To je polna odvisnost in uporabi vse člene
+
+\[ \vec{P}(\omega) = \frac{n e ^2}{\omega} \frac{\vec{E}(\omega)}{\omega_0 ^2 - \omega ^2 - \mathrm{i} \gamma \omega}.
+\]
+
+Označimo \( \epsilon(0) = \epsilon(\omega = 0) \).
+
+Sledi, da je odvisnost
+
+\[ \epsilon(\omega) - 1 = \frac{(\epsilon(0) - 1)\omega_0 ^2}{\omega_0 ^2 - \omega ^2 - \mathrm{i} \gamma \omega}.
+\]
+
+[vstavi skico grafa]
+
+Pomembna je pri nihanju molekul, ko so frekvence reda \( \omega \sim 10^{12} - 10^{16} \mathrm{Hz} \). Za nas so še posebej pomembne, saj je vidna svetloba pri \( 10^{15} \mathrm{Hz} \).
+*** Plazemska relaksacija
+
+Pri visokih frekvenca zanmaeriš vse člene razen električnega gibanja.
+
+\[ \vec{P}(\omega) = - \frac{e ^2 n}{m} \frac{\vec{E}(\omega)}{\omega ^2},
+\]
+
+iz česar sledi
+
+\[ \epsilon(\omega) = 1 - \frac{\omega_p ^2}{\omega ^2},
+\]
+
+kjer je \( \omega_p \) plazemska frekvenca. Definirana je kot
+
+\[ \omega_p ^2 = \frac{e ^2 n}{m \epsilon_0}.
+\]
+
+Pomembna je pri frekvenca reda velikosti \( \omega > 10^{16} \). Pri tej frekvenci se elektroni v snovi obnašajo kot prosti delci.
+
+#+name: dielektrična funkcija vode
+#+begin_my_example
+Uporabi se Debyjev model pri nizkih frekvenca in Lorentzov pri višjih
+
+\[ \epsilon (\mathrm{i} \omega) = 1 + \sum\limits_{i = 1}^1 \frac{d_i}{1 + \omega \tau_i} + \sum\limits_{i = 1}^{11} \frac{f_i}{\omega_i ^2 + g_i \omega +  \omega ^2},
+\]
+
+kjer so \( d_i, \tau_i, f_i, \omega_i \) in \( g_i \) fenomenološke konstante.
+
+
+#+end_my_example
