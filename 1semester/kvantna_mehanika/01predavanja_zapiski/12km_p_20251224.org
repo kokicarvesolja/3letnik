@@ -105,6 +105,9 @@ kjer velja \( t \gg \frac{1}{w} \).
 
 #+end_my_example
 * Adiabatne spremembe in kvantne faze
+:LOGBOOK:
+CLOCK: [2025-12-24 Wed 10:38]
+:END:
 
 Imejmo časovno odvisen Hamiltonian \( H(t) \). Poglejmo si primere adiabatnih sprememeb
 
@@ -120,8 +123,10 @@ Imejmo Hamiltonian, ki je časovno odvisen od \( n \) spremenljivk \( H (\vec{Q}
 
 Rešujemo enačbo
 
-\[ H(\vec{Q}) \left| \psi_n \left( \vec{Q} \right) \right\rangle = E_n \left( \vec{Q} \right) \left| \psi_n \left( \vec{Q} \right) \right\rangle,
-\]
+\begin{equation}
+\label{eq:2}
+ H(\vec{Q}) \left| \psi_n \left( \vec{Q} \right) \right\rangle = E_n \left( \vec{Q} \right) \left| \psi_n \left( \vec{Q} \right) \right\rangle,
+\end{equation}
 
 kjer je \( \left| \psi_n \left( \vec{Q} \right) \right\rangle \) nedegenerirano lastno stanje.
 
@@ -209,3 +214,128 @@ Nadomestimo \( \dot{\vec{Q}}(t') \, \mathrm{d} t' = \mathrm{d} \vec{Q} \) in dob
 
 \[ \gamma_n = \int\limits_{\vec{Q}(0)}^{\vec{Q}(t)} \mathrm{i} \left\langle \psi_n^0 \middle| \nabla_{\vec{Q}} \psi_n^0 \right\rangle  \cdot \mathrm{d} \vec{Q}
 \]
+
+Vpeljemo
+
+\[ \vec{A}_n \left( \vec{Q} \right) = \mathrm{i} \left\langle \psi_n^0 \middle| \nabla_{\vec{Q}} \psi_n^0 \right\rangle,
+\]
+
+kjer je \( \vec{A}_n \) Berryjeva povezava. Vpeljemo tudi Berryjevo fazo
+
+\[ \gamma_{Berry} = \oint\limits_C^{} \vec{A}_n \left( \vec{Q} \right) \, \mathrm{d} \vec{Q},
+\]
+
+kjer je \( C \) zaključena zanka po prostoru parametrov \( \vec{Q} \).
+
+Lastno stanje/rešitev Schrödingerjeve enačbe \ref{eq:2} je
+
+\[ \left| \psi_n \right\rangle = e^{\mathrm{i} \phi_n} \left| \psi_n^0 \right\rangle,
+\]
+
+kjer je
+
+\[ \phi_n = - \frac{1}{\hbar} \int\limits_0^t E_n (t') \, \mathrm{d} t' + \int\limits_{\vec{Q}(0)}^{\vec{Q}(t)} \mathrm{i} \left\langle \psi_n^0 \middle| \nabla_{\vec{Q}} \psi_n^0 \right\rangle \cdot \mathrm{d} \vec{Q}.
+\]
+
+Prvemu členu \( \theta_n \) pravimo dinamična faza, medtem ko pa je \( \gamma_n \) geometrijska faza. Integral geometrijske faze po zaključeni zanki ni nujno enak \( 0 \).
+
+#+begin_my_example
+Naj bo nabor parametrov \( \vec{Q} = \left( L(t), V_0 (t) \right) \).
+
+[[file:figures/BerryjevaSprememba.png]]
+
+Na sliki je primer geometrijske faze, ki je neničelna.
+#+end_my_example
+* Semiklasični približek metode Wentzel-Kramers-Brillouin (WKB) :ne_sprasuje_na_ustnem:
+
+Rešujemo Schrödingerjevo enačbo
+
+\[ \mathrm{i} \hbar \frac{\partial \psi}{\partial t} = - \frac{\hbar ^2}{2m} \nabla ^2 \psi + V \psi.
+\]
+
+V enačbo vstavimo nastavek
+
+\[ \psi = e^{\mathrm{i} \frac{S \left( \vec{r}, t \right)}{\hbar}}, \ S \in \mathbb{C},
+\]
+
+in dobimo
+
+\begin{equation}
+\label{eq:3}
+ -\frac{\partial S}{\partial t}  \psi = \left( \frac{1}{2m} \left( \nabla S \right)^2 - \mathrm{i} \frac{\hbar}{2m} \nabla ^2 S \right) \psi.
+\end{equation}
+
+Funkciji
+
+\[ - \frac{\partial S}{\partial t}  \psi = \left( \frac{1}{2m} \left( \nabla S \right)^2  \right),
+\]
+
+pravimo Hamilton Jacobijeva funkcija. Pojavlja se tudi v klasični mehaniki in zanjo velja, da je hitrost \( \vec{v} = \nabla S \).
+
+Drugi člen \ref{eq:3} je kvantnomehanski člen.
+
+Če bi bil \( \hbar = 0 \), imamo klasičen problem, vendar ni. Razvijemo kompleksno funkcijo \( S \) po potencah \( \hbar \):
+
+\[ S \left( \vec{r}, t \right) = S_0 + \hbar S_1 + \hbar ^2 S_2 + o \left( \hbar ^3 \right).
+\]
+
+Za \( \hbar ^0 \) dobimo Hamilton-Jacobijevo enačbo
+
+\[ - \frac{\partial S_{0}}{\partial t} =  \frac{1}{2m} \left( \nabla S \right) ^2 + V \left( \vec{r}, t \right).
+\]
+
+Prvi red je
+
+\[ - \frac{\partial S_{1}}{\partial t}  = \frac{1}{2m} \left( 2 \nabla S_0 \cdot \nabla S_1 - \mathrm{i} \nabla ^2 S_0 \right) .
+\]
+
+Z razvojem po \( \hbar \) gledamo odmik kvantnomehanske rešitve od klasične rešitve.
+
+#+begin_my_example
+Imejmo stacionarno enačbo prve dimenzije. Zaradi stacionarno bo \( S = S(x) \ne S(t) \). Imamo torej funkcijo
+
+\[ \Psi (x, t) = \exp \left\{ - \mathrm{i} \frac{E t}{\hbar} \right\} \psi(x) = \exp \left\{ - \mathrm{i} \frac{E t}{\hbar} \right\} \exp \left\{ \mathrm{i} \frac{S_{1}(x)}{\hbar}\hbar \right\} ,
+\]
+
+kjer je \( Et = S_0 \).
+
+Hamilton-Jacobijeva funkcija je
+
+\[ E = \frac{1}{2m} \left( \frac{\mathrm{d} S_{0}}{\mathrm{d} x} \right) ^2 + V(x).
+\]
+
+Izrazimo
+
+\[ \frac{\mathrm{d} S_{0}}{\mathrm{d} x} = \pm \sqrt{\left( E - V(x) \right) 2m},
+\]
+
+in definiramo \( p ^2(x) = (E - V(x)) 2m \) gibalno količino ob prisotnosti potenciala. Po integriranju lahko izrazimo
+
+\begin{equation}
+\label{eq:4}
+ S_0 (x) = \pm \int\limits_0^x \sqrt{p ^2(x')} \, \mathrm{d} x'.
+\end{equation}
+
+Enačba prvega reda bo
+
+\[ 0 = \frac{1}{2m} \left( 2 \frac{\mathrm{d} S_{0}}{\mathrm{d} x} \frac{\mathrm{d} S_{1}}{\mathrm{d} x} - \mathrm{i} \frac{\mathrm{d} ^2 S_{0}}{\mathrm{d} x ^2} \right) ,
+\]
+
+saj \( S_1 \ne S_1 (t) \). Z že izračunanim \( S_0 \) v enačbi \ref{eq:4}, lahko izrazimo
+
+\[ S_1 (x) = \mathrm{i} \ln \sqrt{\frac{p(x)}{p(x_0)}}.
+\]
+
+Valovna funkcija je
+
+\[ \Psi_{WKB} (x, t) = \frac{C}{\sqrt{p(x)}} \exp \left\{ \mathrm{i} \frac{E}{\hbar} t \right\} \exp \left\{ \pm \frac{\mathrm{i}}{\hbar} \int\limits_{x_0}^x p(x') \, \mathrm{d} x' \right\}.
+\]
+
+Dobljena funkcija nam pove, da je rešitev ravni val, katerega valovni vektor \( k(x) = \int\limits_{x_0}^x p(x') \, \mathrm{d} x' \) je odvisen od \( x \).
+
+Ta enačba je dobra, saj lahko vanj vstavimo potencial, pointegriramo in dobimo rešitev kvantno mehanskega problema. Omogoča nam hitro oceno, vendar se potencial skozi čas ne sme spreminjati prehitro.
+
+[[file:figures/WKB.png]]
+#+end_my_example
+
+S pomočjo (primitivnega) približka WKB so razrešili problem \( \alpha \) razpada in zakaj so nekateri elementi bolj stabilni od drugih.
