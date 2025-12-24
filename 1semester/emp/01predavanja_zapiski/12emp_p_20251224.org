@@ -1,0 +1,128 @@
+#+title: 12. predavanje iz Elektromagnetnega polja
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Elektromagnetno polje v snovi
+** Robni pogoji za Maxwellove enačbe
+*** Robni pogoji za \( \vec{D} \)
+
+Imamo dve različni snovi z gostota električnega polja \( \vec{D}_1 \) in \( \vec{D}_2 \) za pripadajočo snov.
+
+V diferencialni obliki velja
+
+\[ \nabla \cdot \vec{D} = \sigma \iff \int\limits_V^{} \nabla \cdot \vec{D} \, \mathrm{d} ^3 \vec{r} = \int\limits_V^{} \sigma \, \mathrm{d } ^3 \vec{r}.
+\]
+
+Definiram podoben valjast volumen kakor pri robnem pogoju za \( \vec{B} \) s širino \( \mathrm{d} l \) in normalama \( \vec{n}_1 \) in \( \vec{n}_{2} \) v pripadajočih snoveh.
+
+Preko Gaussovega izreka pretvorimo volumenski integral na integral po zaključeni ploskvi
+
+\[ \int\limits_V^{} \nabla \cdot \vec{D} \, \mathrm{d} ^3 \vec{r} = \oint\limits_{\partial V}^{} \vec{D} \cdot \mathrm{d} \vec{S}.
+\]
+
+Razpišemo ploskovni integral
+
+\[ \oint\limits_{\partial V}^{} \vec{D} \cdot \mathrm{d} \vec{S} = \int\limits_{(1)}^{} \vec{D}_1 \cdot \vec{n}_1 \, \mathrm{d} S + \int\limits_{(2)}^{} \vec{D}_2 \cdot \vec{n}_2 \, \mathrm{d} S + \int\limits_{\text{plasc}}^{} \vec{D}_{pl} \cdot \vec{D}_{plasc} \, \mathrm{d} S.
+\]
+
+V limiti \( \mathrm{d} l \to 0 \) gre zadnji integral proti \( 0 \) in preostane nam robni pogoj za \( \vec{D} \), ki povezuje gostoti električnega polja v dveh snoveh
+
+\[ \vec{D}_1 \cdot \vec{n}_1 + \vec{D}_2 \cdot \vec{n}_2 = \sigma \implies D_{1n} - D_{2n} = \sigma.
+\]
+*** Robni pogoj za \( \vec{E} \)
+
+Imamo dve različni snovi 1 in 2, ki se stikata in vsaka ima pripadajočo jakost električnega polja \( \vec{E}_1 \) in \( \vec{E}_2 \).
+
+Velja diferencialna oblika Maxwellovega zakona
+
+\[ \nabla \times \vec{E} = - \frac{\partial \vec{B}}{\partial t}.
+\]
+
+Zamislimo si zanko, ki je na meji med snovema. Njena širina naj bo \( \mathrm{d} h \) in njena višina je \( \mathrm{d} l \). Tangenta v snovi ena je \( \vec{t}_1 \), v drugi snovi pa \( \vec{t}_2 \).
+
+Iz diferencialne oblike pretvorimo Maxwellov zakon v integral po preseku in nato še po robu preseka
+
+\[ \int\limits_V^{} \nabla \times \vec{E} \, \mathrm{d} \vec{S} = \int\limits_{\partial S}^{} \vec{E} \cdot \mathrm{d} \vec{r} = - \int\limits_{V}^{} \frac{\partial \vec{B}}{\partial t} \, \mathrm{d} \vec{S}.
+\]
+
+Integral po robu preseka lahko razpišemo
+
+\[ \int\limits_{\partial S}^{} \vec{E} \cdot \mathrm{d} \vec{r} = \vec{E}_1 \cdot \vec{t}_1 \cdot \mathrm{d} h + \vec{E}_2 \cdot \vec{t}_2 \cdot \mathrm{d} h + \vec{E}_{rob} \cdot \vec{t}_3 \cdot \mathrm{d} l + \vec{E}_{rob} \cdot \vec{t}_3 \cdot \mathrm{d} l.
+\]
+
+\( \vec{t}_3 \) in \( \vec{t}_4 \) sta tangentna vektorja na stranicah pravokotnika, ki sekata snovi. V limiti \( \mathrm{d} l \to  0 \) bosta člena s tema vektorjema šla proti \( 0 \) in dobimo robni pogoj
+
+\[ \vec{E}_1 \cdot \vec{t}_1 + \vec{E}_2 \cdot \vec{t}_2 = 0 \implies \, E_{1t} - E_{2t} = 0
+\]
+*** Robni pogoj za \( \vec{H} \)
+
+Zamislimo si isti pravokotnik kot v prejšnjem poglavju. Velja Maxwellova enačba
+
+\[ \nabla \times \vec{H} = \vec{\jmath} + \frac{\partial \vec{D}}{\partial t}.
+\]
+
+Na podoben način preko Stokesovega izreka integral po preseku \( S \) po robu pravokotnik \( \partial S \).
+
+\[ \int\limits_S^{} \nabla \times \vec{H} \, \mathrm{d} \vec{S} = \oint\limits_{\partial S}^{} \vec{H} \cdot \mathrm{d} \vec{r} = \int\limits_S^{} \vec{\jmath} \, \mathrm{d} \vec{S} + \int\limits_S^{} \frac{\partial \vec{D}}{\partial t}  \, \mathrm{d} \vec{S}
+\]
+
+Integral po robu pravokotnika je enak
+
+\[ \int\limits_{\partial S}^{} \vec{H} \cdot \mathrm{d} \vec{r} = \vec{H}_1 \cdot \vec{t}_1 \cdot \mathrm{d} h + \vec{H}_2 \cdot \vec{t}_2 \cdot \mathrm{d} h + \cancel{\vec{H}_{rob} \cdot \vec{t}_3 \cdot \mathrm{d} l} + \cancel{\vec{H}_{rob} \cdot \vec{t}_4 \cdot \mathrm{d} l }.
+\]
+
+Po analognem razmisleku nam ostanejo samo členi, ki ne prečkajo mej snovi.
+
+Desna stran pa ima malo posebnosti. Vektor normale preseka \( \mathrm{d} \vec{S} \) kaže na skici v ravnino ali izven nje, medtem ko \( \vec{\jmath} \) kaže vzporedno z mejo med snovema.
+
+\[ \int\limits_S^{} \vec{\jmath} \mathrm{d} \vec{S} + \int\limits_S^{} \frac{\partial \vec{D}}{\partial t} \mathrm{d} \vec{S} = \vec{\jmath} \cdot \vec{t} \cdot \mathrm{d} h \mathrm{d} l + \frac{\partial \vec{D}}{\partial t}  \cdot \mathrm{d} h \cdot \mathrm{d} l.
+\]
+
+V limiti \( \mathrm{d} l \to 0 \) je drugi člen ničeln. Pri prvem členu pa definiramo površinsko gostoto toka \( K \) z enotami \( \left[ K \right]= \frac{A}{m} \)
+
+\[ K = \vec{\jmath} \cdot \vec{t} \cdot \mathrm{d} l
+\]
+
+Dobimo robni pogoj
+
+\[ \vec{H}_1 \vec{t}_1 + \vec{H}_2 \vec{t}_2 = K \implies \ H_{1t} - H_{2t} = K .
+\]
+* Frekvenčna odvisnost dielektrične funkcije
+
+Dielektrična funkcija oziroma lomni količnik sta močno frekvenčno odvisna
+
+\[ \epsilon = \epsilon(\omega) \iff \epsilon(\omega) = n ^2 (\omega),
+\]
+
+kjer je \( n \) lomni količnik. Slednji zapis je značilen za jezik optike.
+
+Istočasno si zamislimo, da je \( \epsilon(\omega) \) kompleksna količina, kjer \( \mathrm{Re} \epsilon(\omega) \) določa odboj in lom, \( \mathrm{Im} \epsilon(\omega) \) pa predstavlja absorpcijo v snovi.
+** Kramers-Kronigove relacije
+
+Realen in imaginaren del dielektrične funkcija sta povezana - če poznaš enega, lahko izračunaš drugega.
+
+Velja
+
+\[ \mathrm{Re} \epsilon(\omega) = 1 + \frac{2}{ \pi } \mathcal{P} \int\limits_0^{\infty} \frac{\omega' \mathrm{Im} \epsilon(\omega') }{\omega ' ^2 - \omega ^2} \, \mathrm{d} \omega ' ,
+\]
+
+in
+
+\[ \mathrm{Im} \epsilon(\omega) = - \frac{2 \omega}{\pi} \mathcal{P} \int\limits_{0}^{\infty} \frac{\mathrm{Re} \epsilon(\omega') - 1}{\omega' ^2 - \omega ^2} \, \mathrm{d} \omega'.
+\]
+
+Temu pravimo, Kramers-Kronigove relacije. Uvedli smo posebno oznako integrala
+
+\[ \mathcal{P} \int\limits_{-\infty}^{\infty} \frac{g (\omega')}{\omega' - \omega} \, \mathrm{d} \omega' = \lim_{\epsilon \to 0} \left[ \int\limits_{-\infty}^{\omega - \epsilon} \frac{g(\omega')}{\omega' - \omega} \, \mathrm{d} \omega' + \int\limits_{\omega + \epsilon}^{\infty} \frac{g(\omega')}{\omega' - \omega} \, \mathrm{d} \omega' \right],
+\]
+
+s čimer smo izrezali pol, ki nastane pri \( \omega = \omega' \) in preprečili njegovo divergenco. Integralu pravimo integral glavne vrednosti.
+
+Kramers-Kronigove relacije se izpelje z uporabo integrala glavne prednosti in Plemljeve enačbe.
+
+Relacije so pomembne v spektroskopskih tehnikah kot so odboj, prepustnostin absorpcija svetlobe.

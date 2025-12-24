@@ -222,7 +222,7 @@ Iz volumnskega integrala velja
 \[ 0 = \int\limits_V^{} \nabla \cdot \vec{B} \, \mathrm{d} ^3 \vec{r} = \oint\limits_{\partial V}^{} \vec{B} \cdot \mathrm{d} \vec{S}
 \]
 
-Izberemo valjast volumen, katerega osnovni ploskvi sta vsaka v svoji snovi. Osnovna ploskev v snovi 1 ima normalo \( \vec{n}_1 \), osnovna ploskev v snovi 2 pa ima normalo \( \vec{n}_2 \). Obe normali kažeta v snov. Predpostavimo majhno višino valja.
+Izberemo valjast volumen, katerega osnovni ploskvi sta vsaka v svoji snovi. Osnovna ploskev v snovi 1 ima normalo \( \vec{n}_1 \), osnovna ploskev v snovi 2 pa ima normalo \( \vec{n}_2 \). Obe normali kažeta v snov. Predpostavimo majhno višino valja \( \mathrm{d} l \).
 
 \begin{align*}
   0 &= \int\limits_{(1)}^{} \vec{B}_1 \cdot \vec{n}_1 \, \mathrm{d} S + \int\limits_{(2)}^{} \vec{B}_2 \cdot \vec{n}_2 \, \mathrm{d} \vec{S} + \int\limits_{\text{plasc}}^{} \vec{B}_{pl} \cdot \vec{n}_{pl} \, \mathrm{d} S && \mathrm{d}l \to 0 \\
