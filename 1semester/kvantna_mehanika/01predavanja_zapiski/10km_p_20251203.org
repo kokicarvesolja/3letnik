@@ -180,5 +180,13 @@ kjer smo definirali \( V_{11} = \left\langle n_1^0 \middle| V \middle| n_1^0 \ri
 
 \begin{equation}
 \label{eq:4}
-V_{21} c_1 + V_{22} c_2 = E_n ^{(1)} c_2
+V_{21} c_1 + V_{22} c_2 = E_n ^{(1)} c_2.
 \end{equation}
+
+Enačbi \ref{eq:3} in \ref{eq:4} združimo v matrično obliko
+
+\[ \begin{bmatrix}
+   V_{11} & V_{12} \\
+   V_{21} & V-22
+    \end{bmatrix} \begin{bmatrix} c_{1} \\ c_{2} \end{bmatrix} E_n^{(1)} \begin{bmatrix} c_{1} \\ c_{2} \end{bmatrix}
+\]
