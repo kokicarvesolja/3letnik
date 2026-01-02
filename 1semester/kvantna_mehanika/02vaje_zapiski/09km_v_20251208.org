@@ -600,4 +600,26 @@ kjer indeks \( 1 \) označuje prvi delec.
 Prost delec potuje od \( - \infty \) proti \( +\infty \) z neko energijo \( E > 0 \) in se sipa na drugem delcu. Kaj se zgodi s spini po sipanju?
 #+end_problem
 
-Hilbertov prostor našega problema je sestavljen iz treh podprostorov \( \mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2 \otimes \mathcal{H}_3 \).
+Hilbertov prostor našega problema je sestavljen iz treh podprostorov \( \mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_{S_1} \otimes \mathcal{H}_{S_{2}} \). \( \mathcal{H}_1 \) je krajevni podprostor za 1. delec, \( \mathcal{H}_{S_1} \) in \( \mathcal{H}_{S_2} \) pa spinska podprostora. Drugi delec zaradi mirovanja nima svojega krajevnega podprostora.
+
+Prostor \( \mathcal{H}_{S_1} \) je dvodimenzionalen, saj je izbrana baza lahko \( \left| \uparrow \right\rangle , \left| \downarrow \right\rangle\). Prostor \( H_{S_2} \) pa je tridimenzionalen, primer baze pa je \( \left| 1, 1 \right\rangle , \left| 1, 0 \right\rangle , \left| 1, -1 \right\rangle\). Prva številka baze predstavlja spin, druga številka pa njeno projekcijo na \( z \)-os.
+
+To pomeni, da je spinski del Hilbertovega prostora 6-dimenzionalen, saj \( 2 \cdot 3 = 6 \). Radi bi zapisali bazo za \( H_{S_1} \otimes \mathcal{H}_{S_2} \). Eden od načinov je /produktna baza/, v kateri \( S_1 ^2, S_{1z}, S_2 ^2, S_{2z} \) komutirajo, kar implicira obstoj lastnih funkcij, ki so hkrati lastna stanja vseh naštetih operatorjev. Baza je
+
+\[ \left\{ \left| \uparrow \right\rangle \left| 1 1 \right\rangle, \left| \uparrow \right\rangle \left| 1 0 \right\rangle, \left| \uparrow \right\rangle \left| 1 -1 \right\rangle, \left| \downarrow \right\rangle \left| 11 \right\rangle, \left| \downarrow \right\rangle \left| 10 \right\rangle, \left| \downarrow \right\rangle \left| 1, - 1 \right\rangle \right\}
+\]
+
+Drugi način skupne baze pa je baza z dobrim skupnim spinom \( \vec{S} = \vec{S}_1 + \vec{S}_2 \), kjer \( S ^2, S_z, S_1 ^2, S_2 ^2 \) komutirajo. Vrednosti, ki jih zavzame skupni spin je
+
+\[ \left| S_1 - S_2 \right| \le S \le \left| S_1 + S_2 \right|.
+\]
+
+V našem primeru to pomeni, da je \( S = \frac{1}{2}, \frac{3}{2} \). Baza bi tako bila
+
+\[ \left\{ \left| \frac{3}{2}, \frac{3}{2}, \frac{1}{2} 1 \right\rangle, \left| \frac{3}{2}, \frac{1}{2}, \frac{1}{2} 1 \right\rangle, \left| \frac{3}{2},- \frac{1}{2}, \frac{1}{2} 1 \right\rangle, \left| \frac{3}{2}, - \frac{3}{2}, \frac{1}{2} 1 \right\rangle, \left| \frac{1}{2}, \frac{1}{2}, \frac{1}{2} 1 \right\rangle, \left| \frac{1}{2}, -\frac{1}{2}, \frac{1}{2} 1 \right\rangle \right\}.
+\]
+
+Ker sta \( s_1 = \frac{1}{2} \) in \( s_2 = 1 \) nespreminjajoči, ju v zapisu baze izpustimo. Posodobljena baza je tako
+
+\[ \left\{ \left| \frac{3}{2}, \frac{3}{2} \right\rangle, \left| \frac{3}{2}, \frac{1}{2} \right\rangle, \left| \frac{3}{2}, -\frac{1}{2} \right\rangle, \left| \frac{3}{2}, -\frac{3}{2} \right\rangle, \left| \frac{1}{2}, \frac{1}{2} \right\rangle, \left| \frac{1}{2}, - \frac{1}{2} \right\rangle \right\}
+\]
