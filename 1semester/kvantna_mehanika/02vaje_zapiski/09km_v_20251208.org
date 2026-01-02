@@ -519,25 +519,85 @@ Oglejmo si fizikalne lastnosti, ki so posledica te invariantnosti. Začnemo s Sc
 
 Iz tega sledi, če je \( \left| \psi \right\rangle \) lastna funkcija Hamiltoniana, potem bo tudi \( \mathcal{T} \left| \psi \right\rangle \) lastna funkcija.
 
-Oglejmo si skalarni produkt \( \left\langle \psi \middle| \mathcal{T} \psi \right\rangle \). Če najdemo rešitev, lastno funkcijo, \( \left| \psi \right\rangle \), potem je tudi \( T \left| \psi \right\rangle \) rešitev z isto lastno energijo. Rešitvi sta tako ortogonalni in linearno neodvisni.
+Oglejmo si skalarni produkt \( \left\langle \psi \middle| \mathcal{T} \psi \right\rangle \). Če najdemo rešitev, lastno funkcijo, \( \left| \psi \right\rangle \), potem je tudi \( \mathcal{T} \left| \psi \right\rangle \) rešitev z isto lastno energijo. Rešitvi sta tako ortogonalni in linearno neodvisni.
 
 \begin{align*}
-  \left\langle \psi \middle| T \psi \right\rangle &= \left\langle T \psi \middle| T (T \psi) \right\rangle^{\ast} \\
-&= \left\langle T \psi \middle| T ^2 \psi \right\rangle^{\ast},
+  \left\langle \psi \middle| \mathcal{T} \psi \right\rangle &= \left\langle \mathcal{T} \psi \middle| \mathcal{T} (\mathcal{T} \psi) \right\rangle^{\ast} \\
+&= \left\langle \mathcal{T} \psi \middle| \mathcal{T} ^2 \psi \right\rangle^{\ast},
 \end{align*}
 
-kjer smo upoštevali definicijo antikomutativnosti. Za \( T = \mathrm{i} \sigma_y K \) velja
+kjer smo upoštevali definicijo antikomutativnosti. Za \( \mathcal{T} = \mathrm{i} \sigma_y K \) velja
 
-\[ T ^2 = \mathrm{i} \sigma_y K \mathrm{i} \sigma_y K = \mathrm{i} \sigma_y (-\mathrm{i}) (- \sigma_y) K ^2 = - \sigma_y ^2 = -I .
+\[ \mathcal{T} ^2 = \mathrm{i} \sigma_y K \mathrm{i} \sigma_y K = \mathrm{i} \sigma_y (-\mathrm{i}) (- \sigma_y) K ^2 = - \sigma_y ^2 = -I .
 \]
+
+Komutativnost operatorja obrata časa velja vedno, vendar \( \mathcal{T} ^2 = -I \) pa ne. Za delec brez spina je operator časa \( \mathcal{T} = K \) in kvadrat operatorja je \( \mathcal{T} ^2 = I \).
 
 Zgornji skalarni produkt tako postane
 
-\[ \left\langle \psi \middle| T \psi \right\rangle = \left\langle T \psi \middle| - \psi \right\rangle^{\ast} = - \left\langle T \psi \middle| \psi \right\rangle^{\ast} = - \left\langle \psi \middle| T \psi \right\rangle.
+\[ \left\langle \psi \middle| \mathcal{T} \psi \right\rangle = \left\langle \mathcal{T} \psi \middle| - \psi \right\rangle^{\ast} = - \left\langle \mathcal{T} \psi \middle| \psi \right\rangle^{\ast} = - \left\langle \psi \middle| \mathcal{T} \psi \right\rangle.
 \]
 
-To je možno samo, če velja \( \left\langle \psi \middle| T \psi \right\rangle = 0 \).
+To je možno samo, če velja \( \left\langle \psi \middle| \mathcal{T} \psi \right\rangle = 0 \).
 
-Vsak energijski nivo je tako vsaj dvakrat degeneriran. Taki degeneraciji se reče Kramersova deneracija. Ortogonalen par \( \left| \psi \right\rangle \) in \( \mathcal{T} \left| \psi \right\rangle \) pa je Kramersov par.
+Vsak energijski nivo je tako vsaj dvakrat degeneriran. Taki degeneraciji se reče Kramersova degeneracija. Ortogonalen par \( \left| \psi \right\rangle \) in \( \mathcal{T} \left| \psi \right\rangle \) pa je Kramersov par.
 
-[ostal pri 49.10]
+Sedaj se bomo vrnili k Rashbovi sklopitvi. Za vsak valovni vektor \( \vec{k} \) smo dobili dve lastni energiji
+
+\[ E_{\pm} = \frac{\hbar ^2 k ^2}{2m} \pm \frac{1}{2} \lambda \hbar ^2 k,
+\]
+
+s pripadajočima lastnima vektorjema
+
+\[ \left| \psi_{\pm} \right\rangle = \left| \vec{k} \right\rangle \frac{\left| \uparrow \right\rangle \pm \mathrm{i} e ^{\mathrm{i} e \phi} \left| \downarrow \right\rangle}{\sqrt{2}}.
+\]
+
+Izberemo si stanje s pozitivnim predznakom in za njega poiščimo njegov Kramersov par. Nalogo podamo v Diracovi reprezentaciji, vendar preidemo v koordinatno prezentacijo
+
+\begin{align*}
+  \mathcal{T} \left| \psi_+ \right\rangle = \mathcal{T} \psi &= \mathrm{i} \sigma_y K e^{\mathrm{i} \vec{k} \cdot \vec{r}} \begin{pmatrix} \alpha \\ \beta \end{pmatrix} \\
+&= \mathrm{i} \begin{pmatrix}
+             0 & - \mathrm{i} \\
+             \mathrm{i} & 0
+              \end{pmatrix} e^{- \mathrm{i} \vec{k} \vec{r}} \begin{pmatrix} \alpha^{\ast} \\ \beta^{\ast} \end{pmatrix} \\
+&= e^{- \mathrm{i} \vec{k} \cdot \vec{r} } \begin{pmatrix}
+                                           0 & 1 \\
+                                           -1 & 0
+                                            \end{pmatrix} \begin{pmatrix} \alpha^{\ast} \\ \beta^{\ast} \end{pmatrix} \\
+&=e^{- \mathrm{i} \vec{k} \cdot \vec{r}} \begin{pmatrix} \beta^{\ast} \\ - \alpha^{\ast} \end{pmatrix}.
+\end{align*}
+
+V Diracovi reprezentaciji je zapis
+
+\[ \mathcal{T} \left| \psi_+ \right\rangle = \left| -\vec{k} \right\rangle \left( \beta^{\ast} \left| \downarrow \right\rangle - \alpha^{\ast} \left| \downarrow \right\rangle\right),
+\]
+
+kjer sta nekonjugirani vrednosti \( \alpha = \frac{1}{\sqrt{2}} \) ter \( \beta = \frac{\mathrm{i} e^{\mathrm{i} \phi}}{\sqrt{2}} \). Tako dobimo
+
+\[ \mathcal{T} \left| \psi_+ \right\rangle = \left| - \vec{k} \right\rangle \left[ - \frac{\mathrm{i} e^{- \mathrm{i} \phi}}{\sqrt{2}} \left| \uparrow  \right\rangle - \frac{1}{\sqrt{2}} \left| \downarrow \right\rangle\right] = - \mathrm{i} e^{- \mathrm{i} \phi} \left| - \vec{k} \right\rangle \frac{\left| \uparrow \right\rangle - \mathrm{i} e^{\mathrm{i} \phi} \left| \downarrow \right\rangle}{\sqrt{2}}
+\]
+
+Kakor smo dorekli že na začetku semestra, če sta valovni funkciji za fazni faktor narazen, lahko fazo zanemarimo, saj faza na opazljivko ne vpliva. Velikost faze \( - \mathrm{i} e^{- \mathrm{i} \phi} \) je \( 1 \).
+
+\begin{align*}
+  \mathcal{T} \left| \psi_+ \right\rangle &= \left| - \vec{k} \right\rangle \frac{\left| \uparrow \right\rangle - \mathrm{i } e^{- \mathrm{i} \phi} \left| \downarrow \right\rangle}{\sqrt{2}}\\
+&= \left| - \vec{k} \right\rangle \frac{\left| \uparrow \right\rangle + \mathrm{i} e^{\mathrm{i} (\phi + \pi)} \left| \downarrow \right\rangle}{\sqrt{2}}
+\end{align*}
+
+kjer smo uporabili identiteto \( - \mathrm{i} = \mathrm{i} e^{\mathrm{i} \pi} \). Naša začetna funkcija \( \left| \psi_+ \right\rangle \) je imela fazni kot \( \phi \) s pripadajočim vektorjem \( \vec{k} \) in spinom navzgor. Pripadajoč par pa ima fazo zamaknjeno za \( \pi \), torej \( \phi + \pi \) s pripadajočim negativno usmerjenim vektorjem \( - \vec{k} \) ter spinom navzdol.
+* Sipanje na spinskem odvisnem potencialu \( \delta \) funkcije v eni dimenziji
+
+#+begin_problem
+Imejmo dva delca. Prvi delec ima spin \( S_1 = \frac{1}{2} \) v stanju \( s_1 = \left| \uparrow \right\rangle \) in se lahko prosto giba po koordinatni osi \( x \). Drugi delec ima spin \( S_2 = 1 \) v stanju \( s_2 = \left| 1 0 \right\rangle \) in je fiksno pritrjen na koordinati \( x = 0 \). Delca čutita spina drug drugega samo, ko sta oba na koordinati \( x = 0 \).
+
+Njun Hamiltonian je
+
+\[ H = \frac{p_1 ^2}{2m} - \frac{\lambda}{\hbar ^2} \delta(x_1) \vec{S}_1 \cdot \vec{S}_2,
+\]
+
+kjer indeks \( 1 \) označuje prvi delec.
+
+Prost delec potuje od \( - \infty \) proti \( +\infty \) z neko energijo \( E > 0 \) in se sipa na drugem delcu. Kaj se zgodi s spini po sipanju?
+#+end_problem
+
+Hilbertov prostor našega problema je sestavljen iz treh podprostorov \( \mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2 \otimes \mathcal{H}_3 \).
