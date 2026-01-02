@@ -606,7 +606,12 @@ Prostor \( \mathcal{H}_{S_1} \) je dvodimenzionalen, saj je izbrana baza lahko \
 
 To pomeni, da je spinski del Hilbertovega prostora 6-dimenzionalen, saj \( 2 \cdot 3 = 6 \). Radi bi zapisali bazo za \( H_{S_1} \otimes \mathcal{H}_{S_2} \). Eden od načinov je /produktna baza/, v kateri \( S_1 ^2, S_{1z}, S_2 ^2, S_{2z} \) komutirajo, kar implicira obstoj lastnih funkcij, ki so hkrati lastna stanja vseh naštetih operatorjev. Baza je
 
-\[ \left\{ \left| \uparrow \right\rangle \left| 1 1 \right\rangle, \left| \uparrow \right\rangle \left| 1 0 \right\rangle, \left| \uparrow \right\rangle \left| 1 -1 \right\rangle, \left| \downarrow \right\rangle \left| 11 \right\rangle, \left| \downarrow \right\rangle \left| 10 \right\rangle, \left| \downarrow \right\rangle \left| 1, - 1 \right\rangle \right\}
+\[ \left\{ \left| \uparrow \right\rangle \left| 1 1 \right\rangle, \left| \uparrow \right\rangle \left| 1 0 \right\rangle, \left| \uparrow \right\rangle \left| 1 -1 \right\rangle, \left| \downarrow \right\rangle \left| 11 \right\rangle, \left| \downarrow \right\rangle \left| 10 \right\rangle, \left| \downarrow \right\rangle \left| 1, - 1 \right\rangle \right\}.
+\]
+
+Baza je oblike \( \left| s_1 m_1 \right\rangle \left| s_2, m_2 \right\rangle\), vendar ker sta \( s_1 \) in \( s_2 \) fiksirana, bomo okrajšali zapis v \( \left| m_1 \right\rangle \left| m_2 \right\rangle \). Krajše zapisana baza je tako
+
+\[ \left\{ \left| \uparrow \right\rangle \left| 1 \right\rangle, \left| \uparrow \right\rangle \left| 0 \right\rangle, \left| \uparrow \right\rangle \left|- 1 \right\rangle, \left| \downarrow \right\rangle \left| 1 \right\rangle, \left| \downarrow \right\rangle \left| 0 \right\rangle, \left| \downarrow \right\rangle \left| -1 \right\rangle \}
 \]
 
 Drugi način skupne baze pa je baza z dobrim skupnim spinom \( \vec{S} = \vec{S}_1 + \vec{S}_2 \), kjer \( S ^2, S_z, S_1 ^2, S_2 ^2 \) komutirajo. Vrednosti, ki jih zavzame skupni spin je
@@ -623,3 +628,74 @@ Ker sta \( s_1 = \frac{1}{2} \) in \( s_2 = 1 \) nespreminjajoči, ju v zapisu b
 
 \[ \left\{ \left| \frac{3}{2}, \frac{3}{2} \right\rangle, \left| \frac{3}{2}, \frac{1}{2} \right\rangle, \left| \frac{3}{2}, -\frac{1}{2} \right\rangle, \left| \frac{3}{2}, -\frac{3}{2} \right\rangle, \left| \frac{1}{2}, \frac{1}{2} \right\rangle, \left| \frac{1}{2}, - \frac{1}{2} \right\rangle \right\}
 \]
+** Sipanje na \( \delta \) funkciji brez spina
+
+Na začetku leta smo imeli delec s Hamiltonianom
+
+\[ H = \frac{p ^2}{2m} - \lambda \delta(x).
+\]
+
+Prišli smo do ugotovitev, da ima sistem eno vezano stanje
+
+\[ E_0 = - \frac{\hbar ^2 k ^2}{2m}, \ \kappa = \frac{m \lambda}{\hbar ^2} ,
+\]
+
+s pripadajočo valovno funkcijo
+
+\[ \psi_0 = \sqrt{\kappa} e^{- \kappa \left| x \right|}.
+\]
+
+Potem pa imamo še sipalna stanja za \( E > 0 \). Parametrizirali smo sipalno matriko
+
+\[ S = \begin{pmatrix}
+       r & t' \\
+       t & r'
+        \end{pmatrix} = \frac{1}{k + \mathrm{i} \kappa} \begin{pmatrix}
+                         -\mathrm{i} \kappa& k \\
+                         k& -\mathrm{i} \kappa
+                         \end{pmatrix},
+\]
+
+kjer je \( k = \sqrt{\frac{2m E}{\hbar ^2}} \).
+
+Delec, ki ga pošljemo iz leve strani potenciala, z indeksnim vektorjem \( (1, 0)^T \) bo delno prepuščen, delno pa odbit
+
+\[ \psi(x < 0) = e^{\mathrm{i} k x} + re^{- \mathrm{i} k x} \text{ in } \psi(x > 0) = t e^{\mathrm{i} k x}.
+\]
+
+Sipalna matrika je unitarna, kar pomeni, da velja \( S ^{\dagger} S = I \). Iz tega posledično sledi
+
+\[ \left| t \right| ^2 + \left| r \right| ^2 = T + R = 1,
+\]
+
+kjer sta \( T \) in \( R \) verjetnosti za prepuščenost in odbitost delca.
+** Reševanje naloge
+
+Hamiltonian
+
+\[ H = \frac{p_1 ^2}{2m} - \frac{\lambda}{\hbar ^2} \vec{S}_1 \cdot \vec{S}_2 \delta(x_1),
+\]
+
+bomo zapisali drugače tako, da nadomestimo zapis za skalarni produkt. Iz baze z dobrim skupnim spinom velja \( \vec{S} = \vec{S}_1 + \vec{S}_2 \), kar pomeni, da po kvadriranju dobimo
+
+\[ S ^2 = S_1 ^2 + 2 \vec{S}_1 \cdot \vec{S}_2 + S_2 ^2 \implies \vec{S}_1 \cdot \vec{S}_2 = \frac{1}{2} \left( S ^2 - S_1 ^2 - S_2 ^2 \right),
+\]
+
+kar lahko vstavimo v Hamiltonian
+
+\[  H = \frac{p_1 ^2}{2m} - \frac{\lambda}{2 \hbar ^2} \left( S ^2 - S_1 ^2 - S_2 ^2 \right) \delta(x_1).
+\]
+
+Vsi operatorji v bazi z dobrim skupnim spinom komutirajo med sabo, potem tudi vsi komutirajo s Hamiltonianom
+
+\[ \left[ H, S ^2 \right] = \left[ H, S_1 ^2 \right] = \left[ H, S_2 ^2 \right] = \left[ H, S_z \right] = 0
+\]
+
+Lastne funkcije enega operatorja so tudi lastne funkcije vseh ostalih operatorjev.
+
+Rešimo sedaj Schrödingerjevo enačbo
+
+\[ H \left| \psi \right\rangle = E \left| \psi \right\rangle,
+\]
+
+z nastavkom \( \left| \psi \right\rangle = \left| \psi_1 \right\rangle \otimes \left| s , m\right\rangle\). To lahko naredimo zaradi komutacije med Hamiltonianom in spinskimi operatorji.
