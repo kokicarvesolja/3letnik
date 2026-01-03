@@ -59,7 +59,7 @@ Upoštevamo še robni pogoj problema
 \[ \sum\limits_{n = 0}^{\infty} C_n \mathrm{cosh} \left(k_n \frac{a}{2}\right) \cos (k_n y) = f(y)
 \]
 
-Upoštevamo tudi ortogonalnost kosinusnih funkcij na intervalu \( \left[ - \frac{a}{2}, \frac{a}{2} \right] \)
+Nehomogen robni problem lahko razvijemo po lastnih funkcijah zaradi ortogonalnosti kosinusnih funkcij na intervalu \( \left[ - \frac{a}{2}, \frac{a}{2} \right] \)
 
 \[ \int\limits_{-\frac{a}{2}}^{\frac{a}{2}} \cos (k_n y) \cos (k_m y) \, \mathrm{d} y = \frac{a}{2} \delta_{n, m},
 \]

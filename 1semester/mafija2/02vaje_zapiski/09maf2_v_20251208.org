@@ -1,0 +1,115 @@
+#+title: 9. vaje iz Matematične fizike
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Lastne funkcije
+** Helmholtzova enačba v cilindričnih koordinatah
+
+Helmholtzova enačba je diferencialna enačba oblike
+
+\[ \nabla ^2 u + \lambda u = 0,
+\]
+
+ki jo rešujemo s separacijo spremenljivk \( u(r, \phi, z) = R(r) \Phi(\phi) Z(z) \).
+
+Separacija nam poda 3 diferencialne enačbe.
+
+Prva diferencialna enačba
+
+\begin{equation}
+\label{eq:1}
+ \Phi'' = - m ^2 \Phi,
+\end{equation}
+
+poda rešitvi za azimutalni kot \( \phi \) za \( m \ge 0 \), kjer je \( m \) celo število. Za \( m > 0 \) je splošna rešitev enačbe \ref{eq:1}
+
+\[ \Phi_m = A \cos \left( m \phi \right) + B \sin \left( m \phi \right).
+\]
+
+Za \( m = 0 \) je rešitev enačbe
+
+\[ \Phi_0 = A + B \phi
+\]
+
+Druga diferencialna enačba
+
+\begin{equation}
+\label{eq:2}
+Z'' = \pm \beta ^2 Z
+\end{equation}
+
+ima dve rešitvi glede na predznak.
+
+\[ Z(z) = \begin{cases}
+          C \sin (\beta z) + D \cos (\beta z) &; + \beta \\
+          C \mathrm{sh} \left( \beta z \right) + D \mathrm{ch} (\beta z) &; - \beta
+          \end{cases}
+\]
+
+Tretja diferencialna enačba se glasi
+
+\[ r ^2 R'' + r R' + \left[ \left( \lambda \pm \beta ^2 \right) r ^2 - m ^2 \right] R = 0.
+\]
+
+Oblika rešitve bo odvisna od vrednosti \( \lambda \pm \beta ^2 \).
+
+- vrednost \( \lambda \pm \beta ^2 = 0 \) bo za \( m \ge 0 \) podala rešitev oblike
+
+  \[ R_m = \begin{cases}
+           A r^m + B r^{-m} &; m > 0 \\
+           A + B \ln r &; m = 0
+           \end{cases}
+  \]
+
+- vrednost \( \lambda \pm \beta ^2 = k ^2 \) bo podala Besslove funkcije kot rešitve
+
+  \[ R_m = A J_m (kr) + B Y_m (kr).
+  \]
+
+  Alternativna rešitev so tudi Henklove funkcije, ki so definirane kot
+
+  \[ H_m^{(1)} (kr) = J_m (kr) + \mathrm{i} Y_m (kr) \quad \text{ in } \quad H_m^{(2)} (kr) = J_m (kr) - \mathrm{i} Y_m (kr).
+  \]
+
+  Rešitev se potem glasi
+
+  \[ R_m = A H_m^{(1)} (kr) + BH_m^{(2)} (kr)
+  \]
+
+- vrednost \( \lambda \pm \beta ^2 = - k ^2 \) poda modificirane Beslove funkcije kot rešitve
+
+  \[ R_m = A I_m (kr) + B K_m (kr)
+  \]
+
+Modificirane Besslove funkcije imajo v kompleksnem prostoru tudi povezavo z Besslovimi funkcijami
+
+\[ J_m (\mathrm{i} z) = \exp \left\{  \frac{1}{2} \mathrm{i} \pi m\right\}I_m(z) \quad \text{ in } \quad N_m (\mathrm{i} z) =\exp \left\{ \frac{1}{2} (m + 1) \pi \right\} I_m (z) - \frac{2}{\pi} \exp \left\{ \frac{1}{2} \mathrm{i} m \pi \right\} K_m(z)
+\]
+
+Pri iskanju lastnih funkcij v cilindričnih koordinatah ima skalarni produkt dodano integralsko utež \( r \)
+
+\[ \left\langle f, g \right\rangle = \int\limits_{}^{} f \cdot g \, r \, \mathrm{d} r \, \mathrm{d} \phi \, \mathrm{d} z
+\]
+
+*** Asimptotski približki
+
+Asimptotska približka za Besslove funkcije, kjer je \( x \gg 1 \), so
+
+\[ J_m (x) \asymp \sqrt{\frac{2}{\pi x}} \cos \left( x - \frac{1}{2} m \pi - \frac{\pi}{4} \right) \quad \text{ in } \quad Y_m(x) \asymp \sqrt{\frac{2}{\pi x}} \sin \left( x - \frac{1}{2} m \pi - \frac{\pi}{4} \right).
+\]
+
+Za Henklove funkcije sta asimptotska približka
+
+\[ H_m^{(1)}(x) \asymp e^{\mathrm{i} x} \quad \text{ in } H_m^{(2)} (x) \asymp e^{- \mathrm{i} x}.
+\]
+
+Za konec pa še asimptotski približki modificiranih Besslovih funkcij
+
+\[ I_m (x) \asymp e^x \quad \text{ in } \quad K_m (x) \asymp e^{- x}
+\]
+** Naloga 24 (Prinčič, 7.1)

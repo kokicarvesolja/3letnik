@@ -1,4 +1,4 @@
-#+title: 8. vaje iz Matematične fizike 2
+#+title: 10. vaje iz Matematične fizike 2
 #+startup: nolatexpreview
 #+startup: entitiespretty nil
 #+startup: show2levels
@@ -8,7 +8,6 @@
 #+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
 #+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
 * Naloga xx (Prinčič 7.3)
-
 #+begin_problem
 Zanima nas hitrostni profil dolge cevi s polmerom \( R \), skozi katero teče nestisljiva tekočina z viskoznostjo \( \eta \).
 
@@ -29,7 +28,6 @@ se nam ob upoštevanju lastnosti tekočin (nestisljivost in viskoznost) preobraz
 \label{eq:1}
  \rho \frac{\partial \vec{v}}{\partial t} = - \left( \nabla p \right) \cdot \hat{e}_z + \eta \nabla ^2 v
 \end{equation}
-
 
 ** Točka a)
 Iščemo hitrost po dolgem času, torej \( \frac{\partial \vec{v}}{\partial t} = 0 \).
@@ -148,7 +146,7 @@ Torej bo \( y = \mathrm{Im} k R = \sqrt{\frac{\omega \rho}{2 \eta} R} < 0 \)
 
 Iz tega sledi rešitev v limiti, ki je ravno v nasprotni fazi od toka
 
-\[ v(r, t) = - \mathrm{i} \frac{\Delta p}{L \rho \omega} e^{\mathrm{i} \omega t} \left( \frac{\exp \left\{ \mathrm{i} \left( \sqrt{\frac{\rho  \omega}{2 \eta}} r - \frac{\pi}{4}\right) + \sqrt{\frac{\rho \omega}{2 \eta} r} \right\}}{\exp \left\{ \mathrm{i} \left( \sqrt{\frac{\omega \rho}{\eta}} R - \frac{\pi}{4} \right) + \sqrt{\frac{\omega \rho}{2 \eta} R} \right\} - 1 \right)
+\[ v(r, t) = - \mathrm{i} \frac{\Delta p}{L \rho \omega} e^{\mathrm{i} \omega t} \left( \frac{\exp \left\{ \mathrm{i} \left( \sqrt{\frac{\rho  \omega}{2 \eta}} r - \frac{\pi}{4}\right) + \sqrt{\frac{\rho \omega}{2 \eta} r} \right\}}{\exp \left\{ \mathrm{i} \left( \sqrt{\frac{\omega \rho}{\eta}} R - \frac{\pi}{4} \right) + \sqrt{\frac{\omega \rho}{2 \eta} R} \right\} - 1} \right)
 \]
 * Helmholtzova enačba v sferičnih koordinatah
 
@@ -393,7 +391,7 @@ Splošna rešitev je tako
 Upoštevamo še začetni pogoj ter definicijo skalarnega produkta
 
 \begin{align*}
-  T_1 - T_0 &= \sum\limits_{l = 1}^{\infty} C_l P_l (\cos \theta) && \left/ \int\limits_0^1 P_l (\cos \theta) \, \mathrm{d} \cos \theta \\
+  T_1 - T_0 &= \sum\limits_{l = 1}^{\infty} C_l P_l (\cos \theta) && \left/ \int\limits_0^1 P_l (\cos \theta) \, \mathrm{d} \cos \theta \right. \\
 (T_1 - T_0) \int\limits_0^1 P_l (\cos \theta) \, \mathrm{d} (\cos \theta) &= C_l \int\limits_0^1 P_l ^2 (\cos \theta) \, \mathrm{d} \cos \theta
 \end{align*}
 
