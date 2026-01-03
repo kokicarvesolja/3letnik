@@ -113,3 +113,97 @@ Za konec pa še asimptotski približki modificiranih Besslovih funkcij
 \[ I_m (x) \asymp e^x \quad \text{ in } \quad K_m (x) \asymp e^{- x}
 \]
 ** Naloga 24 (Prinčič, 7.1)
+#+begin_problem
+Kovanec z maso \( m \) in polmerom \( R_1 \) je simetrično položen na opno s polmerom \( a \) in površinsko napetostjo \( \gamma \).
+#+end_problem
+
+Rešujemo valovno enačbo za opno
+
+\[ \frac{\partial ^2 u}{\partial t ^2} = c ^2 \nabla ^2 u, \ c ^2 = \frac{\gamma}{\mu},
+\]
+
+kjer je \( \mu \) površinska gostota. Hkrati imamo tudi robna pogoja.
+
+Prvi robni pogoj je to, da je opna na robu vpeta
+
+\begin{equation}
+\label{eq:3}
+u (r = a) = 0.
+\end{equation}
+
+Drugi robni pogoj pa povezuje opno s kovancem preko drugega Newtonovega zakona
+
+\begin{equation}
+\label{eq:4}
+m \ddot{u} \left( r = R_1 \right) = \oint\limits_{r = R_1}^{} \left. \gamma \frac{\partial u}{\partial r} \right|_{r = R_1} \, \mathrm{d} l = 2 \pi R_1 \left. \gamma \frac{\partial u}{\partial r} \right|_{r = R_1}
+\end{equation}
+
+Slednji robni pogoj je oblike
+
+\[ \alpha x(0) + \beta x' (0) = 0,
+\]
+
+kar nam pove, da imamo opravka s Sturm-Liouvilleovim problemom.
+
+Reševanja enačbe poteka preko separacije spremenljivk \( u(r, t) = R(r) T(t) \), ki nam poda dve ODE.
+
+\[ \frac{\ddot{T}}{T} = c ^2 \frac{\nabla ^2 R}{R} = - \omega ^2.
+\]
+
+Reševanje diferencialne enačbe v času ima splošno rešitev
+
+\begin{equation}
+\label{eq:5}
+T (t) = A \sin (\omega t) + B \cos (\omega t).
+\end{equation}
+
+Ostane nam še radialna diferencialna enačba
+
+\[ \nabla ^2 R = - \frac{\omega ^2}{c ^2} R,
+\]
+
+in uvedemo \( k ^2 = \frac{\omega ^2}{c ^2} \) za krajši zapis. Rešitve radialnega dela so v splošnem odvisne od števila \( m \), ki se pojavi kot rešitev enačbe \ref{eq:1}. Naš problem je simetričen, kar pomeni, da nimamo odvisnosti od azimutalnega kota \( \phi \) in posledično je \( m = 0 \). Rešitev radialnega dela je tako
+
+\begin{equation}
+\label{eq:6}
+R(r) = C J_0 (kr) + D Y_0 (kr).
+\end{equation}
+
+V rešitvi \ref{eq:6} \( Y_0 \) sicer divergirajo v izhodišču \( r = 0 \), vendar je naše definicijsko območje obroč na intervalu \( r \in [R_1, a] \).
+
+Ob upoštevanju prvega robnega pogoja \ref{eq:3} in rešitve \ref{eq:6} dobimo enakost
+
+\[ u(r = a) = T(t) \left[ C J_0 (ka ) + D Y_0 (ka) \right] = 0 \implies \ D = - C \frac{J_0 (ka)}{Y_0 (ka)}.
+\]
+
+Vmesna rešitev je torej
+
+\begin{equation}
+\label{eq:7}
+R(r) = C J_0 (kr) - C\frac{J_0 (ka)}{Y_0 (ka)} Y_0 (kr).
+\end{equation}
+
+Sedaj jo vstavimo v drugi robni pogoj \ref{eq:4} in dobimo enakost
+
+\[ - m \omega ^2 T \left( C J_0 (k R_1) - C \frac{J_0 (ka)}{Y_0 (k a)} Y_0 (k R_1) \right) = 2 \pi R_1 \gamma T \left( C k J_0 ' (k R_1) - C k \frac{J_0 (ka)}{Y_0 (ka)} Y_0 ' (kR_1) \right)
+\]
+
+Izpostavimo in pokrajšamo lahko koeficiente ter časovni del nastavka. Na pomoč nam priskočita tudi identiteti
+
+\[ 2 J_n' = J_{n - 1} - J_{n + 1} \quad \text{ in } \quad J_{-n} = \left( -1 \right)^n J_n.
+\]
+
+Slednja identiteta velja tudi za \( Y \) in posledično velja
+
+\[ J_0 ' = - J_1 \quad \text{ in } \quad Y_0 ' = - Y_1.
+\]
+
+Ostane nam
+
+\[ - m c ^2 k ^2 \left( J_0 (k R_1) - \frac{J_0 (ka)}{Y_0 (ka)} Y_0 (k R_1) \right) = 2 \pi R_1 \gamma \left( - J_1 (k R_1) + \frac{J_0 (ka)}{Y_0 (ka) } Y_1 (k R_1) \right),
+\]
+
+od koder lahko izrazimo
+
+\[ k = -\frac{2 \pi R_1 \gamma}{m c ^2} \frac{\left( - J_1 (k R_1) + \frac{J_0 (ka)}{Y_0 (ka)} Y_1 (k R_1) \right)}{J_0 (k R_1) - \frac{J_0 (ka)}{Y_0 (ka)} Y_0 (k R_1)}
+\]
