@@ -207,3 +207,40 @@ od koder lahko izrazimo
 
 \[ k = -\frac{2 \pi R_1 \gamma}{m c ^2} \frac{\left( - J_1 (k R_1) + \frac{J_0 (ka)}{Y_0 (ka)} Y_1 (k R_1) \right)}{J_0 (k R_1) - \frac{J_0 (ka)}{Y_0 (ka)} Y_0 (k R_1)}
 \]
+** Naloga 25 (Prinčič, 7.2)
+#+begin_problem
+Na boben s polmerom \( R_0 \) udarimo v točko \( (r = a, \phi = 0) \) s sunkom \( p_0 \). Kakšna je oblika bobna v kasnejših časih?
+#+end_problem
+
+Rešujemo valovno enačbo
+
+\[ \frac{\partial ^2 u}{\partial t ^2}  = c ^2 \nabla ^2 u.
+\]
+
+Pred udarcem je boben miroval, kar pomeni, da je začetni pogoj njegovo mirovanje
+
+\begin{equation}
+\label{eq:8}
+u (r, \phi, t = 0) = 0.
+\end{equation}
+
+Po udarcu pa odvod bobna ne bo več ničeln zaradi gibalne količine, s katero smo delovali nanj
+
+\[ \left. \frac{\partial u}{\partial t}  \right|_{t = 0} = \frac{C}{r} \delta (r - a) \delta(\phi),
+\]
+
+kjer je \( C \) konstanta. Določimo jo iz enačbe za gibalno količino.
+
+\begin{align*}
+  p_0 &= \int\limits_{}^{} v \, \mathrm{d} m = \int\limits_{}^{} \left. \mu \dot{u}\right|_{t = 0} \, \mathrm{d} S\\
+&= C \mu \int\limits_{}^{} \frac{1}{r} \delta (r - a) \delta (\phi) r \, \mathrm{d}r \, \mathrm{d} \phi = C \mu
+\end{align*}
+
+Konstanta je torej enaka \( C = \frac{p_0}{\mu} \).
+
+Nalogo rešujemo podobno kot nalogo 24 s separacijo spremenljivke. Rešitev časovne diferencialne enačbe \ref{eq:5} je enaka
+
+\[ T = A \sin (\omega t),
+\]
+
+zaradi začetnega pogoja \ref{eq:8}.
