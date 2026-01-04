@@ -217,6 +217,13 @@ Rešujemo valovno enačbo
 \[ \frac{\partial ^2 u}{\partial t ^2}  = c ^2 \nabla ^2 u.
 \]
 
+Rob opne je vpet v obroč, kar nam da prvi robni pogoj
+
+\begin{equation}
+\label{eq:10}
+u \left( r = R_0, \phi, t \right) = 0.
+\end{equation}
+
 Pred udarcem je boben miroval, kar pomeni, da je začetni pogoj njegovo mirovanje
 
 \begin{equation}
@@ -226,8 +233,10 @@ u (r, \phi, t = 0) = 0.
 
 Po udarcu pa odvod bobna ne bo več ničeln zaradi gibalne količine, s katero smo delovali nanj
 
-\[ \left. \frac{\partial u}{\partial t}  \right|_{t = 0} = \frac{C}{r} \delta (r - a) \delta(\phi),
-\]
+\begin{equation}
+\label{eq:11}
+ \left. \frac{\partial u}{\partial t}  \right|_{t = 0} = \frac{C}{r} \delta (r - a) \delta(\phi),
+\end{equation}
 
 kjer je \( C \) konstanta. Določimo jo iz enačbe za gibalno količino.
 
@@ -244,3 +253,93 @@ Nalogo rešujemo podobno kot nalogo 24 s separacijo spremenljivke. Rešitev čas
 \]
 
 zaradi začetnega pogoja \ref{eq:8}.
+
+Radialna diferencialna enačba je
+
+\[ \frac{\nabla ^2 R}{R} = - \frac{\omega ^2}{c ^2} = - k ^2.
+\]
+
+Pri rešitvi tokrat imamo kotno odvisnost in bo splošna rešitev
+
+\begin{equation}
+\label{eq:9}
+R_m = \left[ A_m J_m (kr) + B_m Y_m (kr) \right] \left[ C_m \cos (m\phi) + D_m \sin (m \phi) \right]
+\end{equation}
+
+Koeficienta \( B_m  \) in \( D_m \) bosta ničelna. Prvi zaradi tega, ker nimamo divergence v izhodišču, drugi pa zaradi simetričnosti problema.
+
+Upoštevamo robni pogoj \ref{eq:10}, da določimo vrednosti, ki jih zavzame \( k \). Dobimo enačbo
+
+\[ A_m J_m (k R_0)  C_m \cos (m \phi) = 0 \implies k_{nm} R_0 = \xi_n^{(m)}.
+\]
+
+Vrednosti, ki jih zavzame \( k_{nm} \) so torej
+
+\[ k_{nm} = \frac{\xi_n^{(m)}}{R_0},
+\]
+
+kjer je \( \xi_n^{(m)} \) \( n \)-ta ničla \( m \)-te Besslove funkcije \( J_m \).
+
+Z rešitvijo
+
+\[ u (r, \phi, t) = \sum\limits_{m = 0}^{\infty} \sum\limits_{n = 1}^{\infty} \sin \left( c k_{mn} t \right)  C_{mn} J_m \left( \xi_n^{(m)} \frac{r}{R_0} \right) \cos (m \phi),
+\]
+
+kjer smo upoštevali \( \omega_{mn} = c k_{mn} \).
+
+Za konec naloge lahko preko začetnega pogoja \ref{eq:11} poiščemo še vrednosti koeficientov \( C_{mn} \). Rešitev, ki smo jo odvajali po času je enaka
+
+\[ \left. \frac{\partial u}{\partial t}  \right|_{t = 0} = c \sum\limits_{m = 0}^{\infty} \sum\limits_{n = 1}^{\infty} C_{mn} k_{mn} J_m \left( \xi_n^{(m)} \frac{r}{R_0} \right) \cos (m \phi).
+\]
+
+Imamo torej enakost
+
+\[ c \sum\limits_{m = 0}^{\infty} \sum\limits_{n = 1}^{\infty} C_{mn} k_{mn} J_m \left( \xi_n^{(m)} \frac{r}{R_0} \right) \cos (m \phi) = \delta \left( r- a \right) \delta(\phi) \frac{p_0}{\mu_0 r}.
+\]
+
+Za izluščitev koeficienta bomo uporabili sledeča skalarna produkta
+
+\[ \int\limits_0^{2 \pi} \cos (l \phi) \cos (l' \pi) \, \mathrm{d} \phi = \pi \delta_{l l'} \quad \text{ in } \quad  \int\limits_0^{R_0} J_m \left( \xi_n^{(m)} \frac{r}{R_0} \right) J_{m'} \left( \xi_n^{(m')} \frac{r}{R_0} \right) \cdot r \cdot \, \mathrm{d}r = \frac{R_0 ^2}{2} J_{m + 1} \left( \xi_n^{(m)} \right) ^2 \delta_{m m'}.
+\]
+
+Pri skalarnem produktu Besslovih funkcij smo upoštevali še dodano utež \( r \). Zgornjo enakost torej pomnožimo z \( \int\limits_0^{R_0} \int\limits_0^{2 \pi} J_{m'} \left( \xi_{n'}^{(m')} \frac{r}{R_0} \right) \cos (m' \phi) \cdot r \, \mathrm{d} r \mathrm{d} \phi \) in dobimo
+
+\begin{align*}
+  c k_{m'n'} C_{m' n'} \int\limits_0^{R_0} \int\limits_0^{2 \pi} \left( J_{m'} \left( \xi_{n'}^{(m')} \frac{r}{R_0} \right) \right) ^2 \cos ^2 (m' \phi) r \, \mathrm{d} r \, \mathrm{d} \phi &= \int\limits_0^{R_0} \int\limits_0^{2\pi} \delta (r - a) \delta(\phi) \frac{p_0}{\mu_0 r} r J_{m'} \left( \xi_{n'}^{(m')} \frac{r}{R} \right) \cos (m' \phi) \, \mathrm{d} r \, \mathrm{d} \phi \\
+c k_{m' n'} C_{m' n'} \frac{R ^2}{2} J_{m' + 1} \left( \xi_{n'}^{(m')} \right) ^2 \pi &= J_{m'} \left( \xi_{n'}^{(m')} \frac{a}{R} \right) \cos (m' \cdot 0) \frac{p_0}{\mu_0} \\
+ &= J_{m'} \left( \xi_{n'}^{(m')} \frac{a}{R_0} \right) \frac{p_0}{\mu_0}
+\end{align*}
+
+Vrednosti koeficientov so torej
+
+\[ C_{mn} = \frac{2p_0}{\mu_0 \pi c R_0} \frac{J_m \left( \xi_n^{(m)} \frac{a}{R_0} \right)}{J_{m + 1} \left( \xi_n^{(m)} \right) ^2}, \ m \ne 0
+\]
+** Naloga 26
+#+begin_problem
+Imamo valj s polmerom \( a \) in rešujemo difuzijsko enačbo
+
+\[ \frac{\partial u}{\partial t}  = D \nabla ^2 u - \frac{1}{\tau} u.
+\]
+
+z robnim pogojem \( u (r = a) = u_0 \).
+
+Zanima nas rešitev, če je rešitev
+
+a) stacionarna
+   a) zunaj
+   b) znotraj valja
+b) časovno odvisna od notranjosti valja z začetnim robnim pogojem \( u (r, t = 0) = u_0 \).
+#+end_problem
+*** Točka a)
+
+Iščemo stacionarno rešitev, kar pomeni, da se enačba poenostavi v
+
+\[ \nabla ^2 u = \frac{1}{\tau D} u, \ k = \frac{1}{\tau D}
+\]
+
+Rešitve so v tem primeru (zakaj?) modificirane Besslove funkcije
+
+\[ u(r) = AI_0 (kr) + BK_0 (kr).
+\]
+
+Zaradi neodvisnosti od kota je vrednosti indeksa \( m = 0 \). Ob upoštevanju robnih pogojev.
