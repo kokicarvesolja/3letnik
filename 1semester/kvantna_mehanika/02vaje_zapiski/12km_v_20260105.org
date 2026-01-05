@@ -80,9 +80,27 @@ Povzetek simetrij, ki smo jih uporabili
 
 V zgornjih simetrijah so kvantna števila braja so označene z \( l' \) in \( m' \), medtem ko so stanja keta označena brez črtice.
 
-Edini integral, ki ga moramo tako izračunati je stanje \( \left\langle 210 \middle| z \middle| 100 \right\rangle \).
+Edini integral, ki ga moramo tako izračunati je stanje \( \left\langle 210 \middle| z \middle| 100 \right\rangle \)..
 
-[nadaljujem integral po odmoru ]
+Splošna oblika valovne funkcije v koordinatni reprezentaciji je
+
+\[ \psi_{nlm} \left( \vec{r} \right) = R_{nl} (r) Y_{lm} (\theta, \phi).
+\]
+
+Iz tabele odčitamo radialne funkcije ter sferne harmonike in matrični element je
+
+\begin{align*}
+  \left\langle 210 \middle| z \middle| 100 \right\rangle &= \int\limits_{}^{} \psi_{210}^{\ast} \left( \vec{r} \right) z \psi_{100} \left( \vec{r} \right) \, \mathrm{d} \vec{r} \\
+&= \int\limits_{}^{} \frac{1}{\sqrt{3}} \frac{1}{\left( 2r_B \right)^{\frac{3}{2}}} \frac{r}{r_B} \exp \left\{ - \frac{r}{2 r_B} \right\} \cdot \sqrt{\frac{3}{4 \pi}} \cos \theta r \cos \theta \frac{2}{r_B^{\frac{3}{2}}} \exp \left\{ - \frac{r}{r_B} \right\} \frac{1}{\sqrt{4 \pi}} \cdot r ^2 \, \mathrm{d} r \, \mathrm{d} (\cos \theta) \, \mathrm{d} \phi\\
+&= 2 \pi \cdot \frac{2}{3} \cdot \frac{1}{4 \pi} \frac{1}{\left( 2 r_B \right)^{\frac{3}{2}}} \frac{1}{r_B} \frac{2}{r_B^{\frac{3}{2}}} \int\limits_{}^{} r^4 \exp \left\{ - \frac{r}{2r_B} - \frac{r}{r_B} \right\} \, \mathrm{d} r
+\end{align*}
+
+Uvedemo novo spremenljivko \( u = -\frac{3}{2} \frac{r}{r_B} \) iz česar sledi
+
+\begin{align*}
+ \frac{2}{3} \frac{1}{r^{\frac{3}{2}}} \frac{1}{r_B ^4} \int\limits_0^{\infty} \frac{2 r_B}{3} \frac{r_B ^4 2^4}{3^4} u^4 e^{-u} \, \mathrm{d} u &= \frac{2^6}{3^6} \frac{1}{2^{\frac{3}{2}}} r_B \int\limits_0^{\infty} u^4 e^{- u} \, \mathrm{d} u \\
+&= \frac{2^{\frac{9}{2}}}{3^6} r_B 4! = \frac{2^{\frac{15}{2}}}{3^5} r_B
+\end{align*}
 
 Časovni integral
 
@@ -92,3 +110,42 @@ Edini integral, ki ga moramo tako izračunati je stanje \( \left\langle 210 \mid
 bomo izračunali v kompleksni ravnini s pomočjo izreka o residuih. Integrand ima pole pri vrednostih \( t' = \pm \mathrm{i} \tau \).
 
 Integral po sklenjeni krivulji bomo izračunali preko polkrožnice, vendar moramo določiti ali bo polkrožnica na zgornji ali spodnji kompleksni ravnini. Izberemo integral po zgornji ravnini, saj bo eksponent po polkrožnici ničeln. Z drugimi besedami, ko \( t' \to \mathrm{i} \infty \), bo vrednost eksponenta \( \exp \left\{ \mathrm{i} \cdot \mathrm{i} \infty \right\} = e^{- \infty} = 0 \).
+
+Velja
+
+\[ \oint\limits_{K \cup L}^{} \frac{\exp \left\{ \frac{\mathrm{i}}{\hbar} t' (E_2 - E_1) \right\}}{1 + \left( \frac{t}{\tau} \right) ^2}\, \mathrm{d} t = \int\limits_{- \infty}^{\infty} \frac{\exp \left\{ \frac{\mathrm{i}}{\hbar} t' (E_2 - E_1) \right\}}{1 + \left( \frac{t}{\tau} \right) ^2}\, \mathrm{d} t + 0 = 2 \pi \mathrm{i} \mathrm{Res} \left( \frac{\exp \left\{ \frac{\mathrm{i}}{\hbar} t' (E_2 - E_1) \right\}}{1 + \left( \frac{t}{\tau} \right) ^2}\, \mathrm{i} \tau  \right).
+\]
+
+Residuum izračunamo kot smo ga pri matematiki 4. Za začetek imenovalec razstavimo
+
+\[ 1 + \left( \frac{t'}{\tau} \right) ^2 = \frac{1}{\tau ^2} \left( \tau ^2 + t' ^2 \right) = \frac{1}{\tau ^2} (t' + \mathrm{i} \tau) (t' - \mathrm{i} \tau).
+\]
+
+Residuum je
+
+\begin{align*}
+  \mathrm{Res} \left( \frac{\exp \left\{ \frac{\mathrm{i}}{\hbar} t' (E_2 - E_1) \right\}}{1 + \left( \frac{t}{\tau} \right) ^2}\, \mathrm{i} \tau  \right) &= \lim_{t \to \mathrm{i} \tau} (t' - \mathrm{i} \tau) \frac{\exp \left\{ \frac{\mathrm{i}}{\hbar} t' (E_2 - E_1) \right\}}{\left( t' - \mathrm{i} \tau \right) (t' + \mathrm{i} \tau)} \tau ^2  \\
+&= \lim_{t' \to \mathrm{i} \tau} \frac{\exp \left\{ \frac{\mathrm{i}}{\hbar} t' (E_2 - E_1) \right\}}{t' + \mathrm{i} \tau} \tau ^2 \\
+&= \frac{ \tau\exp \left\{ \frac{\mathrm{i}}{\hbar} \tau (E_2 - E_1) \right\}}{2 \mathrm{i}}
+\end{align*}
+
+Združimo rezultate integrala in koeficient je enak
+
+\begin{align*}
+  c_{210} (\infty) &= \mathrm{i} \frac{e \epsilon_0}{\hbar} \left\langle 210 \middle| z \middle| 100 \right\rangle 2 \pi \mathrm{i} \frac{\tau}{2 \mathrm{i}} \exp \left\{ - \frac{\tau}{\hbar} (E_2 - E_1) \right\} \\
+&= \mathrm{i} \frac{e \epsilon_0}{\hbar} \frac{2^{\frac{15}{2}}}{3^5} r_B \pi \cdot \tau \cdot \exp \left\{ - \frac{\tau}{\hbar} (E_2 - E_1) \right\}
+\end{align*}
+
+Verjetnost za prehod v višje stanje je po enačbi \( P_{nlm} (t) = \left| c_{nlm} (t) \right| ^2\)
+
+\[ P_{210} (\infty) = \frac{2^{\frac{15}{2}} \pi ^2}{3^{10}} \left( \frac{e \epsilon_0 r_B \tau}{\hbar} \right) ^2 \exp \left\{ - \frac{2 \tau}{\hbar} (E_2 - E_1) \right\} \propto \tau ^2 \exp \left\{ - \frac{2 \tau (E_2 - E_1) }{ \hbar} \right\}
+\]
+
+Produktu \( e \epsilon_0 r_B \) pravimo značilna energija našega problema, medtem ko je \( \tau \) značilni čas našega sunka.
+
+Zanima nas kakšna je vrednost značilnega časa, da bo verjetno prehoda največja, torej \( \partial _{\tau} P_{210} (\infty) = 0 \).
+
+Dobimo rezultat
+
+\[ \delta_t P_{210} \propto = 1 - \frac{\tau(E_2 - E_1)}{\hbar} = 0 \implies \tau = \frac{\hbar}{E_2 - E_1}
+\]
