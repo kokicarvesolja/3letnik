@@ -187,3 +187,147 @@ Uvedemo spremenljivko \( z = \frac{y - y_0}{x} \) in dobimo
 
 \[ u \left( \vec{r} \right) = \int\limits_{\frac{y + \frac{a}{2}}{x}}^{\frac{y - \frac{a}{2}}{x}} \frac{1}{\pi} \frac{1}{1 + z ^2} U_0   \, \mathrm{d} z = - \frac{U_0}{\pi} \left( \mathrm{arctg} \left( \frac{y - \frac{a}{2}}{x} \right) - \mathrm{arctg } \left( \frac{y + \frac{a}{2}}{x} \right) \right)
 \]
+** Akustika
+
+Imamo hitrostno polje \( v \left( \vec{r}, t \right) \) z gostoto \( \rho \left( \vec{r}, t \right) = \rho_0 + \delta \rho \left( \vec{r}, t \right) \) in tlak \( p \left( \vec{r}, t \right) = p_0 + \delta p \left( \vec{r}, t \right) \).
+
+Imamo več enačb
+
+1. Euler (N - S za \( q = 0 \))
+
+   \[ \rho \frac{\partial \vec{v}}{\partial t}  = - \nabla p
+   \]
+
+   in
+
+   \[ \frac{\partial \vec{v}}{\partial t}  = \frac{\partial }{\partial x} + \cancel{\left( \vec{v} \cdot \nabla \right)} \vec{v}
+   \]
+
+2. Kontinuitetna enačba
+
+   \[ \frac{\partial \rho}{\partial t}  = - \nabla \left( \rho \vec{v} \right)
+   \]
+
+3. Adiabatna stisljivost
+
+   \[ \frac{\delta \rho}{\rho_0} = \chi_s \delta \rho
+   \]
+
+Iz predavanj vem
+
+1. \( \vec{v} (t = 0) \) brezvrtinčno, potem \( \vec{v} (t) \) je brezvrtinčno in lahko zapišemo
+
+   \[ \vec{v} = - \nabla \Phi.
+   \]
+
+   Eulerjeva enačba je potem
+
+   \[ \rho_0 \frac{\partial \Phi}{\partial t}  = \delta p
+   \]
+
+2. Zapišemo lahko
+
+   \[ \frac{\partial ^2 \delta p}{\partial t ^2}  = c ^2 \nabla ^2 \delta  p, \ c ^2 = \frac{1}{\chi_s} \rho_0
+   \]
+
+   Enako velja za \( \Phi \).
+
+3. Robni pogoji ob trdi steni je
+
+   \[ \vec{v} \cdot \hat{n} = 0,
+   \]
+
+   iz česar sledi
+
+   \[ \frac{\partial \Phi}{\partial \vec{n}}  = 0 \implies \ \frac{\partial \delta p}{\partial \vec{n}} = 0
+   \]
+
+4. Povprečen energijski tok
+
+   \[ \overline{\vec{\jmath}} = \frac{1}{2} \Re \left[ \delta p \vec{v}^{\ast} \right]
+   \]
+** Naloga yy (Lloydovo zrcalo)
+#+begin_problem
+Imamo Lloydovo zrcalo, ki ima izvor na \( \vec{r} = a \hat{e}_z \). Rešujemo enačbo
+
+\[ - \frac{1}{c ^2} \frac{\partial ^2 \delta p}{\partial t ^2} + \nabla ^2 \delta p = A \delta \left( \vec{r} - a \hat{e}_z \right) e^{- \mathrm{i} \omega t},
+\]
+
+z robnim pogojem \( \delta p (z = 0) = 0 \).
+#+end_problem
+
+Uporabili bomo nastavek
+
+\[ \delta p \left( \vec{r}, t \right) = P \left( \vec{r} \right) e^{- \mathrm{i} \omega t},
+\]
+
+ki ga bomo vstavili v našo valovno enačbo.
+
+\[ - \frac{1}{c ^2} (- \omega ^2) P \left( \vec{r} \right) e^{- \mathrm{i} \omega t} + \nabla_r ^2 P(\vec{r}) e^{- \mathrm{i} \omega t} = A \delta \left( \vec{r} - a \hat{e}_z \right) e^{- \mathrm{i} \omega t}.
+\]
+
+Uvedemo valovni vektor \( k ^2 = \frac{\omega ^2}{c ^2} \) in pokrajšamo časovna nihanja
+
+\[ k ^2 P \left( \vec{r} \right) + \nabla_r ^2 P \left( \vec{r} \right) = A \delta \left( \vec{r} - a \hat{e}_z \right).
+\]
+
+Podana je funkcija za Greenovo funkcijo valovanja
+
+\[ G_{\infty} \left( \vec{r}, \vec{r}_0 \right) = - \frac{1}{4 \pi} \frac{e^{\pm \mathrm{i} k \left| \vec{r} - \vec{r}_0 \right|} }{\left| \vec{r} - \vec{r}_0 \right|}.
+\]
+
+Izberemo pozitiven eksponent, saj je fizikalno to izvor nihanja.
+
+Ponovno izberemo metodo zrcaljenja in tako kot pri prejšnjem primeru, se bodo na meji območja nasprotni valovi sešteli in izničili.
+
+Naša Greenova funkcija je
+
+\[ G \left( \vec{r}, \vec{r}_0 \right) = G_{\infty} \left( \vec{r}, \vec{r}_0 \right) - G_{\infty} \left( \vec{r}, \vec{r}_0^{\ast} \right) = - \frac{1}{4 \pi} \frac{e^{\mathrm{i} k \left| \vec{r} - \vec{r}_0 \right|}}{\left| \vec{r} - \vec{r}_0 \right|}  + \frac{1}{4 \pi} \frac{e^{\mathrm{i} k \left| \vec{r}- \vec{r}_0^{\ast} \right|}}{\left| \vec{r} - \vec{r}_0^{\ast} \right|}.
+\]
+
+Rešitev problema
+
+\[ \mathcal{L} P \left( \vec{r} \right) = A \delta \left( \vec{r} - a \hat{e}_z \right)
+\]
+
+je
+
+\[ P \left( \vec{r} \right) = \int\limits_{\mathcal{D}}^{} G \left( \vec{r}, \vec{r}_0 \right) A \delta \left( \vec{r} - a \hat{e}_z \right) \, \mathrm{d} ^3 \vec{r}_0.
+\]
+
+Vstavimo v integral izraz za Greenovo funkcijo in izračunamo integral, kjer velja, da je \( \vec{r}_0^{\ast} \) prezrcaljen in ima nasprotno predznačeno tretjo komponento.
+
+\[ P \left( \vec{r} \right) = A \left( - \frac{1}{4 \pi} \frac{e^{\mathrm{i} k \left| \vec{r} - a \hat{e}_z \right|}}{\left| \vec{r} - a \hat{e}_z \right|} + \frac{1}{4 \pi} \frac{e^{\mathrm{i} k \left| \vec{r} + a \hat{e}_z \right|}}{ \left| \vec{r} + a \hat{e}_z \right|} \right).
+\]
+
+V primeru, da imamo Neumannove pogoje na meji, potem je drugi člen Greenove funkcije obratno predznačen
+
+\[ G \left( \vec{r}, \vec{r}_0 \right) = G_{\infty} \left( \vec{r}, \vec{r}_0 \right) + G_{\infty} \left( \vec{r}, \vec{r}_0^{\ast} \right) .
+\]
+
+Za izračun toka \( \vec{\jmath} \) potrebujemo hitrosti, ki jo bomo dobili iz enačbe
+
+\[ \rho \frac{\partial \vec{v}}{\partial t}  = - \nabla \delta p.
+\]
+
+Zaradi našega nastavka velja \( \frac{\partial \vec{v}}{\partial t}  = - \mathrm{i} \omega \vec{v} \) in dobimo enačbo
+
+\[ \vec{v} = - \frac{\mathrm{i}}{\omega \rho} \nabla \delta p.
+\]
+
+Za majhne \( a \) oz. \( r \gg a \) je rezultat
+
+\[ \vec{v} = - \frac{A}{4 \pi \rho c} \left[ \frac{e^{\mathrm{i} k r_-}}{r_-} - \frac{e^{\mathrm{i} k r_+}}{r_{+}} \right] \hat{e}_r e^{- \mathrm{i} \omega t},
+\]
+
+kjer sta
+
+\[ r_{\pm} = r \pm a \cos \theta.
+\]
+
+Tok je potem
+
+\[ \vec{\jmath} = \Re \left[ \delta p \vec{v}^{\ast} \right] \overset{r \gg a}{=} \frac{A ^2}{16 \pi \rho c} \frac{1}{c ^2} \left[ 1 - \cos \left( kr a \cos \theta \right) \right] \hat{e}_r,
+\]
+
+kjer smo upoštevali, da \( r_+ \sim r_- \sim r \). Pri \( \theta = \frac{\pi}{2} \) je \( \overline{\vec{\jmath}} = 0 \). V primeru Neumanna je v zgornjem oklepaju pozitiven predznak.
