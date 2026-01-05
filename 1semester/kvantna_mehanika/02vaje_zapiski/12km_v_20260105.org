@@ -1,0 +1,94 @@
+#+title: 12. vaje iz Kvantne mehanike
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Vodikov atom v časovno odvisnem električnem polju
+
+Ponovno imamo vodikov atom, vendar tokrat v električnem polju, ki ima časovno odvisnost
+
+\[ \vec{\epsilon} (t) = \frac{\epsilon_0}{1 + \left( \frac{t}{\tau} \right) ^2} \hat{e}_z
+\]
+
+Ob času \( t = - \infty \) je valovna funkcija v osnovnem stanju
+
+\begin{equation}
+\label{eq:1}
+ \left| \psi, - \infty \right\rangle = \left| 1 00 \right\rangle.
+\end{equation}
+
+Valovni funkciji sicer manjka nek spinski del, vendar kakor smo videli pri prejšnji nalogi, električno polje ne vpliva na spin. Posledično ga lahko ne pišemo.
+
+Zanima nas stanje vodikovega atoma ob času \( t = \infty \). Z drugimi besedami, zanima nas verjetnost \( P_{2lm}(t = \infty) \), da se vodikov atom nahaja v prvem vzbujenem stanju.
+
+Hamiltonian je enak kakor pri prejšnji nalog, vendar je eletrično polje časovno odvisno
+
+\[ H = H_0 + H' = \frac{p ^2}{2m} - \frac{e ^2}{4 \pi \epsilon_0 r} - e \vec{\epsilon}(t) \cdot \vec{r}
+\]
+** Časovno odvisna teorije motnje
+
+Lahko bi reševali nestacionarno Schrödingerjevo enačbo
+
+\[ H \psi(\vec{r}, t) = \mathrm{i} \hbar \partial_t \psi \left( \vec{r}, t \right)
+\]
+
+z začetnim pogojem \( \psi \left( \vec{r}, - \infty \right) = \psi_{100} \left( \vec{r} \right) \).
+
+Ta postopek ni zaželjen, saj vključuje reševanje PDE. Iz koordinatne reprezentacije bomo sedaj prišli na Diracovo reprezentacijo. Valovno funkcijo razvijemo po lastnih funkcijah, kjer imamo dva člena, ki sta odvisna od časa
+
+\[ \left| \psi, t \right\rangle = \sum\limits_{nlm}^{} c_{nlm} (t) \left| nlm, t \right\rangle.
+\]
+
+Kakor dokazano na predavanjih, so lastna stanja valovne funkcije zgornje enačbe lastna stanja vodikovega atoma ob odsotnosti motnje
+
+\begin{equation}
+\label{eq:3}
+ \left| nlm, t \right\rangle  = \left| nlm \right\rangle \exp \left\{ - \mathrm{i} \frac{E_n}{\hbar}t \right\}.
+\end{equation}
+
+Časovno odvisnost perturbacije zajamemo v časovno odvisnost koeficientov in bo oblike
+
+\begin{equation}
+\label{eq:2}
+ c_{nlm} (t) = c_{nlm} (-\infty) - \frac{\mathrm{i}}{\hbar} \int\limits_{- \infty}^t \sum\limits_{n'l'm'}^{} \left\langle nlm, t' \middle| H' (t') \middle| n' l' m', t' \right\rangle c_{n'l'm'} (t') \, \mathrm{d} t'
+\end{equation}
+
+Uporabimo 1. red časovno odvisne teorije perturbacije, za katero velja \( c_{n' l' m'} (t) = c_{n' l' m'} (- \infty) \).
+
+** Reševanje
+
+Iz \ref{eq:1} preberemo, da je \( c_{n' l' m'} (- \infty) = 1 \) ter da ni v prvem vzbujenem stanju, iz česar sledi \( c_{2lm} (- \infty) = 0 \). Enačba \ref{eq:2} postane tako
+
+\[ c_{2lm} (\infty) = \frac{\mathrm{i}}{\hbar} \int\limits_{- \infty}^{\infty} \left\langle 2lm, t' \middle| - e \frac{\epsilon_0}{1 + \left( \frac{t}{\tau} \right) ^2} z \middle| 100, t' \right\rangle \cdot 1 \, \mathrm{d} t'.
+\]
+
+Nadomestimo stanja v integrandu z \ref{eq:3} in izpostavimo časovno neodvisne elemente
+
+\[ c_{2lm}(\infty) = \mathrm{i} \frac{e \epsilon_0}{\hbar} \left\langle 2lm \middle| z \middle| 100 \right\rangle \int\limits_{- \infty}^{\infty} \exp \left\{ \frac{\mathrm{i}}{\hbar} t' (E_2 - E_1) \right\} \frac{1}{1 + \left( \frac{t}{\tau} \right) ^2} \, \mathrm{d} t'.
+\]
+
+Matrične elemente tipa \( \left\langle 2lm \middle| z \middle| 100 \right\rangle \) smo računali že pri prejšnjih vajah, vendar imamo tokrat manj računanja, saj je ket fiksen, bra pa ima 4 možna stanja \( \left| 200 \right\rangle, \left| 21, -1 \right\rangle, \left| 210 \right\rangle\) in \( \left| 211 \right\rangle \).
+
+Povzetek simetrij, ki smo jih uporabili
+
+- iz komutacije \( \left[ H', L_z \right] = 0 \) sledi, da so vsi keti, ki imajo \( m' \ne m = 0 \) ničelni
+- iz antikomutacije \( \left\{ H', P \right\} = 0 \) pa je sledilo, da so vsa stanja, ki imajo \( l' = l = 0 \) ničelna.
+
+V zgornjih simetrijah so kvantna števila braja so označene z \( l' \) in \( m' \), medtem ko so stanja keta označena brez črtice.
+
+Edini integral, ki ga moramo tako izračunati je stanje \( \left\langle 210 \middle| z \middle| 100 \right\rangle \).
+
+[nadaljujem integral po odmoru ]
+
+Časovni integral
+
+\[ \int\limits_{- \infty}^{\infty}  \exp \left\{ \frac{\mathrm{i}}{\hbar} t' (E_2 - E_1) \right\} \frac{1}{1 + \left( \frac{t}{\tau} \right) ^2} \, \mathrm{d} t'
+\]
+
+bomo izračunali v kompleksni ravnini s pomočjo izreka o residuih. Integrand ima pole pri vrednostih \( t' = \pm \mathrm{i} \tau \).
+
+Integral po sklenjeni krivulji bomo izračunali preko polkrožnice, vendar moramo določiti ali bo polkrožnica na zgornji ali spodnji kompleksni ravnini. Izberemo integral po zgornji ravnini, saj bo eksponent po polkrožnici ničeln. Z drugimi besedami, ko \( t' \to \mathrm{i} \infty \), bo vrednost eksponenta \( \exp \left\{ \mathrm{i} \cdot \mathrm{i} \infty \right\} = e^{- \infty} = 0 \).
