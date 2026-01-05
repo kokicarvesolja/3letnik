@@ -1,0 +1,189 @@
+#+title: 12. vaje iz Matematične fizike 2
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Greenove funkcije
+
+Imamo diferencialni operator
+
+\[ \mathcal{L} = \nabla ^2 + \lambda
+\]
+
+z Dirichletovimi robnimi pogoji na omejen območju \( \mathcal{D} \).
+
+Po definiciji iščemo tako funkcijo, da velja
+
+\[ \mathcal{L}_{\vec{r}} G \left( \vec{r}, \vec{r}_0 \right) = \delta \left( \vec{r}, \vec{r}_0 \right)
+\]
+
+in na robu velja
+
+\[ \left.  G \left( \vec{r}, \vec{r}_0 \right)  \right|_{\vec{r} \in \partial \mathcal{D}} = 0.
+\]
+
+Uporabimo nastavek, kjer prvi člen predstavlja Greenovo funkcijo na neskončnem območju
+
+\[ G \left( \vec{r}, \vec{r}_0 \right) = G_{\infty} \left( \vec{r}, \vec{r}_0 \right) + g \left( \vec{r}, \vec{r}_0 \right).
+\]
+
+Po aplikaciji diferencialnega operatorja dobimo
+
+\[ \mathcal{L}_{\vec{r}} G \left( \vec{r}, \vec{r}_0 \right) = \delta \left( \vec{r}, \vec{r}_0 \right) + \mathcal{L}_{\vec{r}} g \left( \vec{r}, \vec{r}_0 \right) = \delta \left( \vec{r}, \vec{r}_0 \right),
+\]
+
+iz česar sledi pogoj za funkcijo \( g \)
+
+\[ \mathcal{L} g \left( \vec{r}, \vec{r}_0 \right) = 0.
+\]
+
+Druga možnost za funkcijo pa je
+
+\[ \left. g \left( \vec{r}, \vec{r}_0 \right) \right|_{\vec{r} \in \partial \mathcal{D}} = - \left. G_{\infty} \left( \vec{r}, \vec{r}_0 \right) \right|_{\vec{r} \in \partial \mathcal{D}}.
+\]
+
+Metode reševanja so
+
+- zrcaljenje (+ inverzija)
+- razvoj po lastnih funkcijah
+- direktno (lepljenje)
+- konformne preslikave v dveh dimenzijah.
+
+Posplošena Greenova formula je
+
+\[ \int\limits_{\mathcal{D}}^{} \left( u \nabla ^2 v - v \nabla ^2 u \right) \, \mathrm{d} V = \int\limits_{\partial \mathcal{D}}^{} \left( u \frac{\partial u}{\partial \vec{n}}  - v \frac{\partial u}{\partial \vec{n}} \right) \, \mathrm{d} S,
+\]
+
+kjer velja
+
+\[  \int\limits_{\mathcal{D}}^{} \left( u \nabla ^2 v - v \nabla ^2 u \right) \, \mathrm{d} V = \int\limits_{\mathcal{D}}^{} \left( u \mathcal{L} v - v \mathcal{L} u \right) \, \mathrm{d} V.
+\]
+
+Normala \( \vec{n} \) je normala, ki na robu domene kaže navzven.
+
+Če rešujemo problem oblike
+
+\[ \mathcal{L} u \left( \vec{r} \right) = f \left( \vec{r} \right),
+\]
+
+vstavimo v enačbo \( v \left( \vec{r}, \vec{r}_0 \right) = G \left( \vec{r}, \vec{r}_0 \right) \). Potem dobimo iz posplošene Greenove formule
+
+\begin{align*}
+  \int\limits_{\mathcal{D}}^{} \left[ u \left( \vec{r} \right) \mathcal{L}_{\vec{r}}  G \left( \vec{r}, \vec{r}_0 \right) - G \left( \vec{r}, \vec{r}_0 \right) \mathcal{L}_{\vec{r}} u \left( \vec{r} \right) \right] \, \mathrm{d} V &= \int\limits_{\partial \mathcal{D}}^{} \left[  u \left( \vec{r} \right) \frac{\partial G \left( \vec{r}, \vec{r}_0 \right)}{\partial \vec{n}_{\vec{r}}} - G \left( \vec{r}, \vec{r}_0 \right) \frac{\partial u \left( \vec{r} \right)}{\partial \vec{n}_{\vec{r}}}   \right] \, \mathrm{d} S \\
+\int\limits_{\mathcal{D}}^{} \left[ u \left( \vec{r} \right) \delta \left( \vec{r} - \vec{r}_0 \right) - G \left( \vec{r}, \vec{r}_0 \right) f \left( \vec{r} \right) \right] \, \mathrm{d} V &= \int\limits_{\partial \mathcal{D}}^{} \left[  u \left( \vec{r} \right) \frac{\partial G \left( \vec{r}, \vec{r}_0 \right)}{\partial \vec{n}_{\vec{r}}} \right] \, \mathrm{d} S.
+\end{align*}
+
+Opravimo zamenjavo \( \vec{r} \leftrightarrow \vec{r}_0 \) in \( G\left( \vec{r}, \vec{r}_0 \right)= G \left( \vec{r}_0 , \vec{r} \right) \) in dobimo enačbo
+
+\[ u \left( \vec{r} \right) = \int\limits_{\mathcal{D}}^{} G \left( \vec{r}, \vec{r}_0 \right) f \left( \vec{r}_0 \right) \, \mathrm{d} ^n \vec{r}_0 + \int\limits_{\partial \mathcal{D}}^{} \frac{\partial G \left( \vec{r}, \vec{r}_0 \right)}{\partial \vec{n}_{\vec{r}_0}} u \left( \vec{r}_0 \right) \, \mathrm{d} S_0
+\]
+** Neumannovi robni pogoji
+
+V primeru reševanja enačbe
+
+\[ \nabla ^2 u = f.
+\]
+
+je postopek malo drugačen.
+
+\begin{align*}
+  \int\limits_{\mathcal{D}}^{} \nabla ^2 u \left( \vec{r} \right) \, \mathrm{d} V &= \int\limits_{\mathcal{D}}^{}
+\end{align*}
+** Naloga xx
+
+Ta problem smo že reševali.
+#+begin_problem
+Imamo polktrak širine \( a \), ki se nahaja v ravnini \( zy \). Poltrak ima napetost \( U_0 \). Rešujemo Laplaceovo enačbo
+
+\[ \nabla ^2 u = 0,
+\]
+
+z robnimi pogoji
+
+\[ U \left( x = 0, y, z \right) = \begin{cases}
+                                    0 &; \left| y \right| > \frac{a}{2} \\
+                                    U_0 &; \left| y \right| \le \frac{a}{2}
+                                  \end{cases}
+\]
+#+end_problem
+
+Kot smo povedali že pri prejšnjem reševanju te naloge, je problem v translacijsko invarianten v \( z \) smeri oz. \( U = U(x, y) \).
+
+Naš problem je simetričen preko \( y \) osi, kar pomeni, da lahko rešujemo samo za \( x > 0 \). Potrebujemo Greenovo funkcijo \( G \left( \vec{r}, \vec{r}_0 \right) \) za polravnino.
+
+Greenova funkcija za omejeno območje bo z nastavkom oblike
+
+\[ G \left( \vec{r}, \vec{r}_0 \right) = G_{\infty} \left( \vec{r}, \vec{r}_0 \right) + g \left( \vec{r}, \vec{r}_0 \right).
+\]
+
+Za dan problem že poznamo, da je
+
+\[ G_{\infty} \left( \vec{r}, \vec{r}_0 \right) = \frac{1}{2 \pi} \ln \left| \vec{r} - \vec{r}_0 \right| .
+\]
+
+Iz teoretičenga uvoda sledi
+
+\[ \nabla_{\vec{r}} ^2 g \left( \vec{r}, \vec{r}_0 \right) = 0,
+\]
+
+iz česar sledi
+
+\[ \left. g \left( \vec{r}, \vec{r}_0 \right) \right|_{x = 0} = \left. G_{\infty} \left( \vec{r}, \vec{r}_0 \right) \right|_{x = 0}.
+\]
+
+Nalogo bomo reševali preko zrcaljenja. Zamislimo si, da imamo točko \( \vec{r}_0 \) na polravnini \( x > 0 \) z nekim nabojem. Točko prezrcalimo čez \( x = 0 \) in ji damo obraten naboj. Na meji \( x = 0 \) bo pogoj, da je \( \left. G \left( \vec{r}, \vec{r}_0 \right) \right|_{\vec{r} \in \partial \mathcal{D}} = 0 \). Iz tega sledi, da bo
+
+\[ g \left( \vec{r}, \vec{r}_0 \right) = - \frac{1}{2 \pi} \ln \left| \vec{r} - \vec{r}_0^{\ast} \right|.
+\]
+
+Koordinate točke \( \vec{r}_0^{\ast} \) so \( (- x_0, y_0) \), če je \( \vec{r}_0 = (x_0, y_0) \).
+
+Ko smo znotraj naše domene \( x > 0 \), bo vedno veljalo
+
+\[ \mathcal{L}_{\vec{r}} g \left( \vec{r}, \vec{r}_0 \right) = \delta \left( \vec{r} - \vec{r}_0 \right) = 0.
+\]
+
+Naša Greenova funkcija je tako oblike
+
+\begin{align*}
+  G \left( \vec{r}, \vec{r}_0 \right) &= \frac{1}{2 \pi} \ln \left| \vec{r} - \begin{bmatrix} x_{0} \\ y_{0} \end{bmatrix} \right| - \frac{1}{2 \pi} \ln \left| \vec{r} - \begin{bmatrix} -x_{0} \\ y_{0} \end{bmatrix} \right|\\
+&= \frac{1}{4 \pi} \ln \left( \frac{(x- x_0) ^2 + (y - y_0) ^2}{(x + x_0) ^2 + (y - y_0) ^2} \right).
+\end{align*}
+
+Zaradi Direchletovih pogojev \( \nabla ^2 u = f \left( \vec{r} \right) = 0 \) bo
+
+\[ \int\limits_{\mathcal{D}}^{} G \left( \vec{r}, \vec{r}_0 \right) f \left( \vec{r}_0 \right) \, \mathrm{d} ^2 \vec{r}_0  = 0.
+\]
+
+Ostane nam
+
+\[ u \left( \vec{r} \right) = \int\limits_{\partial D}^{} \frac{\partial G \left( \vec{r}, \vec{r}_0 \right)}{\partial \vec{n}_{\vec{r}_0}} u \left( \vec{r}_0  \right) \, \mathrm{d} S_0.
+\]
+
+Normala \( \vec{n} \) kaže izven domene, v našem polravninskem problem, je to \( \vec{n} = - \hat{e}_x \). Zapišemo
+
+\[ \frac{\partial }{\partial \vec{n}_{\vec{r}_{0}}}  = - \frac{\partial }{\partial x_{0}}.
+\]
+
+Naša meja območja pa je \( \mathrm{d} S_0 = \mathrm{d} y_0 \).
+
+Odvod Greenove funkcije po normali je enak
+
+\[ \frac{\partial G}{\partial x_{0}} = \frac{1}{\pi} \frac{- x}{x ^2 + (y - y_0) ^2}.
+\]
+
+Računamo torej integral
+
+\begin{align*}
+  u \left( \vec{r} \right) &= \int\limits_{- \infty}^{\infty} \frac{x}{\pi} \frac{1}{x ^2 + (y - y_0) ^2} U \left( \vec{r}_0 \right) \, \mathrm{d} y \\
+&= \int\limits_{- \frac{a}{2}}^{\frac{a}{2}} \frac{x}{\pi} \frac{1}{x + \left( y - y_0 \right) ^2} U_0 \, \mathrm{d} y
+\end{align*}
+
+Uvedemo spremenljivko \( z = \frac{y - y_0}{x} \) in dobimo
+
+\[ u \left( \vec{r} \right) = \int\limits_{\frac{y + \frac{a}{2}}{x}}^{\frac{y - \frac{a}{2}}{x}} \frac{1}{\pi} \frac{1}{1 + z ^2} U_0   \, \mathrm{d} z = - \frac{U_0}{\pi} \left( \mathrm{arctg} \left( \frac{y - \frac{a}{2}}{x} \right) - \mathrm{arctg } \left( \frac{y + \frac{a}{2}}{x} \right) \right)
+\]
