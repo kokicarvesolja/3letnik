@@ -318,8 +318,10 @@ Vrednosti koeficientov so torej
 #+begin_problem
 Imamo valj s polmerom \( a \) in rešujemo difuzijsko enačbo
 
-\[ \frac{\partial u}{\partial t}  = D \nabla ^2 u - \frac{1}{\tau} u.
-\]
+\begin{equation}
+\label{eq:12}
+ \frac{\partial u}{\partial t}  = D \nabla ^2 u - \frac{1}{\tau} u.
+\end{equation}
 
 z robnim pogojem \( u (r = a) = u_0 \).
 
@@ -334,12 +336,111 @@ b) časovno odvisna od notranjosti valja z začetnim robnim pogojem \( u (r, t =
 
 Iščemo stacionarno rešitev, kar pomeni, da se enačba poenostavi v
 
-\[ \nabla ^2 u = \frac{1}{\tau D} u, \ k = \frac{1}{\tau D}
-\]
+\begin{equation}
+\label{eq:13}
+ \nabla ^2 u = \frac{1}{\tau D} u, \ k = \frac{1}{\tau D}
+\end{equation}
+
 
 Rešitve so v tem primeru (zakaj?) modificirane Besslove funkcije
 
 \[ u(r) = AI_0 (kr) + BK_0 (kr).
 \]
 
-Zaradi neodvisnosti od kota je vrednosti indeksa \( m = 0 \). Ob upoštevanju robnih pogojev.
+Zaradi neodvisnosti od kota je vrednosti indeksa \( m = 0 \). Rešitev zunaj valja je
+
+\[ u(r) = B K_0 (kr),
+\]
+
+in iz robnega pogoja \( u(a) = u_0 \), da je vrednost koeficienta \( B = \frac{u_0}{K_0 (ka)} \). Analagono, določimo koeficient znotraj valja
+
+\[ u(r) = A I_0 (kr) \implies \ A = \frac{u_0}{I_0 (ka)}
+\]
+
+Funkciji se zaradi oblik zlepita na robu.
+*** Točka b)
+
+V primeru časovne odvisnosti znotraj valja imamo nehomogene robne pogoje. Takojšnja separacija ni v redu, saj moramo pogoje homogenizirati.
+
+Možni način homogenizacije bi bila uporaba nastavka
+
+\[ u (r, t) = R(r) T(t) + u_0,
+\]
+
+ki nam po vstavitvi v enačbo poda sledečo diferencialno enačbo
+
+\[ R \dot{T} = D \nabla ^2 R T - \frac{1}{\tau} RT - \frac{1}{\tau} u_0.
+\]
+
+Enačba je boljša, vendar tečna za reševanje.
+
+Namesto tega bomo uporabili sledeč nastavek
+
+\[ u (r, t) = R(r) T(t) + u_0 \frac{I_0 (kr)}{I_0 (ka)}.
+\]
+
+Nastavek vstavimo v difuzijsko enačbo in dobimo
+
+\[ R \dot{T} = D \nabla ^2 R T - \frac{1}{\tau} RT - \frac{1}{\tau} u_0 \frac{I_0 (kr)}{I_0 (ka )} + D \nabla ^2 I_0 (kr) \frac{u_0}{I_0 (ka)}.
+\]
+
+V zadnjih dveh členih prepoznamo enačbo \ref{eq:13}, kar pomeni, da se izničita. Separiramo spremenljivke in dobimo
+
+\[ \frac{\nabla ^2 R}{R} = \frac{1}{D} \frac{\dot{T}}{T} + \frac{1}{D \tau} = - \kappa ^2
+\]
+
+Diferencialno enačbo v času lahko rešimo
+
+\[ \dot{T} + \frac{1}{\tau} T = - D \kappa ^2 T \implies \dot{T} = -(\frac{1}{\tau} + D \kappa ^2) T ,
+\]
+
+katere rešitev je
+
+\[ T = C \exp \left\{ - \left( D \kappa ^2 + \frac{1}{\tau} \right) t \right\}.
+\]
+
+Diferencialna enačba v radialnem delu se glasi
+
+\[ \frac{\nabla ^2 R}{R } = - \kappa ^2.
+\]
+
+Splošna rešitev je oblike
+
+\[ R(r) = E J_0 (\kappa r) + F Y_0 (\kappa r).
+\]
+
+Divergence ni v središču valja, torej bo \( F = 0 \).
+
+Upoštevamo robni pogoj
+
+\begin{align*}
+  \left. u (r, t) \right|_{r = a} &= \left. \exp \left\{ - \left( D \kappa ^2 + \frac{1}{\tau} \right) t \right\} E J_0 (\kappar) \right|_{r = a} + u_0 \frac{I_0 (ra)}{I_0 (ra)} \\
+&= u_0.
+\end{align*}
+
+Preostane nam torej
+
+\[ E J_0 (\kappa a) = 0.
+\]
+
+Določimo ničle Besslovih funkcij
+
+\[ ka = \xi_n^{(0)}, \ n = 1, 2, 3, \ldots.
+\]
+
+Rešitev difuzijske enačbe bo tako
+
+\[ u (r, t) = \sum\limits_{n = 1}^{\infty} E_n \exp \left\{ - \left( D \kappa ^2 - \frac{1}{\tau} \right)t \right\} J_0 \left( \xi_n^{(0)} \frac{r}{a} \right) + u_0 \frac{I_0 (kr)}{I_0 (ar)}.
+\]
+
+Upoštevamo še začetni pogoj \( u(r, 0) = u_0 \).
+
+\[ u (r, 0) = \sum\limits_{n = 1}^{\infty} E_n J_0 \left( \xi_n^{(0)} \frac{r}{a} \right) + u_0 \frac{I_0 (kr) }{I_0 (ka)} = 0.
+\]
+
+Preko skalarnega produkta in množenja obeh strani enačbe z \( \int\limits_0^R J_0 \left( \xi_n^{(0)} \frac{r}{a} \right) r \, \mathrm{d} r \) lahko izluščimo vrednosti koeficientov \( E_n \).
+
+\begin{align*}
+  \int\limits_0^R \sum\limits_{n = 1}^{\infty} E_n J_0 \left( \xi_n^{(0)} \frac{r}{a} \right) ^2 r \, \mathrm{d}r &= \int\limits_0^R u_0 \left( 1 - \frac{I_0 (kr)}{I_0 (ka)} \right) J_0 \left( \xi_{n'}^{(0)} \frac{r}{a} \right) r \, \mathrm{d}r \\
+E_n &= \frac{2}{a} \frac{u_0 \int\limits_0^R \left( 1 - \frac{I_0 (kr)}{I_0 (ka )} \right) J_0 \left( \xi_n^{(0)} \frac{r}{a} \right) r \, \mathrm{d} r}{J_1 ^2 \left( \xi_n^{(0)} \frac{r}{a} \right)}.
+\end{align*}
