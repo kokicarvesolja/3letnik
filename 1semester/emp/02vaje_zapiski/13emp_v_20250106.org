@@ -1,0 +1,110 @@
+#+title: 13. vaje iz Elektromagnetnega polja
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Valovni vodnik iz dveh vzporednih plošč
+#+begin_problem
+
+#+end_problem
+
+V valovnem vodniku je širjenje ravnega elektromagnetnega vala v določeni smeri, ki jo določimo s prevodnimi mejami. Vodniki so prazni, včasih pa so lahko napolnjeni z dielektrikom.
+
+V primeru praznega vodnika se Mawxwellove enačbe glasijo
+
+\begin{align}
+  \nabla \cdot \vec{E} &= 0 \label{eq:max1} \\
+\nabla \times \vec{E} &= - \mu_0 \frac{\partial \vec{H}}{\partial t} \label{eq:max2}\\
+\nabla \cdot \vec{H} &= 0 \label{eq:max3} \\
+\nabla \times \vec{H} &= \epsilon_0 \frac{\partial \vec{E}}{\partial t} \label{eq:max4}
+\end{align}
+
+Z rotarizacijo enačbe \ref{eq:max1} dobimo valovni enačbi za električni tok in jakost magnetnega polja
+
+\begin{align*}
+  \nabla ^2 \vec{E} - \frac{1}{c_0 ^2} \frac{\partial ^2 \vec{E}}{\partial t ^2} &= 0 \\
+\nabla ^2 \vec{H} - \frac{1}{c_0 ^2} \frac{\partial ^2 \vec{H}}{\partial t ^2} &= 0
+\end{align*}
+
+V ravnem vodniku je smer širjenja v eni smer (v našem primeru v smeri \( z \)). Gostota naboja \( \vec{\rho} \) je pravokotna na smer širjenja neodvisno od koordinatnega sistem (kartezični, cilindrični).
+
+Ravni val v smeri \( z \) zapišemo z
+
+\[ \vec{E} \left( \vec{r}, t \right) = \vec{E} \left( \vec{\rho} \right) \exp \left\{ \mathrm{i} (kx - \omega t) \right\}.
+\]
+
+Laplaceov operator v cilindričnih koordinatah je
+
+\[ \nabla ^2 = \frac{\partial ^2 }{\partial z ^2} + \nabla_{\phi} ^2 = - k ^2 + \nabla_{\phi} ^2,
+\]
+
+kjer smo upoštevali drugi odvod po \( z \) ravnega vala. Vrednost drugega odvod po času \( t \) ravnega vala je \( - \omega ^2 \). Dobljene vrednosti vstavimo v valovno enačbo za električno polje
+
+\[ \left[ \nabla_{\phi} ^2 + \left( \frac{\omega ^2}{c_0 ^2} - k ^2 \right) \right] \vec{E} \left( \vec{\rho} \right) = \left[ \nabla_{\phi} ^2 + \kappa ^2 \right] \vec{E} = 0.
+\]
+
+Uvedli smo \( \kappa ^2 = \frac{\omega ^2}{c_0 ^2} - k ^2 \). Enačbi se reče amplitudna enačba.
+
+Amplitudno enačbo dobimo analogno tudi za magnetno polje
+
+\[ \left( \nabla_{\phi} ^2 + \kappa ^2 \right) \vec{H} = 0.
+\]
+
+Vsak vektor \( \vec{E} \) in \( \vec{H} \) imata v našem problem 3 komponente, kar pomeni, da imamo 6 enačb.
+** Točka a)
+
+Dokazujemo, da je dovolj izračunati \( E_z \) in \( H_z \), ostale komponente se izrazijo z njima. Za dokaz bomo uporabili enačbe \ref{eq:max2} in \ref{eq:max4}. Rezultata, ki nam bosta prav prišla sta tudi prva odvoda po času \( t \) in koordinati \( z \) ravnega vala.
+
+\[ \frac{\partial }{\partial z}  \vec{E}(\vec{r}, t) = \mathrm{i} k \quad \text{ in } \quad \frac{\partial }{\partial t} = - \mathrm{i} \omega.
+\]
+
+Izračunajmo sedaj rotor električnega polja:
+
+\[ \begin{bmatrix} \frac{\partial }{\partial x}   \\ \frac{\partial }{\partial y}  \\ \frac{\partial }{\partial z}  \end{bmatrix} \times \begin{bmatrix} E_{x} \\ E_{y} \\ E_{z} \end{bmatrix} = - \mu_0 \frac{\partial }{\partial t} \begin{bmatrix} H_{x} \\ H_{y} \\ H_{z} \end{bmatrix}.
+\]
+
+Dobimo
+
+\[ \begin{bmatrix} \frac{\partial E_{z}}{\partial y}  - \mathrm{i} k E_y \\ \mathrm{i} k E_x - \frac{\partial E_{z}}{\partial x}  \\ \frac{\partial E_{y}}{\partial x} - \frac{\partial E_{x}}{\partial y} \end{bmatrix} = \mathrm{i} \mu_0 \omega \begin{bmatrix} H_{x} \\ H_{y} \\ H_{z} \end{bmatrix}.
+\]
+
+Analogno dobimo tudi z magnetnim poljem, vendar različno predznačeno
+
+\[ \begin{bmatrix} \frac{\partial H_{z}}{\partial y}  - \mathrm{i} k H_y \\ \mathrm{i} k H_x - \frac{\partial H_{z}}{\partial x}  \\ \frac{\partial H_{y}}{\partial x} - \frac{\partial H_{x}}{\partial y} \end{bmatrix} = - \mathrm{i} \epsilon_0 \omega \begin{bmatrix} E_{x} \\ E_{y} \\ E_{z} \end{bmatrix}.
+\]
+
+Imamo sklopljene enačbe in lahko zapišemo
+
+\[ H_x = \frac{1}{\mathrm{i} \mu_0 \omega} \left( \frac{\partial E}{\partial y}  - \mathrm{i} k E_y \right)
+\]
+
+Dano vstavimo v drugo enačbo magnetnega polja
+
+\[ \frac{1}{\mu_0} \frac{k}{\omega} \left( \frac{\partial E_{z}}{\partial y} - \mathrm{i} k E_y \right) - \frac{\partial H_{z}}{\partial x}  = - \mathrm{i} \epsilon_0 \omega E_y
+\]
+
+Izpostavimo iz dane enačbe \( E_y \) in dobimo
+
+\[ E_y = \frac{\frac{\partial H_{z}}{\partial x}  - \frac{1}{\mu_0} \frac{k}{\omega} \frac{\partial E_{z}}{\partial y} }{\mathrm{i \epsilon_0 \omega \left( 1 - c_0 ^2 \frac{k ^2}{\omega ^2} \right)}}
+\]
+
+Po množenju števca in imenovalca z \( \frac{\omega ^2}{c_0 ^2} \) in nekaj krajšanja dobimo rezultat
+
+\[ E_y = \frac{\mathrm{i}}{k ^2 - \frac{\omega ^2}{c_0 ^2}} \left( \mu \omega_0 \frac{\partial H_{z}}{\partial x} - k \frac{\partial E_{z}}{\partial y}  \right)
+\]
+
+Analogno lahko tudi \( E_x \) izrazimo
+
+\[ E_x = \frac{\mathrm{i}}{k ^2 - \frac{\omega ^2}{c_0 ^2}} \left( - \omega \mu_0 \frac{\partial H_{z}}{\partial y}  - k \frac{\partial E_{z}}{\partial x}  \right).
+\]
+
+Enačbi za \( x \) in \( y \) komponento magnetnega polja pa sta
+
+\[ H_x = \frac{\mathrm{i}}{k ^2 - \frac{\omega ^2}{c_0 ^2}} \left( \omega \epsilon_0 \frac{\partial E_{z}}{\partial y} - k \frac{\partial H_{z}}{\partial x}  \right) \quad \text{ in } \quad H_x = \frac{\mathrm{i}}{k ^2 - \frac{\omega ^2}{c_0 ^2}} \left( - \omega \epsilon_0 \frac{\frac{\partial E_{z}}{\partial x} }{\partial y} - k \frac{\frac{\partial H_{z}}{\partial x} }{\partial x}  \right)
+\]
+
+Robni pogoji, ki jih potrebujemo sledijo iz enačb \ref{eq:max2} in \ref{eq:max3}. Kot že večkrat se poslužimo kvadrata ali pravokotnika na meji domene, ki jo tesno objemata.
