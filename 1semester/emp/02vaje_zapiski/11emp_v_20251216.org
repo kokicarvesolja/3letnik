@@ -144,12 +144,12 @@ Iz površinskega naboja sledi, da so v rešitvah potenciala \( l = 1 \). Nastave
 
 Iz robnega pogoja za zveznost pri \( r = a \), dobimo enakost \( B_1 = a ^3 A_1 \). Drugi robni pogoj pa je Gaussov izrek na površini
 
-\[ \frac{\sigma_v}{\epsilon_0} = \left. E_{zun}^{\perp } \right_{r = a} - \left. E_{not }^{\perp } \right_{r = a}.
+\[ \frac{\sigma_v}{\epsilon_0} = \left. E_{zun}^{\perp } \right|_{r = a} - \left. E_{not }^{\perp } \right|_{r = a}.
 \]
 
 Upoštevamo \( \vec{E} = - \nabla U \) in dobimo enačbo
 
-\[ \frac{\sigma_v}{\epsilon_0} = \left \partial_r U_{zun } \right_{r = a} + \left. \partial_r U_{not } \right|_{r = a},
+\[ \frac{\sigma_v}{\epsilon_0} = \left. \partial_r U_{zun } \right|_{r = a} + \left. \partial_r U_{not } \right|_{r = a},
 \]
 
 iz česar po odvajanju in prvega robnega pogoja sledi \( A_1 = \frac{P}{3 \epsilon_0} \).

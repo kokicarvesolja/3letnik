@@ -94,8 +94,10 @@ Izpostavimo iz dane enačbe \( E_y \) in dobimo
 
 Po množenju števca in imenovalca z \( \frac{\omega ^2}{c_0 ^2} \) in nekaj krajšanja dobimo rezultat
 
-\[ E_y = \frac{\mathrm{i}}{k ^2 - \frac{\omega ^2}{c_0 ^2}} \left( \mu \omega_0 \frac{\partial H_{z}}{\partial x} - k \frac{\partial E_{z}}{\partial y}  \right)
-\]
+\begin{equation}
+\label{eq:1}
+ E_y = \frac{\mathrm{i}}{k ^2 - \frac{\omega ^2}{c_0 ^2}} \left( \mu \omega_0 \frac{\partial H_{z}}{\partial x} - k \frac{\partial E_{z}}{\partial y}  \right)
+\end{equation}
 
 Analogno lahko tudi \( E_x \) izrazimo
 
@@ -108,3 +110,135 @@ Enačbi za \( x \) in \( y \) komponento magnetnega polja pa sta
 \]
 
 Robni pogoji, ki jih potrebujemo sledijo iz enačb \ref{eq:max2} in \ref{eq:max3}. Kot že večkrat se poslužimo kvadrata ali pravokotnika na meji domene, ki jo tesno objemata.
+
+\[ \left. E_{\parallel} \right|_{\partial } = 0 \quad \text{ in } \quad \left. H_{\perp} \right_{\partial } = 0
+\]
+
+Za lažje reševanje si izberemo, da je \( E_z \ne 0 \) in \( H_z = 0 \) ali obratno. V prvem primeru je \( H \) pravokoten na smer širjenja in pravimo, da imamo transverzalni magnetni način valovanja (TM). V drugem primeru je električno polje pravokotno na smer širjenja in imamo transverzalni električni način valovanja.
+
+Vedno mora biti vsaj eden izmed \( z \) komponent električnega ali magnetnega polja mora biti različen od nič.
+** Točka b)
+
+V navodili naloge piše, da imamo transverzalni magnetni način valovanja, iz česar sledi, da \( E_z \ne 0 \) in ga želimo izračunati.
+
+V dveh enačbah za \( E_{x, y} \) in \( H_{x, y} \) se pojavita kombinacija tega, da imamo \( H_z \), katera vrednost je \( 0 \) in odvod po \( y \) električnega polja \( E_z \), ki je tudi ničeln. Iz enačbe \ref{eq:1} torej sledi \( E_y = 0 \) in analogno \( H_x = 0 \).
+
+Neničelne komponente so \( E_{z, x} \) in \( H_y \).
+
+Rešujemo enačbo
+
+\[ \left( \frac{\partial ^2 }{\partial z ^2} + \kappa ^2 \right) E_z = 0
+\]
+
+z robnimi pogoji
+
+\[ \left. E_z \right|_{x = 0} = \left. E_z \right|_{x = a} = 0.
+\]
+
+Splošna rešitve amplitudne enačbe je
+
+\[ E_z (x) = A \sin (\kappa x)  + B \cos (\kappa x)
+\]
+
+in iz robni pogojev sledi \( B = 0 \) ter
+
+\[ \kappa_n = \frac{n \pi}{a}, \, n = 1,2,3, \ldots.
+\]
+
+\( n \ne 0 \), saj bi sicer imeli rešitev - konstanto, vendar ne bi bila ciklična, kar pa mora biti.
+
+Rešitev za en \( n \) je
+
+\[ E_z (x) = E_{z_0} \sin (\kappa_n x),
+\]
+
+splošna rešitev pa je linearna kombinacija.
+
+S poznavanjem vrednosti, ki jih lahko \( \kappa \) zasede, ter relacijo od prej dobimo
+
+\[ \kappa ^2 = \left( \frac{n \pi}{a} \right) ^2 = \frac{\omega ^2}{c_0 ^2} - k ^2.
+\]
+
+Posledično lahko izrazimo disperzijsko relacijo, kjer pa ima vsaka vrednost \( n \) svojo vejo
+
+\[ \omega = c_0 \sqrt{\left( \frac{n\pi}{a} \right)^2 + k ^2},
+\]
+
+ki je podobna tisti iz plazme.
+
+Intervalu \( [0, \frac{c_0 \pi}{a}] \) se reče frekvenčna reža, kar je območje \( \omega \), v katerem širjenje valovanja ni mogoče.
+
+Če si izberemo frekvenco \( \omega \) na npr. intervalu \( \left( 3c_0 \frac{\pi}{a}, 4c_0 \frac{\pi}{a} \right) \), bo naše valovanje sestavljeno iz kombinacije treh različnih valovanj, kar pa ni dobro za našo definiranost polj. Posledično intervalu \( \left[ c_0 \frac{\pi}{a}, 2c_0 \frac{\pi}{a} \right) \) pravimo uporabni pas, saj imamo samo en valovni vektor \( k \) za dano frekvenco \( \omega \).
+
+Širini intervali
+
+\[ \Delta \omega = 2 c_0 \frac{\pi}{a} - c_0 \frac{\pi}{a} = c_0 \frac{\pi}{a}
+\]
+
+pravimo pasovna širina.
+** Točka c)
+
+Zanima nas impedanca valovnega vodnika, ki je definirana kot
+
+\[ Z = \frac{E_{\perp }}{H_{\parallel}}.
+\]
+
+Za naš primer to pomeni
+
+\[ Z = \frac{E_x}{H_y} = \frac{- \omega \mu_0 \frac{\partial H_{z}}{\partial y} - k \frac{\partial E_{z}}{\partial x}  }{- \omega \epsilon_0 \frac{\partial E_{z}}{\partial x} - k \frac{\partial H_{z}}{\partial y} } = \frac{k}{\omega \epsilon_0}
+\]
+
+\( k \) lahko nadomestimo z \( \omega \) preko disperzijske relacije
+
+\[ k = \sqrt{\frac{\omega ^2}{c_0 ^2} - \left( \frac{n \pi}{a} \right) ^2}
+\]
+
+in dobimo impedančno odvisnost od frekvence
+
+\[ Z (\omega) = \frac{1}{\omega \epsilon_0} \sqrt{\frac{\omega ^2}{c_0 ^2} - \left( \frac{n \pi}{a} \right) ^2} = \frac{1}{c_0 \epsilon_0} \sqrt{1 -  \left( \frac{c_0 n \pi}{a \omega} \right) ^2 } = Z_0 \sqrt{1 - \frac{\omega_n ^2}{\omega ^2} }.
+\]
+
+\( Z_0 \) je impedanca vakuuma, ki jo izračunamo preko
+
+\[ Z_0 = \frac{1}{c_0 \epsilon_0} = \sqrt{\epsilon_0 \mu_0 \frac{1}{\epsilon_0 ^2}} = \sqrt{\frac{\mu_0}{\epsilon_0}} = 376  \Omega.
+\]
+
+V korenu prepoznamo, da so to vrednosti, ki jih lahko zasedajo naše frekvence valovanja
+
+\[ \omega_n = \frac{c_0 n \pi}{a}.
+\]
+
+Za uporabni pas, kjer \( n = 1 \) velja
+
+\[ Z(\omega) = Z_0 \sqrt{1 - \frac{\omega_1 ^2}{\omega ^2}}.
+\]
+** TE način
+
+V tem primeru velja, da so neničelne vrednosti \( E_y \) in \( H_{z, x} \).
+
+Amplitudna enačba je tako
+
+\[ \left( \frac{\partial ^2 }{\partial x ^2}  + \kappa ^2 \right) H_z (x) = 0
+\]
+
+s splošno rešitvijo
+
+\[ H_z (x) = A \sin (\kappa x) + B \cos (\kappa x).
+\]
+
+Hkrati imamo tudi robni pogoj
+
+\[ \left. H_{\perp } \right|_{\partial} = 0 \implies H_x (0) = \frac{\partial H_{z}}{\partial x} (0) = H_x (a) = \frac{\partial H_{z}}{\partial x} (a) = 0
+\]
+
+Zgornjima odvodoma pravimo /normalni odvod/ in velja za \( \vec{H} \) v primerih vseh valovnih vodnikov. Dobimo enkaost, da je \( A = 0 \)  ter
+
+\[ \sin (\kappa a) = 0 \implies \kappa_n \frac{n \pi}{a}, \, n = 1, 2, 3, \ldots.
+\]
+
+Ponovno dobimo enako disperzijsko relacijo \( \omega(k) \). Impedanca je v tem primeru definirana kot
+
+\[ Z = \frac{E_{\parallel}}{H_{\perp }} = \frac{E_y}{H_x} = \frac{Z_0}{\sqrt{1 - \frac{\omega_n ^2}{\omega ^2}}} .
+\]
+
+Graf impedance je prezrcaljen čez premico, ki jo ustvari \( Z_0 \).
