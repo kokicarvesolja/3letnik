@@ -108,5 +108,111 @@ Preostane nam samo
 Vstavimo v enačbo Greenovo funckijo, ki smo jo izpeljali in dobimo
 
 \begin{align*}
-  T(x, t)
+  T(x, t) &= \frac{1}{\sqrt{4 \pi D t}} \sum\limits_{n = - \infty}^{\infty} \int\limits_0^a T_0 (x_0) \left[ \exp \left\{ - \frac{(x - x_0 - 2na) ^2}{4 D t}\right\} - \exp \left\{ - \frac{(x + x_0 - 2na) ^2}{4 D t} \right\}  \right]\, \mathrm{d} x_0
 \end{align*}
+** Valovna enačba
+
+Rešujemo valovno enačbo za \( c = 1 \)
+
+\[ \nabla ^2 u = \frac{\partial ^2 }{\partial t ^2} u.
+\]
+
+Definicija Greenove funkcije je še zmeraj ekvivalentna prejšnji
+
+\[ \left( \frac{\partial ^2 }{\partial t ^2} - \nabla ^2 \right) G \left( \vec{r} - \vec{r}_0, t - t_0 \right) = \delta \left( \vec{r} - \vec{r}_0, t - t_0 \right) .
+\]
+
+Preko Fourierove transformacije dobimo
+
+\[ \left( - \omega ^2 +  k ^2 \right) G \left( \vec{k}, \omega \right) = \frac{1}{\sqrt{2 \pi}^{n + 1}}.
+\]
+
+Obratna Fourierova transformacija pa je
+
+\[ G \left( \vec{r}, t \right) = - \frac{1}{\sqrt{2 \pi}^{n + 1}} \int\limits_{\mathbb{R} ^n}^{} \, \mathrm{d} ^n \vec{k} \int\limits_{\mathbb{R} ^n}^{} \frac{1}{\omega ^2 - k ^2} \exp \left\{ \mathrm{i} \vec{k} \vec{r} - \mathrm{i}\omega t\right\}  \, \mathrm{d} \omega.
+\]
+
+Naš integral ime pole v \( \omega = \pm k \).
+
+Integral bomo ponovno izvrednotili preko izreka o residuih. Zamislimo si zaključeno zanko, ki je sestavljena iz dveh manjših krožnic polmera \( r \to 0 \), ki obkrožita pola na realni osi, premic, ki povezuje polkrožnici, ter večja polkrožnico na negativni imaginarni ravnini z radijem \( R \to \infty \). Hassani diskutira, kako izbira izogibanja pola s krožnico (ali gremo po pozitivni ali negativni polravnini), vpliva na Greenovo funkcijo.
+
+Sami se bomo lotili malo drugačnega postopka. Gremo v prostor \( \vec{r}, \omega \). Definicija Greenove funkcije je potem
+
+\[ \left( - \frac{\omega ^2}{c ^2} - \nabla ^2 \right) G \left( \vec{r}, \omega \right) = \frac{1}{\sqrt{2 \pi}} \delta \left( \vec{r} \right).
+\]
+
+Po premetavanju elementov dobimo obliko Helmholtzove enačbe
+
+\[ \left( \nabla ^2 + \frac{\omega ^2}{c ^2} \right) G \left( \vec{r}, \omega \right) \cdot \left( - \sqrt{2\pi} \right) = \delta \left( \vec{r} \right) .
+\]
+
+V treh dimenzijah je rešitev, ki jo poznamo
+
+\[ G \left( \vec{r}, \omega \right) = \frac{1}{4 \pi \sqrt{2 \pi}} \frac{1}{r} \exp \left\{ \pm \mathrm{i} \frac{\omega}{c} r \right\}.
+\]
+
+Na rešitvi izvedemo obratno Fourierovo transformacijo
+
+\begin{align*}
+  G \left( \vec{r}, t \right) &= \frac{1}{4 \pi 2 \pi r} \int\limits_{}^{} \exp \left\{ \mathrm{i} k r - \mathrm{i} \omega t \right\} \, \mathrm{d} \omega \\
+&= \frac{1}{4 \pi 2 \pi r} \int\limits_{}^{} \exp \left\{ \omega \mathrm{i} \left( \pm \frac{r}{c} - t \right) \right\} \, \mathrm{d} \omega \\
+&= \frac{1}{4 \pi r} \delta \left( \pm \frac{r}{c} - t \right) \\
+&= \frac{1}{4 \pi r} \delta \left( \pm \frac{r}{c} - t \right)
+\end{align*}
+
+Poudarimo ponovno, da je to rešitev v treh dimenzijah. Rešitvi v eni in dveh dimenzijah sta drastično različni od izračunane.
+
+\[
+\begin{array}{|c|c|c|} \hline
+\text{realni} p & k / \omega & \\ \hline
+\delta \left( \frac{r}{c} - t \right) & \exp \left\{ \mathrm{i} (k x - \omega t )\right\} & \text{retardirana G. f.} \\ \hline
+\delta \left( - \frac{r}{c} - t \right) & \exp \left\{ \mathrm{i} (- kx - \omega t) \right\} & \text{ avansirana G. f.} \\ \hline
+\end{array}
+\]
+
+Avansirana G. f. pravi, da se valovanja širi nazaj v času. Večino časa bomo uporabljali Greenovo funkcijo nazaj v času.
+
+Za enačbo
+
+\[ \left( \frac{1}{c ^2} \frac{\partial ^2 }{\partial t ^2} - \nabla ^2 \right) u \left( \vec{r}, t \right) = f \left( \vec{r}, t \right)
+\]
+
+je posplošena Greenova funkcija
+
+\begin{align*}
+  u \left( \vec{r}, t \right) = & \int\limits_0^t \, \mathrm{d} t_0 \int\limits_{\mathcal{D}}^{} \, \mathrm{d} ^n \vec{r}_0  G\left( \vec{r}, \vec{r}_0, t, t_0 \right) f \left( \vec{r}_0 t_0 \right) \\
+&+ \int\limits_{\mathcal{D}}^{} \left[ \frac{\partial u}{\partial t}  \left( \vec{r}_0, 0 \right) G \left( \vec{r}, \vec{r}_0, t, 0 \right) - u \left( \vec{r}_0, 0 \right) \frac{\partial }{\partial t} \left( \vec{r}, \vec{r}_0, t, 0 \right) \right] \\
+&+ \int\limits_0^t \, \mathrm{d} t_0 \int\limits_{\partial \mathcal{D}}^{} \mathrm{d}^{n - 1} S_0 \left[  \frac{\partial }{\partial \vec{n}_{0}} u \left( \vec{r}_0, t_0  \right) G \left( \vec{r}, \vec{r}_0, t, t_0 \right) - u \left( \vec{r}_0 , t_0 \right)  \frac{\partial }{\partial \vec{n}_{0}} G \left( \vec{r}, \vec{r}, t, t_0 \right) \right]
+\end{align*}
+** Naloga yy (Huygensovo načelo)
+#+begin_problem
+Huygensovo načelo pravi, da je vsaka točka v valovni fronti svoj izvor valovanja. Rešujemo valovno enačbo
+
+\[ \nabla ^2 u = \frac{1}{c ^2} \frac{\partial ^2 }{\partial t ^2} u
+\]
+
+z robnimi pogoji
+
+\[ u (x, y, z = 0, t) = F9z) \delta(x) \delta(y),
+\]
+
+in začetnimi pogoji \( u (t = 0 )= 0  \) ter \( \partial_t u (t = 0)= 0 \).
+
+Naša domena je torej polravnina za \( z> 0 \).
+#+end_problem
+
+Greenovo funkcijo bomo zapisali kot vsoto dveh Greenovih funkcij na neskončnem območju prek zrcaljenja. Naj bo \( \vec{r} = (x, y, z) \) poljubna točka na polprostoru \( z > 0 \) in naj bo \( \vec{r}^{\, \ast} = (x, y, -z) \) točka \( \vec{r} \) zrcaljena čez premico \( z = 0 \).
+
+Greenovo funkcijo bomo zapisali z retardirano Greenovo funkcijo, saj imamo valovanje, ki se širi naprej v času. Torej
+
+\begin{align*}
+  G \left( \vec{r}, \vec{r}_0, t, t_0 \right) &= G_{ \infty} \left( \vec{r}, \vec{r}_0, t, t_0 \right) - G_{\infty} \left( \vec{r}, \vec{r}_0^{ \, \ast}, t, t_0 \right) \\
+&= \frac{1}{4 \pi \left| \vec{r} - \vec{r}_0 \right|} \delta \left( + \frac{\left| \vec{r} - \vec{r}_0 \right|}{c} - \left( t - t_0 \right) \right) - \frac{1}{4 \pi \left| \vec{r} - \vec{r}_0^{ \, \ast} \right|} \delta \left( \frac{\left| \vec{r} - \vec{r}_0^{\, \ast} \right|}{c} - (t - t_0) \right)
+\end{align*}
+
+Zaradi začetnih pogojev in robnih pogojev (razmisli, kateri integral v posplošeni Greenovi formuli se zakaj izniči) nam preostane
+
+\[ u \left( \vec{r}, t \right) = \int\limits_0^t  \left[ - u \left( \vec{r}_0, t_0 \right) \frac{\partial }{\partial \vec{n}_0}  G \left( \vec{r}, \vec{r}_0, t, t_0 \right) \right]
+\]
+
+Normala zmeraj kaže ven iz območja, torej bo \( \vec{n}_0 = - \hat{e}_z \) in posledično \( \frac{\partial }{\partial \vec{n}_{0}} = - \frac{\partial }{\partial z}  \). Diferencial površine zapišemo z \( \mathrm{d} S = \mathrm{d} x \mathrm{d} y \).
