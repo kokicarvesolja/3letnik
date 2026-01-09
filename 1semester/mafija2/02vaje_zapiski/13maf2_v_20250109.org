@@ -1,0 +1,112 @@
+#+title: 13. vaje iz Matematične fizike - nadomeščanje 30. 12. 2025
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Greenove funkcije
+
+[teorija]
+
+Rešujemo enačbo v eni dimenziji
+
+\[ \left( \frac{\partial }{\partial t} - \frac{\partial ^2 }{\partial x ^2}  \right) G \left( x - x_0, t - t_0 \right) = \delta (x - x_0 ) \delta(t - t_0).
+\]
+
+Greenovo funkcijo lahko označimo tudi z \( G \left( x, x_0, t ,t_0 \right) \). Za \( x_0 = 0 \) in \( t_0 \) rešujemo enačbo
+
+\[ \left( \frac{\partial }{\partial t}  - \frac{\partial ^2 }{\partial x ^2}  \right)G (x, t) = \delta(x) \delta(t).
+\]
+
+Reševanje sedaj predstavimo v Fourierov prostor preko Fourierove transformacije in sedaj imamo enačbo
+
+\[ \left( - \mathrm{i} \omega + k ^2  \right) G (k , \omega) = \frac{1}{2 \pi}.
+\]
+
+Greenova funkcija v \( k, \omega \) prostoru je tako
+
+\[ G (k, \omega) = \frac{\mathrm{i}}{2 \pi} \frac{1}{\omega + \mathrm{i} k ^2}.
+\]
+
+Zanima pa nas Greenova funkcija v prostor \( x, t \), kar pomeni, da moramo narediti inverzno Fourierovo transformacijo
+
+\[ G (x, t) = \frac{\mathrm{i}}{\left( 2 \pi \right) ^2} \int\limits_{\mathbb{R} ^2}^{} \frac{1}{\omega + \mathrm{i} k ^2} \exp \left\{ \mathrm{i }k x - \mathrm{i} \omega t \right\} \, \mathrm{d} k \, \mathrm{d} \omega .
+\]
+
+Ta integral bomo rešili s pomočjo Cauchyjevega izreka in izreka o residuih, ki ima obliko
+
+\[ 2 \pi \mathrm{i }I_{\gamma} (w) f(w) = \oint\limits_{\gamma}^{} \frac{f(z)}{z - w} \, \mathrm{d} z,
+\]
+
+kjer je \( \gamma \) zaključena zanka in \( I_{\gamma} \) označuje ovojno število in je odvisno od orientacijo.
+
+Integral bomo najprej izračunali za \( \omega \). Želimo izvrednotiti integral
+
+\[ \int\limits_{-\infty}^{\infty} \frac{1}{\omega + \mathrm{i} k ^2} \exp \left\{ - \mathrm{i} \omega t \right\}  \, \mathrm{d} \omega.
+\]
+
+Zamislimo si kompleksno ravnino. Naš integral poteka po realni osi, ki je abscisa. Imamo dve možnosti za zaključitev zanke v neskončnosti. Za čas \( t < 0 \) bomo vzeli polkrožnico, katere radij \( R \) gre proti \( \infty \) in se nahaja na pozitivni imaginarni ravnini, saj gre v tem primeru eksponent v integralu proti \( 0 \) z večanjem radija \( R \). Z zaključeno zanko ne zajamemo nobenega pola, kar pomeni, da je vrednost željenega integrala \( 0 \).
+
+Za čas \( t > 0 \) pa si izberemo pokrožnico z enakim radijem \( R \to \infty \), ki pa se nahaja v negativni imaginarni polravnini. S tem tudi zaobjamemo pol, ki se nahaja pri \( \omega = - \mathrm{i}k ^2  \), vendar je ovojno število \( I_{\gamma} = -1 \), saj je negativno orientirana zanka. Za negativen čas bi integral po tej polkrožnici divergiral.
+
+Torej
+
+\[ \int\limits_{- \infty}^{\infty} \frac{1}{\omega + \mathrm{i}k ^2} \exp \left\{ - \mathrm{i} \omega t \right\} \, \mathrm{d} \omega = \begin{cases}
+                                                                                                                                        0 &; t < 0 \\
+                                                                                                                                        -2 \pi \mathrm{i} \exp \left\{ - k ^2 t \right\} &; t > 0
+                                                                                                                                        \end{cases} = H (t) 2 \pi \mathrm{i} \exp \left\{ - k ^2 t \right\}
+\]
+
+Rešitev v koordinati \( k \) pa je
+
+\begin{align*}
+  G (x, t) &= \frac{1}{2 \pi} H(t) \int\limits_{\mathbb{R}}^{} \exp \left\{ - k ^2 t + \mathrm{i} k x \right\} \, \mathrm{d} k \\
+&= \frac{1}{\sqrt{4 \pi t}} \exp \left\{ - \frac{x ^2}{4 t} \right\} H(t).
+\end{align*}
+
+Greenova funkcija v \( n \)-dimenzijah in na neskončnem območju je tako
+
+\[ G_{\infty}  \left( \vec{r}, \vec{r}_0, t, t_0 \right) = \left[ 4 \pi D (t - t_0) \right] ^{-\frac{n}{2}}  \exp \left\{ - \frac{\left| \vec{r} - \vec{r}_0 \right| ^2}{ 4 D (t - t_0)} \right\} H(t - t_0).
+\]
+
+Posplošena Greenova formula za [dopolni]
+
+en člen je rešitev, en zajame začetni pogoj, drugi člen pa robne pogoje.
+** Naloga xx
+#+begin_problem
+Rešujemo difuzijo v eni dimenziji na intervalu \( [0, a] \) z začetnim pogojem \( T(x, t = 0)= T_0 \) ter robna pogoja \( T(0, t) = T(a, t) = 0 \).
+#+end_problem
+
+Uporabili bomo Greenovo funkcijo na neskončnem območju, ki jo pretvorimo na končno območje preko zrcaljenja.
+
+Za poljubno točko \( x_0 \in [0, a] \) prezrcalimo preko točke \( x_0 \), ki poskrbi za \( 0 \) Greenove funkcije v meji \( x = 0 \). To bo točka \( x = - x_0 \). Potrebujemo tudi, da je Greenova funkcija na meji \( x = a \). To bo točka \( x = 2a - x_0 \). Hkrati pa potrebujemo tudi točko, ki bo točko \( x = - x_0 \) na meji prezrcalila v \( 0 \). To bo točka \( x = 2a + x_0 \). Novi pridobljeni točki se morata ponovno slikati v meji na nič, kar dosežemo s točka \( x_+ = - 2a + x_0 \) in \( x_- = -2a - x_0 \). Prva slika točko \( x = 2a + x_0 \), druga slika točko \( x = 2a - x_0 \).
+
+Opazimo, da imamo zaporedje
+
+\begin{align*}
+  x_{0, n}^+ &= x_0 + 2 na \\
+x_{0, n}^0 &= -x_0 + 2na,
+\end{align*}
+
+kjer je \( n \in \mathbb{Z} \).
+
+Greenova funkcija je potem
+
+\[ G \left( x, x_0, t, t_0 \right) = \sum\limits_n^{} \left[ G_{\infty} \left( x, x_0 + 2n a, t t_0 \right) - G_{\infty} \left( x, -x_0 + 2na, t, t_0 \right) \right]
+\]
+
+Sedaj vzamemo posplošeno Greenovo formulo za difuzijo, kjer velja \( f(\vec{r}_0, t_0) = 0 \). Na \( \partial D \) je Greenova funkcija \( G \left( \vec{r}, \vec{r}_0, t, t_0 \right) = 0 \) in iz robni pogojev sledi, da je \( T \left( \vec{r}_0, t \right) = 0 \).
+
+Preostane nam samo
+
+\[ T \left( x, t \right) = \int\limits_0^a T_0 (x_0) G \left( x, x_0, t, 0 \right) \, \mathrm{d} x_0.
+\]
+
+Vstavimo v enačbo Greenovo funckijo, ki smo jo izpeljali in dobimo
+
+\begin{align*}
+  T(x, t)
+\end{align*}
