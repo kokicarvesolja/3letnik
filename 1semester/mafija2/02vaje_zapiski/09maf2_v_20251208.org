@@ -305,7 +305,8 @@ Za izluščitev koeficienta bomo uporabili sledeča skalarna produkta
 Pri skalarnem produktu Besslovih funkcij smo upoštevali še dodano utež \( r \). Zgornjo enakost torej pomnožimo z \( \int\limits_0^{R_0} \int\limits_0^{2 \pi} J_{m'} \left( \xi_{n'}^{(m')} \frac{r}{R_0} \right) \cos (m' \phi) \cdot r \, \mathrm{d} r \mathrm{d} \phi \) in dobimo
 
 \begin{align*}
-  c k_{m'n'} C_{m' n'} \int\limits_0^{R_0} \int\limits_0^{2 \pi} \left( J_{m'} \left( \xi_{n'}^{(m')} \frac{r}{R_0} \right) \right) ^2 \cos ^2 (m' \phi) r \, \mathrm{d} r \, \mathrm{d} \phi &= \int\limits_0^{R_0} \int\limits_0^{2\pi} \delta (r - a) \delta(\phi) \frac{p_0}{\mu_0 r} r J_{m'} \left( \xi_{n'}^{(m')} \frac{r}{R} \right) \cos (m' \phi) \, \mathrm{d} r \, \mathrm{d} \phi \\
+  c k_{m'n'} C_{m' n'} \int\limits_0^{R_0} \int\limits_0^{2 \pi} \left( J_{m'} \left( \xi_{n'}^{(m')} \frac{r}{R_0} \right) \right) ^2 \cos ^2 (m' \phi) r \, \mathrm{d} r \, \mathrm{d} \phi &= \\
+ \int\limits_0^{R_0} \int\limits_0^{2\pi} \delta (r - a) \delta(\phi) \frac{p_0}{\mu_0 r} r J_{m'} \left( \xi_{n'}^{(m')} \frac{r}{R} \right) \cos (m' \phi) \, \mathrm{d} r \, \mathrm{d} \phi &= \\
 c k_{m' n'} C_{m' n'} \frac{R ^2}{2} J_{m' + 1} \left( \xi_{n'}^{(m')} \right) ^2 \pi &= J_{m'} \left( \xi_{n'}^{(m')} \frac{a}{R} \right) \cos (m' \cdot 0) \frac{p_0}{\mu_0} \\
  &= J_{m'} \left( \xi_{n'}^{(m')} \frac{a}{R_0} \right) \frac{p_0}{\mu_0}
 \end{align*}
@@ -414,7 +415,7 @@ Divergence ni v središču valja, torej bo \( F = 0 \).
 Upoštevamo robni pogoj
 
 \begin{align*}
-  \left. u (r, t) \right|_{r = a} &= \left. \exp \left\{ - \left( D \kappa ^2 + \frac{1}{\tau} \right) t \right\} E J_0 (\kappar) \right|_{r = a} + u_0 \frac{I_0 (ra)}{I_0 (ra)} \\
+  \left. u (r, t) \right|_{r = a} &= \left. \exp \left\{ - \left( D \kappa ^2 + \frac{1}{\tau} \right) t \right\} E J_0 (\kappa r) \right|_{r = a} + u_0 \frac{I_0 (ra)}{I_0 (ra)} \\
 &= u_0.
 \end{align*}
 

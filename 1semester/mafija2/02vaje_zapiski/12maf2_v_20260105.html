@@ -1,0 +1,841 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-01-11 ned 18:22 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>12. vaje iz Matematične fizike 2</title>
+<meta name="author" content="Kristofer Robin" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">12. vaje iz Matematične fizike 2</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgc6902b3">1. Greenove funkcije</a>
+<ul>
+<li><a href="#orgddf3709">1.1. Neumannovi robni pogoji</a></li>
+<li><a href="#org3fe979c">1.2. Naloga 34 (Prinčič, 5.2) - alternativno reševanje&#xa0;&#xa0;&#xa0;<span class="tag"><span class="w">w</span></span></a></li>
+<li><a href="#org26f7461">1.3. Akustika</a></li>
+<li><a href="#org0c70fb7">1.4. Naloga 35 (Lloydovo zrcalo)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc6902b3" class="outline-2">
+<h2 id="orgc6902b3"><span class="section-number-2">1.</span> Greenove funkcije</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Imamo diferencialni operator
+</p>
+
+<p>
+\[ \mathcal{L} = \nabla ^2 + \lambda
+\]
+</p>
+
+<p>
+z Dirichletovimi robnimi pogoji na omejen območju \( \mathcal{D} \).
+</p>
+
+<p>
+Po definiciji iščemo tako funkcijo, da velja
+</p>
+
+<p>
+\[ \mathcal{L}_{\vec{r}} G \left( \vec{r}, \vec{r}_0 \right) = \delta \left( \vec{r}, \vec{r}_0 \right)
+\]
+</p>
+
+<p>
+in na robu velja
+</p>
+
+<p>
+\[ \left.  G \left( \vec{r}, \vec{r}_0 \right)  \right|_{\vec{r} \in \partial \mathcal{D}} = 0.
+\]
+</p>
+
+<p>
+Uporabimo nastavek, kjer prvi člen predstavlja Greenovo funkcijo na neskončnem območju
+</p>
+
+<p>
+\[ G \left( \vec{r}, \vec{r}_0 \right) = G_{\infty} \left( \vec{r}, \vec{r}_0 \right) + g \left( \vec{r}, \vec{r}_0 \right).
+\]
+</p>
+
+<p>
+Po aplikaciji diferencialnega operatorja dobimo
+</p>
+
+<p>
+\[ \mathcal{L}_{\vec{r}} G \left( \vec{r}, \vec{r}_0 \right) = \delta \left( \vec{r}, \vec{r}_0 \right) + \mathcal{L}_{\vec{r}} g \left( \vec{r}, \vec{r}_0 \right) = \delta \left( \vec{r}, \vec{r}_0 \right),
+\]
+</p>
+
+<p>
+iz česar sledi pogoj za funkcijo \( g \)
+</p>
+
+<p>
+\[ \mathcal{L} g \left( \vec{r}, \vec{r}_0 \right) = 0.
+\]
+</p>
+
+<p>
+Druga možnost za funkcijo pa je
+</p>
+
+<p>
+\[ \left. g \left( \vec{r}, \vec{r}_0 \right) \right|_{\vec{r} \in \partial \mathcal{D}} = - \left. G_{\infty} \left( \vec{r}, \vec{r}_0 \right) \right|_{\vec{r} \in \partial \mathcal{D}}.
+\]
+</p>
+
+<p>
+Metode reševanja so
+</p>
+
+<ul class="org-ul">
+<li>zrcaljenje (+ inverzija)</li>
+<li>razvoj po lastnih funkcijah</li>
+<li>direktno (lepljenje)</li>
+<li>konformne preslikave v dveh dimenzijah.</li>
+</ul>
+
+<p>
+Posplošena Greenova formula je
+</p>
+
+<p>
+\[ \int\limits_{\mathcal{D}}^{} \left( u \nabla ^2 v - v \nabla ^2 u \right) \, \mathrm{d} V = \int\limits_{\partial \mathcal{D}}^{} \left( u \frac{\partial u}{\partial \vec{n}}  - v \frac{\partial u}{\partial \vec{n}} \right) \, \mathrm{d} S,
+\]
+</p>
+
+<p>
+kjer velja
+</p>
+
+<p>
+\[  \int\limits_{\mathcal{D}}^{} \left( u \nabla ^2 v - v \nabla ^2 u \right) \, \mathrm{d} V = \int\limits_{\mathcal{D}}^{} \left( u \mathcal{L} v - v \mathcal{L} u \right) \, \mathrm{d} V.
+\]
+</p>
+
+<p>
+Normala \( \vec{n} \) je normala, ki na robu domene kaže navzven.
+</p>
+
+<p>
+Če rešujemo problem oblike
+</p>
+
+<p>
+\[ \mathcal{L} u \left( \vec{r} \right) = f \left( \vec{r} \right),
+\]
+</p>
+
+<p>
+vstavimo v enačbo \( v \left( \vec{r}, \vec{r}_0 \right) = G \left( \vec{r}, \vec{r}_0 \right) \). Potem dobimo iz posplošene Greenove formule
+</p>
+
+\begin{align*}
+  \int\limits_{\mathcal{D}}^{} \left[ u \left( \vec{r} \right) \mathcal{L}_{\vec{r}}  G \left( \vec{r}, \vec{r}_0 \right) - G \left( \vec{r}, \vec{r}_0 \right) \mathcal{L}_{\vec{r}} u \left( \vec{r} \right) \right] \, \mathrm{d} V &= \int\limits_{\partial \mathcal{D}}^{} \left[  u \left( \vec{r} \right) \frac{\partial G \left( \vec{r}, \vec{r}_0 \right)}{\partial \vec{n}_{\vec{r}}} - G \left( \vec{r}, \vec{r}_0 \right) \frac{\partial u \left( \vec{r} \right)}{\partial \vec{n}_{\vec{r}}}   \right] \, \mathrm{d} S \\
+\int\limits_{\mathcal{D}}^{} \left[ u \left( \vec{r} \right) \delta \left( \vec{r} - \vec{r}_0 \right) - G \left( \vec{r}, \vec{r}_0 \right) f \left( \vec{r} \right) \right] \, \mathrm{d} V &= \int\limits_{\partial \mathcal{D}}^{} \left[  u \left( \vec{r} \right) \frac{\partial G \left( \vec{r}, \vec{r}_0 \right)}{\partial \vec{n}_{\vec{r}}} \right] \, \mathrm{d} S.
+\end{align*}
+
+<p>
+Opravimo zamenjavo \( \vec{r} \leftrightarrow \vec{r}_0 \) in \( G\left( \vec{r}, \vec{r}_0 \right)= G \left( \vec{r}_0 , \vec{r} \right) \) in dobimo enačbo
+</p>
+
+\begin{equation}
+\label{eq:1}
+ u \left( \vec{r} \right) = \int\limits_{\mathcal{D}}^{} G \left( \vec{r}, \vec{r}_0 \right) f \left( \vec{r}_0 \right) \, \mathrm{d} ^n \vec{r}_0 + \int\limits_{\partial \mathcal{D}}^{} \frac{\partial G \left( \vec{r}, \vec{r}_0 \right)}{\partial \vec{n}_{\vec{r}_0}} u \left( \vec{r}_0 \right) \, \mathrm{d} S_0
+\end{equation}
+</div>
+<div id="outline-container-orgddf3709" class="outline-3">
+<h3 id="orgddf3709"><span class="section-number-3">1.1.</span> Neumannovi robni pogoji</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+V primeru reševanja enačbe
+</p>
+
+<p>
+\[ \nabla ^2 u = f.
+\]
+</p>
+
+<p>
+je postopek malo drugačen.
+</p>
+
+\begin{align*}
+  \int\limits_{\mathcal{D}}^{} \nabla ^2 u \left( \vec{r} \right) \, \mathrm{d} V &= \int\limits_{\mathcal{D}}^{}
+\end{align*}
+</div>
+</div>
+<div id="outline-container-org3fe979c" class="outline-3">
+<h3 id="org3fe979c"><span class="section-number-3">1.2.</span> Naloga 34 (Prinčič, 5.2) - alternativno reševanje&#xa0;&#xa0;&#xa0;<span class="tag"><span class="w">w</span></span></h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Ta problem smo že reševali.
+</p>
+<div class="problem" id="orga271633">
+<p>
+Imamo polktrak širine \( a \), ki se nahaja v ravnini \( zy \). Poltrak ima napetost \( U_0 \). Rešujemo Laplaceovo enačbo
+</p>
+
+<p>
+\[ \nabla ^2 U = 0,
+\]
+</p>
+
+<p>
+z robnimi pogoji
+</p>
+
+<p>
+\[ U \left( x = 0, y, z \right) = \begin{cases}
+                                    0 &; \left| y \right| > \frac{a}{2} \\
+                                    U_0 &; \left| y \right| \le \frac{a}{2}
+                                  \end{cases}
+\]
+</p>
+
+</div>
+
+<p>
+Kot smo povedali že pri prejšnjem reševanju te naloge, je problem v translacijsko invarianten v \( z \) smeri oz. \( U = U(x, y) \).
+</p>
+
+<p>
+Naš problem je simetričen preko \( y \) osi, kar pomeni, da lahko rešujemo samo za \( x > 0 \). Potrebujemo Greenovo funkcijo \( G \left( \vec{r}, \vec{r}_0 \right) \) za polravnino.
+</p>
+
+<p>
+Greenova funkcija za omejeno območje bo z nastavkom oblike
+</p>
+
+<p>
+\[ G \left( \vec{r}, \vec{r}_0 \right) = G_{\infty} \left( \vec{r}, \vec{r}_0 \right) + g \left( \vec{r}, \vec{r}_0 \right).
+\]
+</p>
+
+<p>
+Za dan problem že poznamo, da je
+</p>
+
+<p>
+\[ G_{\infty} \left( \vec{r}, \vec{r}_0 \right) = \frac{1}{2 \pi} \ln \left| \vec{r} - \vec{r}_0 \right| .
+\]
+</p>
+
+<p>
+Iz teoretičenga uvoda vemo
+</p>
+
+<p>
+\[ \nabla_{\vec{r}} ^2 g \left( \vec{r}, \vec{r}_0 \right) = 0,
+\]
+</p>
+
+<p>
+iz česar sledi
+</p>
+
+<p>
+\[ \left. g \left( \vec{r}, \vec{r}_0 \right) \right|_{x = 0} = \left. G_{\infty} \left( \vec{r}, \vec{r}_0 \right) \right|_{x = 0}.
+\]
+</p>
+
+<p>
+Nalogo bomo reševali preko zrcaljenja. Zamislimo si, da imamo točko \( \vec{r}_0 \) na polravnini \( x > 0 \) z nekim nabojem. Točko prezrcalimo čez \( x = 0 \) in ji damo obraten naboj. Na meji \( x = 0 \) bo pogoj, da je \( \left. G \left( \vec{r}, \vec{r}_0 \right) \right|_{\vec{r} \in \partial \mathcal{D}} = 0 \). Iz tega sledi, da bo
+</p>
+
+<p>
+\[ g \left( \vec{r}, \vec{r}_0 \right) = - \frac{1}{2 \pi} \ln \left| \vec{r} - \vec{r}_0^{\ast} \right|.
+\]
+</p>
+
+<p>
+Koordinate točke \( \vec{r}_0^{\ast} \) so \( (- x_0, y_0) \), če so koordinate prve točke \( \vec{r}_0 = (x_0, y_0) \).
+</p>
+
+<p>
+Ko smo znotraj naše domene \( x > 0 \), bo vedno veljalo
+</p>
+
+<p>
+\[ \mathcal{L}_{\vec{r}} g \left( \vec{r}, \vec{r}_0 \right) = \delta \left( \vec{r} - \vec{r}_0 \right) = 0.
+\]
+</p>
+
+<p>
+Naša Greenova funkcija je tako oblike
+</p>
+
+\begin{align*}
+  G \left( \vec{r}, \vec{r}_0 \right) &= \frac{1}{2 \pi} \ln \left| \vec{r} - \begin{bmatrix} x_{0} \\ y_{0} \end{bmatrix} \right| - \frac{1}{2 \pi} \ln \left| \vec{r} - \begin{bmatrix} -x_{0} \\ y_{0} \end{bmatrix} \right|\\
+&= \frac{1}{4 \pi} \ln \left( \frac{(x- x_0) ^2 + (y - y_0) ^2}{(x + x_0) ^2 + (y - y_0) ^2} \right).
+\end{align*}
+
+<p>
+Zaradi Dirichletovih pogojev \( \nabla ^2 u = f \left( \vec{r} \right) = 0 \) bo iz enačbe \ref{eq:1} veljalo
+</p>
+
+<p>
+\[ \int\limits_{\mathcal{D}}^{} G \left( \vec{r}, \vec{r}_0 \right) f \left( \vec{r}_0 \right) \, \mathrm{d} ^2 \vec{r}_0  = 0.
+\]
+</p>
+
+<p>
+Ostane nam
+</p>
+
+<p>
+\[ u \left( \vec{r} \right) = \int\limits_{\partial D}^{} \frac{\partial G \left( \vec{r}, \vec{r}_0 \right)}{\partial \vec{n}_{\vec{r}_0}} u \left( \vec{r}_0  \right) \, \mathrm{d} S_0.
+\]
+</p>
+
+<p>
+Normala \( \vec{n} \) kaže izven domene, v našem polravninskem problemu, je to \( \vec{n} = - \hat{e}_x \). Zapišemo
+</p>
+
+<p>
+\[ \frac{\partial }{\partial \vec{n}_{\vec{r}_{0}}}  = - \frac{\partial }{\partial x_{0}}.
+\]
+</p>
+
+<p>
+Naša meja območja pa je \( \mathrm{d} S_0 = \mathrm{d} y_0 \).
+</p>
+
+<p>
+Odvod Greenove funkcije po normali je enak
+</p>
+
+<p>
+\[ \frac{\partial G}{\partial x_{0}} = \frac{1}{\pi} \frac{- x}{x ^2 + (y - y_0) ^2}.
+\]
+</p>
+
+<p>
+Računamo torej integral
+</p>
+
+\begin{align*}
+  u \left( \vec{r} \right) &= \int\limits_{- \infty}^{\infty} \frac{x}{\pi} \frac{1}{x ^2 + (y - y_0) ^2} U \left( \vec{r}_0 \right) \, \mathrm{d} y \\
+&= \int\limits_{- \frac{a}{2}}^{\frac{a}{2}} \frac{x}{\pi} \frac{1}{x + \left( y - y_0 \right) ^2} U_0 \, \mathrm{d} y
+\end{align*}
+
+<p>
+Uvedemo spremenljivko \( z = \frac{y - y_0}{x} \) in dobimo
+</p>
+
+<p>
+\[ u \left( \vec{r} \right) = \int\limits_{\frac{y + \frac{a}{2}}{x}}^{\frac{y - \frac{a}{2}}{x}} \frac{1}{\pi} \frac{1}{1 + z ^2} U_0   \, \mathrm{d} z = - \frac{U_0}{\pi} \left( \mathrm{arctg} \left( \frac{y - \frac{a}{2}}{x} \right) - \mathrm{arctg } \left( \frac{y + \frac{a}{2}}{x} \right) \right)
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-org26f7461" class="outline-3">
+<h3 id="org26f7461"><span class="section-number-3">1.3.</span> Akustika</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Imamo hitrostno polje \( v \left( \vec{r}, t \right) \) z gostoto \( \rho \left( \vec{r}, t \right) = \rho_0 + \delta \rho \left( \vec{r}, t \right) \) in tlak \( p \left( \vec{r}, t \right) = p_0 + \delta p \left( \vec{r}, t \right) \).
+</p>
+
+<p>
+Imamo več enačb
+</p>
+
+<ol class="org-ol">
+<li><p>
+Euler (N - S za \( q = 0 \))
+</p>
+
+<p>
+\[ \rho \frac{\partial \vec{v}}{\partial t}  = - \nabla p
+   \]
+</p>
+
+<p>
+in
+</p>
+
+<p>
+\[ \frac{\partial \vec{v}}{\partial t}  = \frac{\partial }{\partial x} + \cancel{\left( \vec{v} \cdot \nabla \right)} \vec{v}
+   \]
+</p></li>
+
+<li><p>
+Kontinuitetna enačba
+</p>
+
+<p>
+\[ \frac{\partial \rho}{\partial t}  = - \nabla \left( \rho \vec{v} \right)
+   \]
+</p></li>
+
+<li><p>
+Adiabatna stisljivost
+</p>
+
+<p>
+\[ \frac{\delta \rho}{\rho_0} = \chi_s \delta \rho
+   \]
+</p></li>
+</ol>
+
+<p>
+Iz predavanj vem
+</p>
+
+<ol class="org-ol">
+<li><p>
+\( \vec{v} (t = 0) \) brezvrtinčno, potem je \( \vec{v} (t) \) brezvrtinčno in lahko zapišemo
+</p>
+
+<p>
+\[ \vec{v} = - \nabla \Phi.
+   \]
+</p>
+
+<p>
+Eulerjeva enačba je potem
+</p>
+
+<p>
+\[ \rho_0 \frac{\partial \Phi}{\partial t}  = \delta p
+   \]
+</p></li>
+
+<li><p>
+Zapišemo lahko
+</p>
+
+<p>
+\[ \frac{\partial ^2 \delta p}{\partial t ^2}  = c ^2 \nabla ^2 \delta  p, \ c ^2 = \frac{1}{\chi_s} \rho_0
+   \]
+</p>
+
+<p>
+Enako velja za \( \Phi \).
+</p></li>
+
+<li><p>
+Robni pogoji ob trdi steni je
+</p>
+
+<p>
+\[ \vec{v} \cdot \hat{n} = 0,
+   \]
+</p>
+
+<p>
+iz česar sledi
+</p>
+
+<p>
+\[ \frac{\partial \Phi}{\partial \vec{n}}  = 0 \implies \ \frac{\partial \delta p}{\partial \vec{n}} = 0
+   \]
+</p></li>
+
+<li><p>
+Povprečen energijski tok
+</p>
+
+<p>
+\[ \overline{\vec{\jmath}} = \frac{1}{2} \Re \left[ \delta p \vec{v}^{\ast} \right]
+   \]
+</p></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org0c70fb7" class="outline-3">
+<h3 id="org0c70fb7"><span class="section-number-3">1.4.</span> Naloga 35 (Lloydovo zrcalo)</h3>
+<div class="outline-text-3" id="text-1-4">
+<div class="problem" id="orgbc0a461">
+<p>
+Imamo Lloydovo zrcalo, ki ima izvor na \( \vec{r} = a \hat{e}_z \). Rešujemo enačbo
+</p>
+
+<p>
+\[ - \frac{1}{c ^2} \frac{\partial ^2 \delta p}{\partial t ^2} + \nabla ^2 \delta p = A \delta \left( \vec{r} - a \hat{e}_z \right) e^{- \mathrm{i} \omega t},
+\]
+</p>
+
+<p>
+z robnim pogojem \( \delta p (z = 0) = 0 \).
+</p>
+
+</div>
+
+<p>
+Uporabili bomo nastavek
+</p>
+
+<p>
+\[ \delta p \left( \vec{r}, t \right) = P \left( \vec{r} \right) e^{- \mathrm{i} \omega t},
+\]
+</p>
+
+<p>
+ki ga bomo vstavili v našo valovno enačbo.
+</p>
+
+<p>
+\[ - \frac{1}{c ^2} (- \omega ^2) P \left( \vec{r} \right) e^{- \mathrm{i} \omega t} + \nabla_r ^2 P(\vec{r}) e^{- \mathrm{i} \omega t} = A \delta \left( \vec{r} - a \hat{e}_z \right) e^{- \mathrm{i} \omega t}.
+\]
+</p>
+
+<p>
+Uvedemo valovni vektor \( k ^2 = \frac{\omega ^2}{c ^2} \) in pokrajšamo časovna nihanja
+</p>
+
+<p>
+\[ k ^2 P \left( \vec{r} \right) + \nabla_r ^2 P \left( \vec{r} \right) = A \delta \left( \vec{r} - a \hat{e}_z \right).
+\]
+</p>
+
+<p>
+Podana je funkcija za Greenovo funkcijo valovanja
+</p>
+
+<p>
+\[ G_{\infty} \left( \vec{r}, \vec{r}_0 \right) = - \frac{1}{4 \pi} \frac{e^{\pm \mathrm{i} k \left| \vec{r} - \vec{r}_0 \right|} }{\left| \vec{r} - \vec{r}_0 \right|}.
+\]
+</p>
+
+<p>
+Izberemo pozitiven eksponent, saj je fizikalno to izvor nihanja.
+</p>
+
+<p>
+Ponovno izberemo metodo zrcaljenja in tako kot pri prejšnjem primeru, se bodo na meji območja nasprotni valovi sešteli in izničili.
+</p>
+
+<p>
+Naša Greenova funkcija je
+</p>
+
+<p>
+\[ G \left( \vec{r}, \vec{r}_0 \right) = G_{\infty} \left( \vec{r}, \vec{r}_0 \right) - G_{\infty} \left( \vec{r}, \vec{r}_0^{\ast} \right) = - \frac{1}{4 \pi} \frac{e^{\mathrm{i} k \left| \vec{r} - \vec{r}_0 \right|}}{\left| \vec{r} - \vec{r}_0 \right|}  + \frac{1}{4 \pi} \frac{e^{\mathrm{i} k \left| \vec{r}- \vec{r}_0^{\ast} \right|}}{\left| \vec{r} - \vec{r}_0^{\ast} \right|}.
+\]
+</p>
+
+<p>
+Rešitev problema
+</p>
+
+<p>
+\[ \mathcal{L} P \left( \vec{r} \right) = A \delta \left( \vec{r} - a \hat{e}_z \right)
+\]
+</p>
+
+<p>
+je
+</p>
+
+<p>
+\[ P \left( \vec{r} \right) = \int\limits_{\mathcal{D}}^{} G \left( \vec{r}, \vec{r}_0 \right) A \delta \left( \vec{r} - a \hat{e}_z \right) \, \mathrm{d} ^3 \vec{r}_0.
+\]
+</p>
+
+<p>
+Vstavimo v integral izraz za Greenovo funkcijo in izračunamo integral, kjer velja, da je \( \vec{r}_0^{\ast} \) prezrcaljen in ima nasprotno predznačeno tretjo komponento.
+</p>
+
+<p>
+\[ P \left( \vec{r} \right) = A \left( - \frac{1}{4 \pi} \frac{e^{\mathrm{i} k \left| \vec{r} - a \hat{e}_z \right|}}{\left| \vec{r} - a \hat{e}_z \right|} + \frac{1}{4 \pi} \frac{e^{\mathrm{i} k \left| \vec{r} + a \hat{e}_z \right|}}{ \left| \vec{r} + a \hat{e}_z \right|} \right).
+\]
+</p>
+
+<p>
+V primeru, da imamo Neumannove pogoje na meji, potem je drugi člen Greenove funkcije obratno predznačen
+</p>
+
+<p>
+\[ G \left( \vec{r}, \vec{r}_0 \right) = G_{\infty} \left( \vec{r}, \vec{r}_0 \right) + G_{\infty} \left( \vec{r}, \vec{r}_0^{\ast} \right) .
+\]
+</p>
+
+<p>
+Za izračun toka \( \vec{\jmath} \) potrebujemo hitrosti, ki jo bomo dobili iz enačbe
+</p>
+
+<p>
+\[ \rho \frac{\partial \vec{v}}{\partial t}  = - \nabla \delta p.
+\]
+</p>
+
+<p>
+Zaradi našega nastavka velja \( \frac{\partial \vec{v}}{\partial t}  = - \mathrm{i} \omega \vec{v} \) in dobimo enačbo
+</p>
+
+<p>
+\[ \vec{v} = - \frac{\mathrm{i}}{\omega \rho} \nabla \delta p.
+\]
+</p>
+
+<p>
+Za majhne \( a \) oz. \( r \gg a \) je rezultat
+</p>
+
+<p>
+\[ \vec{v} = - \frac{A}{4 \pi \rho c} \left[ \frac{e^{\mathrm{i} k r_-}}{r_-} - \frac{e^{\mathrm{i} k r_+}}{r_{+}} \right] \hat{e}_r e^{- \mathrm{i} \omega t},
+\]
+</p>
+
+<p>
+kjer sta
+</p>
+
+<p>
+\[ r_{\pm} = r \pm a \cos \theta.
+\]
+</p>
+
+<p>
+Tok je potem
+</p>
+
+<p>
+\[ \vec{\jmath} = \Re \left[ \delta p \vec{v}^{\ast} \right] \overset{r \gg a}{=} \frac{A ^2}{16 \pi \rho c} \frac{1}{c ^2} \left[ 1 - \cos \left( kr a \cos \theta \right) \right] \hat{e}_r,
+\]
+</p>
+
+<p>
+kjer smo upoštevali, da \( r_+ \sim r_- \sim r \). Pri \( \theta = \frac{\pi}{2} \) je \( \overline{\vec{\jmath}} = 0 \). V primeru Neumanna je v zgornjem oklepaju pozitiven predznak.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Kristofer Robin</p>
+<p class="date">Created: 2026-01-11 ned 18:22</p>
+</div>
+</body>
+</html>

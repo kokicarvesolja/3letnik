@@ -53,8 +53,8 @@ Nadalje
 &= \int\limits_a^b \delta(x - y) f(y) \, \mathrm{d} y = f(x).
 \end{align*}
 
-To skupaj z \ref{eq:1} pomeni, da Greenova funkcija reši naš ODE.
-** Naloga
+To, skupaj z \ref{eq:1}, pomeni, da Greenova funkcija reši naš ODE.
+** Naloga 32
 
 #+begin_problem
 Naj bo diferencialni operator definiran kot \( \mathcal{L}_x = \frac{\mathrm{d} ^2 }{\mathrm{d} x ^2} \) na intervalu \( a = 0 \) in \( b = 1 \) z robnimi pogoji \( u(0) = u(1) = 0 \).
@@ -68,8 +68,8 @@ Zapišemo problem
 Če je \( x = y \), potem bo rešitev te enačbe
 
 \[ G(x, y) = \begin{cases}
-             A x + B&; x < 0 \\
-             Cx + D&; x > 0
+             A x + B&; x < y \\
+             Cx + D&; x > y
              \end{cases}
 \]
 
@@ -82,7 +82,7 @@ Z integriranjem v majhni okolici \( \epsilon \) okoli \( y \), dobimo pogoj iz p
 
 \begin{align*}
   \int\limits_{y - \epsilon}^{y + \epsilon} \frac{\mathrm{d} ^2 }{\mathrm{d} x ^2} G(x, y) \, \mathrm{d} x &=  \int\limits_{y - \epsilon}^{y + \epsilon} \delta(x - y) \, \mathrm{d} x \\
-\frac{\mathrm{d} }{\mathrm{d} x} G(y + \epsilon, y) - \frac{\mathrm{d} }{\mathrm{d} x} G(y - \epsilon, y ) &= 1
+\left. \frac{\mathrm{d} }{\mathrm{d} x} G(x, y)\right|_{x = y + \epsilon} - \left. \frac{\mathrm{d} }{\mathrm{d} x} G(x, y ) \right|_{x = y - \epsilon} &= 1
 \end{align*}
 
 Dobimo enakost
@@ -94,8 +94,9 @@ Zadnji pogoj pa je še integral po splošnem \( x \)
 
 \begin{align*}
   \int\limits_0^x \frac{\mathrm{d} ^2 }{\mathrm{d} x ^2} G(x, y) \, \mathrm{d} x &= \int\limits_0^x \delta(x - y) \, \mathrm{d} x \\
-\frac{\mathrm{d} }{\mathrm{d} x} G(x, y) - <sth> = H(x - y)
+\frac{\mathrm{d} }{\mathrm{d} x} G(x, y) - \frac{\mathrm{d} }{\mathrm{d} x} G(x = 0, y) &= H(x - y)
 \end{align*}
+
 
 Določimo še parameter.
 
@@ -104,6 +105,7 @@ Določimo še parameter.
 0&= Ay - Ay - y + A + 1 \\
 y - 1 &= A.
 \end{align*}
+
 
 Rešitev je torej
 
@@ -132,11 +134,11 @@ Obstaja integral
 
 kjer je \( Q \) funkcional. Zvezdica označuje adjungiranost.
 
-Za sebi-adjungiran operator \( \mathcal{L}_x = \mathcal{L}_x = \frac{\mathrm{d} }{\mathrm{d} x} \left( p \frac{\mathrm{d} }{\mathrm{d} x} \right) + q \), potem je funkcional oblike
+Za sebi-adjungiran operator \( \mathcal{L}_x = \mathcal{L}_x = \frac{\mathrm{d} }{\mathrm{d} x} \left( p \frac{\mathrm{d} }{\mathrm{d} x} \right) + q \) je funkcional oblike
 
 \[ Q = p (v u' - u v ')
 \]
-** Naloga (zgornja)
+** Naloga 32 
 
 Posplošena Greenova funkcija za naš problem je potem
 
@@ -157,19 +159,23 @@ Integral postane
 \[ \int\limits_0^1 \left[ G(x, y) u''(x) - u(x) \frac{\partial ^2 G}{\partial x ^2} (x, y) \right] \, \mathrm{d} x = \left. \left[ G(x, y) u'(x) - u(x) \frac{\partial G}{\partial x}  (x, y) \right] \right|_0^1
 \]
 
-V prvem členu integranda prepoznamo \ref{eq:2}, drugi odvod Greenove funkcije pa je \( \delta (x - y) \). Leva stran enačbe je
+V prvem členu integranda prepoznamo \ref{eq:2}, drugi odvod Greenove funkcije pa je \( \delta (x - y) \). Desna stran enačbe je tako
 
-\[ \left. \left[ G(x, y) u'(x) - u(x) \frac{\partial G}{\partial x}  (x, y) \right] \right|_0^1 =\left[ G(1, y) u'(1) - u(1) \frac{\partial }{\partial x}  G(1, y) \right] - \left[ G(0, y) u'(0) - u(0) \frac{\partial }{\partial x} G(0, y)  \right] = - \beta \frac{\partial }{\partial x} G(1, y) - \alpha \frac{\partial }{\partial x} G(0, y)
-\]
+\begin{align*}
+  \left. \left[ G(x, y) u'(x) - u(x) \frac{\partial G}{\partial x}  (x, y) \right] \right|_0^1 &=\left[ G(1, y) u'(1) - u(1) \frac{\partial }{\partial x}  G(1, y) \right] - \left[ G(0, y) u'(0) - u(0) \frac{\partial }{\partial x} G(0, y)  \right]  \\
+&= - \beta \frac{\partial }{\partial x} G(1, y) - \alpha \frac{\partial }{\partial x} G(0, y)
+\end{align*}
+
+Upoštevali smo, da je Greenova funkcija na robovih domene \( x = 0 \) in \( x = 1 \) ničelna. 
 
 Združimo z integralom in dobimo
 
 \[ \int\limits_0^1 G(x, y) f(x) \, \mathrm{d} x - u(y) = \alpha \frac{\partial }{\partial x} G(0, y) - \beta \frac{\partial }{\partial x} G(1, y).
 \]
 
-Za našo funkcijo velja \( G(x, y) = G(y, x) ^{\ast} \), kar pomeni, da lahko izrazimo
+Za našo funkcijo velja \( G(x, y) = G(y, x) ^{\ast} \), kar pomeni, da lahko zamenjamo spremenljivki \( x \) in \( y \)
 
-\[ u(x) = - \left. \frac{\partial }{\partial y} G(x, y) \right|_{y = 0} + \left \frac{\partial }{\partial x} G(x, y) \right|_{y = 1} + \int\limits_0^1 G(x, y) f(x, y) \, \mathrm{d} y.
+\[ u(x) = - \left. \frac{\partial }{\partial y} G(x, y) \right|_{y = 0} + \left. \frac{\partial }{\partial y} G(x, y) \right|_{y = 1} + \int\limits_0^1 G(x, y) f(x, y) \, \mathrm{d} y.
 \]
 
 V primeru, da ne bi veljala sebi-adjungiranost, bi bilo to potrebno upoštevati ob zamenjavi spremenljivk.
@@ -211,8 +217,8 @@ V dveh dimnzijah imamo rešitve za različne vrednosti \( \lambda \).
 
   \begin{align*}
     G \left( \vec{r} , \vec{r}_0 \right) &= \frac{1}{4} Y_0 \left( k \left| \vec{r} - \vec{r}_0 \right| \right) \\
-           G \left( \vec{r} , \vec{r}_0 \right) &= - \frac{1}{4} H_0^{(1)} \left( k \left| \vec{r} - \vec{r}_0 \right| \right) \\
-            G \left( \vec{r} , \vec{r}_0 \right) &= \frac{1}{4} H_0^{(2)} \left( k \left| \vec{r} - \vec{r}_0 \right| \right)
+           G \left( \vec{r} , \vec{r}_0 \right) &= - \frac{\mathrm{i}}{4} H_0^{(1)} \left( k \left| \vec{r} - \vec{r}_0 \right| \right) \\
+            G \left( \vec{r} , \vec{r}_0 \right) &= \frac{\mathrm{i}}{4} H_0^{(2)} \left( k \left| \vec{r} - \vec{r}_0 \right| \right)
   \end{align*}
 
 - za \( \lambda = - k ^2 \) pa imamo
@@ -223,9 +229,9 @@ V dveh dimnzijah imamo rešitve za različne vrednosti \( \lambda \).
 Asimptotska obnašanja funkcij so
 
 \begin{align*}
-  Y_0 (x) &\approx \sqrt{\frac{2}{\pi x}} \sin \left( x - \frac{\pi}{4} \right) \\
- H_0^{(1)} &\approx \sqrt{\frac{2}{\pi x}} e^{\mathrm{i} \left(x - \frac{\pi}{4}\right)} \\
-H_0^{(2)} &\approx \sqrt{\frac{2}{ \pi x}} e^{-\mathrm{i} \left( x - \frac{\pi}{4} \right)}
+  Y_0 (x) &\asymp \sqrt{\frac{2}{\pi x}} \sin \left( x - \frac{\pi}{4} \right) \\
+ H_0^{(1)} &\asymp \sqrt{\frac{2}{\pi x}} e^{\mathrm{i} \left(x - \frac{\pi}{4}\right)} \\
+H_0^{(2)} &\asymp \sqrt{\frac{2}{ \pi x}} e^{-\mathrm{i} \left( x - \frac{\pi}{4} \right)}
 \end{align*}
 
 V treh dimenzijah pa imamo
@@ -246,12 +252,14 @@ V treh dimenzijah pa imamo
 
   \[ G \left( \vec{r}, \vec{r}_0 \right) = - \frac{1}{4 \pi} \frac{e^{- k \left| \vec{r} - \vec{r}_0 \right|}}{\left| \vec{r} - \vec{r}_0 \right|}
   \]
-** Naloga
+** Naloga 33
 
+#+begin_problem
 Imamo dve točki \( (0,0) \) in \( (a, 0) \), ki predstavljata naše izvore valovanja in rešujemo valovno enačbo
 
 \[ - \frac{\partial ^2 }{\partial t ^2}  + c ^2 \nabla ^2 u = A c ^2 \left[ \delta \left( \vec{r} \right) - \delta \left( \vec{r} - \begin{bmatrix} a \\ 0 \end{bmatrix} \right) \right] e^{\mathrm{i} \omega t}
 \]
+#+end_problem
 
 Nalogo rešujemo z nastavkom \( u = R(x, y) e^{\mathrm{i} \omega t} \), ki jo vstavimo v enačbo
 
@@ -263,25 +271,25 @@ Z deljenjem s \( c ^2 \), dobimo Helmholtoztovo enačbo
 \[ \nabla ^2 R \left( \vec{r} \right) = A \left[ \delta \left( \vec{r} \right) - \delta \left( \vec{r} - \begin{bmatrix} a \\ 0 \end{bmatrix} \right) \right]- \frac{\omega ^2}{c ^2} R \left( \vec{r} \right).
 \]
 
-Skupaj z nastavkom, bo rešitev Greenove funkcije \( H_0^{(1)} \) v neskončnosti \( \exp \left\{ \mathrm{i} \left( k \vec{r} - \omega t \right) \right\} \), kar je valovanje, ki se ṧiri navzen. Rešitev \( H_0^{(2)} \) pa nam poda asimptotsko obnašanje \( \exp \left\{ -\mathrm{i} \left( k \vec{r} - \omega t \right) \right\} \), kar je valovanje, ki se širi navznoter. Prva bo torej naša rešitev.
+Skupaj z nastavkom, bo rešitev Greenove funkcije \( H_0^{(1)} \) v neskončnosti \( \exp \left\{ \mathrm{i} \left( k \vec{r} - \omega t \right) \right\} \), kar je valovanje, ki se širi navzen. Rešitev \( H_0^{(2)} \) pa nam poda asimptotsko obnašanje \( \exp \left\{ -\mathrm{i} \left( k \vec{r} - \omega t \right) \right\} \), kar je valovanje, ki se širi navznoter. Prva bo torej naša rešitev.
 
 Greenova funkcija je torej
 
-\[ G =  - \frac{1}{4} H^{(1)}_0 \left( k \left| \vec{r} - \vec{r}_0 \right| \right).
+\[ G =  - \frac{\mathrm{i}}{4} H^{(1)}_0 \left( k \left| \vec{r} - \vec{r}_0 \right| \right).
 \]
 
 Rešimo integral
 
-\[ R \left( \vec{r}  \right) = \int\limits_{}^{} G \left( \vec{r} ,\vec{r}_0 \right) f(\vec{r}_0) \, \mathrm{d} \vec{r} = - \frac{1}{4} \int\limits_{}^{} H_0^{(1)} \left( k \left| \vec{r} - \vec{r}_0 \right| \right) A \left[ \delta \left( \vec{r} \right) - \delta \left( \vec{r} - \begin{bmatrix} a \\ 0 \end{bmatrix} \right) \right] \, \mathrm{d} \vec{r}
+\[ R \left( \vec{r}  \right) = \int\limits_{}^{} G \left( \vec{r} ,\vec{r}_0 \right) f(\vec{r}_0) \, \mathrm{d} \vec{r} = - \frac{\mathrm{i}}{4} \int\limits_{}^{} H_0^{(1)} \left( k \left| \vec{r} - \vec{r}_0 \right| \right) A \left[ \delta \left( \vec{r} \right) - \delta \left( \vec{r} - \begin{bmatrix} a \\ 0 \end{bmatrix} \right) \right] \, \mathrm{d} \vec{r}
 \]
 
-
-*Possible, da je \( \mathrm{i}/4 \)*
 
 Po integriranju velja
 
-\[ R \left( \vec{r} \right)= - \frac{\mathrm{i} A}{4} H_0^{(1)} \left( k \left| \vec{r} \right| \right) = \frac{\mathrm{i} A}{4} H_0^{(1)}\left( k \left| \vec{r} - \begin{bmatrix} a \\ 0 \end{bmatrix} \right| \right)
-\]
+\begin{equation}
+\label{eq:3}
+ R \left( \vec{r} \right)= - \frac{\mathrm{i} A}{4} H_0^{(1)} \left( k \left| \vec{r} \right| \right) - \frac{\mathrm{i} A}{4} H_0^{(1)}\left( k \left| \vec{r} - \begin{bmatrix} a \\ 0 \end{bmatrix} \right| \right)
+\end{equation}
 
 Poglejmo si asimptotsko obnašanje za \( r \gg a \).
 
@@ -289,10 +297,43 @@ Razdaljo torej zapišemo kot
 
 \begin{align*}
   \left| \vec{r} - \vec{r}_0 \right| &= \left| \begin{bmatrix} x \\ y \end{bmatrix} - \begin{bmatrix} a \\ 0 \end{bmatrix} \right| = \sqrt{(x - a) ^2 + y ^2} \\
-&= \sqrt{r ^2 - 2ax }
+&= \sqrt{r ^2 - 2ax} \\
+& \approx r \left( r - \frac{x a}{r ^2} \right)
 \end{align*}
 
-Splošna formula za odvode je
+Dobljen približek za \( \left| \vec{r} - \vec{r}_0 \right| \) vstavimo v \ref{eq:3} in dobimo 
 
-\[ \frac{\partial }{\partial z}   H_n^{(1)} (z) =
+\begin{align*}
+  R \left( \vec{r} \right) &= \frac{\mathrm{i} A}{4} H_0^{(1)} \left( kr \right) + \frac{\mathrm{i} A}{4} H_0^{(1)} \left( k r \left[ 1 - \frac{x a}{r ^2} \right] \right)\\
+&= - \frac{\mathrm{i} A}{4} H_0^{(1)} \left( kr \right) + \left( H_0^{(1)} (kr) - H_0^{(1)} \,' (kr) \frac{kx a}{r} \right),
+\end{align*} 
+
+kjer smo upoštevali Taylorjev razvoj. 
+
+Sedaj si pomagajmo z identitami s sledečimi identitati. Splošna formula za odvode je
+
+\[ \frac{\partial }{\partial z}   H_n^{(1)} (z) = \frac{n H_n^{(1)} (z)}{z} - H_{n + 1}^{(1)} (z) 
 \]
+
+z asimptotskim približkom za 
+
+\[ H_{1} ^{(1)}(z) \asymp \sqrt{\frac{2 }{\pi z}} \exp \left\{ \mathrm{i} \left( z ++ \frac{3 \pi }{4} \right) \right\}.
+\]
+
+Odvod torej lahko izrazimo s funkcijo \( H_1^{(1)} \), nato pa uporabimo identiteto, ter asimptotski približek, da pridemo do rešitve. 
+
+\[ H_0^{(1)} \, ' (kr) = - H_1^{(1)} (kr) \asymp \sqrt{\frac{2}{\pi kr}} \exp \left\{ \mathrm{i} kr + \frac{3 \pi }{4} \right\}.
+\]
+
+Rešitev \( R \left( \vec{r} \right) \) je torej
+
+\[ R \left( \vec{r} \right) = \frac{\mathrm{i} A}{4} \left( \frac{2}{\pi k r} \right) ^{\frac{1}{2}} \frac{kax}{r} \exp \left\{ kr + \frac{3 \pi}{4} \right\}.
+\]
+
+Časovno odvisna rešitev pa je
+
+\[ u \left( \vec{r}, t \right) = \frac{\mathrm{i} A}{4} \sqrt{\frac{2}{\pi k r}} ka \cos \phi \exp \left\{ \mathrm{i} \left[ \left( kr + \frac{3 \pi}{4} \right) - \omega t \right] \right\}.
+\]
+
+
+
