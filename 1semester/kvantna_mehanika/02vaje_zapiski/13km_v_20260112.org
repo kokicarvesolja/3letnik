@@ -7,6 +7,8 @@
 #+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
 #+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
 #+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+
+Obvestilo za bralce - naloge, kjer nastopa delec s spinom \( s = \frac{1}{2} \) v časovno odvisnem magnetnem polju, ki ga ima Mastnak v zapiskih, nismo delali.
 * Rabijeve oscilacije
 
 #+begin_problem
