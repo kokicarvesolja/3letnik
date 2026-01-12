@@ -169,5 +169,90 @@ Zaradi predpostavke oddaljenosti bo \( \frac{\vec{r}}{r} \cdot \vec{r}_0 \approx
 
 Integral tako zapišemo
 
-\[ \psi_s \left( \vec{r} \right) = - \frac{m \exp \left\{ \mathrm{i} kr \right\}{2 \pi \hbar ^2 r} \int\limits_{\mathbb{R} ^3}^{} V \left( \vec{r}_0 \right) \exp \left\{ \mathrm{i} (\vec{k} - \vec{k} \, ') \vec{r}_0 \right\} = - \frac{m}{2 \pi \hbar ^2} \hat{V} \left( \vec{k} - \vec{k} \, ' \right) \frac{\exp \left\{ \mathrm{i} k r \right\}{r}
+\[ \psi_s \left( \vec{r} \right) = - \frac{m \exp \left\{ \mathrm{i} kr \right\}{2 \pi \hbar ^2 r} \int\limits_{\mathbb{R} ^3}^{} V \left( \vec{r}_0 \right) \exp \left\{ \mathrm{i} (\vec{k} - \vec{k} \, ') \vec{r}_0 \right\} = - \frac{m}{2 \pi \hbar ^2} \hat{V} \left( \vec{k} - \vec{k} \, ' \right) \frac{\exp \left\{ \mathrm{i} k r \right\}}{r},
+\]
+
+kjer smo prepoznali Fourierovo transformacijo.
+
+V nadaljevanju bomo to delali, ker je zanimivo in nam bi za drugo nalogo zmanjkalo časa.
+
+Tranformiramo funkcijo nadomestimo z definicijo
+
+\[ - \frac{m}{2 \pi \hbar ^2} \hat{V} \left( \vec{k} - \vec{k} \, ' \right) \frac{\exp \left\{ \mathrm{i} kr \right\}}{r} = f \left( \vec{k} - \vec{k} \, ' \right) \frac{\exp \left\{ \mathrm{i} k r \right\}}{r}
+\]
+
+Imejmo vpadni tok \( \vec{\jmath}_i \) in sipalni tok \( \vec{\jmath}_s \), ki se siplje v prostorski kot \( \mathrm{d} \Omega = \mathrm{d} \cos \theta \mathrm{d} \phi \).
+
+Sipalni presek v odvisnosti od prostorskega kota lahko povežemo z razmerjema tokov
+
+\[ \frac{\mathrm{d} \sigma}{\mathrm{d} \Omega}= \frac{1}{j_i} \frac{\mathrm{d} N_{s}}{\mathrm{d} \Omega} = \frac{1}{j_i} \frac{j_s r ^2 \mathrm{d} \Omega}{\mathrm{d} \Omega} = \frac{j_s}{j_i} r ^2,
+\]
+
+kjer smo upoštevali definicijo sipanih delcev
+
+\[ N_s = \int\limits_{}^{} \vec{\jmath}_s \, \mathrm{d} S
+\]
+
+Vpadni tok lahko izračunamo preko
+
+\[ \vec{\jmath}_i = \frac{\hbar}{2 m \mathrm{i}} \left( \psi_i^{\ast} \nabla \psi_i - \psi_i \nabla \psi_i^{\ast} \right) = \frac{\hbar \vec{k}}{m},
+\]
+
+kjer smo upoštevali, kaj je vpadna valovna funkcija.
+
+Izračunajmo še sipani tok. Za to bomo potrebovali en vmesni račun
+
+\begin{align*}
+  \nabla \frac{\exp \left\{ \mathrm{i} k r \right\}}{r} &= - \nabla \left( \frac{1}{r} \right) \exp \left\{ \mathrm{i} k r \right\} + \frac{1}{r} \exp \left\{ \mathrm{i} k r \right\} \cdot \frac{\vec{r}}{r} \mathrm{i} k \\
+&= - \frac{1}{r ^2}\frac{\vec{r}}{r} \exp \left\{ \mathrm{i} k r \right\} + \frac{\vec{r}}{r ^2} \mathrm{i} k \exp \left\{ \mathrm{i} k r \right\}  \\
+&= \frac{\vec{r}}{r} \exp \left\{ \mathrm{i} k r \right\} \left( \mathrm{i} k \cdot \frac{1}{r} - \frac{1}{r ^2} \right)
+\end{align*}
+
+Sipalni tok je potem
+
+\[ \vec{\jmath}_s = \frac{\hbar}{2m \mathrm{i}} \left| f \left( \vec{k} - \vec{k} \, ' \right) \right|  ^2 \cdot \frac{\vec{k} \, '}{r ^2}.
+\]
+
+Sipalni presek je potem ob upoštevanju izračunanih tokov
+
+\[ \frac{\mathrm{d} \sigma}{\mathrm{d} \Omega} = f \left( \vec{k} - \vec{k} \, ' \right) ^2
+\]
+
+Vrnimo se nazaj k potencialu. Naj bo \( \vec{q} \) v sferičnih koordinatah zapisan v smeri \( z \), torej \( \vec{q} = q \hat{e}_z \).
+
+\[ \hat{V} (\vec{q}) = \int\limits_{\mathbb{R} ^3}^{} V_0 \frac{\exp \left\{ - \gamma r \right\}}{r} \exp \left\{ \mathrm{i} \vec{q} \cdot \vec{r}\right\} \, \mathrm{d} ^3\vec{r}  = \iiint\limits_{}^{} V_0 \frac{\exp \left\{ - \gamma r \right\}}{r} \exp \left\{ \mathrm{i} 2 r \cos \theta \right\} \, \mathrm{d} \phi r ^2 \, \mathrm{d} r \sin \theta \, \mathrm{d} \theta
+\]
+
+Integral po azimutalnem kotu \( \phi \) je trivialen, tako da se v nadaljevanju lotimo integriranja po kotu \( \theta \)
+
+\[ \hat{V} (\vec{q}) = 2 \pi V_0 \int\limits_0^{\infty} \frac{\exp \left\{ - \gamma r \right\}}{r} r ^2 \, \mathrm{d} r \left. \frac{\exp \left\{ \mathrm{i} q r \cos \theta \right\}}{\mathrm{i} q r} \right|_{\cos \theta = -1}^{\cos \theta = 1}
+\]
+
+Po integriranju spremenljivke \( r \) je končni potencial
+
+\[ \hat{V} (\vec{q}) = \frac{4 \pi V_0}{q ^2 + \gamma ^2}.
+\]
+
+Sedaj lahko z izračunanim integral izrazimo funkcijo \( f \left( \vec{k} - \vec{k} \, ' \right) \), ki je enaka
+
+\[ f \left( \vec{k} - \vec{k} \, ' \right) = \frac{2 m V_0}{\hbar ^2 \left( q ^2 + \gamma ^2 \right)}.
+\]
+
+Diferencialni sipalni presek je
+
+\[ \frac{\mathrm{d} \sigma}{\mathrm{d} \Omega} = \frac{m ^2 V_0 ^2}{\hbar ^2} \frac{1}{\left( \left| \vec{k} - \vec{k} \, '\right| ^2 + \gamma ^2 \right) ^2}
+\]
+
+Za konec bi radi še izračunali sipalni presek.
+
+\begin{align*}
+  \left| \vec{k} - \vec{k} \, ' \right| &=\left|  \vec{k} - k \frac{\vec{r}}{r} \right| ^2 \\
+&= k ^2 + k ^2 - 2\vec{k} \cdot \vec{r} \frac{k}{r} & \vec{k} = k \hat{e}_z \\
+&= 2k ^2 - 2kr \cos \theta \\
+&= 2k ^2 \left( 1 - \cos \theta \right)
+\end{align*}
+
+Sipalni presek je tako
+
+\[ \sigma = \int\limits_{}^{} \frac{4 m ^2 V_0 ^2}{r ^4} \frac{1}{\left( \left| \vec{k} - \vec{k} \, ' \right| ^2 + \gamma ^2\right) ^2} \, \mathrm{d} \phi \, \mathrm{d} (\cos \theta) = \frac{16 \pi m ^2 V_0 ^2}{\hbar ^2 \gamma ^2 \left( \gamma ^2 + 4 k ^2 \right)}
 \]
