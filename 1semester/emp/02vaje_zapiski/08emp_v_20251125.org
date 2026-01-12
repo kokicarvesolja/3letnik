@@ -27,7 +27,7 @@ kjer je \( \sigma \) specifična prevodnost. Spomnimo, da je električno polje d
  \vec{\jmath} = - \sigma \nabla U.
 \end{equation}
 
-Uporabimo še kontinuitetno enačbo, ki je definirana kot
+Uporabimo še kontinuitetno enačbo
 
 \[ \frac{\partial \rho}{\partial t} + \nabla \cdot \vec{\jmath} = 0 \implies \ \nabla \cdot \vec{\jmath} = 0
 \]
@@ -193,7 +193,7 @@ Pred prehodom skozi središče zanke velja \( t <0 \). Razdalja \( d \) se časo
                 \end{cases}
 \]
 
-Graf pretoka je take oblike kot na sliki
+Graf pretoka je take oblike kot na spodnji sliki.
 
 [[file:figures/08CabrerovEksperimentPretok.png]]
 ** Točka c
@@ -253,6 +253,8 @@ a) Pokaži, da je medsebojna induktivnost okvirja in para vodnikov
 b) Okvir napajamo z izmeničnim tokom amplitude \( I_1 \). Kakšna je amplituda toka \( I_2 \), ki se inducira v vzporednih vodnikih, če ju daleč stran sklenemo (druga slika)? Pri tem delu naloge upoštevaj, da imata vodnika debelino \( 2a \) in dolžino \( l \), tako da je \( a \ll d \) in \( l \gg d \). Rezultat za \( \frac{I_2}{I_1} \) izrazi s parametri \( d, a \) in \( l \)  in ga numerično izvrednosti za \( \frac{l}{d} = \frac{d}{a} = 10 \).
 #+end_problem
 
+[[file:figures/09induciranaZanka.png]]
+
 ** Točka a
 
 Magnetni pretok prve zanke označimo \( \Phi_1 \), po kateri teče tok \( I_1 \), ki gre skozi zanko.
@@ -274,7 +276,7 @@ Induktivnost je po definiciji, ki bo še izpeljano na predavanjih, enaka
 \[ L_{ij} = \frac{\mu_0}{4 \pi} \oint\limits_{}^{} \frac{\mathrm{d} \vec{l}_i \cdot \mathrm{d} \vec{l}_j}{ \left| \vec{r}_i - \vec{r}_j \right|}.
 \]
 
-Iz tega sledi, da je vzajeman induktivnost enaka med obema žicama \( L_{ij} = L_{ji} \).
+Iz tega sledi, da je vzajemna induktivnost enaka med obema žicama \( L_{ij} = L_{ji} \).
 
 Magnetni pretok skozi kvadratno zanko (na sliki označeno z rdečo) je po definiciji
 

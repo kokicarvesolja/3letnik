@@ -102,6 +102,8 @@ a) Pokaži, da impedanco traku v opisani postavitvi lahko zapišemo kot
 b) Izračunaj faktor, za katerega se pri visokih frekvencah (zaradi kožnega pojava) upornost traku poveča glede na njegovo statično upornost. Kolikšna pa je upornost traku pri nizkih frekvencah?
 #+end_problem
 
+[[file:figures/20KozniPojav.png]]
+
 Indukcijski zakon v diferencialni obliki je
 
 \begin{equation}

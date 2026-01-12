@@ -105,7 +105,7 @@ Za naš primer velja, da je \( \rho \) enaka gostoti vseh vezanih nabojev \( \rh
 * Homogeno polarizirana krogla
 
 #+begin_problem
-Kroglo, izdelano iz snovi s homogeno spontano polarizacijo \( \vec{P} \), prerežemo na pol tako, da gre rez skozi središče krogle in je pravokoten na \( \vec{P} \). Obe polovici krogle malenkost razmaknemo, tako da je razmik zelo majhen v primerjavi s polmerom krogle. Izračunaj gostoto električnega polja v špranji med polovicama krogle. Nalogo najprej reši za primer neprerezane krogl in si z rezultatom pomagaj pri računu za primer prerezane krogle.
+Kroglo, izdelano iz snovi s homogeno spontano polarizacijo \( \vec{P} \), prerežemo na pol tako, da gre rez skozi središče krogle in je pravokoten na \( \vec{P} \). Obe polovici krogle malenkost razmaknemo, tako da je razmik zelo majhen v primerjavi s polmerom krogle. Izračunaj gostoto električnega polja v špranji med polovicama krogle. Nalogo najprej reši za primer neprerezane krogle in si z rezultatom pomagaj pri računu za primer prerezane krogle.
 #+end_problem
 
 [[file:figures/24razpolovljenaKrogla.png]]
@@ -221,7 +221,7 @@ kjer je \( \underline{\epsilon} \) tenzor dielektrika.
 
 Zaradi tenzorja \( \underline{\epsilon} \), katere lastne osi niso vzporedne normalam plošč kondenzatorja, jakost električnega toka \( \vec{E} \) in gostota električnega polja \( \vec{D} \) nista vzporedni.
 
-Če plošči priključimo na napetost, lahko hitro dokažemo, da je jakost električnega polja nima komponente vzporedne s stranicama kondenzatorja.
+Če plošči priključimo na napetost, lahko hitro dokažemo, da jakost električnega polja nima komponente vzporedne s stranicama kondenzatorja.
 
 Zamislimo si majhen presek stranice kondenzatorja, ki je v ravnini slike. Uporabimo Maxwellovo enačbo za magnetni pretok
 
@@ -242,7 +242,7 @@ Integral zazna samo komponente jakosti električnega polja, ki so vzporedne kond
 
 in ker je \( \vec{E}_{zun}^{\parallel} = 0 \) zunaj kondenzatorja, je potem tudi \( \vec{E}_{not}^{\parallel} = 0 \).
 
-Količina, ki bo v vzporedna s tenzorjem, je gostota električnega naboja \( \vec{D} \). Za izračun kapacitivnost (milost, prosim), potrebujemo naboj na kondenzatorskih ploščah \( e_p \).
+Količina, ki bo v vzporedna s tenzorjem, je gostota električnega naboja \( \vec{D} \). Za izračun kapacitivnosti (milost, prosim), potrebujemo naboj na kondenzatorskih ploščah \( e_p \).
 
 Uporabimo Maxwellovo relacijo
 

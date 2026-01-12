@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-01-12 Mon 14:36 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>9. vaje iz Elektromagnetnega polja</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">9. vaje iz Elektromagnetnega polja</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org08a6293">1. Induciran tok v okvirju - nadaljevanje</a>
+<ul>
+<li><a href="#orgfc58d7a">1.1. Točka b</a></li>
+</ul>
+</li>
+<li><a href="#orgdc9dc42">2. Kožni pojav v širokem ploščatem vodniku</a>
+<ul>
+<li><a href="#org80666b8">2.1. Točka b</a></li>
+</ul>
+</li>
+<li><a href="#org6f6337f">3. Energijski tok v koaksialnem vodniku in v valjastem vodniku</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org08a6293" class="outline-2">
+<h2 id="org08a6293"><span class="section-number-2">1.</span> Induciran tok v okvirju - nadaljevanje</h2>
+<div class="outline-text-2" id="text-1">
+
+<div id="orge6c29f9" class="figure">
+<p><img src="figures/09induciranaZankaTockaB.png" alt="09induciranaZankaTockaB.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-orgfc58d7a" class="outline-3">
+<h3 id="orgfc58d7a"><span class="section-number-3">1.1.</span> Točka b</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Izmenični tok okvirja zapišemo s sinusno funkcijo
+</p>
+
+<p>
+\[ I_1 = I_{10} \sin (\omega t)
+\]
+</p>
+
+<p>
+Posledično se bo tok induciral v tanki vodnikih.
+</p>
+
+<p>
+Magnetni pretok vodnikov je definiran preko vzajemne induktivnosti
+</p>
+
+\begin{equation}
+\label{eq:1}
+ \Phi_2 = L_{21} I_1
+\end{equation}
+
+<p>
+Inducirana napetost v vodniku je z upoštevanjem magnetnega pretoka
+</p>
+
+<p>
+\[ U_{i2} = - \dot{\Phi}_2 = - L_{21} \dot{I}_1 =  L_{22} \dot{I}_2,
+\]
+</p>
+
+<p>
+kjer je \( L_{22} \) lastna induktivnost. Odvod \( I_1 \) poznamo in iz zgornje enačbe pomeni, da bosta imela enako časovni faktor.
+</p>
+
+<p>
+Zanima nas razmerje tokov \( \frac{I_{10}}{I_{20}} \). Iz inducirane napetosti torej sledi
+</p>
+
+<p>
+\[ \omega L_{22} I_{20} \cos (\omega t) = - \omega L_{21} I_{10} \cos (\omega t) \implies \frac{I_{20}}{I_{10}} = - \frac{L_{21}}{L_{22}}.
+\]
+</p>
+
+<p>
+Negativen predznak pomeni, da sta toka različno predznačena - tečeta v različnih smereh.
+</p>
+
+<p>
+Izračunati moramo lastno induktivnost vodnikov \( L_{22} \), ki jo bomo izračunali preko gostote magnetnega polja. Magnetno polje dveh vodnikov glede na skico je enako
+</p>
+
+<p>
+\[ B = \frac{\mu_0 I_2}{2 \pi y} + \frac{\mu_0 I_2}{2 \pi (d - y)}.
+\]
+</p>
+
+<p>
+Magnetni pretok je po definiciji
+</p>
+
+<p>
+\[ \Phi_2 = \int\limits_{}^{} \vec{B} \cdot \mathrm{d} \vec{S} = \int\limits_{}^{} B \, \mathrm{d} S,
+\]
+</p>
+
+<p>
+kjer je \( \mathrm{d} S = l \mathrm{d} y  \). Širina vodnikov je \( 2a \) in zaradi superprevodnosti v vodniku ni magnetnega polja. Posledično so meje integracije \( [a, d - a] \). Torej
+</p>
+
+<p>
+\[ \Phi_2 = \frac{\mu_0 I_2 l}{2 \pi} \int\limits_a^{d - a} \left( \frac{1}{y} + \frac{1}{d - y} \right) \, \mathrm{d} y = \frac{\mu_0 l }{\pi} \ln \frac{d - a}{a} I_2.
+\]
+</p>
+
+<p>
+Po navodilih naloge velja \( d \gg a \) iz česar sledi, da je lastna induktivnost sorazmerna
+</p>
+
+<p>
+\[ L_{22} \sim \frac{\mu_0 l}{\pi} \ln \frac{d}{a}
+\]
+</p>
+
+<p>
+Razmerje tokov je tako
+</p>
+
+<p>
+\[ \frac{I_{20}}{I_{10}} = - \frac{2 \ln 2 \mu_0 d}{\mu_0 l \ln \frac{d}{a}} = - \frac{2 \ln 2}{\frac{l}{a} \ln \frac{d}{a}} \approx -0.06
+\]
+</p>
+
+<div class="note" id="orge431da3">
+<p>
+Tokovni krog prvega vodnika zapišemo
+</p>
+
+<p>
+\[ \dot{U}_{g1} = R_1 \dot{I}_1 + L_{11} \ddot{I}_1 + L_{12} \ddot{I}_2 + \frac{I_1}{C_1},
+\]
+</p>
+
+<p>
+kjer je generativna napetost in \( C \) kapaciteta kondenzatorja. Analogno, splošno, za drugi vodnik zapišemo
+</p>
+
+<p>
+\[ \dot{U}_{g2} = R_2 \dot{I}_2 + L_{22} \ddot{I}_2 + L_{21} \ddot{I}_1 + \frac{I_2}{C_2}
+\]
+</p>
+
+<p>
+Za naš primer v drugem vodniku je generativna napetosti \( U_{g2} = 0 \). Na ta način pridemo do enake zaključka glede razmerja tokov, saj
+</p>
+
+<p>
+\[ 0 = L_{22} \ddot{I}_2 + L_{21} \ddot{I}_1 \implies \dot{I}_2 = - \frac{L_{21}}{L_{22}} \dot{I}_1
+\]
+</p>
+
+<p>
+Če bi želeli izračunati padec napetosti v prvem vodniku, bi za to upoštevali velikost toka \( I_2 \) v
+</p>
+
+<p>
+\[ U_{g1} = L_{11} \dot{I}_1 + L_{12} \dot{I}_2 = L_{11} \dot{I} _1 - \frac{L_{12} ^2}{L_{22}} \dot{I}_2
+\]
+</p>
+
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdc9dc42" class="outline-2">
+<h2 id="orgdc9dc42"><span class="section-number-2">2.</span> Kožni pojav v širokem ploščatem vodniku</h2>
+<div class="outline-text-2" id="text-2">
+<div class="problem" id="orgde7436f">
+<p>
+Skrajni ploskvi dolgega in širokega kovinskega traku debeline \( a \) premažemo z idealno prevodnima elektrodama in mednju priključimo vir izmenične napetosti krožne frekvence \( \omega \), kakor prikazuje slika. Debelina traku je precej manjša od preostalih dveh razsežnosti traku, specifična prevodnost kovine pa je \( \sigma \).
+</p>
+
+<ol class="org-ol">
+<li><p>
+Pokaži, da impedanco traku v opisani postavitvi lahko zapišemo kot
+</p>
+
+<p>
+\[ Z = R_0 \frac{\frac{ka}{2}}{\mathrm{th} \frac{ka}{2}},
+   \]
+</p>
+
+<p>
+kjer je \( k = \left( 1 + \mathrm{i} \right) \sqrt{\frac{\mu_0  \sigma \omega}{2}} \) kompleksni valovni vektor, \( R_0 \) statična upornost traku, \( \mathrm{th} \) pa označuje hiperbolični tangens.
+</p></li>
+
+<li>Izračunaj faktor, za katerega se pri visokih frekvencah (zaradi kožnega pojava) upornost traku poveča glede na njegovo statično upornost. Kolikšna pa je upornost traku pri nizkih frekvencah?</li>
+</ol>
+
+</div>
+
+<p>
+Indukcijski zakon v diferencialni obliki je
+</p>
+
+\begin{equation}
+\label{eq:2}
+ \nabla \times \vec{E} = - \frac{\partial \vec{B}}{\partial t}.
+\end{equation}
+
+<p>
+Hkrati vzamemo še eno Maxwellovo enačbo, ki smo jo zapisali prejšnji teden
+</p>
+
+<p>
+\[ \nabla \times \vec{B} = \mu_0 \vec{\jmath} + \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t} \simeq \mu_0 \vec{\jmath}
+\]
+</p>
+
+<p>
+Za naš primer obravnavamo kvazi-statično aproksimacijo, kar pomeni, da \( \frac{\partial \vec{E}}{\partial t}  = 0 \). Gostota električnega toka \( \vec{\jmath} \) pa je z električnim poljem zapisana kot
+</p>
+
+<p>
+\[ \vec{\jmath} = \sigma \vec{E}
+\]
+</p>
+
+<p>
+Rotor enačbe \ref{eq:2} nam z upoštevanjem identitete za \( \nabla \times \left( \nabla \times \vec{E} \right) \) poda enakost
+</p>
+
+<p>
+\[ \nabla \times \left( \nabla \times \vec{E} \right) = \nabla \left( \underbrace{\nabla \cdot \vec{E}}_{= 0} \right) - \nabla ^2 \vec{E} = - \mu_0 \sigma \frac{\partial \vec{E}}{\partial t} = - \frac{\partial }{\partial t} \nabla \times \vec{B}
+\]
+</p>
+
+<p>
+Dobimo difuzijsko enačbo
+</p>
+
+\begin{equation}
+\label{eq:3}
+ \nabla ^2 \vec{E} - \mu_0 \sigma \frac{\partial \vec{E}}{\partial t}  = 0.
+\end{equation}
+
+<p>
+Trak je priključen na izmenično napetost, ki jo zapišemo
+</p>
+
+<p>
+\[ U = U_0 e^{\mathrm{i} \omega t}.
+\]
+</p>
+
+<p>
+Posledično bo podobno odvisnost imela tudi jakost električnega polja, kar pomeni, da \( \frac{\partial \vec{E}}{\partial t} = \mathrm{i} \omega \vec{E} \). Difuzijska enačba \ref{eq:3} postane
+</p>
+
+<p>
+\[ \nabla ^2 \vec{E} - \mathrm{i} \omega \mu_0 \vec{E} = \nabla ^2 \vec{E} - \kappa ^2 \vec{E} = 0,
+\]
+</p>
+
+<p>
+kjer smo definirali \( \kappa = \sqrt{\mathrm{i} \omega \mu_0 \sigma} = \frac{1}{\sqrt{2}} \left( 1 + \mathrm{i} \right) \sqrt{\omega \mu_0 \sigma}  \). Ker se nahajamo na traku, kjer sta širina in višina traka precej manjši od dolžine traku, lahko zanemarimo odvoda po \( x \) in \( y \) v Laplaceovem operatorju. Izmenjujoč tok teče po dolžini traku, torej \( \vec{E} = E(x) \hat{e}_z \). Posledično rešujemo enačbo
+</p>
+
+<p>
+\[ E_z '' - \kappa ^2 E_z = 0.
+\]
+</p>
+
+<p>
+Zaradi simetrije preko \( y \) osi, ko tok teče samo po površini prevodnega traku, bo pomenilo, da zavržemo hiperbolični sinus zaradi lihosti.
+</p>
+
+<p>
+\[ E_z (x) = A \mathrm{ch} (\kappa x) .
+\]
+</p>
+
+<p>
+Konstanto \( A \) določimo iz robnih pogojev \( E_z \left( x = \pm \frac{a}{2} \right) = E_0 \), iz česar sledi, da je električno polje
+</p>
+
+<p>
+\[ E_{z, 0} (x) = \frac{E_0}{\mathrm{ch} \left( \frac{\kappa a}{2} \right)} \mathrm{ch} \left( \kappa x \right)
+\]
+</p>
+
+
+<div id="org0b6d85a" class="figure">
+<p><img src="figures/20KozniPojavE.png" alt="20KozniPojavE.png" />
+</p>
+</div>
+
+<p>
+Izračunajmo še tok \( I \) in iz njega impedanco \( Z \).
+</p>
+
+<p>
+Tok bomo izračunali preko gostote električnega toka
+</p>
+
+<p>
+\[ I_0 = \int\limits_{}^{} j_0 \, \mathrm{d} S,
+\]
+</p>
+
+<p>
+kjer je \( j_0 = \sigma E_{z, 0} \).
+</p>
+
+<p>
+Integral je torej
+</p>
+
+\begin{align*}
+  I_0 &= \sigma \int\limits_{- \frac{a}{2}}^{\frac{a}{2}} \frac{E_0}{\mathrm{ch} \frac{\kappa a}{2}} \mathrm{ch} \left( \kappa x \right) b \, \mathrm{d} x \\
+&= \left. \frac{\sigma E_0 b}{\kappa \mathrm{ch} \left( \frac{\kappa a}{2} \right)} \mathrm{sh} \left( \kappa x \right) \right|_{- \frac{a}{2}}^{\frac{a}{2}} \\
+&= \frac{\sigma E_0 b}{\kappa \mathrm{ch} \left( \frac{\kappa a}{2} \right)} 2 \mathrm{sh} \left( \frac{\kappa a}{2} \right)
+\end{align*}
+
+<p>
+Tok po površini traku je torej
+</p>
+
+<p>
+\[ I_0 = \frac{2 \sigma E_0 b}{\kappa} \mathrm{th} \frac{\kappa a}{2}.
+\]
+</p>
+
+<p>
+Napetost po površini traku je samo
+</p>
+
+<p>
+\[ U_0 = E_0 l,
+\]
+</p>
+
+<p>
+kar pomeni, da je impedanca po definiciji
+</p>
+
+<p>
+\[ Z = \frac{U_0}{I_0} = R \frac{\frac{\kappa a}{2}}{\mathrm{th} \left( \frac{\kappa a}{2} \right)} ,
+\]
+</p>
+
+<p>
+kjer smo definirali \( R = \frac{\xi l}{S} = \frac{l}{\sigma a b} \).
+</p>
+</div>
+<div id="outline-container-org80666b8" class="outline-3">
+<h3 id="org80666b8"><span class="section-number-3">2.1.</span> Točka b</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Uporabna bo zveza razvoja hiperboličnega tangensa za majhne \( x \):
+</p>
+
+<p>
+\[ \mathrm{th} x = x - \frac{x ^3}{3!} + \ldots
+\]
+</p>
+
+<p>
+Za majhne frekvence \( \omega \) velja \( \kappa \ll \frac{1}{a} \). Posledično je
+</p>
+
+<p>
+\[ Z = R
+\]
+</p>
+
+<p>
+Za visoke frekvence \( \omega \) pa velja \( \kappa \ll \frac{1}{a} \), iz česar sledi \( \kappa a \gg 1 \). Hiperbolični tangens je \( \mathrm{th} \frac{\kappa a}{2} \approx 1 \). Impedanca je tako
+</p>
+
+<p>
+\[ Z = R \frac{\kappa a}{2} = \frac{R a \frac{1}{\sqrt{2}} \left( 1 + \mathrm{i} \right) \sqrt{\omega \mu_{0} \sigma}}{2}
+\]
+</p>
+
+<p>
+Impedanca za visoke frekvence je tako
+</p>
+
+<p>
+\[ Z_R = \frac{R a}{2 \sqrt{2}} \sqrt{\omega \mu_{0} \sigma}
+\]
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org6f6337f" class="outline-2">
+<h2 id="org6f6337f"><span class="section-number-2">3.</span> Energijski tok v koaksialnem vodniku in v valjastem vodniku</h2>
+<div class="outline-text-2" id="text-3">
+<div class="problem" id="org82eb2ad">
+<ol class="org-ol">
+<li>Izračunaj energijski tok skozi prečni presek koaksialnega vodnika, kjer je napetost med žilo in plaščem \( U \), ta pa po njiju v nasprotnih smereh poganja električni tok \( I \).</li>
+<li>Izračunaj energijski tok skozi zunanjo površino dolgega ravnega vodnika preseka \( S \) in dolžine \( l \) iz kovine s specifično prevodnostjo \( \sigma \), po katerem teče električni tok \( I \). Končni rezultat izrazi s celotno uporabnostjo vodnika \( R = \frac{l}{\sigma S} \)</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2026-01-12 Mon 14:36</p>
+</div>
+</body>
+</html>

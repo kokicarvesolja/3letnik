@@ -9,7 +9,35 @@
 #+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
 * Valovni vodnik iz dveh vzporednih plošč
 #+begin_problem
+Veliki vzporedni prevodni plošči v medsebojni razdalji \( a \) uporabimo kot valovni vodnik.
 
+a) Če smer širjenja valovanja označimo z \( z \), pokaži, da lahko komponente \( E_x, E_y, H_x \) in \( H_y \) jakosti električnega in magnetnega polja vse izrazimo s komponentama \( E_z \) in \( H_z \). Za popolno poznavanje elektromagnetnega polja v valovnem vodniku torej zadostuje poiskati krajevni odvisnosti vzdolžnih komponent \( E_z \) in \( H_z \). To velja tudi v splošnem za valovni vodnik s poljubnim presekom.
+
+b) Izračunaj krajevno odvisnost vzdolžne komponente \( E_z \) za transverzalni magnetni (TM) način valovanja, pri katerem je \( H_z = 0 \), in krajevno odvisnost vzdolžne komponente \( H_z \) za transverzalni električni (TE) način valovanja, pri katerem je \( E_z = 0 \). Za oba primera izračunaj tudi disperzijsko relacijo valovanja.
+
+c) Pokaži, da ima v TM načinu impedanca valovnega vodnika, ki jo definiramo kot
+
+   \[ Z = \frac{E_{\perp }}{H_{\parallel}},
+   \]
+
+   (kjer je \( E_{\perp } \) komponenta električnega polja pravokotna na plošči, \( H_{\parallel} \) pa komponenta magnetnega polja vzporedna s ploščama), frekvenčno odvisnost
+
+   \[ Z = Z_0  \sqrt{1 - \frac{\omega_0 ^2}{\omega ^2}},
+   \]
+
+   kjer je \( Z_0  = \sqrt{\frac{\mu_0}{\epsilon_0}} \) upor vakuuma in \( \omega_0 \) najnižja možna frekvenca valovnja v uporabljenem valovnem načinu. Pokaži, da ima v TE načinu impedavnca valovnega vodnika, ki jo podobno definiramo kot
+
+   \[ Z = \frac{E_{\parallel}}{H_{\perp }},
+   \]
+
+   frekvenčno odvisnost
+
+   \[ Z = \frac{Z_0}{\sqrt{1 - \frac{\omega_0 ^2}{\omega ^2}}} .
+   \]
+
+d) Pokaži, da je v TM načinu razmerje amplitud prečne in vzdolžne komponente jakosti električnega polja enako \( \frac{k}{\kappa} \), kjer je \( k \) valovni vektor valovanja in \( \kappa \) valovni vektor, ki opisuje prečno krajevno odvisnost polj. Ta rezultat nam omogoča preprosto predstavo širjenja valovanja vzdolž plošč: valovanje izgleda kot periodično odbijanje valovnih front med obema ploščama.
+
+e) Nadgradnja opisanega valovnega vodnika je valovni vodnik s pravokotnim presekom s stranicama \( a \) in \( b \). Izračunaj krajevni odvisnosti komponent \( E_z \) za TM način valovanja in \( H_z \) za TE način valovanj ter disperzijsko relacijo valovanja v obeh primerih.
 #+end_problem
 
 V valovnem vodniku je širjenje ravnega elektromagnetnega vala v določeni smeri, ki jo določimo s prevodnimi mejami. Vodniki so prazni, včasih pa so lahko napolnjeni z dielektrikom.

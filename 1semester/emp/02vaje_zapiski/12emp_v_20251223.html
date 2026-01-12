@@ -1,0 +1,749 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-01-12 Mon 15:05 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>12. vaje iz Elektromagnetnega polja</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">12. vaje iz Elektromagnetnega polja</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgeef9eb8">1. Točkast dipol v krogelni lupini dielektrika</a></li>
+<li><a href="#orgaabdad9">2. Točka b)</a></li>
+<li><a href="#org8bc0e7f">3. Elektromagnetno valovanje v hladni plazmi</a>
+<ul>
+<li><a href="#orgd719324">3.1. Izpeljava valovne enačbe</a></li>
+<li><a href="#org7b6a73f">3.2. Naloga</a></li>
+<li><a href="#org4dd5e9c">3.3. Točka d)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgeef9eb8" class="outline-2">
+<h2 id="orgeef9eb8"><span class="section-number-2">1.</span> Točkast dipol v krogelni lupini dielektrika</h2>
+<div class="outline-text-2" id="text-1">
+<div class="problem" id="org673c4f2">
+<p>
+V razsežni homogeni snovi z dielektrično konstanto \( \epsilon \) je krogelna votlina polmera \( a \). V njeno središče postavimo točkast električni dipol z električnim dipolnim momentom \( p_e \).
+</p>
+
+<ol class="org-ol">
+<li><p>
+Izračunaj potencial električnega polja povsod po prostoru kot funkcijo krogelnih koordinat \( r \) in \( \theta \). Na podlagi dobljenega izraz pokaži, da ima električno polje zunaj krogelne votline obliko polja električnega dipola z električnim dipolnim momentom
+</p>
+
+<p>
+\[ p_e ' = \frac{3 p_e}{(2 \epsilon + 1)}.
+   \]
+</p>
+
+<p>
+Polarni kot \( \theta \) je merjen od smeri dipola.
+</p></li>
+
+<li>Izračunaj površinsko gostoto vezanega naboja na površini krogelne votline kot funkcijo polarnega kota \( \theta \). Izhajaš lahko iz pod a) podanega izraza za \( p_e' \).</li>
+
+<li>Preveri, da je prostorninska gostota vezanega naboja povsod v snovi enaka nič.</li>
+</ol>
+
+</div>
+
+<p>
+Zadnjič smo rešili Poissonovo enačbo v sferični koordinatah in dobili, da je potencial električnega dipola
+</p>
+
+<p>
+\[ U (r, \theta) = \begin{cases}
+                   \frac{p_e}{4 \pi \epsilon_0} \frac{\cos \theta}{r ^2} + A_1 r \cos \theta &; r < a \\
+                   B_1 \frac{1}{r ^2} \cos \theta &; r > a
+                   \end{cases}
+\]
+</p>
+
+<p>
+Zahtevamo zveznost za \( U \), saj brez nje imamo na določenih točkah neskončno električno polje.
+</p>
+
+\begin{equation}
+\label{eq:1}
+U_{not} (a, \theta) = U_{zun} (a, \theta).
+\end{equation}
+
+<p>
+Drugi robni pogoj dobimo iz rotorja električnega polja \( \nabla \times \vec{E} = 0 \). Po ploskovnem integralu preseka lahko preko Stokesovega izreka pretvorimo na integral po zaključeni zanki.
+</p>
+
+\begin{align*}
+  \nabla \times \vec{E} &= 0 && \left/ \int\limits_{}^{} \mathrm{d} \vec{S} \right. \\
+\oint\limits_{}^{} \vec{E} \cdot \mathrm{d} \vec{l} = 0.
+\end{align*}
+
+<p>
+Iz tega sledi \( E_{zun}^{\parallel} = E_{not}^{\parallel} \). Do enakega rezultata smo prišli pri prejšnji nalog. Zaradi definicij potenciala in cikličnih odvodov funkcij, dobimo pogoj
+</p>
+
+<p>
+\[ \frac{\partial U_{zun}}{\partial \theta}  = \frac{\partial U_{not}}{\partial \theta},
+\]
+</p>
+
+<p>
+kar pa je ekvivalenten pogoj zveznosti.
+</p>
+
+<p>
+Lahko pa uporabimo pogoj
+</p>
+
+<p>
+\[ \nabla \cdot \vec{D} = 0,
+\]
+</p>
+
+<p>
+ki velja povsod razen v središču. Po integraciji, ki je ekvivalentna b) delu dobimo
+</p>
+
+<p>
+\[ D_{zun}^{\perp} - D_{not}^{\perp} = 0 \implies \epsilon E_{zun}^{\perp } = E_{not} ^{\perp },
+\]
+</p>
+
+<p>
+Z električnim potencialom zapišemo pogoj kot
+</p>
+\begin{equation}
+\label{eq:2}
+\left. \epsilon \left( - \frac{\partial U_{zun}}{\partial r}   \right)\right|_a = - \left. \frac{\partial U}{\partial r} \right|_a
+\end{equation}
+
+<p>
+kar pa je sedaj naš delujoč drugi pogoj.
+</p>
+
+<p>
+Iz robnega pogoja \ref{eq:1} dobimo enakost
+</p>
+
+\begin{equation}
+\label{eq:3}
+ \frac{p_e}{4 \pi \epsilon_0} = B_1 - A_1 a ^3.
+\end{equation}
+
+<p>
+Iz robnega pogoja \ref{eq:2} pa dobimo
+</p>
+
+\begin{align*}
+  \epsilon \left( + 2 B_1 \frac{\cos \theta}{a ^3} \right) = \frac{p_e}{4 \pi \epsilon_0} \frac{2 \cos \theta}{a ^3} - A_1 \cos \theta \\
+2 \epsilon B_1 &= \frac{p_e}{4 \pi \epsilon_0} \cdot 2 - A_1 a ^3
+\end{align*}
+
+<p>
+Upoštevamo \ref{eq:3}, katerega izraz nadomestimo v zgornji enačbi, da dobimo enakost
+</p>
+
+<p>
+\[ 2 \epsilon B_1 = \frac{p_e}{2 \pi \epsilon_0 } + \frac{p_e}{4 \pi \epsilon_0} - B_1,
+\]
+</p>
+
+<p>
+in izrazimo koeficient
+</p>
+
+<p>
+\[ B = \frac{3 p_e}{4 \pi \epsilon_0} \frac{1}{2 \epsilon + 1} .
+\]
+</p>
+
+<p>
+Drugi koeficient je
+</p>
+
+<p>
+\[ A = - \frac{p_e}{4 \pi \epsilon_0 a ^3} \frac{2 (\epsilon - 1)}{2 \epsilon + 1} .
+\]
+</p>
+
+<p>
+Električni potencial dipola je tako
+</p>
+
+<p>
+\[ U (r, \theta) = \begin{cases}
+                   \frac{p_e}{4 \pi \epsilon_0} \frac{\cos \theta}{r ^2} - \frac{p_e}{4 \pi \epsilon_0 a ^2} \frac{2 (\epsilon - 1)}{2 \epsilon  + 1} r \cos \theta &; r < a \\
+                   \frac{3p_e}{4 \pi \epsilon_0} \frac{1}{2 \epsilon + 1} \frac{\cos \theta}{r ^2} &; r > a
+                   \end{cases}
+\]
+</p>
+
+<p>
+Preverimo, če je rezultat validen. Ob predpostavki, da je \( \epsilon = 1 \), bi morali dobiti potencial električnega dipola.
+</p>
+
+<p>
+Popravek znotraj sfere za \( \epsilon = 1 \) je
+</p>
+
+<p>
+\[ U_2 =\left. - \frac{p_e}{4 \pi \epsilon_0 a ^2} \frac{2 (\epsilon - 1)}{2 \epsilon  + 1} r \cos \theta \right|_{\epsilon = 1} = 0.
+\]
+</p>
+
+<p>
+Zunaj sfere pa je
+</p>
+
+<p>
+\[  \frac{3p_e}{4 \pi \epsilon_0} \frac{1}{2 \epsilon + 1} \frac{\cos \theta}{r ^2} = \frac{p_e}{4 \pi \epsilon_0} \frac{\cos \theta}{r ^2}.
+\]
+</p>
+
+<p>
+Oba rezultata za \( \epsilon = 1 \) se ujemata z dipolom.
+</p>
+
+<p>
+\( U_2 \) je homogeno polje, ki izvira iz vezanih nabojev na površini.
+</p>
+
+<p>
+Če definiramo \( p_e' = \frac{3 p_e}{2\epsilon + 1} \), potem ima polje zunaj krogle točno dipolno obliko.
+</p>
+</div>
+</div>
+<div id="outline-container-orgaabdad9" class="outline-2">
+<h2 id="orgaabdad9"><span class="section-number-2">2.</span> Točka b)</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Postopamo preko divergence polja, saj velja
+</p>
+
+<p>
+\[ \nabla \cdot \vec{E} = \rho_v,
+\]
+</p>
+
+<p>
+kjer so \( \rho_v \) vezani naboji. Po volumnskem integralu kvadra, ki tesno objema rob sfere, dobimo enakost
+</p>
+
+<p>
+\[ E_{zun}^{\perp } - E_{not}^{\perp } = \frac{\sigma_v}{\epsilon_0}
+\]
+</p>
+
+<p>
+Drugače povedano, velja
+</p>
+
+<p>
+\[ \sigma_v = \epsilon_0 \left( E_{zun}^{\perp } - E_{not}^{\perp } \right) = \left( -\left. \frac{\partial U_{zun}}{\partial r} \right|_{r = a} + \left. \frac{\partial U_{r}}{\partial r} \right|_{ r = a}  \right) .
+\]
+</p>
+
+<p>
+Upoštevamo potencial izpeljan v prejšnji podnalogi
+</p>
+
+\begin{align*}
+  \sigma_v &= \epsilon_0 \left( - \frac{p_e}{4 \pi \epsilon_0} \frac{2 \cos \theta}{a ^3} - \frac{p_e}{4 \pi \epsilon_0 a ^3} \frac{2 (\epsilon - 1)}{2 \epsilon + 1} \cos \theta + \frac{3}{2} \frac{6p_e}{4 \pi \epsilon_0} \frac{1}{2\epsilon + 1} \frac{\cos \theta}{a ^3} \right) \\
+&= \frac{p_e}{4 \pi} \frac{\cos \theta}{a ^3} \left( -2 - \frac{2(\epsilon - 1)}{2 \epsilon + 1} + \frac{6}{(2 \epsilon+ 1)} \right) \\
+&= \frac{p_e}{4 \pi} \frac{\cos \theta}{a ^3} \left( \frac{-2(2 \epsilon + 1) - 2(\epsilon - 1) + 6}{(2 \epsilon + 1)} \right) \\
+&= \frac{p_e}{4 \pi} \frac{\cos \theta}{a ^3}\left( \frac{-6 \epsilon + 6}{(2\epsilon + 1)} \right) \\
+&= \frac{-3 p_e}{2 \pi} \frac{\cos \theta}{a ^3} \left( \frac{\epsilon - 1}{2 \epsilon + 1} \right)
+\end{align*}
+
+<p>
+Če je \( \epsilon = 1 \), ni dielektrika in vezanih nabojev.
+</p>
+
+<p>
+Preko gostote električnega naboja \( \vec{D} = \epsilon_0 \vec{E}+ \vec{P} = \epsilon \epsilon_0 \vec{E} \) dobimo polarizacijo
+</p>
+
+<p>
+\[ \vec{P} = \epsilon_0 (\epsilon - 1) \vec{E}.
+\]
+</p>
+
+<p>
+Gostoto vezanih nabojev dobimo preko
+</p>
+
+<p>
+\[ \rho_v = - \nabla \cdot \vec{P} = - \epsilon_0 (\epsilon - 1) \nabla \cdot \vec{E} = 0
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-org8bc0e7f" class="outline-2">
+<h2 id="org8bc0e7f"><span class="section-number-2">3.</span> Elektromagnetno valovanje v hladni plazmi</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Plazma je plin nabitih delcev. S pridevnikom hladno želimo povzročiti, da ni termičnega gibanja. Imamo velika pozitivno nabita jedar, ki v Bohrnovi aproksimaciji mirujejo, medtem ko manjši elektroni se gibljejo. Elektromagnetno polje bomo predstavili z ravnim valom
+</p>
+
+<p>
+\[ \vec{E} = \vec{E}_0 e^{\mathrm{i} (k  z - \omega t)}
+\]
+</p>
+
+<p>
+Po novih smernicah (?) se ne reče več dielektrična kostantna \( \epsilon \), ampak relativna dielektričnost.
+</p>
+
+<p>
+Gibalna enačba elektrona z maso \( m \) in nabojem \( -e \) jedar
+</p>
+
+<p>
+\[  m \ddot{r} = - e \vec{E} \implies \ddot{r} = - \frac{e}{m} \vec{E}_0 e^{\mathrm{i} (kz - \omega t)}.
+\]
+</p>
+
+<p>
+kjer \( \vec{r} \) odmik od mirovne lege. Za rešitev enačbe uporabimo nastavek \( \vec{r} = \vec{r}_0 e^{\mathrm{i} (kz - \omega t)} \). Nastavek vstavimo v gibalno enačbo
+</p>
+
+<p>
+\[ - \vec{r} _0 \omega ^2 e^{\mathrm{i} (kz -- \omega t)} = - \frac{e}{m} \vec{E}_0 e^{\mathrm{i} (kz - \omega t)},
+\]
+</p>
+
+<p>
+iz česar dobimo amplitudo nihanja okrog mirovne lege
+</p>
+
+<p>
+\[ \vec{r}_0 = \frac{e}{m \omega ^2} \vec{E}_0.
+\]
+</p>
+
+<p>
+Oscilacije mimo mirovne lege ustvari polarizacijo z amplitudo \( \vec{p}_e = - \vec{r} e  \). Nadomestimo amplitudo nihanja s prej izračunanim
+</p>
+
+<p>
+\[ \vec{p}_e = - \frac{e ^2}{m \omega ^2} \vec{E}_0 e^{\mathrm{i} (kz - \omega t)}
+\]
+</p>
+
+<p>
+Časovno neodvisna amplituda je
+</p>
+
+<p>
+\[ \vec{p}_{e0} = - \frac{e ^2}{m \omega ^2} \vec{E}_0 .
+\]
+</p>
+
+<p>
+Izračunamo še polarizacijo \( \vec{P} \), ki jo povezuje gostota elektronov \( n \) in dipolni moment
+</p>
+
+<p>
+\[ \vec{P} = n \vec{p}_e
+\]
+</p>
+
+<p>
+Enačimo
+</p>
+
+<p>
+\[ \vec{P}_0 = - \frac{n e ^2}{m \omega ^2} \vec{E}_0 = \epsilon_0 (\epsilon - 1) \vec{E}_0 \implies \ \epsilon  = -\frac{n e ^2}{m \omega ^2 \epsilon_0} + 1.
+\]
+</p>
+
+<p>
+Definiramo plazemsko frekvenco \( \omega_p \) kot
+</p>
+
+<p>
+\[ \omega_p = \sqrt{\frac{n e ^2}{m \epsilon_0}},
+\]
+</p>
+
+<p>
+in res smo prišli do relativne dielektričnosti v odvisnosti od frekvence valovanja
+</p>
+
+\begin{equation}
+\label{eq:5}
+ \epsilon \left( \omega \right) = 1 - \left( \frac{\omega_p}{\omega} \right) ^2
+\end{equation}
+</div>
+<div id="outline-container-orgd719324" class="outline-3">
+<h3 id="orgd719324"><span class="section-number-3">3.1.</span> Izpeljava valovne enačbe</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Izhajamo iz Maxwellovih zakonov
+</p>
+
+\begin{align*}
+  \nabla \cdot \vec{E} = 0 & \quad \nabla \times \vec{E} = - \mu_0 \frac{\partial \vec{H}}{\partial t}  \\
+\nabla \cdot \vec{H} = 0 & \quad \nabla \times \vec{H} = \epsilon_0 \epsilon \frac{\partial \vec{E}}{\partial t}
+\end{align*}
+
+<p>
+Z operatorjem vplivamo na drugo enačbo \( \nabla \times \vec{E} \)
+</p>
+
+\begin{align*}
+  \nabla \times \left( \nabla \times \vec{E} \right) &= - \mu_0 \frac{\partial }{\partial t} \nabla \times \vec{H} \\
+\nabla \left( \nabla \cdot \vec{E} \right) - \nabla ^2 \vec{E} &= - \mu_0 \epsilon_0 \epsilon \frac{\partial }{\partial t}  \frac{\partial \vec{E}}{\partial t}
+\end{align*}
+
+<p>
+Iz prve Maxwellove enačbe se nam enačba poenostavi v
+</p>
+
+\begin{equation}
+\label{eq:4}
+ \nabla ^2 \vec{E} - \mu_0 \epsilon_0 \epsilon \frac{\partial ^2 \vec{E}}{\partial t ^2} = 0,
+\end{equation}
+
+<p>
+kar pa je valovna enačba, kjer velja \( \frac{1}{c ^2} = \mu_0 \epsilon_0 \epsilon \).
+</p>
+</div>
+</div>
+<div id="outline-container-org7b6a73f" class="outline-3">
+<h3 id="org7b6a73f"><span class="section-number-3">3.2.</span> Naloga</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+V valovno enačbo \ref{eq:4} vstavimo naše časovno odvisno polje \( \vec{E} = \vec{E}_0 e^{\mathrm{i} \omega t} \).
+</p>
+
+<p>
+Dobimo
+</p>
+
+<p>
+\[ - k ^2 \vec{E} - \frac{1}{c ^2}\left( - \omega ^2 \right) \vec{E} = 0 \implies \ \vec{E} \left( - k ^2 + \frac{\omega ^2}{c ^2} \right) = 0
+\]
+</p>
+
+<p>
+Zgornja enakost velja samo, če \( \omega = ck \).
+</p>
+
+<p>
+Za prazen prostor je \( c = c_0 \), kar pomeni, da imamo linearno zvezo \( \omega = c_0 k \).
+</p>
+
+<p>
+V nepraznem prostoru pa ponovno izhajamo iz zgornje zveze
+</p>
+
+<p>
+\[ \mu_0 \epsilon_0 \epsilon  \omega ^2 - k ^2  = 0  \implies \ \omega ^2 = k ^2 \frac{c_0 ^2}{\epsilon}.
+\]
+</p>
+
+<p>
+Izraz za relativno dielektričnost \ref{eq:5} vstavimo v zgornjo enačbo
+</p>
+
+<p>
+\[ \omega ^2 \left( 1 - \frac{\omega_p ^2}{\omega ^2} \right) = k ^2 c_0 ^2
+\]
+</p>
+
+<p>
+Nazadnje lahko izrazimo frekvenco v odvisnosti od valovnega vektorja in pridobili smo disperzijsko relacijo
+</p>
+
+<p>
+\[ \omega (k) = \sqrt{k ^2 c_0 ^2 + \omega_p ^2}
+\]
+</p>
+
+<p>
+Poglejmo si še limitne primer. Za velike \( k \) velja \( kc_0 \gg \omega_p \) velja \( \omega = kc_0 \).
+</p>
+
+<p>
+Za majhne \( k \) razvijemo
+</p>
+
+\begin{align*}
+  \omega (k) &= \omega_p \sqrt{1 + \left( \frac{c_0}{\omega_p} k \right) ^2} \\
+&= \omega_p \left( 1 + \frac{1}{2} \left( \frac{c_0}{\omega_p}k  \right)^2 \right) \\
+&= \omega_p + \frac{1}{2} \frac{c_0 ^2}{\omega_p} k ^2.
+\end{align*}
+</div>
+</div>
+<div id="outline-container-org4dd5e9c" class="outline-3">
+<h3 id="org4dd5e9c"><span class="section-number-3">3.3.</span> Točka d)</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+Fazna hitrost je definirana kot \( v_F = \frac{\omega}{k} \), medtem ko grupna hitrosti, ki lahko nosi informacije pa je \( v_g = \frac{\partial \omega}{\partial k}  \).
+</p>
+
+<p>
+Za zgornje izračunane rezultate je fazna hitrost
+</p>
+
+<p>
+\[ v_F = \sqrt{c_{0} ^2 - \left( \frac{\omega_p}{k} \right) ^2}.
+\]
+</p>
+
+<p>
+Slednji rezultat je sicer večji od \( c_0 \), vendar ker z njo ne moremo prenašati informacije, vse štima - whatever that means.
+</p>
+
+<p>
+Grupna hitrost je odvod
+</p>
+
+<p>
+\[ v_G = \frac{c_0}{\sqrt{1 + \left( \frac{\omega_p}{c_0 k} \right) ^2}}.
+\]
+</p>
+
+<p>
+Produkt hitrosti je
+</p>
+
+<p>
+\[ v_F \cdot v_G = c_0 ^2
+\]
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2026-01-12 Mon 15:05</p>
+</div>
+</body>
+</html>

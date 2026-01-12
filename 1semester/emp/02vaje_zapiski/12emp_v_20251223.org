@@ -9,6 +9,21 @@
 #+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
 * Točkast dipol v krogelni lupini dielektrika
 
+#+begin_problem
+V razsežni homogeni snovi z dielektrično konstanto \( \epsilon \) je krogelna votlina polmera \( a \). V njeno središče postavimo točkast električni dipol z električnim dipolnim momentom \( p_e \).
+
+a) Izračunaj potencial električnega polja povsod po prostoru kot funkcijo krogelnih koordinat \( r \) in \( \theta \). Na podlagi dobljenega izraz pokaži, da ima električno polje zunaj krogelne votline obliko polja električnega dipola z električnim dipolnim momentom
+
+   \[ p_e ' = \frac{3 p_e}{(2 \epsilon + 1)}.
+   \]
+
+   Polarni kot \( \theta \) je merjen od smeri dipola.
+
+b) Izračunaj površinsko gostoto vezanega naboja na površini krogelne votline kot funkcijo polarnega kota \( \theta \). Izhajaš lahko iz pod a) podanega izraza za \( p_e' \).
+
+c) Preveri, da je prostorninska gostota vezanega naboja povsod v snovi enaka nič.
+#+end_problem
+
 Zadnjič smo rešili Poissonovo enačbo v sferični koordinatah in dobili, da je potencial električnega dipola
 
 \[ U (r, \theta) = \begin{cases}
@@ -28,7 +43,7 @@ Drugi robni pogoj dobimo iz rotorja električnega polja \( \nabla \times \vec{E}
 
 \begin{align*}
   \nabla \times \vec{E} &= 0 && \left/ \int\limits_{}^{} \mathrm{d} \vec{S} \right. \\
-\oint\limits_{}^{} \vec{E} \cdot \mathrm{d} \vec{l} = 0.
+\oint\limits_{}^{} \vec{E} \cdot \mathrm{d} \vec{l} &= 0.
 \end{align*}
 
 Iz tega sledi \( E_{zun}^{\parallel} = E_{not}^{\parallel} \). Do enakega rezultata smo prišli pri prejšnji nalog. Zaradi definicij potenciala in cikličnih odvodov funkcij, dobimo pogoj
@@ -36,7 +51,7 @@ Iz tega sledi \( E_{zun}^{\parallel} = E_{not}^{\parallel} \). Do enakega rezult
 \[ \frac{\partial U_{zun}}{\partial \theta}  = \frac{\partial U_{not}}{\partial \theta},
 \]
 
-kar pa je ekvivalenten pogoj zveznosti.
+kar pa je ekvivalentno pogoju zveznosti..
 
 Lahko pa uporabimo pogoj
 
@@ -66,7 +81,7 @@ Iz robnega pogoja \ref{eq:1} dobimo enakost
 Iz robnega pogoja \ref{eq:2} pa dobimo
 
 \begin{align*}
-  \epsilon \left( + 2 B_1 \frac{\cos \theta}{a ^3} \right) = \frac{p_e}{4 \pi \epsilon_0} \frac{2 \cos \theta}{a ^3} - A_1 \cos \theta \\
+  \epsilon \left( + 2 B_1 \frac{\cos \theta}{a ^3} \right) &= \frac{p_e}{4 \pi \epsilon_0} \frac{2 \cos \theta}{a ^3} - A_1 \cos \theta \\
 2 \epsilon B_1 &= \frac{p_e}{4 \pi \epsilon_0} \cdot 2 - A_1 a ^3
 \end{align*}
 
@@ -110,7 +125,7 @@ Oba rezultata za \( \epsilon = 1 \) se ujemata z dipolom.
 \( U_2 \) je homogeno polje, ki izvira iz vezanih nabojev na površini.
 
 Če definiramo \( p_e' = \frac{3 p_e}{2\epsilon + 1} \), potem ima polje zunaj krogle točno dipolno obliko.
-* Točka b)
+** Točka b)
 
 Postopamo preko divergence polja, saj velja
 
@@ -150,14 +165,36 @@ Gostoto vezanih nabojev dobimo preko
 \]
 * Elektromagnetno valovanje v hladni plazmi
 
-Plazma je plin nabitih delcev. S pridevnikom hladno želimo povzročiti, da ni termičnega gibanja. Imamo velika pozitivno nabita jedar, ki v Bohrnovi aproksimaciji mirujejo, medtem ko manjši elektroni se gibljejo. Elektromagnetno polje bomo predstavili z ravnim valom
+#+begin_problem
+Pri obravnavi potovanja elektromagnetnih valov po hladni plazmi lahko predpostavimo, da sestavni ioni zaradi velike mase skoraj mirujejo, sestavni elektroni pa so skoraj povsem prosti, tako da se hitro odzivajo na zunanja polja. Ker je plazma hladna, lahko termično gibanje elektronov zanemarimo.
+
+a) S pomočjo enačbe gibanja za proste elektrone mase \( m \) in naboja \( -e \) pokaži, da frekvenčno odvisnost dielektričnosti plazme zapišemo kot
+
+   \[ \epsilon (\omega) = 1 - \frac{\omega_p ^2}{\omega ^2} ,
+   \]
+
+   kjer je \( \omega_p = \sqrt{\frac{ne ^2}{m\epsilon_0}} \) plazemska frekvenca in \( n \) številksa gostota elektronov v plazmi.
+
+b) S pomočjo rezultata pod a) pokaži, da je disperzijska relacija elektromagnetnih valov, ki se lahko širijo po plazmi
+
+   \[ \omega (k) = \sqrt{\omega_p ^2 + c_0 ^2 k ^2},
+   \]
+
+   kjer je \( c_0 \) hitrost elektromagnetnega valovanja v vakuumu. Kako se rezultat poenostavi v limitnih primerih velikih in majhnih frekvenc?
+
+c) Izračunaj krajevno odvisnost jakosti električnega polja ravnega elektromagnetnega vala s frekvenco znotraj frekvenčne reže, se pravi pri \( \omega < \omega_p \).
+
+d) S pomočjo rezultata pod b) izračunaj in skiciraj frekvenčno odvisnost fazne in grupne hitrosti elektromagnetnih valov v plazmi. Primerjaj obe hitrosti s hitrostjo svetlobe v vakuumu.
+#+end_problem
+
+Plazma je plin nabitih delcev. S pridevnikom hladno želimo povzročiti, da ni termičnega gibanja. Imamo velika pozitivna nabita jedra, ki v Bohrnovi aproksimaciji mirujejo, medtem ko manjši elektroni se gibljejo. Elektromagnetno polje bomo predstavili z ravnim valom
 
 \[ \vec{E} = \vec{E}_0 e^{\mathrm{i} (k  z - \omega t)}
 \]
 
 Po novih smernicah (?) se ne reče več dielektrična kostantna \( \epsilon \), ampak relativna dielektričnost.
 
-Gibalna enačba elektrona z maso \( m \) in nabojem \( -e \) jedar
+Gibalna enačba elektrona z maso \( m \) in nabojem \( -e \) jedra
 
 \[  m \ddot{r} = - e \vec{E} \implies \ddot{r} = - \frac{e}{m} \vec{E}_0 e^{\mathrm{i} (kz - \omega t)}.
 \]
@@ -212,7 +249,7 @@ Izhajamo iz Maxwellovih zakonov
 \nabla \cdot \vec{H} = 0 & \quad \nabla \times \vec{H} = \epsilon_0 \epsilon \frac{\partial \vec{E}}{\partial t}
 \end{align*}
 
-Z operatorjem vplivamo na drugo enačbo \( \nabla \times \vec{E} \)
+Z rotorjem vplivamo na drugo enačbo \( \nabla \times \vec{E} \)
 
 \begin{align*}
   \nabla \times \left( \nabla \times \vec{E} \right) &= - \mu_0 \frac{\partial }{\partial t} \nabla \times \vec{H} \\

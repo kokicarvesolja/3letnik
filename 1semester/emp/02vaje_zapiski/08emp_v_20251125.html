@@ -1,0 +1,793 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-01-12 Mon 14:29 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>8. vaje iz Elektromagnetnega polja</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">8. vaje iz Elektromagnetnega polja</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org4f395f4">1. Upornost prevodne ploščice</a></li>
+<li><a href="#org640dce0">2. Cabrerov eksperiment</a>
+<ul>
+<li><a href="#org31b19ed">2.1. Točka a</a></li>
+<li><a href="#org7e45cef">2.2. Točka b</a></li>
+<li><a href="#org18926fa">2.3. Točka c</a></li>
+</ul>
+</li>
+<li><a href="#org49787f4">3. Induciran tok v okvirju</a>
+<ul>
+<li><a href="#orgc77f236">3.1. Točka a</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4f395f4" class="outline-2">
+<h2 id="org4f395f4"><span class="section-number-2">1.</span> Upornost prevodne ploščice</h2>
+<div class="outline-text-2" id="text-1">
+<div class="problem" id="org160d852">
+<p>
+Iz kovinske plošče debeline \( d \) s specifično prevodnostjo \( \sigma \) izrežemo ploščico v obliki polovice kolobarja z notranjim polmerom \( r_1 \) in zunanjim polmerom \( r_2 \). Na ravni stranici ploščice naparimo elektrodi iz zelo dobrega prevodnika, mednju pa priključimo izvor konstantne napetosti \( U_0 \), kakor prikazuje slika. Določi potencial električnega polja v ploščici in s pomočjo tega izračunaj upor ploščice.
+</p>
+
+</div>
+
+
+<div id="orgf494d70" class="figure">
+<p><img src="figures/08upornostPrevodnePloscice.png" alt="08upornostPrevodnePloscice.png" />
+</p>
+</div>
+
+<p>
+Napišemo EMP-jevsko različico Ohmovega zakona, ki je stacionarni tok
+</p>
+
+<p>
+\[ \vec{\jmath} = \sigma \vec{E},
+\]
+</p>
+
+<p>
+kjer je \( \sigma \) specifična prevodnost. Spomnimo, da je električno polje definirano preko potenciala kot \( \vec{E} = - \nabla U \), iz česar sledi
+</p>
+
+\begin{equation}
+\label{eq:1}
+ \vec{\jmath} = - \sigma \nabla U.
+\end{equation}
+
+<p>
+Uporabimo še kontinuitetno enačbo, ki je definirana kot
+</p>
+
+<p>
+\[ \frac{\partial \rho}{\partial t} + \nabla \cdot \vec{\jmath} = 0 \implies \ \nabla \cdot \vec{\jmath} = 0
+\]
+</p>
+
+<p>
+Člen \( \frac{\partial \rho}{\partial t} = 0  \) povsod na prevodniku, saj nimamo nikjer na prevodniku izvora ali ponora.
+</p>
+
+<p>
+Z vstavitvijo enačbe \ref{eq:1} v kontinuitetno enačbo dobimo Laplaceovo enačbo v cilindričnih koordinatah
+</p>
+
+<p>
+\[ \nabla \cdot \vec{\jmath} = - \sigma \nabla ^2 U = 0.
+\]
+</p>
+
+<p>
+Na prevodniku torej velja
+</p>
+
+<p>
+\[ \nabla ^2 U = 0.
+\]
+</p>
+
+<p>
+Splošna rešitev Laplaceove enačbe v valjni geometriji je
+</p>
+
+\begin{equation}
+\label{eq:2}
+ U \left( r, \phi \right) = \sum\limits_{m = 1}^{\infty} \left( A_m \cos (m\phi) + B_m \sin (m \phi) \right) \left( C_m r^m + D_m r^{-m} \right)
+\end{equation}
+
+<p>
+Tokrat si bomo ogledali tudi rešitev za \( m = 0 \), saj nimamo periodične situacije. Nastavek \( U(r, \phi) = R(r) \Phi(\phi) \) vstavimo v Laplaceovo enačbo, da dobimo sistem dveh enačb
+</p>
+
+<p>
+\[ r ^2 R'' + r R' - \cancel{m ^2 R} = 0 \implies R = c \ln r + d
+\]
+</p>
+
+<p>
+ter
+</p>
+
+<p>
+\[ \Phi '' + \cancel{m ^2 \Phi} = 0 \implies \Phi = a \phi + b
+\]
+</p>
+
+<p>
+Splošno rešitev \ref{eq:2} razširimo z dobljenimi rezultati
+</p>
+
+\begin{equation}
+\label{eq:6}
+ U \left( r, \phi \right) = \sum\limits_{m = 1}^{\infty} \left( A_m \cos (m\phi) + B_m \sin (m \phi) \right) \left( C_m r^m + D_m r^{-m} \right) + \left( a\phi + b \right) \left( c \ln r + d \right)
+\end{equation}
+
+<p>
+Desno elektrodo postavimo na potencial \( 0 \), torej bo naš prvi robni pogoj
+</p>
+
+\begin{equation}
+\label{eq:3}
+U \left( r, 0 \right) = 0.
+\end{equation}
+
+<p>
+Drugi robni pogoj je leva elektroda, ki mora biti na manjšem potencialu, zato da tok teče v smeri naraščajočega kota \( \phi \).
+</p>
+
+\begin{equation}
+\label{eq:4}
+U (r, \pi) = - U_0.
+\end{equation}
+
+<p>
+Električni tok teče tangentno na polmer in zahtevamo, da na ukrivljenih delih ploščice ne odhaja ven - torej bosta radialna gostota električnega toka in jakost električnega polja ničelna.
+</p>
+
+\begin{align} \label{eq:tok}
+ \vec{\jmath}_r (r_{1, 2} \phi)&= 0  \\ \label{eq:polje}
+E_r (r_{1, 2}) &= 0
+\end{align}
+
+<p>
+Enačba \ref{eq:polje} poda robni pogoj po definiciji potenciala
+</p>
+
+\begin{equation}
+\label{eq:5}
+E_r = - \frac{\partial U}{\partial r}  (r_{1, 2}, \phi) = 0.
+\end{equation}
+
+<p>
+Zaradi radialne neodvisnosti pomeni, da bo naša splošna rešitev \ref{eq:6} tudi neodvisna od radija. Posledično bodo členi \( C_m \), \( D_m \) in \( c \) enaki \( 0 \). Preostane nam torej enačba
+</p>
+
+<p>
+\[ U(r, \phi) = (a\phi + b) d =  A \phi + B
+\]
+</p>
+
+<p>
+Robni pogoj \ref{eq:3} nam sedaj za našo oskrunjeno rešitev poda enakost \( B = 0 \). Z upoštevanjem robnega pogoja \ref{eq:4} dobimo enakost
+</p>
+
+<p>
+\[ U(r, \pi) = A \pi = - U_0 \implies \ A = - \frac{U_0}{\pi}.
+\]
+</p>
+
+<p>
+Opravka imamo torej s potencialom oblike
+</p>
+
+<p>
+\[ U (r, \phi) = - \frac{U_0}{\pi} \phi.
+\]
+</p>
+
+<p>
+Za izračun upora \( R = \frac{U_0}{I} \) moramo poračunati še tok.
+</p>
+
+<p>
+Tok bomo poračunali preko gostote električnega toka
+</p>
+
+<p>
+\[ I = \int\limits_{}^{} \vec{\jmath} \cdot \mathrm{d} \vec{S}.
+\]
+</p>
+
+<p>
+Diferencial površine \( \mathrm{d} S \) je produkt debeline ploščice in diferenciala radija \( h \mathrm{d} r \). Električno gostoto toka \( \vec{\jmath} \) dobimo preko enačbe
+</p>
+
+<p>
+\[ \vec{\jmath} = \sigma E_{\phi},
+\]
+</p>
+
+<p>
+kjer je jakost električnega polja v odvisnosti od kota \( \phi \) podana z definicijo potenciala v cilindričnih koordinatah
+</p>
+
+<p>
+\[ E_{\phi} = - \frac{1}{r} \frac{\partial U}{\partial \phi}.
+\]
+</p>
+
+<p>
+Tok bo torej
+</p>
+
+<p>
+\[ I = - \int\limits_{r_1}^{r_2}  \sigma \frac{1}{r} \frac{\partial U}{\partial \phi}  h \, \mathrm{d} r = - \int\limits_{r_1}^{r_2} \frac{\sigma}{r} \left( - \frac{U_0}{\pi} \right) h \, \mathrm{d} r = + \frac{\sigma U_0 h}{\pi} \int\limits_{r_1}^{r_2} \frac{\mathrm{d} r}{r} = \frac{\sigma U_0 h}{\pi} \ln \frac{r_2}{r_1}.
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-org640dce0" class="outline-2">
+<h2 id="org640dce0"><span class="section-number-2">2.</span> Cabrerov eksperiment</h2>
+<div class="outline-text-2" id="text-2">
+<div class="problem" id="orgd1cc35a">
+<p>
+Blas Cabrera je leta 1982 poročal o eksperimentu, v katerem je v 151 dneh opazovanja domnevno zaznal magnetni monopol. Za zaznavo magnetnega monopola je uporabil krožno kovinsko zanko v superprevodnem stanju, skozi katero je meril električni tok. Predpostavi, da magnetni monopol z magnetnim nabojem \( g \) potuje s hitrostjo \( v \) po osi takšne krožne zanka polmera \( a \) in induktivnosti \( L \).
+</p>
+
+<ol class="org-ol">
+<li><p>
+Izračunaj in nariši časovni potek magnetnega pretoka skozi zanko. Magnetno polje monopola je v točki \( \vec{r} \) glede na monopol podano z enačbo
+</p>
+
+<p>
+\[ \vec{B} (\vec{r}) = \frac{\mu_0 g}{4 \pi} \frac{\vec{r}}{r}
+   \]
+</p></li>
+
+<li><p>
+Izračunaj in nariši časovni potek v zanki induciranega električnega toka. Posplošeno Faradayjev zakon za primer obstoja magnetnih monopolov zapišemo kot
+</p>
+
+<p>
+\[ \nabla \times \vec{E} = - \frac{\partial B}{\partial t}  - \mu_0 \vec{\jmath}_m,
+   \]
+</p>
+
+<p>
+kjer je \( \vec{\jmath}_m \) vektor gostote toka magnetnih nabojev.
+</p></li>
+
+<li>Iz rezultata pod b) sledi, da pri prečkanju magnetnega monopola magnetni pretok skozi zanko skoči za vrednost \( \mu_0 g \). Pokaži, da to ustreza ravno dvema kvantoma magnetnega pretoka \( \frac{h}{e} \). Kvantizacijo magnetnega pretoka po Diracu zapišemo kot \( \frac{1}{2} \mu_0 g e = h \).</li>
+</ol>
+
+</div>
+
+
+<div id="org60350d8" class="figure">
+<p><img src="figures/08CabrerovEksperiment.png" alt="08CabrerovEksperiment.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-org31b19ed" class="outline-3">
+<h3 id="org31b19ed"><span class="section-number-3">2.1.</span> Točka a</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Magnetni monopol gre skozi središče zanke ob času \( t = 0 \).
+Magnetno polje monopola zapišemo kot
+</p>
+
+<p>
+\[ \vec{B}_{monopol} = \frac{\mu_0}{4 \pi} \frac{g}{r ^2} \frac{\vec{r}}{r}
+\]
+</p>
+
+<p>
+kjer je \( g \) magnetni naboj, ki ima enote \( [\mathrm{Am}] \). Spomnimo, da ima gostota magnetnega polja enota \( \left[ \frac{\mathrm{Vs}}{\mathrm{m} ^2} \right] \) in \( \mu_0 \) ima enote \( \left[ \frac{\mathrm{Vs}}{\mathrm{Am}} \right] \).
+</p>
+
+<p>
+Magnetni pretok je po definiciji enak integralu skozi presek
+</p>
+
+<p>
+\[ \Phi_m = \int\limits_{}^{}\vec{B} \cdot \mathrm{d} \vec{S}.
+\]
+</p>
+
+<p>
+Diferencial površine je zaradi osne simetrije enak \( \mathrm{d} S = 2 \pi \rho \mathrm{d} \rho \). Magnetno polje monopola bo
+</p>
+
+<p>
+\[ B = \frac{\mu_0}{4 \pi} \frac{g}{\left( \rho ^2 + d ^2 \right)}.
+\]
+</p>
+
+<p>
+Za samo indukcijo je pomembno magnetno polje vzporedno normali preseka zanke, torej \( B_x \), ki je preko definicije kosinusa enak
+</p>
+
+<p>
+\[ B_x = B \cdot \frac{d}{\sqrt{\rho ^2 + d ^2}} = \frac{\mu_0 g}{4\pi} \frac{d}{ \left( \rho ^2 + d ^2 \right)^{\frac{3}{2}}}.
+\]
+</p>
+
+<p>
+Izražene vrednosti vstavimo v enačbo za magnetni pretok in kakor že mnogokrat do sedaj rešimo problem z novo spremenljivko \( u = \rho ^2 + d ^2 \).
+</p>
+
+<p>
+\[ \Phi_m = \int\limits_0^a B_x \, \mathrm{d} S = \frac{\mu_0 g}{2} \left( 1 - \frac{d}{\sqrt{d ^2 + a ^2}} \right)
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-org7e45cef" class="outline-3">
+<h3 id="org7e45cef"><span class="section-number-3">2.2.</span> Točka b</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Pred prehodom skozi središče zanke velja \( t <0 \). Razdalja \( d \) se časovno spreminja kot \( d = - v t \). Po prehodu skozi središče zanke \( t > 0 \), pa se razdalja spreminja kot \( d = v t \). Po prehodu skozi zanko, se spremeni tudi smer pretoka.
+</p>
+
+<p>
+\[ \Phi_m (t) = \begin{cases}
+                \frac{\mu_0 g}{2} \left( 1 + \frac{v t}{\sqrt{(vt) ^2 + a ^2}} \right) &; t < 0 \\
+                 -\frac{\mu_0 g}{2} \left( 1 - \frac{vt}{\sqrt{(vt) ^2 + a ^2}} \right) &; t > 0
+                \end{cases}
+\]
+</p>
+
+<p>
+Graf pretoka je take oblike kot na sliki
+</p>
+
+
+<div id="org5b25f6b" class="figure">
+<p><img src="figures/08CabrerovEksperimentPretok.png" alt="08CabrerovEksperimentPretok.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org18926fa" class="outline-3">
+<h3 id="org18926fa"><span class="section-number-3">2.3.</span> Točka c</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Indukcijsko napetost izračunamo preko indukcijskega zakona
+</p>
+
+\begin{equation}
+\label{eq:7}
+ U_i = - \frac{\partial \Phi}{\partial t}
+\end{equation}
+
+<p>
+Posplošen Amperov zakon ima obliko
+</p>
+
+<p>
+\[ \nabla \times \vec{B} = \mu_0 \vec{\jmath} + \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t},
+\]
+</p>
+
+<p>
+in nam bo služil kot inspiracija za modificirano Maxwellovo enačbo, ki smo ji dodali člen \( \mu_0 \vec{\jmath}_m \). \( \vec{\jmath}_m  \) je gostota magnetnega toka ob predpostavki, da je obstajajo monopoli. Enačba se bo tako glasila
+</p>
+
+<p>
+\[ \nabla \times \vec{E} = - \frac{\partial \vec{B}}{\partial t}  - \mu_0 \vec{\jmath}_m
+\]
+</p>
+
+<p>
+Integralska oblika Faradayjevega zakona bo
+</p>
+
+<p>
+\[ \int\limits_{}^{} \left( \nabla \times \vec{E} \right) \, \mathrm{d} \vec{S} = - \frac{\partial }{\partial t}  \int\limits_{}^{} \vec{B} \cdot \mathrm{d} \vec{S} - \mu_0 \int\limits_{}^{} \vec{\jmath}_m \, \mathrm{d} \vec{S}.
+\]
+</p>
+
+<p>
+Ob upoštevanju Stokesovega izreka in izračunu integralov dobimo enačbo
+</p>
+
+<p>
+\[ \oint\limits_{}^{} \vec{E} \cdot \mathrm{d} \vec{l} = - \frac{\partial }{\partial t}  \Phi - \mu_0 I_m,
+\]
+</p>
+
+<p>
+kjer je \( I_m = g \delta(t) \) magnetni tok. Integral električnega polja po zaključeni zanki je ravno inducirana napetost \ref{eq:7} z dodatnim členom magnetnega toka. Bolj berljivo zapišemo
+</p>
+
+<p>
+\[ U_i = - \dot{\Phi} - \mu_0 g \delta(t) = L \dot{I},
+\]
+</p>
+
+<p>
+kjer je \( L \) induktivnost zanke.
+</p>
+
+<p>
+To integriramo po časovnem intervalu \( (-\infty, t) \), ko je bil delec daleč stran in dobimo
+</p>
+
+<p>
+\[ - \left[ \Phi(t) - \Phi(- \infty) \right] - \mu_0 g \Theta(t) = L \left[ I(t) - I(-\infty) \right].
+\]
+</p>
+
+<p>
+Magnetni pretok in magnetni tok ob času \( t = - \infty \) sta ničelna. Enačba je torej
+</p>
+
+<p>
+\[ - L I(t) = \Phi(t) + \mu_0 g \Theta(t)
+\]
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org49787f4" class="outline-2">
+<h2 id="org49787f4"><span class="section-number-2">3.</span> Induciran tok v okvirju</h2>
+<div class="outline-text-2" id="text-3">
+<div class="problem" id="orgf569872">
+<p>
+Kvadratni okvir iz tankega vodnika postavimo med dva vzporedna dolga tanka ravna vodnika, tako da ravnina okvirja sovpada z ravnino, ki jo definirata vodnika, diagonala okvirja je pravokotna na vodnika, skrajni točki okvirja pa se ravno še ne dotikata vodnikov (glej prvo sliko). Razdalja med dolgima vodnikoma in dolžina diagonale okvirja znašata po \( d \).
+</p>
+
+<ol class="org-ol">
+<li><p>
+Pokaži, da je medsebojna induktivnost okvirja in para vodnikov
+</p>
+
+<p>
+\[ L_{12} = \frac{2 \ln 2}{\pi} \mu_0 d
+   \]
+</p></li>
+<li>Okvir napajamo z izmeničnim tokom amplitude \( I_1 \). Kakšna je amplituda toka \( I_2 \), ki se inducira v vzporednih vodnikih, če ju daleč stran sklenemo (druga slika)? Pri tem delu naloge upoštevaj, da imata vodnika debelino \( 2a \) in dolžino \( l \), tako da je \( a \ll d \) in \( l \gg d \). Rezultat za \( \frac{I_2}{I_1} \) izrazi s parametri \( d, a \) in \( l \)  in ga numerično izvrednosti za \( \frac{l}{d} = \frac{d}{a} = 10 \).</li>
+</ol>
+
+</div>
+</div>
+<div id="outline-container-orgc77f236" class="outline-3">
+<h3 id="orgc77f236"><span class="section-number-3">3.1.</span> Točka a</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Magnetni pretok prve zanke označimo \( \Phi_1 \), po kateri teče tok \( I_1 \), ki gre skozi zanko.
+</p>
+
+<p>
+\[ \Phi_1 = L_{11} I_1,
+\]
+</p>
+
+<p>
+kjer je \( L_{11} \) lastna induktivnost zanke.
+</p>
+
+<p>
+Za dve bližnji zanki, bo magnetno polje prve zanke vplivalo na drugo zanko, katere pretok magnetnega polja je \( \Phi_2 \).
+</p>
+
+<p>
+\[ \Phi_2 = L_{21} I_{1},
+\]
+</p>
+
+<p>
+kjer je \( L_{21} \) vzajemna induktivnost.
+</p>
+
+<p>
+Induktivnost je po definiciji, ki bo še izpeljano na predavanjih, enaka
+</p>
+
+<p>
+\[ L_{ij} = \frac{\mu_0}{4 \pi} \oint\limits_{}^{} \frac{\mathrm{d} \vec{l}_i \cdot \mathrm{d} \vec{l}_j}{ \left| \vec{r}_i - \vec{r}_j \right|}.
+\]
+</p>
+
+<p>
+Iz tega sledi, da je vzajeman induktivnost enaka med obema žicama \( L_{ij} = L_{ji} \).
+</p>
+
+<p>
+Magnetni pretok skozi kvadratno zanko (na sliki označeno z rdečo) je po definiciji
+</p>
+
+<p>
+\[ \Phi_2 = \int\limits_{}^{} \vec{B} \cdot \mathrm{d} \vec{S}
+\]
+</p>
+
+<p>
+Magnetno polje v odvisnosti od višine je enako
+</p>
+
+<p>
+\[ B(y) = \frac{\mu_0 I}{2 \pi y} + \frac{\mu_0 I}{2 \pi (d - y)}.
+\]
+</p>
+
+<p>
+Diferencial površine \( \mathrm{d} S \) pa je enak
+</p>
+
+<p>
+\[ \mathrm{d} S = 2 y \mathrm{d} y2 y \mathrm{d} y.
+\]
+</p>
+
+<p>
+Zaradi simetrije bomo integrirali samo do polovice višine kvadrata (drugače bi morali upoštevati, da se površina z večanjem višina zmanjšuje po polovici višine kvadrata).
+</p>
+
+<p>
+\[ \Phi_2 = 2 \frac{\mu_0 I_1}{2 \pi} \int\limits_0^{\frac{d}{2}} \left( \frac{1}{y} + \frac{1}{d - y} \right) 2y \mathrm{d} y
+\]
+</p>
+
+<p>
+Integrand postavimo na isti imenovalec
+</p>
+
+<p>
+\[ \Phi_2 = 2 \frac{\mu_0 I_1}{\pi} \int\limits_0^{\frac{d}{2}} \frac{d - y + y}{y (d - y)} y \, \mathrm{d} y  = \frac{2 \mu_0 d}{\pi} \int\limits_0^{\frac{d}{2}} (-1) \frac{\mathrm{d}(d - y)}{d - y} = \left. - \frac{2 \mu_0 I_1 d}{ \pi} \ln \left( d - y \right) \right|_0^{\frac{d}{2}}
+\]
+</p>
+
+<p>
+Magnetni pretok je tako enak
+</p>
+
+<p>
+\[ \Phi_2 = \frac{2 \mu_0 I_1 d}{\pi} \ln 2,
+\]
+</p>
+
+<p>
+kar pomeni, da je vzajemna induktivnost
+</p>
+
+<p>
+\[ L_{21} = 2\ln 2 \frac{\mu_0 d}{ \pi}
+\]
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2026-01-12 Mon 14:29</p>
+</div>
+</body>
+</html>
