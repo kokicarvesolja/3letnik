@@ -1,0 +1,173 @@
+#+title: 14. vaje iz Matematične fizike
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Greenove funkcije - valovna enačba
+** Naloga 37 (Huygensovo načelo) - nadaljevanja
+
+Od zadnjič nam je ostal t.i. Kirchoffov integral
+
+\[ u \left( \vec{r}, t \right) = \left. \int\limits_0^t f (t_0) \frac{\partial }{\partial z_{0}} G \left( \vec{r}, z_0 \hat{e}_z, t, t_0 \right) \, \mathrm{d} t_0 \right|_{z_0 = 0}
+\]
+
+Izračunali smo, da je odvod Greenove funkcije
+
+\[\left. \frac{\partial }{\partial z_{0}}  G \left( \vec{r}, z_0 \hat{e}_z, t, t_0 \right) \right|_{z_0 = 0} = \left[ \frac{\cos \theta}{r ^2} \delta (t - t_0 - \frac{r}{c}) + \frac{\cos \theta}{rc} \delta' (t - t_0 - \frac{r}{c}) \right]
+\]
+
+Z odvodom \( \delta \) funkcije se še nismo srečali, vendar je bila na vajah podana identiteta
+
+\[ \int\limits_{- \infty}^{\infty} \delta^{(n)} (x) f (x) \, \mathrm{d} x = \left( -1 \right)^n f^{(n)} (0).
+\]
+
+Po intuciji lahko prvi odvod \( \delta \) funkcije izračunamo preko per partesa
+
+\[ \int\limits_{- \infty}^{\infty} \delta' (x) f(x) \, \mathrm{d} x = \left. \delta(x) f(x) \right|_{- \infty}^{\infty} - \int\limits_{- \infty}^{\infty} \delta(x) f' (x) \, \mathrm{d} x = - f' (0)
+\]
+
+Več o tem lahko bralec prebere v knjigi Križaniča o Parcialnih diferencialnih enačbah.
+
+Kirchoffov integral torej zapišemo
+
+\begin{align*}
+ u \left( \vec{r}, t \right) &= \frac{1}{2 \pi} \int\limits_0^t f(t_0) \left[ \frac{\cos \theta}{r ^2} \delta (t - t_0 - \frac{r}{c}) + \frac{\cos \theta}{rc} \delta' (t - t_0 - \frac{r}{c}) \right]\\
+&=\frac{1}{2 \pi}  \left( \frac{\cos \theta}{r ^2} f \left( \frac{r}{c} + t \right) - \frac{\cos \theta}{rc} f' \left( t - \frac{r}{c} \right) \right)
+\end{align*}
+
+Predpostavimo, da je kot \( \theta \ll 1 \), radij \( r \) velik in ima funkcija odvisnost oblike \( f(t) = A \exp \left\{ - \mathrm{i} \omega t \right\} \).
+
+S tem predpostavkami lahko sedaj zapišemo
+
+\[ u \left( \vec{r}, t \right) = \frac{1}{2 \pi} \left( - \frac{1}{rc} (- \mathrm{i} \omega) A \exp \left\{ - \mathrm{i} \omega (t - \frac{r}{c}) \right\} \right) = \frac{\mathrm{i} k}{2 \pi r} A \exp \left( \mathrm{i} (kr - \omega t) \right).
+\]
+
+Dobljen clen je ravno točkovni izvir valovanja.
+** Teorija (obdelana jutri na predavanjih)
+
+Rešujemo enačbo oblike
+
+\[ \mathcal{L} u \left( \vec{r} \right) - \lambda V \left( \vec{r} \right) u \left( \vec{r} \right) = 0,
+\]
+
+kjer je \( \mathcal{L} \) poljuben diferencialni operator. Podobno kot pri perturbacijski teoriji, bo \( \lambda \ll 1 \). Predpostavimo, da poznamo Greenovo funkcijo \( G \) za diferencialni operator \( \mathcal{L} \) na območju \( \mathcal{D} \).
+
+Predpostavimo, da je motnja naša nehomogenost \( f \left( \vec{r} \right) = \lambda V \left( \vec{r} \right) u \left( \vec{r} \right) \) in potem je rešitev problema oblike
+
+\[ u \left( \vec{r} \right) = h \left( \vec{r} \right) + \lambda \int\limits_{\mathcal{D}}^{} G \left( \vec{r}, \vec{r}_0 \right) V \left( \vec{r}_0 \right) u \left( \vec{r}_0 \right) \, \mathrm{d} ^n \vec{r}_0,
+\]
+
+kjer je \( h \left( \vec{r} \right) \) rešitev homogenega problema.
+
+S tem pripomočkom lahko sedaj delamo iteracijo.
+
+Začetni korak iteracije bo
+
+\[ u_0 \left( \vec{r} \right) = h \left( \vec{r} \right).
+\]
+
+Potem
+
+\begin{align*}
+  u_1 \left( \vec{r} \right) &= h \left( \vec{r} \right) + \lambda \int\limits_{\mathcal{D}}^{} G \left( \vec{r}, \vec{r}_0 \right) V \left( \vec{r}_0 \right) u_0 \left( \vec{r}_0 \right) \, \mathrm{d} ^n \vec{r}_0 \\
+&\vdots \\
+u_{n + 1} \left( \vec{r} \right) &= h \left( \vec{r} \right) + \lambda \int\limits_{\mathcal{D}}^{} G \left( \vec{r}, \vec{r}_0 \right) V \left( \vec{r}_0 \right) u_n \left( \vec{r}_0 \right) \, \mathrm{d} ^n \vec{r}_0.
+\end{align*}
+
+Definiramo operator
+
+\[ K u \left( \vec{r} \right) = \int\limits_{\mathcal{D}}^{} G \left( \vec{r}, \vec{r}_0 \right) V \left( \vec{r}_0 \right) u \left( \vec{r}_0 \right) \, \mathrm{d} ^n \vec{r}_0 .
+\]
+
+Rešitev dobimo z vrsto
+
+\[ u \left( \vec{r} \right) = \sum\limits_{n = 1}^{\infty} \lambda^n K^n h \left( \vec{r} \right) = \left( 1 + \lambda K + \ldots \right) h \left( \vec{r} \right)
+\]
+** Naloga 38 - Kvantnomehansko sipanje
+
+#+begin_problem
+Imejmo poljubno območje \( \mathcal{D} \), ki ima potencial \( V \left( \vec{r} \right) = V_0 \frac{\exp \left\{ - \gamma r \right\}{r} \).
+
+V območje \( \mathcal{D} \) pošljemo ravni val \( \exp \left\{ \mathrm{i} (\vec{k} \cdot \vec{r} - \omega t) \right\} \), ki se na potencialu sipa.
+
+Rešujemo Schrödingerjevo enačbo
+
+\[ \mathrm{i} \hbar \frac{\partial }{\partial t} \psi \left( \vec{r}, t \right) = - \frac{\hbar ^2}{2m} \nabla ^2 \psi \left( \vec{r}, t \right) + V \psi \left( \vec{r}, t \right).
+\]
+#+end_problem
+
+Rešitev bo sestavljena iz dveh valovnih funkcij
+
+\[ \psi \left( \vec{r}, t \right) = \psi_i \left( \vec{r}, t \right) + \psi_s \left( \vec{r}, t \right) = \exp \left\{ \mathrm{i} (\vec{k} \cdot \vec{r} - \omega t)  \right\} + \psi_s \left( \vec{r}, t \right)
+\]
+
+Indeks \( i \) predstavlja vpadno valovno funkcijo, indeks \( s \) pa sipano valovno funkcijo.
+
+Nastavek ravnega vala nam problema ne bo rešil zaradi potenciala, vendar pa uporabimo enostavnejši nastavek \( \psi_s \left( \vec{r}, t \right) = \psi \left( \vec{r} \right) \exp \left\{ - \mathrm{i} \omega t \right\} \).
+
+Nastavek nesemo v valovno enačbo, dobimo
+
+\[ \mathrm{i} \hbar \psi  (- \mathrm{i} \omega) = - \frac{\hbar}{2m} \nabla ^2 \psi + V \psi.
+\]
+
+Z upoštevanjem definicije \( \hbar \omega = E \) dobimo Helmholtzovo enačbo
+
+\[ \left( \nabla ^2 + \frac{E 2m}{\hbar ^2} \right) \psi = \frac{2m}{\hbar ^2} \psi
+\]
+
+Naš diferencialni operator je tako \( \mathcal{L} = \nabla ^2 + k ^2 \).
+
+Daleč stran od območja potenciala predpostavimo \( V \approx 0 \) in \( \psi_s \approx 0 \). S temi predpostavkami rešujemo enačbo
+
+\[ \mathrm{i} \hbar \frac{\partial }{\partial t} \psi_i = - \frac{\hbar ^2}{2m} \nabla ^2 \psi_i,
+\]
+
+iz česar sledi
+
+\[ \mathrm{i} \hbar ( - \mathrm{i} \omega ) = \frac{\hbar ^2}{2m} k ^2,
+\]
+
+s čimer smo določili energijo \( E = \frac{\hbar ^2}{2m} k ^2 \).
+
+Vrnimo se nazaj k naši Helmholtzovi enačbi.
+
+Greenova funkcija operatorja \( \mathcal{L} \) je retardirana Greenova funckija iz prejšnjega predavanja
+
+\[  G \left( \vec{r}, \vec{r}_0  \right) = G_{\infty} \left( \vec{r}, \vec{r}_0 \right) = -\frac{1}{4 \pi} \frac{\exp \left\{ \mathrm{i} k \left| \vec{r} - \vec{r}_0 \right| \right\}}{\left| \vec{r} - \vec{r}_0 \right|}
+\]
+
+Uporabili bomo iteracijo, ki smo jo definirali v teoretičnem uvodu. Prvi red iteracije je
+
+\[ \psi_1 \left( \vec{r} \right) = \exp \left\{ \mathrm{i} \vec{k} \cdot \vec{r} \right\} + \int\limits_{\mathbb{R} ^3}^{} \left( -\frac{1}{4 \pi}  \frac{\exp \left\{ \mathrm{i} k \left| \vec{r} - \vec{r}_0 \right| \right\}}{\left| \vec{r} - \vec{r}_0 \right|} \right) \frac{2m}{ \hbar ^2} V \left( \vec{r} \right) \exp \left\{ \mathrm{i} \vec{k} \cdot \vec{r} \right\} \, \mathrm{d} ^3 \vec{r}_0.
+\]
+
+Prepoznamo, da smo dobili rešitev iz dveh valovnih funkcij in posledično prepoznamo sipalno valovno funkcijo
+
+\[ \psi_s \left( \vec{r} \right) = - \frac{m}{2 \pi \hbar ^2} \int\limits_{\mathbb{R} ^3}^{} V \left( \vec{r}_0 \right) \frac{\exp \left\{ \mathrm{i} k \left| \vec{r} - \vec{r}_0 \right| + \mathrm{i} \vec{k} \cdot \vec{r}_0\right\}}{\left| \vec{r} - \vec{r}_0 \right|} \, \mathrm{d} ^3 \vec{r}_0.
+\]
+
+Pred nadaljevanjem bomo naš integral malo poenostavili. Predpostavimo, da smo daleč od našega območja s potencialom \( \vec{r} \gg \vec{r}_0 \).
+
+\[ k \left| \vec{r} - \vec{r}_0 \right| = k \sqrt{r ^2 - 2 \vec{r} \cdot \vec{r}_0} = kr \left( 1 - \frac{2 \vec{r} \cdot \vec{r}_0}{r ^2} + \ldots \right)^{\frac{1}{2}} = kr \left( 1 - \frac{\vec{r} \vec{r}_0}{r ^2} + \ldots  \right)
+\]
+
+Zaradi predpostavke je \( \vec{r}_0 ^2 = 0 \). Slednje lahko zapišemo tudi malo drugače, z uvedbo novega normaliziranega vektorja
+
+\[ k \left| \vec{r} - \vec{r}_0 \right|  = kr - k \frac{\vec{r}}{r ^2} \cdot \vec{r}_0 = kr - \vec{k} \, ' \cdot \vec{r}_0.
+\]
+
+Sipano valovno funkcijo tako zapišemo kot
+
+\[ \psi_s \left( \vec{r} \right) = - \frac{m}{2  \pi \hbar ^2} \int\limits_{\mathbb{R} ^3}^{} V \left( \vec{r}_0 \right) \frac{\exp \left\{ k r - \vec{k}\, ' \vec{r}_0 + \mathrm{i} \vec{k} \cdot \vec{r}_0 \right\}}{r - \frac{\vec{r}}{r}  \cdot \vec{r}_0} \, \mathrm{d} ^3 \vec{r}_0
+\]
+
+Zaradi predpostavke oddaljenosti bo \( \frac{\vec{r}}{r} \cdot \vec{r}_0 \approx 0 \).
+
+Integral tako zapišemo
+
+\[ \psi_s \left( \vec{r} \right) = - \frac{m \exp \left\{ \mathrm{i} kr \right\}{2 \pi \hbar ^2 r} \int\limits_{\mathbb{R} ^3}^{} V \left( \vec{r}_0 \right) \exp \left\{ \mathrm{i} (\vec{k} - \vec{k} \, ') \vec{r}_0 \right\} = - \frac{m}{2 \pi \hbar ^2} \hat{V} \left( \vec{k} - \vec{k} \, ' \right) \frac{\exp \left\{ \mathrm{i} k r \right\}{r}
+\]
