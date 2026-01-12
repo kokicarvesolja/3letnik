@@ -66,6 +66,7 @@ Iz \ref{eq:1} preberemo, da je \( c_{n' l' m'} (- \infty) = 1 \) ter da ni v prv
 \[ c_{2lm} (\infty) = \frac{\mathrm{i}}{\hbar} \int\limits_{- \infty}^{\infty} \left\langle 2lm, t' \middle| - e \frac{\epsilon_0}{1 + \left( \frac{t}{\tau} \right) ^2} z \middle| 100, t' \right\rangle \cdot 1 \, \mathrm{d} t'.
 \]
 
+
 Nadomestimo stanja v integrandu z \ref{eq:3} in izpostavimo časovno neodvisne elemente
 
 \[ c_{2lm}(\infty) = \mathrm{i} \frac{e \epsilon_0}{\hbar} \left\langle 2lm \middle| z \middle| 100 \right\rangle \int\limits_{- \infty}^{\infty} \exp \left\{ \frac{\mathrm{i}}{\hbar} t' (E_2 - E_1) \right\} \frac{1}{1 + \left( \frac{t}{\tau} \right) ^2} \, \mathrm{d} t'.

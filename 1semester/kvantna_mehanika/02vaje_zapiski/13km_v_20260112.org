@@ -141,6 +141,97 @@ Preostane nam
 Odločimo se, da je \( \omega - 2 \omega' = 0 \), iz česar sledi \( \omega' = \frac{\omega}{2} \). Sistem enačb se tako preobrazi v
 
 \begin{align*}
-  \mathrm{i} \dot{c}_{\uparrow} (t) = \left( - \omega' + \frac{\gamma}{2} \right) c_{\uparrow} (t) + \frac{\lambda}{4} \left( \exp \left\{ \mathrm{i} 2 \omega \right\} + 1 \right) c_{\downarrow} (t) \\
-\mathrm{i} \dot{c}_{\downarrow} (t) = \left( - \omega' + \frac{\gamma}{2} \right) c_{\uparrow} (t) + \frac{\lambda}{4} \left( \exp \left\{ \mathrm{i} 2 \omega \right\} + 1 \right) c_{\downarrow} (t) \\
+  \mathrm{i} \dot{c}_{\uparrow} (t) = \left( - \omega' + \frac{\gamma}{2} \right) c_{\uparrow} (t) + \frac{\lambda}{4} \left( \exp \left\{ \mathrm{i} 2 \omega t \right\} + 1 \right) c_{\downarrow} (t) \\
+\mathrm{i} \dot{c}_{\downarrow} (t) = \left(  \omega' - \frac{\gamma}{2} \right) c_{\downarrow} (t) + \frac{\lambda}{4} \left( \exp \left\{ - \mathrm{i} 2 \omega t \right\} + 1 \right) c_{\uparrow} (t) \\
 \end{align*}
+
+Izraz lahko primerjamo z vsiljenim nihanjem v klasični fiziki. [predpostavka].
+
+Sklopljen sistem lahko posledično poenostavimo
+
+\begin{align*}
+  \mathrm{i} \dot{c}_{\uparrow}(t) &= \left( \frac{\gamma}{2} - \frac{\omega}{2} \right) c_{\uparrow} (t) + \frac{\lambda}{4} c_{\downarrow} (t) \\
+\mathrm{i} \dot{c}_{\downarrow} (t) &= \frac{\lambda}{4} c_{\uparrow} (t) + \left( \frac{\omega}{2} - \frac{\gamma}{2} \right) c_{\downarrow} (t)
+\end{align*}
+
+#+name: alternativna rešitev
+#+begin_alternative
+Pri reševanju sistema uporabimo identiteto
+
+\begin{equation}
+\label{eq:2}
+ \exp \left\{ \mathrm{i} \theta \left( \hat{n} \cdot \sigma \right) \right\} = \cos \theta + \mathrm{i} \sin \theta \left( \hat{n} \cdot \sigma \right),
+\end{equation}
+
+kjer velja \( \left( \hat{n} \cdot \sigma \right) ^2 = I \) in je \( \hat{n} \) unit vector.
+
+Sistem zapišemo v matrični obliki kot
+
+\[ \frac{\mathrm{d} }{\mathrm{d} t} \vec{c} (t) = - \mathrm{i} \begin{bmatrix}
+                                                               \frac{\theta}{2} - \frac{\omega}{2} & \frac{\lambda}{4} \\
+                                                               \frac{\lambda}{4} & - \left( \frac{\gamma}{2} - \frac{\omega}{2} \right)
+                                                                \end{bmatrix} \vec{c},
+\]
+
+kjer smo definirali \( \vec{c} (t) = \left( c_{\uparrow}(t), c_{\downarrow} (t) \right)^T \). Matriko lahko zapišemo s pomočjo Paulijevih matrik
+
+\[\begin{bmatrix}
+  \frac{\theta}{2} - \frac{\omega}{2} & \frac{\lambda}{4} \\
+  \frac{\lambda}{4} & - \left( \frac{\gamma}{2} - \frac{\omega}{2} \right)
+  \end{bmatrix} = \left( \frac{1}{2} \left( \gamma - \omega \right) \sigma_z + \frac{\lambda}{4} \sigma_x \right).
+\]
+
+Za vektor Paulijevih matrik \( \vec{\sigma} = (\sigma_x, \sigma_y, \sigma_z) \) lahko posledično zapišemo skalarni produkt
+
+\[  \left( \frac{1}{2} \left( \gamma - \omega \right) \sigma_z + \frac{\lambda}{4} \sigma_x \right) = \left( \frac{\lambda}{4}, 0, \frac{1}{2} (\gamma - \omega) \right) \cdot \vec{\sigma}
+\]
+
+Rešujemo torej sistem enačb
+
+\begin{equation}
+\label{eq:1}
+-\mathrm{i} \left( \left( \frac{\lambda}{4}, 0, \frac{1}{2} (\gamma - \omega) \right) \cdot \vec{\sigma} \right) \vec{c}(t) = \frac{\mathrm{d} }{\mathrm{d} t} \vec{c}(t)
+\end{equation}
+
+Definiramo dolžino vektorja \( \Omega = \sqrt{\frac{\lambda ^2}{4 ^2} + \left( \gamma - \omega \right) \frac{1}{2 ^2}} \), in posledično lahko rešitev zapišemo kot
+
+\[ \vec{c}(t) = \exp \left\{ - \mathrm{i} \Omega t \frac{\left( \frac{\lambda}{4}, 0 \frac{1}{2} \left( \gamma - \omega \right) \right) \cdot \vec{\sigma}}{\Omega} \right\} \vec{c} (0)
+\]
+
+(glej Matematiko 3, reševanje sistemov ODE)
+
+Če to rešitev vstavimo v enačbo \ref{eq:1}, se lahko prepričamo, da ta rešitev reši to enačbo.
+
+Poslužimo se sedaj identitete \ref{eq:2}, da zapišemo vektor koeficientov kot
+
+\[ \vec{c} (t) = \left( \underline{I} \cos (\Omega t) - \mathrm{i} \sin (\Omega t) \left( \frac{1}{\Omega} \left( \frac{\lambda}{4}, 0, \frac{1}{2} (\gamma - \omega) \right) \cdot \vec{\sigma} \right) \right) \begin{bmatrix} 0 \\ 1 \end{bmatrix} .
+\]
+
+Poračunamo matrike in dobimo
+
+\begin{align*}
+  \vec{c}(t) &= \begin{bmatrix} 0 \\ 1 \end{bmatrix} \cos (\Omega t) - \mathrm{i} \sin (\Omega t) \frac{1}{\Omega} \begin{bmatrix}
+                                                                                                                   \frac{1}{2} (\gamma - \omega) & \frac{\lambda}{4} \\
+                                                                                                                    \frac{\lambda}{4} &  - \frac{1}{2} (\gamma - \omega)
+                                                                                                                    \end{bmatrix} \begin{bmatrix} 0 \\ 1 \end{bmatrix}\\
+&= \begin{bmatrix} 0 \\ 1 \end{bmatrix} \cos (\Omega t) - \mathrm{i} \sin (\Omega t) \frac{1}{\Omega} \begin{bmatrix} \frac{\lambda}{4} \\ - \frac{1}{2} (\gamma - \omega) \end{bmatrix} \\
+&= \begin{bmatrix} - \mathrm{i} \sin (\Omega t) \frac{1}{\Omega} \frac{\lambda}{4} \\ \cos (\Omega t) + \mathrm{i} \sin (\Omega t) \frac{1}{\Omega} \frac{1}{2} (\gamma - \omega) \end{bmatrix}
+\end{align*}
+
+Slednje deluje samo v primeru, če je \( \Omega \ll 2 \omega \) zaradi členov, ki smo jih zavrgli višje gor.
+
+Zanima nas verjetnost za prehod delca v stanje s spinom navzgor in torej odčitamo vrednosti prve komponente, ki predstavlja \( c_{\uparrow} \).
+
+\[ P_{\uparrow} (t) = \left( \frac{\lambda}{4 \Omega} \right) ^2 \sin ^2 (\Omega t) = \frac{\lambda ^2 \sin ^2 (\Omega t)}{\lambda ^2 + 4 (\gamma - \omega) ^2}
+\]
+
+\( \gamma \) je energijska razlika med stanjema \( \left| \uparrow \right\rangle \) in \( \left| \downarrow \right\rangle \), medtem ko \( \omega \) je frekvenca vzbujanja.
+
+Pri \( \gamma = \omega \) smo v resonanci, iz česar sledi \( \Omega = \frac{\lambda}{4} \).
+#+end_alternative
+
+[[file:figures/rabijeveOscilacije.png]]
+
+Vrh sinusa je pri \( \sin (\Omega t) = \frac{\pi}{2} \), kar pomeni, da je čas maksimuma \( t = \frac{\pi}{2 \Omega} \).
+
+Časovna teorija motnje je imela težave, saj je bila pri izpeljavi postavljena predpostavka, da je prehod v drugo stanje zelo majhno skozi čas. Kakor vidimo iz časovne odvisnosti verjetnosti za spin navzgor pa je to sinusna odvisnost.

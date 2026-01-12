@@ -244,6 +244,5 @@ Torej sta dvakrat degenerirana stanje za \( \lambda = -B \) (ki ima višjo energ
 
 Stanje \( \lambda = B \) z nižjo energijo pa je stanje
 
-
 \[ \frac{1}{\sqrt{2}} \left(\left| 200 \right\rangle  + \left| 210 \right\rangle \right) \left| \uparrow \right\rangle \text{ in } \frac{1}{\sqrt{2}} \left(\left| 200 \right\rangle  + \left| 210 \right\rangle \right) \left| \downarrow \right\rangle
 \]
