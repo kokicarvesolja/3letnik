@@ -1,0 +1,127 @@
+#+title: 15. predavanje iz Matematične fizike
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Greenova funkcija
+** Greenova funkcija in integralska enačba
+
+Rešujemo  problem oblike
+
+\begin{equation}
+\label{eq:1}
+ \mathcal{L} u(x) + \epsilon V(x) u(x) = 0,
+\end{equation}
+
+kjer je \( \mathcal{L} \) poljubni diferencialni operator in poznamo njegovo Greenovo funkcijo. Enačbo obravnavamo kot nehomogeno.
+
+Rešitev te enačbe je sestavljena iz homogenega dela \( h(x) \), ki zadosti enačbi \( \mathcal{L} h(x) = 0 \) in podobno robnim pogojem. Drugi del pa je rešitev nehomogene enačbe, ki smo ga že srečali. Dobimo integralsko enačbo
+
+\[ u(x) = h(x) + \epsilon \int\limits_{}^{} G(x, x_0 ) V(x_0) u(x_0) \, \mathrm{d} x_0.
+\]
+
+Drugo ime za to integralsko enačbo je Fredholmova enačba.
+
+#+name: vezana stanja v enodimenzionalnem potencialu \( V(x) \)
+#+begin_my_example
+Imamo Schrödingerjevo enačbo
+
+\[ -\frac{\hbar ^2}{2m} u'' + V(x) u = E u.
+\]
+
+Pretvorili jo bomo na obliko enačbe \ref{eq:1}
+
+\[ \left( \frac{\mathrm{d} ^2 }{\mathrm{d} x ^2} - \kappa ^2 \right) u = \frac{2m V(x)}{\hbar ^2} u, \  \kappa ^2 = -\frac{2m E}{\hbar ^2}
+\]
+
+Diferencialni operator je torej \( \mathcal{L} = \left( \frac{\mathrm{d} ^2 }{\mathrm{d} x ^2} - \kappa ^2 \right) \).
+
+Greenova funkcija za dan operator je
+
+\[ G(x, x_0) = - \frac{- e^{- \kappa \left| x - x_0 \right|}}{2 \kappa}.
+\]
+
+Da je temu res tako, lahko bralec preveri doma.
+
+Kako smo prišli do te Greenove funkcije. Nekaj z zlepljenjem eksponentnega padanja pri \( x = x_0 \) z odvodom različnim od 0.
+
+Integralska enačba je
+
+\begin{equation}
+\label{eq:2}
+ u(x) = - \frac{m}{\kappa \hbar ^2} \int\limits_{- \infty}^{\infty} e^{- \kappa \left| x - x_0 \right|} V(x_0) u(x_0) \, \mathrm{d} x_0.
+\end{equation}
+
+Zaradi prave izbire Greenove funkcije je homogena rešitev enaka \( 0 \). Splošen nastavek homogene rešitve bi bil
+
+\[ h(x) = C_1 e^{- \kappa x} + D_1 e^{ \kappa x}.
+\]
+
+Zaradi regularnosti v \( x = \infty \) mora biti \( C_1 = 0 \) in ekvivalentno tudi \( D_1 \).
+#+end_my_example
+
+#+begin_comment
+Komentar k rešitvi primera.
+
+1) Rešitev \ref{eq:2} je lastna funkcija v eni dimenziji za HO, jamo, itd.
+
+2) Za potencial \( V(x) = \delta(x - a) \) dobimo edino vezano stanje.
+#+end_comment
+
+#+name: Sipanje v treh dimenzijah
+#+begin_my_example
+Ravni val \( e^{\mathrm{i} \vec{k}_0 \vec{r}} \) pošljemo v smeri \( \vec{k}_0 \) na nek potencial.
+
+Greenova funkcija v treh dimenzijah je oblike
+
+\[ G = - \frac{1}{4 \pi r} e^{\mathrm{i} \vec{k} \cdot \vec{r}}.
+\]
+
+Integralska enačba pa je
+
+\[ u \left( \vec{r} \right) = e^{\mathrm{i} \mathbf{k} \cdot \mathbf{r}} - \frac{2m}{\hbar ^2} \int\limits_{}^{} \frac{e^{\mathrm{i} \mathbf{k}_0 \left| \mathbf{r} - \mathbf{r}_0 \right|}}{4 \pi \left| \mathbf{r} - \mathbf{r}_0 \right|} V \left( \mathbf{r}_0 \right) u \left( \mathbf{r}_0 \right) \, \mathrm{d} V_0
+\]
+#+end_my_example
+*** Perturbacijski razvoj
+
+Naj bo za enačbo \ref{eq:1} vrednost \( \epsilon \) majhna.
+
+Naj bo rešitev \( h(x) \) približno enako 1. V 0. tem redu lahko zapišemo
+
+\[ u_0 (x) = h(x)
+\]
+
+Rešitev Fredholma ob 1. redu v \( \epsilon \) je
+
+\[ u_1 (x) = h(x) + \epsilon \int\limits_{}^{} G(x, y_1) V(y_1) h(y_1) \, \mathrm{d} y_1.
+\]
+
+Rešitev v 2. redu bo vsebovala rešitev 1. reda in se bo glasila
+
+\[ u_2 (x) = u_1 (x) + \epsilon ^2 \iint\limits_{}^{} G (x, y_1) G(y_1, y_2) V(y_1) V(y_2) h(y_2) \,\mathrm{d} y_1 \mathrm{d} y_2.
+\]
+
+Rešitve se nadaljujejo do poljubnega reda \( r \). Tej vrsti se reče Neumannova-Borrnova vrsta in ima končen konvergenčni radij.
+
+Obstaja pa tudi boljša konvergentna resumacija, ki konvergira (Fredholmova vrsta).
+
+Naj bo \( \mathcal{K} \) linearni operator, za katerega velja
+
+\[ \mathcal{K} u = \int\limits_{}^{} G(x, x_0) V(x_0) u(x_0) \, \mathrm{d} x_0.
+\]
+
+Fredholmova enačba je
+
+\[ u = h + \epsilon \mathcal{K} u.
+\]
+
+Izrazimo \( u \)
+
+\[ u = \frac{h}{(1 - \epsilon \mathcal{K})},
+\]
+
+kar lahko izrazimo v vrsti, saj je \( \epsilon \) majhen.
