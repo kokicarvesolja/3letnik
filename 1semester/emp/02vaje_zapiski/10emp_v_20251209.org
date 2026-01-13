@@ -96,6 +96,8 @@ Imamo torej valjast kolobar dolžine \( L < l \), v katerega zaradi konstantnost
 
 *** Valjast uporovni vodnik
 
+[[file:figures/energijskiTokValj.png]]
+
 V valjastem vodniku je zaradi priključka napetosti na osnovni ploskvi električno polje \( \mathbf{E} \) usmerjeno vzdolž dolžine vodnika. Magnetno polje \( \mathbf{B} \) pa je še zmeraj pravokotno na radij.
 
 Električno polje je samo
@@ -108,4 +110,109 @@ Za Amperov zakon pa je malo drugačno. Zaključena krožnica z radijem \( r < a 
 \[ B \cdot 2 \pi r = \mu_0 I \left( \frac{r}{a} \right) ^2 \implies \, B = \frac{\mu_0 I}{2 \pi a ^2} r
 \]
 
-Ostal pri 1.07.20 s predavanjem 10.
+Sedaj lahko izračunamo \( \mathbf{\mathbf{P}} \)
+
+\[ \mathbf{\mathcal{P}} = \frac{1}{\mu_0} E B = \frac{UI}{2 \pi a ^2 l} r
+\]
+
+Opazimo lahko, da je sorazmeren s polmerom, kar pomeni, da bližje smo središču valja, manjši bo Poyntingov vektor.
+
+Površinski tok je tokrat ploskovni integral po plašču valja s polmerom \( r \). Torej
+
+\[ \int\limits_{}^{} \mathbf{\mathcal{P}} \cdot \mathrm{d} \mathbf{S} = \frac{UI}{2 \pi \alpha ^2 l} r \cdot 2 \pi r l = \frac{UI r ^2}{a ^2}.
+\]
+
+Površinski tok, ki nas zanima je tok celotnega vodnika, torej bo \( r = a \). Sledi
+
+\[ \int\limits_{}^{} \mathbf{\mathcal{P}} \cdot \mathrm{d} \mathbf{S} = UI
+\]
+
+Energijski zakon tokrat zadnji dve komponenti. Zaradi konstantnosti magnetnega in električnega polja bo \( \frac{\partial W}{\partial t} = 0 \).
+
+Površinski tok v tem primeru teče notri v vodnik (in ne vzdolž vodnika kot pri prejšnjem primeru).
+
+Izračunajmo še ohmske izgube. Zaradi homogenosti problema je volumnski integral izračunati precej enostavno
+
+\[ \int\limits_{}^{} \mathbf{j} \cdot \mathbf{E} \, \mathrm{d} V = j E V = j S E l = U I.
+\]
+
+Upoštevali smo identiteti \( j S = I \) ter \( E l = U \).
+
+Ob upoštevanju \( U = RI \) so torej ohmske izgube \( R ^2 I \). Energijski zakon velja
+
+\[ \frac{\partial W}{\partial t} + \int\limits_{}^{} \mathbf{\mathcal{P}} \cdot \mathrm{d} \mathbf{S} + \int\limits_{}^{} \mathbf{j} \cdot \mathbf{E}\cdot \, \mathrm{d} V = - UI + UI = 0.
+\]
+* Prekinjeni vodnik
+#+begin_problem
+Dolg raven valjast vodnik preseka \( S \) je na nekem mestu prekinjen. Prekinitev ima obiko ozke špranje širine \( d \) pravokotne na vodnik. Ob času \( t = 0 \) po vodniku spustimo konstanten električni tok \( I \), zaradi katerega se na zgornji in spodnji meji špranje začne nabirati naboj.
+
+a) Določi smer in velikost jakosti električnega polja ter gostote magnetnega polja v špranji v oddaljenosti \( r \) od osi vodnika ob času \( t \).
+b) S pomočjo Poyntingovega vektorja izračunaj energijski tok, ki ob času \( t \) priteka v špranjo.
+c) Prejšnji rezultat primerjaj s časovnim odvodom energije elktromagnetnega polja v špranji.
+
+Pri vseh računih zanemarik popačitev polj ob zunanjem robu špranje. Špranjo torej obravnavaj kot ploščati kondenzator. Upornost vodnika je zanemarljivo majhna.
+#+end_problem
+
+Naboj, ki se nabira na ploskvah je linearen s časom, torej
+
+\[ e = It.
+\]
+
+Iz formule za ploščati kondenzator lahko izrazimo električno polje
+
+\begin{equation}
+\label{eq:1}
+ E = \frac{\sigma}{\epsilon_0} = \frac{e}{\epsilon_0 S} = \frac{I}{\epsilon_0 S} t.
+\end{equation}
+
+V špranji tok ne teče, kar bi pomenilo, da ni magnetnega polja. Zaradi spreminjajočega električnega polja pa imamo v špranji premikalni tok
+
+\[ \nabla \times \mathbf{B} = \epsilon_0 \mu_0 \frac{\partial \mathbf{E}}{\partial t}
+\]
+
+Z integriranjem po ploskvi pretvorimo diferencialno obliko v integralsko obliko
+
+\[ \oint\limits_{}^{} \mathbf{B} \cdot \mathrm{d} \mathbf{l} = \epsilon_0 \mu_0 \frac{\partial \mathbf{E}}{\partial t} \cdot \pi r ^2
+\]
+
+Premikalni tok ima enako smer kakor električni tok pred zaključkom volumna. Magnetno polje je pravokotno na radij, kakor na sliki.
+
+Sledi torej
+
+\begin{align*}
+  \oint\limits_{}^{} \mathbf{B} \cdot \mathrm{d} \mathbf{l} &= \epsilon_0 \mu_0 \frac{\partial E}{\partial t}  \cdot \pi r ^2 \\
+B 2 \pi r &= \epsilon_0 \mu_0 \frac{I}{\epsilon_0 S} \pi r ^2 \\
+B &= \frac{\mu_0 I}{2 S} r
+\end{align*}
+
+Poyntingov vektor ponovno kaže proti središču valja.
+
+\[ P = \frac{1}{\mu_0} EB = \frac{I}{2 S} r \frac{I}{\epsilon_0 S} t = \frac{I ^2}{2 \epsilon_0 S ^2} r t
+\]
+
+Energijski tok v celotni špranji je pri radiju \( r = a \), površina pa je površina skozi katero tok teče - v tem primeru plašč špranje.
+
+\[ \int\limits_{}^{} \mathbf{\mathcal{P}} \cdot \mathrm{d} \mathbf{S} = \mathcal{P} \cdot 2 \pi a d = \frac{I ^2}{\epsilon_0 S}
+\]
+
+Energijski zakon vključuje samo površinski tok in gostoto energije
+
+\[ \frac{\partial W}{\partial t}  + \int\limits_{}^{} \mathbf{\mathcal{P}} \cdot \mathrm{d} \mathbf{S} = 0
+\]
+
+Celotna energija je sestavljena iz energije magnetnega polja \( W_m \), ki se ne spreminja ter energije električnega polja \( W_e \), ki se s časom spreminja.
+
+Energija elektromagnetnega polja je tako
+
+\[ W_e = \frac{1}{2} \epsilon_0 E ^2 S d = \frac{I ^2}{2 \epsilon_0 S} d t ^2,
+\]
+
+kjer smo upoštevali \ref{eq:1}. Gostota energije je
+
+\[ \frac{\partial W_{e}}{\partial t}  = \frac{I ^2 d}{ 2 \epsilon_0 S} t.
+\]
+
+Energije se ohranja, saj velja
+
+\[ \frac{\partial W}{\partial t}  + \int\limits_{}^{} \mathbf{\mathcal{P}} \cdot \mathrm{d} \mathbf{S} = 0 =  \frac{I ^2 d}{\epsilon_0 S}t -  \frac{I ^2 d}{2\epsilon_0 S} t = 0.
+\]
