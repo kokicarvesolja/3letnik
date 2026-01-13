@@ -125,3 +125,132 @@ Izrazimo \( u \)
 \]
 
 kar lahko izrazimo v vrsti, saj je \( \epsilon \) majhen.
+* Variacijska formulacija
+
+Rešujemo enačbo
+
+\[ \mathcal{L} u (x) = f (x),
+\]
+
+kjer je \( \mathcal{L} \) sebi-adjungiran z ustreznimi robnimi pogoji. Želimo ga zapisati kot ekstrem nekega funkcionala, ki je oblike
+
+\[ S = \frac{1}{2} \left\langle \mathcal{L} u \middle| u \right\rangle - \left\langle f \middle| u \right\rangle
+\]
+
+#+begin_proof
+Opravimo funkcijsko variacijo \( \delta S \), za katero velja, da je enaka \( 0 \).
+
+Upoštevamo našo nastavek, ki ga dokazujemo.
+
+\[ \delta S = 0 = \frac{1}{2} \left\langle \mathcal{L} \delta u \middle|  u \right\rangle + \frac{1}{2} \left\langle \mathcal{L} u \middle| \delta u  \right\rangle - \left\langle f \middle| \delta u \right\rangle.
+\]
+
+Zaradi sebi-adjungiranosti lahko prvi člen zapišemo kot
+
+\[ \left\langle \mathcal{L} \delta u \middle| u \right\rangle = \left\langle \delta u \middle| \mathcal{L}^{\ast} u \right\rangle = \left\langle \delta u \middle| \mathcal{L} u \right\rangle
+\]
+
+Ob predpostavki, da je \( u \) realno, potem velja
+
+\[ \left\langle \delta u \middle| \mathcal{L} u \right\rangle  = \left\langle \mathcal{L} u \middle| \delta u \right\rangle.
+\]
+
+Sedaj izpeljano vstavimo v variacijo
+
+\[ \delta S = 0 = \left( \frac{1}{2} \left\langle \mathcal{L} u \right| + \frac{1}{2} \left\langle \mathcal{L} u \right| - \left\langle f \right|\right) \left| \delta u \right\rangle = 0,
+\]
+
+saj velja iz formulacije problema
+
+\[ \mathcal{L} u - f = 0
+\]
+#+end_proof
+
+#+begin_my_example
+Naj bo diferencialni operator \( \mathcal{L} = - \nabla ^2 \) in \( f = 0 \).
+
+Funkcional je po definiciji
+
+\[ S = - \frac{1}{2} \int\limits_{}^{} \nabla ^2 u u \, \mathrm{d} V
+\]
+
+Integral lahko prepišemo v
+
+\[ \int\limits_{}^{} \nabla ^2 u u \, \mathrm{d} V = - \frac{1}{2} \int\limits_{}^{} \mathrm{div} \left( \nabla u u \right) \, \mathrm{d} V + \frac{1}{2} \int\limits_{}^{} \left( \nabla u \right) ^2 \, \mathrm{d} V
+\]
+
+Integral z divergenco lahko pretvorimo na ploskovni integral in oba sta ničelna
+
+\[ - \frac{1}{2} \int\limits_{}^{} \mathrm{div} \left( \nabla u u \right) \, \mathrm{d} V = - \frac{1}{2} \int\limits_{}^{} \nabla u u \, \mathrm{d} S = 0.
+\]
+
+Sledi torej
+
+\[ S = \frac{1}{2} \int\limits_{}^{} \left( \nabla u \right) ^2 \, \mathrm{d} V
+\]
+
+Ta problem smo srečali pri energiji polja v EMP, kjer je \( u = \phi \).
+#+end_my_example
+
+#+name: Poissonova enačba
+#+begin_my_example
+Naj bo diferencialni operator \( \mathcal{L} = -\nabla ^2 \) in \( f \ne 0 \).
+
+Funkcional je
+
+\[ S = \frac{1}{2} \int\limits_{}^{} \left( \nabla u \right) ^2 \, \mathrm{d} V - \int\limits_{}^{} f u \, \mathrm{d} V.
+\]
+
+Integral funkcije \( fu \) je potrebna energija naboja v potencialu u.
+#+end_my_example
+
+#+name: Helmholtzova enačba
+#+begin_my_example
+Naj bo diferencialni operator \( \mathcal{L} u = \left( \nabla ^2 + k ^2 \right)u \) in \( f = 0 \).
+
+Problem rešujemo kot vezan problem
+
+\[ S = \int\limits_{}^{} \left( \nabla u \right) ^2 \, \mathrm{d} V
+\]
+
+ob vezi
+
+\[ \int\limits_{}^{} u ^2 \, \mathrm{d} V  = 1.
+\]
+
+Vrednost \( S \) v ekstremu pa je \( k ^2 = S (u_{ekstr}) \).
+
+Zapišemo
+
+\[ k ^2 = \frac{\int\limits_{}^{} \left( \nabla u \right) ^2 \, \mathrm{d} V}{\int\limits_{}^{} u ^2 \, \mathrm{d} V},
+\]
+
+ki smo ga izvrednotili v ekstremu. Minimalna vrednost \( k ^2 \) je minimiziran kvocient. V kvantni mehaniki se tej minimizaciji reče Rayleigh-Ritzova minimizacija.
+#+end_my_example
+
+#+name: Najnižja frekvenca okrogle opne
+#+begin_my_example
+Rešujemo enačbo
+
+\[ \nabla ^2 u + k ^2 u = 0
+\]
+
+z robnim pogojem \( u (R) = 0 \).
+
+Vemo, da je točna rešitev
+
+\[ u \sim J_0 \left( \xi_0^1 \frac{r}{R} \right) \implies \, k ^2 = \left( \frac{\xi_0^1}{R} \right) = 5.78319
+\]
+
+Variacijski nastavek, ki ga uporabimoje
+
+\[ u = A \left( 1 - \left( \frac{r}{R} \right) ^2 \right)
+\]
+
+Minimizirati moramo torej
+
+\[ k ^2 = \frac{\int\limits_{}^{} 2 \pi r u'  ^2 \, \mathrm{d} r}{\int\limits_{}^{} 2 \pi r u ^2} = 6
+\]
+
+Napaka je za 3.7%.
+#+end_my_example
