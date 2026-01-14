@@ -143,3 +143,90 @@ Električna gostota naboja in gostota toka tvorita četverca in pričakujemo, da
 
 \[ A_{\mu} = \left( \mathbf{A}, \frac{\phi}{c} \right) \quad \text{ in } \quad A^{\mu} = \left( \mathbf{A}, - \frac{\phi}{c} \right).
 \]
+
+Torej lahko Riemann-Lorentzove enačbe zapišemo v manifestno Lorentzovi invariantni obliki kot
+
+\[ \square ^2 A_{\mu} = - \mu_0 j_{\mu} \quad \text{ oziroma } \quad \square A^{\mu} = - \mu_0 j^{\mu}.
+\]
+
+Ker uvedemo \( \mathbf{A} \) kot pravi štirivektor, zanj ponovno velja Lorentzova transformacija.
+
+\begin{align*}
+  A_x ' &= \gamma \left( A_x - \beta \frac{\phi}{c} \right) \\
+A_y' &= A_y \\
+A_z ' &= A_z \\
+\frac{\phi '}{c} &= \gamma \left( \frac{\phi}{c} - \beta A_x \right)
+\end{align*}
+
+Invariantna je enaka
+
+\[ A_{\mu} A^{\mu} = A ^2 - \frac{\phi ^2}{c ^2}
+\]
+
+Razcep \( A_{\mu} \) na \( \mathbf{A} \) in \( \phi \) je ponovno odvisen od sistema. Z drugimi besedami je relativen.
+*** Schwartzschildova invarianta v relativistični dinamiki
+
+Želimo zapisati Lagrangeev člen za nabite delce v zunanjem polju v relativistični obliki. In sicer
+
+\[ - \int\limits_{}^{} \left( \rho \phi + \mathbf{j} \cdot \mathbf{A} \right) \, \mathrm{d} ^3 \mathbf{r} \, \mathrm{d} t = \int\limits_{}^{} A_{\mu} j^{\mu} \, \mathrm{d} ^4 x_{\mu} = \int\limits_{}^{}A^{\mu} j_{\mu} \, \mathrm{d} ^4 x^{\mu}.
+\]
+
+kjer sta \( \phi \) in \( \mathbf{A} \) zunanja potenciala.
+** Kovariantni tenzor elektromagnetnega polja
+
+Zanima nas, kakšen je kovarianten ( = manifestno invarianten na Lorentzovo transformacijo) zapis osnovnih polj \( \mathbf{E} \) in \( \mathbf{B} \), saj so bile transformacije nestandardne.
+
+Pri izpeljavi nam bosta prav prišli identiteti
+
+\[ \mathbf{B} = \nabla \times \mathbf{A} \quad \text{ in } \mathbf{E} = - \nabla \phi - \frac{\partial \mathbf{A}}{\partial t}
+\]
+
+ter, da se zavedamo
+
+\[ A_{\mu} = \left( \mathbf{A}, \frac{\phi}{c} \right) \quad \text{ in } \quad \frac{\partial }{\partial x^{\mu}} = \left( \nabla, \frac{\partial }{\partial (ct)}  \right)
+\]
+
+\begin{align*}
+  E_x &= - c \frac{\partial \frac{\phi}{c} }{\partial x}  + c \frac{\partial A_{x}}{\partial (-ct} \\
+&= -c \frac{\partial A_{4}}{\partial x^{1}} + c \frac{\partial A_{1}}{\partial x^{4}}
+\end{align*}
+
+Poglejmo še za \( B_x \), ki je po definiciji
+
+\[ B_x = \frac{\partial A_{z}}{\partial y}  - \frac{\partial A_{y}}{\partial z}.
+\]
+
+V jeziku četvercev je \( A_z = A_3, y = x^2, A_y = A_2 \) in \( z = x^3 \).
+
+Sledi torej
+
+\[ B_x = \frac{\partial A_{3}}{\partial x^{2}} - \frac{\partial A_{2}}{\partial x^{3}}.
+\]
+
+Obe komponenti se izvažata kot "nekakšen štiri dimenzionalni rotor".
+
+V treh dimenzijah je
+
+\[ \left( \nabla \times \mathbf{c} \right)_i = \epsilon_{ijk} \frac{\partial c_{j}}{\partial x_{k}}.
+\]
+
+Na osnovi tega razmisleka uvedemo tenzor elektromagnetnega polja
+
+\[ F_{\mu \nu} = \frac{\partial A_{\nu}}{\partial x^{\mu}} - \frac{\partial A_{\mu}}{\partial x^{\nu}} = \partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu},
+\]
+
+ki je antisimetričen.
+
+Zapisali smo že \( B_x = F_{23} \) in \( F_{14} = \frac{- E_x}{c} \)
+
+Obravnavamo ga po komponentah
+
+\[ F_{\mu \nu} = \begin{bmatrix}
+                 0 & B_z & B_y & - \frac{E_x}{c} \\
+                 -B_z & 0 & B_x & - \frac{E_y}{c} \\
+                 -B_y & -B_x & 0 & -\frac{E_z}{c} \\
+                 \frac{E_x}{c} & \frac{E_y}{c} & \frac{E_z}{c} & 0
+                 \end{bmatrix}.
+\]
+
+Tenzor je antisimetričen in torej velja \( F_{\mu \nu} = - F_{\nu \mu} \). Komponente tenzorja so komponente \( \mathbf{E} \) in \( \mathbf{B} \). Tako smo polji združili v eno količino. V štirih dimenzijah postane eno polje.
