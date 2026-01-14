@@ -1,0 +1,183 @@
+#+title: 15. predavanje iz Kvantne mehanike
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+
+Današnja snov bo večinoma neobvezna.
+* Kaj prileti iz peči pri Sterm-Gerrovem? Čista + mešana stanja.
+
+Zamislimo si škatlo z \( N \) delci, iz katere prileti delec v kvantnem stanju \( \left| \chi \right\rangle\), mu rečemo čisto stanje. To stanje lahko zapišemo z lastnimi funkcijami
+
+\[ \left| \chi \right\rangle  = \sum\limits_m^{} c_m \left| m \right\rangle.
+\]
+
+Pričakovano vrednost poljubnega operatorja \( A \) zapišemo z matričnim elementi
+
+\[ \left\langle A \right\rangle = \left\langle \chi \middle| A \middle|\chi \right\rangle = \sum\limits_{n, m}^{} c_n^{\ast} c_m \left\langle n \middle| A \middle| m \right\rangle = \sum\limits_{n, m}^{} \rho_{mn} A_{nm}
+\]
+
+\( n \)-ti indeks je indeks bra-ja. Vsota po \( n \)-tih indeksih
+
+\[ \sum\limits_n^{} = \rho_{mn} A_{nm} = \left( \rho A \right)_{mm}
+\]
+
+tvorijo matriko. Druga vsota, po \( m \)-tih indeksih, nam poda matrično sled
+
+\[ \sum\limits_{m n}^{} \rho_{mn} A_{nm} = \mathrm{tr} \hat{\rho} \hat{A}.
+\]
+
+Matriki \( \hat{\rho} \) pravimo gostotna matrika (ang. /density matrix/)
+
+\[ \hat{\rho} = \sum\limits_{m, n}^{} \rho_{m, n} \left| m \right\rangle \left\langle n \right|.
+\]
+
+V primeru čistega stanja
+
+\[ \rho = \left| \chi \right\rangle \left\langle \chi \right| = P_{\chi}.
+\]
+
+Velja
+
+\[ P_{\chi} = \left| \chi \right\rangle \left\langle \chi \middle| \chi \right\rangle \left\langle \chi \right| = P_{\chi}.
+\]
+
+Sledi, da je
+
+\[ \mathrm{tr} \rho A = \mathrm{tr} \left| \chi \right\rangle \left\langle \chi \right| A.
+\]
+
+Pri mešanjih stanjih pa si zamislimo stanje \( N \ge 1 \) in delec, ki zapusti škatlo in baza stanja je \( \left\{ \left| m \right\rangle \right\} \). Za \( N = 1 \) je baza stanja v škatli \( \left\{ \left| m_1 \right\rangle \right\} \). Za \( N \ge 1 \) pa je baza stanja
+
+\[ \left\{ \left| m_1 \right\rangle \otimes \left| m_2 \right\rangle \otimes \ldots \otimes \left| m_N \right\rangle\right\}
+\]
+
+Valovna funkcija tega stanja je
+
+\[ \left| \psi \right\rangle  = \sum\limits_{m, m_1}^{} c_{m, m_1} \left| m \right\rangle \otimes \left| m_1 \right\rangle.
+\]
+
+Očitno (naj bi) ne obstaja(lo) stanje oblike
+
+\[ \left| \chi_0 \right\rangle  = \sum\limits_m^{} d_m \left| m \right\rangle.
+\]
+
+Valovna funkcija je prepleteno - mešano stanje med valovno funkcijo v škatli \( \left| \chi_1 \right\rangle \) in stanjem izven škatle \( \left| \chi_0 \right\rangle \).
+
+\[ \psi = \alpha \left| \uparrow \right\rangle \left| \downarrow \right\rangle + \beta \left| \downarrow \right\rangle \left| \uparrow \right\rangle.
+\]
+
+Čisto stanje (neprepleteno) bi imelo obliko
+
+\[ \left| \psi \right\rangle = \left( \alpha \left| \uparrow \right\rangle + \beta \left| \downarrow  \right\rangle\right)\otimes \left| \chi_1 \right\rangle = \left| \chi_0 \right\rangle \otimes \left| \chi_1 \right\rangle = \alpha \left| \uparrow \right\rangle \left| \downarrow \right\rangle + \beta \left| \downarrow \right\rangle \left| \uparrow \right\rangle + \gamma \left| \uparrow \right\rangle \left| \uparrow \right\rangle + \delta \left| \downarrow \right\rangle \left| \downarrow \right\rangle.
+\]
+
+Definiramo operator \( \hat{A} = \hat{A} \otimes I_N \), ki ne vpliva na stanja iz delcev v škatli, vpliva pa na zunanji delec. Valovno funkcijo lahko zapišemo po lastnih stanjih
+
+\[ \left| \psi \right\rangle = \sum\limits_{m, m_1}^{} c_{m, m_1} \left| m \right\rangle \otimes \left| m_1 \right\rangle.
+\]
+
+Pričakovana vrednost operatorja \( \hat{A} \) je
+
+\begin{align*}
+  \left\langle A \right\rangle &= \left| \psi \middle| A \otimes I \middle| \psi \right\rangle  \\
+&= \sum\limits_{n, n_1, m, m_1}^{} c_{n, n_1}^{\ast} c_{m, m_1} \left\langle c_n \middle| A \middle| c_m \right\rangle \left\langle c_{n_1} \middle| c_{m _1} \right\rangle
+\end{align*}
+
+Vsota po \( m_1 \) nam ponovno poda \( \rho_{mn} \)
+
+\[ \left\langle A \right\rangle  = \sum\limits_{n, m, m_1}^{} c_{n, m_1}^{\ast} c_{m, m_1} A_{nm} = \sum\limits_{n, m}^{} \rho_{n, m} A_{n, m} = \mathrm{tr} \rho A,
+\]
+
+kjer je
+
+\[ \rho_{m, n} = \sum\limits_{m_1}^{} c_{n, m_1} ^{\ast} c_{m, m_1}.
+\]
+
+Gostotna matrika je tako
+
+\[ \rho_{m, n} = \sum\limits_{m, n}^{} \left| m \right\rangle  \rho_{m, n} \left\langle n \right|.
+\]
+
+V primeru spina imamo \( 2\times 2 \) gostotno matriko
+
+\[ \rho_{m, n} = \begin{bmatrix}
+                 \alpha & \beta \\
+                 \gamma & \delta
+                  \end{bmatrix} \quad \mathrm{ in } \quad A_{m, n} = \sigma_y.
+\]
+
+Posplošeno bi zapisali valovno funkcijo za \( N \) delcev kot
+
+\[ \left| \psi_{n + 1} \right\rangle = \sum\limits_m^{} \sum\limits_{m_1, m_2, \ldots, m_N}^{} c_{m, m_1, m_2, \ldots} \left| m \right\rangle \otimes \left| m_1 \right\rangle \otimes \ldots \otimes \left| m_N \right\rangle.
+\]
+
+Četudi je zgornje stanje čisto, se nam splača uvesti gostotno matriko delcev, ki jih ne opazujemo (delci z indeksi)
+
+\[ \rho_{n + 1} = \sum\limits_{m_1, m_2, \ldots, m_N}^{} c_{n, m_1, \ldots, m_N}^{\ast} c_{m, m_1, \ldots, m_N}
+\]
+
+Če bi poznali vrednosti koeficientov, bi lahko zapisali to matriko, vendar zanjo več ne velja
+
+\[ \rho \ne \left| \chi \right\rangle  \left\langle \chi \right|.
+\]
+
+Obstajajo veje kvantne mehanike, kjer lahko vse delamo z gostotnimi matrikami. Analog Schrödingerjeve enačbe je von Neumannova enačba
+
+\[ \mathrm{i} \hbar \dot{\rho} = \left[ \rho, H \right].
+\]
+
+#+begin_my_example
+Imejmo napravo Sterm-Gerl s temperaturo \( T = 1050 ^{\degree} C \) z \( N \sim 10^{23} \).
+
+Naj bo peč v termodinamskem ravnovesju.
+
+\[ \hat{\rho} = C e^{- \beta H},
+\]
+
+kjer je
+
+\[ C = \frac{1}{Z}, \, Z = \mathrm{tr} e^{- \beta H}.
+\]
+
+in je \( \beta = \frac{1}{k_B T} \).
+
+Hamiltonian zapišemo
+
+\[ H = - \frac{\hbar ^2 \nabla ^2}{2m} - \mathbf{\mu}_0 \cdot \mathbf{B} + \hat{V} + \ldots.
+\]
+
+Rešujemo enačbo
+
+\[ H \left| k \right\rangle  = E_k \left| k \right\rangle.
+\]
+
+Gostotna matrika je
+
+\[ \rho = \frac{1}{Z} \sum\limits_k^{} e^{- \beta E_k} \left| k \right\rangle \left\langle k \right|.
+\]
+
+Stanje \( \left| k \right\rangle \) ima bazo \( \left\{ \left| \uparrow \right\rangle, \left| \downarrow \right\rangle \right\} \). Naj bo energija magnetnega polja \( E_B = - \mu B_0 \).
+
+\( \rho \) je vsota dveh členov in je enak
+
+\[ \rho = \frac{e^{\beta E_B} \left| \uparrow \right\rangle \left\langle \uparrow \right| e^{-\beta E_B} \left| \downarrow \right\rangle \left\langle \downarrow \right| }{e^{\beta E_B} + e^{- \beta E_B}},
+\]
+
+kar je diagonalna matrika
+
+\[ \rho_{m, n} = \begin{bmatrix}
+                 \rho_{11} & 0 \\
+                 0 & \rho_{22}
+                  \end{bmatrix}.
+\]
+
+Želimo izračunati pričakovano vrednosti spina, ki leti iz škatle
+
+\[ \left\langle \sigma_z \right\rangle  = \mathrm{tr} \rho \sigma_z.
+\]
+#+end_my_example

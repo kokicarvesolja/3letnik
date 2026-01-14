@@ -1,338 +1,839 @@
-#+title: 13. predavanje iz Kvantne mehanike
-#+startup: nolatexpreview
-#+startup: entitiespretty nil
-#+startup: show2levels
-#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
-#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
-#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
-#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
-#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
-* Fermijevo zlato pravilo
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-12-24 Wed 11:22 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>13. predavanje iz Kvantne mehanike</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">13. predavanje iz Kvantne mehanike</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org987b2db">1. Fermijevo zlato pravilo</a></li>
+<li><a href="#orgc3816ca">2. Adiabatne spremembe in kvantne faze</a></li>
+<li><a href="#org75cf37d">3. Semiklasični približek metode Wentzel-Kramers-Brillouin (WKB)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ne_sprasuje_na_ustnem">ne_sprasuje_na_ustnem</span></span></a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org987b2db" class="outline-2">
+<h2 id="org987b2db"><span class="section-number-2">1.</span> Fermijevo zlato pravilo</h2>
+<div class="outline-text-2" id="text-1">
+<p>
 Izpeljali smo verjetnost, da delec po dolgem času skoči iz \( n \)-tega lastnega stanja v \( k \)-ti lastno stanje ob prisotnosti motnje \( V \), ki je neodvisna od časa, vendar se pojavi ob času \( t > 0 \).
+</p>
 
+<p>
 Verjetnost je
+</p>
 
+<p>
 \[ P_{km} (t) = \frac{\left| V_{km} \right|^2}{\hbar ^2} \delta \delta_t \left( \frac{1}{2 \hbar} \left( E_k - E_m \right) \right)t,
 \]
+</p>
 
+<p>
 kjer je \( V_{km} = \left\langle k \middle| V \middle| m \right\rangle \).
+</p>
 
-[[file:figures/fermiGoldenRule.png]]
 
+<div id="org769c05f" class="figure">
+<p><img src="figures/fermiGoldenRule.png" alt="fermiGoldenRule.png" />
+</p>
+</div>
+
+<p>
 Priporočam bralcu, da si nariše \( \delta_t(x) \) in opazuje, kako se spreminja v odvisnosti od parametra \( t \). Opazil bo, da se funkcija oža in viša proti neskončnosti okoli izhodišča \( x = 0 \).
+</p>
 
+<p>
 Širina med izhodiščem in krivuljo, ki vodi do prve ničle. Širina je \( \Delta x \), ki je
+</p>
 
+<p>
 \[ \Delta x = \frac{\pi}{t} = \frac{\Delta E}{2 \hbar},
 \]
+</p>
 
+<p>
 kjer je \( \Delta E \) definirana kot razlika lastne energije \( E_k = E_1 ' + E_2 ' \) lastnega stanja \( \left| k \right\rangle \) in lastne energije \( E_m = E_1 + E_2 \) lastnega stanja \( \left| m \right\rangle \).
+</p>
 
+<p>
 \[ \Delta E = E_k - E_m
 \]
+</p>
 
+<p>
 Iz tega sledi \( \Delta E t \approx \hbar \).
+</p>
 
+<p>
 Z minevanjem časa \( t \to \infty \) se oblika krivulje oža in viša proti neskončnosti. To pomeni, da \( \Delta E \to 0 \).
+</p>
 
+<p>
 Iz tega sledi, da so skoki med stanjema \( n \) in \( k \) ob krajšem času večji, saj je \( \Delta E \) večji. Z večanjem časa se manjša \( \Delta E \), kar pomeni, da je manjša verjetnost, da najdemo delec v drugem stanju kakor \( \left| m \right\rangle \).
+</p>
 
+<p>
 Delec bomo vedno našli, saj je \( P_m (t = 0) = 1 \).
+</p>
 
+<p>
 To se ne uporablja pri harmonskem oscilatorju, ampak pri sipanju delcev.
+</p>
 
+<p>
 Imejmo končno stanje \( E_k \), ki ima v svoji okolici \( \epsilon > 0 \) veliko drugih možnih energij. Naj bo na intervalu \( \mathrm{d} E_k = E_k \pm \epsilon \) možnih \( \mathrm{d} N \) energijskih stanj.
+</p>
 
+<p>
 To lahko opišemo z gostoto stanj
+</p>
 
+<p>
 \[ \rho_k = \frac{\mathrm{d} N}{\mathrm{d}  E_{k}} \cdot \frac{1}{N_k} = \frac{\mathrm{d} P}{\mathrm{d} E_k}
 \]
+</p>
 
+<p>
 Zanima nas, v katerem stanju \( k \), ki je različen od osnovnega stanja \( m \), bo delec po času \( t \). Do tega rezultata bomo prišli preko verjetnosti
+</p>
 
+<p>
 \[ P = \sum\limits_{k \ne m}^{} P_{kn} \to \int\limits_{- \infty}^{\infty} P_{km} (t) \rho \left( E_k \right) \mathrm{d} E_k,
 \]
+</p>
 
+<p>
 kjer smo predpostavili zvezen spekter energijskih nivojev. To predpostavko lahko tudi drugače ubesedimo: matrični element \( V_{km} \) se ne spreminja veliko oz. \( E_k \approx E_m \).
+</p>
 
+<p>
 Upoštevamo prej izpeljano verjetnost \( P_{km} \) in ko čas \( t \to \infty \) integral postane
+</p>
 
+<p>
 \[ P \overset{t \to \infty}{=} \int\limits_{- \infty}^{\infty} \frac{\left| V_{km} \right| ^2}{\hbar ^2} 2 \pi \hbar \delta \left( E_k - E_m \right) \rho \left( E_k \right) \, \mathrm{d} E_k = \frac{2 \pi}{\hbar} \left| V_{km} \right| ^2 \rho \left( E_m \right) t.
 \]
+</p>
 
+<p>
 Po dolgem času verjetnost za prehod v neko bližnje stanje \( E_k \) narašča linearno.
+</p>
 
+<p>
 Iz tega sledi Fermijevo zlato pravilo
+</p>
 
+<p>
 \[ w = \frac{\mathrm{d} P}{\mathrm{d} t} = \frac{2 \pi}{\hbar} \left| V_{km} \right| ^2 \rho \left( E_m \right).
 \]
+</p>
 
+<p>
 Pravilo ima tudi nekatere pogoje.
+</p>
 
-- verjetnost, da delec ostane v istem stanju je enako
+<ul class="org-ul">
+<li><p>
+verjetnost, da delec ostane v istem stanju je enako
+</p>
 
-  \[ P_{mm} = \left| c_m \right| ^2 \approx 1 - \lambda ^2 + \ldots,
+<p>
+\[ P_{mm} = \left| c_m \right| ^2 \approx 1 - \lambda ^2 + \ldots,
   \]
+</p>
 
-  Posledično pomeni, da je verjetnost za prestop v drugo stanje \( P_{km} \ll 1 \).
+<p>
+Posledično pomeni, da je verjetnost za prestop v drugo stanje \( P_{km} \ll 1 \).
+</p></li>
 
-- \( t \to \infty \)
+<li>\( t \to \infty \)</li>
 
-- \( V_{km} \) ni zelo odvisen od začetnega stanja \( E_k \).
+<li>\( V_{km} \) ni zelo odvisen od začetnega stanja \( E_k \).</li>
+</ul>
 
 
-#+name: Radioaktivni razpad
-#+begin_my_example
+<div class="my_example" id="org021dc87">
+<p>
 Verjetnost radioaktivnega razpada je konstantna
+</p>
 
+<p>
 \[ w = \frac{\mathrm{d} P}{\mathrm{d} t} = \mathrm{konst},
 \]
+</p>
 
+<p>
 kar sledi iz Fermijevega zlatega pravila.
+</p>
 
+<p>
 Če imamo \( N \) delcev, bo število delcev, ki bo radioaktivno razpadlo enako
+</p>
 
+<p>
 \[ \mathrm{d} N = - N \mathrm{d} P = - NP \mathrm{d}t.
 \]
+</p>
 
+<p>
 Slednje lahko precej enostavno rešimo
+</p>
 
+<p>
 \[ \frac{\mathrm{d} N}{N} = - w \mathrm{d } t  \implies N(t) = N_0 e^{- w t},
 \]
+</p>
 
+<p>
 kjer velja \( t \gg \frac{1}{w} \).
+</p>
 
-#+end_my_example
-* Adiabatne spremembe in kvantne faze
-
+</div>
+</div>
+</div>
+<div id="outline-container-orgc3816ca" class="outline-2">
+<h2 id="orgc3816ca"><span class="section-number-2">2.</span> Adiabatne spremembe in kvantne faze</h2>
+<div class="outline-text-2" id="text-2">
+<p>
 Imejmo časovno odvisen Hamiltonian \( H(t) \). Poglejmo si primere adiabatnih sprememeb
+</p>
 
-a) Neskončno potencialna jama z dolžino \( L(t = 0) \). Osnovno stanje je \( \sin (kx) \). Potencialno jamo počasi širimo, torej \( L(t) \). Za dovolj počasno širjenje bo sistem ostajal v istem stanju \( \sin \left( k(t) x \right) \).
+<ol class="org-ol">
+<li>Neskončno potencialna jama z dolžino \( L(t = 0) \). Osnovno stanje je \( \sin (kx) \). Potencialno jamo počasi širimo, torej \( L(t) \). Za dovolj počasno širjenje bo sistem ostajal v istem stanju \( \sin \left( k(t) x \right) \).</li>
 
-b) Imamo končno potencialno jamo globine \( V_0 (t = 0) \), ki ji bomo s časom spreminjali globino \( V_0 (t) \).
+<li>Imamo končno potencialno jamo globine \( V_0 (t = 0) \), ki ji bomo s časom spreminjali globino \( V_0 (t) \).</li>
+</ol>
 
+<p>
 Primer hipne spremembe (protipomenka adiabatne spremembe) je, da neskončno potencialno jamo širine \( L \) hipno razširimo na \( L' > L \). Tak primer znamo rešiti z znanjem iz kvantnomehanskih vaj iz začetka leta.
+</p>
 
+<p>
 Postavimo sedaj problem.
+</p>
 
+<p>
 Imejmo Hamiltonian, ki je časovno odvisen od \( n \) spremenljivk \( H (\vec{Q}(t)) \), kjer je \( \vec{Q} = \left( q_1, q_2, \ldots, q_n \right) \), kjer so to lahko npr. \( q_1 = L(t) \), \( q_2(t) = V_0 (t) \), ipd.
+</p>
 
+<p>
 Rešujemo enačbo
+</p>
 
 \begin{equation}
 \label{eq:2}
  H(\vec{Q}) \left| \psi_n \left( \vec{Q} \right) \right\rangle = E_n \left( \vec{Q} \right) \left| \psi_n \left( \vec{Q} \right) \right\rangle,
 \end{equation}
 
+<p>
 kjer je \( \left| \psi_n \left( \vec{Q} \right) \right\rangle \) nedegenerirano lastno stanje.
+</p>
 
+<p>
 Označimo rešitev lastno stanje pri neki vrednosti poljubnega parametra ob času \( t \) z
+</p>
 
+<p>
 \[ \psi_n^0 \left( \vec{r}, t \right) = \left\langle \vec{r} \middle| \psi_n^0 \left( \vec{Q} (t) \right) \right\rangle.
 \]
+</p>
 
+<p>
 Za primer a) je ta funkcija enaka
+</p>
 
+<p>
 \[ \psi_n^0 = A \sin \left( k(t) r \right) e^{- \mathrm{i} \frac{\hbar ^2 k ^2  (t)}{\hbar} t} .
 \]
+</p>
 
+<p>
 Stanje \( \psi_n^0 \) ne reši Schrödingerjeve enačbe
+</p>
 
+<p>
 \[ \mathrm{i} \hbar \frac{\partial }{\partial t} \left| \psi_n^0 (\vec{r}, t) \right\rangle \ne H \left( \vec{Q} \right) \left| \psi_n^0 \left( \vec{r}, t \right) \right\rangle
 \]
+</p>
 
+<p>
 Adiabatna sprememba mora biti tako, da je verjetnostna gostota skozi čas ostaja enaka. Za a) primer je ta pogoj
+</p>
 
+<p>
 \[ \frac{1}{L} \frac{\mathrm{d} L}{\mathrm{d} t} \ll \frac{\Delta E_n}{ \hbar},
 \]
+</p>
 
+<p>
 kjer velja \( \Delta E_n \Delta t > \hbar \).
+</p>
 
+<p>
 Sistem mora ves čas ostajati v istem \( n \)-tem lastnem stanju \( H \left( \vec{Q} \right) \), vendar lahko neka časovno neodvisna faza \( \phi_n(t) \) spreminja lastni vektor \( \left| \psi_n \left( \vec{Q} \right) \right\rangle \) .
+</p>
 
+<p>
 \[ \psi_n \left( \vec{r}, t \right) = e^{\mathrm{i} \phi_n (t)} \psi_n^0 \left( \vec{r}, t \right)
 \]
+</p>
 
+<p>
 Velja
+</p>
 
 \begin{equation}
 \label{eq:1}
  \left\langle \psi_n^0 \middle| \psi_n^0 \right\rangle = 1.
 \end{equation}
 
+<p>
 Vstavek s fazo \( \phi_n \) vstavimo v Schrödingerjevo enačbo
+</p>
 
 \begin{align*}
   \mathrm{i} \hbar \frac{\partial }{\partial t}  \left| \psi_n \right\rangle &= H \left| \psi_n \right\rangle \\
 \mathrm{i} \hbar \left( \mathrm{i} \frac{\partial }{\partial t} \phi_n (t) e^{\mathrm{i} \phi_n (t)} \left| \psi_n^0 \right\rangle + e^{\mathrm{i} \phi_n (t)} \frac{\partial }{\partial t} \left| \psi_n^0 \right\rangle\right) &= H e^{\mathrm{i} \phi_n(t)} \left| \psi_n^0 \right\rangle = E_n \left| \psi_n^0 \right\rangle
 \end{align*}
 
+<p>
 Po množenju z bra \( \left\langle \psi_n^0 \right| \) in upoštevanjem lastnosti \re{eq:1} dobimo
+</p>
 
+<p>
 \[ \mathrm{i} \hbar \left( \mathrm{i} \frac{\partial }{\partial t} \phi_n (t) \left\langle \psi_n ^0 \middle| \psi_n^0 \right\rangle  + \left\langle \psi_n^0 \middle| \frac{\partial }{\partial t}  \psi_n^0 \right\rangle\right) = \mathrm{i} \hbar \left( \mathrm{i} \frac{\partial }{\partial t} \phi_n(t) + \left\langle \psi_n^0 \middle| \frac{\partial }{\partial t} \psi_n^0 \right\rangle \right) = E_n \left\langle \psi_n^0 \middle| \psi_n^0 \right\rangle = E_n
 \]
+</p>
 
+<p>
 Fazo sedaj razdelimo na dva dela \( \phi_n = \gamma_n + \theta_n \) tako, da velja
+</p>
 
+<p>
 \[ \mathrm{i} \hbar \left( \mathrm{i} \frac{\partial }{\partial t} \gamma_n (t) + \left\langle \psi_n^0 \middle| \frac{\partial }{\partial t} \psi_n^0 \right\rangle \right) = E_n + \hbar \frac{\partial }{\partial t} \theta_n (t) = 0.
 \]
+</p>
 
+<p>
 Z drugimi besedami, izberemo si tako vrednosti, da faze ni.
+</p>
 
+<p>
 Rešimo lahko sedaj desno stran enačbo
+</p>
 
+<p>
 \[ \frac{\mathrm{d} \theta_{n}(t)}{\mathrm{d} t}= - \frac{E_n (t)}{\hbar},
 \]
+</p>
 
+<p>
 katera rešitev je
+</p>
 
+<p>
 \[ \theta_n = - \frac{1}{\hbar} \int\limits_0^t E_n(t') \, \mathrm{d} t'.
 \]
+</p>
 
+<p>
 Enačba na levi strani pa se glasi
+</p>
 
+<p>
 \[ \frac{\partial }{\partial t}  \gamma_n = \mathrm{i} \left\langle \psi_n^0 \middle| \frac{\partial }{\partial t}  \psi_n^0 \right\rangle.
 \]
+</p>
 
+<p>
 Ker je \( \psi_n^0 \) rešitev enačbe za parameter \( q \) ob nekem času \( t \) (ne vseh časih!), lahko odvod zapišemo posredno
+</p>
 
+<p>
 \[ \frac{\partial }{\partial t}  \psi_n^0 = \sum\limits_i^{ } \left( \frac{\partial }{\partial q_{i}} \psi_n^0 \right) \frac{\partial }{\partial t} q_i(t) = \nabla_{\vec{Q}} \cdot \dot{\vec{Q}} \psi_n^0,
 \]
+</p>
 
+<p>
 kjer je \( \nabla_{\vec{Q}} \) gradient v prostoru \( \vec{Q} \).
+</p>
 
+<p>
 Faza je potem
+</p>
 
+<p>
 \[ \gamma_n (t) = \int\limits_0^t \mathrm{i} \left\langle \psi_n^0 \middle| \nabla_{\vec{Q}} \psi_n^0 \right\rangle \cdot \dot{\vec{Q}}(t') \, \mathrm{d} t'
 \]
+</p>
 
+<p>
 Nadomestimo \( \dot{\vec{Q}}(t') \, \mathrm{d} t' = \mathrm{d} \vec{Q} \) in dobimo enačbo za fazo
+</p>
 
+<p>
 \[ \gamma_n = \int\limits_{\vec{Q}(0)}^{\vec{Q}(t)} \mathrm{i} \left\langle \psi_n^0 \middle| \nabla_{\vec{Q}} \psi_n^0 \right\rangle  \cdot \mathrm{d} \vec{Q}
 \]
+</p>
 
+<p>
 Vpeljemo
+</p>
 
+<p>
 \[ \vec{A}_n \left( \vec{Q} \right) = \mathrm{i} \left\langle \psi_n^0 \middle| \nabla_{\vec{Q}} \psi_n^0 \right\rangle,
 \]
+</p>
 
+<p>
 kjer je \( \vec{A}_n \) Berryjeva povezava. Vpeljemo tudi Berryjevo fazo
+</p>
 
+<p>
 \[ \gamma_{Berry} = \oint\limits_C^{} \vec{A}_n \left( \vec{Q} \right) \, \mathrm{d} \vec{Q},
 \]
+</p>
 
+<p>
 kjer je \( C \) zaključena zanka po prostoru parametrov \( \vec{Q} \).
+</p>
 
+<p>
 Lastno stanje/rešitev Schrödingerjeve enačbe \ref{eq:2} je
+</p>
 
+<p>
 \[ \left| \psi_n \right\rangle = e^{\mathrm{i} \phi_n} \left| \psi_n^0 \right\rangle,
 \]
+</p>
 
+<p>
 kjer je
+</p>
 
+<p>
 \[ \phi_n = - \frac{1}{\hbar} \int\limits_0^t E_n (t') \, \mathrm{d} t' + \int\limits_{\vec{Q}(0)}^{\vec{Q}(t)} \mathrm{i} \left\langle \psi_n^0 \middle| \nabla_{\vec{Q}} \psi_n^0 \right\rangle \cdot \mathrm{d} \vec{Q}.
 \]
+</p>
 
+<p>
 Prvemu členu \( \theta_n \) pravimo dinamična faza, medtem ko pa je \( \gamma_n \) geometrijska faza. Integral geometrijske faze po zaključeni zanki ni nujno enak \( 0 \).
+</p>
 
-#+begin_my_example
+<div class="my_example" id="orgeaa4e7e">
+<p>
 Naj bo nabor parametrov \( \vec{Q} = \left( L(t), V_0 (t) \right) \).
+</p>
 
-[[file:figures/BerryjevaSprememba.png]]
 
+<div id="org18a5c9e" class="figure">
+<p><img src="figures/BerryjevaSprememba.png" alt="BerryjevaSprememba.png" />
+</p>
+</div>
+
+<p>
 Na sliki je primer geometrijske faze, ki je neničelna.
-#+end_my_example
-* Semiklasični približek metode Wentzel-Kramers-Brillouin (WKB) :ne_sprasuje_na_ustnem:
+</p>
 
+</div>
+</div>
+</div>
+<div id="outline-container-org75cf37d" class="outline-2">
+<h2 id="org75cf37d"><span class="section-number-2">3.</span> Semiklasični približek metode Wentzel-Kramers-Brillouin (WKB)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ne_sprasuje_na_ustnem">ne_sprasuje_na_ustnem</span></span></h2>
+<div class="outline-text-2" id="text-3">
+<p>
 Rešujemo Schrödingerjevo enačbo
+</p>
 
+<p>
 \[ \mathrm{i} \hbar \frac{\partial \psi}{\partial t} = - \frac{\hbar ^2}{2m} \nabla ^2 \psi + V \psi.
 \]
+</p>
 
+<p>
 V enačbo vstavimo nastavek
+</p>
 
+<p>
 \[ \psi = e^{\mathrm{i} \frac{S \left( \vec{r}, t \right)}{\hbar}}, \ S \in \mathbb{C},
 \]
+</p>
 
+<p>
 in dobimo
+</p>
 
 \begin{equation}
 \label{eq:3}
  -\frac{\partial S}{\partial t}  \psi = \left( \frac{1}{2m} \left( \nabla S \right)^2 - \mathrm{i} \frac{\hbar}{2m} \nabla ^2 S \right) \psi.
 \end{equation}
 
+<p>
 Funkciji
+</p>
 
+<p>
 \[ - \frac{\partial S}{\partial t}  \psi = \left( \frac{1}{2m} \left( \nabla S \right)^2  \right),
 \]
+</p>
 
+<p>
 pravimo Hamilton Jacobijeva funkcija. Pojavlja se tudi v klasični mehaniki in zanjo velja, da je hitrost \( \vec{v} = \nabla S \).
+</p>
 
+<p>
 Drugi člen \ref{eq:3} je kvantnomehanski člen.
+</p>
 
+<p>
 Če bi bil \( \hbar = 0 \), imamo klasičen problem, vendar ni. Razvijemo kompleksno funkcijo \( S \) po potencah \( \hbar \):
+</p>
 
+<p>
 \[ S \left( \vec{r}, t \right) = S_0 + \hbar S_1 + \hbar ^2 S_2 + o \left( \hbar ^3 \right).
 \]
+</p>
 
+<p>
 Za \( \hbar ^0 \) dobimo Hamilton-Jacobijevo enačbo
+</p>
 
+<p>
 \[ - \frac{\partial S_{0}}{\partial t} =  \frac{1}{2m} \left( \nabla S \right) ^2 + V \left( \vec{r}, t \right).
 \]
+</p>
 
+<p>
 Prvi red je
+</p>
 
+<p>
 \[ - \frac{\partial S_{1}}{\partial t}  = \frac{1}{2m} \left( 2 \nabla S_0 \cdot \nabla S_1 - \mathrm{i} \nabla ^2 S_0 \right) .
 \]
+</p>
 
+<p>
 Z razvojem po \( \hbar \) gledamo odmik kvantnomehanske rešitve od klasične rešitve.
+</p>
 
-#+begin_my_example
+<div class="my_example" id="orgdaad612">
+<p>
 Imejmo stacionarno enačbo prve dimenzije. Zaradi stacionarno bo \( S = S(x) \ne S(t) \). Imamo torej funkcijo
+</p>
 
+<p>
 \[ \Psi (x, t) = \exp \left\{ - \mathrm{i} \frac{E t}{\hbar} \right\} \psi(x) = \exp \left\{ - \mathrm{i} \frac{E t}{\hbar} \right\} \exp \left\{ \mathrm{i} \frac{S_{1}(x)}{\hbar}\hbar \right\} ,
 \]
+</p>
 
+<p>
 kjer je \( Et = S_0 \).
+</p>
 
+<p>
 Hamilton-Jacobijeva funkcija je
+</p>
 
+<p>
 \[ E = \frac{1}{2m} \left( \frac{\mathrm{d} S_{0}}{\mathrm{d} x} \right) ^2 + V(x).
 \]
+</p>
 
+<p>
 Izrazimo
+</p>
 
+<p>
 \[ \frac{\mathrm{d} S_{0}}{\mathrm{d} x} = \pm \sqrt{\left( E - V(x) \right) 2m},
 \]
+</p>
 
+<p>
 in definiramo \( p ^2(x) = (E - V(x)) 2m \) gibalno količino ob prisotnosti potenciala. Po integriranju lahko izrazimo
+</p>
 
 \begin{equation}
 \label{eq:4}
  S_0 (x) = \pm \int\limits_0^x \sqrt{p ^2(x')} \, \mathrm{d} x'.
 \end{equation}
 
+<p>
 Enačba prvega reda bo
+</p>
 
+<p>
 \[ 0 = \frac{1}{2m} \left( 2 \frac{\mathrm{d} S_{0}}{\mathrm{d} x} \frac{\mathrm{d} S_{1}}{\mathrm{d} x} - \mathrm{i} \frac{\mathrm{d} ^2 S_{0}}{\mathrm{d} x ^2} \right) ,
 \]
+</p>
 
+<p>
 saj \( S_1 \ne S_1 (t) \). Z že izračunanim \( S_0 \) v enačbi \ref{eq:4}, lahko izrazimo
+</p>
 
+<p>
 \[ S_1 (x) = \mathrm{i} \ln \sqrt{\frac{p(x)}{p(x_0)}}.
 \]
+</p>
 
+<p>
 Valovna funkcija je
+</p>
 
+<p>
 \[ \Psi_{WKB} (x, t) = \frac{C}{\sqrt{p(x)}} \exp \left\{ \mathrm{i} \frac{E}{\hbar} t \right\} \exp \left\{ \pm \frac{\mathrm{i}}{\hbar} \int\limits_{x_0}^x p(x') \, \mathrm{d} x' \right\}.
 \]
+</p>
 
+<p>
 Dobljena funkcija nam pove, da je rešitev ravni val, katerega valovni vektor \( k(x) = \int\limits_{x_0}^x p(x') \, \mathrm{d} x' \) je odvisen od \( x \).
+</p>
 
+<p>
 Ta enačba je dobra, saj lahko vanj vstavimo potencial, pointegriramo in dobimo rešitev kvantno mehanskega problema. Omogoča nam hitro oceno, vendar se potencial skozi čas ne sme spreminjati prehitro.
+</p>
 
-[[file:figures/WKB.png]]
-#+end_my_example
 
+<div id="org2ed14f4" class="figure">
+<p><img src="figures/WKB.png" alt="WKB.png" />
+</p>
+</div>
+
+</div>
+
+<p>
 S pomočjo (primitivnega) približka WKB so razrešili problem \( \alpha \) razpada in zakaj so nekateri elementi bolj stabilni od drugih.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2025-12-24 Wed 11:22</p>
+</div>
+</body>
+</html>
