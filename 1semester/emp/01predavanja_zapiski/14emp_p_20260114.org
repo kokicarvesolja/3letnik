@@ -1,0 +1,145 @@
+#+title: 14. predavanje iz Elektromagnetnega polja
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Naslov
+
+Na prejšnjem predavanju smo dobili transformirane količine v sistemu, ki se premika s svetlobno hitrostjo. Transformirane komponente električnega polja so
+
+\begin{align*}
+  E_x &= E_{x'} ' \\
+E_y &= \gamma \left( E_{y'}' + v B_{z'} ' \right) \\
+E_z &= \gamma \left( E_{z'}' - v B_{y'} ' \right),
+\end{align*}
+
+kjer je sistem s črtico premikajoči se sistem. Transformirane komponente magnetnega polja pa so
+
+\begin{align*}
+  B_x &= B_{x'}' \\
+B_y &= \gamma \left( B_{y'}' - \frac{v}{c ^2} E_{z'}' \right) \\
+B_z &= \gamma \left( B_{z'}' + \frac{v}{c ^2} E_{y'}' \right) \\
+\end{align*}
+
+Sledeče ima dve posledici.
+
+Prva posledica je, da je skalarni produkt invarianten - koti med poljema \( \mathbf{E} \) in \( \mathbf{B} \) se ohranjajo.
+
+\begin{align*}
+  \mathbf{E} \cdot \mathbf{B} &= E_x B_x + E_y B_y + E_z B_z \\
+E_{x'}' B_{x'}' + \gamma ^2 \left( 1 - \frac{v ^2}{c ^2} \right) E_{y'}' + B_{y'}' + \gamma \left( 1 - \frac{v ^2}{c ^2} \right) E_{z'}' B_{z'}' &= \mathbf{E}' \cdot \mathbf{B} '.
+\end{align*}
+
+Druga posledica je to, da ima v praznem prostoru rešitev Maxwellove enačbe enako obliko - obliko ravnega vala - veliko polj pa sta odvisni od sistema.
+
+\[ E ^2 - c ^2 B ^2 = E' ^2 + c ^2 B ' ^2.
+\]
+
+Poteka pretakanje iz enega polja v drugo in ni več ločeno na magnetno in električno polje.
+** Prostor Minkovskega
+
+Ideja je, da se teorijo relativnosti formulira s štirivektorji, ki pri posebni teoriji relativnosti (PTR) sledijo metriki Minkovskega. Pri splošni teoriji relativnosti pa je metrika odvisna od porazdelitve mase.
+
+Štirivektor dogodka je
+
+\[ x_{\mu} = (x, y, z, ct).
+\]
+
+Indeks \( \mu \) spodaj zavzema vrednosti \( 1 - 4 \) in označuje kovariantni vektor.
+
+Štirivektor dogodka z indeksom zgoraj
+
+\[ x^{\mu} = (x, y, z, - ct),
+\]
+
+označuje kontravariantni vektor.
+
+Lorentzova transformacija ohranja skalarni produkt
+
+\[ x_{\mu} x^{\mu} = x_{\mu} ' x^{\mu} '.
+\]
+
+Zanima nas, kako bi elektromagnetno polje zapisali s četverci.
+** Štirivektor gostote toka
+*** Gostota naboja in Lorentzova transformacija
+
+Naboj mora biti invarianten na Lorentzovo transformacijo, saj bi drugače s prehajanjem med sistem pridobivali ali izgubljali naboj.
+
+Torej velja
+
+\[ e = \int\limits_V^{} \rho \, \mathrm{d} ^3 \mathbf{r} = \int\limits_{V'}^{} \rho' \mathrm{d} ^3 \mathbf{r}'.
+\]
+
+Gostota naboja \( \rho \) se nahaja v sistemu \( S \), medtem ko je \( \rho' \) v sistemu \( S' \). Ob upoštevanju, da velja
+
+\[ \mathrm{d} ^3 \mathbf{r} = \mathrm{d} x \mathrm{d} y \mathrm{d} z = \mathrm{d} ^3 \mathbf{r} ' = \mathrm{d} x' \mathrm{d} y' \mathrm{d} z' = \gamma \mathrm{d} x \mathrm{d} y \mathrm{d} z,
+\]
+
+enakost postane
+
+\[ e = \int\limits_V^{} \rho  \mathrm{d} x \mathrm{d} y \mathrm{d} z = \int\limits_{V'}^{} \rho' \gamma  \mathrm{d} x \mathrm{d} y \mathrm{d} z.
+\]
+
+Sledi
+
+\[ \rho' = \frac{\rho}{\gamma}.
+\]
+
+Zaključimo lahko, da je \( \frac{\rho}{\gamma} \) invariantna količina na Lorentzovo transformacijo.
+*** Štirivektor gostote toka
+
+V treh dimenzijah je bila gostota toka zapisana kot
+
+\[ \mathbf{j} = \rho \mathbf{v}.
+\]
+
+Uvede se ga kot
+
+\[ j_{\mu} = \frac{\rho}{\gamma} u_{\mu} = \frac{\rho}{\gamma} (\gamma_v, \gamma_c).
+\]
+
+Sledi, da sta kovariantni in kontravariantni vektor enaka
+
+\[ j_{\mu} = \left( \mathbf{j}, \rho c \right) \quad \text{ in } \quad j^{\mu} = \left( \mathbf{j}, - c \rho \right).
+\]
+
+Gostoto toka smo uvedli kot pravi štirivektor, iz česar sledi, da zanj velja Lorentzova transformaija
+
+\begin{align*}
+  j_x ' &= \gamma \left( j_x - \beta c \rho \right) \\
+j_y ' &= j_y \\
+j_z ' &= j_z\\
+c \rho' &= \gamma \left( c \rho - \beta j_x \right)
+\end{align*}
+
+Invarianca ima obliko
+
+\[ j_{\mu} j^{\mu} = \mathbf{j} \cdot \mathbf{j} - c ^2 \rho ^2.
+\]
+
+Če na invarianco delujemo z \( \frac{\partial }{\partial x^{\mu}}  \), iz česar sledijo stvari kot so npr. kontinuitetna enačba
+
+\[ \nabla \cdot \mathbf{j} - \frac{\partial \rho}{\partial t} = 0.
+\]
+
+Razcep štirivektorja toka je relativen, odvisen, od gostote naboja in gotota toka je odvisn od sistema.
+** Štirivektor elektromagnetnega potenciala
+
+Spomnimo se Riemann-Lorentzovbih enačb za magnetni vektorski potencial \( \mathbf{A} \) in \( \phi \).
+
+\[ \nabla ^2 \phi - \frac{1}{c ^2} \frac{\partial ^2 \phi}{\partial t ^2} = - \frac{\rho}{\epsilon_0} \quad \text{ in } \quad \nabla ^2 \mathbf{A} - \frac{1}{c ^2} \frac{\partial ^2 \mathbf{A}}{\partial t ^2} = - \mu_0 \mathbf{j}.
+\]
+
+Uvedemo D'Alembertov operator \( \square ^2 = \partial_{\mu} \partial^{\mu} = \left( \nabla, - \frac{\partial }{\partial (ct)} \right) \left( \nabla,  \frac{\partial }{\partial (tc)}  \right) \). Drugače zapišemo
+
+\[ \square ^2 \phi = - \frac{\rho}{\epsilon_0} \quad \text{ in } \quad \square ^2 \mathbf{A} = - \mu_0 \mathbf{j}
+\]
+
+Električna gostota naboja in gostota toka tvorita četverca in pričakujemo, da tudi \( \mathbf{A} \) in \( \phi \) tvorita četverec. Štirivektor elektromagnetnega potenciala je
+
+\[ A_{\mu} = \left( \mathbf{A}, \frac{\phi}{c} \right) \quad \text{ in } \quad A^{\mu} = \left( \mathbf{A}, - \frac{\phi}{c} \right).
+\]
