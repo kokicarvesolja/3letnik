@@ -1,0 +1,153 @@
+#+title: 14. vaje iz Elektromagnetnega polja
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Dodatek k valovnemu vodnik iz dveh vzporednih plošč
+** Točka d)
+
+Imamo valovni vodnik s stranicama osnovne ploskve širine \( a \) in višine \( b \). Največkrat se izbere \( b = 2a \).
+
+Koordinatni sistem postavimo v ravnino osnovne ploskve.
+
+V TM načinu je valovna enačba
+
+\[ \left( \nabla_{\perp } ^2 + \kappa ^2 \right) E_z(x, y) =0,
+\]
+
+kjer je \( \nabla_{\perp } = \frac{\partial ^2 }{\partial x ^2} + \frac{\partial ^2 }{\partial y ^2}  \). Velja \( H_z = 0 \). Nalogo rešujemo s separacijo spremenljivk \( E(x, y) = X(x) Y(y) \).
+
+Nastavek vstavimo v enačbo in dobimo
+
+\[ \frac{X''}{X} + \frac{Y''}{Y} + \kappa ^2 = 0 \,  \forall x, y.
+\]
+
+Dve ODE, ki ju dobimo sta
+
+\[ X '' + \kappa_x ^2 X = 0 \quad \text{ in } \quad Y'' + \kappa_y ^2 Y = 0,
+\]
+
+kjer velja \( \kappa_x ^2 + \kappa_y ^2 = \kappa ^2 \).
+
+Robni pogoj na robu območja je
+
+\[ \left. E_{\parallel}  \right|_{\partial} = \left. E_z \right|_{\partial}  = 0.
+\]
+
+Robni pogoj pri \( x, y = 0 \) dobimo sinusno odvisnost \( \sin (\kappa_i i) \), kjer \( i = x, y \). Robni pogoj pri \( x, y = a \) pa dobimo vrednosti \( \kappa_i = \frac{n \pi}{j} \) za \( n = 1, 2, \ldots \) in \( j = a, b \).
+
+Po definiciji velja
+
+\[ \kappa ^2 = \frac{\omega ^2}{c_{0 } ^2} - k ^2.
+\]
+
+Disperzijska relacija je tako
+
+\[ \omega = c_0 \sqrt{k ^2 + \left( \frac{n \pi}{a} \right) ^2 + \left( \frac{n \pi}{b} \right) ^2}
+\]
+
+V TE načinu rešujemo enačbo
+
+\[ \left( \nabla_{\perp } ^2 + \kappa ^2 \right) H_z (x, y) = 0,
+\]
+
+za katerega velja \( E_z = 0 \). Uporabimo enak nastavek \( H(x, y) = X(x) Y(y) \). Robni pogoj na robu je
+
+\[ \left. H_{\perp } \right|_{\partial} = 0.
+\]
+
+Rešitvi posamezne enačbe bosta do konstante natančno
+
+\[ X \sim \cos (\kappa_x x) \quad \text{ in } \quad Y \sim \cos (\kappa_y  y),
+\]
+
+kjer je \( \kappa_x = \frac{n \pi}{a} \) ter \( \kappa_y = \frac{m \pi}{b} \). Tako \( m \) in \( n \) zasedata vrednosti \( 1, 2, \ldots \), vendar eden od njiju lahko zaseda vrednost \( 0 \), vendar ne oba hkrati. To pride iz posledice tega, da nam robni pogoj poda odvod po \( z \) in \( \cos (0) \ne 1 \).
+* Valjast valovni vodnik
+
+** Točka a)
+*** TM način
+Za TM način še zmeraj velja \( H_z = 0 \). Rešujemo valovno enačbo
+
+\[ \left( \nabla_{\perp } ^2 + \kappa ^2 \right)  E_z (r, \phi) = 0,
+\]
+
+kjer je \( \nabla_{\perp } ^2 \) v cilindričnih koordinatah, torej
+
+\[ \nabla_{\perp} ^2 =  \frac{1}{r} \frac{\partial }{\partial r} \left( r \frac{\partial }{\partial r}  \right) + \frac{1}{r ^2} \frac{\partial ^2 }{\partial \phi ^2}.
+\]
+
+Ponovno uporabimo separacijo spremenljivk \( E_z (r, \phi) = R(r) \Phi (\phi) \). ODE sta podobni kot pri Laplaceovi enačbi v cilindričnih koordinatah na začetku semestra.
+
+\[ \Phi '' + m ^2 \Phi = 0 \quad \text{ in } \quad R'' + \frac{1}{r} R'+ \left( \kappa ^2 - \frac{m ^2}{r ^2} \right) R =0.
+\]
+
+Rešitve prve ODE so linearne kombinacije sinusne in kosinusne funkcije, vendar bomo kosinus zapisali kot sinus s fazo. Torej
+
+\[ \Phi \sim \sin \left( m\phi  + \phi_m \right).
+\]
+
+Druga ODE je Besslova diferencialna enačba, katere rešitev je oblike
+
+\[ R(r) = A_m J_m (\kappa r) + B_m Y_m (\kappa r),
+\]
+
+kjer je \( J_m \) Besslova funkcija, \( Y_m \) pa Neumannova funkcija, ki jih zavržemo, saj divergirajo v \( r = 0 \). Splošna rešitev je tako
+
+\[ E_z (r, \phi) = \sum\limits_{m = 1}^{\infty}  A_m J_m (\kappa r) \sin (m \phi + \phi_m)
+\]
+
+Robni pogoj, ki velja je
+
+\[ E_z (a, \phi) = 0,
+\]
+
+od koder dobimo
+
+\[ J_m (\kappa a) = 0 \implies \, \kappa_m = \frac{\xi_n^{(m)}}{a},
+\]
+
+kjer je \( \xi_n^{(m)} \) n-ta ničla \( m \)-te Besslove funkcije \( J_m \).
+
+Ker velja \( \kappa ^2 = \frac{\omega ^2}{c_0 ^2} - k ^2 \), ima disperzijska relacija obliko
+
+\[ \omega = c_0 \sqrt{k  ^2 + \left( \frac{\xi_n^{(m)}}{a} \right) ^2}.
+\]
+
+Najnižja veja frekvence bo pri \( \xi_0^{(1)} \). Širina pasu bo
+
+\[ \Delta \omega = \frac{c_0}{a} \left( \epsilon_{11} - \epsilon_{01} \right).
+\]
+*** TE način
+
+Za TE način velja \( E_z = 0 \) in splošna rešitev je
+
+\[ H_z (r, \phi) = \sum\limits_{m = 1}^{\infty}  A_m J_m (\kappa r) \sin (m \phi + \phi_m)
+\]
+
+z robnm pogojem \( \left. H_{\perp} \right|_{\partial} = 0 \) na robu domene. Z drugimi besedami robni pogoj je
+
+\[ \frac{\partial H_{z}}{\partial r}  (a, \phi) = 0 \implies \, J_m' (\kappa a) = 0,
+\]
+
+kjer vrednosti \( \kappa \) zasedajo
+
+\[ \kappa_m = \frac{\xi_n ^{(m)} '}{ a},
+\]
+
+kjer je \( \xi_n^{(m)} ' \) \( n \)-ta ničla odvoda \( m \)-te Besslove funkcije.
+
+Najnižja veja je pri \( J_1 ' \), katera ničla je pri \( \epsilon_1^{(1)} ' = 1.84 \), druga najnižja veja pa je pri \( \xi_1^{(2)}' = 3.05  \).
+
+Širina pasu je
+
+\[ \Delta \omega = \frac{c_0}{a} \left( \xi_1^{(2)} ' - \xi_1^{(1)}' \right)
+\]
+
+in disperzijska relacija
+
+\[ \omega =
+\]
