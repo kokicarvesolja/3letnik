@@ -67,7 +67,6 @@ Rešitvi posamezne enačbe bosta do konstante natančno
 
 kjer je \( \kappa_x = \frac{n \pi}{a} \) ter \( \kappa_y = \frac{m \pi}{b} \). Tako \( m \) in \( n \) zasedata vrednosti \( 1, 2, \ldots \), vendar eden od njiju lahko zaseda vrednost \( 0 \), vendar ne oba hkrati. To pride iz posledice tega, da nam robni pogoj poda odvod po \( z \) in \( \cos (0) \ne 1 \).
 * Valjast valovni vodnik
-
 ** Točka a)
 *** TM način
 Za TM način še zmeraj velja \( H_z = 0 \). Rešujemo valovno enačbo
@@ -149,5 +148,206 @@ Najnižja veja je pri \( J_1 ' \), katera ničla je pri \( \epsilon_1^{(1)} ' = 
 
 in disperzijska relacija
 
-\[ \omega =
+\[ \omega (k) = c_0 \sqrt{k ^2 + \left( \frac{\xi_n^{(m)} ' }{a} \right) ^2}
 \]
+* Valovni vodnik s presekom dela kroga.
+
+Imamo valovni vodnik četrtine valja z radijem \( r = a \) ter \( \phi \in \left[ 0, \frac{\pi}{2} \right] \).
+
+V TM načinu je splošna rešitev
+
+\[ E_z (r, \phi) = \sum\limits_{m = 1}^{\infty}  A_m J_m (\kappa r) \sin \left( m \phi + \phi_m \right).
+\]
+
+Imamo tri robne pogoje:
+
+- robni pogoj na obodu je \( J_m = \left( \kappa a \right) = 0 \), iz česar določimo vrednosti, ki jih zaseda \( \kappa = \frac{\xi_n^{(m)}}{a} \).
+- pri \( \phi = 0 \), ki poda \( E_z (r, \phi = 0) = 0 \), iz česar sledi \( \phi_m = 0 \). To pomeni, da je kotna odvisnost oblike \( \sin (m \phi) \).
+- Tretji robni pogoj je pri \( \phi = \frac{\pi}{2} \), iz česar sledi \( E_z \left( r, \phi = \frac{\pi}{2} \right) = 0 \). Dobimo enačbo
+
+  \[ \sin \left( m \frac{\pi}{2} \right) = 0 \implies m = 2, 4, 6, \ldots.
+  \]
+
+  Torej imamo manj vej.
+* TEM način v koaksialnem vodniku.
+
+TEM način je hkrati način, kjer sta TM in TE hkrati. Velja \( E_z , H_z = 0 \). V praznem prostoru je samo to mogoče.
+
+Veljata zvezi
+
+\[ \nabla \times \mathbf{E} = \mathrm{i} \mathbf{k} \times \mathbf{E}  \quad \text{ in } \quad \nabla \times \mathbf{H} = \mathrm{i} \mathbf{k} \times \mathbf{H},
+\]
+
+kjer so \( \mathbf{E}, \mathbf{H} \) in \( \mathbf{k} \) medseboj ortogonalni vektorji - torej definirajo nek preostor.
+
+Iz Maxwellovih enačbi pa vemo, da velja
+
+\[ \nabla \times \mathbf{E} = - \mu_0 \frac{\partial \mathbf{H}}{\partial t} = \mathrm{i} \omega \mu_0 \mathbf{H} \quad \text{ in } \quad \nabla \times \mathbf{H} = \epsilon_0 \frac{\partial \mathbf{E}}{\partial t}  = - \mathrm{i} \omega \epsilon_0 \mathbf{E}.
+\]
+
+Ob združitvi zgornjih enakosti s spodnjimi dobimo
+
+\begin{equation}
+\label{eq:1}
+ \mathbf{H} = \frac{\mathbf{k}}{\omega \mu_0} \times \mathbf{E} \quad \text{ in } \quad \mathbf{E} = - \frac{\mathbf{k}}{\omega \epsilon_0}\times \mathbf{H}
+\end{equation}
+
+Enako je kot v praznem prostoru. Dobljeno enakost za \( \mathbf{H} \) vstavimo v enakost za \( \mathbf{E} \) in dobimo
+
+\begin{align*}
+  \mathbf{E} &= - \frac{\mathbf{k}}{\omega \epsilon_0} \times \left( \frac{\mathbf{k}}{\omega \mu_0} \times \mathbf{E} \right) \\
+&= - \frac{1}{\omega ^2 \epsilon_0 \mu_0} \left[ \mathbf{k} \left( \mathbf{k} \cdot \mathbf{E} \right) - k ^2 \mathbf{E} \right] = \frac{k ^2}{\omega ^2 \epsilon_0 \mu_0} \mathbf{E}.
+\end{align*}
+
+Upoštevali smo, da je skalarni produkt pravokotnik vektorjev \( \mathbf{k} \) in \( \mathbf{E} \) ničeln. Prepoznamo tudi \( \frac{1}{\epsilon_0 \mu_0} = \frac{1}{c_0 ^2} \).
+
+Imamo enačbo
+
+\[ \mathbf{E} \left( 1 - \frac{k ^2 c_0 ^2}{\omega ^2} \right) = 0 \implies \omega = c_0 k,
+\]
+
+kar je disperzijska relacija identična praznemu prostoru.
+
+Dobljeno disperzijsko relacijo vstavimo v valovno enačbo
+
+\[ \left[ \nabla_{\perp } ^2 + \left( \frac{\omega ^2}{c_0 ^2} - k ^2 \right) \right] \mathbf{E} = 0
+\]
+
+in dobimo Laplaceovo enačbo
+
+\[ \nabla_{\perp } ^2 \mathbf{E} = 0,
+\]
+
+kar pomeni, da rešujemo elektrostatični problem.
+
+Robni problemi so
+
+\[ \left. E_{\parallel} \right|_{\partial} = 0 \quad \text{ in } \quad \nabla_{\parallel }^2 \mathbf{E} = 0.
+\]
+
+Po Dirichletovem problemu je \( E_{\parallel} = 0 \), razen če imamo prostor, ki ni enostavno povezan - če ima presek valovnega vodnika luknje. V koaksialnem vodniku TEM način obtaja
+** Koaksialni vodnik
+
+Imamo koaksialni vodnik z notranjim polmerom \( a \) ter zunanjim polmerom \( b \). V koaksialnem vodniku imamo plazmo, katere dielektričnost je
+
+\[ \epsilon = 1 -  \frac{\omega_p ^2}{\omega ^2}.
+\]
+
+\( \omega_p \) je podana.
+
+Zanima nas disperzijska relacija \( \omega(k) \) tega koaksialnega vodnika ter impedanca \( Z(\omega) = \frac{U}{I} \).
+
+Iz teoretičnega uvoda velja disperzijska relacija \( \omega = ck \). Upoštevamo definicijo \( c = \frac{1}{\sqrt{\epsilon_0 \mu_0 \epsilon}} \), iz česar sledi
+
+\[ \omega = \frac{1}{\sqrt{\epsilon_0 \mu_0 k}} k = \frac{c_0}{\sqrt{\epsilon}} k = \frac{c_0}{\sqrt{1 - \frac{\omega_p ^2}{\omega ^2}}}k
+\]
+
+Enačbo kvadriramo, saj želimo izraziti \( \omega \)
+
+\[ \omega ^2 \left( 1 -\frac{\omega_p ^2}{\omega ^2} \right) = c_0 ^2 k ^2 ,
+\]
+
+iz česar izrazimo disperzijsko relacijo
+
+\begin{equation}
+\label{eq:2}
+ \omega = \sqrt{ \omega_p ^2 + c_0 ^2 k ^2}.
+\end{equation}
+
+Dobljena vrednost je identitečna disperzijski relaciji za plazmo brez vodnika.
+
+Pri računanju impedance se bomo morali poslužiti nekaj rezultatov iz naloge 15
+
+\[ I = 2 \pi r H  \text{ (Ampere) } \quad \text{ in } \quad U = E r \ln \frac{b}{a} \text{ (Gauss) }
+\]
+
+Impedanca je po definiciji
+
+\[ Z = \frac{U}{I} = \frac{\ln \frac{b}{a}}{2 \pi} \frac{E}{H}
+\]
+
+Velikost posameznih komponent določimo iz enačbe \ref{eq:1}, ki ji dodamo dielektrično konstanto \( \epsilon \) plazme.
+
+\[ E = \frac{k}{\omega \epsilon_0 \epsilon} H.
+\]
+
+Impedanca je torej
+
+\[ Z = \frac{\ln \frac{b}{a}}{2 \pi} \frac{k}{\omega \epsilon_0 \epsilon}.
+\]
+
+Valovni vektor nadomestimo s tem, da ga izrazimo iz disperzijske relacije \ref{eq:2}
+
+\[ k = \frac{\sqrt{\omega ^2 - \omega_p ^2 }}{c_0}.
+\]
+
+Hkrati lahko tudi izraz za konstanto dielektričnosti izrazimo
+
+\[ \epsilon \omega ^2 = \omega ^2 - \omega_p ^2.
+\]
+
+Dobljeno vstavimo v impedanco in dobimo
+
+\[ Z = \frac{\ln \frac{b}{a}}{2 \pi} \frac{1}{\epsilon_0 c_0} \frac{\omega}{\sqrt{\omega ^2 - \omega_p ^2} } .
+\]
+
+Upoštevamo, da velja
+
+\[ \frac{1}{\epsilon_0} \sqrt{\epsilon_0 \mu_0} = \sqrt{\frac{\mu_0}{\epsilon_0}} = Z_0.
+\]
+
+ter izrazimo \( \omega  \) iz korena. Torej velja
+
+\[ Z = \frac{\ln \frac{b}{a}}{2 \pi} Z_0 \frac{1}{\sqrt{1 - \frac{\omega_p ^2}{\omega ^2}}}.
+\]
+
+Bralec lahko vidi, da impedanca divergira za \( \omega = \omega_p \).
+
+* Energijski tok v valovnem vodniku iz dveh vzporednih plošč
+
+Imejmo dve vzporedni ploščí, ki sta na razdalji \( a \) oddaljeni imata med sabi. Plošči sta visoki \( b \).
+
+Zanima nas, kateri od načinov med TEM in TM je bolj energijsko ugoden. Podano imamo magnetno polje \( \mathbf{H}_0 \), ki je vzporeden s ploščama. Energijski tok bomo dobili preko integracije Poyntingovega vektorja \( \int\limits_{}^{} \mathbf{\mathcal{P}} \cdot \mathrm{d} \mathbf{S} \).
+
+Tako električno polje \( \mathbf{E} \) kot magnetno polje \( \mathbf{H} \) imata sinusno odvisnost. Poyntingov vektor
+
+\[ \mathbf{\mathcal{P}} = \mathbf{E} \times \mathbf{H} \propto \sin ^2 (\omega t).
+\]
+
+Za dolg čas opazovanja bomo torej vzeli povprečje \( \left\langle \sin ^2 (\omega t) \right\rangle = \frac{1}{2} \). Torej si bomo tudi ogledovali \( \left\langle \int\limits_{}^{} \mathbf{\mathcal{P}} \cdot \mathrm{d} \mathbf{S} \right\rangle \).
+
+V TEM načinu, kjer so si \( \mathbf{E} \), \( \mathbf{H} \) in \( \mathrm{d} \mathbf{S} \) pravokotni med seboj, potem velja
+
+\begin{align*}
+  \left\langle \int\limits_{}^{} \mathbf{\mathcal{P}} \cdot \mathrm{d} \mathbf{S} \right\rangle &= \left\langle \int\limits_{}^{} E H \, \mathrm{d} S \right\rangle \\
+&= \left\langle \int\limits_{}^{} \frac{k}{ \omega \epsilon_0} H ^2 \, \mathrm{d} S \right\rangle,
+\end{align*}
+
+Upoštevali smo \ref{eq:1}, kjer velja \( E = \frac{k}{\omega \epsilon_0} H \).
+
+Energijski tok v
+
+\[ \left\langle \int\limits_{}^{} \mathbf{\mathcal{P}} \cdot \mathrm{d} \mathbf{S} \right\rangle = \left\langle \frac{k}{\omega \epsilon_0} H ^2 a b \right\rangle = \frac{k}{\omega \epsilon_0} H_0 ^2 a b \frac{1}{2} = \frac{1}{2} Z_0 H ^2 ab.
+\]
+
+Tukaj smo upoštevali, da velja
+
+\[ \frac{k}{\omega \epsilon_0} = \frac{1}{c_0 \epsilon_0} = Z_0 .
+\]
+
+Na fotografiji je TM način zgornja del, TEM pa spodnji.
+
+\[ \left( \mathbf{E} \times \mathbf{H} \right) \cdot \mathrm{d} \mathbf{S} = E_x H_y \mathrm{d} S.
+\]
+
+\( E_x \) in \( H_y \) izračunamo iz 4 enačb za komponente. Rešitev je
+
+\[ \left\langle \int\limits_{}^{} \mathbf{\mathcal{P}} \cdot \mathrm{d} \mathbf{S} \right\rangle = \frac{1}{2} Z_0 H_0 ^2 \sqrt{1 - \frac{\omega_{min} ^2}{\omega ^2} } \cdot \frac{1}{2} ab.
+\]
+
+Razmerje med TM in TEM načinu je
+
+\[ \frac{\left\langle \int\limits_{}^{} \mathbf{\mathcal{P}} \cdot \mathrm{d} \mathbf{S} \right\rangle_{TM}}{\left\langle \int\limits_{}^{} \mathbf{\mathcal{P}} \cdot \mathrm{d} \mathbf{S} \right\rangle_{TEM}} = \frac{1}{2} \sqrt{1 - \frac{\omega_{min} ^2}{\omega ^2}} \le \frac{1}{2}.
+\]
+
+Torej je TEM za polovico bolj ugoden od TM, če je možen.
