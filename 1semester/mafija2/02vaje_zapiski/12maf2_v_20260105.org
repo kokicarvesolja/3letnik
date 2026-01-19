@@ -84,7 +84,7 @@ Opravimo zamenjavo \( \vec{r} \leftrightarrow \vec{r}_0 \) in \( G\left( \vec{r}
  u \left( \vec{r} \right) = \int\limits_{\mathcal{D}}^{} G \left( \vec{r}, \vec{r}_0 \right) f \left( \vec{r}_0 \right) \, \mathrm{d} ^n \vec{r}_0 + \int\limits_{\partial \mathcal{D}}^{} \frac{\partial G \left( \vec{r}, \vec{r}_0 \right)}{\partial \vec{n}_{\vec{r}_0}} u \left( \vec{r}_0 \right) \, \mathrm{d} S_0
 \end{equation}
 
-** Neumannovi robni pogoji
+** Neumannovi robni pogoji :iffy:
 
 V primeru reševanja enačbe
 
@@ -94,8 +94,26 @@ V primeru reševanja enačbe
 je postopek malo drugačen.
 
 \begin{align*}
-  \int\limits_{\mathcal{D}}^{} \nabla ^2 u \left( \vec{r} \right) \, \mathrm{d} V &= \int\limits_{\mathcal{D}}^{}
+  \int\limits_{\mathcal{D}}^{} \nabla ^2 u \left( \vec{r} \right) \, \mathrm{d} V &= \int\limits_{\mathcal{D}}^{} \nabla \cdot \left( \nabla u \right) \, \mathrm{d} V \\
+&= \oint\limits_{\partial \mathcal{D}}^{} \nabla u \, \mathrm{d} \vec{S} \\
+&= \oint\limits_{\partial \mathcal{D}}^{} \frac{\partial u}{\partial \hat{n}} \, \mathrm{d} S \\
 \end{align*}
+
+Iz tega sledi, da je za Neumannove robne pogoje
+
+\[ \oint\limits_{\partial \mathcal{D}}^{} \frac{\partial u}{\partial \hat{n}}  \, \mathrm{d} S = \int\limits_{\mathcal{D}}^{} f \left( \vec{r} \right) \, \mathrm{d} V
+\]
+
+V primeru, da je normalni odvod funkcije \( u \) ničeln, potem nam preostane enačba
+
+\[ \int\limits_{\mathcal{D}}^{} f \left( \vec{r} \right) \, \mathrm{d} V = 0
+\]
+
+in Greenova funkcija v tem primeru je
+
+\[ f \left( \vec{r} \right) = \delta \left( \vec{r} - \vec{r}_0 \right).
+\]
+
 ** Naloga 34 (Prinčič, 5.2) - alternativno reševanje :w:
 
 Ta problem smo že reševali.
@@ -128,7 +146,7 @@ Za dan problem že poznamo, da je
 \[ G_{\infty} \left( \vec{r}, \vec{r}_0 \right) = \frac{1}{2 \pi} \ln \left| \vec{r} - \vec{r}_0 \right| .
 \]
 
-Iz teoretičenga uvoda vemo
+Iz teoretičnega uvoda vemo
 
 \[ \nabla_{\vec{r}} ^2 g \left( \vec{r}, \vec{r}_0 \right) = 0,
 \]

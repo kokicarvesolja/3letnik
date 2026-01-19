@@ -127,7 +127,7 @@ Greenova funkcija je potem
 \[ G \left( x, x_0, t, t_0 \right) = \sum\limits_n^{} \left[ G_{\infty} \left( x, x_0 + 2n a, t t_0 \right) - G_{\infty} \left( x, -x_0 + 2na, t, t_0 \right) \right]
 \]
 
-Sedaj vzamemo posplošeno Greenovo formulo za difuzijo, kjer velja \( f(\vec{r}_0, t_0) = 0 \). Na \( \partial D \) je Greenova funkcija \( G \left( \vec{r}, \vec{r}_0, t, t_0 \right) = 0 \) in iz robni pogojev sledi, da je \( T \left( \vec{r}_0, t \right) = 0 \).
+Sedaj vzamemo posplošeno Greenovo formulo za difuzijo, kjer velja \( f(\vec{r}_0, t_0) = 0 \). Na \( \partial D \) je Greenova funkcija \( G \left( \vec{r}, \vec{r}_0, t, t_0 \right) = 0 \) in iz robnih pogojev sledi, da je \( T \left( \vec{r}_0, t \right) = 0 \).
 
 Preostane nam samo
 
@@ -235,6 +235,8 @@ in začetnimi pogoji \( u (t = 0 )= 0  \) ter \( \partial_t u (t = 0)= 0 \).
 Naša domena je torej polravnina za \( z> 0 \).
 #+end_problem
 
+[[file:figures/huygensovoNačelo.png]]
+
 Greenovo funkcijo bomo zapisali kot vsoto dveh Greenovih funkcij na neskončnem območju prek zrcaljenja. Naj bo \( \vec{r} = (x, y, z) \) poljubna točka na polprostoru \( z > 0 \) in naj bo \( \vec{r}^{\, \ast} = (x, y, -z) \) točka \( \vec{r} \) zrcaljena čez premico \( z = 0 \).
 
 Greenovo funkcijo bomo zapisali z retardirano Greenovo funkcijo, saj imamo valovanje, ki se širi naprej v času. Torej
@@ -249,7 +251,7 @@ V enačbi \ref{eq:1} se zaradi začetnega pogoja \( u (t=  0) = 0 \) izniči dru
 \[ u \left( \vec{r}, t \right) = \int\limits_0^t  \left[ - u \left( \vec{r}_0, t_0 \right) \frac{\partial }{\partial \vec{n}_0}  G \left( \vec{r}, \vec{r}_0, t, t_0 \right) \right]
 \]
 
-Normala zmeraj kaže ven iz območja, torej bo \( \vec{n}_0 = - \hat{e}_z \) in posledično \( \frac{\partial }{\partial \vec{n}_{0}} = - \frac{\partial }{\partial z}  \). Diferencial površine zapišemo z \( \mathrm{d} S = \mathrm{d} x \mathrm{d} y \).
+Normala zmeraj kaže ven iz območja, torej bo \( \vec{n}_0 = - \hat{e}_z \) in posledično \( \frac{\partial }{\partial \vec{n}_{0}} = - \frac{\partial }{\partial z_0}  \). Diferencial površine zapišemo z \( \mathrm{d} S = \mathrm{d} x \mathrm{d} y \).
 
 Zgornji integral se preobrazi v
 
@@ -262,11 +264,16 @@ Zgornji integral se preobrazi v
 Želimo izračunati odvod Greenove funkcije
 
 \begin{align*}
- \left. \frac{\partial }{\partial z_{0}}  \left[ \frac{1}{\left| \vec{r} \mp z_0 \hat{e}_z \right|} \cdot \delta \left( t - t_0 - \frac{1}{c} \left| \vec{r} \mp z_0 \hat{e}_x \right| \right) \right] \right|_{z_0 = 0} &= \left. \frac{\partial }{\partial z_{0}} \left( \frac{1}{\sqrt{x ^2 + y ^2 + \left( z \mp z_0 \right) ^2}} \cdot \delta \left( t - t_0 - \frac{1}{c} \sqrt{c ^2 + y ^2 + \left( z \mp z_0 \right) ^2} \right) \right) \right|_{z_0 = 0} \\
-&= \left. \left[ - \frac{1}{2} \frac{\pm \left( z \mp z_0 \right) }{\left( x ^2 + y ^2 + \left( z \mp z_0 \right) ^2 \right)^{\frac{3}{2}}} \cdot \delta \left( t- t_0 - \frac{1}{c} \sqrt{x ^2 + y ^2 + \left( z \mp z_0 \right) ^2} + \frac{1}{\sqrt{x ^2 + y ^2 + \left( z \mp z_0 \right) ^2}} \right) \right] \right|_{z_0 = 0} \\
-& \quad  + \frac{1}{\sqrt{x ^2 + y ^2 + (z \mp z_0) ^2}} \cdot \delta ' \left(  t- t_0 - \frac{1}{c} \sqrt{x ^2 + y ^2 + \left( z \mp z_0 \right) ^2} + \frac{1}{\sqrt{x ^2 + y ^2 + \left( z \mp z_0 \right) ^2}} \right) \\
-& \quad \cdot \frac{1}{c} \frac{1 \pm (z \mp z_0)}{\sqrt{x ^2 + y ^2 +  (z \mp z_0 )^2 }} \\
+ \left. \frac{\partial }{\partial z_{0}}  \left[ \frac{1}{\left| \vec{r} \mp z_0 \hat{e}_z \right|} \cdot \delta \left( t - t_0 - \frac{1}{c} \left| \vec{r} \mp z_0 \hat{e}_{z} \right| \right) \right] \right|_{z_0 = 0} &= \left. \left[ - \frac{1}{2} \frac{\pm \left( z \mp z_0 \right) }{\left| \vec{r} \mp z_0 \hat{e}_{z} \right|^3} \cdot \delta \left( t- t_0 - \frac{1}{c} \left| \vec{r} \mp z_0 \hat{e}_z  \right| + \frac{1}{\left| \vec{r} \mp z_0 \hat{e}_{z} \right|} \right) \right. \right.  \\
+&  \left. \left. \quad  + \frac{1}{\left| \vec{r} \mp z_0 \hat{e}_{z} \right|} \cdot \delta ' \left(  t- t_0 - \frac{1}{c} \left| \vec{r} \mp z_0 \hat{e}_{z} \right| + \frac{1}{\left| \vec{r} \mp z_0 \hat{e}_{z} \right|} \right) \cdot \frac{1}{c} \cdot \frac{1 \pm (z \mp z_0)}{\left| \vec{r} \mp z_0 \hat{e}_{z} \right|}\right] \right|_{z_0 = 0} \\
 &= \pm \frac{z}{r ^3} \delta \left( t - t_0 - \frac{r}{c} \right) \pm \frac{z}{cr ^2} \delta ' \left( t - t_0 - \frac{r}{c} \right).
 \end{align*}
+
+Pri zgornji notaciji smo zaradi strnjenega zapisa upoštevali, da velja
+
+\[ \frac{\partial }{\partial z_0} \left| \vec{r} \mp z_0 \hat{e}_z \right| = \frac{1}{2} \frac{\pm \left( z \mp z_0 \right)}{\left| \vec{r} \mp z_0 \hat{e}_z \right|}.
+\]
+
+To velja za poljubno odvajanje absolutne razlike vektorjev do potence natančno.
 
 Na naslednjem predavanju bomo določili, kaj je odvod funkcije \( \delta \). 

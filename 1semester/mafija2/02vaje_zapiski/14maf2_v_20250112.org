@@ -12,7 +12,7 @@
 
 Od zadnjič nam je ostal t.i. Kirchoffov integral
 
-\[ u \left( \vec{r}, t \right) = \left. \int\limits_0^t f (t_0) \frac{\partial }{\partial z_{0}} G \left( \vec{r}, z_0 \hat{e}_z, t, t_0 \right) \, \mathrm{d} t_0 \right|_{z_0 = 0}
+\[ u \left( \vec{r}, t \right) = \left. \int\limits_0^t f (t_0) \frac{\partial }{\partial z_{0}} G \left( \vec{r}, z_0 \hat{e}_z, t, t_0 \right)  \right|_{z_0 = 0} \, \mathrm{d} t_0
 \]
 
 Izračunali smo, da je odvod Greenove funkcije
@@ -46,7 +46,7 @@ S tem predpostavkami lahko sedaj zapišemo
 \[ u \left( \vec{r}, t \right) = \frac{1}{2 \pi} \left( - \frac{1}{rc} (- \mathrm{i} \omega) A \exp \left\{ - \mathrm{i} \omega (t - \frac{r}{c}) \right\} \right) = \frac{\mathrm{i} k}{2 \pi r} A \exp \left( \mathrm{i} (kr - \omega t) \right).
 \]
 
-Dobljen clen je ravno točkovni izvir valovanja.
+Dobljen člen je ravno točkovni izvir valovanja.
 ** Teorija (obdelana jutri na predavanjih)
 
 Rešujemo enačbo oblike
@@ -90,7 +90,7 @@ Rešitev dobimo z vrsto
 ** Naloga 38 - Kvantnomehansko sipanje
 
 #+begin_problem
-Imejmo poljubno območje \( \mathcal{D} \), ki ima potencial \( V \left( \vec{r} \right) = V_0 \frac{\exp \left\{ - \gamma r \right\}{r} \).
+Imejmo poljubno območje \( \mathcal{D} \), ki ima potencial \( V \left( \vec{r} \right) = V_0 \frac{\exp \left\{ - \gamma r \right\}}{r} \).
 
 V območje \( \mathcal{D} \) pošljemo ravni val \( \exp \left\{ \mathrm{i} (\vec{k} \cdot \vec{r} - \omega t) \right\} \), ki se na potencialu sipa.
 
@@ -169,7 +169,7 @@ Zaradi predpostavke oddaljenosti bo \( \frac{\vec{r}}{r} \cdot \vec{r}_0 \approx
 
 Integral tako zapišemo
 
-\[ \psi_s \left( \vec{r} \right) = - \frac{m \exp \left\{ \mathrm{i} kr \right\}{2 \pi \hbar ^2 r} \int\limits_{\mathbb{R} ^3}^{} V \left( \vec{r}_0 \right) \exp \left\{ \mathrm{i} (\vec{k} - \vec{k} \, ') \vec{r}_0 \right\} = - \frac{m}{2 \pi \hbar ^2} \hat{V} \left( \vec{k} - \vec{k} \, ' \right) \frac{\exp \left\{ \mathrm{i} k r \right\}}{r},
+\[ \psi_s \left( \vec{r} \right) = - \frac{m \exp \left\{ \mathrm{i} kr \right\}}{2 \pi \hbar ^2 r} \int\limits_{\mathbb{R} ^3}^{} V \left( \vec{r}_0 \right) \exp \left\{ \mathrm{i} (\vec{k} - \vec{k} \, ') \vec{r}_0 \right\} = - \frac{m}{2 \pi \hbar ^2} \hat{V} \left( \vec{k} - \vec{k} \, ' \right) \frac{\exp \left\{ \mathrm{i} k r \right\}}{r},
 \]
 
 kjer smo prepoznali Fourierovo transformacijo.
