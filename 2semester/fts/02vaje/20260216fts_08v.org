@@ -17,7 +17,7 @@ Pri MF2 smo srečali različne kristalne strukture.
 [[file:figures/oc.svg]]
 Vir: By Vectorization: Stannered - Own work based on: Cubic crystal shape.png by Daniel Mayer at English Wikipedia, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=1735632
 
-Mrežo definiramo z osnovno celico, ki ima neko geometrijsko obliko. S translacijo osnovne celice zgradimo kristal. Osnovni celici, ki ima najmanjši volumen, pravimo primitivna celica. Imamo neskončno možnosti za izbiro osnovne celice. Primitivna celica je osnovna celica, ampak tudi npr. tudi kvadrat iz 8 primitivnih celic je dobra osnovna celica.
+Mrežo definiramo z osnovno celico, ki ima neko geometrijsko obliko. S translacijo osnovne celice zgradimo kristal. Rotacija osnovne celice je prepovedana. Osnovni celici, ki ima najmanjši volumen, pravimo primitivna celica. Imamo neskončno možnosti za izbiro osnovne celice. Primitivna celica je osnovna celica, ampak tudi npr. tudi kvadrat iz 8 primitivnih celic je dobra osnovna celica.
 
 Matematičnemu delu kristala pravimo Bramejeva mreža(?). Fizikalno je pomembno, da so v vseh točkah enake lastnosti.
 
@@ -69,3 +69,37 @@ Polnitveno razmerje je
 Volumen snovi je sestavljen iz \( 8 \cdot \frac{1}{8} + \frac{1}{2} \cdot 6 = 1 + 3 = 4 \) krogel.
 
 Osnovna celica je zadošča pogojem kakor prej, da je vsaka točka med seboj enaka. Ponovno, domača naloga, ali obstaja volumnsko 4krat manjša osnovna celica.
+** Diamantna kristalna mreža
+
+[[file:figures/dc.svg]]
+Vir:https://msestudent.com/diamond-cubic-unit-cell/
+
+Diamantno kristalno mrežo dobimo tako, da imamo dve fcc mreži, ki se na začetku popolnoma prekrivata, nato pa eno od fcc mrež po telesni diagonali premaknemo za četrtino diagonale.
+
+Na naslednji vajah bomo dokazali, da tvori točka oglišča s točkami na priležnih stranicah pravilni tetraeder, kjer je točka premaknjene fcc mreže v središču tetraedra.
+
+Polmer toge krogle z maksimalnim polmerom je tokrat polovica četrtine telesne diagonale, kar je \( r = \frac{a \sqrt{3}}{4} \). Polnitveno razmerje je
+
+\[ \eta = \frac{8 \cdot \frac{4}{3} \pi r ^3}{a ^3} = \frac{\sqrt{3} \pi}{16} \approx 34\%
+\]
+
+Diamantna struktura ni Bravaisema mreža, saj ima središče pravilnega tetraedra drugačno okolico od ogliščne točke. To bo imelo posledice pri računanju fizikalnih količin.
+** Navadna heksagonalna mreža (trikotne mreže)
+
+Osnovna celica trikotne mreže je heksagon, vendar to ni primitivna celica. Ena od možnih izbir primitivne celice je paralelogram, saj je volumen krogle v njem ravno \( 2 \cdot \frac{1}{6} + 2 \cdot \frac{1}{3} = 1 \). Ostra kota vsebujeta \( \frac{1}{6} \) kroga, topa kota pa vsak po \( \frac{1}{3} \).
+
+Navadna heksagonalna mreža izgleda tako, da imamo ravnino \( xy \) napolnjeno s heksagoni, tridimenzionalni kristal pa je sestavljen iz nezamaknjene ravnine heksagonov, ki sega v globino osi \( z \). Ravnine heksagonov so med seboj narazen za \( h \). Osnovna celica je torej pravilna paralelna prizma. Za maksimalno zapolnjenost je polmer krogle \( r = \frac{a}{2} \) s pogojem \( h = a \). To pomeni, da je prizma enakostranična.
+
+V osnovni celici je ravno 1 krogla. Če dodamo k razmisleku iz prvega odstavka, top in ostri kot tvorita polovico krogla v paralelogramu.
+** Najgostejši sklad
+
+aka imagine ferrero rosche stolp.
+
+Ponovno si predstavljamo ravnino heksagonov. Ko gradimo kristal v treh dimenzijah, imamo dve opciji: naslednja ravnina ima lahko točke ali v B ali v C (glej sliko). Tretji sloj kristala je lahko v primeru, da sta prvi dve ravnini AB, s točkami v A ali C. V primeru prvih dveh ravnin AC, potem je tretji sloj možen s položaji točk A ali B. Vse omenjene kombinacije imajo enako gostoto.
+
+Zaradi periodičnosti sta najbolj značilni mreži s periodo \( AB \) ali pa \( ABC \). Prvotni se reče heksagonalni najgostejši sklad (ang. /hexagonal close-packed/ or /hcp/).
+
+Polnitveno razmerje je sestavljeno iz krogel s polmerom \( r = \frac{a}{2} \), vendar je tokrat višina \( h = 2a \sqrt{\frac{2}{3}} \) in ima vrednost
+
+\[ \eta_{hcp} = \frac{2 \cdot \frac{4}{3} \pi r ^3}{\frac{\sqrt{3}}{2}a ^2 \cdot h} = \frac{\pi}{3 \sqrt{2}} \approx 74 \% = \frac{\pi \sqrt{2}}{6} = \eta_{fcc}
+\]
