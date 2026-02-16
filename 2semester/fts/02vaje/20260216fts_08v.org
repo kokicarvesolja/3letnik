@@ -1,0 +1,71 @@
+#+title: Vaje iz Fizike trdne snovi, 8. teden v letu
+#+subtitle: 2026/02/16
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Kristalne strukture in polnitveno razmerje \( \eta \)
+
+Pri MF2 smo srečali različne kristalne strukture.
+
+** Enostavna/navadna kubična kristalna mreža (ang. /simple cubic/ or /sc/)
+
+[[file:figures/oc.svg]]
+Vir: By Vectorization: Stannered - Own work based on: Cubic crystal shape.png by Daniel Mayer at English Wikipedia, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=1735632
+
+Mrežo definiramo z osnovno celico, ki ima neko geometrijsko obliko. S translacijo osnovne celice zgradimo kristal. Osnovni celici, ki ima najmanjši volumen, pravimo primitivna celica. Imamo neskončno možnosti za izbiro osnovne celice. Primitivna celica je osnovna celica, ampak tudi npr. tudi kvadrat iz 8 primitivnih celic je dobra osnovna celica.
+
+Matematičnemu delu kristala pravimo Bramejeva mreža(?). Fizikalno je pomembno, da so v vseh točkah enake lastnosti.
+
+Kristalno mrežo zapolnimo s togimi kroglami takega polmera, da se ne prekrivajo med sabo.
+
+Polnitveno razmerje je definirano
+
+\[ \eta = \frac{V_{snov}}{V_{oc}},
+\]
+
+kjer je \( V_{snov} \) volumen snovi, \( V_{oc} \) pa je volumen osnovne celice.
+
+Stranici \( a \) pravimo mrežna razdalja.
+
+Volumen snovi je sestavljen iz osmih osmin krogel polmera \( r = \frac{a}{2} \). Polnitveno razmerje je
+
+\[ \eta = \frac{8 \cdot \frac{1}{8}  \frac{4}{3} \pi r ^3}{a ^3} = \frac{\pi}{6} \approx 52\%.
+\]
+** Telesno centrirana kubična kristalna mreža (ang. /body centered cubic/ or /bcc/)
+
+[[file:figures/bcc.svg]]
+Vir: By Original: Daniel Mayer and DrBob at English Wikipedia Vector: Stannered - Crystal stucture, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=1735630
+
+Kristalno mrežo napolnimo ponovno s kroglicami. Tokrat bo največji možni polmer četrtina telesne diagonale, torej
+
+\[ r = \frac{d}{4} = \frac{\sqrt{3} a}{4}.
+\]
+
+Polnitveno razmerje tako
+
+\[ \eta = \frac{8 \cdot \frac{1}{8} \frac{4}{3} \pi r ^3 + \frac{4}{3} \pi r ^3}{a ^3} = 2\frac{4}{3} \pi \frac{3 \sqrt{3}}{64} \approx 68 \%.
+\]
+
+Za Bramejevo mrežo je značilno, da je vsaka točka med seboj enaka (središčna točka lahko igra tudi vlogo oglišča brez spremembe). Kakor vidimo iz zgornje enačbe, imamo v volumnu bcc 2 celi krogli.
+
+Za domačo nalogo nas zanima, če lahko v osnovno celico zmanjšamo tako, da bo imela osnovna celica volumen ene krogle.
+** Ploskovno centrirana kubična kristalna mreža (ang. /face-centered cubic/ or /fcc/)
+
+[[file:figures/fcc.svg]]
+Vir: By Original PNGs by Daniel Mayer and DrBob, traced in Inkscape by User:Stannered - Cubic, face-centered.png:  Lattice face centered cubic.svg:, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=1735631
+
+V točke ponovno postavimo toge krogle. Maksimalen polmer krogel je polovica ploskovne diagonale \( r = \frac{\sqrt{2} a}{4} \).
+
+Polnitveno razmerje je
+
+\[ \eta = \frac{8 \cdot \frac{1}{8} \frac{4}{3} \pi r ^3 + \frac{1}{2} \cdot 6 \cdot \frac{4}{3} \pi r ^3}{a ^3} \approx 74 \%.
+\]
+
+Volumen snovi je sestavljen iz \( 8 \cdot \frac{1}{8} + \frac{1}{2} \cdot 6 = 1 + 3 = 4 \) krogel.
+
+Osnovna celica je zadošča pogojem kakor prej, da je vsaka točka med seboj enaka. Ponovno, domača naloga, ali obstaja volumnsko 4krat manjša osnovna celica.
