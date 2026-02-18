@@ -38,7 +38,7 @@ Kakor kaže slika kristalne strukture, obstaja več dobrih osnovnih celic. Za ce
 
 Paralelogram kot osnovna celica ne odraža lastnosti naše kristalne strukture (imamo kvadratno strukturo). Definiramo /Wigner Seitzovo/ celico, ki odraža simetrijo osnovne celice.
 
-Vzemimo za primer trikotno kristalno strukturo, ki jo določata bazna vektorja \( \mathbf{a}_1 = (a, 0) \) in \( \mathbf{a}_2 = \left( \frac{a}{2}, \frac{\sqrt{3}}{2} a \right) \).
+Vzemimo za primer trikotno kristalno strukturo, ki jo določata bazna vektorja \( \mathbf{a}_1 = (a, 0) \) in \( \mathbf{a}_2 = \left( \frac{a}{2}, \frac{\sqrt{3}}{2} a \right) \). Risanje ravnin, ki prepolavljajo primitivne osnovne vektorje, ki vodijo do sosednjih točk (heksagon) - what's the point?
 ** Primeri kristalnih struktur
 *** Preprosta kubična Bravaisova rešetka (ang. /simple cubic/ or /sc/)
 
@@ -58,6 +58,8 @@ Slednji ne odražajo lepo simetrije kristalne strukture, zato raje definiramo
 \]
 
 Koordinacijsko število je \( N_{bcc} = 8 \).
+
+Elementi, ki kristalizirajo v to strukturo, so barij, krom, cezij, železo in uran.
 *** Ploskovno centrirana B.R. (ang. /face-centered cubic/ or /fcc/)
 
 Primitivni osnovni vektorji, ki sestavljajo to strukturo so
@@ -66,3 +68,76 @@ Primitivni osnovni vektorji, ki sestavljajo to strukturo so
 \]
 
 Koordinacijsko število je \( N_{bcc} = 12 \).
+*** Satje
+
+Primer strukture z bazo za trikotno strukturo, kjer je baza \( \mathbf{d}_1 = 0 \) in \( \mathbf{d}_2 = \left( \frac{a}{2}, \frac{\sqrt{3}}{6} a \right) \).
+*** Diamantna kristalna struktura
+
+Diamantno kristalno strukturo dobimo tako, da vzamemo fcc rešetko z baznima vektorjema \( \mathbf{d}_1 = 0 \) in \( \mathbf{d}_2 = \frac{a}{4} (1, 1, 1) \).
+** Recipročna Bravaisova rešetka
+
+Predpostavimo, da imamo ravni val \( e^{\mathrm{i} \mathbf{k} \cdot \mathbf{r}} \). Očitno nima periodične kristalne strukture. Ravnemu valu sedaj prištejemo poljuben vektor \( \mathbf{R} \) Bravaisove rešetka, tako da velja period
+
+\[ e^{\mathrm{i} \mathbf{k} (\mathbf{r} + \mathbf{R})} = e^{\mathrm{i} \mathbf{k} \mathbf{r}}.
+\]
+
+Če je temu zadoščeno, \( \mathbf{k} \) pripada vektorski recipročni rešetki.
+
+Posledično mora biti tudi potencial periodičen s periodo Bravaisove rešetke.
+
+Zanima nas družina \( \mathbf{k} \), za katere velja
+
+\begin{equation}
+\label{eq:1}
+ e^{\mathrm{i} \mathbf{k} \mathbf{R}} = 1\, \forall \mathbf{R} = n_1 \mathbf{a}_1 + n_2 \mathbf{a}_2 + n_3 \mathbf{a}_3 \in \text{Bravaisova rešetka}
+\end{equation}
+
+Naj bodo \( \mathbf{a}_1, \mathbf{a}_2 \) in \( \mathbf{a}_3 \) primitivni vektorji.
+
+Definiramo
+
+\[ \mathbf{A}_1 = 2 \pi \frac{\mathbf{a}_2 \times \mathbf{a}_3}{(\mathbf{a}_1, \mathbf{a}_2, \mathbf{a}_3)}, \quad \mathbf{A}_2 = 2 \pi \frac{\mathbf{a}_3 \times \mathbf{a}_1}{(\mathbf{a}_1, \mathbf{a}_2, \mathbf{a}_3)}, \quad \mathbf{A}_3 = 2 \pi \frac{\mathbf{a}_1 \times \mathbf{a}_2}{(\mathbf{a}_1, \mathbf{a}_2, \mathbf{a}_3)},
+\]
+
+in trdimo, da velja
+
+\[ \mathbf{a}_i \mathbf{A}_j = 2 \pi \delta_{ij}.
+\]
+
+Dokaz je samo računanje.
+
+Za poljuben vektor \( \mathbf{R} \) velja
+
+\[ \mathbf{R} \cdot \mathbf{A}_i = 2 \pi n_i.
+\]
+
+Vektor, ki bo zadoščal \ref{eq:1}, bo
+
+\[ \mathbf{K} = k_1 \mathbf{A}_1 + k_2 \mathbf{A}_2 + k_3 \mathbf{A}_3, \, k_i \in \mathbb{Z}, i = 1, 2, 3.
+\]
+
+#+name: Recipročna mreža za sc
+#+begin_my_example
+Primitivni vektorji sc mreže so
+
+\[ \mathbf{a}_1 = (a, 0, 0), \quad \mathbf{a}_2 = (0, a, 0), \quad \mathbf{a}_3 = (0, 0, a).
+\]
+
+Vektorji so potem
+
+\[ \mathbf{A}_1 = \frac{2\pi}{a} (1, 0, 0), \quad \mathbf{A}_2 = \frac{2\pi}{a} (0, 1, 0), \quad \mathbf{A}_3 = \frac{2\pi}{a} (0, 0, 1)
+\]
+#+end_my_example
+
+#+name: Recipročna mreža za fcc
+#+begin_my_example
+Primitivni vektorji fcc mreže so
+
+\[ \mathbf{a}_1 = \frac{1}{2} (a, a, 0), \quad \mathbf{a}_2 = \frac{1}{2} (a, 0, a), \quad \mathbf{a}_3 = \frac{1}{2} (0, a, a).
+\]
+
+Vektorji reciprožne mreže (?) so
+
+\[ \mathbf{A}_1 = \frac{2\pi}{a} (1, 1, -1), \quad \mathbf{A}_2 = \frac{2\pi}{a} (1, -1, 1), \quad \mathbf{A}_3 = \frac{2\pi}{a} (-1, 1, 1), \quad
+\]
+#+end_my_example
