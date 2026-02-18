@@ -467,7 +467,52 @@ Z določeno Greenovo funkcijo se lahko ob predpostavki neskončnega homogenega p
 
 Integral bomo izračunali v sferičnih koordinatah, zato
 
-\[ G \left( \mathbf{r} - \mathbf{r}' \right) = \frac{1}{\epsilon_0 \left( 2 \pi \right) ^3} \int\limits_0^{\infty} \int\limits_0^{2\pi} \int\limits_{-1}^1 \frac{1}{k ^2} e^{\mathrm{i} \mathbf{k}(\mathbf{r} - \mathbf{r}')} 
+\[ G \left( \mathbf{r} - \mathbf{r}' \right) = \frac{1}{\epsilon_0 \left( 2 \pi \right) ^3} \int\limits_0^{\infty} \int\limits_0^{2\pi} \int\limits_{-1}^1 \frac{1}{k ^2} e^{\mathrm{i} k \cdot \left| \mathbf{r} - \mathbf{r}' \right| \cos \theta} k ^2 \, \mathrm{d} \phi \, \mathrm{d} (\cos \theta) \, \mathrm{d} k,
 \]
 
+kjer smo upoštevali, da za skalarni produkt velja \( \mathbf{k} \left( \mathbf{r} - \mathbf{r}' \right) = k \cdot \left| \mathbf{r} - \mathbf{r}' \right| \cos \theta\). Uvedemo novo spremenljivko \( x = k \left| \mathbf{r} - \mathbf{r}' \right| \cos \theta\), katere diferencial je \( \mathrm{d}x = \mathrm{d} (\cos \theta) k \left| \mathbf{r} - \mathbf{r}' \right| \).
 
+Vrednost integrala po \( \phi \) je samo \( 2 \pi \) in preostane nam
+
+\[ G \left( \mathbf{r} - \mathbf{r}' \right) = \frac{1}{ \epsilon_0 \left( 2 \pi \right) ^2} \int\limits_0^{\infty} \int\limits_{-k \left| \mathbf{r} - \mathbf{r}' \right|}^{k \left| \mathbf{r} - \mathbf{r}' \right|}  \frac{e^{\mathrm{i} x}}{k \left| \mathbf{r} - \mathbf{r}' \right|} \, \mathrm{d} x \, \mathrm{d} k = \frac{1}{\epsilon_0 \left( 2 \pi \right) ^2} \int\limits_0^{\infty} \frac{1}{k \left| \mathbf{r} - \mathbf{r}' \right|} \sin \left( k \left| \mathbf{r} - \mathbf{r}' \right| \right) \, \mathrm{d} k,
+\]
+
+kjer smo upoštevali \( e^{- \mathrm{i}x} + e^{\mathrm{i} x} = 2\sin x \). Slednji integral lahko preko kompleksne integracije izvrednotimo v \( \frac{\pi}{2} \). Torej bo Greenova funkcija imela vrednost
+
+\[ G \left( \mathbf{r} - \mathbf{r}' \right) = \frac{1}{4 \pi \epsilon_0 \left| \mathbf{r} - \mathbf{r}' \right|}.
+\]
+
+Splošna rešitev Poissonove enačbe pa bo
+
+\[ \phi (\mathbf{r}) = \int\limits_{}^{} \frac{\rho(\mathbf{r})}{4 \pi \epsilon_0 \left| \mathbf{r} - \mathbf{r}' \right|} \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Izrazimo lahko tudi električno polje
+
+\[ \mathbf{E} = - \nabla \phi = \int\limits_{}^{} \frac{\rho(\mathbf{r}) \left( \mathbf{r} - \mathbf{r}' \right)}{4 \pi \epsilon_0 \left| \mathbf{r} - \mathbf{r}' \right|} \, \mathrm{d} ^3 \mathbf{r}'
+\]
+
+Note to self: \( \mathbf{r}' \) označuje koordinate, kjer se nahaja gostota naboja (npr. sfera), medtem ko \( \mathbf{r} \) označuje točko v prostoru, za katero nas zanima potencial.
+*** Greenova funkcija končnega volumna
+
+Ponovno rešujemo Poissonovo enačbo
+
+\[ \nabla ^2 \phi (\mathbf{r}') = - \frac{\rho(\mathbf{r}')}{\epsilon_0},
+\]
+
+in za Greenovo funkcijo še zmeraj drži
+
+\[ \nabla ^2 G \left( \mathbf{r} - \mathbf{r}' \right) = - \frac{\delta ^3 (\mathbf{r} - \mathbf{r}')}{\epsilon_0}.
+\]
+
+Prvo enačbo množimo z \( G \left( \mathbf{r} - \mathbf{r}' \right) \), drugo enačbo pa z \( \phi (\mathbf{r}') \), ter jo integriramo po volumnu \( V \) in ju odštejemo.
+
+\begin{align*}
+  \int\limits_V^{} &\left( \nabla ^2 \phi (\mathbf{r}') \cdot G (\mathbf{r} - \mathbf{r}') - \nabla ^2 G(\mathbf{r} - \mathbf{r}') \cdot \phi(\mathbf{r}') \right) \, \mathrm{d} ^3 \mathbf{r} = \\
+&=-\int\limits_V^{} \frac{\rho(\mathbf{r}')}{\epsilon_0} G \left( \mathbf{r} - \mathbf{r}' \right) \, \mathrm{d} ^3 \mathbf{r} + \int\limits_V^{} \frac{\delta ^3 (\mathbf{r} - \mathbf{r}')}{\epsilon_0} \phi(\mathbf{r}') \, \mathrm{d} ^3 \mathbf{r}
+\end{align*}
+
+V zgornji vrstici lahko upoštevamo Gaussov izrek, na desni strani pa integracijo \( \delta \) funkcije in dobimo Greenovo enačbo
+
+\[ \phi (\mathbf{r}') = \int\limits_V^{} \rho(\mathbf{r}') G \left( \mathbf{r} - \mathbf{r}' \right) + \epsilon_0 \int\limits_{\partial V}^{} \left( \mathbf{n}' \cdot \nabla_{\mathbf{r}'} \phi(\mathbf{r}')  \right) G \left( \mathbf{r} - \mathbf{r}' \right)- \left( \mathbf{n}' \cdot \nabla_{\mathbf{r}'} G (\mathbf{r} - \mathbf{r}') \phi(\mathbf{r}') \right) \, \mathrm{d} ^2 \mathbf{r}
+\]
