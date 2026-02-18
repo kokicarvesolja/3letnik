@@ -1,0 +1,68 @@
+#+title: Predavanja iz Fizike trdne snovi, 8. teden v letu
+#+subtitle: 2026/02/18
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Bravaisova rešetka (mreža)
+
+Začetnik sta bila oče in sin Bragg, ki sta odkrila kristalno strukturo NaCl s pomočjo rentgenske svetlobe.
+
+Imejmo 3 nekolinearne vektorje \( \mathbf{a}_1, \mathbf{a}_2 \) in \( \mathbf{a}_3 \), ki jim pravimo primitivni osnovni vektorji. S pridevnikom /primitivni/ sporočamo, da imajo osnovni vektorji najmanjšo velikost. Bravaisova rešetka je potem definirana kot
+
+\[ \mathbf{R} = n_1 \mathbf{a}_1 + n_2 \mathbf{a}_2 + n_3 \mathbf{a}_3, \quad n_i \in \mathbb{Z}, \, i = 1, 2, 3.
+\]
+
+Druga definicija je, da je Bravaisova rešetka množica točk, katerih okolica je povsod ista.
+
+Kristal ime dve vrsti simetrij:
+- translacijska simetrija: lahko definiramo operator translacije \( \hat{\mathbf{T}} = n_1 \mathbf{a}_1 + n_2 \mathbf{a}_2 + n_3 \mathbf{a}_3 \), da bomo translirali valovno funkcijo tako, da velja
+
+  \[ T_{\mathbf{R}} \psi(\mathbf{r}) = \psi(\mathbf{r} - \mathbf{R})
+  \]
+
+- točkovna simetrija pa se deli še na 3 dele:
+
+  - rotacija okoli izbrane osi za določene kot (na zgornji sliki so koti \( \frac{\pi}{2}, \pi \) ali \( \frac{3\pi}{2} \))
+  - zrcaljenje (na sliki imamo 4 zrcalne ravnine)
+  - inverzija (poljubna točka se zrcali preko izbrane točke v neko drugo točko)
+
+[vstavi sliko 114133]
+** Primitivna osnovna celica
+
+Kakor kaže slika kristalne strukture, obstaja več dobrih osnovnih celic. Za celico definiramo volumen \( V_C = \left| \mathbf{a}_1 \times \mathbf{a}_2 \right| \).
+
+Paralelogram kot osnovna celica ne odraža lastnosti naše kristalne strukture (imamo kvadratno strukturo). Definiramo /Wigner Seitzovo/ celico, ki odraža simetrijo osnovne celice.
+
+Vzemimo za primer trikotno kristalno strukturo, ki jo določata bazna vektorja \( \mathbf{a}_1 = (a, 0) \) in \( \mathbf{a}_2 = \left( \frac{a}{2}, \frac{\sqrt{3}}{2} a \right) \).
+** Primeri kristalnih struktur
+*** Preprosta kubična Bravaisova rešetka (ang. /simple cubic/ or /sc/)
+
+Preprosto kubično rešetko določajo bazni vektorji \( \mathbf{a}_1 = (a, 0, 0), \mathbf{a}_2 = (0, a, 0) \) in \( \mathbf{a}_3 = (0, 0, a) \).
+
+Definiramo koordinacijsko število \( N_C \), ki nam pove, koliko najbližjih sosednjih točk ima poljubna točka. Koordinacijsko število za kubično rešetko \( N_C = 6 \).
+*** Telesno centrirana B.R. (ang. /body-centered cubic/ or /bcc/)
+
+Primitivni osnovni vektorji v tej mreži so
+
+\[ \mathbf{a}_1' = (a, 0, 0), \quad \mathbf{a}_2 ' = (0, a, 0), \quad \mathbf{a}_3' = \frac{1}{2} (a, 0, a).
+\]
+
+Slednji ne odražajo lepo simetrije kristalne strukture, zato raje definiramo
+
+\[ \mathbf{a}_1 = \frac{1}{2} (-a, a, a), \quad \mathbf{a}_2 = \frac{1}{2} (a, -a, a), \quad \mathbf{a}_3 = \frac{1}{2} (a, a, -a).
+\]
+
+Koordinacijsko število je \( N_{bcc} = 8 \).
+*** Ploskovno centrirana B.R. (ang. /face-centered cubic/ or /fcc/)
+
+Primitivni osnovni vektorji, ki sestavljajo to strukturo so
+
+\[ \mathbf{a}_1 = \frac{1}{2} (a, a, 0), \quad \mathbf{a}_2 = \frac{1}{2} (0, a, a), \quad \mathbf{a}_3 = \frac{1}{2} (a, 0, a)
+\]
+
+Koordinacijsko število je \( N_{bcc} = 12 \).
