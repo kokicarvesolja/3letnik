@@ -379,3 +379,95 @@ in nadalje
 #+begin_problem
 Zapiši Poissonovo in Laplaceovo enačbo in ju razloži. Izpelji splošno rešitev (Greenovo funkcijo) Poissonove enačbe v Fourierovem in direktnem prostoru. Z uporabo Greenove funkcije nato zapiši splošno obliko električnega potenciala in električnega polja. Kako se ta rešitev spremeni v končnem volumnu?
 #+end_problem
+*** Poissonova in Laplaceova enačba
+
+V definicijo električnega potenciala
+
+\[ \mathbf{E} = - \nabla \phi,
+\]
+
+vstavimo prvo Maxwellovo enačbo \( \nabla \cdot \mathbf{E} = \frac{\rho(\mathbf{r})}{\epsilon_0} \) in dobimo Poissonovo enačbo oblike
+
+\[ \nabla ^2 \phi(\mathbf{r}) = - \frac{\rho(\mathbf{r})}{\epsilon_0},
+\]
+
+kjer je \( \nabla ^2 \) Laplaceov operator. Če imamo prostor brez nabojev, je desna stran enačbe ničelna in dobimo Laplaceovo enačbo
+
+\[ \nabla ^2 \phi (\mathbf{r}) = 0 
+\]
+
+Enačbi nam podajata prostorsko odvisnost električnega potenciala v prostoru. S pomočjo definicije električnega potenciala lahko potem izračunamo električno polje.
+*** Splošna rešitev Poissonove enačbe
+
+Do rešitve Poissonove enačbe se bomo dokopali s pomočjo nastavka, ki vsebuje konvolucijo
+
+\[ \phi(\mathbf{r}) = \int\limits_{}^{} G(\mathbf{r} - \mathbf{r}') \rho(\mathbf{r}') \, \mathrm{d} ^3 \mathbf{r}',
+\]
+
+kjer je \( G (\mathbf{r} - \mathbf{r}') \) Greenova funkcija in \( \rho(\mathbf{r}') \) gostota nabojev.
+
+**** Določitev Laplacea Greenove funkcije
+
+Nastavek s konvolucijo vstavimo v Poissonovo enačbo
+
+\[ \nabla ^2 \phi(\mathbf{r}) = \int\limits_{}^{} \nabla_{\mathbf{r}} ^2 G(\mathbf{r} - \mathbf{r}') \rho(\mathbf{r}') \, \mathrm{d} ^3 \mathbf{r} ' = - \frac{\rho(\mathbf{r})}{\epsilon_0}.
+\]
+
+Z indeksom \( \mathbf{r} \) želim poudariti, da Laplaceov operator deluje samo na \( \mathbf{r} \) in ne na \( \mathbf{r}' \).
+
+Edini način, da je zadoščeno zgornji enačbi, je, da velja
+
+\begin{equation}
+\label{eq:5}
+ \nabla_{\mathbf{r}} ^2 G (\mathbf{r} - \mathbf{r}') = - \frac{\delta ^3 (\mathbf{r} - \mathbf{r}')}{\epsilon_0}.
+\end{equation}
+
+Iz tega lahko zaključimo, da je Greenova funkcija \( G(\mathbf{r} - \mathbf{r}') \) rešitev Poissonove enačbe za točkast enotski naboj, ki se nahaja v točki \( \mathbf{r}' \) (glej 2. vprašanje, primer točkastega naboja).
+
+Če poznamo rešitev Poissonove enačbe za točkast naboj (kar je še ne, samo njen Laplace), lahko splošno rešitev Poissonove enačbe sestavimo za poljubno porazdelitev gostote naboja.
+**** Greenova funkcije v Fourierovem prostoru
+
+Greenova funkcija v obliki Fourierovega integrala je enaka
+
+\begin{equation}
+\label{eq:6}
+ G(\mathbf{r}) = \int\limits_{}^{} G(\mathbf{k}) e^{\mathrm{i} \mathbf{k} (\mathbf{r} - \mathbf{r}')} \frac{\mathrm{d} ^3 \mathbf{k}}{\left( 2 \pi \right) ^3}.
+\end{equation}
+
+Vemo iz matematike 4, da je \( \delta \) funkcija v Fourierovem prostoru enaka
+
+\[ \delta ^3 (\mathbf{r} - \mathbf{r}') = \int\limits_{}^{} \frac{\mathrm{d} ^3 \mathbf{k}}{\left( 2 \pi \right) ^3} e^{\mathrm{i} \mathbf{k} (\mathbf{r} - \mathbf{r}')}.
+\]
+
+Dobljeno vstavimo v \ref{eq:5}
+
+\[ \nabla_{\mathbf{r}} ^2 \left( \int\limits_{}^{} G(\mathbf{k}) e^{\mathrm{i} \mathbf{k} (\mathbf{r} - \mathbf{r}')} \frac{\mathrm{d} ^3 \mathbf{k}}{\left( 2 \pi \right) ^3} \right) = - \frac{1}{\epsilon_0} \int\limits_{}^{} e^{\mathrm{i} \mathbf{k} (\mathbf{r} - \mathbf{r}')} \frac{\mathrm{d} ^3 \mathbf{k}}{\left( 2 \pi \right) ^3}
+\]
+
+in združimo pod isti integral
+
+\[ \int\limits_{}^{} \left[ \nabla_{\mathbf{r}} ^2 e^{\mathrm{i} \mathbf{k}(\mathbf{r} - \mathbf{r}')} G(\mathbf{k}) + \frac{1}{\epsilon_0} e^{\mathrm{i}\mathbf{k} (\mathbf{r} - \mathbf{r}')} \right] \frac{\mathrm{d} ^3 \mathbf{k}}{\left( 2\pi \right) ^3} = 0.
+\]
+
+Upoštevamo, da velja \( \nabla_{\mathbf{r}} ^2 e^{\mathrm{i} \mathbf{k}(\mathbf{r} - \mathbf{r}')} = -k ^2 e^{\mathrm{i} \mathbf{k}(\mathbf{r} - \mathbf{r}')} \), zato lahko zapišemo
+
+\[ \int\limits_{}^{} \left[ -k ^2 G(\mathbf{k}) + \frac{1}{\epsilon_0} \right] e^{\mathrm{i} \mathbf{k} (\mathbf{r} - \mathbf{r}')} \frac{\mathrm{d} ^3 \mathbf{k}}{\left( 2 \pi \right) ^3} = 0
+\]
+
+Zgornji enačbi bo zadoščeno samo, ko velja
+
+\[ G(\mathbf{k}) = \frac{1}{\epsilon_0 k ^2}.
+\]
+**** Greenova funkcija v neskončnem homogenem prostoru
+
+Z določeno Greenovo funkcijo se lahko ob predpostavki neskončnega homogenega prostora preselimo nazaj v direktni prostor preko enačbe \ref{eq:6}, torej
+
+\[ G \left( \mathbf{r} - \mathbf{r}' \right) = \frac{1}{\epsilon_0} \int\limits_{}^{} \frac{1}{k ^2} e^{\mathrm{i} \mathbf{k}(\mathbf{r} - \mathbf{r}')} \frac{\mathrm{d} ^3 \mathbf{k}}{\left( 2 \pi \right) ^3}.
+\]
+
+Integral bomo izračunali v sferičnih koordinatah, zato
+
+\[ G \left( \mathbf{r} - \mathbf{r}' \right) = \frac{1}{\epsilon_0 \left( 2 \pi \right) ^3} \int\limits_0^{\infty} \int\limits_0^{2\pi} \int\limits_{-1}^1 \frac{1}{k ^2} e^{\mathrm{i} \mathbf{k}(\mathbf{r} - \mathbf{r}')} 
+\]
+
+
