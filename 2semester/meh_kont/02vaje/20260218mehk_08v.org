@@ -1,0 +1,133 @@
+#+title: Vaje iz Mehanike kontinuov, 8. teden v letu
+#+subtitle: 2026/02/18
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Ponovitev indeksne notacije
+
+Namesto vektorskega zapisa drugega Newtonovega zakona
+
+\[ \mathbf{F} = m \mathbf{a},
+\]
+
+bomo zapisali z indeksno notacijo kot
+
+\[ F_i = ma_i, \, i \in \left\{ x, y, z \right\}.
+\]
+
+Matriko \( A \) bomo zapisali v indeksni notaciji kot \( A_{ij} \).
+
+Skalarni produkt \( \mathbf{a} \cdot \mathbf{b} \) bomo zapisali kot
+
+\[ a_i b_i = \sum\limits_i^{} a_i b_i = a_x b_x + a_y b_y + a_z b_z
+\]
+
+Matrično množenje dopolni.
+
+* Gradient v krivočrtnih koordinatah
+
+Gradient je v kartezičnih koordinatah je definiran kot
+
+\[ \nabla = \left( \frac{\partial }{\partial x}, \frac{\partial }{\partial y} , \frac{\partial }{\partial z}  \right).
+\]
+
+V poljubnih koordinatah bo gradient definiran kot
+
+\[ \nabla = \sum\limits_i^{} \hat{e}_i \frac{1}{h_i} \frac{\partial }{\partial q_{i}},
+\]
+
+kjer je \( h_i = \left| \frac{\partial \mathbf{r}}{\partial q_i} \right| \) skalarni faktor. Ta faktor nam pove, za koliko se spremeni krajevni vektor \( \mathbf{r} \) za majhno spremembo koordinate \( q_i \). \( \hat{e}_i \) je normalni vektor definiran kot
+
+\[ \hat{e}_i = \frac{1}{h_i} \frac{\partial \mathbf{r}}{\partial q_{i}}
+\]
+
+Gradient skalarnega polja \( f \) je
+
+\[ \nabla f = \left( \sum\limits_i^{} \hat{e}_i \frac{1}{h_i} \frac{\partial }{\partial q_{i}}  \right) f.
+\]
+
+Divergenca vektorja \( \mathbf{v} = \sum\limits_j^{} v_j \hat{e}_j \) je
+
+\begin{equation}
+\label{eq:1}
+ \nabla \cdot \mathbf{v} = \left( \sum\limits_i^{} \frac{1}{h_i} \frac{\partial }{\partial q_{i}}  \right) \left( \sum\limits_j^{} v_j \hat{e}_j \right).
+\end{equation}
+
+Rotor istega vektorja je
+
+\begin{equation}
+\label{eq:2}
+ \nabla \times \mathbf{v} =\left( \sum\limits_i^{} \hat{e}_i \frac{1}{h_i} \frac{\partial }{\partial q_{i}}  \right) \times \left( \sum\limits_j^{} v_j \hat{e}_j \right)
+\end{equation}
+* Divergenca v cilindričnih koordinatah
+
+#+begin_problem
+Želimo zapisati divergenco v cilindričnih koordinatah \( (r, \phi, z) \).
+#+end_problem
+
+Najprej zapišemo krajevni vektor \( \mathbf{r} \) v bazi \( \left\{ x, y, z \right\} \) kot funkcijo naših novih koordinat.
+
+Izračunajmo parcialne odvode, ki jih bomo potrebovali v skalnem faktorju ter enotskem vektorju
+
+\begin{align*}
+  \frac{\partial \mathbf{r}}{\partial r} &= \cos \phi \hat{e}_x + \sin \phi \hat{e}_y \\
+\frac{\partial \mathbf{r}}{\partial \phi}  &= -r \sin \phi \hat{e}_x + r\cos \phi \hat{e}_y \\
+\frac{\partial \mathbf{r}}{\partial z} &= \hat{e}_z
+\end{align*}
+
+Upoštevali smo, da je \( \frac{\partial e_{i}}{\partial q_{j}} = 0 \) za \( i \in \left\{ x, y, z \right\} \) in \( j \in \left\{ r, \phi, z \right\} \).
+
+Skalni faktorji so so
+
+\begin{align*}
+  h_r &= \sqrt{\left( \cos \phi e_x + \sin \phi \hat{e}_y \right) \left( \cos \phi \hat{e}_x + \sin \phi \hat{e}_y \right)} = 1 \\
+h_{\phi} &= \sqrt{\left( -r \sin \phi \hat{e}_x + r \cos \phi \hat{e}_y \right)\left( -r \sin \phi \hat{e}_x + r \cos \phi \hat{e}_y \right)}= r \\
+h_z &= 1
+\end{align*}
+
+Sedaj lahko zapišemo tudi bazne vektorje
+
+\begin{align*}
+  \hat{e}_r &= \cos \phi \hat{e}_x + \sin \phi \hat{e}_y \\
+\hat{e}_{\phi} &= \frac{1}{r} \left( - r \sin \phi \right) \hat{e}_x + \frac{1}{r} \cos \phi \hat{e}_y = - \sin \phi \hat{e}_x + \cos \phi \hat{e}_y \\
+\hat{e}_z &= \hat{e}_z
+\end{align*}
+
+Upoštevamo definicijo divergence
+
+\[ \nabla \cdot \mathbf{v} = \left( \hat{e}_r \frac{\partial }{\partial r} + \hat{e}_{\phi} \frac{1}{r} \frac{\partial }{\partial \phi} + \hat{e}_z \frac{\partial }{\partial z}  \right) \left( v_r \hat{e}_{r} + v_{\phi} \hat{e}_{\phi} + v_z \hat{e}_z \right).
+\]
+
+Odvodi, ki so posledica divergence ne bodo samo vplivali na funkcije \( v_j, \, j \in \left\{ r, \phi, z \right\} \), ki so tudi funkcije teh treh spremenljivk, ampak bodo tudi vplivali na bazne vektorje. Zato bomo sedaj izračunali vrednosti odvodov baznih vektorjev
+
+\begin{align*}
+  \frac{\partial \hat{e}_{r}}{\partial r} = 0 &\quad \frac{\partial \hat{e}_{\phi}}{\partial r} = 0 \\
+\frac{\partial \hat{e}_r}{\partial \phi} = - \sin \phi \hat{e}_x + \cos \phi \hat{e}_y = \hat{e}_{\phi} &\quad \frac{\partial \hat{e}_{\phi}}{\partial \phi} - \cos \phi \hat{e}_x - \sin \phi \hat{e}_y = - \hat{e}_r.
+\end{align*}
+
+Hkrati upoštevamo tudi, da velja \( \hat{e}_i \hat{e}_j = \delta_{ij} \) in divergenca postane
+
+\begin{align*}
+  \nabla \cdot \mathbf{v} &= \left( \hat{e}_r \frac{\partial v_{r}}{\partial r} \hat{e}_r + \hat{e}_{\phi} \frac{1}{r} \frac{\partial v_{\phi}}{\partial \phi} \hat{e}_{\phi} + \hat{e}_z \frac{\partial v_{z}}{\partial z}  \hat{e}_z \right. \\
+&\quad \left. + \hat{e}_{\phi} \frac{1}{r} v_r \frac{\partial e_{r}}{\partial \phi} + \hat{e}_{\phi} \frac{1}{r} v_{\phi} \frac{\partial \hat{e}_{\phi}}{\partial \phi}  \right) \\
+&= \left( \frac{\partial v_{r}}{\partial r}  + \frac{1}{r} \frac{\partial v_{\phi}}{\partial \phi}  + \frac{\partial v_{z}}{\partial z}  + \frac{1}{r} v_r  \right)
+\end{align*}
+* Rotor v cilindričnih koordinatah
+
+Pred nadaljevanjem si bomo v pomoč zapisali identitete
+
+\begin{align*}
+  \hat{e}_r \times \hat{e}_{\phi} &= \hat{e}_z \\
+\hat{e}_{\phi} \times \hat{e}_z &= \hat{e}_r \\
+\hat{e}_z \times \hat{e}_r &= \hat{e}_{\phi}.
+\end{align*}
+
+Rotor je po enačbi \ref{eq:2} enak
+
+\[ \nabla \times \mathbf{r} = \left( \sum\limits_i^{} \hat{e}_i \frac{1}{h_i} \frac{\partial }{\partial q_{i}}  \right)\times \left( \sum\limits_j^{} \hat{e}_j v_j \right)
+\]
