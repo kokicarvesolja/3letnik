@@ -84,6 +84,8 @@ Električni pretok preko neke površine je definiran kot površinski integral ja
 \]
 
 \( \mathrm{d}\vec{S} \) je vektorski diferencialni element površine, ki ima smer lokalne zunanje normalena površino.
+
+Električni pretok skozi površino lahko po Faradayju razumemo kot število silnic električnega polja, ki to površino prebada. 
 *** Električni potencial
 
 Električni potencial definiramo tako, da vsaki točki prostora priredimo neko skalarno funkcijo \( \phi \left( \vec{r} \right) \), da velja zveza
@@ -107,6 +109,26 @@ Iz tega sledi, da je potencial enaka
 
 Potencial lahko določamo le do konstante natančno in je invarianten na transformacijo.
 *** Ekvipotencialne ploskve
+Iz definicije električnega potenciala
+
+\[ \mathbf{E} (\mathbf{r}) = - \nabla \phi (\mathbf{r})
+\]
+
+lahko zapišemo krivuljni integral jakosti električnega polja
+
+\[ \phi(A) - \phi(B) = - \int\limits_B^A \mathbf{E}(\mathbf{r}) \, \mathrm{d} \mathbf{r} 
+\]
+
+Imamo dve možnosti v zgornjem integralu:
+- \( \mathbf{E} \) in \( \mathrm{d} \mathbf{r} \) sta pravokotna med seboj v vsaki točki med \( A \) in \( B \), iz česar sledi
+
+  \[ \phi(A) = \phi(B) = \mathrm{konst} 
+  \]
+
+- če je razlika \( \phi(A) - \phi(B) \) konstantna na neki ploskvi, potem mora biti normala na to ploskev lokalno pravokotna na smer jakosti električnega polja.
+  
+
+Taki ploskvi pravimo ekvipotencialno ploskev.
 *** Princip superpozicije
 
 Za prostor z več naboji \( e_i \) v točkah \( \vec{r}_i \), je električna sila na naboj \( e \), ki se nahaja v točki \( \vec{r} \) različni od \( \vec{r}_i \) enaka vsoti sil ostalih nabojev
@@ -190,7 +212,7 @@ Vpeljemo vektor dipolnega momenta \( p = e \left( \vec{r}_1 - \vec{r}_2 \right) 
 
 Velja identiteta
 
-\[ \nabla \cdot \left( \vec{p} \cdot \delta ^3 \left( \vec{r} - \vec{r}_0 \right) \right) = \left( \nabla \cdot p \right) \delta ^3 \left( \vec{r} - \vec{r}_0 \right) + \vec{p} \cdot \nu \left( \delta ^3 \vec{r} - \vec{r}_0 \right)
+\[ \nabla \cdot \left( \vec{p} \cdot \delta ^3 \left( \vec{r} - \vec{r}_0 \right) \right) = \left( \nabla \cdot p \right) \delta ^3 \left( \vec{r} - \vec{r}_0 \right) + \vec{p} \cdot \nabla \left( \delta ^3 \vec{r} - \vec{r}_0 \right)
 \]
 
 Dipolni moment je konstanten, torej \( \nabla \cdot \vec{p} = 0 \). Preobrazimo našo gostoto v
@@ -219,6 +241,7 @@ Podobno kot pri točkastem dipolu, imamo dve nasprotno nabiti površini, s povr�
 Površinska gostota naboja je
 
 \[ \rho \left( \vec{r} \right) = \sigma \left( \vec{u} \right) \delta (z - z_1) - \sigma (\vec{u}) \delta (z - z_2)
+\]
 
 ki jo razvijemo po Taylorju
 
@@ -269,8 +292,90 @@ Torej je naboj zgolj površinski.
 Zapiši in razloži Gaussov izrek v integralni in diferencialni obliki. Pokaži njegovo uporabo na primeru geometrije/problema, ki ga sam izbereš.
 #+end_problem
 
+Gaussov izrek po Faradayju nam podaja zvezo med količino naboja in električnimi silnicami iz tega naboja, ki prebadajo dano zaključeno površino.
+*** Integralna oblika 
 
+Imejmo \( n \) nabojev \( e_1, e_2, \ldots, e_n \) s pripadajočimi radij vektorji \( \mathbf{r}_1, \mathbf{r}_2, \ldots, \mathbf{r}_n \). Naboje zajamemo v sklenjeno sfero s površino \( S \) in zanima nas električni pretok skozi to sfero.
+
+Začnemo z definicijo električnega pretoka
+
+\[ \phi_E = \oint\limits_S^{} \mathbf{E} \cdot \mathrm{d} \mathbf{S} = \oint\limits_S^{} E \cos \theta \, \mathrm{d} S.
+\]
+
+Upoštevali smo, da ima diferencial površine sfere smer normale na površino \( \mathrm{d} \mathbf{S} = \mathbf{n} \, \mathrm{d} S \), ter definicijo skalarnega produkta.
+
+Namesto električnega polja bomo s pomočjo principa superpozicije pretok zapisali kot
+
+\[ \phi_E = \sum\limits_{i = 1}^n \frac{e_i}{4 \pi \epsilon_0} \oint\limits_S^{} \frac{1}{\left| \mathbf{r} - \mathbf{r}_i \right| ^2} \cos \theta_i \, \mathrm{d} S 
+\]
+
+Za primer \( i = 1 \) in \( \mathbf{r}_i = 0 \) je pretok enak
+
+\[ \oint\limits_S^{} \mathbf{E}_1 \, \mathrm{d} \mathbf{S} = \frac{e_1}{4 \pi \epsilon_0} \oint\limits_S^{} \frac{1}{r ^2} r ^2 \sin \theta \, \mathrm{d} \theta \, \mathrm{d} \phi = \frac{e_1}{\epsilon_0},
+\]
+
+kjer smo upoštevali definicijo diferenciala površine v sferičnih koordinatah. Gauss je dokazal, da to velja za poljubno površino in \( \mathbf{r}_i \ne 0 \). Električni pretok je tako
+
+\[ \oint\limits_S^{} \mathbf{E} \, \mathrm{d} \mathbf{S} = \sum\limits_{i = 1}^n \frac{e_i}{\epsilon_0}.
+\]
+
+Vsoto nabojev lahko nadomestimo tudi z gostoto naboja
+
+\begin{equation}
+\label{eq:4}
+ \oint\limits_S^{} \mathbf{E} \, \mathrm{d} \mathbf{S} = \frac{1}{\epsilon_0} \int\limits_V^{} \rho(\mathbf{r}) \, \mathrm{d} ^3 \mathbf{r} 
+\end{equation}
+
+Enačbi \ref{eq:4} pravimo Gaussov izrek za elektrostatsko polje.
+*** Diferencialna oblika
+
+Gaussov izrek \ref{eq:4} lahko s pomočjo Gauss-Ostrogradskega izreka pretvorimo v diferencialno obliko. Spomnimo,
+
+\[ \oint\limits_{S = \partial V}^{} \mathbf{A} \, \mathrm{d} \mathbf{S} = \int\limits_V^{} \nabla \cdot \mathbf{A} \, \mathrm{d} ^3 \mathbf{r},
+\]
+
+kjer je \( \mathbf{A} \) vektorsko polje. 
+
+Diferencialna oblika je tako
+
+\[ \nabla \cdot \mathbf{E} = \frac{\rho(\mathbf{r})}{\epsilon_0},
+\]
+
+in velja v vsaki točki.
+*** Primer uporabe - enakomerno nabita krogla
+
+Imejmo enakomerno nabito krogle z radijem \( a \) in nabojem \( e \). Izračunajmo najprej gostoto naboja
+
+\[ \int \mathrm{d} e = \int\limits_{}^{}\rho \, \mathrm{d} V,
+\]
+
+kjer upoštevamo, da je diferencial površine \( \mathrm{d} V = 4 \pi r ^2 \, \mathrm{d} r \, \mathrm{d} (\cos \theta) \). Upoštevali smo simetričnost problema in posledično neodvisnost od azimutalnega kota \( \phi \).
+
+\[ e = 4 \pi \rho \int\limits_0^a \int\limits_{-1}^1 r ^2 \, \mathrm{d} (\cos \theta) \, \mathrm{d} r = \frac{4}{3} \pi a ^3 \implies \rho = \frac{3}{4} \frac{e}{\pi a ^3}
+\]
+
+Zanimata nas dva primera: električno polje za \( r < a \) in \( r > a \). 
+
+V prvem primeru je površina pri Gaussovem zakonu \ref{eq:4} \( S = 4 \pi r ^2 \) in posledično
+
+\[ E(r) 4 \pi r ^2 = \frac{1}{\epsilon_0} \frac{3}{4} \frac{e}{\pi a ^3} \cdot \frac{4}{3} \pi r ^3,
+\]
+
+iz česar zaključimo, da je električno polje radialno odvisno
+
+\[ E(r) = \frac{er}{4 \pi \epsilon_0 a ^3}, \quad r<a.
+\]
+
+V drugem primeru pa naša sfera z radijem \( r > a \) zaobjame celotno sfero radija \( a \) in posledično smo zaobjeli tudi celoten naboj. Sledi
+
+\[ E(r) 4 \pi r ^2 = \frac{e}{\epsilon_0}
+\]
+
+in nadalje
+
+\[ E(r) = \frac{e}{4 \pi \epsilon_0 r ^2}, \quad r > a
+\]
 ** 4. vprašanje
 #+begin_problem
-Zapiši Poissonovo in Laplaceovo enačbo in ju razloži. Izpelji splošno rešitev (Greenovo funkcijo) Poissonove enačbe v Fourierovem in direktnem prostoru. Z uporabo Greenove funkcije nato zapiši splošno obliko električnega potenciala in električnega polja. Kako se ta rešitev spremni v končnem volumnu?
+Zapiši Poissonovo in Laplaceovo enačbo in ju razloži. Izpelji splošno rešitev (Greenovo funkcijo) Poissonove enačbe v Fourierovem in direktnem prostoru. Z uporabo Greenove funkcije nato zapiši splošno obliko električnega potenciala in električnega polja. Kako se ta rešitev spremeni v končnem volumnu?
 #+end_problem
