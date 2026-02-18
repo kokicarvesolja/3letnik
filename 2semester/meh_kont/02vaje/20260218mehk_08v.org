@@ -129,5 +129,160 @@ Pred nadaljevanjem si bomo v pomoč zapisali identitete
 
 Rotor je po enačbi \ref{eq:2} enak
 
-\[ \nabla \times \mathbf{r} = \left( \sum\limits_i^{} \hat{e}_i \frac{1}{h_i} \frac{\partial }{\partial q_{i}}  \right)\times \left( \sum\limits_j^{} \hat{e}_j v_j \right)
+\[ \nabla \times \mathbf{r} = \left( \sum\limits_i^{} \hat{e}_i \frac{1}{h_i} \frac{\partial }{\partial q_{i}}  \right)\times \left( \sum\limits_j^{} \hat{e}_j v_j \right).
 \]
+
+Upoštevamo količine izračunane v nalogi za divergenco, da zapišemo
+
+\begin{align*}
+  \nabla \times \mathbf{r} &= \left( \hat{e}_r \frac{\partial }{\partial r} + \hat{e}_{\phi} \frac{\partial }{\partial \phi}  + \hat{e}_z \frac{\partial }{\partial z}  \right) \times \left( v_r \hat{e}_r + v_{\phi} \hat{e}_{\phi} + v_z \hat{e}_z \right) \\
+&= \hat{e}_r \times \hat{e}_{\phi} \frac{\partial v_{\phi}}{\partial r} + \hat{e}_r \times \hat{e}_z \frac{\partial v_{z}}{\partial r} + \hat{e}_{\phi} \times \hat{e}_r \frac{1}{r} \frac{\partial v_{r}}{\partial \phi} + \left( \hat{e}_{\phi} \times \frac{\partial \hat{e}_{r}}{\partial \phi}  \right)\frac{v_r}{r} +\\
+&\quad + \hat{e}_{\phi} \times \hat{e}_z \frac{1}{r} \frac{\partial v_{z}}{\partial z} + \hat{e}_{\phi} \times \frac{\partial \hat{e}_{\phi}}{\partial \phi}  \frac{v_{\phi}}{r} \hat{e}_z \times \hat{e}_r \frac{\partial v_{r}}{\partial z}  + \hat{e}_z \times \hat{e}_{\phi} \frac{\partial v_{\phi}}{\partial z}  \\
+&= \hat{e}_r \left( \frac{1}{r} \frac{\partial v_{z}}{\partial \phi} - \frac{\partial v_{\phi}}{\partial z}  \right)+ \hat{e}_{\phi} \left( \frac{\partial v_{r}}{\partial z}  - \frac{\partial v_{z}}{\partial r} \right) + \hat{e}_z \left( \frac{\partial v_{\phi}}{\partial r}  + \frac{v_{\phi}}{r} - \frac{1}{r} \frac{\partial v_{r}}{\partial \phi}  \right)
+\end{align*}
+* Deformacijski tenzor \( u_{ij} \), napetostni tenzor \( p_{ij} \)
+
+Imamo točko \( \mathbf{x} = \left( x_1, x_2, x_3 \right) \) v snovi, ki jo deformiramo. Položaj deformacije točke bomo označili z \( \mathbf{x}' \), ki je definirana kot
+
+\[ \mathbf{x}' = \mathbf{x} + \mathbf{u} (\mathbf{x})
+\]
+
+Imejmo dve točki \( \mathbf{x}_1 \) in \( \mathbf{x}_2 \), za kateri velja
+
+\[ \mathbf{x}_2 = \mathbf{x}_1 + \mathrm{d} \mathbf{x}.
+\]
+
+Točki sta čisto malo narazen (zato \( \mathrm{d} \mathbf{x} \)).
+
+Snov deformiramo in novi točki deformacij sta \( \mathbf{x}_1' \) in \( \mathbf{x}_2' \). Ponovno velja
+
+\[ \mathbf{x}_2' = \mathbf{x}_1 ' + \mathrm{d} \mathbf{x}'.
+\]
+
+Zanima nas \( \mathrm{d} \mathbf{x}' \), zato
+
+\[ \mathrm{d} \mathbf{x}' = \mathbf{x}_2 - \mathbf{x}_1' = \mathbf{x}_2 + \mathbf{u}_2 - \mathbf{x}_1 - \mathbf{u}_1 = \mathrm{d} \mathbf{x} + \mathrm{d} \mathbf{u}.
+\]
+
+V indeksni reprezentaciji je
+
+\begin{equation}
+\label{eq:3}
+ \mathrm{d} l' ^2 = \mathrm{d} x' _i ^2 = \sum\limits_i^{} \mathrm{d} x' _i ^2 = \left( \mathrm{d} x_i + \mathrm{d} u_i \right) ^2
+\end{equation}
+
+Zanima nas razdalja po deformaciji in ker je bila deformacija majhna, lahko zapišemo \( \mathrm{d} u_i \) s pomočjo Taylorjevega razvoja
+
+\[ \mathrm{d} u_i = u_i \left( x_j + \mathrm{d} x_j \right) - u_i (x_j) = u_i (x_j) + \frac{\partial u_{i}}{\partial x_{j}} \mathrm{d} x_j - u_i (x_j) = \frac{\partial u_{i}}{\partial x_j} \mathrm{d} x_j
+\]
+
+Dobljen razvoj vstavimo v \ref{eq:3} in dobimo
+
+\[ \mathrm{d} l' ^2 = \mathrm{d} x_i ^2 + 2 \frac{\partial u_{i}}{\partial x_{j}} \mathrm{d} x_i \mathrm{d} x_j + \frac{\partial u_{i}}{\partial x_{j}}  \mathrm{d} x_j \frac{\partial u_{i}}{\partial x_{l}} \mathrm{d} x_l.
+\]
+
+Produkt, ki vsebuje ista indeksa, se imenuje nemi indeks in ga lahko nadomestimo z novim indeksom, zato
+
+\[ \mathrm{d} l ' ^2 = \mathrm{d} l ^2 + \frac{\partial u_{i}}{\partial x_{j}} \mathrm{d} x_i \mathrm{d} x_j + \frac{\partial u_{j}}{\partial x_{i}} \mathrm{d} x_i \mathrm{d} x_j + \frac{\partial u_k}{\partial x_j} \frac{\partial u_{l}}{\partial x_{i}} \mathrm{d}x_i \mathrm{d} x_j.
+\]
+
+Drugače lahko zapišemo
+
+\[ \mathrm{d} l ' ^2 = \mathrm{d} l ^2 + 2 \left\{ \frac{1}{2} \left( \frac{\partial u_{i}}{\partial x_{j}} + \frac{\partial u_{j}}{\partial x_{i}}  + \frac{\partial u_{k}}{\partial x_i} \frac{\partial u_{l}}{\partial x_{j}} \right) \mathrm{d}x_i \mathrm{d} x_j \right\} = \mathrm{d} l ^2 + 2 u_{ij} \mathrm{d} x_i \mathrm{d} x_j
+\]
+
+Deformacijski tenzor, ki ga bomo izpeljali na predavanjih je
+
+\[ u_{ij} = \frac{1}{2} \left( \frac{\partial u_{i}}{\partial x_{j}}  + \frac{\partial u_{j}}{\partial x_{i}}  + \frac{\partial u_{k}}{\partial x_{i}}  \frac{\partial u_{k}}{\partial  x_{j}}  \right),
+\]
+
+oziroma v prvem redu približka
+
+\[ u_{ij} \approx \frac{1}{2} \left( \frac{\partial u_{i}}{\partial x_{j}} + \frac{\partial u_{j}}{\partial x_{i}}  \right).
+\]
+
+Tenzor \( \underline{\underline{u}} \) lahko zapišemo tudi kot
+
+\[ \underline{\underline{u}} = \frac{1}{2} \left( \nabla \mathbf{u} + \left( \nabla \mathbf{u} \right)^T \right).
+\]
+
+Želimo izračunati gradient deformacije(?), ki je definiran s pomočjo tenzorskega produkta
+
+\[ \nabla \mathbf{u} = \left( \sum\limits_i^{} \hat{e}_i \frac{1}{h_i} \frac{\partial }{\partial q_{i}}  \right) \otimes \left( \sum\limits_j^{} u_j \hat{e}_j \right).
+\]
+
+Operiramo v sferičnih koordinatah, kjer je krajevni vektor
+
+\[ \mathbf{r} = r \sin \theta \cos\varphi \hat{e}_x + r \sin \theta \sin \varphi \hat{e}_y + r \cos \theta \hat{e}_z.
+\]
+
+Hitro lahko tudi poračunamo parcialne odvode:
+
+\begin{align*}
+ \frac{\partial \mathbf{r}}{\partial r}  &= \hat{e}_r  \\
+\frac{\partial \mathbf{r}}{\partial \theta} &= r \left( \cos \theta \cos \varphi \hat{e}_x + \cos \theta \sin \varphi \hat{e}_{\phi} - \sin \hat{e}_z \right) \\
+\frac{\partial \mathbf{r}}{\partial \varphi} &= r \left( - \sin \theta \sin \varphi \hat{e}_x + \sin \theta \cos \varphi \hat{e}_y \right)
+\end{align*}
+
+Pripadajoči skalni faktorji so
+
+\[ h_r = \left| \frac{\partial \mathbf{r}}{\partial r}  \right| = 1, \quad h_{\theta} = \left| \frac{\partial \mathbf{r}}{\partial \theta}  \right|= r, \quad h_{\phi} = \left| \frac{\partial \mathbf{r}}{\partial \varphi}  \right| = r \sin \theta
+\]
+
+Bazni vektorji v sferičnih koordinatah so tako
+
+\begin{align*}
+  \hat{e}_r &= \sin \theta \cos \phi \hat{e}_x + \sin \theta \sin \phi \hat{e}_y + \cos \theta \hat{e}_z \\
+\hat{e}_{\theta} &= \cos \theta \cos \phi \hat{e}_x + \cos \theta \sin \phi \hat{e}_y - \sin \theta \hat{e}_z \\
+\hat{e}_{\phi} &= - \sin \phi \hat{e}_x + \cos \phi \hat{e}_y
+\end{align*}
+
+Odvod baznih vektorjev po \( r \) je
+
+\[ \frac{\partial }{\partial r} \hat{e}_i = 0, \quad i \in \left\{ r, \theta, \phi \right\}.
+\]
+
+Odvod baznih vektorjev po \( \theta \) je
+
+\begin{align*}
+  \frac{\partial \hat{e}_{r}}{\partial \theta} &= \hat{e}_{\theta} \\
+\frac{\partial \hat{e}_{\theta}}{\partial \theta}  &= - \sin \theta \cos \phi \hat{e}_x - \sin \theta \sin \phi \hat{e}_y - \cos \theta \hat{e}_z = - \hat{e}_r \\
+\frac{\partial \hat{e}_{\phi}}{\partial \theta}  &= 0
+\end{align*}
+
+Nazadnje, še odvodi baznih vektorjev po \( \phi \) pa so
+
+\begin{align*}
+  \frac{\partial \hat{e}_{r}}{\partial \phi}  &= \hat{e}_{\phi} \sin \theta \\
+\frac{\partial \hat{e}_{\theta}}{\partial \phi}  &= - \cos \theta \sin \phi \hat{e}_x + \cos \theta \cos \phi \hat{e}_y = \cos \theta \hat{e}_{\phi} \\
+\frac{\partial \hat{e}_{\phi}}{\partial \phi} &= - \cos \phi \hat{e}_x - \sin \phi \hat{e}_y = - \sin \theta \hat{e}_r - \cos \theta \hat{e}_{\theta}
+\end{align*}
+
+Vrnimo se nazaj k računanju gradienta
+
+\[ \nabla \mathbf{u} = \left( \hat{e}_r \frac{\partial }{\partial r}  + \hat{e}_{\theta} \frac{1}{r} \frac{\partial }{\partial \theta} + \hat{e}_{\phi} \frac{1}{r \sin \theta} \frac{\partial }{\partial \phi} \right) \otimes \left( u_r \hat{e}_r + u_{\theta} \hat{e}_{\theta} + u_{\phi} \hat{e}_{\phi} \right)
+\]
+
+Pri odvajanju smo ponovno pozorni nato, da so tudi bazni vektorji tudi funkcije posameznih spremenljivk, zato
+
+\begin{align*}
+  \nabla \mathbf{u} &= \frac{\partial u_{r}}{\partial r}  \hat{e}_r \otimes \hat{e}_r + \frac{\partial v_{\theta}}{\partial r} \hat{e}_r \otimes \hat{e}_{\theta} + \frac{\partial u_{\phi}}{\partial r} \hat{e}_r \times \hat{e}_{\phi} + \frac{1}{r} \frac{\partial u_{r}}{\partial \theta} \hat{e}_{\theta} \otimes \hat{e}_r + \frac{u_r}{r} \hat{e}_{\theta} \otimes \hat{e}_{\theta} + \\
+&\quad + \frac{v_{\theta}}{r} \hat{e}_{\theta} \otimes \frac{\partial \hat{e}_{\theta}}{\partial \theta}  + \frac{1}{r} \frac{\partial u_{\phi}}{\partial r}  \hat{e}_{\theta} \otimes \hat{e}_{\phi} + \frac{1}{r \sin \theta} \frac{\partial u_{r}}{\partial \phi} \hat{e}_{\phi} \otimes \hat{e}_r + \frac{u_r}{r \sin \theta} \hat{e}_{\phi} \otimes \frac{\partial \hat{e}_{r}}{\partial \phi} + \\
+&\quad + \frac{1}{r \sin \theta} \frac{\partial u_{\phi}}{\partial \phi}  \hat{e}_{\phi} \otimes \hat{e}_{\theta} + \frac{u_{\theta}}{r \sin \theta} \hat{e}_{\phi} \otimes \frac{\partial \hat{e}_{\theta}}{\partial \phi} + \frac{1}{r \sin \theta} \frac{\partial u_{\phi}}{\partial \phi} \hat{e}_{\phi} \otimes \hat{e}_{\phi} + \frac{u_{\phi}}{\sin \theta} \hat{e}_{\phi} \otimes \frac{\partial \hat{e}_{\phi}}{\partial \phi}
+\end{align*}
+
+Diagonalni komponente tenzorja so
+
+\begin{align*}
+  u_{rr} &= \frac{\partial u_{r}}{\partial r}  \\
+u_{\theta \theta} &= \frac{1}{r} \frac{\partial u_{r}}{\partial \theta}  + \frac{u_r}{r} \\
+u_{\phi \phi} &= \frac{1}{r \sin \theta} \frac{\partial u_{\phi}}{\partial \phi} + \frac{u_r}{r} + \frac{u_{\theta}}{r \tan \theta}
+\end{align*}
+
+Hkrati pa je tenzor simetričen in so spodnje trikotne komponente:
+
+\begin{align*}
+  u_{r\theta} &= \frac{1}{2} \left( \frac{\partial u_{r}}{\partial r}  + \frac{1}{r} \frac{\partial u_{\theta}}{\partial \theta} - \frac{u_{\theta}}{r} \right) \\
+u_{r \phi} &= \frac{1}{2} \left( \frac{\partial u_{\phi}}{\partial r} + \frac{1}{r \sin \theta } \frac{\partial u_{\theta}}{\partial \phi} - \frac{1}{r} u_{\phi} \right)\\
+u_{\theta \phi} &= \frac{1}{2}
+\end{align*}
