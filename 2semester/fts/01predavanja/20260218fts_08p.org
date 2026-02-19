@@ -1,5 +1,5 @@
 #+title: Predavanja iz Fizike trdne snovi, 8. teden v letu
-#+subtitle: 2026/02/18
+#+subtitle: 2026/02/18 in 2026/02/19
 #+startup: nolatexpreview
 #+startup: entitiespretty nil
 #+startup: show2levels
@@ -111,7 +111,7 @@ Za poljuben vektor \( \mathbf{R} \) velja
 \[ \mathbf{R} \cdot \mathbf{A}_i = 2 \pi n_i.
 \]
 
-Vektor, ki bo zadoščal \ref{eq:1}, bo
+Minimalni valovni vektor, ki bo zadoščal \ref{eq:1}, bo
 
 \[ \mathbf{K} = k_1 \mathbf{A}_1 + k_2 \mathbf{A}_2 + k_3 \mathbf{A}_3, \, k_i \in \mathbb{Z}, i = 1, 2, 3.
 \]
@@ -141,3 +141,126 @@ Vektorji reciprožne mreže (?) so
 \[ \mathbf{A}_1 = \frac{2\pi}{a} (1, 1, -1), \quad \mathbf{A}_2 = \frac{2\pi}{a} (1, -1, 1), \quad \mathbf{A}_3 = \frac{2\pi}{a} (-1, 1, 1), \quad
 \]
 #+end_my_example
+* Mrežne ravnine in Millerjevi indeksi
+
+[vstavi definicijo mrežne ravnine]
+
+Če definiramo vektor \( \mathbf{K} = \frac{2\pi}{d} \hat{n} \), ki je pravokoten na mrežno ravnino, potem trdimo, da je del recipročne Bravaisove rešetke. Sočasno je ta vektor najmanjši možni vektor.
+
+Iz poljubne točke izberemo dve točki v različnih ravninah. Prva točka bo \( \mathbf{R}_1 \), druga točka pa bo \( \mathbf{R}_2 \). Točki povezuje vektor \( \mathbf{R}_2 - \mathbf{R}_1 \). Iz zgornjega poglavja vemo, da velja \( \mathbf{R} \cdot \mathbf{K} = c \).
+
+Posledično lahko za naši dve točki zapišemo
+
+\[ \mathbf{R}_1 \cdot \mathbf{K} = c_1 \quad \text{ in } \quad \mathbf{R}_2 \cdot \mathbf{K} = c_2.
+\]
+
+Za vektor, ki povezuje točki, pa potem velja
+
+\[ \left( \mathbf{R}_2 - \mathbf{R}_1 \right) \mathbf{K} = c_2 - c_1.
+\]
+
+Ob upoštevanju predpostavke definicije vektorja \( \mathbf{K} \), potem velja
+
+\[ \hat{n} \left( \mathbf{R}_2 - \mathbf{R}_1 \right) \frac{2 \pi}{d} = 2 \pi = c_2 - c_1,
+\]
+
+saj za naš konkretni problem velja, da je \( \hat{n} \left( \mathbf{R}_2 - \mathbf{R}_1 \right))) = d \) projekcija vektorja \( \left( \mathbf{R}_2 - \mathbf{R}_1 \right)) \) na \( \hat{n} \). Za našo skico je to ravno \( d \).
+
+Za poljubno drugo točko \( \mathbf{R}_i \), potem velja
+
+\[ \hat{n} \left( \mathbf{R}_i - \mathbf{R}_1 \right) \frac{2 \pi}{d} = k_i 2 \pi, \, k_i \in \mathbb{Z}
+\]
+
+Če razliko \( \mathbf{R}_i - \mathbf{R}_1 \) definiramo kot vektor \( \mathbf{R}_j \), potem zapišemo
+
+\[ \mathbf{R}_j \mathbf{K} = k_i 2 \pi
+\]
+** Millerjevi indeksi \( h, k, l \)
+
+Millerjevi indeksi definirajo najmanjši možni vektor recipročne mreže
+
+\begin{equation}
+\label{eq:2}
+ \mathbf{K} = h \mathbf{A}_1 + k \mathbf{A}_2 + l \mathbf{A}_3.
+\end{equation}
+
+Vzemimo za primer sc mrežo, primitivne vektorje smo definirali višje gor. Produkt vektorjev \( \mathbf{r} = x_1 \mathbf{a}_1 + x_2 \mathbf{a}_2 + x_3 \mathbf{a}_3 \) in \( \mathbf{K} \) bo enak \( c \). Hkrati bo tudi veljalo
+
+\begin{align*}
+  x_1 \mathbf{a}_1 \mathbf{K} &= x_1 h 2 \pi = c
+  x_2 \mathbf{a}_2 \mathbf{K} &= x_2 k 2 \pi = c \\
+  x_3 \mathbf{a}_3 \mathbf{K} &= x_3 l 2 \pi = c \\
+\end{align*}
+
+Zaključimo, da je razmerje
+
+\[ h : k : l = \frac{1}{x_1} : \frac{1}{x_2} : \frac{1}{x_3}
+\]
+
+#+begin_my_example
+Če vzamemo ravnino, ki ima normalo \( \hat{n} = \mathbf{a}_1 = (1, 0, 0) \), lahko vidimo iz razmerja (ker imamo deljenje z 0), da ravnin, ki jih definirata \( k \) in \( l \) ne bo sekalo (?).
+#+end_my_example
+
+#+begin_my_example
+Ravnina z normalo \( \hat{n} = (1, 0, 1) \) seka dva od treh ravnin.
+#+end_my_example
+
+#+begin_my_example
+Ravina z normalo \( \hat{n} = (1, 1, 1) \) seka vse tri ravnine.
+#+end_my_example
+* Sipanje na kristalu
+
+Karakteristična razdalja med delci je \( a_0 \sim 0.1 \mathrm{nm} \), kar pomeni, da mora biti tudi taka tudi valovna dolžina.
+
+Energija fotona mora potem biti
+
+\[ W_f = h \nu = \frac{h c}{\lambda} = \frac{1240 \mathrm{nm}}{0.1 \mathrm{nm}} \sim 12.4 \mathrm{keV}.
+\]
+
+To je razlog, zakaj potrebujemo žarke X, za sipanje na kristalu.
+** Braggovo sipanje
+
+[vstavi sliko Braggovega sipanja (pravokotnici označuje razliko poti)]
+
+Dejansko se fotoni sipajo na elektronski oblakih posamezne molekule. Žarki X se odbijejo od mrežnih ravnin po odbojnem zakonu.
+
+Lomni količnik med mrežnimi ravninami je \( n \approx 1 \).
+
+Iz skice lahko odčitamo pogoj za ojačitev
+
+\[ 2d \sin \theta = n \lambda,
+\]
+
+kjer je \( d \) razdalja med mrežnima ravninama, pa \( \theta \) vpadni kot
+** Von Laue sipanje
+
+[vstavi skico]
+
+Razlika poti med zgornjim in spodnjim žarkom je
+
+\[ d \cos \theta_1 + d \cos \theta_2 = m \lambda.
+\]
+
+Foton predstavimo z ravnim valov oblike \( \mathbf{k} = \frac{2 \pi}{\lambda} \hat{n} \), odbiti žarek pa opišemo z \( \mathbf{k}' = \frac{2 \pi}{\lambda} \hat{n}' \), ob pogoju, da se valovna dolžina ne spremeni.
+
+Vektorsko lahko torej zapišemo
+
+\[ \mathbf{d} \left( \hat{n} - \hat{n}' \right) = m \lambda.
+\]
+
+Zgornjo enačbo želimo zapisati z valovnim vektorjem, zato množimo z \( \frac{2 \pi}{\lambda} \), da dobimo
+
+\[ \mathbf{d} \left( \mathbf{k} - \mathbf{k}' \right) = 2 \pi m.
+\]
+
+Pojdimo naprej, zahtevamo, da to velja za vsak \( \mathbf{d} \), ki je del Bravaisove rešetke. Matematično
+
+\[ \forall \mathbf{R} = \forall \mathbf{d} \in B. R.
+\]
+
+Zgornje velja natanko takrat, ko \( \mathbf{k} - \mathbf{k}' = \mathbf{K} \),
+
+\[ \mathbf{R} \mathbf{K} = 2 \pi m.
+\]
+
+Naslednji teden dokazujemo, da je von Laueov pogoj ekvivalenten Braggovem pogoju.
