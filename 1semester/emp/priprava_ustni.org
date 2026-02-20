@@ -7,6 +7,9 @@
 #+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
 #+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
 #+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Neobdelano
+** TODO Earnshawyjev teorem
+** TODO Thomsonov problem
 * Elektrostatika
 ** 1. vprašanje
  #+begin_problem
@@ -516,3 +519,127 @@ V zgornji vrstici lahko upoštevamo Gaussov izrek, na desni strani pa integracij
 
 \[ \phi (\mathbf{r}') = \int\limits_V^{} \rho(\mathbf{r}') G \left( \mathbf{r} - \mathbf{r}' \right) + \epsilon_0 \int\limits_{\partial V}^{} \left( \mathbf{n}' \cdot \nabla_{\mathbf{r}'} \phi(\mathbf{r}')  \right) G \left( \mathbf{r} - \mathbf{r}' \right)- \left( \mathbf{n}' \cdot \nabla_{\mathbf{r}'} G (\mathbf{r} - \mathbf{r}') \phi(\mathbf{r}') \right) \, \mathrm{d} ^2 \mathbf{r}
 \]
+** 5. vprašanje
+#+begin_problem
+Uvedi in razloži 
+a) elektrostatsko energijo nabojev v zunanjem polju 
+b) celotno energijo polja, ki ga neka gostota nabojev ustvarja.
+
+Celotno energijo polja prepiši v odvisnosti samo od gostote naboja in samo od električnega polja in dobljeno komentiraj.
+#+end_problem
+*** Elektrostatska energija naboja v zunanjem polju
+
+Imamo testni (čuti polje, vendar ga sam ne ustvarja) točkasti naboj v elektrostatskem polju \( \mathbf{E} \) s pripadajočim potencialom \( \phi \).
+
+Zanima nas, koliko elektrostatske energije ima naboj kot posledica tega, da se nahaja v elektrostatskem polju \( \mathbf{E} \)?
+
+Na naboj deluje električna sila \( \mathbf{F}_e = e \mathbf{E} \). Zanima nas delo \( A \), ki smo ga opravili, da smo naboj postavili na dano mesto. Premik naboja povzročim z obratno nasprotno silo električni. Delo je po definiciji
+
+\[ \mathrm{d} A = - \mathbf{F}_e \cdot \mathrm{d} \mathbf{r} = - e \mathbf{E} \cdot \mathrm{d} \mathbf{r} = e \nabla \phi \cdot \mathrm{d} \mathbf{r}.
+\]
+
+Če ni nobenih drugi izgub energije, potem bo delo potrebno, da delec premaknemo iz točke (1) v točko (2), razlika energij
+
+\[ A = \int\limits_{(1)}^{(2)} \, \mathrm{d} A = W(2) - W(1) = \int\limits_{(1)}^{(2)} e \nabla \phi \cdot \mathrm{d} \mathbf{r} = e \left( \phi(2) - \phi(1) \right).
+\]
+
+Elektrostatska energija naboja v zunanjem polju je tako
+
+\[ W = e \phi. 
+\]
+
+V primeru zvezno porazdeljenega naboja pa je taista energija
+
+\[ W = \int\limits_V^{} \rho(\mathbf{r}) \phi(\mathbf{r}) \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Recap: \( \rho(\mathbf{r}) \) je električni naboj v zunanjem električnem polju \( \mathbf{E} \), ki ima potencial \( \phi(\mathbf{r}) \). To električno polje nima nobene veze z našo gostoto el. nabojev, ampak je npr. posledica drugi el. nabojev, ki so poljubno daleč stran.
+
+*** Celotna energija polja 
+
+Imamo poljuben volumen, ki ima zvezno porazdelitev naboja \( \rho(\mathbf{r}) \). Ta volumen ustvari električno polje \( \mathbf{E}(\mathbf{r}) \) in pripadajoč potencial \( \phi(\mathbf{r}) \).
+
+Uporabili bomo dejstvo, da je za konstanto \( \alpha \in [0, 1] \) Poissonova enačba linearna. Torej velja
+
+\[ \nabla ^2 \left( \alpha \phi (\mathbf{r}) \right) = - \frac{\alpha \rho(\mathbf{r})}{\epsilon_0}.
+\]
+
+V mislih bomo parameter nabijanja \( \alpha \) povečevali iz \( 0 \) do \( 1 \) in s tem nabili naboje od \( 0 \) do \( \rho(\mathbf{r}) \). Majhna sprememba naboja je torej
+
+\[ \mathrm{d} \rho = \rho \mathrm{d} \alpha.
+\]
+
+Uporabimo enačbo za elektrostatsko energijo naboja v zunanjem polju
+
+\[ \int\limits_0^{W}\mathrm{d} W = \iint\limits_{}^{} \phi(\mathbf{r}) \mathrm{d} \rho(\mathbf{r}) \, \mathrm{d} ^3 \mathbf{r} = \int\limits_0^1 \int\limits_V^{} \rho(\mathbf{r}) \alpha \phi(\mathbf{r}) \, \mathrm{d} ^3 \mathbf{r} \, \mathrm{d} \alpha.
+\]
+
+Za razliko od prejšnjega poglavja je v tem primeru potencial \( \phi(\mathbf{r}) \) ustvarjen s strani \( \rho(\mathbf{r}) \) v isti enačbi.
+
+Dobimo torej enačbo
+
+\[ W = \int\limits_0^1 \alpha \, \mathrm{d} \alpha  \int\limits_V^{} \rho(\mathbf{r}) \phi(\mathbf{r}) \, \mathrm{d} \mathbf{r} = \frac{1}{2} \int\limits_V^{} \rho(\mathbf{r}) \phi(\mathbf{r}) \, \mathrm{d} ^3 \mathbf{r}
+\]
+*** Elektrostatska energija polja kot funkcional gostote naboja
+
+Greenova enačba nam pove, da potencial zapišemo kot
+
+\[ \phi(\mathbf{r}) = \frac{1}{4 \pi \epsilon_0} \int\limits_V^{} \frac{\rho(\mathbf{r}')}{\left| \mathbf{r} - \mathbf{r}' \right|} \, \mathrm{d} ^3 \mathbf{r}'. 
+\]
+
+Celotno energijo polja tako lahko zapišemo
+
+\[ W = \frac{1}{8 \pi \epsilon_0} \int\limits_V^{} \int\limits_{V}^{} \frac{\rho(\mathbf{r}) \rho(\mathbf{r}')}{\left| \mathbf{r} - \mathbf{r}' \right|} \, \mathrm{d} ^3 \mathbf{r} \, \mathrm{d} ^3 \mathbf{r}' 
+\]
+*** Gostota elektrostatske energije polja
+
+Prva Maxwellova enačba se glasi
+
+\[ \nabla \cdot \mathbf{E} (\mathbf{r})= \frac{\rho(\mathbf{r})}{\epsilon_0}. 
+\]
+
+Gostoto električnega naboja v celotno energiji polja torej lahko zapišemo kot
+
+\[ W = \frac{1}{2} \epsilon_0 \int\limits_V^{} \left(\nabla \cdot \mathbf{E}\right) \, \phi \, \mathrm{d} ^3 \mathbf{r}
+\]
+
+Uporabimo identiteto
+
+\[ \nabla \cdot \left( f \mathbf{g} \right) = \left( \nabla f \right) \cdot \mathbf{g} + f \left( \nabla \cdot \mathbf{g} \right),
+\]
+
+kjer je \( f \) skalarna, \( \mathbf{g} \) pa vektorska funkcija. Zapišemo torej
+
+\[ W = \frac{1}{2} \epsilon_0 \left[ \int\limits_V^{} \nabla \cdot \left( \phi \mathbf{E} \right) \, \mathrm{d} ^3 \mathbf{r} - \int\limits_V^{} \left( \nabla \phi \right)\cdot \mathbf{E} \, \mathrm{d} ^3 \mathbf{r} \right] 
+\]
+
+Integral pretvorimo s pomočjo Gaussovega zakona in definicije električnega potenciala
+
+\[ W = \frac{1}{2} \epsilon_0 \int\limits_{\partial V}^{} \phi \mathbf{E} \, \mathrm{d} \mathbf{S} + \frac{1}{2} \epsilon_0 \int\limits_V^{} \mathbf{E} \cdot \mathbf{E} \, \mathrm{d} ^3 \mathbf{r} 
+\]
+
+Za dovolj velik volumen integracije bo površinski integral neničeln, saj \( \phi \propto r^{-1} \), \( \mathbf{E} \propto r^{-2} \) in \( \mathrm{d} \mathbf{S} \propto r ^2 \). Posledično
+
+\[ \int\limits_{\partial V}^{} \phi \mathbf{E} \, \mathrm{d} \mathbf{S} \propto \int\limits_{\partial V}^{} \frac{1}{r} \frac{1}{r ^2} \cdot r ^2 \, \mathrm{d} r \overset{r \to \infty}{\longrightarrow} 0
+\]
+
+Izraz za energijo električnega polja je
+
+\[ W = \frac{\epsilon_0}{2} \int\limits_V^{} E ^2 (\mathbf{r}) \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Gostota elektrostatske energije polja je torej
+
+\[ w = \frac{1}{2} \epsilon_0 E ^2.
+\]
+
+S tem postopanjem smo iz računa za energijo popolnoma odstranili izvore električnega polja in ga nadomestili s samim električnim poljem.
+
+** 6. vprašanje
+#+begin_problem
+Formuliraj elektrostatsko silo na poljubno nabito telo, ki se nahaja v zunanjem polju, z uoprabo samo električnega polja in nato uvedi napetostni tenzor električnega polja. Uporabo napetostnega tenzorja nato ilustriraj na primeru sile med dvema točkastima nabojema.
+#+end_problem
+** 7. vprašanje
+#+begin_problem
+Pokaži in razloži multipolni razvoj električnega potenciala in elektrostatske energije do dipolnega člena. Kakšna je interakcija med dvema telesoma, ki imata neničeln naboj in električni dipolni moment kot funkcija razdalje med telesoma? Kakšna je sila in navor (v multipolni sliki) na telo v zunanjem električnem polju?
+#+end_problem
