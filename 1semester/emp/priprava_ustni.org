@@ -2,7 +2,7 @@
 #+startup: nolatexpreview
 #+startup: entitiespretty nil
 #+startup: show2levels
-#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx} \usepackage{bm}
 #+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
 #+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
 #+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
@@ -637,9 +637,184 @@ S tem postopanjem smo iz računa za energijo popolnoma odstranili izvore elektri
 
 ** 6. vprašanje
 #+begin_problem
-Formuliraj elektrostatsko silo na poljubno nabito telo, ki se nahaja v zunanjem polju, z uoprabo samo električnega polja in nato uvedi napetostni tenzor električnega polja. Uporabo napetostnega tenzorja nato ilustriraj na primeru sile med dvema točkastima nabojema.
+Formuliraj elektrostatsko silo na poljubno nabito telo, ki se nahaja v zunanjem polju, z uporabo samo električnega polja in nato uvedi napetostni tenzor električnega polja. Uporabo napetostnega tenzorja nato ilustriraj na primeru sile med dvema točkastima nabojema.
 #+end_problem
+*** Elektrostatska sila na poljubno nabito telo v zunanjem el. polju
+
+Imamo poljubno nabito telo z volumnom \( V \) in zvezno porazdelitvijo naboja \( \rho(\mathbf{r}) \). To telo ima lastno električno polje \( \mathbf{E}_{\rho} \), hkrati pa se nahaja v zunanjem električnem polju \( \mathbf{E}_{zun} \).
+
+Sila na zvezno porazdelitev naboja je
+
+\[ \mathbf{F} = \int\limits_V^{} \rho(\mathbf{r}) \mathbf{E}_{zun}(\mathbf{r}) \, \mathrm{d} ^3 \mathbf{r} = \int\limits_V^{} \rho(\mathbf{r}) \mathbf{E}(\mathbf{r}) \, \mathrm{d} ^3 \mathbf{r},
+\]
+
+kjer je \( \mathbf{E} = \mathbf{E}_{\rho} + \mathbf{E}_{zun} \) celotno polje. Izbrali smo lahko tak napis, saj električna sila ne deluje na ustvarjalca te sile - telesa z \( \rho \). Z drugimi besedami \( \int_V^{} \rho(\mathbf{r}) E_{\rho} \, \mathrm{d} ^3 \mathbf{r} =0 \).
+
+Upoštevamo prvo Maxwellovo enačbo za nabito telo
+
+\[ \nabla \cdot \mathbf{E}_{\rho} = \nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0},
+\]
+
+kjer smo upoštevali, da je \( \nabla \cdot \mathbf{E}_{zun} = 0 \), saj so naboji, ki ustvarjajo to polje neskončno daleč.
+
+Sila je torej
+
+\[ \mathbf{F}(\mathbf{r}) = \epsilon_0 \int\limits_V^{} \left( \nabla \cdot \mathbf{E}(\mathbf{r}) \right) \mathbf{E} \, \mathrm{d} ^3 \mathbf{r}
+\]
+
+Upoštevamo identiteto
+
+\[ \nabla \cdot \left( \mathbf{E} \otimes \mathbf{E} \right) = \mathbf{E} \left( \nabla \cdot \mathbf{E} \right) - \left( \mathbf{E} \cdot \nabla \right) \mathbf{E},
+\]
+
+da silo zapišemo kot
+
+\[ \mathbf{F}(\mathbf{r}) = \epsilon_0 \int\limits_V^{} \nabla \cdot \left( \mathbf{E} \otimes \mathbf{E} \right) \, \mathrm{d} ^3 \mathbf{r} + \epsilon_0 \int\limits_V^{} \left( \mathbf{E} \cdot \nabla \right) \mathbf{E} \, \mathrm{d} ^3 \mathbf{r}
+\]
+
+#+begin_note
+\( \otimes \) je operacija tenzorskega produkta. Tenzorski produkt za vektorja \( \mathbf{a} = (a_1, a_2, a_3) \) in \( \mathbf{b} = (b_1, b_2, b_3) \) je \( 3\times3 \) matrika, kjer je \( ij \)-ti element matrike
+
+\[ \left( \mathbf{a} \otimes \mathbf{b} \right)_{ij} = a_i \cdot b_j
+\]
+#+end_note
+
+V prvem integralu upoštevamo Gaussov izrek in pretvorimo volumnski integral na integral po zaključeni ploskvi.
+
+\[ \mathbf{F}(\mathbf{r}) = \epsilon_0 \oint\limits_{\partial V}^{} \left( \mathbf{E} \otimes \mathbf{E} \right) \, \mathrm{d} ^3 \mathbf{r} + \epsilon_0 \int\limits_V^{} \left( \mathbf{E} \cdot \nabla \right) \mathbf{E} \, \mathrm{d} ^3 \mathbf{r}
+\]
+
+Silo lahko nadalje pretvorimo še z identiteto
+
+\[ \frac{1}{2} \nabla \left( E ^2 \right) = \left( \mathbf{E} \cdot \nabla \right) \mathbf{E} + \mathbf{E} \times \left( \nabla \times \mathbf{E} \right) = \left( \mathbf{E} \cdot \nabla \right) \mathbf{E},
+\]
+
+kjer smo upoštevali brezvrtinčnosti električnega polja. Sila bo torej
+
+\[ \mathbf{F} (\mathbf{r}) = \epsilon_0 \oint\limits_{\partial V}^{} \left( \mathbf{E} \otimes \mathbf{E} \right) \, \mathrm{d} \mathbf{S} - \frac{\epsilon_0}{2} \int\limits_V^{} \nabla E ^2 \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Ponovno upoštevamo Gaussov izrek ter upoštevamo, da je diferencial površine \( \mathrm{d} \mathbf{S} \) enako usmerjen kot normala površine \( \hat{n} \, \mathrm{d} S \).
+
+\[ \mathbf{F} (\mathbf{r}) = \epsilon_0 \oint\limits_{\partial V}^{} \left[ \mathbf{E}\left( \mathbf{E} \cdot \hat{n} \right) - \frac{1}{2} \underline{\underline{I}} E ^2 \hat{n} \right] \, \mathrm{d} S
+\]
+
+kjer smo upoštevali \( \mathbf{E}\otimes \mathbf{E} \, \mathrm{d} \mathbf{S} = \mathbf{E} \left( \mathbf{E} \cdot \hat{n} \right) \, \mathrm{d} S \).
+
+\( \mathbf{E} \) je celotno električno polje, \( \underline{\underline{I}} \) identiteta in \( \hat{n} \) normala na površino.
+*** Napetostni tenzor električnega polja
+
+Dobljen zapise sile v električnem polju zapišemo z uvedbo napetostnega tenzorja električnega polja
+
+\[ F_i = \int\limits_{\partial V}^{} T_{ik} n_k \, \mathrm{d} S, \quad T_{ik} = \epsilon_0 \left( E_i \cdot E_k - \frac{1}{2} E ^2 \delta_{ik} \right),
+\]
+
+kjer je \( T_i \) napetostni tenzor električnega polja.
+
+Za poljuben tenzor velja Gaussov izrek
+
+\[ \int\limits_V^{} \frac{\partial }{\partial x_{k}} T_{ik} \, \mathrm{d} ^3 \mathbf{r} = \oint\limits_{\partial V}^{} T_{ik} n_k \, \mathrm{d} S.
+\]
+
+Uvedemo volumnsko gostoto sile \( f_i \)
+
+\[ f_i = \frac{\partial }{\partial x_{k}} T_{ik}
+\]
+*** Primer električne sile
+
+[[file:01predavanja_zapiski/figures/EMP_ustni_tenzorSila_7vprasanje.png]]
+
+Električna naboja istega predznaka postavimo na razdalji \( 2a \).
+
+Problem bomo reševali v cilindričnih koordinatah, kjer je os \( z \) na zveznici med nabojema (vzporedna normali na sliki), os \( \rho \) pa je nanjo pravokotna. Izhodišče postavimo na točko v sredini med nabojema.
+
+Zaradi simetrije problema za električno polje velja
+
+\[ E_z = 0 \quad \text{ in } \quad \mathbf{E}_{\rho} \ne 0.
+\]
+
+Na simetrijski ravnini ima polje vrednost
+
+\[ \mathbf{E}_{\rho} = \frac{e}{4 \pi \epsilon_0 r ^2} \frac{\bm{\rho}}{r} + \frac{e}{4 \pi \epsilon_0 r ^2} \frac{\bm{\rho}}{r} = \frac{e}{2 \pi \epsilon_0 r ^2} \frac{\bm{\rho}}{r},
+\]
+
+kjer je \( \bm{\rho} = (x, y) \) in \( r = \sqrt{\rho ^2 + a ^2}\).
+
+Za integracijo si izberemo ravnino \( z = 0 \), ki jo zaključimo s polkroglo v spodnji polovici prostora. Prispevek te krogle je v limiti \( r \to \infty \) ničeln. Sila je tako
+
+\[ F_z = \epsilon_0 \oint\limits_{}^{} E_z \left( \mathbf{E} \cdot \hat{n} \right) \, \mathrm{d} S - \frac{\epsilon_0}{2} \oint\limits_{}^{} E ^2 \, \mathrm{d} S = - \frac{\epsilon_0}{2} \int\limits_{}^{} \mathbf{E}_{\rho} ^2 \, \mathrm{d} S
+\]
+
+Upoštevamo vrednost električnega polja in preidemo v cilindrične koordinate, da pridobimo rezultat
+
+\[ F_z = - \frac{\epsilon_0}{2} \int\limits_{}^{} \frac{4 e ^2 \rho ^2}{\left( 4 \pi \epsilon_0 \right) ^2 r ^6} 2 \pi \rho \, \mathrm{d} \rho = - \frac{e ^2}{4 \pi \epsilon_0 \left( 2 a \right) ^2}
+\]
 ** 7. vprašanje
 #+begin_problem
 Pokaži in razloži multipolni razvoj električnega potenciala in elektrostatske energije do dipolnega člena. Kakšna je interakcija med dvema telesoma, ki imata neničeln naboj in električni dipolni moment kot funkcija razdalje med telesoma? Kakšna je sila in navor (v multipolni sliki) na telo v zunanjem električnem polju?
+#+end_problem
+*** Multipolni razvoj električnega potenciala
+Električni potencial za poljubno zvezno porazdelitev nabojev je
+
+\[ \phi(\mathbf{r}) = \int\limits_{}^{} \frac{\rho(\mathbf{r})}{4 \pi \epsilon_0 \left| \mathbf{r} - \mathbf{r}' \right|} \, \mathrm{d} ^3 \mathbf{r}'.
+\]
+
+Predpostavimo, da je polje daleč stran od izvorov, ki so hkrati omejeni na volumen \( V_0 \). H električnemu potencialu prispevajo zgolj \( \mathbf{r}' \in V_0 \), ampak zaradi oddaljenosti velja \( \left| \mathbf{r} - \mathbf{r}' \right| \approx \left| \mathbf{r} \right|\).
+
+#+begin_note
+  Taylorjeva vrsta za vektorje je enaka
+
+  \[ f \left( \mathbf{r} + \mathbf{h} \right) = f(\mathbf{r}) + \mathbf{h} \cdot \nabla f(\mathbf{r} ) + \frac{1}{2} \mathbf{h} H \left( f (\mathbf{r}) \right) \cdot \mathbf{h} + \ldots
+  \]
+
+  kjer velja \( \mathbf{r} \gg \mathbf{h} \) in je \( H \left( f(\mathbf{r}) \right) \) Hessejeva matrika.
+#+end_note
+
+Zapišemo Taylorjevo vrsto po potencah \( \mathbf{r}' \)
+
+\[ \frac{1}{\left| \mathbf{r} - \mathbf{r}' \right|} = \frac{1}{\mathbf{r}} - \mathbf{r}' \cdot \nabla \frac{1}{\left| \mathbf{r} \right|} + \ldots = \frac{1}{\mathbf{r}} + \mathbf{r}' \frac{\mathbf{r}}{r ^3}
+\]
+
+Električni potencial bo v tem primeru
+
+\[ \phi(\mathbf{r}) = \frac{1}{4 \pi \epsilon_0 \left| \mathbf{r} \right|} \int\limits_{V_0}^{} \rho(\mathbf{r}') \, \mathrm{d} ^3 \mathbf{r} + \frac{\mathbf{r}}{4 \pi \epsilon_0 r ^3} \int\limits_{V_0}^{} \mathbf{r}' \rho(\mathbf{r}') \, \mathrm{d} ^3 \mathbf{r}' + \ldots
+\]
+
+Drugače lahko to zapišemo kot
+
+\[ \phi(\mathbf{r}) = \frac{e}{4 \pi \epsilon_0 r} + \frac{\mathbf{r} \cdot \mathbf{p}_e}{4 \pi \epsilon_0 r ^3}  + \ldots,
+\]
+
+kjer je celotni naboj
+
+\[ e = \int\limits_{V_0}^{} \rho(\mathbf{r}') \, \mathrm{d} ^3 \mathbf{r}'
+\]
+
+in dipolni moment porazdelitve naboja je
+
+\[ \mathbf{p}_e = \int\limits_{V_0}^{} \mathbf{r}' \rho(\mathbf{r}') \, \mathrm{d} ^3 \mathbf{r}'
+\]
+
+Enačbi pravimo multipolni razvoj električnega potenciala.
+
+V sferičnih koordinatah \( r, \phi, \theta \) velja
+
+\[ \phi(\mathbf{r}) = \frac{1}{4 \pi \epsilon_0} \sum\limits_{l = 0}^{\infty} \sum\limits_{m = -l}^l \frac{4 \pi}{2l + 1} \frac{q_{lm}}{r^{l + 1}} Y_{lm} (\theta, \phi),
+\]
+
+kjer so \( Y_{lm} (\theta, \phi) \) sferični harmoniki in \( q_{lm} \) multipolni momenti
+
+\[ q_{lm} = \int\limits_{V_0}^{} \rho(\mathbf{r}') r'^l Y_{lm} (\theta', \phi') \, d ^3 \mathbf{r}'
+\]
+*** Multipolni razvoj elektrostatske energije
+*** Polje in potencial točkastega električnega dipola
+*** Sila in navor v zunanjem električnem polju
+* Magnetostatika
+** 8. vprašanje
+#+begin_problem
+Uvedi in razloži Amperovo silo med poljubnima tokovnima vodnikoma in nato pokaži ter zapiši Biot-Savartov zakon za magnetno polje. Opiši tipične velikosti magnetnega polja. Kakšna je značilna lastnost magnetnih silnic, posebej v primerjavi z električnimi silnicami?
+#+end_problem
+** 9. vprašanje
+#+begin_problem
+Uvedi magnetni pretok in razloži, koliko je pretok skozi zaključeno zanko. Zapiši in uvedi Amperov izrek v integralni in diferencialni obliki in ga razloži.
 #+end_problem
