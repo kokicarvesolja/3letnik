@@ -1,0 +1,76 @@
+#+title: Predavanja iz Mehanike kontinuov, 9. teden v letu
+#+subtitle: 2026/02/23
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Opis deformacije
+
+Definirajmo deformacijo. To bomo storili s pomočjo premika, ki ga lahko razdelimo na translacijo, rotacijo in na koncu deformacijo. Translacijo opišemo s točkastim telesom, rotacijo s togim telesom in deformacijo z *elastičnim* telesom.
+
+Elastoviskoznost je odvisno od opazovalnega časa. Kot primer je bil naveden Silly patty, kjer deluje kot skokica ob metu na tla (elastičnost), če pa je položeno na mizo, bo začela sčasoma se razlivati (viskoznost).
+
+Referenčno, nedeformirano stanje označimo z \( \mathbf{r} \), deformirano stanje pa z \( \mathbf{R}(\mathbf{r}) \). Razliki teh dveh vektorjev pravimo vektor premika \( \mathbf{u}(\mathbf{r}) \). Deformirano stanje je torej
+
+\[ \mathbf{R}(\mathbf{r}) = \mathbf{r} + \mathbf{u}(\mathbf{r}).
+\]
+
+Vektor premika \( \mathbf{u}(\mathbf{r}) \) zajema vse tri točke, ki spadajo pod premik - translacija, rotacija in deformacija. Iz vektorja premika moramo odfiltrirati translacijo in rotacijo. V primeru translacije je vektor premika enak po vseh točkah telesa. Za izluščitev translacije bomo opazovali odvod \( \mathbf{u} \). Pri rotaciji vektor premika ni enak, vendar so točke na enaki razdalji ves čas.
+
+Opazujemo razdalji med točkama v telesu. V nedeformiranem telesu si izberem dve poljubni točki \( \mathbf{r}_1 \) in \( \mathbf{r}_2 \), ki sta za \( \mathrm{d} \mathbf{r} = \mathbf{r}_2 - \mathbf{r}_1 \) narazen. V deformiranem telesu pa sta te dve isti točki \( \mathbf{R}_1 \) in \( \mathbf{R}_2 \), z razdaljo \( \mathrm{d} \mathbf{R} = \mathbf{R}_2 - \mathbf{R}_1 \).
+
+Izračunajmo razdaljo pred deformacijo in uvedimo Einsteinovo indeksno notacijo
+
+\[ \mathrm{d} l ^2 = \mathrm{d} \mathbf{r} ^2 = \mathrm{d} \mathbf{r} \cdot \mathrm{d} \mathbf{r} = \mathrm{d} x_1 ^2 + \mathrm{d} x_2 ^2 +  \mathrm{d} x_3 ^2.
+\]
+
+Z vsoto zapišemo
+
+\[ \sum\limits_{i = 1}^3 \mathrm{d} x_i ^2 \to \mathrm{d} x_i \mathrm{d} x_i = \mathrm{d} x_i ^2.
+\]
+
+(Ponovljen indeks pomeni vsoto po njem).
+
+Razdalja po deformaciji je enaka
+
+\[ \mathrm{d} L ^2 = \mathrm{d} \mathbf{R} ^2 = \mathrm{d} \mathbf{R} \cdot \mathrm{d} \mathbf{R} = \mathrm{d} X_i \mathrm{d} X_i,
+\]
+
+kjer je \( X_i \) komponenta \( \mathrm{d} \mathbf{R} \).
+
+Razdaljo po deformaciji lahko zapišemo s pomočjo vektorja premika, ki je odvisen od prostorskih koordinat
+
+\[ \mathrm{d} \mathbf{R} = \mathrm{d} \mathbf{r} + \mathrm{d} \mathbf{u}  = \mathrm{d} \mathbf{r} + \frac{\partial \mathbf{u}}{\partial \mathbf{r}}  \cdot \mathrm{d} \mathbf{r}.
+\]
+
+Parcialni odvod v sumacijskem indeksu zapišemo kot
+
+\[ \frac{\partial \mathbf{u}}{\partial \mathbf{r}}  \cdot \mathrm{d} \mathbf{r} = \sum\limits_{k = x, y, z}^{} \frac{\partial u_{i}}{\partial x_{k}} \, \mathrm{d} x_k = \frac{\partial u_{i}}{\partial x_{k}} \mathrm{d} x_k
+\]
+
+V tem primeru imamo vsoto po koordinatah in posledično je nemi indeks (aka seštejemo in izginejo). V produktu razdalje zato uporabimo dva indeks \( k \) in \( j \). Torej
+
+\[ \mathrm{d} L ^2 = \left( \mathrm{d} x_i + \frac{\partial u_{i}}{\partial x_{k}} \mathrm{d} x_k \right) \left( \mathrm{d} x_i + \frac{\partial u_{i}}{\partial x_{j}} \mathrm{d} x_j \right).
+\]
+
+Produkt oklepajev nam poda
+
+\[ \mathrm{d} L ^2 = \left( \mathrm{d} x_i ^2 + \frac{\partial u_{i}}{\partial x_{j}} \mathrm{d} x_i \mathrm{d} x_j + \frac{\partial u_{i}}{\partial x_{k}} \mathrm{d} x_i \mathrm{d} x_k + \frac{\partial u_{i}}{\partial x_{j}}  \frac{\partial u_{i}}{\partial x_{k}} \mathrm{d} x_j \mathrm{d} x_k \right)
+\]
+
+Vse indeksi se ponovijo, torej so nemi. Zato lahko opravimo zamenjavo, kjer je cilj, da povsod lahko izpostavilo \( \mathrm{d} x_i \mathrm{d} x_k \).
+
+\begin{align*}
+  \text{drugi člen} &\quad j\to k \\
+\text{tretji člen} &\quad k \to i, \ i \to k \\
+\text{četrti člen} &\quad i \to l, \ j \to i
+\end{align*}
+
+Sprememba kvadrata razdalje med bližnjima točkama je
+
+\[ \mathrm{d} L ^2 - \mathrm{d} l ^2 = \left( \frac{\partial u_{i}}{\partial x_{k}}  + \frac{\partial u_{k}}{\partial x_{i}}  + \frac{\partial u_{l}}{\partial x_{i}} \frac{\partial u_{l}}{\partial x_{k}}  \right) \mathrm{d} x_i \mathrm{d} x_k
+\]
