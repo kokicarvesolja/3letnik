@@ -72,5 +72,183 @@ Vse indeksi se ponovijo, torej so nemi. Zato lahko opravimo zamenjavo, kjer je c
 
 Sprememba kvadrata razdalje med bližnjima točkama je
 
-\[ \mathrm{d} L ^2 - \mathrm{d} l ^2 = \left( \frac{\partial u_{i}}{\partial x_{k}}  + \frac{\partial u_{k}}{\partial x_{i}}  + \frac{\partial u_{l}}{\partial x_{i}} \frac{\partial u_{l}}{\partial x_{k}}  \right) \mathrm{d} x_i \mathrm{d} x_k
+\[ \mathrm{d} L ^2 - \mathrm{d} l ^2 = \left( \frac{\partial u_{i}}{\partial x_{k}}  + \frac{\partial u_{k}}{\partial x_{i}}  + \frac{\partial u_{l}}{\partial x_{i}} \frac{\partial u_{l}}{\partial x_{k}}  \right) \mathrm{d} x_i \mathrm{d} x_k,
 \]
+
+kjer uvedemo deformacijski tenzor
+
+\[ 2 u_{ik} =  \left( \frac{\partial u_{i}}{\partial x_{k}}  + \frac{\partial u_{k}}{\partial x_{i}}  + \frac{\partial u_{l}}{\partial x_{i}} \frac{\partial u_{l}}{\partial x_{k}}  \right).
+\]
+
+Deformacijski tenzor vsebuje odvode, kar nam potrdi idejo odfiltriranja translacije.
+
+Razmislimo še o odfiltriranu rotacije iz premika. Matematično rotacijo zapišemo
+
+\[ \begin{bmatrix} x_{1} \\ x_{2} \\ x_{3} \end{bmatrix} = \begin{bmatrix}
+                                                           \cos \phi & - \sin \phi &  \\
+                                                           \sin \phi & \cos \phi &  \\
+                                                            &  & 1
+                                                           \end{bmatrix} \begin{bmatrix} x_{1} \\ x_{2} \\ x_{3} \end{bmatrix}.
+\]
+
+V primeru deformacije je kot rotacije zelo majhen \( \phi \ll 1 \) in rotacijska matrika postane
+
+\[ \begin{bmatrix} x_{1} \\ x_{2} \\ x_{3} \end{bmatrix} \approx \begin{bmatrix}
+                                                           1 & -\phi &  \\
+                                                           \phi & 1 &  \\
+                                                            &  & 1
+                                                           \end{bmatrix} \begin{bmatrix} x_{1} \\ x_{2} \\ x_3 \end{bmatrix} = \underline{\underline{I}} \mathbf{r} + \begin{bmatrix}
+                                                                                                                                                                       & -\phi &  \\
+                                                                                                                                                                      \phi &  &  \\
+                                                                                                                                                                       &  &
+                                                                                                                                                                      \end{bmatrix} \mathbf{r} = \underline{\underline{\mathbf{r}}} + \mathbf{u} (\mathbf{r})
+\]
+
+Vidimo torej, da lahko izrazimo kot vsoto nedeformiranega vektorja in vektorja premika \( \mathbf{u}(\mathbf{r}) \). Izračunajmo deformacijski tenzor za \( \mathbf{u}(\mathbf{r}) = \left( - \phi x_2, \phi x_1, 0 \right) \). Četrti člen je povsod ničeln, saj nista ne prva ne druga komponenta odvisna od dveh različnih prostorskih komponent. Torej
+
+\[ u_{ik} = \frac{1}{2} \left( \frac{\partial u_{i}}{\partial x_{k}} + \frac{\partial u_{k}}{\partial x_{i}}  \right),
+\]
+
+izračunane vrednosti pa so
+
+\begin{align*}
+  u_{11} &= \frac{1}{2} \left( \frac{\partial u_{1}}{\partial x_{1}} + \frac{\partial u_{1}}{\partial x_{1}}  \right) = 0 \\
+u_{12} &= \frac{1}{2} \left( \frac{\partial u_1}{\partial x_2} + \frac{\partial u_{2}}{\partial x_{1}}   \right) = \frac{1}{2} (- \phi + \phi) = 0 \\
+u_{22} &= \frac{1}{2} \left( \frac{\partial u_{2}}{\partial x_{2}}  + \frac{\partial u_{2}}{\partial x_{2}}  \right) = 0
+\end{align*}
+
+Zaključimo, da je vektor premika (rotacije) za majhne deformacije ničeln.
+
+#+name: Deformacijski tenzor pri končni rotaciji
+#+begin_note
+Vektor premika za končne rotacije je
+
+\[ \mathbf{u}(\mathbf{r}) = \left( (\cos \phi - 1) x_1 - x_2 \sin \phi, x_1 \sin \phi + (\cos \phi - 1) x_2, 0\right).
+\]
+
+\begin{align*}
+  u_{11} &= \frac{1}{2} \left[ (\cos \phi - 1) + (\cos \phi - 1) + (\cos \phi - 1) ^2 + \sin ^2 \phi \right] \\
+&= \frac{1}{2} \left[ 2 \cos \phi - 2 +  \cos ^2 \phi - 2 \cos \phi + 1 + \sin ^2 \phi \right] = 0.
+\end{align*}
+
+Zadnje dva člena v oklepaju sta posledica nelinearnega člena.
+
+Četrta komponenta deformacijskega tenzorja \( \frac{\partial u_{l}}{\partial x_{i}} \frac{\partial u_{l}}{\partial x_{k}}  \) je nelinearen člen in poskrbi, da so komponente tenzorja tudi za končne rotacije togega telesa ničelne.
+#+end_note
+** Pomen deformacijskega tenzorja
+
+Če je deformacijski tenzor \( u_{ik} \) simetričen, potem ga lahko diagonaliziramo z neničelnimi diagonalnimi členi.
+
+V primeru, da je \( u_{ik} \) v lastnem sistemu (= diagonaliziran), potem velja
+
+\[ \mathrm{d} L ^2 = \mathrm{d} l ^2 + 2 u_{ik} \mathrm{d}x_i \mathrm{d}_k = \mathrm{d} l ^2 + 2 u_{11} \mathrm{d} x_1 ^2 + 2 u_{22} \mathrm{d} x_2 ^2 + 2 u_{33} \mathrm{d} x_3 ^2
+\]
+
+Izberemo bližnji točki tako, da je \( \mathrm{d}x_1 \ne 0 \) in \( \mathrm{d} x_2 = \mathrm{d} x_3 = 0 \). Razdalje med bližnjima točkama je ravno \( \mathrm{d} l ^2 = \mathrm{d} x_1 ^2 \). Po deformaciji je razdalja med točkama
+
+\[ \mathrm{d} L ^2 = \mathrm{d} l ^2 + 2 u_{11} \mathrm{d} x_1 ^2 = \mathrm{d} x_1 ^2 (1 + 2u_{11}) = \mathrm{d} l ^2 (1 + 2 u_{11}).
+\]
+
+Za majhne spremembe lahko razvijemo
+
+\[ \mathrm{d} L = \mathrm{d} l \sqrt{1 + 2u_{11}} \approx 1 + \frac{1}{2} \cdot 2u_{11} = 1 + u_{11}.
+\]
+
+Slednje nam tudi razloži, zakaj je tenzor definiran s faktorjem 2.
+
+Relativna sprememba razdalje pa je potem
+
+\[ \frac{\mathrm{d} L - \mathrm{d} l}{\mathrm{d} l} = \frac{\mathrm{d} L}{\mathrm{d} l} - 1 = 1 + u_{11} - 1 = u_{11}.
+\]
+
+Torej deformacija v lastnem sistemu je potem ravno \( u_{11} \).
+*** Izvendiagonalne komponente \( u_{ik} \)
+
+Izberimo si vektorja, ki sta pravokotna med seboj \( \mathrm{d} \mathbf{r}_1 = (\mathrm{d} x_1, 0, 0 ) \) in \( \mathrm{d} \mathbf{r}_2 = (0, \mathrm{d} x_2, 0) \).
+
+Po deformaciji velja
+
+\[ \mathrm{d} \mathbf{R} = \mathrm{d} \mathbf{r} + \mathrm{d} \mathbf{u} = \mathrm{d} \mathbf{r} + \frac{\partial \mathbf{u}}{\partial \mathbf{r}}  \mathrm{d} \mathbf{r}.
+\]
+
+Deformacija prve točke bi v splošnem bila
+
+\[ \mathrm{d} \mathbf{R}_1 = \begin{bmatrix} \mathrm{d} x_1 + \frac{\partial u_{1}}{\partial x_{i}} \mathrm{d} x_i  \\ \mathrm{d} x_2 + \frac{\partial u_{2}}{\partial x_{i}} \mathrm{d} x_i \\ \mathrm{d} x_3 + \frac{\partial u_{3}}{\partial x_{i}} \mathrm{d} x_i \end{bmatrix},
+\]
+
+vendar je \( \mathrm{d} \mathbf{r}_1 \ne \mathrm{d}\mathbf{r}_1 (x_2, x_3) \) in posledično je enako tudi z \( \mathrm{d} \mathbf{u} = \mathrm{d} \mathbf{u} (x_2, x_3) \).
+
+\[ \mathrm{d} \mathbf{R}_1 = \begin{bmatrix} \mathrm{d}x_1 + \frac{\partial u_{1}}{\partial x_{1}} \mathrm{d} x_1 \\ \frac{\partial u_{2}}{\partial x_{1}} \mathrm{d}x_1   \\ \frac{\partial u_{3}}{\partial x_{1}}  \mathrm{d} x_1 \end{bmatrix}.
+\]
+
+Enako je transformacija tudi druge točke
+
+\[ \mathrm{d} \mathbf{R}_2 = \begin{bmatrix} \frac{\partial u_{1}}{\partial x_{2}} \mathrm{d} x_2 \\ \mathrm{d} x_2 + \frac{\partial u_{2}}{\partial x_{2}} \mathrm{d} x_2  \\ \frac{\partial u_{3}}{\partial x_{2}} \mathrm{d} x_2 \end{bmatrix}.
+\]
+
+Skalarni produkt je potem
+
+\[ \mathrm{d} \mathbf{R}_1 \cdot \mathrm{d} \mathbf{R}_2 = \frac{\partial u_{1}}{\partial x_{2}} \mathrm{d} x_1 \mathrm{d} x_2 + \frac{\partial u_{2}}{\partial x_{1}} \mathrm{d} x_1 \mathrm{d} x_{2}  = \left( \frac{\partial u_{1}}{\partial x_{2}} + \frac{\partial u_{2}}{\partial x_{1}}  \right) \mathrm{d} x_1 \mathrm{d} x_2,
+\]
+
+kjer smo zanemarili zaradi majhnosti vse člene s produkti odvodov.
+
+Skalarni produkt kota po deformaciji je
+
+\[ \cos \theta_{12} = \frac{\mathrm{d} \mathbf{R}_1 \cdot \mathrm{d} \mathbf{R}_2}{\left| \mathrm{d} \mathbf{R}_1 \right| \cdot \left| \mathrm{d} \mathbf{R}_2 \right|}.
+\]
+
+Velikost \( \mathrm{d} \mathbf{R}_1 \) je
+
+\[ \left| \mathrm{d} \mathbf{R}_1 \right|  ^2 = \mathrm{d} \mathbf{R}_1 \cdot \mathrm{d} \mathbf{R}_1 = \mathrm{d} x_1 ^2 + 2 \frac{\partial u_{1}}{\partial x_{1}} \mathrm{d} x_1 ^2 + \left( \frac{\partial u_{1}}{\partial x_{1}}  \right) ^2 \mathrm{d} x_1 ^2 + \left( \frac{\partial u_{2}}{\partial x_{1}}  \right) ^2 \mathrm{d} x_1 ^2 + \left( \frac{\partial u_{3}}{\partial x_{1}}  \right) ^2 \mathrm{d} x_1 ^2 \approx \mathrm{d} x_1 ^2,
+\]
+
+kjer smo zanemarili vse člene s kvadrati odvodov. Enako velja \( \left| \mathrm{d} \mathbf{R}_2 \right| \approx \mathrm{d} x_2 \).
+
+Za kot potem velja
+
+\[ \cos \theta_{12} = \frac{\left( \frac{\partial u_{1}}{\partial x_{2}}  + \frac{\partial u_{2}}{\partial x_{1}}  \right) \mathrm{d} x_1 \mathrm{d} x_2}{\mathrm{d} x_1 \mathrm{d} x_2} = 2 u_{12}.
+\]
+
+Izvendiagonalni člen nam torej pove kot med vektorjema po deformaciji.
+*** Sprememba prostornine
+
+Pred deformacijo imamo volumen
+
+\[ \mathrm{d} V = \mathrm{d} x_1 \mathrm{d} x_2 \mathrm{d} x_3,
+\]
+
+po deformaciji pa je
+
+\[ \mathrm{d} V = \mathrm{d} X_1 \mathrm{d} X_2 \mathrm{d} X_3.
+\]
+
+Volumna lahko povežemo preko Jacobijeve determinante
+
+\[ \mathrm{d} X_1 \mathrm{d} X_2 \mathrm{d} X_3 = \underline{J} \mathrm{d} x_1 \mathrm{d} x_2 \mathrm{d} x_3,
+\]
+
+kjer je \( \underline{J} = \det \frac{\partial X_{i}}{\partial x_{k}}  \).
+
+Deformacijski vektor je \( \mathbf{R} = \mathbf{r} + \mathbf{u} (\mathbf{r}) \). Posamezna komponenta in njen odvod sta potem
+
+\[ \mathrm{d} X_i = \mathrm{d}x_i + \frac{\partial u_{i}}{\partial x_{k}}  \mathrm{d} x_k \implies \frac{\partial X_{i}}{\partial x_{k}} = \delta_{ik} + \frac{\partial u_{i}}{\partial  x_{k}}
+\]
+
+Računamo torej determinanto
+
+\[ \det \begin{bmatrix}
+        1 + \partial_{x_{1}} u_1 & \partial_{x_2} u_1 & \partial_{x_3} u_1 \\
+        \partial_{x_1} u_2 & 1+ \partial_{x_2} u_2 & \partial_{x_3} u_2 \\
+         \partial_{x_1} u3& \partial_{x_2} u_3 & 1 + \partial_{x_3} u_3
+        \end{bmatrix} = 1 ^3 + \left( \frac{\partial u_{1}}{\partial x_{1}}  + \frac{\partial u_{2}}{\partial x_{2}}  + \frac{\partial u_{3}}{\partial x_{3}}  \right) \cdot 1 ^2 + \ldots
+\]
+
+kjer smo zanemarili vse odvode višje od prvega reda.
+
+Relativna spremeba prostornine je
+
+\[ \frac{\mathrm{d} V - \mathrm{d} v}{\mathrm{d} v} = \frac{\mathrm{d} V}{\mathrm{d} v} - 1 = J - 1 = \mathrm{tr} u,
+\]
+
+kjer je \( \mathrm{tr} u \) sled matrike \( u \).
