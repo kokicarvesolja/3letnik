@@ -189,7 +189,7 @@ Nakazali bomo, kako se to izpelje, ostalo prepustimo Gaussu, ki je to že naredi
 \begin{align*}
   \oint\limits_S^{} \vec{E} \, \mathrm{d} \vec{S} &= \oint\limits_S^{} \left( \vec{E} \cdot \vec{n} \right) \, \mathrm{d} S \\
 &= \oint\limits_{}^{} E \cos \theta \, \mathrm{d} S \\
-&= \sum\limits_i^{} \frac{e_i}{4 \pi \epsilon_0} \oint\limits_{}^{} \frac{1}{\left| \vec{r} - \vec{r}_i \right| ^2} \cos \theta_i \left( \vec{r} \right) \, \mathrm{d} S
+&= \sum\limits_i^{} \frac{e_i}{4 \pi \epsilon_0} \oint\limits_{}^{} \frac{1}{\left| \vec{r} - \vec{r}_i \right| ^2} \cos \theta_i  \, \mathrm{d} S
 \end{align*}
 
 Ta integral znamo preprosto izračunati, ko \( \vec{r}_i = 0 \). Gauss je dokazal, da ta integral velja za poljubno površino.

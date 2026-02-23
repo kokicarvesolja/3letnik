@@ -70,13 +70,11 @@ Kompleten sistem Maxwellovih enačbo je
 
 Poleg Maxwellovih enačb za izračunljivost potrebujemo tudi 2 konstitutivni relaciji
 
-\[
 \begin{array}{|c|c|} \hline
 \text{splosno} & \text{linearna konst. rel.} \\ \hline
 \vec{P} = \vec{P} \left( \vec{D} \right) & \vec{D} = \epsilon \epsilon_0 \vec{E} \\ \hline
 \vec{M} = \vec{M} \left( \vec{H} \right) & \vec{B} = \mu \mu_0 \vec{H} \\ \hline
 \end{array}
-\]
 
 V anizotropni snovi \( \epsilon \) nadomestimo s tenzorjem \( \underline{\epsilon} \).
 

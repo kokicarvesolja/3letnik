@@ -759,7 +759,7 @@ Električni potencial za poljubno zvezno porazdelitev nabojev je
 \[ \phi(\mathbf{r}) = \int\limits_{}^{} \frac{\rho(\mathbf{r})}{4 \pi \epsilon_0 \left| \mathbf{r} - \mathbf{r}' \right|} \, \mathrm{d} ^3 \mathbf{r}'.
 \]
 
-Predpostavimo, da je polje daleč stran od izvorov, ki so hkrati omejeni na volumen \( V_0 \). H električnemu potencialu prispevajo zgolj \( \mathbf{r}' \in V_0 \), ampak zaradi oddaljenosti velja \( \left| \mathbf{r} - \mathbf{r}' \right| \approx \left| \mathbf{r} \right|\).
+Predpostavimo, da je polje daleč stran od izvorov, ki so hkrati omejeni na volumen \( V_0 \). K električnemu potencialu prispevajo zgolj \( \mathbf{r}' \in V_0 \), ampak zaradi oddaljenosti velja \( \left| \mathbf{r} - \mathbf{r}' \right| \approx \left| \mathbf{r} \right|\).
 
 #+begin_note
   Taylorjeva vrsta za vektorje je enaka
@@ -807,8 +807,78 @@ kjer so \( Y_{lm} (\theta, \phi) \) sferični harmoniki in \( q_{lm} \) multipol
 \[ q_{lm} = \int\limits_{V_0}^{} \rho(\mathbf{r}') r'^l Y_{lm} (\theta', \phi') \, d ^3 \mathbf{r}'
 \]
 *** Multipolni razvoj elektrostatske energije
+
+Želimo izračunati elektrostatsko energijo nabitega telesa, ki se nahaja v zunanjem električnem polju s potencialom \( \phi(\mathbf{r}) \). Naboj telesa bomo opisali z zvezno porazdelitvijo naboja \( \rho_0 (\mathbf{r}) \).
+
+Energija porazdelitve naboja je
+
+\[ W = \int\limits_V^{} \rho_0 (\mathbf{r}) \phi(\mathbf{r}) \, \mathrm{d} ^3 \mathbf{r},
+\]
+
+kjer je \( V \) volumen, v katerem se nahaja nabito telo.
+
+Predpostavimo, da je naboj zbran v majhnem predelu okoli točke \( \mathbf{r}_0 \in V_0 \). Potencial lahko tako v približku zapišemu
+
+\[ \phi(\mathbf{r}) = \phi(\mathbf{r}_0) + \left( \mathbf{r} - \mathbf{r}_0 \right) \cdot \nabla_{\mathbf{r}} \phi(\mathbf{r}_0) + \ldots
+\]
+
+[To ni potencial zvezne porazdelitve, ampak potencial v točki \( \mathbf{r}_0 \).]
+
+Energija je v tem primeru
+
+\begin{align*}
+  W &= \int\limits_V^{} \rho_0 (\mathbf{r}) \left( \phi(\mathbf{r}_0) + (\mathbf{r} - \mathbf{r}_0) \cdot \nabla_{\mathbf{r}} \phi(\mathbf{r}_0) + \ldots \right) \, \mathrm{d} ^3 \mathbf{r} \\
+&= \phi(\mathbf{r}_0) \int\limits_V^{} \rho_0(\mathbf{r}) \, \mathrm{d} ^3 \mathbf{r} + \nabla_{\mathbf{r}} \phi(\mathbf{r}_0) \int\limits_V^{} \left( \mathbf{r} - \mathbf{r}_0 \right) \rho_0 (\mathbf{r}) \, \mathrm{d} ^3 \mathbf{r} + \ldots
+\end{align*}
+
+Spomnimo se definicij za naboj \( e \) in točkast dipolni moment in energijo zapišemo kot
+
+\[ W = e_0 \phi(\mathbf{r}_0) + \mathbf{p}_0 \cdot \mathbf{E}(\mathbf{r}_0).
+\]
 *** Polje in potencial točkastega električnega dipola
+
+Električni potencial točkastega dipolnega momenta je
+
+\[ \phi(\mathbf{r}) = \frac{\mathbf{p} \cdot \mathbf{r}}{4 \pi \epsilon_0 r ^3}.
+\]
+
+Jakost električnega polja je po definiciji potenciala
+
+\[ \mathbf{E}(\mathbf{r}) = - \nabla \phi(\mathbf{r}) = - \nabla \left( \frac{\mathbf{r} \cdot \mathbf{p}}{4 \pi \epsilon_0 r ^3} \right) = - \frac{\mathbf{p}}{4 \pi \epsilon_0 r ^3} + + \frac{3 \left( \mathbf{r} \cdot \mathbf{p} \right) \mathbf{r}}{4 \pi \epsilon_0 r ^5} = \frac{3 (\mathbf{p} \cdot \mathbf{r}) \mathbf{r} - \mathbf{p} r ^2}{4 \pi \epsilon_0 r ^5}
+\]
+
+[[file:01predavanja_zapiski/figures/dipolniMomentPolje.png]]
+
 *** Sila in navor v zunanjem električnem polju
+
+Za porazdelitev naboja \( \rho_0 \) nas zanima sila v najnižjem multipolnem približku. Splošen izraz za silo je
+
+\[ \mathrm{d} W = - \mathbf{F} \cdot \mathrm{d} \mathbf{r},
+\]
+
+kjer porazdelitev naboja premaknemo v prostoru za \( \mathrm{d} \mathbf{r} \).
+
+Izraz za delo zapišemo ob upoštevanju definicije dela v najnižjem multipolnem približku
+
+\[ \mathrm{d} W = e_0 \nabla \phi(\mathbf{r}_0) \cdot \mathrm{d} \mathbf{r} - \nabla \left( \vec{p}_e \cdot \mathbf{E}(\mathbf{r}_0) \right) \cdot \mathrm{d} \mathbf{r} = - \mathbf{F} \cdot \mathrm{d} \mathbf{r}
+\]
+
+Upoštevamo, sedaj že enkrat uporabljeno, identiteto
+
+\[ \nabla \left( \mathbf{p}_e \cdot \mathbf{E} (\mathbf{r}_0) \right) = \mathbf{p}_0 \times \left( \nabla \times \mathbf{E}(\mathbf{r}_0) \right) + \left( \mathbf{p}_0 \cdot \nabla \right) \mathbf{E}(\mathbf{r}_0).
+\]
+
+Prvi člen je ničeln, saj je elektrostatsko polje brezvrtinčno.
+
+Sila na naboj \( \rho_0 (\mathbf{r}) \) je torej
+
+\[ \mathbf{F} = e \mathbf{E}(\mathbf{r}_0) + \left( \mathbf{p}_0 \cdot \nabla \right) \mathbf{E}(\mathbf{r}_0).
+\]
+
+V homogenem zunanjem el. polju na testni dipol ne deluje nobena sila. V nehomogenem polju pa ga bo neslo proti energijskem minimumu.
+
+Navor
+
 * Magnetostatika
 ** 8. vprašanje
 #+begin_problem

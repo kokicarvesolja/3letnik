@@ -31,7 +31,7 @@ Prva posledica je, da je skalarni produkt invarianten - koti med poljema \( \mat
 
 \begin{align*}
   \mathbf{E} \cdot \mathbf{B} &= E_x B_x + E_y B_y + E_z B_z \\
-E_{x'}' B_{x'}' + \gamma ^2 \left( 1 - \frac{v ^2}{c ^2} \right) E_{y'}' + B_{y'}' + \gamma \left( 1 - \frac{v ^2}{c ^2} \right) E_{z'}' B_{z'}' &= \mathbf{E}' \cdot \mathbf{B} '.
+ \mathbf{E}' \cdot \mathbf{B} '&= E_{x'}' B_{x'}' + \gamma ^2 \left( 1 - \frac{v ^2}{c ^2} \right) E_{y'}' + B_{y'}' + \gamma \left( 1 - \frac{v ^2}{c ^2} \right) E_{z'}' B_{z'}' .
 \end{align*}
 
 Druga posledica je to, da ima v praznem prostoru rešitev Maxwellove enačbe enako obliko - obliko ravnega vala - veliko polj pa sta odvisni od sistema.
@@ -60,7 +60,7 @@ označuje kontravariantni vektor.
 
 Lorentzova transformacija ohranja skalarni produkt
 
-\[ x_{\mu} x^{\mu} = x_{\mu} ' x^{\mu} '.
+\[ x_{\mu} x^{\mu} = x' _{\mu}  x'^{\mu}.
 \]
 
 Zanima nas, kako bi elektromagnetno polje zapisali s četverci.
@@ -222,9 +222,9 @@ Zapisali smo že \( B_x = F_{23} \) in \( F_{14} = \frac{- E_x}{c} \)
 Obravnavamo ga po komponentah
 
 \[ F_{\mu \nu} = \begin{bmatrix}
-                 0 & B_z & B_y & - \frac{E_x}{c} \\
+                 0 & B_z & - B_y & - \frac{E_x}{c} \\
                  -B_z & 0 & B_x & - \frac{E_y}{c} \\
-                 -B_y & -B_x & 0 & -\frac{E_z}{c} \\
+                 B_y & -B_x & 0 & -\frac{E_z}{c} \\
                  \frac{E_x}{c} & \frac{E_y}{c} & \frac{E_z}{c} & 0
                  \end{bmatrix}.
 \]

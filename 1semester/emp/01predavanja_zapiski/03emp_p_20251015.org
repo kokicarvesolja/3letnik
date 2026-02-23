@@ -23,7 +23,7 @@ kjer smo upoštevali izračun predavanj prejšnjega tedna, da je
 
 Preidemo v sferične koordinate
 
-\[ G \left( \vec{r} - \vec{r} \, '	 \right) = \frac{1}{\left( 2\pi \right) ^3} \int\limits_0^{\infty} \int\limits_0^{\pi} \int\limits_{-1}^{1} \, \mathrm{d} \phi \, \mathrm{d} \left( \cos \theta \right) k ^2 \, \mathrm{d} k  e^{\mathrm{i} k \left| \vec{r} - \vec{r} \, ' \right| \cos \theta} \frac{1}{\epsilon_0 k ^2}
+\[ G \left( \vec{r} - \vec{r} \, '\right) = \frac{1}{\left( 2\pi \right) ^3} \int\limits_0^{\infty} \int\limits_0^{2\pi} \int\limits_{-1}^{1} \, \mathrm{d} \phi \, \mathrm{d} \left( \cos \theta \right) k ^2 \, \mathrm{d} k  e^{\mathrm{i} k \left| \vec{r} - \vec{r} \, ' \right| \cos \theta} \frac{1}{\epsilon_0 k ^2}
 \]
 
 Najlažjo integracijo je narediti po \( \phi \), kjer je rezultat samo \( 2\pi \). Uvedemo novo spremenljivko
@@ -117,7 +117,7 @@ Predstavljajmo si, da polje ni samo bilo, ampak smo ga kot glasnost na zvočniki
 
 Sistemu dodamo \( \mathrm{d} \rho = \rho \mathrm{d} \alpha \) naboja. Zanima nas energija, ki je bila potrebna, da smo dodali naboj \( \mathrm{d} \rho \). Naša dejanska situacije je to, da dodajamo naboj v zunanje električno polje in zato uporabimo enačbo \ref{eq:1}
 
-\[ \mathrm{d} W = \int\limits_{}^{} \mathrm{d} \rho \cdot a \phi \left( \vec{r} \right) \, \mathrm{d} ^3 \vec{r} = \int\limits_{}^{} \mathrm{d} \alpha \rho \left( \vec{r} \right) \alpha \phi \left( \vec{r} \right) \, \mathrm{d} ^3 \vec{r}
+\[ \mathrm{d} W = \int\limits_{}^{} \mathrm{d} \rho \cdot  \phi \left( \vec{r} \right) \, \mathrm{d} ^3 \vec{r} = \int\limits_{}^{} \mathrm{d} \alpha \rho \left( \vec{r} \right) \alpha \phi \left( \vec{r} \right) \, \mathrm{d} ^3 \vec{r}
 \]
 
 Po izračunu integrala bo celotna energija
@@ -140,16 +140,16 @@ Elektrostatska energijo zapišemo z električnim poljem \( \vec{E} \)
 \[ W = \frac{1}{2} \int\limits_{}^{} \rho \left( \vec{r} \right) \phi \left( \vec{r} \right) \, \mathrm{d} ^3 \vec{r} = \frac{1}{2} \int\limits_{}^{} \epsilon_0 \left( \nabla \cdot \vec{E} \right) \phi \left( \vec{r} \right) \, \mathrm{d} ^3 \vec{r}
 \]
 
-kjer smo upoštevali \( \rho \left( \dot{r} \right) = \epsilon_0 \nabla \cdot \vec{E} \). Hkrati upoštevamo še relacijo \( \vec{E} = - \nabla \cdot \phi \).
+kjer smo upoštevali \( \rho \left( \vec{r} \right) = \epsilon_0 \nabla \cdot \vec{E} \). Hkrati upoštevamo še relacijo \( \vec{E} = - \nabla \cdot \phi \).
 
 Uporabimo identiteto
 
-\[ \nabla \left( f \cdot \vec{g} \right) = \nabla f \cdot \vec{g} + f \nabla \cdot \vec{g}
+\[ \nabla \cdot \left( f \cdot \vec{g} \right) = \nabla f \cdot \vec{g} + f \nabla \cdot \vec{g}
 \]
 
 in energija postane
 
-\[ W = \frac{\epsilon_0}{2} \left[ \int\limits_{}^{} \nabla \cdot \left( \phi \vec{E} \right) \, \mathrm{d} ^3 \vec{r} - \int\limits_{}^{} \nabla \phi \cdot \vec{E} \, \mathrm{d} ^3 \vec{r} \right]
+\[ W = \frac{\epsilon_0}{2} \left[ \int\limits_{}^{} \nabla\cdot \left( \phi \vec{E} \right) \, \mathrm{d} ^3 \vec{r} - \int\limits_{}^{} \nabla \phi \cdot \vec{E} \, \mathrm{d} ^3 \vec{r} \right]
 \]
 
 Volumnski integral lahko pretvorimo v ploskovni integral
@@ -165,7 +165,7 @@ Energijo lahko v približku zapišemo kot
 
 \[ W = \frac{\epsilon_0}{2} \int\limits_{}^{} E  ^2 \, \mathrm{d} ^3 \vec{r}
 \]
-*** Sila kot funkcional električnega polja
+** Sila kot funkcional električnega polja
 
 Zanima nas sila na \( \rho \left( \vec{r} \right) \), ki se nahaja v zunanjem električnem polju. Zunanje električno polje je del celotnega električnega polja \( \vec{E} \left( \vec{r} \right) \). Celotno polje \( \vec{E} \) je sestavljeno iz lastnega polja, ki ga ustvari \( \rho \left( \vec{r} \right) \), in zunanjega električnega polja.
 

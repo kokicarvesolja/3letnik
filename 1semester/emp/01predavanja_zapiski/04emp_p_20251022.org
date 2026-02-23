@@ -35,7 +35,7 @@ Zapis sile lahko razširimo z \( \nabla \cdot \vec{E}_Z \). Ta člen je v našem
 \[ \vec{F} \left( \vec{r} \right) = \epsilon_0 \int\limits_V^{} \left( \nabla \cdot \vec{E}_L + \nabla \cdot \vec{E}_Z \right) \vec{E}_Z \, \mathrm{d} ^3 \vec{r} = \epsilon_0   \int\limits_V^{} \left( \nabla \cdot \vec{E} \left( \vec{r} \right) \right) \vec{E}_Z \, \mathrm{d} ^3 \vec{r}
 \]
 
-Vsota zunanjega in lastnega polja je pa ravno celotno električno polje - upoštevali smo linearno divergence.
+Vsota zunanjega in lastnega polja je pa ravno celotno električno polje - upoštevali smo linearnost divergence.
 
 Naš volumnski integral bi radi zapisali v površinski integral, kar bomo naredili preko zveze s tenzorskim produktom
 
@@ -118,7 +118,7 @@ Zanima nas električno polje "daleč" stran od same gostote naboje in to po vodi
 
 Ponovimo Taylorjev razvoj za vektorje
 
-\[ f \left( \vec{r} + \vec{h} \right) = f \left( \vec{r} \right) + \vec{h} \cdot \nabla f \left( \vec{r} \right) + \frac{1}{2} \vec{h} H \left( \left( \vec{r} \right) \right) \cdot \vec{h} + \ldots
+\[ f \left( \vec{r} + \vec{h} \right) = f \left( \vec{r} \right) + \vec{h} \cdot \nabla f \left( \vec{r} \right) + \frac{1}{2} \vec{h} H \left( f\left( \vec{r} \right) \right) \cdot \vec{h} + \ldots
 \]
 
 kjer je \( H \left( f \left( \vec{r} \right) \right) \) Hessejeva matrika. S pomočjo tega lahko razvijemo ulomek v potencialu kot
@@ -129,7 +129,7 @@ kjer je \( H \left( f \left( \vec{r} \right) \right) \) Hessejeva matrika. S pom
 Torej bo potencial potem
 
 \begin{align*}
-  \phi \left( \vec{r} \right) &= \frac{1}{4 \pi \epsilon_0} \int\limits_{}^{} \frac{\rho \left( \vec{r} \, ' \right)}{r} \, \mathrm{d} ^3 \vec{r} \, ' + \frac{1}{4 \pi \epsilon_0} \int\limits_{}^{} \frac{\rho \left( \vec{r} \, ' \vec{r} \, ' \cdot \vec{r} \right)}{r ^3} \, \mathrm{d} ^3 \vec{r} \, ' \\
+  \phi \left( \vec{r} \right) &= \frac{1}{4 \pi \epsilon_0} \int\limits_{}^{} \frac{\rho \left( \vec{r} \, ' \right)}{r} \, \mathrm{d} ^3 \vec{r} \, ' + \frac{1}{4 \pi \epsilon_0} \int\limits_{}^{} \rho \left(\vec{r}\,'\right) \vec{r} \, \frac{\vec{r} \, '}{r ^3} \, \mathrm{d} ^3 \vec{r} \, ' \\
 &= \frac{1}{4 \pi \epsilon_0} \int\limits_{}^{} \rho \left( \vec{r} \,' \right) \, \mathrm{d} ^3 \vec{r} \,' + \frac{\vec{r}}{4 \pi \epsilon_0 r ^3} \int\limits_{}^{}\vec{r}\,' \rho \left( \vec{r} \, ' \right) \, \mathrm{d} ^3 \vec{r} \, ' + \ldots
 \end{align*}
 
@@ -143,7 +143,7 @@ Torej je potencial enak
 \int\limits_{}^{} \vec{r} \, ' \rho \left( \vec{r} \, ' \right) \, \mathrm{d} ^3 \vec{r} = \vec{p}  && \text{električni dipol}
 \end{align*}
 
-Zgornji integralom pravimo elementi multipolni razvoj električnega potenciala. V splošnem velja v sferičnih koordinatah \( r, \phi, \theta \)
+Zgornji integralom pravimo elementi multipolnega razvoja električnega potenciala. V splošnem velja v sferičnih koordinatah \( r, \phi, \theta \)
 
 \[ \phi \left( \vec{r} \right) = \frac{1}{4 \pi \epsilon_0} \sum\limits_{l = 0}^{\infty} \sum\limits_{m = - l}^l \frac{4 \pi}{2l + 1} \frac{q_{lm}}{r^{l + 1} } Y_{lm} \left( \theta, \phi \right)
 \]
@@ -242,7 +242,7 @@ iz česar sledi sila
 \[ \vec{F} = e \vec{E} + \left( \vec{p} \cdot \nabla \right) \vec{E}
 \]
 
-kjer je prvi člen sila na monopol, drugi člen pa sila na električni dipol. Drugi člen je tudi smerni odvod, definiciran kot
+kjer je prvi člen sila na monopol, drugi člen pa sila na električni dipol. Drugi člen je tudi smerni odvod, definiran kot
 
 \[ \left( \vec{p} \cdot \nabla \right) \vec{E} = \left( p_x \frac{\partial }{\partial x}  + p_y \frac{\partial }{\partial y}  + p_z \frac{\partial }{\partial z}  \right)\vec{E}
 \]
