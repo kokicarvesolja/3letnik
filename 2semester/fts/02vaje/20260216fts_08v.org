@@ -101,5 +101,5 @@ Zaradi periodičnosti sta najbolj značilni mreži s periodo \( AB \) ali pa \( 
 
 Polnitveno razmerje je sestavljeno iz krogel s polmerom \( r = \frac{a}{2} \), vendar je tokrat višina \( h = 2a \sqrt{\frac{2}{3}} \) in ima vrednost
 
-\[ \eta_{hcp} = \frac{2 \cdot \frac{4}{3} \pi r ^3}{\frac{\sqrt{3}}{2}a ^2 \cdot h} = \frac{\pi}{3 \sqrt{2}} \approx 74 \% = \frac{\pi \sqrt{2}}{6} = \eta_{fcc}
+\[ \eta_{hcp} = \frac{2 \cdot \frac{4}{3} \pi r ^3}{\frac{\sqrt{3}}{2}a ^2 \cdot h} = \frac{\pi}{3 \sqrt{2}} \approx 74 \% = \frac{\pi \sqrt{2}}{6} = \eta_{fcc}.
 \]
