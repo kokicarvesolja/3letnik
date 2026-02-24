@@ -15,11 +15,12 @@ Neznana količina, ki jo merimo, je \( x \). Imamo dva seta meritev, oba porazde
 \[ z_1 \sim N (x, \sigma_1 ^2 ) \quad \text{ in } \quad z_2 \sim N(x, \sigma_2 ^2)
 \]
 
-#+name: Točnost in natančnost
 #+begin_note
-Razdalja med pričakovana vrednostjo \( x \) in njeno povprečno vrednostjo \( \bar{x} \) je točnost, medtem ko odstopanje od povprečne vrednosti pa je natančnost.
+O točnosti in natančnosti: Razdalja med pričakovana vrednostjo \( x \) in njeno povprečno vrednostjo \( \bar{x} \) je točnost, medtem ko odstopanje od povprečne vrednosti pa je natančnost.
 
-Točnost je ponavadi sistematska napaka.
+Velika netočnost je ponavadi rezultat sistematska napaka.
+
+[[file:figures/tocnost_natancnost.png]]
 #+end_note
 
 Predpostavimo, da so naši izmerki natančni.
@@ -39,7 +40,7 @@ Varianca \( \sigma_2 ^2 \) je po definiciji
 \[ \sigma_2 ^2 = \left\langle \left( z_2 - x \right) ^2 \right\rangle = \left\langle r_2 ^2 \right\rangle.
 \]
 
-Upoštevamo odvisnost meritve (šumov), potem zapišemo
+Upoštevamo odvisnost meritve (šumov) in varianca postane
 
 \begin{align*}
   \sigma_2 ^2 &= \left\langle r_2 ^2 \right\rangle \\
@@ -60,7 +61,7 @@ iz česar vidimo, da je korelacijski koeficient \( \rho_{12} = \left( \alpha \fr
 \[ 0 \le \left( \alpha \frac{\sigma_1}{\sigma_2} \right) ^2 \le 1 \implies -1 \le \rho_{12} \le 1
 \]
 
-V primeru \( \rho_{12} = 0 \) je popolna neodvisnost spremenljivk, v primeru \( \rho = \pm 1 \) imamo popolno korelacijo.
+V primeru \( \rho_{12} = 0 \) je popolna neodvisnost spremenljivk, v primeru \( \rho = \pm 1 \) imamo pa popolno korelacijo.
 
 
 Kovarianca je po definiciji
@@ -89,9 +90,9 @@ ki ga pomnožimo z \( \sigma_1 \sigma_2 \), potem lahko zapišemo kot
 Imamo večjo kombinacijo spremenljivk
 
 \begin{align*}
-  u_1 &= f_1 (x_1, x_2, \ldots, x_n)
-u_2 &= f_2 (x_1, x_2, \ldots, x_n)
-&\vdots
+  u_1 &= f_1 (x_1, x_2, \ldots, x_n) \\
+u_2 &= f_2 (x_1, x_2, \ldots, x_n) \\
+&\vdots \\
 u_n &= f_n (x_1, x_2, \ldots, x_n),
 \end{align*}
 
@@ -115,28 +116,28 @@ Kovarianca je po definiciji
 \[ \delta_{ij} = \left\langle (\bar{x}_{i - x_i}) \left( \bar{x}_j - x_j \right) \right\rangle  = \left\langle m_i m_j \right\rangle.
 \]
 
-V primeru \( i = j \) dobimo \( \sigma_i ^2 = \left\langle (\bar{x}_i - x_i) ^2 \right\rangle = \sigma_i ^2 \), kar je že varianca znotraj kovariance!
+V primeru \( i = j \) dobimo \( \sigma_i ^2 = \left\langle (\bar{x}_i - x_i) ^2 \right\rangle = \sigma_i ^2 \), kar je že zapis variance znotraj zapisa za kovarianco!
 
-Uvedemo kovariančno matriko, katere elementi so
+Uvedemo kovariantno matriko, katere elementi so
 
 \[ \left( M \right)_{ij} = \sigma_{ij} = \left\langle (\bar{x}_i - x_i) \left( \bar{x}_j - x_j \right) \right\rangle  = \left\langle m_i m_j \right\rangle.
 \]
 
-Matrični zapis kovariančne matrike je
+Matrični zapis kovariantne matrike je
 
 \[ M = \left\langle \left( \bar{\mathbf{x}} - \mathbf{x} \right) \left( \bar{\mathbf{x}} - \mathbf{x} \right)^T \right\rangle =\left\langle \mathbf{m} \mathbf{m}^T \right\rangle.
 \]
 
-Lastnosti kovariančne matrike so
+Lastnosti kovariantne matrike so
 
 - simetričnost \( M = M^T \)
-- diagonalni elementi kovariantne matriko so \( \left( M \right)_{ii} = \sigma_{ii} = \sigma_i ^2 \) so variance
+- diagonalni elementi kovariantne matriko \( \left( M \right)_{ii} = \sigma_{ii} = \sigma_i ^2 \) so  variance
 - izvendiagonalni elementi so kovariance \( \left( M \right)_{ij, i \ne j} = \sigma_{ij} \)
 
 
-Za vektor \( \mathbf{u} = \left( f_1 (\mathbf{x}), f_2 (\mathbf{x}), \ldots, f_n (\mathbf{x}) \right) \) nas zanima ocena \( \bar{\mathbf{u}} \), zato da lahko izračunamo kovariančno matriko \( U \).
+Za vektor \( \mathbf{u} = \left( f_1 (\mathbf{x}), f_2 (\mathbf{x}), \ldots, f_n (\mathbf{x}) \right) \) nas zanima ocena \( \bar{\mathbf{u}} \), zato da lahko izračunamo kovariantno matriko \( U \).
 
-Po definiciji je kovariančna matrika
+Po definiciji je kovariantna matrika
 
 \[ U = \left\langle \left( \bar{\mathbf{u}} - \mathbf{u} \right) \left( \bar{\mathbf{u}} - \mathbf{u} \right)^T \right\rangle.
 \]
@@ -155,10 +156,10 @@ saj je drugi člen ničeln.
 
 Torej
 
-\[ \bar{\mathbf{u}} - \mathbf{u}  = J_{\mathbf{u}} (\bar{\mathbf{x}}) \left( - \mathbf{x} + \bar{ \mathbf{x}} \right).
+\[ \bar{\mathbf{u}} - \mathbf{u}  = J_{\mathbf{u}} (\bar{\mathbf{x}}) \left(\bar{ \mathbf{x}}  - \mathbf{x}  \right).
 \]
 
-Kovariančna matrika je potem
+Kovariantna matrika je potem
 
 
 \begin{align*}
@@ -167,7 +168,7 @@ Kovariančna matrika je potem
 &= J_{\mathbf{u}} (\bar{\mathbf{x}}) M J_{\mathbf{u}}^T (\bar{\mathbf{x}}).
 \end{align*}
 
-Upoštevali smo, da velja \( \left \langleJ_{\mathbf{u}} (\bar{\mathbf{x}})\right\rangle = J_{\mathbf{u}}(\bar{\mathbf{x}}) \), saj je to matrika konstant. Spomnimo se še definicije Jacobijeve matrike, ki je
+Upoštevali smo, da velja \( \left\langle J_{\mathbf{u}} (\bar{\mathbf{x}})\right\rangle = J_{\mathbf{u}}(\bar{\mathbf{x}}) \), saj je to matrika konstant. Spomnimo se še definicije Jacobijeve matrike, ki je
 
 \[ J_{\mathbf{u}}(\mathbf{x}) = \begin{bmatrix}
                                 \frac{\partial f_{1}}{\partial x_{1}}  & \frac{\partial f_{1}}{\partial x_{2}}  & \ldots & \frac{\partial f_{1}}{\partial x_{n}}  \\
@@ -178,9 +179,9 @@ Upoštevali smo, da velja \( \left \langleJ_{\mathbf{u}} (\bar{\mathbf{x}})\righ
 \]
 * Meritev časa preleta (ang. /time-of-flight/ or TOF)
 #+begin_problem
-Imamo delec, ki se premika s hitrostjo \( v \). Imamo dva senzorja, ki se nahajata na razdalji \( l \). Čas za prelet intervala je \( \Delta t \). Senzor 1 ima oceno meritev \( \bar{x}_1 \) in nedoločenost \( \sigma_1 \). Senzor 2 ima oceno meritve \( \bar{x}_2 \) in nedoločenost \( \sigma_2 \). Senzorja sta neodvisna.
+Imamo delec, ki se premika s hitrostjo \( v \). Imamo dva senzorja, ki se nahajata na koordinatah \( x_1 \) in \( x_2 \). Čas za prelet intervala je \( \Delta t \). Senzor 1 ima oceno meritev \( \bar{x}_1 \) in nedoločenost \( \sigma_1 \). Senzor 2 ima oceno meritve \( \bar{x}_2 \) in nedoločenost \( \sigma_2 \). Senzorja sta neodvisna.
 
-Izračunaj kovariančno matriko za vektor \( \mathbf{u} = (x_1, x_2, v)^T \).
+Izračunaj kovariantno matriko za vektor \( \mathbf{u} = (x_1, x_2, v)^T \).
 #+end_problem
 
 Vektor ocen je
@@ -188,7 +189,7 @@ Vektor ocen je
 \[ \bar{\mathbf{x}} = \begin{bmatrix} \bar{x}_{1} \\ \bar{x}_{2} \end{bmatrix}.
 \]
 
-Kovariančna matrika je
+Kovariantna matrika je
 
 \[ M = \begin{bmatrix}
        \sigma_{1} ^2 &  \\
@@ -203,7 +204,7 @@ Vektor ocene je
 \[ \bar{\mathbf{u}} = \begin{bmatrix} \bar{x}_{1} \\ \bar{x}_{2} \\ \bar{v} \end{bmatrix},
 \]
 
-želimo pa izračunati kovariančno matriko \( U \).
+želimo pa izračunati kovariantno matriko \( U \).
 
 Odvisnost hitrost od meritve je
 
@@ -220,7 +221,7 @@ Jacobijeva matrika je potem
 \[ J_{\mathbf{u}} = \begin{bmatrix} 1 & 0  \\ 0 & 1 \\ - \frac{1}{\Delta t} & \frac{1}{\Delta t} \end{bmatrix}.
 \]
 
-Kovariančna matrika je potem po definiciji
+Kovariantna matrika je potem po definiciji
 
 \begin{align*}
   U &= J_{\mathbf{u}} M J_{\mathbf{u}}^T \\
@@ -298,11 +299,11 @@ Zapišemo varianco po definiciji
 
 ki jo kvadriramo in dobimo
 
-\begin{equation}\label{ali:vari}
+\begin{equation}
 \begin{aligned}
   \tilde{\sigma} ^2 &= \left\langle \left( 1 - b \right) ^2 r_1 ^2 + b ^2 r_2 ^2 + 2 (1 - b) b r_1 r_2 \right\rangle \\
 &= \left( 1 - b \right) ^2 \sigma_1 ^2 + b ^2 \sigma_2 ^2 + 2 (1 - b) b \sigma_{12},
-\end{aligned}
+\end{aligned}\label{ali:vari}
 \end{equation}
 
 kjer smo upoštevali \( \left\langle r_1 ^2 \right\rangle = \sigma_1 ^2 \) in \( \left\langle r_2 ^2 \right\rangle = \sigma_2 ^2 \).
@@ -353,15 +354,17 @@ V vseh členih enačbe \ref{eq:1} se pojavi imenovalec \( I ^2 \), zato
 Namesto računanja bomo najprej izostavili \( \sigma_2 ^2 - \sigma_{12} \) in \( \sigma_1 ^2 - \sigma_{12} \), kjer zadnji člen s faktorjem \( 2 \) razbijemo na dva delo (dobesedno \( 2x = x + x \)). Dobimo
 
 \begin{align*}
-   \left( \sigma_2 ^2 - \sigma_{12} \right) ^2 \sigma_1 ^2 + \left( \sigma_21 ^2 - \sigma_{12} \right) ^2 \sigma_2 ^2 + 2 \left( \sigma_2 ^2 - \sigma_{12} \right) \left( \sigma_1 ^2 - \sigma_{12} \right)\sigma_{12} &= \left( \sigma_2 ^2 - \sigma_{12} \right) \left[ \left( \sigma_2 ^2 - \sigma_{12} \right) \sigma_1 ^2 + \left( \sigma_1 ^2 - \sigma_{12} \right) \sigma_{12} \right] + \left( \sigma_1 ^2 - \sigma_{12} \right) \left[ \left( \sigma_1 ^2 - \sigma_{12} \right) \sigma_2 ^2 + \left( \sigma_2 ^2 - \sigma_{12} \right) \sigma_{12} \right] \\
+   & \left( \sigma_2 ^2 - \sigma_{12} \right) ^2 \sigma_1 ^2 + \left( \sigma_21 ^2 - \sigma_{12} \right) ^2 \sigma_2 ^2 + 2 \left( \sigma_2 ^2 - \sigma_{12} \right) \left( \sigma_1 ^2 - \sigma_{12} \right)\sigma_{12} = \\
+& =  \left( \sigma_2 ^2 - \sigma_{12} \right) \left[ \left( \sigma_2 ^2 - \sigma_{12} \right) \sigma_1 ^2 + \left( \sigma_1 ^2 - \sigma_{12} \right) \sigma_{12} \right] \\
+&\quad+ \left( \sigma_1 ^2 - \sigma_{12} \right) \left[ \left( \sigma_1 ^2 - \sigma_{12} \right) \sigma_2 ^2 + \left( \sigma_2 ^2 - \sigma_{12} \right) \sigma_{12} \right] \\
 &= \left( \sigma_1 ^2 \sigma_2 ^2 - \sigma_{12} ^2 \right) \left[ \sigma_2 ^2 - \sigma_{12} + \sigma_1 ^2 - \sigma_{12} \right].
 \end{align*}
 
 V prvi vrstici se po računanju oklepajev pokrajša v prvi faktor v drugi vrstici, ki smo ga lahko izpostavili. Drugi faktor druge vrstice pa je ravno imenovalec \( I \).
 
-torej
+Torej
 
-\[ \hat{\sigma} ^2 = \frac{\sigma_1 ^2 \sigma_2 ^2 - \sigma_{12} ^2}{\sigma_1 ^2 + \sigma_2 ^2 - 2 \sigma_{12}}, \ quad
+\[ \hat{\sigma} ^2 = \frac{\sigma_1 ^2 \sigma_2 ^2 - \sigma_{12} ^2}{\sigma_1 ^2 + \sigma_2 ^2 - 2 \sigma_{12}}
 \]
 
 in ob upoštevanju \(  \sigma_{12} = \rho_{12} \sigma_1 \sigma_2  \) zapišemo
