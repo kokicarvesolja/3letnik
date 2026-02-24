@@ -860,30 +860,88 @@ kjer porazdelitev naboja premaknemo v prostoru za \( \mathrm{d} \mathbf{r} \).
 
 Izraz za delo zapišemo ob upoštevanju definicije dela v najnižjem multipolnem približku
 
-\[ \mathrm{d} W = e_0 \nabla \phi(\mathbf{r}_0) \cdot \mathrm{d} \mathbf{r} - \nabla \left( \vec{p}_e \cdot \mathbf{E}(\mathbf{r}_0) \right) \cdot \mathrm{d} \mathbf{r} = - \mathbf{F} \cdot \mathrm{d} \mathbf{r}
+\[ \mathrm{d} W = e_0 \nabla \phi(\mathbf{r}_0) \cdot \mathrm{d} \mathbf{r} - \nabla \left( \mathbf{p}_e \cdot \mathbf{E}(\mathbf{r}_0) \right) \cdot \mathrm{d} \mathbf{r} = - \mathbf{F} \cdot \mathrm{d} \mathbf{r}
 \]
 
 Upoštevamo, sedaj že enkrat uporabljeno, identiteto
 
-\[ \nabla \left( \mathbf{p}_e \cdot \mathbf{E} (\mathbf{r}_0) \right) = \mathbf{p}_0 \times \left( \nabla \times \mathbf{E}(\mathbf{r}_0) \right) + \left( \mathbf{p}_0 \cdot \nabla \right) \mathbf{E}(\mathbf{r}_0).
+\[ \nabla \left( \mathbf{p}_e \cdot \mathbf{E} (\mathbf{r}_0) \right) = \mathbf{p}_e \times \left( \nabla \times \mathbf{E}(\mathbf{r}_0) \right) + \left( \mathbf{p}_e \cdot \nabla \right) \mathbf{E}(\mathbf{r}_0).
 \]
 
 Prvi člen je ničeln, saj je elektrostatsko polje brezvrtinčno.
 
 Sila na naboj \( \rho_0 (\mathbf{r}) \) je torej
 
-\[ \mathbf{F} = e \mathbf{E}(\mathbf{r}_0) + \left( \mathbf{p}_0 \cdot \nabla \right) \mathbf{E}(\mathbf{r}_0).
+\[ \mathbf{F} = e \mathbf{E}(\mathbf{r}_0) + \left( \mathbf{p}_e \cdot \nabla \right) \mathbf{E}(\mathbf{r}_0).
 \]
 
 V homogenem zunanjem el. polju na testni dipol ne deluje nobena sila. V nehomogenem polju pa ga bo neslo proti energijskem minimumu.
 
-Navor
+Isto porazdelitev naboja \( \rho_0 \) sedaj želimo zavrteti za kot \( \mathrm{d} \bm{\phi} \). Zanima nas navor na porazdelitev navora
+
+\[ \mathrm{d} W = - \mathbf{M} \cdot \mathrm{d} \bm{\phi}. 
+\]
+
+Pri zasuku se monopolni moment nič ne spremeni, dipolni moment pa se
+
+\[ \mathrm{d} W = \mathrm{d} (e \phi - \mathbf{p}_e \cdot \mathbf{E}) = - \mathrm{d} \mathbf{p}\cdot \mathbf{E}.
+\]
+
+Dipolni moment je v tem primeru enak \( \mathrm{d} \bm{\phi} \times \mathbf{p}_e = \mathrm{d} \mathbf{p} \) in delo nabora je tako
+
+\[ \mathrm{d} W = - \mathrm{d} \bm{\phi} \left( \mathbf{p}_e \times \mathbf{E} \right) =- \mathbf{M} \cdot \mathrm{d} \bm{\phi},
+\]
+
+iz česar zaključimo, da je navor
+
+\[ M = \mathbf{p}_e \times \mathbf{E} 
+\]
 
 * Magnetostatika
 ** 8. vprašanje
 #+begin_problem
 Uvedi in razloži Amperovo silo med poljubnima tokovnima vodnikoma in nato pokaži ter zapiši Biot-Savartov zakon za magnetno polje. Opiši tipične velikosti magnetnega polja. Kakšna je značilna lastnost magnetnih silnic, posebej v primerjavi z električnimi silnicami?
 #+end_problem
+*** Amperova sila med tokovnima vodnikoma
+
+Z izpeljavo Amperove sile med poljubnima tokovnima vodnikoma s bomo pomagali z Amperovo silo med ravnima tokovnima vodnikoma. 
+
+Na dva tokovna vodnika dolžine \( l \) na razdalji \( 2a \), po katerih teče tok \( I_1 \) in \( I_2 \), deluje sila drugega vodnika. Če sta tokova isto predznačena, potem se privlačita, drugače odbijata. 
+
+Eksperimentalno je pokazano, da je sila na vodnik
+
+\[ \mathbf{F} = \frac{\mu_0}{4 \pi} \frac{I_1 I_2 l}{\left| \bm{\rho}_2 - \bm{\rho}_2 \right|} \frac{\bm{\rho}_2 - \bm{\rho}_1}{\left| \bm{\rho}_2 - \bm{\rho}_1 \right|},
+\]
+
+kjer je \( \frac{\bm{\rho}_2 - \bm{\rho_1}}{\left| \bm{\rho}_2 - \bm{\rho_1} \right|} \) smerni enotski vektor, ki kaže pravokotno na vodnika.
+
+Razširimo sedaj to na poljubna tokovna vodnika, ki sta parametrizirana z \( \mathbf{r}(l_1) \) in \( \mathbf{r}(l_2) \). Zanima nas magnetna sila med \( \mathrm{d} l_1 \) in \( \mathrm{d} l_2 \), ki sta po velikosti enaka ločnima elementoma, po smeri pa kolinearna tangentnima vektorjema na žico v točkah \( \mathbf{r}(l_1) \) in \( \mathbf{r}(l_2) \). Lahko torej zapišemo
+
+\[ \mathrm{d} \mathbf{l} = \hat{t} \mathrm{d} l 
+\]
+
+Sila na oba odseka žice je
+
+\[ \mathrm{d} \mathbf{F} ^2 = \frac{\mu_0}{4 \pi} \frac{\left( I_1 \mathrm{d} \mathbf{l}_1 \right) \left( I_2 \mathrm{d} \mathbf{l}_2 \right)}{\left| \mathbf{r}(l_2) - \mathbf{r}(l_1) \right|} \cdot \frac{\mathbf{r} (l_2) - \mathbf{r}(l_1)}{\left| \mathbf{r}(l_2) - \mathbf{r}(l_1) \right|}
+\]
+
+Zadnji faktor je enotski vektor, ki kaže od enega ločnega elementa k drugemu.
+
+Celotna sila na eno žico je
+
+\[ \mathbf{F} = \frac{\mu_0 I_1 I_2}{4 \pi} \int\limits_{c_1}^{c_2} \frac{\mathrm{d} l_1 \mathrm{d} \mathbf{l}_2}{\left| \mathbf{r}(l_2) - \mathbf{r}(l_1) \right|} \cdot \frac{\mathbf{r}(l_2) - \mathbf{r}(l_1)}{\left| \mathbf{r}(l_2) - \mathbf{r}(l_1) \right|},
+\]
+
+kar lahko prepišemo v
+
+\[ \mathbf{F} = \frac{\mu_0 I_1 I_2}{4 \pi} \int\limits_{c_1}^{} \int\limits_{c_2}^{} \frac{\mathrm{d} \mathbf{l}_1 \times \left( \mathrm{d} \mathbf{l}_2 \times \left( \mathbf{r}(l_2) - \mathbf{r}(l_1) \right) \right)}{\left| \mathbf{r}(l_2) - \mathbf{r}(l_1) \right|}.
+\]
+
+\( c_1 \) in \( c_2 \) sta parametrični krivulji posameznih vodnikov. 
+
+*** Biot-Savartov zakon za magnetno polje
+*** Tipične velikost magnetnega polja
+*** Magnetne silnice
 ** 9. vprašanje
 #+begin_problem
 Uvedi magnetni pretok in razloži, koliko je pretok skozi zaključeno zanko. Zapiši in uvedi Amperov izrek v integralni in diferencialni obliki in ga razloži.
