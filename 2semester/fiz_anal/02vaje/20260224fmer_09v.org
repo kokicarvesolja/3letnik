@@ -234,3 +234,146 @@ Kovariančna matrika je potem po definiciji
    -\frac{\sigma_1 ^2}{\Delta t} & \frac{\sigma_2 ^2}{\Delta t} &  \frac{\sigma_1 ^2 \sigma_2  ^2}{\left( \Delta t \right) ^2}
    \end{bmatrix}
 \end{align*}
+* Uvod v združevanje odvisnih meritev
+
+Želimo doseči optimalno združevanje meritev, kjer bomo besedo /optimalno/ še definirali.
+
+Ocenjujemo neznano konstantno količino \( x \), za katero imamo dve oceni/meritvi
+
+\[ z_1 = x + r_1; \quad \left\langle r_1 ^2 \right\rangle = \sigma_1 ^2 \quad \text{ in } \quad z_2 = x + r_2; \quad \left\langle r_2 ^2 \right\rangle = \sigma_2 ^2,
+\]
+
+kjer velja
+
+\[ \left\langle r_1 r_2 \right\rangle = \sigma_{12} \ne 0.
+\]
+
+Izmerjeni oceni želimo združiti v novo oceno za \( x \), ki jo označimo z \( \tilde{x} \). Zanjo zahtevamo, da je \( \left\langle \tilde{x} \right\rangle = x \) (pričakovana vrednost nove ocene je še zmeraj \( x \)). Zapišemo
+
+\[ \tilde{x} = x + \tilde{r}.
+\]
+
+Novo oceno zapišemo z nastavkom linearne kombinacije ocen
+
+\[ \tilde{x} = a z_1 + b z_2.
+\]
+
+Zahtevamo linearno kombinacijo, saj samo \( z_1 \) ne bi zadostil pogoju \( \left\langle \tilde{x} \right\rangle = x \).
+
+Razpišemo vse količine
+
+\begin{align*}
+  \tilde{x} = x + \tilde{r} &= a \left( x + r_1 \right) + b (x + r_2) \\
+x + \tilde{r} &= x (a + b) + ar_1 + b_2 && \left/ \left\langle \cdot \right\rangle \right. \\
+x &= x (a + b),
+\end{align*}
+
+kjer dobimo pogoj \( a + b = 1 \) oz. \( a = 1 - b \).
+
+Novo oceno torej lahko zapišemo kot
+
+\[ \tilde{x} = (1 - b) z_1 + z_2 = z_1 + b (z_2 - z_1).
+\]
+
+Členu \( (z_2 - z_1) \) pravimo /inovacija/, \( b \) pa pravimo utež/faktor. Člen se imenuje inovacija, saj \( z_1 \) nenehno z večanjem meritev popravlja drugi člen.
+
+V primeru vrednosti \( b = \frac{1}{2} \) dobimo ravno povprečje
+
+\[ \tilde{x} = z_1 + \frac{1}{2} (z_2 - z_1) = \frac{z_1 + z_2}{2} = \bar{z},
+\]
+
+kar pomeni, da je povprečje dobra, vendar ne optimalna ocena.
+
+Iščemo \( b_0 \) - optimalno utež - ki nam poda optimalno oceno (optimalno združevanje \( z_1 \) in \( z_2 \)).
+
+Beseda optimalno pomeni, da je napaka minimalna. Optimalno oceno bomo označili z \( \tilde{x} = \hat{x} \). Z drugimi besedami zapisan pogoj za optimalno oceno je, da /zahtevamo najmanjšo varianco/.
+
+\[ \frac{\mathrm{d} \tilde{\sigma} ^2}{\mathrm{d} b} = 0  \implies b_0.
+\]
+
+Zapišemo varianco po definiciji
+
+\[ \tilde{\sigma} ^2 = \left\langle \tilde{r} ^2 \right\rangle = \left\langle \left( (1 - b)r_1  + br_2 \right) ^2 \right\rangle,
+\]
+
+ki jo kvadriramo in dobimo
+
+\begin{equation}\label{ali:vari}
+\begin{aligned}
+  \tilde{\sigma} ^2 &= \left\langle \left( 1 - b \right) ^2 r_1 ^2 + b ^2 r_2 ^2 + 2 (1 - b) b r_1 r_2 \right\rangle \\
+&= \left( 1 - b \right) ^2 \sigma_1 ^2 + b ^2 \sigma_2 ^2 + 2 (1 - b) b \sigma_{12},
+\end{aligned}
+\end{equation}
+
+kjer smo upoštevali \( \left\langle r_1 ^2 \right\rangle = \sigma_1 ^2 \) in \( \left\langle r_2 ^2 \right\rangle = \sigma_2 ^2 \).
+
+Za minimum moramo odvajati in dobimo
+
+\[ \frac{1}{2} \frac{\mathrm{d} \tilde{\sigma} ^2}{\mathrm{d} b} = b_0 \left( \sigma_1 ^2 + \sigma_2 ^2 - 2 \sigma_{12} \right) - \sigma_1 ^2 + \sigma_{12},
+\]
+
+iz česar zaključimo
+
+\[ b_0 = \frac{\sigma_1 ^2 - \sigma_{12}}{\sigma_1 ^2 + \sigma_2 ^2 - 2 \sigma_{12}}.
+\]
+
+Optimalna ocena je torej
+
+\begin{equation}
+\label{eq:2}
+ \hat{x} = z_1 + \frac{\sigma_1 ^2 - \sigma_{12}}{\sigma_1 ^2 + \sigma_2 ^2 - 2\sigma_{12}} (z_2 - z_1).
+\end{equation}
+
+Iz pogoja se vidi, da povprečevanje ni optimalna ocena. Lahko pa si pogledamo, kdaj je optimalna ocena povprečje s tem, da pogledamo pogoj
+
+\[ b_0 = \frac{1}{2} = \frac{\sigma_1 ^2 - \sigma_{12}}{\sigma_1 ^2 + \sigma_2 ^2 -2 \sigma_{12}} \implies \ \sigma_1 ^2 = \sigma_2 ^2 \iff \sigma_1 = \sigma_2 = \sigma.
+\]
+
+V primeru, ko imamo negotovosti, ki so enake, lahko merimo.
+
+V kontekstu fizikalnega praktkuma: meritve so bile opravljene na isti napravi v obdobju kratkega časa in zato se lahko predpostavi enakost negotovosti posameznih meritev. Povprečenje naših rezultatov torej sploh ni bilo tako napačno.
+
+Če v \ref{ali:vari} vstavimo vrednost \( b_0 \) za optimalno oceno, lahko izračunamo kakšna je negotovost optimalne ocene
+
+\begin{equation}
+\label{eq:1}
+ \hat{\sigma} ^2 = \left( 1 - b_0 \right) ^2 \sigma_1 ^2 + b_0 ^2 \sigma_2 ^2 + 2 (1 - b_0) b_0 \sigma_{12}
+\end{equation}
+
+Izračunajmo vmesni rezultat
+
+\[ 1- b_0 = \frac{\sigma_2 ^2 - \sigma_{12}}{\sigma_1 ^2 + \sigma_2 ^2 - 2 \sigma_{12}} = \frac{\sigma_2 ^2 - \sigma_{12}}{I}
+\]
+
+V vseh členih enačbe \ref{eq:1} se pojavi imenovalec \( I ^2 \), zato
+
+\[ \hat{\sigma} ^2 = \frac{1}{I ^2} \left[ \left( \sigma_2 ^2 - \sigma_{12} \right) ^2 \sigma_1 ^2 + \left( \sigma_21 ^2 - \sigma_{12} \right) ^2 \sigma_2 ^2 + 2 \left( \sigma_2 ^2 - \sigma_{12} \right) \left( \sigma_1 ^2 - \sigma_{12} \right)\sigma_{12} \right].
+\]
+
+Namesto računanja bomo najprej izostavili \( \sigma_2 ^2 - \sigma_{12} \) in \( \sigma_1 ^2 - \sigma_{12} \), kjer zadnji člen s faktorjem \( 2 \) razbijemo na dva delo (dobesedno \( 2x = x + x \)). Dobimo
+
+\begin{align*}
+   \left( \sigma_2 ^2 - \sigma_{12} \right) ^2 \sigma_1 ^2 + \left( \sigma_21 ^2 - \sigma_{12} \right) ^2 \sigma_2 ^2 + 2 \left( \sigma_2 ^2 - \sigma_{12} \right) \left( \sigma_1 ^2 - \sigma_{12} \right)\sigma_{12} &= \left( \sigma_2 ^2 - \sigma_{12} \right) \left[ \left( \sigma_2 ^2 - \sigma_{12} \right) \sigma_1 ^2 + \left( \sigma_1 ^2 - \sigma_{12} \right) \sigma_{12} \right] + \left( \sigma_1 ^2 - \sigma_{12} \right) \left[ \left( \sigma_1 ^2 - \sigma_{12} \right) \sigma_2 ^2 + \left( \sigma_2 ^2 - \sigma_{12} \right) \sigma_{12} \right] \\
+&= \left( \sigma_1 ^2 \sigma_2 ^2 - \sigma_{12} ^2 \right) \left[ \sigma_2 ^2 - \sigma_{12} + \sigma_1 ^2 - \sigma_{12} \right].
+\end{align*}
+
+V prvi vrstici se po računanju oklepajev pokrajša v prvi faktor v drugi vrstici, ki smo ga lahko izpostavili. Drugi faktor druge vrstice pa je ravno imenovalec \( I \).
+
+torej
+
+\[ \hat{\sigma} ^2 = \frac{\sigma_1 ^2 \sigma_2 ^2 - \sigma_{12} ^2}{\sigma_1 ^2 + \sigma_2 ^2 - 2 \sigma_{12}}, \ quad
+\]
+
+in ob upoštevanju \(  \sigma_{12} = \rho_{12} \sigma_1 \sigma_2  \) zapišemo
+
+\[ \hat{\sigma} ^2 = \frac{\sigma_1 ^2 \sigma_2 ^2 \left( 1 - \rho_{12} ^2 \right)}{\sigma_1 ^2 + \sigma_2 ^2 - 2 \rho_{12} \sigma_1 \sigma_2}.
+\]
+
+Če izpostavimo \( \left( 1 - \rho_{12} ^2 \right)  \), potem
+
+\begin{align*}
+  \hat{\sigma} ^2 &= \left( 1 - \rho_{12} ^2 \right) \left( \frac{\sigma_1 ^2 + \sigma_2 ^2 - 2 \rho_{12} \sigma_1 \sigma_2}{\sigma_1 ^2 \sigma_2 ^2} \right)^{-1} \\
+&= \left( 1- \rho_{12} ^2 \right) \left( \sigma_1^{-2} \sigma_2 ^{-2} - \frac{2 \rho_{12}}{\sigma_1 \sigma_2} \right)^{-1}.
+\end{align*}
+
+Rezultat v zadnji vrstici se pogosto pojavlja v literaturi in je za na list z enačbami skupaj z \ref{eq:2}.
