@@ -1,0 +1,236 @@
+#+title: Vaje iz Fizikalnih merjenj, 9. teden v letu
+#+subtitle: 2026/02/24
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Kovarianca/korelacija
+
+Neznana količina, ki jo merimo, je \( x \). Imamo dva seta meritev, oba porazdeljena po normalni porazdelitvi
+
+\[ z_1 \sim N (x, \sigma_1 ^2 ) \quad \text{ in } \quad z_2 \sim N(x, \sigma_2 ^2)
+\]
+
+#+name: Točnost in natančnost
+#+begin_note
+Razdalja med pričakovana vrednostjo \( x \) in njeno povprečno vrednostjo \( \bar{x} \) je točnost, medtem ko odstopanje od povprečne vrednosti pa je natančnost.
+
+Točnost je ponavadi sistematska napaka.
+#+end_note
+
+Predpostavimo, da so naši izmerki natančni.
+
+Naša seta meritev napišemo kot vsoto pričakovane vrednosti in šuma, ki sta oba razporejena po normalni porazdelitvi.
+
+\[ z_1 = x + r_1; \quad r_1 \sim N (0, \sigma_1 ^2) \quad \text{ in } \quad z_2 = x + r_2; \quad r_2 \sim N(0, \sigma_2 ^2)
+\]
+
+Če imamo odvisne meritve (šume), potem zapišemo
+
+\[ r_2 = \alpha r_1 + w; \quad w \sim N(0, \sigma_w ^2)
+\]
+
+Varianca \( \sigma_2 ^2 \) je po definiciji
+
+\[ \sigma_2 ^2 = \left\langle \left( z_2 - x \right) ^2 \right\rangle = \left\langle r_2 ^2 \right\rangle.
+\]
+
+Upoštevamo odvisnost meritve (šumov), potem zapišemo
+
+\begin{align*}
+  \sigma_2 ^2 &= \left\langle r_2 ^2 \right\rangle \\
+&= \left\langle \left( \alpha r_1 + w \right) ^2 \right\rangle \\
+&= \left\langle \alpha ^2 r_1 ^2 + 2\alpha r_1 w + w ^2 \right\rangle \\
+&= \alpha ^2 \sigma_1 ^2 + \sigma_w ^2
+\end{align*}
+
+Člen \( \left\langle r_1 w \right\rangle \) je kovarianca in ker je \( r_2 = r_2 (r_1, w) \) in sta \( r_1 \) in \( w \) neodvisni, je njuna kovarianca ničelna.
+
+Sledi, da dobimo zapis
+
+\[ 1 = \left( \alpha \frac{\sigma_1}{\sigma_2} \right) ^2 + \left( \frac{\sigma_w}{\sigma_2} \right) ^2,
+\]
+
+iz česar vidimo, da je korelacijski koeficient \( \rho_{12} = \left( \alpha \frac{\sigma_1 }{\sigma_2} \right) ^2 \) omejen na intervalu
+
+\[ 0 \le \left( \alpha \frac{\sigma_1}{\sigma_2} \right) ^2 \le 1 \implies -1 \le \rho_{12} \le 1
+\]
+
+V primeru \( \rho_{12} = 0 \) je popolna neodvisnost spremenljivk, v primeru \( \rho = \pm 1 \) imamo popolno korelacijo.
+
+
+Kovarianca je po definiciji
+
+\[ \sigma_{12} = \left\langle \left( z_1 - x \right) \left( z_2 - x \right) \right\rangle  = \left\langle r_1 r_2 \right\rangle.
+\]
+
+Upoštevamo definicije šumov in dobimo
+
+\[ \sigma_{12} = \left\langle r_1 \left( \alpha r_1 + w \right) \right\rangle  = \alpha \sigma_1 ^2,
+\]
+
+saj je kovarianca \( \left\langle r_1 w \right\rangle = 0\).
+
+Če se vrnemo h korelacijskemu faktorju,
+
+\[ \rho_{12} = \alpha \frac{\sigma_1}{\sigma_2},
+\]
+
+ki ga pomnožimo z \( \sigma_1 \sigma_2 \), potem lahko zapišemo kot
+
+\[ \rho_{12} \sigma_1 \sigma_2 = \alpha \sigma_1 ^2 = \sigma_{12} = \rho_{12} \sigma_1 \sigma_2
+\]
+* Širjenje napak (splošni predpis = po Gaussu)
+
+Imamo večjo kombinacijo spremenljivk
+
+\begin{align*}
+  u_1 &= f_1 (x_1, x_2, \ldots, x_n)
+u_2 &= f_2 (x_1, x_2, \ldots, x_n)
+&\vdots
+u_n &= f_n (x_1, x_2, \ldots, x_n),
+\end{align*}
+
+kjer so \( x_1, x_2, \ldots, x_n \) količine, ki jih merimo. Uvedemo vektorski zapis
+
+\[ \mathbf{x} = \begin{bmatrix} x_{1} \\ x_{2} \\ \vdots \\ x_{n} \end{bmatrix} \quad \text{ in } \quad \mathbf{u} = \begin{bmatrix} u_{1} \\ u_{2} \\ \vdots \\ u_{n} \end{bmatrix}
+\]
+
+Za \( \mathbf{x} \) poznamo ocene, ki jih označimo kot
+
+\[ \bar{\mathbf{x}} = \begin{bmatrix} \bar{x}_{1} \\ \bar{x}_{2} \\ \vdots \\ \bar{x}_{n} \end{bmatrix}.
+\]
+
+Dejanska vrednost \( \bar{x}_i \) je vsota ocene \( x_i \) in šuma \( m_i \)
+
+\[ \bar{x}_i = x_i + m_i; \quad m_i \sim N(0, \sigma_1 ^2).
+\]
+
+Kovarianca je po definiciji
+
+\[ \delta_{ij} = \left\langle (\bar{x}_{i - x_i}) \left( \bar{x}_j - x_j \right) \right\rangle  = \left\langle m_i m_j \right\rangle.
+\]
+
+V primeru \( i = j \) dobimo \( \sigma_i ^2 = \left\langle (\bar{x}_i - x_i) ^2 \right\rangle = \sigma_i ^2 \), kar je že varianca znotraj kovariance!
+
+Uvedemo kovariančno matriko, katere elementi so
+
+\[ \left( M \right)_{ij} = \sigma_{ij} = \left\langle (\bar{x}_i - x_i) \left( \bar{x}_j - x_j \right) \right\rangle  = \left\langle m_i m_j \right\rangle.
+\]
+
+Matrični zapis kovariančne matrike je
+
+\[ M = \left\langle \left( \bar{\mathbf{x}} - \mathbf{x} \right) \left( \bar{\mathbf{x}} - \mathbf{x} \right)^T \right\rangle =\left\langle \mathbf{m} \mathbf{m}^T \right\rangle.
+\]
+
+Lastnosti kovariančne matrike so
+
+- simetričnost \( M = M^T \)
+- diagonalni elementi kovariantne matriko so \( \left( M \right)_{ii} = \sigma_{ii} = \sigma_i ^2 \) so variance
+- izvendiagonalni elementi so kovariance \( \left( M \right)_{ij, i \ne j} = \sigma_{ij} \)
+
+
+Za vektor \( \mathbf{u} = \left( f_1 (\mathbf{x}), f_2 (\mathbf{x}), \ldots, f_n (\mathbf{x}) \right) \) nas zanima ocena \( \bar{\mathbf{u}} \), zato da lahko izračunamo kovariančno matriko \( U \).
+
+Po definiciji je kovariančna matrika
+
+\[ U = \left\langle \left( \bar{\mathbf{u}} - \mathbf{u} \right) \left( \bar{\mathbf{u}} - \mathbf{u} \right)^T \right\rangle.
+\]
+
+Ocene ne poznamo, zato postopamo podobno kot zadnjič, ko razvijemo po Taylorju
+
+\[ \mathbf{u} = \begin{bmatrix} f_1 (\bar{\mathbf{x}}) \\ f_2 (\bar{\mathbf{x}}) \\ \ldots \\ f_n (\bar{\mathbf{x}}) \end{bmatrix} + J_{\mathbf{u}}(\mathbf{x})   \left( \mathbf{x} - \bar{ \mathbf{x}} \right) + o(x ^2),
+\]
+
+kjer je \( J_{\mathbf{u}} \) Jacobijeva matrika. Ocena je potem
+
+\[ \bar{\mathbf{u}} = \begin{bmatrix} f_1 (\bar{\mathbf{x}}) \\ f_2 (\bar{\mathbf{x}}) \\ \vdots \\ f_n (\bar{\mathbf{x}}) \end{bmatrix} + J_{\mathbf{u}} (\bar{\mathbf{x}}) \left( \bar{\mathbf{x}} - \bar{\mathbf{x}} \right) = \begin{bmatrix} f_1 (\bar{\mathbf{x}}) \\ f_2 (\bar{\mathbf{x}}) \\ \vdots \\ f_n (\bar{\mathbf{x}}) \end{bmatrix},
+\]
+
+saj je drugi člen ničeln.
+
+Torej
+
+\[ \bar{\mathbf{u}} - \mathbf{u}  = J_{\mathbf{u}} (\bar{\mathbf{x}}) \left( - \mathbf{x} + \bar{ \mathbf{x}} \right).
+\]
+
+Kovariančna matrika je potem
+
+
+\begin{align*}
+  U &= \left\langle \left( \bar{\mathbf{u}} - \mathbf{u} \right)\left( \bar{\mathbf{u}} - \bar{u} \right)^T \right\rangle \\
+&= \left\langle J_{\mathbf{u}} \left( \bar{\mathbf{x}} \right) \left( \bar{\mathbf{x}} - \mathbf{x} \right) \left( \bar{\mathbf{x}} - \bar{x} \right)^T J_{\mathbf{u}}^T (\bar{\mathbf{x}}) \right\rangle \\
+&= J_{\mathbf{u}} (\bar{\mathbf{x}}) M J_{\mathbf{u}}^T (\bar{\mathbf{x}}).
+\end{align*}
+
+Upoštevali smo, da velja \( \left \langleJ_{\mathbf{u}} (\bar{\mathbf{x}})\right\rangle = J_{\mathbf{u}}(\bar{\mathbf{x}}) \), saj je to matrika konstant. Spomnimo se še definicije Jacobijeve matrike, ki je
+
+\[ J_{\mathbf{u}}(\mathbf{x}) = \begin{bmatrix}
+                                \frac{\partial f_{1}}{\partial x_{1}}  & \frac{\partial f_{1}}{\partial x_{2}}  & \ldots & \frac{\partial f_{1}}{\partial x_{n}}  \\
+                                 \vdots &  & & \\
+                                 \vdots &  & & \\
+                                 \frac{\partial f_{n}}{\partial x_{1}} & \frac{\partial f_{n}}{\partial x_2} & \ldots & \frac{\partial f_{n}}{\partial x_{n}}
+                                \end{bmatrix}
+\]
+* Meritev časa preleta (ang. /time-of-flight/ or TOF)
+#+begin_problem
+Imamo delec, ki se premika s hitrostjo \( v \). Imamo dva senzorja, ki se nahajata na razdalji \( l \). Čas za prelet intervala je \( \Delta t \). Senzor 1 ima oceno meritev \( \bar{x}_1 \) in nedoločenost \( \sigma_1 \). Senzor 2 ima oceno meritve \( \bar{x}_2 \) in nedoločenost \( \sigma_2 \). Senzorja sta neodvisna.
+
+Izračunaj kovariančno matriko za vektor \( \mathbf{u} = (x_1, x_2, v)^T \).
+#+end_problem
+
+Vektor ocen je
+
+\[ \bar{\mathbf{x}} = \begin{bmatrix} \bar{x}_{1} \\ \bar{x}_{2} \end{bmatrix}.
+\]
+
+Kovariančna matrika je
+
+\[ M = \begin{bmatrix}
+       \sigma_{1} ^2 &  \\
+        & \sigma_2 ^2
+        \end{bmatrix},
+\]
+
+saj je kovarianca senzorjev 0 zaradi neodvisnosti.
+
+Vektor ocene je
+
+\[ \bar{\mathbf{u}} = \begin{bmatrix} \bar{x}_{1} \\ \bar{x}_{2} \\ \bar{v} \end{bmatrix},
+\]
+
+želimo pa izračunati kovariančno matriko \( U \).
+
+Odvisnost hitrost od meritve je
+
+\[ v = \frac{x_2 - x_1}{\Delta t}.
+\]
+
+Vektor, za katerega računamo, je v odvisnosti od meritev
+
+\[ \mathbf{u} = \begin{bmatrix} x_{1} \\ x_{2} \\ v \end{bmatrix} = \begin{bmatrix} f_{1}(\mathbf{x}) \\ f_2 (\mathbf{x}) \\ f_3 (\mathbf{x}) \end{bmatrix}.
+\]
+
+Jacobijeva matrika je potem
+
+\[ J_{\mathbf{u}} = \begin{bmatrix} 1 & 0  \\ 0 & 1 \\ - \frac{1}{\Delta t} & \frac{1}{\Delta t} \end{bmatrix}.
+\]
+
+Kovariančna matrika je potem po definiciji
+
+\begin{align*}
+  U &= J_{\mathbf{u}} M J_{\mathbf{u}}^T \\
+&=  \begin{bmatrix} 1 & 0  \\ 0 & 1 \\ - \frac{1}{\Delta t} & \frac{1}{\Delta t} \end{bmatrix} \begin{bmatrix}
+                                                                                               \sigma_1 ^2 &  \\
+                                                                                                & \sigma_2 ^2
+                                                                                                \end{bmatrix}  \begin{bmatrix} 1  & 0 & - \frac{1}{\Delta t}  \\ 0 & 1 & \frac{1}{\Delta t}\end{bmatrix} \\
+&= \begin{bmatrix}
+  \sigma_1 ^2  & 0 & - \frac{\sigma_1 ^2}{\Delta t} \\
+   0 & \sigma_2 ^2 & \frac{\sigma_2 ^2}{\Delta t} \\
+   -\frac{\sigma_1 ^2}{\Delta t} & \frac{\sigma_2 ^2}{\Delta t} &  \frac{\sigma_1 ^2 \sigma_2  ^2}{\left( \Delta t \right) ^2}
+   \end{bmatrix}
+\end{align*}
