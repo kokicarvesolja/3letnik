@@ -21,7 +21,7 @@ V magnetostatiki je električni tok časovno konstanten.
 
 Nekaj velikosti tokov so
 
-\[ \begin{array}{c|c} \hline \text{pojav} & \text{velikost} \\ \hline
+ \begin{array}{|c|c|} \hline \text{pojav} & \text{velikost} \\ \hline
 \text{tok skozi celično membrano} & 1-10 \mathrm{p A} \\
 \text{živčni impulz} & 1 \mu \mathrm{A}\\
 \text{gospodinjski tok} & 1 \mathrm{A} \\
@@ -29,7 +29,7 @@ Nekaj velikosti tokov so
 \text{tok pri blisku} & 1-20 \cdot 10^4 \mathrm{A} \\
 \text{tok v Zemeljskem jedru} & 10^9 \mathrm{A} \\ \hline
 \end{array}
-\]
+
 ** Gostota magnetnega toka
 
 Podobno kot v elektrostatiki, lahko delovanje sil med električnimi vodniki opišemo z uvedbo magnetnega polja. Velja
@@ -49,7 +49,7 @@ Ta integral poznamo tudi pod imenom Biot-Savartov zakon. S tako uvedenim magnetn
 
 ** Velikosti magnetnega polja
 
-\[ \begin{array}{c|c} \hline \text{pojav} & \text{velikost} \\ \hline
+ \begin{array}{|c|c|} \hline \text{pojav} & \text{velikost} \\ \hline
 \text{možganska aktivnost} & 1 \mathrm{fT} \\
 \text{medgalaktična magnetna polja} & 1-10  \mathrm{pT}\\
 \text{srčna aktivnost} & 100 \mathrm{pT} \\
@@ -60,7 +60,7 @@ Ta integral poznamo tudi pod imenom Biot-Savartov zakon. S tako uvedenim magnetn
 \text{nevronska zvezda} & 10^6 - 10^7 \mathrm{T} \\
 \text{atomsko jedro} & 1 \mathrm{TT} \\ \hline
 \end{array}
-\]
+
 ** Magnetne silnice
 
 Magnetne silnice so vedno zaključene. Do tega spoznanja smo prišli eksperimentalno.
@@ -89,7 +89,7 @@ kar pomeni, da je magnetno polje vrtinčno.
 
 Magnetni pretok uvedemo kot
 
-\[ \phi_M = \int\limits_S^{} \vec{B} \cdot \mathrm{d} \vec{S},
+\[ \Phi_M = \int\limits_S^{} \vec{B} \cdot \mathrm{d} \vec{S},
 \]
 
 kjer je \( S \) poljubna površina. Velja pa, da je magnetni pretok skozi zaključeno površino

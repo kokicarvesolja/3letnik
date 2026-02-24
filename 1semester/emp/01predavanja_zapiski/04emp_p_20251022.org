@@ -273,7 +273,7 @@ To je navor električnega dipola, da se zavrti v zunanjem električnem polju.
 * Magnetostatika
 ** Amperova sila med (ravnimi) električnimi vodniki
 
-Imamo dva vzporedna vodnika, po katerih tečeta \( I_1 \) in \( I_2 \). Ker po njiju teče tok, bo vodnik s tokom \( I_1 \) na vodnik s tokom \( I_2 \) deloval s silo \( \vec{F} \). Drugi vodnik bo na drugega deloval z \( - \vec{F} \). Radij vektor v cilindričnih koordinatah vodnika s tokom \( I_1 \) je \( \rho_1 \), drugega vodnika pa \( \vec{\rho}_2 \). Sila na vodnik je
+Imamo dva vzporedna vodnika, po katerih tečeta \( I_1 \) in \( I_2 \). Ker po njiju teče tok, bo vodnik s tokom \( I_1 \) na vodnik s tokom \( I_2 \) deloval s silo \( \vec{F} \). Drugi vodnik bo na drugega deloval z \( - \vec{F} \). Radij vektor v cilindričnih koordinatah vodnika s tokom \( I_1 \) je \( \vec{\rho}_1 \), drugega vodnika pa \( \vec{\rho}_2 \). Sila na vodnik je
 
 \begin{equation}
 \label{eq:9}
@@ -287,7 +287,7 @@ Sila je za istosmerna tokova privlačna, za različno smerna tokova pa odbojna. 
 
 Gledamo dva splošna vodnika. Vodnika smo opisali kot parametrični krivulji \( \vec{r}_1 (l_1) \) in \( \vec{r}_2 (l_2)  \). Za začetek bomo najprej obravnavali silo med koščkama \( \mathrm{d} \vec{l}_1 \) in \( \mathrm{d} \vec{l}_2 \). Malo smo pogoljufali z zapisom, saj \( \mathrm{d} \vec{l}_1 = \vec{r}_1 \left( l_1 + \mathrm{d} l_1 \right) - \vec{r}_1 \left( l_1\right) \) in analogno za drugo žico. Sila na prvo žico je enaka
 
-\[ \mathrm{d} \vec{F} = \frac{\mu_0}{4 \pi} \frac{\left( I_1 \mathrm{d} \vec{l}_1 \right) \left( I_2 \mathrm{d} \vec{l}_2 \right)}{\left| \vec{r}_2 \left( l_2 \right) - \vec{r}_1 \left( l_1 \right) \right| ^2} \cdot \frac{\left( \vec{r}_2 \left( l_2 \right) - \vec{r}_1 \left( l_1 \right) \right)}{\left| \vec{r} _2 \left( l_2 \right) - \vec{r}_1 \left( l_1 \right) \right|}
+\[ \mathrm{d} \vec{F} ^2 = \frac{\mu_0}{4 \pi} \frac{\left( I_1 \mathrm{d} \vec{l}_1 \right) \left( I_2 \mathrm{d} \vec{l}_2 \right)}{\left| \vec{r}_2 \left( l_2 \right) - \vec{r}_1 \left( l_1 \right) \right| ^2} \cdot \frac{\left( \vec{r}_2 \left( l_2 \right) - \vec{r}_1 \left( l_1 \right) \right)}{\left| \vec{r} _2 \left( l_2 \right) - \vec{r}_1 \left( l_1 \right) \right|}
 \]
 
 Smer \( \mathrm{d} \vec{l}_1 \) in \( \mathrm{d} \vec{l}_2 \) je določena s smerjo električnega toka

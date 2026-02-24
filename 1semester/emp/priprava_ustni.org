@@ -915,6 +915,8 @@ Eksperimentalno je pokazano, da je sila na vodnik
 
 kjer je \( \frac{\bm{\rho}_2 - \bm{\rho_1}}{\left| \bm{\rho}_2 - \bm{\rho_1} \right|} \) smerni enotski vektor, ki kaže pravokotno na vodnika.
 
+[[file:01predavanja_zapiski/figures/UI_AmperovaSila.png]]
+
 Razširimo sedaj to na poljubna tokovna vodnika, ki sta parametrizirana z \( \mathbf{r}(l_1) \) in \( \mathbf{r}(l_2) \). Zanima nas magnetna sila med \( \mathrm{d} l_1 \) in \( \mathrm{d} l_2 \), ki sta po velikosti enaka ločnima elementoma, po smeri pa kolinearna tangentnima vektorjema na žico v točkah \( \mathbf{r}(l_1) \) in \( \mathbf{r}(l_2) \). Lahko torej zapišemo
 
 \[ \mathrm{d} \mathbf{l} = \hat{t} \mathrm{d} l 
@@ -934,15 +936,149 @@ Celotna sila na eno žico je
 
 kar lahko prepišemo v
 
-\[ \mathbf{F} = \frac{\mu_0 I_1 I_2}{4 \pi} \int\limits_{c_1}^{} \int\limits_{c_2}^{} \frac{\mathrm{d} \mathbf{l}_1 \times \left( \mathrm{d} \mathbf{l}_2 \times \left( \mathbf{r}(l_2) - \mathbf{r}(l_1) \right) \right)}{\left| \mathbf{r}(l_2) - \mathbf{r}(l_1) \right|}.
+\[ \mathbf{F} = \frac{\mu_0 I_1 I_2}{4 \pi} \int\limits_{c_1}^{} \int\limits_{c_2}^{} \frac{\mathrm{d} \mathbf{l}_1 \times \left( \mathrm{d} \mathbf{l}_2 \times \left( \mathbf{r}(l_2) - \mathbf{r}(l_1) \right) \right)}{\left| \mathbf{r}(l_2) - \mathbf{r}(l_1) \right| ^3}.
 \]
 
 \( c_1 \) in \( c_2 \) sta parametrični krivulji posameznih vodnikov. 
 
 *** Biot-Savartov zakon za magnetno polje
+
+Cilj je ekvivalenten elektrostatiki, da zapis z magnetno silo nadomestimo s posrednikom, ki bo magnetno polje. 
+
+Zapis za Amperovo silo bomo predrugačili v
+
+\[ \mathbf{F} = - \frac{\mu_0 I_1 I_2}{4 \pi} \oint\limits_{c_1}^{} \oint\limits_{c_2}^{} \frac{\mathrm{d} \mathbf{l}_1 \times \left( \mathrm{d} \mathbf{l}_2 \times \left[ \mathbf{r}(l_2) - \mathbf{r}(l_1) \right] \right)}{\left| \mathbf{r}(l_2) - \mathbf{r}(l_1) \right| ^3} = \oint\limits_{c_1}^{} I_1 \, \mathrm{d} \mathbf{l}_1 \times \oint\limits_{c_2}^{} \frac{\mu I_2}{4 \pi} \frac{\mathrm{d} \mathbf{l}_2 \times \left[ \mathbf{r}(l_1) - \mathbf{r}(l_2) \right]}{\left| \mathbf{r}(l_1) - \mathbf{r}(l_2) \right|^3}
+\]
+
+Nov zapis ima dva dela: vodnik, po katerem teče tok, ter vodnik s tokom, ki ustvarja silo na prvi vodnik. Uvedemo vektor gostote magnetnega polja in lahko zapišemo Biot-Savartov zakon za magnetno polje
+
+\[ \mathbf{B}(\mathbf{r}) = \frac{\mu_0 I_2}{4 \pi} \oint\limits_{c_2}^{} \frac{\mathrm{d} \mathbf{l}_2 \times \left( \mathbf{r}(l_1) - \mathbf{r}(l_2) \right)}{\left| \mathbf{r}(l_1) - \mathbf{r}(l_2) \right| ^3}
+\]
+
+Silo lahko sedaj zapišemo kot
+
+\[ \mathbf{F} (\mathbf{r}) = \oint\limits_{c_1}^{} I_1 \mathrm{d} \mathbf{l}_1 \times \mathbf{B}(\mathbf{r}(l_1)) 
+\]
 *** Tipične velikost magnetnega polja
+ \begin{array}{|c|c|} \hline \text{pojav} & \text{velikost} \\ \hline
+\text{možganska aktivnost} & 1 \mathrm{fT} \\
+\text{medgalaktična magnetna polja} & 1-10  \mathrm{pT}\\
+\text{srčna aktivnost} & 100 \mathrm{pT} \\
+\text{Zemeljsko magnetno polje} & 100 \mu \mathrm{T} \\
+\text{železni magnet} & 100 \mathrm{mT} \\
+\text{Sončne pege} & 1 \mathrm{T} \\
+\text{pospeševalniki} & 10 \mathrm{T} \\
+\text{nevronska zvezda} & 10^6 - 10^7 \mathrm{T} \\
+\text{atomsko jedro} & 1 \mathrm{TT} \\ \hline
+\end{array}
 *** Magnetne silnice
+
+Magnetne silnice uporabljamo za upodobitev vektorskega magnetnega polja. Definirane so kot krivulje
+
+\[ \dot{\mathbf{r}} = \frac{\mathrm{d} \mathbf{r}}{\mathrm{d} s} = \frac{\mathbf{B}(\mathbf{r}(s))}{\left| \mathbf{B}(\mathbf{r}(s)) \right|}.
+\]
+
+Lastnosti magnetnih silnic so:
+
+- silnice kažejo v smeri magnetnega polja \( \mathbf{B} \) in se ne sekajo 
+- površinska gostota silnic je sorazmerna velikosti \( \left| \mathbf{B} \right| \)
+- Magnetne silnice so vedno zaključene in nimajo ne izvorov ne ponorov. 
+- bližnje silnice so odbijajo
 ** 9. vprašanje
 #+begin_problem
 Uvedi magnetni pretok in razloži, koliko je pretok skozi zaključeno zanko. Zapiši in uvedi Amperov izrek v integralni in diferencialni obliki in ga razloži.
 #+end_problem
+*** Magnetna cirkulacija
+
+Za zaključeno krivuljo \( C \) definiramo magnetno cirkulacijo kot
+
+\[ \Gamma_M = \oint\limits_C^{} \mathbf{B} \cdot \mathrm{d} \mathbf{r}. 
+\]
+
+Integral je v splošnem različen od nič - okrog ravnega prevodnika s stalnim tokom imamo namreč konstantno magnetno polje, ki da končen prispevek k magnetni cirkulaciji po poljubni krivulji okrog vodnika, ki zaobjema vodnik. 
+
+Preko Stokesovega izreka integral pretvorimo na površinski integral
+
+\[ \oint\limits_C^{} \mathbf{B} \cdot \mathrm{d} \mathbf{r} = \int\limits_S^{} \left( \nabla \times \mathbf{B} \right) \, \mathrm{d} \mathbf{S},
+\]
+
+kjer je \( S \) površina, ki jo omejuje krivulja \( C \).
+
+Iz tega zaključimo, da je
+
+\[ \nabla \times \mathbf{B} \ne 0, 
+\]
+
+kar pomeni, da magnetno polje ni brezvrtinčno.
+*** Magnetni pretok 
+
+Magnetni pretok skozi površino \( S \) uvedemo kot
+
+\[ \Phi_M = \int\limits_S^{} \mathbf{B} \cdot \mathrm{d} \mathbf{S}. 
+\]
+
+Za zaključeno površino je magnetni pretok
+
+\[ \oint\limits_S^{} \mathbb{B} \cdot \mathrm{d} \mathbf{S} = 0, 
+\]
+
+kar je analogno električnemu polju v prostoru brez nabojev. Pove nam tudi, da je število silnic, ki gre v površino, enako številu silnic, ki gre ven iz površine. 
+
+Preko Gaussovega zakona zapišemo
+
+\[ 0 = \oint\limits_{S = \partial V}^{} \mathbf{B} \cdot \mathrm{d} \mathbf{S} = \int\limits_V^{} \nabla \cdot  \mathbf{B} \, \mathrm{d} V =0.
+\]
+
+Zapišemo
+
+\[ \nabla \cdot \mathbf{B} = 0, 
+\]
+
+kar nam sporoča, da je magnetno polje brezizvorno.
+*** Gostota električnega toka 
+
+Električni tok posplošimo z uvedbo gostote električnega toka \( \mathbf{j} \). Definiran je tako, da je pretok gostote toka \( \mathbf{j} \) skozi ploskev \( S \) enaka celotnemu električnemu toku \( I \) skozi to ploskev. 
+
+\[ I = \int\limits_S^{} \mathbf{j} \cdot \mathrm{d} \mathbf{S}. 
+\]
+
+Gostota toka je povezana s smerjo gibanja nosilcev naboja, ki nosijo tok, ima lahko poljubno prostorsko porazdeltiev in ni več vezana na vodnike.
+***  Amperov izrek
+
+[[file:01predavanja_zapiski/figures/UI_AmperovIzrek.png]]
+
+Zaključeno tokovno zanko \( C' \), po kateri teče tok \( I \), opisuje parametrizacija \( \mathbf{r}(l') \), kjer je ločni element \( \mathrm{d} \mathbf{l}' \). Tokovno zanko objame navidezna zanka \( C \), ki jo parametrizira \( \mathbf{r}(l) \), njen ločni element pa je \( \mathrm{d} \mathbf{l} \). 
+
+Cirkulacija magnetnega polja po navidezni zanki \( C \) je
+
+\[ \Gamma_M = \oint\limits_C^{} \mathbf{B} \cdot \mathrm{d} \mathbf{l} = \oint\limits_C^{} \left[ \frac{\mu_0 I}{4 \pi} \oint\limits_{C'}^{} \mathrm{d} \mathbf{l}' \times \frac{\mathbf{r}(l) - \mathbf{r}(l')}{\left| \mathbf{r}(l) - \mathbf{r}(l')  \right| ^3} \right] \cdot \mathrm{d} \mathbf{l},
+\]
+
+kjer smo upoštevali Biot-Savartov zakon za tokovno zanko.
+
+Zaradi mešanega produkta smemo ciklično zamenjati vrstni red
+
+\[ \Gamma_M = \oint\limits_C^{} \oint\limits_{C'}^{} \frac{\mu_0 I}{4 \pi} \left( \mathrm{d} \mathbf{l} \times \mathrm{d} \mathbf{l}' \right) \cdot \frac{\mathbf{r}(l) - \mathbf{r}(l')}{\left| \mathbf{r}(l) - \mathbf{r}(l')  \right| ^3} \right].
+\]
+
+Uvedemo posplošeno površino \( \mathrm{d} S = \mathrm{d} \mathbf{l} \times \mathrm{d} \mathbf{l}' \) in integral se prepiše v
+
+\[ \Gamma_M = \frac{\mu_0 I}{4\pi} \oint\limits_S^{} \mathrm{d} \mathbf{S} \cdot   \frac{\mathbf{r}(l) - \mathbf{r}(l')}{\left| \mathbf{r}(l) - \mathbf{r}(l')  \right| ^3} \right]
+\]
+
+Vrednost integrala v sferičnih koordinatah je \( 4 \pi \), iz česar sledi Amperov izrek
+
+\[ \Gamma_M = \mu_0 I. 
+\]
+
+Amperov izrek nam pove, da je magnetna cirkulacija po krivulji, ki zaobjema vodnik s tokom, sorazmerna temu toku. 
+
+S pomočjo Stokesovega izreka pa lahko zapišemo še Amperov izrek v integralni obliki
+
+\[ \Gamma_M = \oint\limits_{\partial S = C}^{} \mathbf{B} \cdot \mathrm{d} \mathbf{r}  = \oint\limits_S^{} \nabla \times \mathbf{B} \, \mathrm{d} S = \mu_0 I = \mu_0 \int\limits_S^{} \mathbf{j} \cdot \mathrm{d} \mathbf{S}.
+\]
+
+Diferencialna oblika Amperovega zakona pa je tako
+
+\[ \nabla \times \mathbf{B} = \mu_0 \mathbf{j}.
+\]
