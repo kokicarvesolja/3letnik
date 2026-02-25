@@ -10,6 +10,7 @@
 * Neobdelano
 ** TODO Earnshawyjev teorem
 ** TODO Thomsonov problem
+** TODO Primeri gostot električnega toka
 * Elektrostatika
 ** 1. vprašanje
  #+begin_problem
@@ -1019,7 +1020,7 @@ Magnetni pretok skozi površino \( S \) uvedemo kot
 
 Za zaključeno površino je magnetni pretok
 
-\[ \oint\limits_S^{} \mathbb{B} \cdot \mathrm{d} \mathbf{S} = 0, 
+\[ \oint\limits_S^{} \mathbf{B} \cdot \mathrm{d} \mathbf{S} = 0, 
 \]
 
 kar je analogno električnemu polju v prostoru brez nabojev. Pove nam tudi, da je število silnic, ki gre v površino, enako številu silnic, ki gre ven iz površine. 
@@ -1034,7 +1035,7 @@ Zapišemo
 \[ \nabla \cdot \mathbf{B} = 0, 
 \]
 
-kar nam sporoča, da je magnetno polje brezizvorno.
+kar nam sporoča, da je magnetno polje brezizvorno - ne obstajajo magnetni monopoli.
 *** Gostota električnega toka 
 
 Električni tok posplošimo z uvedbo gostote električnega toka \( \mathbf{j} \). Definiran je tako, da je pretok gostote toka \( \mathbf{j} \) skozi ploskev \( S \) enaka celotnemu električnemu toku \( I \) skozi to ploskev. 
@@ -1082,3 +1083,82 @@ Diferencialna oblika Amperovega zakona pa je tako
 
 \[ \nabla \times \mathbf{B} = \mu_0 \mathbf{j}.
 \]
+** 10. vprašanje
+#+begin_problem
+Uvedi magnetni vektorski potencial in ga razloži/izračunaj na primeru dolge tuljave. Na primeru tuljave tudi razloži umeritev/nedoločenost magnetnega potenciala. 
+#+end_problem
+*** Magnetni vektorski potencial
+
+Pri magnetnem polju imamo dva pogoja
+
+1) Silnice magnetnega polja so zaključene, \( \nabla \cdot \mathbf{B} = 0 \).
+2) Magnetno polje je vrtinčno \( \nabla \times \mathbf{B} \ne 0 \).
+
+Če bi sledili razmisleku kot smo to storili pri električnem polju, bi lahko magnetno polje zapisali s potencialom \( \mathbf{B} = - \nabla \phi_M \). Težava nastopi, saj vedno velja, da je rotor gradienta ničeln
+
+\[ \nabla \times \mathbf{B} = \nabla \times \left( \nabla \phi_M \right) = 0,
+\]
+
+kar pa je v navzkrižju z drugim povedanim pogojem. 
+
+Tako si bomo pomagali s prvim pogojem, saj v splošnem velja
+
+\[ \nabla \cdot \left( \nabla \times \mathbf{F} \right) = 0,  
+\]
+
+kjer je \( \mathbf{F} \) poljubno vektorsko polje. 
+
+Posledično lahko uvedemo vektorski magnetni potencial \( \mathbf{A} \) kot
+
+\[ \mathbf{B} = \nabla \times \mathbf{A}.
+\]
+
+Če upoštevamo uvedbo in Stokesov izrek v magnetnem pretoku, dobimo
+
+\[ \Phi_M = \int\limits_S^{} \mathbf{B} \cdot \mathrm{d} \mathbf{S} = \int\limits_S^{} \left( \nabla \times \mathbf{A} \right) \cdot \mathrm{d} \mathbf{S} = \int\limits_{\partial S}^{} \mathbf{A} \cdot \mathrm{d} \mathbf{r}.
+\]
+
+Zgornja enačba nam pove, da je magnetni pretok enak cirkulaciji vektorskega potenciala po zanki, ki obkroža površino, skozi katero računamo pretok.
+*** Vektorski potencial tuljave 
+
+Vzemimo tuljavo, ki
+
+- je zelo dolga in idealna tuljava orientirana v smeri osi \( z \)
+- ima polmer \( a \)
+- po njej teče tok \( I \)
+
+Zaradi prve predpostavke je magnetno polje znotraj tuljave homogeno in ga zapišemo
+
+\[ \mathbf{B}_0 = (0, 0, B_0),
+\]
+
+zunaj tuljave pa je magnetno polje \( \mathbf{B} = 0 \). 
+
+Za zadostitev pogoja \( \mathbf{B} = \nabla \times \mathbf{A} \) ima vektorski potencial *znotraj* tuljave obliko 
+
+\[ \mathbf{A} = \frac{1}{2} \mathbf{B}_0 \times \mathbf{r}.
+\]
+
+*Zunaj* tuljave vektorski potencial navkljub \( \mathbf{B} = 0 \) ni enak nič, saj je magnetni pretok skozi površino zanke, ki zaobjema tuljavo tik ob zunanji površini
+
+\[ \int\limits_S^{} \mathbf{B} \cdot \mathrm{d} \mathbf{S} = \oint\limits_C^{} \mathbf{A} \cdot \mathrm{d} \mathbf{r} = B_0 \pi a ^2 \ne 0 
+\]
+** 11. vprašanje
+#+begin_problem
+Izpelji Krichoffovo enačbo za magnetni vektorski potencial in zapiši ter komentiraj njeno rešitev. Kakšno povezavo ima z Biot-Savartovim zakonom?
+#+end_problem
+** 12. vprašanja
+#+begin_problem
+Uvedi in razloži 
+
+1) magnetno energijo sklenjene tokovne zanke v zunanjem magnetnem polju z uporabo zakona o ohranitvi energije 
+2) celotne energije magnetnega polja, ki ga ustvarja in vzdržuje neka gostota električnega toka
+#+end_problem
+** 13. vprašanje
+#+begin_problem
+Formuliraj magnetostatsko silo na telo s poljubno gostoto električnega toka, ki se nahaja v zunanjem polju, z uporabo samo magnetnega polja in uvedi napetostni tenzor magnetnega polja. Uporabo napetostnega tenzorja nato pokaži na primeru sile med dvema točkastima nabojema. 
+#+end_problem
+** 14. vprašanje
+#+begin_problem
+Zapiši in razloži multipolni razvoj magnetnega polja do dipolnega člena z uporabo vektorskega magnetnega potenciala. Razloži multipolni razvoj magnetne energije gostote toka v zunanjem magnetnem potencialu. Kakšna pa sta sila in navor na magnetni dipol v poljubnem zunanjem magnetnem polju?
+#+end_problem

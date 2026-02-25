@@ -209,7 +209,7 @@ Torej velja
 kar je diferencialno obliko Amperovega zakona.
 ** Magnetni potencial
 
-Magnetno polje je vrtinčno, kar pomeni, da ga ne moremo zapisati s skalarnim potencialom. Vemo pa, da je \( \vec{B} \) brezizvorno \( \nabla \cdot \vec{B} = 0 \). Vemo pa, da je v splošnem
+Magnetno polje je vrtinčno, kar pomeni, da ga ne moremo zapisati s skalarnim potencialom. Vemo pa, da je \( \vec{B} \) brezizvorno \( \nabla \cdot \vec{B} = 0 \). Vemo tudi, da je v splošnem
 
 \[ \nabla \cdot \left( \nabla \times \vec{A} \right) = 0.
 \]
@@ -223,7 +223,7 @@ Magnetni pretok se tako zapiše
 
 \begin{equation}
 \label{eq:3}
- \phi_M = \int\limits_S^{} \vec{B} \cdot \mathrm{d} \vec{S} = \int\limits_S^{} \left( \nabla \times \vec{A} \right) \, \mathrm{d} \vec{S} = \int\limits_{\partial S}^{} \vec{A} \, \mathrm{d} \vec{r}
+ \Phi_M = \int\limits_S^{} \vec{B} \cdot \mathrm{d} \vec{S} = \int\limits_S^{} \left( \nabla \times \vec{A} \right) \, \mathrm{d} \vec{S} = \int\limits_{\partial S}^{} \vec{A} \, \mathrm{d} \vec{r}
 \end{equation}
 
 To naj nam bi pomagalo predstavljati vektorski potencial - je potencial, ki gre skozi površino zanke, kakor kaže zgornja enačba.
@@ -231,7 +231,7 @@ To naj nam bi pomagalo predstavljati vektorski potencial - je potencial, ki gre 
 
 Imamo tuljavo s premerom \( a \), po kateri teče tok \( I \). Znotraj tuljave se nam pojavi homogeno polje \( \vec{B}_0 \), medtem ko zunaj tuljave pa je \( \vec{B} = 0 \). Magnetno polje vektorsko zapišemo kot
 
-\[ \vec{B}_0 \left( 0, 0, B_0 \right).
+\[ \vec{B}_0 = \left( 0, 0, B_0 \right).
 \]
 
 Da ima naše magnetno polje \( \vec{B}_0 \) takšne komponente in velja \( \vec{B}_0 = \nabla \times \vec{A} \), mora biti \( \vec{A} \) oblike
@@ -247,12 +247,12 @@ Zunaj tuljave bi pričakovali, da je \( \vec{A} \) ničeln ali konstanten, saj j
 
 Predstavljajmo si zanko, ki je tik ob zunanjem robu tuljave. Za to zanko bomo računali pretok skozi njo. Po definiciji magnetnega pretoka je
 
-\[ \phi_M = \int\limits_S^{} \vec{B} \cdot \mathrm{d} \vec{S} = B_0 \pi a ^2
+\[ \Phi_M = \int\limits_S^{} \vec{B} \cdot \mathrm{d} \vec{S} = B_0 \pi a ^2
 \]
 
 Uporabimo enačbo \ref{eq:3}, in prepišemo magnetni pretok
 
-\[ \phi_M = \int\limits_{\partial S}^{} \vec{A} \cdot \mathrm{d} \vec{r} \propto A_{zunaj} \cdot 2 \pi r_{zunaj},
+\[ \Phi_M = \int\limits_{\partial S}^{} \vec{A} \cdot \mathrm{d} \vec{r} \propto A_{zunaj} \cdot 2 \pi r_{zunaj},
 \]
 
 kjer je \( r_{zunaj} = a + \mathrm{d} r \). Iz tega lahko zaključimo, da \( \vec{A}_{zunaj} \ne 0 \).
