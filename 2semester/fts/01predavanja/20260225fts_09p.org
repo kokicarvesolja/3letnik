@@ -101,3 +101,38 @@ Strukturni faktor je potem
 
 V rdečih točkah je strukturni faktor \( S_{\mathbf{K}} = 1 \), v modrih točkah pa \( S_{\mathbf{K}} = 0 \).
 #+end_my_example
+
+Strukturni faktor lahko vsebuje tudi atomski faktor oblike \( f_j (\mathbf{K}) \) (ang. /atomic form factor/), ki je posledica elektronskega oblaka.
+
+Definiran je kot
+
+\[ f_j (\mathbf{K}) = \frac{1}{e_0} \int\limits_{}^{} e^{\mathrm{i} \mathbf{K} \mathbf{r}} \rho(\mathbf{r}) \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Strukturni faktor je potem
+
+\[ S_{\mathbf{K}} = \sum\limits_j^{} f_j (\mathbf{K}) e^{\mathrm{i} \mathbf{K} \mathbf{d}_j}.
+\]
+
+Atomski faktor je v primeru, če se faza \( \mathbf{K} \mathbf{r} \ll 1 \) ne spreminja veliko na končnem območju, kjer je definirana gostota \( \rho(\mathbf{r}) > \infty \), potem je njen približek \( Z \) - število elektronov v atomu.
+* Klasifikacija kristalov
+
+Poznamo 7 kristalnih sistemov:
+
+- kubični - pravi koti z enako dolgimi stranicami
+- tetragonalni - pravi koti z dvema enako dolgima stranicami
+- ortoromsbki - pravi kot s tremi enako dolgimi stranicami
+- monoklinski - pravi kot
+- triklinski - najmanj simetričen
+- trigonalni
+- heksagonalni
+
+| Sistem       | Število B.R. |
+| kubični      |            3 |
+| tetragonalni |            2 |
+| ortorombski  |            4 |
+| monoklinski  |            2 |
+| triklinski   |            1 |
+| trigonalnia  |            1 |
+| heksagonalni |            1 |
+|              |           14 |
