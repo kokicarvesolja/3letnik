@@ -1,0 +1,103 @@
+#+title: Predavanja iz Fizike trdne snovi, 9. teden v letu
+#+subtitle: 2026/02/25 in 2026/02/26
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Sipanje na kristalu
+
+Nazadnje smo dobili pogoj \( \mathbf{k} - \mathbf{k}' = \mathbf{K} \), kar v besedah pomeni, da mora biti njuna razlika enaka vektorju recipročne rešetke.
+
+Pogoj zapišemo drugače
+
+\[ \mathbf{k} ' = \mathbf{k} - \mathbf{K},
+\]
+
+kar kvadriramo in pokrajšamo valovna vektorja saj sta po velikosti enaka zaradi predpostavke elastičnega sipanja
+
+\[ \mathbf{k}' ^2 = \mathbf{k} ^2 - 2\mathbf{k} \mathbf{K} + \mathbf{K} ^2 \implies 2\mathbf{k} \mathbf{K} = \mathbf{K} ^2
+\]
+
+Na koncu enačbo delimo z \( 2 \mathbf{K} \) in dobimo enakost
+
+\[ \mathbf{k} \hat{\mathbf{K}} = \frac{K}{2}.
+\]
+
+\( \hat{\mathbf{K}} = \frac{\mathbf{K}}{K} \) je normiran vektor.
+
+Pogoj za interferenčno sipanje leži na ravnini, na katero je recipročni vektor \( \mathbf{K} \) pravokoten. Ravnini pravimo Braggova ravnina.
+
+[vstavi skico Braggove ravnine]
+
+Poglejmo si še drug pogled na pogoj \( \mathbf{k} - \mathbf{k} ' = \mathbf{K} \). Ni vsak \( \mathbf{K} \) dovolj dober, da pride do interference.
+
+Primer tega predstavlja Ewaldova krogla.
+
+[vstavi skico kubične mreže, Ewaldove krogle]
+
+V sc kristalu naj iz poljubnega delca izhaja valovni vektor \( \mathbf{k} \). Če okoli konca vektorja (tam, kjer je puščica) narišemo kroglo z radijem velikosti vektorja oz. v našem primeru krožnico, in če je ta krogla ravno tako ponesrečena, da ne seka nobene druge točke v kristalu, potem do interference ne bo prišlo.
+
+Krogla predstavlja vrednosti, ki jih lahko zaseda vektor \( \mathbf{k}' \). V primeru, če ta krogla seka točko kristala, potem je izpolnjen pogoj \( \mathbf{k} - \mathbf{k}' = \mathbf{K} \).
+** Debye - Sherrerjeva metoda (Sipanje na prašnem vzorcu)
+
+Imamo kroglo, katere polmer je velikost poljubnega vektorja \( \mathbf{K} \). Vektor ne rabi biti najmanjši možen.
+
+Iz izhodišča krogle si zamislimo valovni vektor \( \mathbf{k} \) okoli katerega ponovno narišemo kroglo. Tam, kjer večja krogla seka manjšo kroglo, dobimo kolobar. Ponovno so točke sekanja \( \mathbf{k} - \mathbf{k}' = \mathbf{K} \).
+
+Naj bo kot med vektorjema \( \mathbf{k} \) in \( \mathbf{k}' \) kot \( \theta \). Potem iz osnovne trigonometrije zaključimo, da je kot med vektorjema \( \mathbf{k} \) in \( \mathbf{K} \) ravno \( \frac{\pi}{2} - \frac{\theta}{2} \) (enakostranični trikotnik).
+
+Potem velja
+
+\[ 2k \sin \frac{\theta}{2} = K.
+\]
+
+* Geometrijski strukturni faktor
+
+Uvod o Strnadu in seštevanje faz v Strnadu na uklonski mrežici.
+
+Za Bravaisovo rešetko lahko definiramo strukturni faktor \( S_{\mathbf{K}} \), ki je vsota vseh faz sipanj
+
+\[ S_{\mathbf{K}} = \frac{1}{N} \sum\limits_{\mathbf{R}}^{} e^{\mathrm{i} \mathbf{K} \mathbf{R}},
+\]
+
+kjer je \( N \) število. V primeru, če je to Bravaisova rešetka, potem je \( S_{\mathbf{K}} = 1 \), saj je \( \sum_{\mathbf{k}} e^{\mathrm{i} \mathbf{K}\mathbf{R} } = N \).
+
+V primeru, da imamo pa Bravaisovo rešetko z bazo \( \mathbf{d}_j \), kjer je \( j = 1, \ldots, p \), potem je strukturni faktor
+
+\[ S_{\mathbf{K}} = \frac{1}{N} \sum\limits_{\mathbf{R}, \, \mathbf{j} = 1, \ldots p}^{} e^{\mathrm{i} \mathbf{K} (\mathbf{R} + \mathbf{d}_j)} = \sum\limits_{j = 1}^p e^{\mathbf{K} \mathbf{d}_j} \ne 1,
+\]
+
+kjer smo upoštevali dejstvo, da \( e^{\mathbf{R} \mathbf{K}} \cdot e^{\mathbf{K} \cdot \mathbf{d}_j} \).
+
+Zgornji rezultat velja samo v primeru, če je kristal sestavljen iz *identičnih atomov*.
+
+#+begin_my_example
+Izračunajmo strukturni faktor bcc mreže, za katero smo povedali, da jo lahko napišemo kot kombinacije sc mreže in baze.
+
+Primitivni vektorji so
+
+\[ \mathbf{a}_1 = (a, 0, 0), \ \mathbf{a}_2 = (0, a, 0), \ \mathbf{a}_3 = (0, 0, a),
+\]
+
+bazi pa sta \( \mathbf{d}_1 0 \) in \( \mathrm{d}_2 = \frac{1}{2} (a, a, a) \).
+
+Recipročni vektorji so
+
+\[ \mathbf{A}_1 = \frac{2 \pi}{a} (1, 0, 0), \ \mathbf{A}_2 = \frac{2 \pi}{a} (0, 1, 0), \ \mathbf{A}_3 = \frac{2 \pi}{a} (0, 0, 1).
+\]
+
+Vektor recipročne mreže je potem \( \mathbf{K} = \frac{2 \pi}{a} (k_1, k_2, k_3) \) za \( k_i \in \mathbb{Z} \).
+
+Strukturni faktor je potem
+
+\[ S_{\mathbf{K}} = 1 + e^{\mathrm{i} \pi \left( k_1 + k_2 + k_3 \right)}
+\]
+
+[slika 120510 FCC mreže]
+
+V rdečih točkah je strukturni faktor \( S_{\mathbf{K}} = 1 \), v modrih točkah pa \( S_{\mathbf{K}} = 0 \).
+#+end_my_example
