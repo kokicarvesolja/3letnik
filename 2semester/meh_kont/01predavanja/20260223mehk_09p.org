@@ -252,3 +252,137 @@ Relativna spremeba prostornine je
 \]
 
 kjer je \( \mathrm{tr} u \) sled matrike \( u \).
+** Napetostni tenzor
+
+Hookov zakon ima obliko
+
+\[ \mathbf{F} = k \mathbf{x},
+\]
+
+kjer je \( \mathbf{F} \) sila, ki deluje na vzmet in je vzrok deformacije, \( \mathbf{x} \) pa je mera deformacije. Prejšnje predavanje smo izpeljali deformacijski tenzor \( u_{ik} \), ki bo v Hookovem zakonu igral vlogo koeficienta \( k \). Napetostni tenzor pa bo vzrok deformacija in bo analog sili iz Hookovega zakona.
+
+Ključ pri današnjem predavanju bodo igrali kontaktne sile. To so sile znotraj snovi, ki delujejo na svojo okolico (?). Za naš primer kontaktna sila ne more biti sila na daljavo.
+
+Imamo košček prostornine \( \mathrm{d} ^3 \mathbf{r} \), ki bo izkusil silo
+
+\[ F_i = \int\limits_{}^{} f_i (\mathbf{r}) \, \mathrm{d} ^3 \mathbf{r},
+\]
+
+kjer je \( f_i \) prostorninska gostota sil. Volumnski integral bomo pretvorili na integral po zaključeni ploskvi
+
+\[ F_i = \oint\limits_S^{} p_{ik} \cdot \mathrm{d} A_k = \oint\limits_{}^{} p_{ik} n_k \, \mathrm{d} A
+\]
+
+kjer je \( p_{ik} \) tlak in tenzor, saj ima normala površine svoje komponente. Zato, da smo lahko naredili ta preskok iz prostorske gostote sile na površinsko gostoto sile \( p_{ik} n_k = \tilde{f}_i \), je bila pomembna predpostavka kontaktnih sil.
+
+Povezavo med \( f_i \) in \( p_{ik} \) dobimo preko Gaussovega izreka, ki v splošnem pravi
+
+\[ \int\limits_{}^{} \nabla \cdot \mathbf{E} \, \mathrm{d} V = \oint\limits_{}^{} \mathbf{E} \cdot \mathrm{d} \mathbf{A}.
+\]
+
+Napetostni tenzor \( p_{ik} \) je tako definiran
+
+\[ f_i  = \frac{\partial p_{ik}}{\partial x_{k}}.
+\]
+
+#+begin_my_example
+V primeru neobremenjenega telesa imamo robni pogoj \( p_{ik} n_k  = 0 \).
+#+end_my_example
+
+#+name: Hidrostatični tlak
+#+begin_problem
+Napetostni tenzor za hidrostatični tlak zapišemo
+
+\[ p_{ik} = - p \delta_{ik}.
+\]
+
+Dogovor je, da normala na površino kaže ven iz telesa. Tlak pritiska na ploskev v obratni smeri normale, zato je napetostni tenzor negativno predznačen. Slika 1)
+#+end_problem
+
+#+name: Strižna obremenitev
+#+begin_problem
+Napetostni tenzor za strižno obremenitev je
+
+\[ p_{ik} = p \left( \delta_{ix} \delta_{ky} + \delta_{iy} \delta_{kx} \right).
+\]
+
+Slika 2)
+#+end_problem
+
+#+name: Enoosna obremenitev
+#+begin_problem
+Napetostni tenzor za enoosno obremenitev je
+
+\[ p_{ik} = p \delta_{iz} \delta_{kz}
+\]
+
+Slika 3)
+#+end_problem
+
+[[file:figures/09napetostniTenzor.png]]
+*** Simetričnost napetostnega tenzorja
+
+Poglejmo si navor
+
+\[ M_i = \int\limits_{}^{} \left( \mathbf{r} \times \mathbf{f} \right)_i \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Vektorski produkt bomo zapisali v Einsteinovi notaciji
+
+\[ M_i = \int\limits_{}^{} \epsilon_{ijk} x_j f_k \, \mathrm{d} ^3 \mathbf{r},
+\]
+
+ter upoštevamo definicijo napetostnega tenzorja
+
+\[ \int\limits_{}^{}\epsilon_{ijk} x_j f_k \, \mathrm{d} ^3 \mathbf{r} = \int\limits_{}^{}\epsilon_{ijk} x_j \frac{\partial p_{kl}}{\partial x_{l}} \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Radi bi zapisali divergenco produkta \( x_j p_{kl} \) namesto samo divergenco napetostnega tenzorja in to naredimo z identiteto
+
+\[ \frac{\partial }{\partial x_{l}} \left( x_j p_{kl} \right) = x_j \frac{\partial p_{kl}}{\partial x_{l}}  + \frac{\partial x_{j}}{\partial x_{k}} p_{kl}.
+\]
+
+Upoštevamo, da velja \( \frac{\partial x_{j}}{\partial x_{l}}  = \delta_{jl} \) in dobimo razliko dveh integralov
+
+\[ M_i = \int\limits_{}^{} \epsilon_{ijk} \frac{\partial }{\partial x_{l}}  \left( x_j p_{kl} \right) \, \mathrm{d} ^3 \mathbf{r} - \int\limits_{}^{} \epsilon_{ijk} \delta_{jl} p_{kl} \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Prvi integral predstavlja divergenco tenzorja tretjega ranga in lahko zapišemo preko Gaussovega zakona
+
+\[ M_i = \oint\limits_{}^{} \epsilon_{ijk} x_j p_{kl} \, \mathrm{d} A_l - \int\limits_{}^{} \epsilon_{ijk} \delta_{jl} p_{kl} \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Za drugi integral pa bomo zahtevali, da je ničeln tako, da ga razdelimo na dva dela
+
+\[ \epsilon_{ijk} p_{kj} = \frac{1}{2} \left( \epsilon_{ijk} p_{kj} + \epsilon_{ikj} p_{jk} \right).
+\]
+
+Lahko smo zamenjali indeksa pri Levi-Civita simbolu, saj sta indeksa \( jk \) nema. Velja \( \epsilon_{ikj} = - \epsilon_{ijk} \) in dobimo pogoj
+
+\[ \epsilon_{ijk} p_{kj} = \epsilon_{ijk} \left( p_{kj} - p_{jk} \right).
+\]
+
+Če velja \( p_{kj} - p_{jk} =0 \) (simetričnost!), potem je navor
+
+\[ M_i = \oint\limits_{}^{} \epsilon_{ijk} x_j p_{kl} \, \mathrm{d} A_l
+\]
+** Cauchyjeva enačba (ekvivalent 2. Newtonovega zakona)
+
+Ponovno imejmo košček prostornine \( \mathrm{d} ^3 \mathbf{r} \), ki pa ima maso \( \rho \, \mathrm{d} ^3 \mathbf{r} \) in njegovo lego označimo z \( u_i \).
+
+Želimo izpeljati ekvivalent 2. Newtonovega zakona
+
+\[ \mathbf{F} = m \mathbf{a},
+\]
+
+kar bomo naredili z zapisom
+
+\[ \rho\, \mathrm{d} ^3 \mathbf{r} \ddot{u}_i = f_i \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Cauchyjeva enačba je tako
+
+\[ \rho \ddot{u}_i = \frac{\partial p_{ik}}{\partial x_{k}} + \rho f_i^{(2)},
+\]
+
+kjer zadnji člen zavzema zunanje sile.
