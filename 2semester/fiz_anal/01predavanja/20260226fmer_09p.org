@@ -184,3 +184,143 @@ Dobimo potrditev, da je to dejansko optimalno združena meritev, saj sta enaka r
 Imamo 2 seta meritev \( \left\{ x_i \right\} \) in \( \left\{ y_i \right\} \) za \( i = 1, 2, \ldots, N \).
 
 Obstaja povezava med šumom prve in druge meritve
+
+\[ w_x = x_i - \bar{x} \quad \text{ in } \quad w_y = y_i - \bar{y},
+\]
+
+kjer je \( \bar{w}_x = \bar{w}_y =0 \) in \( \bar{w}_x ^2 = \sigma_x ^2 \) in \( \bar{w}_y ^2 = \sigma_2 \)
+
+Definicija kovariance je
+
+\[ \sigma_{xy} = \rho_{xy} \sigma_x \sigma_y = \overline{w_x w_y},
+\]
+
+kjer je \( \rho_{xy} \) korelacijski koeficient in zaseda vrednosti \( \left| \rho_{xy} \right| \le 1\).
+
+Dokazujemo, da je
+
+\[ \sigma_{xy} = \overline{xy} - \bar{x} \bar{y}.
+\]
+
+Upoštevamo defincije
+
+\begin{align*}
+  \sigma_{xy} &= \overline{xy} - \bar{x} \bar{y} \\
+&= \frac{1}{N} \sum\limits_{}^{}\left( x_i - \bar{x} \right) \left( y_i - \bar{y} \right) \\
+&= \frac{1}{N} \sum\limits_{}^{} \left( x_i y_i - x_i \bar{y} - \bar{x} y_i + \bar{x} \bar{y} \right) \\
+&= \frac{1}{N} \left( \sum\limits_{}^{} x_i y_i - \bar{y} \sum\limits_{}^{} x_i - \bar{x} \sum\limits_{}^{} y_i + \bar{x} \bar{y} \sum\limits_{}^{} i \right) \\
+&= \left( \frac{1}{N} \sum\limits_{}^{} x_i y_i - \bar{x} \bar{y} - \bar{x} \bar{y} + \bar{x} \bar{y} \frac{N}{N} \right) \\
+&= \overline{xy} - \bar{x} \bar{y}
+\end{align*}
+
+Za nekolerirane ocene velja \( \rho = 0 \), z popolnoma (anti)korelirane \( x = (-)y \) velja \( \rho = (-) 1 \).
+** Združevanje koreliranih meritev
+
+Imejmo dva izmerka \( z_1, \sigma_1 \) in \( z_2, \sigma_2 \), ki imata korelacijski koeficient \( \rho \).
+
+Posamezne izmerka sta definirana kot
+
+\[ z_1 = x + w_1, \ \bar{w}_1 ^2 = \sigma_1 ^2 \quad \text{ in } \quad z_2 = x + w_2 , \ \bar{w}_2 ^2 = \sigma_2 ^2
+\]
+
+in velja \( \overline{w_1 w_2} \ne 0 \).
+
+Po definiciji bo korelacija
+
+\[ \sigma_{12} = \rho \sigma_1 \sigma_2 = \left\langle \left( z_1 - x \right) \left( z_2 - x \right) \right\rangle = \left\langle w_1 w_2 \right\rangle.
+\]
+
+Šuma nista neodvisna, torej ga lahko zapišemo kot linearnoa kombinacijo druge meritve in neodvisnega dela \( w_1 = \alpha w_2 + w \), kjer velja \( \left\langle w_2 w \right\rangle = 0\), kar je ekvivalentno
+
+\[ (z_1 - x) = \alpha (z_2 - x) + w, \ \left\langle w (z_2 - x) \right\rangle  = 0.
+\]
+
+Linearno odvisnost upoštevamo v korelaciji
+
+\begin{align*}
+  \rho \sigma_1 \sigma_2 &= \left\langle \left( \alpha w_2 + w \right) \right\rangle \\
+&= \alpha \sigma_1 ^2
+\end{align*}
+
+Iz tega sledi, da je koeficient linearne odvisnosti enak
+
+\[ \alpha = \rho \frac{\sigma_1}{\sigma_2}.
+\]
+
+Zapišimo še varianco neodvisnega šuma
+
+\begin{align*}
+  \sigma_1 ^2 = \left\langle w_1 ^2 \right\rangle &= \left\langle \left( \alpha w_2 + w \right) ^2 \right\rangle \\
+&= \left\langle \alpha ^2 w_2 ^2 + w ^2 + 2\alpha w_2 w  \right\rangle\\
+&= \alpha ^2 \sigma_2 ^2 + \sigma_w ^2
+\end{align*}
+
+Varianco neodvisnega šuma ob upoštevanju vrednosti \( \alpha \) potem zapišemo
+
+\[ \sigma_w ^2 = \sigma_1 ^2 \left( 1 - \rho ^2 \right)
+\]
+
+Optimalno združevanje ocen poteka preko kvadratov nekoreliranih šumov
+
+\[ 2J(x) = \frac{w_2 ^2}{\sigma_2 ^2} + \frac{w ^2}{\sigma_w ^2} = \frac{w_2 ^2}{\sigma_2 ^2} + \frac{\left( w_1 - \alpha w_2 \right) ^2}{\sigma_w ^2}.
+\]
+
+Razdelimo na vsoto ulomkov in upoštevamo definicijo \( \alpha \) in dobimo
+
+\[ 2 J(x) = \frac{w_2 ^2}{\sigma_2 ^2} + \frac{\rho ^2}{\sigma_2 ^2} \frac{w_2 ^2}{\left( 1 - \rho ^2 \right)} + \frac{w_1 ^2}{\sigma_1 ^2 \left( 1 - \rho ^2 \right)} - \frac{2 \rho w_1 w_2}{\sigma_1 \sigma_2 \left( 1 - \rho ^2 \right)}.
+\]
+
+V prvih dveh členih izpostavimo skupne lastnosti, ter upoštevamo definicijo šuma \( w = z - x \)
+
+\[ 2J(x) = \left( 1 + \frac{\rho ^2}{1 - \rho ^2} \right) \frac{\left( z_2 - x \right) ^2}{\sigma_2 ^2} + \frac{\left( z_1 - x \right) ^2}{\sigma_1 ^2 \left( 1 - \rho ^2 \right) } - \frac{2 \rho \left( z_1 - x \right) \left( z_2 - x \right)}{\sigma_1 \sigma_2 \left( 1 - \rho ^2 \right)}
+\]
+
+Prvi oklepaj se razreši in iščemo optimum za funkcijo
+
+\[ 2J(x) = \frac{\left( z_2 - x \right) ^2}{\left( 1 - \rho ^2 \right)\sigma_2 ^2} + \frac{\left( z_1 - x \right) ^2}{\left( 1 - \rho ^2 \right) \sigma_1 ^2} - \frac{2 \sigma \left( z_1 z_2 - x (z_1 + z_2) + x ^2 \right)}{\sigma_1 \sigma_2 \left( 1 - \rho ^2 \right)}
+\]
+
+Minimum te funkcije je
+
+\[ \frac{\mathrm{d} }{\mathrm{d} x} (2J(x)) = \frac{z_2 - x}{\sigma_1 ^2} + \frac{z_1 - x}{\sigma_1 ^2} + \frac{\rho \left( - (z_1 + z_2) + 2x \right)}{\sigma_1 \sigma_2}.
+\]
+
+Izrazimo \( x \)
+
+\[ x \left[ \frac{1}{\sigma_2 ^2} + \frac{1}{\sigma_1 ^2} - \frac{2 \rho}{\sigma_1 \sigma_2} \right] = \frac{z_2}{\sigma_2 ^2} + \frac{z_1}{\sigma_1} - \frac{\rho(z_1 + z_2)}{\sigma_1 \sigma_2},
+\]
+
+iz česar sledi, da je optimalno meritev pri
+
+\[ x_{opt} = \left[  \frac{1}{\sigma_2 ^2} + \frac{1}{\sigma_1 ^2} - \frac{2 \rho}{\sigma_1 \sigma_2} \right] ^{-1}\left[ \frac{z_2}{\sigma_2 ^2} + \frac{z_1}{\sigma_1} - \frac{\rho(z_1 + z_2)}{\sigma_1 \sigma_2} \right].
+\]
+
+Pri \( \rho = 0 \) imamo potem
+
+\[ x_{opt} = \left( \frac{1}{\sigma_1 ^2} = \frac{1}{\sigma_2 ^2} \right) ^{-1} \left[ \frac{z_1}{\sigma_1 ^2} + \frac{z_2}{\sigma_2 ^2} \right].
+\]
+
+Za \( \rho = 1 \) imamo potem
+
+\[ x = z_3 = z_2 = z_1.
+\]
+
+Če je \( \rho \) poljuben, potem je \( \sigma_1 = \sigma_2 \), potem je
+
+\[ x = \left( \frac{1 + 1 - 2 \rho}{\sigma ^2} \right)^{-1} \left( \frac{\left( z_1 + z_2 \right) - \rho (z_1 - z_2)}{\sigma ^2} \right) = \frac{z_1 + z_2}{2} .
+\]
+* On-line sledenje konstantnim količinam
+
+Imamo sistem \( S \) s spremenljivkami \( x \) in merilni sistem \( M \), ki ju povezuje senzor z izmerki \( z_j \). Merilni sistem \( M \) ima ocene \( \hat{x} \). S časom \( T \) vzorčimo - merimo. Dobimo rezultate oblike
+
+\[ z_j = x + r_j,
+\]
+
+kjer je \( x \) prava vrednosti in \( r_j \) normalni Gaussov šum.
+
+Merilni šum je nekoreliran, kar matematično zapišemo
+
+\[ \left\langle r_i r_j \right\rangle  = \delta_{ij} \sigma ^2.
+\]
+
+Idealizacija bi bila, da je tudi ob manjšanju \( T \to 0 \), šum še vedno nekoreliran.
