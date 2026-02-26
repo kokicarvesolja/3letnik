@@ -136,3 +136,107 @@ Poznamo 7 kristalnih sistemov:
 | trigonalnia  |            1 |
 | heksagonalni |            1 |
 |              |           14 |
+
+|                | baza sferično simetrične | baza arbirtarnih simetrij |
+| točkovne grupe | 7 krist. sistemov        | 32 točk. grup             |
+|                | 14 B.R.                  | 230 prostorskih grup      |
+
+#+name: Grupa
+#+begin_definition
+Grupo označimo z \( \left\{ A, B, C, \ldots \right\} \) in ima naslednje lastnosti
+
+1) \( A \cdot B = C \)
+2) \( \exists E \), ki je identiteta, \( A E = E A = A \)
+3) \( \exists A^{-1} \), kjer je \( A^{-1} \) inverz in velja \( A A^{-1} = A^{-1} A = E \).
+4) asociativnost \( A \cdot (B \cdot C) = (A \cdot B) \cdot C \)
+#+end_definition
+
+\( n \)-števno os zapišemo kot
+
+\[ C_n \left\{ C_n^1, C_n^2, \ldots, C_n^{n - 1}, E \right\}.
+\]
+
+Tudi zrcaljenje je grupa
+
+\[ \sigma = \left\{ \sigma_x, E \right\}.
+\]
+
+Obstaja tudi nadmnožica \( n \)-števne grupe
+
+\[ C_{4v} \left\{ C_4^n, E, \sigma_x, \sigma_y, \sigma_{xy}, \sigma_{-xy} \right\},
+\]
+
+kjer grupa vsebuje zrcaljenje preko premic \( x, y, xy \) in \( -xy \).
+
+Ena od možnih oznak je tudi
+
+\[ S = \sigma_k C_4 ^1,
+\]
+
+kjer \( S \) označuje rotacijo in nato zrcaljenje
+
+\[ S_n = \left\{ C_4^n, E, \sigma, S_4^1, S_4^3, I \right\},
+\]
+
+kjer je \( I \) inverzija \( S_2 \) (zasuk za \( \pi \)).
+
+Dokaz, da lahko število osi \( n \) zaseda samo vrednosti \( n \in \left\{ 2, 3, 4, 6 \right\} \).
+
+#+begin_proof
+Vzamemo trikotno mrežo in si zamislimo trapez
+
+[[file:figures/dovoljeneVrednostin.png]]
+
+Opazujemo dve rotaciji: rotacija okrog leve spodnje točke za kot \( \theta \), ki bo desno spodnjo točko \( 1 \) slikal v levo zgornjo točko \( 1' \) in rotacija, ki je ravno zrcalna - okoli desne spodnje točke za kot \( \theta \), ki bo levo spodnjo točko \( 2 \) slikal v desno zgornjo točko \( 2' \).
+
+Dani preslikavi morata biti tudi del B.R. in izkaže se, da je razdalja med \( 1' \) in \( 2' \) ravno
+
+\[   \overline{1' 2'} = a - 2a \cos \theta = ma.
+\]
+
+Istočasno mora biti pa tudi večkratnik primitivnega vektorja. Dobimo pogoj
+
+\[ \cos \phi = \frac{1 - m}{2}, \, m \in \mathbb{Z}
+\]
+
+Vrednosti, ki jih lahko zaseda \( m \) so \( \left\{ 3, 2, 1, -1, 0 \right\} \), kar je posledica vrednosti, ki jih lahko zaseda \( \cos \theta \in \left\{ -1, - \frac{1}{2}, 0, 1, \frac{1}{2} \right\} \). To se ujema s koti zasukov \( \left\{ \pi, \frac{2 \pi}{3}, 0, \frac{\pi}{2}, \frac{\pi}{3} \right\} \) in to so ravno števne osi \( C_2, C_3, E, C_4, C_6 \).
+#+end_proof
+* Model prostih \( e^- \) v kristalu
+
+Elementi kot so litij, natrij, kalij imajo proste valenčne elektrone. Če za primer vzamemo ion natrija, bo imel 10 elektronov vezanih v lupinah \( 1s ^2, 2s ^2, 2 p ^6 \) in elektron v \( 3s \) pa je "prost".
+
+Tak prost elektron ima v kovini povprečno prosto pot \( \sim 1 \mathrm{mm} \).
+
+Rešujemo torej Schrödingerjevo enačbo za sistem prostih elektronov
+
+\[\left( - \frac{\hbar ^2}{2m} \nabla ^2 + V \right) \psi = E \psi,
+\]
+
+kjer je \( V \) konstanen. Rešitev bomo pridobili z nastavkom
+
+\[ \psi_{\mathbf{k}} (\mathbf{r}) = A e^{\mathrm{i} \mathbf{k} \mathbf{r}}
+\]
+
+in periodičnimi robnimi pogoji
+
+\[ \psi(x + L, y, z) = \psi(x, y, z) \quad \text{ in } \quad \psi(x, y+ L, z) = \psi(x, y, z).
+\]
+
+Če nastavek vstavimo v prvo enačbo dobimo pogoj
+
+\[ k_x L = n_1 2 \pi \implies k_x = n_1 \frac{2 \pi}{L} = \frac{2 \pi}{a} \frac{n_1}{N_x},
+\]
+
+kjer smo upoštevali \( N_x \cdot a = L \).
+
+Lastna energija tako zaseda diskretne vrednosti
+
+\[ E_{\mathbf{k}} = \frac{\hbar ^2}{2m} \left( \frac{2 \pi}{L} \right) ^2 \left( n_1 ^2 + n_2 ^2 + n_3 ^2 \right).
+\]
+
+Sledeče lastne vrednosti pa so tudi lastne vrednosti operatorja gibalne količine \( \hat{p} = - \mathrm{i} \hbar \nabla \), kar pomeni da imamo rešitve enačbe
+
+\[ \hat{\mathbf{p}} \psi(\mathbf{r}) = h \mathbf{k} \psi(\mathbf{r}).
+\]
+
+Zaradi te lastnosti uporabljamo ravne valove kot način opisa gibanja elektronov in lahko opišemo tok, etc.

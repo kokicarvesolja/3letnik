@@ -8,7 +8,7 @@
 #+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
 #+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
 #+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
-* Bravaisova rešetka (mreža)
+* Bravaisova rešetka/mreža (ang. /Bravais lattice/)
 
 Začetnik sta bila oče in sin Bragg, ki sta odkrila kristalno strukturo NaCl s pomočjo rentgenske svetlobe.
 
