@@ -324,3 +324,135 @@ Merilni šum je nekoreliran, kar matematično zapišemo
 \]
 
 Idealizacija bi bila, da je tudi ob manjšanju \( T \to 0 \), šum še vedno nekoreliran.
+
+V primeru znane dinamike (konstantna).
+
+Opravili smo že \( n \) meritev, torej smo ob času \( t = n T \). Optimalna ocena ob \( n \)-ti meritvi je tudi že znana
+
+\[ \hat{x}_n = \frac{1}{n} \sum\limits_{i = 1}^n z_i, \quad \hat{\sigma}_n = \frac{\sigma ^2}{n}.
+\]
+
+Izmerimo \( n + 1 \)-to meritev. Za to meritev prav tako lahko zapišemo
+
+\[ \hat{x}_{n + 1} = \frac{1}{n + 1} \sum\limits_{i = 1}^{n + 1} z_i, \quad \hat{\sigma}_{n + 1 } = \frac{\sigma ^2}{n + 1}.
+\]
+
+\( n + 1 \) meritev lahko razbijemo na
+
+\[ \hat{x}_{n + 1} = \frac{1}{n + 1} \left( \sum\limits_{i = 1}^n z_i + z_{n + 1} \right)  = \frac{n}{n + 1} \left( \sum\limits_{i = 1}^n \frac{1}{n} z_i \right) + \frac{1}{n + 1} z_{n + 1}.
+\]
+
+Prepoznamo meritev iz \( n \)-tega koraka in dodamo števcu prvega ulomka \( 1 - 1 \) in dobimo
+
+\[ \hat{x}_{n + 1} = \frac{n + 1 - 1}{n + 1} \hat{x}_n + \frac{1}{n + 1} z_{n + 1}.
+\]
+
+Izrazimo lahko torej optimalno oceno
+
+\[ \hat{x}_{n + 1} = \hat{x}_n \frac{1}{n + 1} \left( z_{n + 1} - \hat{x}_n \right).
+\]
+
+Za varianco velja
+
+\[ \hat{\sigma}_{n + 1} ^{-2} = \hat{\sigma}_n ^{-2} + \hat{\sigma}^{-2}.
+\]
+
+Novo oceno torej lahko zapišemo kot
+
+\[ \hat{x}_{n + 1} = \hat{x}_n = \frac{\hat{\sigma}_{n + 1} ^2}{\sigma ^2} \left( z_{n + 1} - \hat{x}_n \right),
+\]
+
+kjer je \( \hat{x}_n \) stara ocena, faktor z variancami je utež, in kakor od prej \( (z_{n + 1} - \hat{x}_n) \) je inovacija. To je primer principa povratne zanke.
+
+Utež označimo s
+
+\[ K_{n + 1} = \frac{\hat{\sigma}_{n + 1} ^2}{\sigma ^2},
+\]
+
+in pridobljena shema je filter s spremenljivim ojačevalnim faktorjem \( K_n \).
+
+V limiti \( T \to 0 \) gre razlika ocene
+
+\[ \lim_{T \to 0} = \frac{\hat{x}_{n + 1} - \hat{x}_n}{T} = \dot{\hat{x}} (t) = \frac{\hat{\sigma}_{n + 1} ^2}{\sigma ^2 T} \left( z_{n + 1} - \hat{x}_n \right).
+\]
+
+V tej limiti gredo naše diskretne spremenljivke v zvezen spekter \( \hat{x}_n \to \hat{x}, \ \hat{\sigma}_n ^2 \to \hat{\sigma}_x ^2 \) in \( z_n \to z(t) \). There's some discussion to be had, ali je meritev dejansko lahko zvezna.
+
+Zapišemo zvezno meritev
+
+\[ z(t) = x + r(t),
+\]
+
+potem je koreliranost
+
+\[ \left\langle r(t) r(t') \right\rangle  = \delta(t - t') R
+\]
+
+Definciramo \( \tau \) kot končen (minimalen) čas fluktuacij.
+
+Ločimo dva primera za časovne intervale \( t \), s katerimi merimo
+
+- \( t \ll \tau \), meritev je korelirana
+- \( t \gg \tau \), meritev je nekorelirana
+
+Če zahtevamo
+
+\begin{equation}
+\label{eq:2}
+ \lim_{T \to 0} \left( \sigma ^2 T \right) = R > 0
+\end{equation}
+
+potem lahko ohranimo nekoreliranost čez vse čase. Z drugimi besedami meritve v limiti \( T \to 0 \) obravnavamo kot nekorelirane, vendar se ustrezno povečuje napaka meritev, da se produkt v enačbi \ref{eq:2} ohranja.
+
+Drugačen način, da pridemo do istega spoznanja. Če ima diskreten spekter korelacija
+
+\[ \left\langle r_i r_j \right\rangle  = \delta_{ij} \sigma ^2.
+\]
+
+Za vse čase je potem korelacija
+
+\[ \sum\limits_{}^{} \left\langle r_i r_j \right\rangle T = \sum\limits_{}^{} \delta_{ij} \sigma ^2 T = \sigma ^2 T.
+\]
+
+V zveznem spektru pa je korelacija
+
+\[ \left\langle r(t) r(t') \right\rangle = \delta (t - t') R,
+\]
+
+in je potem
+
+\[ \int\limits_{}^{} \delta(t - t') R \, \mathrm{d} t = R.
+\]
+
+V limiti \( T \to 0 \) dobimo enak pogoj \ref{eq:2}.
+
+Vrnimo se nazaj k odvodu
+
+\[ \dot{\hat{x}} (t) = \frac{\hat{\sigma}_x ^2}{R} \left( z - \hat{x} \right).
+\]
+
+Sedaj nas zanima še, kako se disperzija v zvezni sliki spreminja. Spomnimo, da velja
+
+\[ \frac{1}{\hat{\sigma}_{n + 1} ^2} = \frac{1}{\hat{\sigma} _n  ^2} + \frac{1}{\sigma ^2}  = \frac{\sigma ^2 + \hat{\sigma}_n ^2}{\hat{\sigma}_n ^2 \sigma ^2}.
+\]
+
+Potem zapišemo
+
+\[ \dot{\hat{\sigma}}_x ^2 (t) = \frac{\hat{\sigma}_{n + 1} ^2 - \hat{\sigma}_n ^2}{T}.
+\]
+
+Upoštevamo identiteto in zapišemo
+
+\begin{align*}
+\dot{\hat{\sigma}} _x ^2 (t) &=  \frac{1}{T}\left( \frac{\hat{\sigma}_n ^2 \sigma ^2}{\hat{\sigma}_n ^2 + \sigma ^2} - \frac{\hat{\sigma}_n ^2 \left( \hat{\sigma}_n ^2 + \sigma ^2 \right)}{\hat{\sigma}_n ^2 + \sigma ^2} \right) \\
+&= - \frac{\left[ \hat{\sigma}_n ^2 (t) \right] ^2}{\cancel{\hat{\sigma}_n ^2 T} + \sigma ^2 T} = - \frac{\left( \hat{\sigma}_n ^2 \right) ^2}{R},
+\end{align*}
+
+kjer smo upoštevali, da imamo limito \( T \to  0 \).
+
+Dobili smo način, kako deluje naš filter. Sproti rešuje diferencialno enačbo in popravlja odstopanja(?)
+
+\[ \dot{\hat{x}} = \frac{\hat{\sigma}_x ^2}{R} \left( z - \hat{x} \right) \quad \text{ in } \quad \dot{\hat{\sigma}} = - \frac{\left( \hat{\sigma}_x ^2 \right) ^2}{R}
+\]
+
+[vstavi sliko [115234]]
