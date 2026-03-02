@@ -105,7 +105,80 @@ iz česar nato izrazimo Laméjevo konstanto \( \lambda \).
 \[ \lambda = \frac{\sigma E}{\left( 1 - 2 \sigma \right) \left( 1 + 2 \sigma \right)}.
 \]
 
-Druga Laméjeva konstanta je tako
+Druga Laméjeva konstanta - strižni modul - je tako
 
-\[ \mu = \frac{E}{2 (1 + \sigma)}
+\[ \mu = \frac{E}{2 (1 + \sigma)}.
 \]
+
+Želimo izraziti še recipročno stisljivost
+
+\[ K = \lambda + \frac{2 \mu}{3} = \frac{E}{3(1 - 2 \sigma)}
+\]
+** Navierova enačba
+
+Navierova enačba je Cauchyjeva enačba za izotropno sredstvo.
+
+Združili bomo torej Cauchyjevo enačbo
+
+\[ \rho \ddot{u}_i = \frac{\partial p_{ik}}{\partial x_{k}} + \rho f_i^{(z)}
+\]
+
+z napetostnim tenzorjem za izotropno sredstvo
+
+\[ p_{ik} = \lambda  u_{ll} \delta_{ik}  + 2 \mu u_{ik}.
+\]
+
+Izrazimo sedaj \( \frac{\partial p_{ik}}{\partial x_{k}}  \).
+
+\[ \frac{\partial p_{ik}}{\partial x_{k}} = \lambda \frac{\partial }{\partial x_{k}}  \left( \frac{\partial u_{l}}{\partial x_{l}}  \right) \cdot \delta_{ik} + 2 \mu \frac{\partial }{\partial x_{k}} \frac{1}{2} \left( \frac{\partial u_{i}}{\partial x_{k}}  + \frac{\partial u_{k}}{\partial x_{i}}  \right).
+\]
+
+V prvem členu zamenjamo indeks \( l \) s \( k \)
+
+\[ \frac{\partial p_{ik}}{\partial x_{k}} = \lambda \frac{\partial }{\partial x_i} \frac{\partial u_{k}}{\partial x_{k}} + \mu \frac{\partial ^2 u_{i}}{\partial x_{k} ^2} + \mu \frac{\partial }{\partial x_{i}} \frac{\partial u_{k}}{\partial x_{k}}.
+\]
+
+V zadnjem členu zamenjamo vrstni red odvajanja in tako lahko zapišemo kot
+
+\[ \frac{\partial p_{ik}}{\partial x_{k}}  = \left( \lambda + \mu \right) \frac{\partial }{\partial x_{i}}  \frac{\partial u_{k}}{\partial x_{k}} + \mu \frac{\partial ^2 u_{i}}{\partial x_{k} ^2},
+\]
+
+kar lahko zapišemo še z vektorskimi operatorji
+
+\[ \frac{\partial p_{ik}}{\partial x_{k}} = (\lambda + \mu) \nabla \nabla \cdot \mathbf{u} + \mu \nabla ^2 \mathbf{u}.
+\]
+
+Navierova enačba je torej
+
+\[ \rho \ddot{\mathbf{u}} = (\lambda+ \mu) \nabla \nabla \cdot \mathbf{u} + \mu \nabla ^2 \mathbf{u} + \rho \mathbf{f}^{(z)}
+\]
+** Kristali
+
+Prosto energijo \( f \) je harmonična funkcija \( u_{ik} \)
+
+\[ f = f_0 + \frac{1}{2} u_{ik} K_{iklm} u_{lm},
+\]
+
+kjer je \( K_{iklm} \) tenzor elastičnih konstant. Tenzor ima 81 konstant, vendar niso nujno vse različne med seboj. V kristalu sta 2 simetriji \( u_{ik} = u_{ki} \), ki nam poda enakost \( K_{iklm} = K_{kilm} \). Velja tudi enakost \( K_{ikml} = K_{kiml} \).
+
+Ta tenzor ima tako možnih samo 21 elastičnih konstant.
+
+Vzemimo monoklinski kristal, ki ima \( \alpha \ne = \beta = \gamma = \frac{\pi}{2} \) ter \( a \ne b \ne c \).
+
+Slednji kristal ima zrcalno ravnino pravokotno na \( \hat{e}_z \).
+
+Deformacijski tenzor je
+
+\[ u_{ik} = \frac{1}{2} \left( \frac{\partial u_{i}}{\partial x_{k}} + \frac{\partial u_{k}}{\partial x_{i}}  \right).
+\]
+
+Zrcaljenje preko osi \( z \) bo imelo sledeča efekta \( z \to -z \) in \( u_z \to - u_z \). Edina člena, ki bosta torej spremenila predznak v deformacijskem tenzorju
+
+\[ u_{xz} = \frac{1}{2} \left( \frac{\partial u_{x}}{\partial z} + \frac{\partial u_{z}}{\partial x}  \right) \to \frac{1}{2} \left( \frac{\partial u_{x}}{\partial (-z)} + \frac{\partial (- u_{z})}{\partial x}   \right) = - u_{xz}.
+\]
+
+Enaka logika pride tudi pri \( u_{yz} \). Pri simetriji je torej \( u_{xz} u_{xz} \to (-u_{xz})(-u_{xz}) \), kar pa ni dovoljeno, je npr. \( u_{xx } u_{xz} \). Zaključimo torej, da vse elastične konstante, ki imajo liho število \( z \), niso dovoljene.
+
+Monoklinski sistem ima torej 13 elastičnih konstant.
+
+Pri kubičnem sistemu pa ostanejo samo še 3 elastične konstante.
