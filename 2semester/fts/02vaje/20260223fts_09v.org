@@ -70,3 +70,54 @@ Kot med primitivnima vektorjema je
 \]
 
 Ker so tudi dolžine vektorjev enake, zaključimo, da je fcc v resnici samo drug način opisa hpc(ABC).
+** bcc, sc in simetrijske operacije
+
+Zanima nas, katere simetrijske operacije lahko apliciramo na kristalne strukture tako, da dobimo nazaj osnovno mrežo.
+
+Izberemo si os, ki gre skozi središči nasprotnih stranic in telesno točko. Zanimajo nas rotacije, kjer so točke po rotacijah na mestih drugih točk.
+
+Ena rotacija take osi opravi kot \( \frac{\pi}{2} \). Po štirih zasukih smo nazaj v prvotni poziciji, zato ji pravimo štirištevna os. Označimo jo z \( C_4^n, \ n \in \mathbb{Z} \).
+
+Imamo tri netrivialne osi, ki imajo zasuke \( C_4^1, C_4^2, C_4^3 \). Skupno imamo 9 netrivialnih operacij.
+
+Imamo pa še identiteto \( C_4^4 = C_4^0 = E \).
+
+Druga možna os vrtenja je po telesni diagonali. Imamo 4 trištevne osi \( C_3^1, C_3^2 \), ki nam poda 8 novih operacij.
+
+Tretja možna os vrtenja je diagonala, ki povezuje nasprotni središči osnovnih stranic, kar nam poda 6 dvoštevnih osi \( C_2^1 \).
+
+Skupno imamo 24 možnih operacij.
+
+Inverzija je operacija, ki \( \mathbf{R} \mapsto - \mathbf{R} \). Preko rotacijske matrike velja
+
+\[ - \mathbf{R} = \begin{bmatrix}
+                  -1 & 0 & 0 \\
+                  0 & -1 & 0 \\
+                  0 & 0 & -1
+                  \end{bmatrix} \mathbf{R}
+\]
+
+Inverzija operacije je nova operacija, kar pomeni, da smo podvojili količino možnih operacij.
+
+** Točkovna simetrijska grupa
+
+#+name: Grupa
+#+begin_definition
+[vstavi definicijo grupe]
+#+end_definition
+
+Za element \( g \in \mathcal{G} \) iz neke grupa mora veljati:
+- obstaja identiteta
+- za vsak element \( g \) obstaja njen inverz \( g^{-1} \)
+- za vsaka elementa \( g_1, g_2 \) je tudi njen produkt \( g_1 g_2 \in \mathcal{G}\) (zaprtost grupe)
+- asociativnost \( g_1 (g_2 g_3) = (g_1 g_2) g_3 \)
+
+
+Dokazovanje, da sta operaciji \( C_3 C_4 \) in \( C_4 C_3 \) enaki na sc. Direktna operacija, ki stori \( C_3 C_4 \) je \( C_2 \).
+
+Obratna operacija \( C_4C_3 \) je druga dvoštevna os \( C_2' \).
+
+Glej skice na Markejevih zapiskih, str. 4 in 5.
+
+V teoriji bi morali pokazati, da to velja za vse kombinacije 48 operacij.
+** Wigner-Seitzova osnova celica za bcc
