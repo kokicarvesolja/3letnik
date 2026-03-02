@@ -1,0 +1,111 @@
+#+title: Predavanja iz Mehanike kontinuov, 10. teden v letu
+#+subtitle: 2026/03/02
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Elastična energija
+** Hookov zakon :popravi_besedišče:
+
+Za izotropno sredstvo je napetostni tenzor
+
+\[ p_{ik} = \lambda u_{ll} \delta_{ik} + 2 \mu u_{ik}.
+\]
+
+Želimo izraziti deformacijski tenzor. Za začetek bomo to naredili zgolj s členi, ki tvorijo sled
+
+\[ p_{ll} = 3 \lambda u_{ll} + 2 \mu u_{ll} = u_{ll} (3 \lambda + 2\mu).
+\]
+
+Diagonalni člen deformacijskega tenzorja bo torej
+
+\[ u_{ll} = \frac{p_{ll}}{3 \lambda + 2\mu}.
+\]
+
+Celoten deformacijski tenzor pa bo tako
+
+\[ u_{ik} = \frac{1}{2 \mu} \left( p_{ik} - \frac{\lambda}{3\lambda + 2 \mu} p_{ll} \delta_{ik} \right)
+\]
+** Laméjevi koeficienti
+
+Ziherlova skripta str. 23
+*** Sprememba prostornine pri hidrostatičnem tlaku
+
+Deformacijski tenzor bomo zapisali z \( p_{ik} = - p \delta_{ik} \). Napetostni tenzor bo potem
+
+\begin{align*}
+  u_{ik} &= \frac{1}{2 \mu} \left[ - p \delta_{ik} - \frac{\lambda}{3 \lambda + 2\mu} \left( - 3 p \right)\delta_{ik} \right] \\
+&= \frac{1}{2\mu}\left[ 1 - \frac{3 \lambda}{3 \lambda + 2 \mu} \right] (-p) \delta_{ik}\\
+&= - \frac{1}{3 \lambda + 2 \mu} p \delta_{ik}
+\end{align*}
+
+Sprememba prostornine je, kakor izpeljano zadnjič na predavanjih,
+
+\[ \frac{\Delta V}{V} = \mathrm{tr} u = u_{ll}.
+\]
+
+Upoštevamo izpeljano
+
+\begin{align*}
+  u_{ll} &= - \frac{1}{3 \lambda + 2 \mu} 3 \cdot p \\
+&= - \frac{1}{\lambda + \frac{2 \mu }{3}} p = - \chi_T \Delta p.
+\end{align*}
+
+Recipročna stisljivost je potem
+
+\[ \chi_T = \frac{1}{ \lambda + \frac{2 \mu}{3}} = \frac{1}{K}
+\]
+** Enoosne deformacije
+
+Napetostni tenzor zapišemo kot
+
+\[ p_{ik} = p \delta_{iz} + \delta_{kz}
+\]
+
+Deformacijski tenzor bo zaradi oblike napetostnega tenzorja, ki ima \( p_{xx } = p_{yy} = 0 \), imel vrednosti
+
+\[ u_{xx } = u_{yy} = - \frac{\lambda}{2 \mu \left( 3 \lambda + 2\mu \right)}p,
+\]
+
+ter
+
+\begin{align*}
+  u_{zz} &= \frac{1}{2 \mu} \left( 1 - \frac{\lambda}{3 \lambda + 2\mu}  \right)p\\
+&= \frac{\lambda + \mu}{\mu \left( 3 \lambda + 2 \mu \right)} p.
+\end{align*}
+
+Definiramo Poissonovo število
+
+\[ \sigma = - \frac{u_{xx }}{u_{zz}} = - \frac{u_{yy}}{u_{zz}} = \frac{\lambda}{2 (\lambda + \mu)},
+\]
+
+kjer sta \( u_{xx } \) in \( u_{yy} \) relativen raztezek v prečni smeri, \( u_{zz} \) pa je relativni raztezek v vzdolžni smeri.
+
+Definiramo še Youngov modul pri enoosni deformaciji kot
+
+\[ E = \frac{p_{zz}}{u_{zz}} = \frac{\mu (3 \lambda + 2 \mu)}{\lambda + \mu}
+\]
+
+V nadaljevanju želimo izraziti Lamejeva koeficienta s Poissonovim številom in Youngovim modulom.
+
+\[ \mu = \frac{\lambda}{2 \sigma} - \lambda = \lambda \frac{1 - 2\sigma}{2 \sigma}.
+\]
+
+V Youngovem modulu nadomestimo \( \mu \) z zgornjo vrednostjo in lahko zapišemo
+
+\[ E \lambda  \left( 1 + \frac{1 - 2 \sigma}{2 \sigma} \right) =  \lambda ^2 \frac{1 - 2 \sigma}{2 \sigma}\left( 3 + \frac{2 (1 - 2 \sigma)}{2 \sigma} \right),
+\]
+
+iz česar nato izrazimo Laméjevo konstanto \( \lambda \).
+
+\[ \lambda = \frac{\sigma E}{\left( 1 - 2 \sigma \right) \left( 1 + 2 \sigma \right)}.
+\]
+
+Druga Laméjeva konstanta je tako
+
+\[ \mu = \frac{E}{2 (1 + \sigma)}
+\]
