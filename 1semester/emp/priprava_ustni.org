@@ -1143,10 +1143,99 @@ Za zadostitev pogoja \( \mathbf{B} = \nabla \times \mathbf{A} \) ima vektorski p
 
 \[ \int\limits_S^{} \mathbf{B} \cdot \mathrm{d} \mathbf{S} = \oint\limits_C^{} \mathbf{A} \cdot \mathrm{d} \mathbf{r} = B_0 \pi a ^2 \ne 0 
 \]
+
+Uporabimo nastavek, da ugotovimo obliko vektorskega potenciala
+
+\[ \mathbf{A} = C \mathbf{B} \times \frac{\mathbf{r}}{r ^2}.
+\]
+
+Rotor tega nastavka je ničeln, hkrati pa zahtevamo, da je vektorski potencial zvezen pri prehodu iz notranjosti v zunanjost tuljave, iz česar dobimo
+
+\[ \mathbf{A} = \frac{a ^2}{2} \mathbf{B} \times \frac{\mathbf{r}}{r ^2}.
+\]
+
+Slednji vektorski potencial je odvisen od koordinate tudi na področjih, kjer magnetnega polja sploh ni.
+
+**** Umeritev vektorskega polja
+
+Za lepši zapis vektorskega potenciala ga bomo umerili.
+
+Uvedemo nov vektorski potencial
+
+\[ \mathbf{A}' = \mathbf{A} + \nabla \zeta (\mathbf{r}),
+\]
+
+kjer je \( \zeta(\mathbf{r}) \) skalarna funkcija. Za nov vektorski potencial še zmeraj velja \( \nabla \times \mathbf{A}' = 0 \). 
+
+Zaradi te lastnosti lahko vektorskemu potencial vedno prištejemo gradient neke skalarne funkcije in to ne bo imelo vpliv na magnetno polje \( \mathbf{B} \), ki ga dejansko merimo. 
+
+Vzemimo za primer skalarne funkcije potem
+
+\[ \zeta(\mathbf{r}) = -\frac{B_0 a ^2}{2} \arctan \frac{y}{x}.
+\]
+
+\( \arctan \frac{y}{x} \) predstavlja polarni kot \( \phi \) in je zvezen povsod razen pri \( x < 0 \), ko se zgodi skok za \( 2\pi \) iz \( \phi = \pi \) na \( \phi = - \pi \).
+
+Za to umeritev z začetnim magnetnim poljem \( \mathbf{B} = (0, 0, B_0) \), potem velja
+
+\[ \mathbf{A}' = \frac{a ^2}{2} \mathbf{B} \times \frac{\mathbf{r}}{r ^2} - \frac{B_0 a ^2}{2} \nabla \arctan \frac{y}{x} = 0,
+\]
+
+povsod razen na \( x < 0 \). Vektorski potencial lahko tako torej umerimo kot
+
+\[ \mathbf{A}' = \frac{B_0 a ^2}{2} \frac{2 \pi}{a} \delta(\phi - \pi) \mathbf{e}_{\phi} 
+\]
 ** 11. vprašanje
 #+begin_problem
 Izpelji Krichoffovo enačbo za magnetni vektorski potencial in zapiši ter komentiraj njeno rešitev. Kakšno povezavo ima z Biot-Savartovim zakonom?
 #+end_problem
+
+Četrta Maxwellova enačba  oz. Amperova enačba se glasi
+
+\[ \nabla \times \mathbf{B} = \mu_0 \mathbf{j}.
+\]
+
+Upoštevamo še definicijo vektorskega potenciala \( \mathbf{B} = \nabla \times \mathbf{A} \) in dobimo
+
+\[ \mu_0 \mathbf{j} = \nabla \times \left( \nabla \times \mathbf{A} \right) = \nabla \left( \nabla \cdot \mathbf{A} \right) - \nabla ^2 \mathbf{A}. 
+\]
+
+Ker obravnavamo področje magnetostatike, velja, da so vse tokovne zanke sklenjene \( \nabla \cdot \mathbf{j} = 0 \).
+
+Po Helmholtzovem izreku lahko vektor \( \mathbf{A} \) razstavimo na dva vektorja
+
+\[ \mathbf{A} = \mathbf{A}_1 + \mathbf{A}_2,
+\]
+
+kjer bo za enega veljalo, da je brez vrtincev \( \nabla \times \mathbf{A}_2 = 0 \), za drugega pa bo veljalo, da je brez izvorov \( \nabla \cdot \mathbf{A}_1 = 0 \). 
+
+Iz lastnosti brezvrtinčnosti sledi \( \nabla \cdot \mathbf{A}_1 = \nabla \cdot \mathbf{A} = 0 \) in preostane nam enačba
+
+\[ \mu_0 \mathbf{j} = \nabla ^2 \mathbf{A}.
+\]
+
+Rešitev je zelo podobna Poissonovi enačbi, iz česar sklepamo, da je
+
+\[ \mathbf{A} (\mathbf{r}) = \frac{\mu_0}{4 \pi} \int\limits_V^{} \frac{\mathbf{j}(\mathbf{r}')}{\left| \mathbf{r} - \mathbf{r}' \right|} \, \mathrm{d} ^3 \mathbf{r} '.
+\]
+
+Integral teče po volumnu, za katerega je \( \mathbf{j}(\mathbf{r}') \ne 0 \). Slednja rešitev velja za neskončen homogen prostor.
+
+Iz definicije vektorskega potenciala \( \mathbf{B} = \nabla _{\mathbf{r}} \times \mathbf{A} \) lahko sedaj izpeljemo Biot-Savartov zakon
+
+\[ \mathbf{B}(\mathbf{r}) = \nabla_{\mathbf{r}} \times \int\limits_V^{} \frac{\mu_0}{4 \pi} \frac{\mathbf{j}(\mathbf{r}')}{\left| \mathbf{r} - \mathbf{r}' \right|} \, \mathrm{d} ^3 \mathbf{r}',
+\]
+
+kjer velja
+
+\[ \nabla_{\mathbf{r}} \times \frac{\mathbf{j}(\mathbf{r}')}{\left| \mathbf{r} - \mathbf{r}' \right|} =  \nabla_{\mathbf{r}} \times \frac{1}{\left| \mathbf{r} - \mathbf{r}' \right|} \mathbf{j}(\mathbf{r}') = \frac{\mathbf{j}(\mathbf{r}') \times \left( \mathbf{r} - \mathbf{r}' \right)}{\left| \mathbf{r} - \mathbf{r}' \right| ^3}.
+\]
+
+Končamo z
+
+\[ \mathbf{B}(\mathbf{r}) = \frac{\mu_0}{4 \pi} \int\limits_V^{} \frac{\mathbf{j}(\mathbf{r}') \times \left( \mathbf{r} - \mathbf{r}' \right)}{\left| \mathbf{r} - \mathbf{r}' \right| ^3}  \, \mathrm{d} ^3 \mathbf{r}' 
+\]
+
 ** 12. vprašanja
 #+begin_problem
 Uvedi in razloži 
@@ -1162,3 +1251,4 @@ Formuliraj magnetostatsko silo na telo s poljubno gostoto električnega toka, ki
 #+begin_problem
 Zapiši in razloži multipolni razvoj magnetnega polja do dipolnega člena z uporabo vektorskega magnetnega potenciala. Razloži multipolni razvoj magnetne energije gostote toka v zunanjem magnetnem potencialu. Kakšna pa sta sila in navor na magnetni dipol v poljubnem zunanjem magnetnem polju?
 #+end_problem
+** 15. vprašanje 
