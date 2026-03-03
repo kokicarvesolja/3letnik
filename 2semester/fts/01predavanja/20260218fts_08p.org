@@ -8,16 +8,34 @@
 #+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
 #+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
 #+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
-* Bravaisova rešetka/mreža (ang. /Bravais lattice/)
+#+bibliography: refs.bib
+* Bravaisova rešetka/mreža (ang. /Bravais lattice/) :simetrije:
 
-Začetnik sta bila oče in sin Bragg, ki sta odkrila kristalno strukturo NaCl s pomočjo rentgenske svetlobe.
+Začetnika fizike trdne snovi sta bila oče in sin Bragg, ki sta odkrila kristalno strukturo NaCl s pomočjo rentgenske svetlobe.
 
-Imejmo 3 nekolinearne vektorje \( \mathbf{a}_1, \mathbf{a}_2 \) in \( \mathbf{a}_3 \), ki jim pravimo primitivni osnovni vektorji. S pridevnikom /primitivni/ sporočamo, da imajo osnovni vektorji najmanjšo velikost. Bravaisova rešetka je potem definirana kot
+Kristal sestavljajo periodične ponavljajoče strukture, ki ji pravimo osnovna celica. Celica ima obliko paralelipipeda in jo sestavljajo identična grupa atomov, molekul, ipd. Tej grupi pravimo baza.
 
-\[ \mathbf{R} = n_1 \mathbf{a}_1 + n_2 \mathbf{a}_2 + n_3 \mathbf{a}_3, \quad n_i \in \mathbb{Z}, \, i = 1, 2, 3.
-\]
+Osnova, iz katere izhaja celotna fizika trdne snovi, se imenuje Bravaisova rešetka ali mreža (v nadaljevanju okrajšana v BR, ang. /Bravais lattice/). 
 
-Druga definicija je, da je Bravaisova rešetka množica točk, katerih okolica je povsod ista.
+BR ima po Ashcroftu [cite:@ashcroft_solid_1976] dve ekvivalentni definiciji
+
+#+begin_definition
+1) BR je neskončen nabor diskretnih točk s postavitvijo in orientacijo, ki izgleda identitično iz vsake točke, iz katere nabor gledamo. 
+2) Tridimenzionalna BR je množica vseh točk, ki jo opisuje vektor \( \mathbf{R} \) in ima obliko
+
+   \[ \mathbf{R} = n_1 \mathbf{a}_1 + n_2 \mathbf{a}_2 + n_3 \mathbf{a}_3, \ n_i \in \mathbb{Z}, \ i = 1, 2, 3.
+   \]
+
+   Vektorji \( \mathbf{a}_i, \ i = 1, 2, 3 \) so trije vektorji, ki so med seboj nekolinearni.
+#+end_definition
+
+Vektorjem \( \mathbf{a}_i, \ i = 1,2 ,3 \) pravimo primitivni osnovni vektorji, ki tvorijo našo BR.
+
+Pri izbiri primitivnih vektorjev je gostota mrežnih točk maksimalna in vsaka druga izbira vektorjev vodi do mreže z manjšo gostoto. Primer manjše gostote kaže spodnja slika.
+
+[[file:figures/08primitivniVektorji.png]]
+
+Pomembno se je tudi zavedati, da izbira primitivnih vektorjev ni enolična. Ravno nasprotno, obstaja neskončno mnogo izbir primitivnih vektorjev. 
 
 Kristal ime dve vrsti simetrij:
 - translacijska simetrija: lahko definiramo operator translacije \( \hat{\mathbf{T}} = n_1 \mathbf{a}_1 + n_2 \mathbf{a}_2 + n_3 \mathbf{a}_3 \), da bomo translirali valovno funkcijo tako, da velja
@@ -31,15 +49,57 @@ Kristal ime dve vrsti simetrij:
   - zrcaljenje (na sliki imamo 4 zrcalne ravnine)
   - inverzija (poljubna točka se zrcali preko izbrane točke v neko drugo točko)
 
-[vstavi sliko 114133]
 ** Primitivna osnovna celica
 
-Kakor kaže slika kristalne strukture, obstaja več dobrih osnovnih celic. Za celico definiramo volumen \( V_C = \left| \mathbf{a}_1 \times \mathbf{a}_2 \right| \).
+Primitivna celica (ang. /primitive cell/ ali /primitive unit cell/) je območje volumna ali površine, ki ne pusti nič praznega ali dvakrat pokritega prostora, ko je translirana z vsemi vektorji, ki tvorijo BR. 
 
-Paralelogram kot osnovna celica ne odraža lastnosti naše kristalne strukture (imamo kvadratno strukturo). Definiramo /Wigner Seitzovo/ celico, ki odraža simetrijo osnovne celice.
+Podobno kot z primitivnimi vektorji tudi tukaj primitivna celica ni enolično določena. Za jasnejšo predstavo glej spodnjo sliko. 
 
-Vzemimo za primer trikotno kristalno strukturo, ki jo določata bazna vektorja \( \mathbf{a}_1 = (a, 0) \) in \( \mathbf{a}_2 = \left( \frac{a}{2}, \frac{\sqrt{3}}{2} a \right) \). Risanje ravnin, ki prepolavljajo primitivne osnovne vektorje, ki vodijo do sosednjih točk (heksagon) - what's the point?
-** Primeri kristalnih struktur
+[[file:figures/08poc.png]]
+
+Na sliki je volumen oz. površina celice definirana kot
+
+\[ V_{POC} = \left| \mathbf{a}_1 \times \mathbf{b}_2 \right| 
+\]
+
+Primitivna celica mora vsebovati natanko eno mrežno točko, razen če se mrežne točke nahajajo na površini. Volumen ali površina primitivne celice bo vedno najmanjši možen. 
+
+Posledično to pomeni, da je volumen primitivne celice neodvisen od izbire celice. 
+
+Celico opišemo kot množico točk \( \mathbf{r} \), ki jo je sestavljajo primitivni vektorji \( \mathbf{a}_i, \ i = 1, 2, 3 \), oblike
+
+\[ \mathbf{r} = x_1 \mathbf{a}_1 + x_2 \mathbf{a}_2 + x_3 \mathbf{a}_3,
+\]
+
+kjer \( x_i  \in [0, 1], \ i = 1,2 ,3 \). S takim načinom opisa primitivne celice ne pokažemo celotne simetrije Bravaisove rešetke.
+
+Kot primer si lahko pogledamo množico, ki jo definira primitivna celica fcc BR. 
+
+[[file:figures/FCC_translation.png]]
+
+Vir: By Mhhmmiel - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=174308202
+
+Bralec lahko vidi, da je množica točk, ki definirajo celico zgolj paraleliped *znotraj* BR.
+
+BR smo uvedli ravno s tem razlogom, da imamo dostop do njihovih simetrijskih lastnosti. Zaželeno je torej, da to izraža tudi naša primitivna osnovna celica. Problem bomo rešili na dva načina: z drugačno definirano osnovno celico, ali pa Wigner-Seitzovo primitivno celico. 
+
+- Konvencionalna osnovna celica je ponavadi nadmnožica primitivne celice, ki napolni prostor s translacijo vektorjev BR, se ne prekriva in odraža zaželjeno simetrijo.
+
+  Osnovna celica bcc ima dvakratni volumen primitivne celice bcc. 
+  
+- Wigner-Seitzova celica vedno odraža simetrijo BR, saj je neodvisna od primitivnih vektorjev, in je enolično določena. Ta celica je prostor okoli katerekoli mrežne točke tako, da je ta prostor vedno najbližje tej točki kakor katerikoli drugi točki. Zaradi take definicije bo Wigner-Seitzova celica vedno napolnila prostora brez prekrivanja, iz česar zaključimo, da je to primitivna celica. 
+
+#+begin_my_example
+Kot primer Wigner-Seitzove celice si poglejmo trikotno kristalno strukturo, ki jo določata primitivna vektorja
+
+\[ \mathbf{a}_1 = (a, 0) \quad \text{ in } \quad \mathbf{a}_2 = \left( \frac{a}{2}, \frac{\sqrt{3}}{2} a \right).
+\]
+
+Izbrano mrežno točko povežemo z vsemi najbližnjimi sosednjimi mrežnimi točkami. Vsako daljico prepolovimo in v tisti točki narišemo ravnino pravokotno na daljico. Ko postopek ponovimo na vseh daljicah, dobimo prostor, omejen s 6 ravninami. Ta prostor je Wigner-Seitzova celica.
+
+[[file:figures/08wignerSeitz.png]]
+#+end_my_example
+** Primeri kristalnih struktur :nadaljuj_tukaj:
 *** Preprosta kubična Bravaisova rešetka (ang. /simple cubic/ or /sc/)
 
 Preprosto kubično rešetko določajo bazni vektorji \( \mathbf{a}_1 = (a, 0, 0), \mathbf{a}_2 = (0, a, 0) \) in \( \mathbf{a}_3 = (0, 0, a) \).
