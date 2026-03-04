@@ -182,3 +182,134 @@ Vsi diagonalni elementi napetostnega tenzorja  so si medseboj enaki je
 \]
 
 Sprememba volumna je torej
+* Vrteč elastičen cilinder
+
+#+begin_problem
+Imamo elastičen cilinder, ki se vrti s frekvenco \( \omega \) okoli osi, ki poteka skozi središča krogov osnovne ploskve. Zanima nas deformacija tega cilindra zaradi vrtenja.
+#+end_problem
+
+Deformacija je samo v radialni smeri \( \mathbf{u} = u_r (r) \hat{e}_r \) in je vse v osno simetrično.
+
+Navierova enačba v vektorski obliki za ravnovesno stanje je
+
+\[ \mathbf{f} + \mu \nabla ^2 \mathbf{u} + \left( \mu + \lambda \right) \nabla \nabla \mathbf{u} = 0.
+\]
+
+Zapišemo jo z Youngovim modulom in Poissonovim številom
+
+\[ \mathbf{f} + \frac{E}{2(1 + \sigma)} \left( \nabla ^2 \mathbf{u} + \frac{1}{1 - 2\sigma} \nabla \nabla \cdot \mathbf{u} \right) = 0.
+\]
+
+Iz mafije (allegedly) vemo, da je gradient divergence enak
+
+\[ \nabla \nabla = \nabla ^2 + \nabla \times \nabla \times.
+\]
+
+V Navierovi enačbi nadomestimo Laplaceov operator z zgornjo identiteto in lahko zapišemo
+
+\[ \mathbf{f} + \left( 1 + \frac{1}{1 - 2\sigma} \right) \frac{E}{2(1 + \sigma)} \nabla \nabla \cdot \mathbf{u} - \frac{E}{2(1 + \sigma)} \nabla \times \nabla \times \mathbf{u} = 0
+\]
+
+Spomnimo se rotorja v cilindričnih koordinatah, ki je
+
+\[ \nabla \times \mathbf{u} = \left( \frac{1}{r} \frac{\partial u_{r}}{\partial \phi} - \frac{\partial u_{\phi}}{\partial z}  \right) \hat{e}_r + \left( \frac{\partial u_{r}}{\partial z}  - \frac{\partial u_{z}}{\partial r}  \right) \hat{e}_{\phi} + \left( \frac{1}{r} \frac{\partial (r u_{\phi})}{\partial r} - \frac{1}{r} \frac{\partial u_{r}}{\partial \phi}  \right)\hat{e}_z.
+\]
+
+Ker je \( u_r = u_r (r) \ne u_r (\phi, z) \) in \( u_{\phi} = u_z = 0 \), bo zgornji rotor ničeln.
+
+Preostane nam enačba
+
+\[ \mathbf{f} + \left( 1 + \frac{1}{1 - 2\sigma} \right) \frac{E}{2 (1 + \sigma)} \nabla \nabla \cdot \mathbf{u} = 0.
+\]
+
+Sistemsko silo, ki je posledica vrtenja, predstavimo kot \( \mathbf{f} = \omega ^2 r \rho \hat{e}_r \).
+
+Spomnimo se še, da je divergenca vektorja
+
+\[ \nabla \cdot \mathbf{u} = \frac{1}{r} \left( \frac{\partial (u_{r} r)}{\partial r}  \right) + \frac{1}{r} \frac{\partial u_{\phi}}{\partial \phi}  + \frac{\partial u_{z}}{\partial z}.
+\]
+
+Nadalje lahko preoblikujemo enačbo v
+
+\[ \rho \omega ^2 r \hat{e}_r + \frac{1 - \sigma}{1 - 2\sigma} \frac{E}{1 + \sigma} \nabla \left( \frac{1}{r} \frac{\partial (r u_{r})}{\partial r}  \right) = 0.
+\]
+
+Gradient je samo \( \frac{\partial }{\partial r}  \) in enačba je
+
+\begin{align*}
+0 &= \rho \omega ^2 r \hat{e}_r + \frac{1 - \sigma}{1 - 2 \sigma} \frac{E}{1 + \sigma} \frac{\partial }{\partial r}  \left( \frac{1}{r} \frac{\partial (r u_{r})}{\partial r}  \right) \hat{e}_r \\
+-\alpha r &= \frac{\partial }{\partial r} \left( \frac{1}{r} \frac{\partial (r u_{r})}{\partial r}  \right).
+\end{align*}
+
+Po prvem integriranju nam ostane
+
+\[ \frac{1}{r} \frac{\partial (r u_{r})}{\partial r}  = -\alpha \frac{r ^2}{2} + A,
+\]
+
+vrednost drugega integriranja pa je
+
+\[ r u_r = - \alpha \frac{r ^4}{8} + A \frac{r ^2}{2} + B \implies \ u_r = - \alpha \frac{r ^3}{8} + A \frac{r}{2} + \cancel{\frac{B}{r}}.
+\]
+
+Konstanta \( B = 0 \), saj bi drugače rešitev divergirala v izhodišču, kar pa ne. Določiti moramo še konstanto, ki jo bomo določili preko robnega pogoja
+
+\[ p_{rr} n_r = 0,
+\]
+
+kar pomeni, da je površina neobremenjena.
+
+Napetostni tenzor je po definiciji
+
+\[ p_{rr} = \frac{E}{1 + \sigma} \left[ u_{rr} + \frac{\sigma}{1 - 2 \sigma} \left( \nabla \cdot \mathbf{u} \right) \delta_{ij} \right].
+\]
+
+Deformacijski tenzor je preko dobljene rešitve in definicije
+
+\[ u_{rr} = \frac{\partial u_{r}}{\partial r} = \frac{3 \alpha}{8} r ^2 + \frac{A}{2}.
+\]
+
+Divergenca tenzorja je prav tako po prej izpeljani rešitvi
+
+\begin{align*}
+  \nabla \cdot \mathbf{u} &= \frac{1}{r} \left( \frac{\partial (r u_{r})}{\partial r}  \right) \\
+&= \frac{1}{r} \left[ - \alpha \frac{4 r ^3}{8} + A r \right] = - \alpha \frac{r ^2}{2} + A
+\end{align*}
+
+Napetostni tenzor je potem
+
+\[p_{rr} &= \frac{E}{1 + \sigma} \left[ - \frac{3 \alpha}{8} r ^2 + \frac{A}{2} + \frac{\sigma}{1 - 2\sigma} \left( - \alpha \frac{r ^2}{2} + A \right) \right],
+\]
+
+kjer velja
+
+\[ \left. p_{rr} \right|_{r = R} = 0.
+\]
+
+Dobimo enačbo
+
+\begin{align*}
+0 &= -\frac{3 \alpha}{8} R ^2 + \frac{A}{2} + \frac{\sigma}{1 - 2 \sigma} \left( - \alpha \frac{R ^2}{2} + A \right) \\
+&= A \left[ \frac{1}{2} + \frac{\sigma}{1 - 2 \sigma} \right] - R ^2 \alpha \left[ \frac{3}{8} + \frac{\sigma}{1 - 2\sigma} \frac{1}{2} \right].
+\end{align*}
+
+Enačbo rešimo in dobimo, da je vrednost koeficienta
+
+\[ A = \frac{3 - 2 \sigma}{4} R ^2 \alpha.
+\]
+
+Želimo si še pogledati, kaj dejansko pomeni, da je deformacija zgolj v radialni smeri. Zato bomo izračunali še
+
+\[ p_{zz} = \frac{E}{1 + \sigma} \left[ u_{zz} + \frac{\sigma}{1 - 2\sigma} \left( \nabla \cdot \mathbf{u} \right) \right] .
+\]
+
+\( u_{zz} = 0 \), saj je \( u_z = 0 \). Preostane nam torej zgolj
+
+\[ p_{zz} = \frac{E}{1 + \sigma} \frac{\sigma}{1 - 2\sigma} \left[ - \alpha \frac{r ^2}{2} + A \right] = \frac{E \sigma}{(1 + \sigma) (1 - 2\sigma)} \left[ - \frac{\alpha r ^2}{2} + \frac{3 - 2 \sigma}{4} R ^2 \alpha \right].
+\]
+
+\( p_{zz} \) je torej različen od nič, in če ne bi bil omejen z osnovnima ploskvama, bi se deformiral tudi v \( z \) smeri. Teoretično je naš pogoj napačen.
+
+Na podoben način pridemo tudi do
+
+\[ p_{\phi \phi} = \frac{E}{(1 + \sigma)} \left[ - \alpha \frac{r ^2}{8} + \frac{3 - 2 \sigma}{8} R ^2 \alpha + \frac{\sigma}{1 - 2 \sigma} \left( - \frac{\alpha r ^2}{2} + \frac{3 - 2\sigma}{4} R ^2 \alpha \right) \right].
+\]
