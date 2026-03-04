@@ -1,0 +1,184 @@
+#+title: Vaje iz Mehanike kontinuov, 10. teden v letu
+#+subtitle: 2026/03/04
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Teoretičen uvod/recap
+
+Hookov zakon \( F = k \Delta x \) je opisan s pomočjo deformacijskega tenzorja
+
+\[ u_{ij} = \frac{1}{2} \left( \frac{\partial u_{i}}{\partial x_{j}} + \frac{\partial u_{j}}{\partial x_{i}}  \right),
+\]
+
+ki igra vlogo razteznega koeficienta, ter napetostnega tenzorja \( p_{ij} \), ki igra vlogo sile. Definiran je kot
+
+\[ f_i = \frac{\partial }{\partial x_{j}}  p_{ij}.
+\]
+
+Drugi Newtonov zakon v zveznem mediju je Cauchyjeva enačba
+
+\[ \rho \ddot{u}_i = f_i + \frac{\partial p_{ik}}{\partial x_{k}},
+\]
+
+kjer so \( f_i \) zunanje sile, ki delujejo po gostoti površine (gravitacija, električno polje). V primeru ravnovesja velja
+
+\[ f_i \frac{\partial p_{ik}}{\partial x_{k}} = 0.
+\]
+
+Zvezni medij ima robne pogoje
+
+\[ p_{ik}  n_k = \tilde{F}_i,
+\]
+
+kjer je \( \tilde{F}_i \) opisuje sile na meji medija.
+
+Hookov zakon lahko zapišemo z Laméjevimi koeficienti ali pa z Youngovim modulom in Poissonovim številom
+
+\[ p_{ij} = 2 \mu u_{ij} + \lambda u_{ll} \delta_{ij} = \frac{E}{1 + \sigma} \left( u_{ij} + \frac{\sigma}{1 - 2 \sigma} u_{kk} \delta_{ij} \right).
+\]
+
+Deformacijski tenzor pa izrazimo iz Hookovega zakona
+
+\begin{equation}
+\label{eq:1}
+ u_{ij} = \frac{1}{2 \mu} p_{ij} - \frac{\lambda}{2 \mu \left( 2 \mu + 3 \lambda \right)} p_{ll} \delta_{ij} = \frac{1}{E} \left[ \left( 1 + \sigma \right) p_{ij} - \sigma p_{ll} \delta_{ij} \right] .
+\end{equation}
+
+Ko združimo Cauchyjevo enačbo in Hookov zakon, dobimo Navierovo enačbo
+
+\[ \rho \ddot{u}_i = f_i + \mu \nabla ^2 u_i + \left( \mu + \lambda \right) \frac{\partial }{\partial x_{i}} \left( \frac{\partial u_{i}}{\partial x_{k}} \right),
+\]
+
+oz. vektorsko
+
+\[ \rho \ddot{\mathbf{u}} = \mathbf{f} + u \nabla ^2 \mathbf{u} + \left( \mu + \lambda \right) \nabla \nabla \mathbf{u}
+\]
+* Enoosna deformacija palice
+
+#+begin_problem
+Na palico delujemo s silo \( F \) v smeri \( z \) na osnovno ploskev \( S \). Zanima nas, kako se spremeni površina po aplikaciji sile.
+#+end_problem
+
+Spremembo površine bomo izračunali po enačbi, izpeljani na predavanjih,
+
+\[ \frac{\Delta V}{V} = \mathrm{tr} \left( u \right).
+\]
+
+Priboriti se moramo torej do posameznih elementov deformacijskega tenzorja.
+
+Delovanje sile bomo opisali z
+
+\[ p_{zk} n_k = - \frac{F}{S}.
+\]
+
+Sila deluje vzporedno z normalo osnovne ploskve, kar pomeni, da bo normala \( \mathbf{n} = (0, 0, 1) \). Zapišemo tenzor
+
+\[ \begin{pmatrix}
+   p_{xx} & p_{xy} & p_{xz} \\
+   p_{yx} & p_{yy} & p_{yz} \\
+   p_{zx} & p_{zy} & p_{zz}
+   \end{pmatrix} \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} = \begin{pmatrix} p_{xz} \\ p_{yz} \\ p_{zz} \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ - \frac{F}{S} \end{pmatrix}.
+\]
+
+Če si kot primer pogledamo še na stranico palice, ki ima normalo \( \mathbf{n} = (1, 0, 0) \).
+
+\[ \begin{pmatrix}
+   p_{xx} & p_{xy} & p_{xz} \\
+   p_{yx} & p_{yy} & p_{yz} \\
+   p_{zx} & p_{zy} & p_{zz}
+   \end{pmatrix} \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} = \begin{pmatrix} p_{xx} \\ p_{yx} \\ p_{zx} \end{pmatrix} = 0
+\]
+
+Robni pogoj bo torej
+
+\[ p_{zz} = - \frac{F}{S},
+\]
+
+napetostni tenzor v matrični formi pa bo
+
+\[ p_{ij} = \begin{bmatrix}
+            0 & 0 & 0 \\
+            0 & 0 & 0 \\
+            0 & 0 & -\frac{F}{S}
+            \end{bmatrix}
+\]
+
+
+Nimamo sil, ki delujejo na celoten volumen, iz česar sledi \( f_z = 0 \). Cauchyjeva enačba je
+
+\[ \frac{\partial p_{zk}}{\partial x_{k}} = 0.
+\]
+
+Deformacijski tenzor ustreza enačbi iz uvoda \ref{eq:1}
+
+\[ u_{ij} = \frac{1}{2 \mu} p_{ij} - \frac{\lambda}{2 \mu \left( 2 \mu + 3 \lambda \right)} p_{ll} \delta_{ij}.
+\]
+
+Ker so vsi nediagonalni členi napetostnega tenzorja ničelni (\( p_{ij, i \ne j} = 0 \)), bo isto veljalo tudi za deformacijski tenzor \( u_{ij, i \ne j} = 0 \).
+
+\( p_{kk} \) predstavlja sled tenzorja in je enaka
+
+\[ p_{kk} = p_{xx } + p_{yy} + p_{zz} = - \frac{F}{S}.
+\]
+
+Torej so diagonalne komponente deformacijskega tenzorja
+
+\begin{align}\label{ali:1}
+  u_{xx } &= \frac{\lambda}{2 \mu \left( 2\mu + 3 \lambda \right)} \frac{F}{S}\\
+  u_{yy } &= \frac{\lambda}{2 \mu \left( 2\mu + 3 \lambda \right)} \frac{F}{S} \\ \label{ali:3}
+  u_{zz } &= - \frac{F}{2 \mu S} + \frac{\lambda}{2 \mu \left( 2\mu + 3 \lambda \right)} \frac{F}{S} = - \frac{F}{S} \left( \frac{\mu + \lambda}{\mu \left( 2 \mu + 3\lambda \right)} \right).
+\end{align}
+
+Sprememba volumna je torej
+
+\[ \frac{\Delta V}{V} = \mathrm{tr} \left( u \right) = \frac{2F}{S} \frac{\lambda}{2\mu \left( 2 \mu + 3 \lambda \right)} - \frac{F}{S} \frac{\mu + \lambda}{\mu \left( 2 \mu + 3 \lambda \right)} = - \frac{F}{S} \frac{1}{2 \mu + 3 \lambda}.
+\]
+
+Iz klasične fizike vemo, da za Youngov modul velja
+
+\[ \frac{F}{S} = E \frac{\Delta l}{l} = E u_{zz}.
+\]
+
+kjer vemo iz predavanj, da velja \( \frac{\Delta l}{l} = u_{zz} \). Iz \ref{ali:3} lahko odčitamo Youngov modul.
+
+\[ \frac{F}{S} = - \left( \frac{\mu \left( 2 \mu + 3\lambda \right)}{\mu + \lambda} \right) u_{zz}.
+\]
+
+Poissonovo število pa je po definiciji
+
+\[ \sigma = - \frac{u_{xx }}{u_{zz}} = \frac{\lambda}{2(\mu + \lambda)},
+\]
+
+kjer smo uporabili enačbi \ref{ali:1} in \ref{ali:3}.
+
+* Potopljena kocka
+#+begin_problem
+Potopimo kocko v vodo in nanjo deluje tlak \( p \). Zanima nas sprememba prostornine.
+#+end_problem
+
+Na vse stranice kocke deluje tlak \( p \). Kot primer si pogledamo
+
+\[ p_{ij} \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix} = \begin{bmatrix} p_{xx} \\ p_{yx} \\ p_{zx} \end{bmatrix} = \begin{bmatrix} - p \\ 0 \\ 0 \end{bmatrix}.
+\]
+
+Upoštevali smo, da tlak kaže v nasprotni smeri normale na površino. Torej bo napetostni tenzor
+
+\[ p_{ij} = - p \delta_{ij}.
+\]
+
+Za kocko velja Navierova enačba
+
+\[ \frac{\partial p_{ij}}{\partial x_{j}} = 0.
+\]
+
+Vsi diagonalni elementi napetostnega tenzorja  so si medseboj enaki je
+
+\[ u_{xx } = - \frac{1}{2 \mu}p + \frac{3 \lambda p}{2 \mu \left( 2 \mu + 3 \lambda \right)} = \frac{- p}{2 \mu + 3\lambda} .
+\]
+
+Sprememba volumna je torej
