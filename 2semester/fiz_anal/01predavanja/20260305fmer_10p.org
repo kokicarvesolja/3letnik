@@ -348,3 +348,119 @@ in
 Zaključimo, da z meritvijo lege in korelacije hkrati ostrimo tudi komponento hitrosti, čeprav je nismo direktno merili.
 
 #+end_problem
+** Disperzija in korelacija med komponentami vektorskih količin
+
+Kovariančna matrika je definirana kot
+
+\[ M = \left\langle \left( \bar{\mathbf{x}} - \mathbf{x} \right) \left( \bar{\mathbf{x}} - \mathbf{x} \right)^T \right\rangle.
+\]
+
+Kovariančna matrika izostrenih ocen pa je
+
+\[ P = \left\langle \left( \hat{\mathbf{x}} - \mathbf{x} \right) \left( \hat{\mathbf{x}} - \mathbf{x} \right)^T \right\rangle .
+\]
+
+Obe matriki sta pozitivno definitni in simetrični, kar pomeni, da velja
+
+\[ P = P^T \quad \text{ in } \quad M = M^T.
+\]
+
+Zanima nas verjetnostna gostota \( P(\bar{x}) \).
+
+\[ P(\bar{x}) = \frac{1}{\sqrt{\left( 2 \pi \right) ^2} \det M} \exp \left[ - \frac{1}{2} \left( \bar{x} - x \right)^T M^{-1} \left( \bar{x} - x \right) \right].
+\]
+
+
+Za \( \mathbf{x} = [x, y] \) bo potem verjetnostna gostota
+
+\[ P(\bar{x}, \bar{y}) = \frac{1}{2 \pi} \frac{1}{\sigma_x \sigma_y \sqrt{1 - \rho ^2}} \exp \left[ - \frac{1}{2 (1 - \rho ^2)} \left( \frac{(\bar{x} - x) ^2}{\sigma_x ^2} + \frac{(\bar{y} - y) ^2}{\sigma_y ^2} - \frac{2 \rho (\bar{x} - x) (\bar{y} -y)}{\sigma_x \sigma_y} \right) \right].
+\]
+
+Označimo korelacijo
+
+\[ \left\langle (\bar{x} - x) (\bar{y} - y) \right\rangle = \rho \sigma_x \sigma_y
+\]
+** Senzor več spremenljivk
+
+Imamo sistem \( S \) s spremenljivkami \( \mathbf{x} = [x_1, x_2, x_3, \ldots, x_n] \) in zajemamo podatke preko večih senzorjev z meritvami \( \mathbf{z} = [z_1, z_2, z_3, \ldots, z_s] \). Okno \( H \) je matrika \( s \times n \) preslika meritve v spremenljivke in velja enačba
+
+\[ \mathbf{z} = H \mathbf{x} + \mathbf{r}.
+\]
+
+Na vsako komponento deluje nek šum in imamo vektor merilnega šuma \( \mathbf{r} = [r_1, r_2, r_3, \ldots, r_s] \). Vsak šum ima pripadajoče odstopanje \( \sigma_i ^2, \ i = 1, 2, 3, \ldots, s \).
+
+Pri kanalih, ki merijo, lahko pride do t.i. /cross-talking/. V mejah našega predmeta to pomeni, da pride do korelacije. Vse skupaj sestavljamo kovariančno matriko merilnega šuma
+
+\[ R = \left\langle \mathbf{r} \mathbf{r}^T \right\rangle.
+\]
+
+#+begin_my_example
+Na primeru si poglejmo okno \( H \). Imejmo spremenljivki \( \mathbf{x} = [\phi_1, \phi_2] \), kjer merimo kot.
+
+Meritev prvega nihala je
+
+\[ z = \alpha_1  + r_{\alpha}.
+\]
+
+Vektorski sistem je potem
+
+\[ \mathbf{z} = H \mathbf{x} + \mathbf{r}.
+\]
+
+V tem primeru je okno \( H = [1, 0] \) in produkt
+
+\[ H \mathbf{x} = [1, 0] \begin{bmatrix} \phi_{1} \\ \phi_{2} \end{bmatrix}.
+\]
+
+Okno oblike
+
+\[ H = \begin{bmatrix}
+       1 & 2 \\
+       0 & 1
+        \end{bmatrix}
+\]
+
+ni dobro, saj prvi senzor meša kota prvega in drugega nihala.
+#+end_my_example
+** Ostrenje z vektorskimi meritvami.
+
+Imamo torej sistem \( S \) s spremenljivkami \( \mathbf{x}(t) \), meritvami \( \mathbf{z} = H \mathbf{x} + \mathbf{r} \) in ocenami \( \bar{\mathbf{x}} = \mathbf{x} + \mathbf{m} \). Prav tako imamo kovariančno matriko \( M = \left\langle \mathbf{m} \mathbf{m}^T \right\rangle \). Prav tako imamo pripadajočo kovariančno matriko merilnega šuma \( R = \left\langle \mathbf{r} \mathbf{r}^T \right\rangle \).
+
+Izostrena ocena je \( \hat{x} = x + p \) v matrični formi
+
+\[ \hat{x} = A \bar{x} + B z,
+\]
+
+kjer sta \( A \in \mathbb{R}^{n \times n} \) in \( B \in \mathbb{R}^{n \times s} \) matrični uteži. Želimo ju določiti.
+
+\[ \mathbf{x} + \hat{p} = A (\mathbf{x} + \mathbf{m}) + B(H\mathbf{x} + \mathbf{r}).
+\]
+
+Razrešimo oklepaje in iz enakosti
+
+\[ \mathbf{x} + \hat{p} = \left( A + B H \right) \mathbf{x} + A \mathbf{m} + B \mathbf{r},
+\]
+
+dobimo enakosti
+
+\[ A + B H = I \quad \text{ in } \quad A \mathbf{m} + B \mathbf{r} = \hat{p},
+\]
+
+kjer je \( I \) identiteta.
+
+\begin{align*}
+  \left\langle p p^T \right\rangle &= \left\langle \left( A \mathbf{m} + B \mathbf{r} \right) \left( A \mathbf{m} + B \mathbf{r} \right)^T \right\rangle \\
+&= \left\langle \left( A \mathbf{m} + B \mathbf{r} \right) \left( \mathbf{m}^T A ^T + \mathbf{r}^T B^T\right) \right\rangle.
+\end{align*}
+
+Oklepaje zmnožimo med sabo in dobimo
+
+\[ \left\langle p p^{T} \right\rangle = \left\langle  A \mathbf{m} \mathbf{m}^T A^T + B \mathbf{r} \mathbf{r} B^T + A \mathbf{m} \mathbf{r}^T B^T + B \mathbf{r} \mathbf{m}^T A^T \right\rangle.
+\]
+
+Ker med \( m \) in \( r \) ni korelacije, zaključimo
+
+\[ \left\langle p p^T \right\rangle = P  = A M A^T + B R B^T, \ A + B H = I
+\]
+
+Na naslednjem predavanju bomo to poskusili optimizirati.
