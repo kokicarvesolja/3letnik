@@ -1,4 +1,4 @@
-#+title: Predavanja iz Fizikalnih merjenj, 0. teden v letu
+#+title: Predavanja iz Fizikalnih merjenj, 8. teden v letu
 #+subtitle: 2026/02/26
 #+startup: nolatexpreview
 #+startup: entitiespretty nil

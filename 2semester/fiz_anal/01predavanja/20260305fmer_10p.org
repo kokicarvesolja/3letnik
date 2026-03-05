@@ -1,0 +1,166 @@
+#+title: Predavanja iz Fizikalnih merjenj, 10. teden v letu
+#+subtitle: 2026/03/05
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Merjenje skalarnih spremenljivk \( x(t) \)
+
+V primeru, da ne poznamo dinamike, potem bo najboljša dinamike kar
+
+\[ \hat{x}(t) = z(t).
+\]
+
+Varianca je potem kar
+
+\[ \hat{\sigma}_x ^2 (t) = R.
+\]
+
+V primeru, če poznamo dinamiko med sistemi, potem rešujemo linearno diferencialno enačbo 1. reda
+
+\[ \dot{x} (t) = A x + C(t).
+\]
+
+V diskretnem prostoru, kjer vzorčimo s časom \( T \), bo zgornja diferencialna enačba postala diferenčna enačba
+
+\[ \dot{x} = \frac{x_{n + 1} - x_n}{T},
+\]
+
+kjer sta \( x_{n + 1} = x((n + 1)T) \) in \( x_n = x(n T) \). Potem lahko izrazimo \( x_{n + 1} \)
+
+\[ x_{n + 1} = x_n + \left( A (nT) x_n + C(nT) \right) T = \left( 1 + A(nT) T \right) x_n + C(nT).
+\]
+
+Z uvedbo \( \phi_n = (1 + A(nT) T) \) in \( c_n = C(n T) T \) je krajši zapis
+
+\[ x_{n + 1} = \phi_n x_n + c_n.
+\]
+
+Porazdeljenost se ohranja tudi znotraj diferenčne enačbe, saj sta množenje in seštevanje linearni operaciji.
+
+Isto dinamiko privzamemo tudi za oceno \( \hat{x} \) v merilnem sistemu \( M \).
+
+Recimo, da smo opravili \( n \) vzorčenj. Z znano dinamiko v času \( t = n T \) in optimalno oceno \( \hat{x}_n \) in \( \hat{\sigma}_n ^2 \), lahko napovemo oceno v času \( t = (n + 1) T \)
+
+\[ \bar{x}_{n + 1} = \phi_n \hat{x}_n + c_n \quad \text{ in } \quad \bar{\sigma}_{n + 1} ^2 = \phi_{n ^2} \hat{\sigma}_n ^2.
+\]
+
+Dokažimo, da ta napoved ocene drži.
+
+Varianco zapišemo po definiciji
+
+\[ \hat{\sigma}_n ^2 = \left\langle \left( \hat{x}_n - x_n \right) ^2 \right\rangle.
+\]
+
+Napoved variance pa je
+
+\[ \bar{\sigma}_{n + 1} ^2 = \left\langle \left( \bar{x}_{n + 1} - x_{n + 1}\right) ^2 \right\rangle.
+\]
+
+Upoštevamo napoved ocene in razpišemo
+
+\[ \bar{\sigma}_{n + 1} ^2 = \left\langle \left[ \left( \phi_n \hat{x}_n + c_n \right) ^2 - \left( \phi_n x_n + c_n \right) ^2\right] \right\rangle = \left\langle \left[ \phi_n \left( \hat{x}_n - x_n \right) \right] ^2 \right\rangle.
+\]
+
+Zaključimo torej
+
+\[ \bar{\sigma}_{n + 1} ^2 = \phi_n ^2 \left\langle \left( \hat{x}_n - x_n \right) ^2 \right\rangle = \phi_n ^2 \hat{\sigma}_n ^2.
+\]
+
+Za meritev \( z_{n + 1} \) z varianco \( \sigma ^2 \) lahko izostrimo oceno v času \( t = (n + 1) T \) z enačbami
+
+\[ \hat{x}_{n + 1} = \bar{x}_{n + 1} + \frac{\sigma_{n + 1} ^2}{\sigma ^2} \left( z_{n + 1} - \bar{x}_{n + 1} \right) \quad \text{ in } \quad \hat{\sigma}_{n + 1} ^{-2} = \bar{\sigma}_{n + 1}^{-2} + \sigma^{-2}.
+\]
+
+Zgornjemu postopku pravimo ostrenje z meritvijo.
+
+Uvedemo nove oznake: \( \hat{\sigma}_{n + 1} ^2 \) postane kovarianca izostrene ocene \( P_{n +1} \). \( \bar{\sigma}_{n + 1} ^2 \) postane kovarianca napovedi \( M_{n + 1} \), \( \frac{\hat{\sigma}_{n + 1} ^2}{\sigma ^2} \) postane ojačevalni faktor \( K_{n + 1} \) in \( \left( z_{n + 1} - \bar{x}_{n + 1} \right) \) je inovacija.
+
+Z novimi oznakami imamo tako
+
+\[ M_{n + 1} = \phi_n ^2 P_n \quad \text{ in } \quad P_{n + 1} = \frac{M_{n + 1} \sigma ^2}{M_{n + 1} + \sigma ^2}= M_{n + 1} - \frac{M_{n + 1} ^2}{M_{n + 1} + \sigma ^2}
+\]
+** Dinamični šum
+
+Dinamiko spremenljivke \( x(t) \) v sistemu \( S \) ne poznamo eksaktno.
+
+Spremenljivko spreminja nek neznan člen
+
+\[ x_{n + 1} = \phi_n x_n + c_n + w(t),
+\]
+
+za katerega ne vemo ali je pozitiven ali negativen. Posledično lahko zaključimo, da je njena pričakovana vrednost \( \left\langle w \right\rangle = 0 \). Neznanemu členu pravimo naključeno šum.
+
+Primer takega šuma so trki med delci: okolica deluje na delec v pozitivni ali negativni smeri.
+
+Za naključen šum velja
+
+\[ \left\langle w_n, w_{n'} \right\rangle = \delta_{n, n'} Q,
+\]
+
+kjer je \( Q \) velikost dinamičnega šuma, ki je nekorelirana (\( \delta \)).
+
+Ponovna analogija s trki med delci: kam se delec odbije v naslednjem trenutku je neodvisno od trkov s prejšnjimi delci.
+
+V diskretni obliki spremenljivko \( x \) zapišemo z dinamičnim šumom
+
+\[ x_{n + 1} = \phi_n x_n + c_n + \Gamma_n w_n.
+\]
+
+V sistemu \( M \) pa bo odstopanje od spremenljivko v sistemu \( S \) ravno \( \Gamma_n w_n \), saj ne poznamo dinamike šuma. V sistemu \( M \) je ocena
+
+\[ \bar{x}_{n + 1} = \phi \hat{x}_n + c_n.
+\]
+
+To odstopanje na ostrenje z meritvijo
+
+\[ \hat{x}_{n + 1} = \bar{x} _{n + 1} + \frac{\hat{\sigma}_{n + 1} ^2}{\sigma ^2} \left( z_{n + 1} - \bar{x}_{n + 1} \right),
+\]
+
+ne bo imelo vpliva.
+
+Poglejmo si, kakšen vpliv pa bo imela na kovarianco napovedi
+
+\begin{align*}
+  M_{n + 1} &= \left\langle \left[ \left( \bar{x}_{n + 1} - x_{n + 1} \right) \right]^2 \right\rangle \\
+&= \left\langle\left[ \left( \phi_n \hat{x}_n  + c_n \right) - \left( \phi_n x_n + c_n + \Gamma_n w_n \right)\right] ^2  \right\rangle \\
+&= \left\langle \left[ \phi_n \left( \hat{x}_n - x_n \right) - \Gamma_n w_n \right] ^2 \right\rangle.
+\end{align*}
+
+Kvadriramo oklepaje in ni korelacije med \( \hat{x}_n, x_n \) in \( w_n \), nam ostane samo
+
+\begin{align*}
+  M_{n + 1} &= \left\langle \phi_n ^2 \left( \hat{x}_n - x \right) ^2 + \left( \Gamma_n w_n \right) ^2 \right\rangle \\
+&= \phi_n ^2 P_n + \Gamma_n ^2 \left\langle w_n ^2 \right\rangle.
+\end{align*}
+
+Kovarianca napovedi ima torej v vsakem trenutku prišteto dodaten konstanten člen
+
+\[ M_{n + 1} = \phi_n ^2 P_n + Q_n.
+\]
+
+Pri prehodu v zvezno sliko je ocena spremenljivke v sistemu \( M \)
+
+\[ \hat{x}_{n + 1} = \bar{x}_{n + 1} + K_{n + 1} \left( z_{n + 1} - \bar{x}_{n + 1} \right).
+\]
+
+Upoštevamo definicijo napovedi in
+
+\[ \frac{\hat{x}_{n + 1} - x_n}{T} = \frac{\phi_n \hat{x}_n + c_n - \hat{x}_n + K_{n + 1} (z_{n + 1} - \bar{x}_{n + 1})}{T}.
+\]
+
+Dodatno lahko pretvorimo v
+
+\[ \frac{\hat{x}_{n + 1} - \hat{x}_n}{T} = \frac{\left( \phi_n - 1 \right)}{T} \hat{x}_n + \frac{c_n}{T} + \frac{P_{n + 1}}{\sigma ^2 T} \left( z _{n + 1} - \bar{x}_{n + 1} \right).
+\]
+
+V limiti \( T \to 0 \) dobimo enačbo
+
+\[ \dot{\hat{x}} = A(t) \hat{x}(t) + c(t) + \frac{P(t)}{R} \left( z(t) - \hat{x}(t) \right),
+\]
+
+kjer je \( \frac{\phi_n - 1}{T} = A(t) \) in \( \sigma ^2 T = R \). Upoštevali smo, da v limiti \( \hat{x}_n = \bar{x}_n = \hat{x}(t) \) in napoved kovariance \( M_{n + 1} \) je \( P(t) \) (prav tako je v limiti \( P_{n + 1} = P(t) \)).
