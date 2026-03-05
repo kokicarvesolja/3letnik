@@ -164,3 +164,187 @@ V limiti \( T \to 0 \) dobimo enačbo
 \]
 
 kjer je \( \frac{\phi_n - 1}{T} = A(t) \) in \( \sigma ^2 T = R \). Upoštevali smo, da v limiti \( \hat{x}_n = \bar{x}_n = \hat{x}(t) \) in napoved kovariance \( M_{n + 1} \) je \( P(t) \) (prav tako je v limiti \( P_{n + 1} = P(t) \)).
+
+Na podoben način želimo preiti v zvezno sliko tudi pri kovarianci izostrene ocene
+
+\[ P_{n + 1} = M_{n + 1} - \frac{M_{n + 1} ^2}{M_{n + 1} + \sigma ^2} = \phi_n ^2 P_n + \Gamma_n Q_n - \frac{\left( \phi_n ^2 P_n + \Gamma_n  ^2 Q_n \right) ^2}{M_{n + 1} + \sigma ^2}.
+\]
+
+Za postopanje do odvoda zapišemo
+
+\[ \frac{P_{n + 1} - P_n}{T}= \frac{\left( \phi_n ^2 - 1 \right)P_n}{T} + \frac{\Gamma_n ^2 Q_n}{T} - \frac{\phi_n ^2 P_n ^2 + 2 \phi_n ^2 P_n \Gamma_n ^2 Q_n + \Gamma_n ^4 Q_n ^2}{TM_{n + 1} + \sigma ^2 T} .
+\]
+
+V limiti \( T \to 0 \) gre \( \phi_n \to 1 \), hkrati pa upoštevamo identiteto od prej in lahko prvi člen zapišemo
+
+\[ \frac{\left( \phi_n ^2 - 1 \right)P_n}{T} = \left( \phi_n - 1 \right)\frac{\left( \phi_n - 1 \right) }{T} P_n = 2 A P(t).
+\]
+
+Povejmo še nekaj limit. Po definicije nekorelacije velja \( \left\langle w_k w_{k'} \right\rangle = \delta_{k k'} Q_n \), iz česar sledijo limite
+
+\begin{align*}
+  \lim_{T \to 0} \left( Q_n T \right) &= Q(t)\\
+\lim_{T \to 0} \left( \sigma ^2 T \right) &= R(t) \\
+\lim_{T \to 0} \left( \frac{\Gamma_n}{T} \right) &= T(t)
+\end{align*}
+
+Drugi člen moramo pomnožiti s \( \frac{T}{T} \), da lahko zapišemo limito
+
+\[ \frac{\Gamma_n ^2 Q T}{T ^2} = \Gamma ^2 Q.
+\]
+
+Pri zadnjem členu pa je v limiti
+
+\[ \frac{\phi_n ^2 P_n ^2 + 2 \phi_n ^2 P_n \Gamma_n ^2 Q_n + \Gamma_n ^4 Q_n ^2}{TM_{n + 1} + \sigma ^2 T} =  \frac{1}{T M(t) + R} \left[ P ^2(t) + \frac{2 P \Gamma Q T}{T} + \Gamma ^2 (t) Q(t) T ^2 \right].
+\]
+
+Zadnje dva člena smo razširili s \( T \) in v limiti sta potem ničelna. Končna enačba je torej
+
+\[ \dot{P} = 2 A P(t) + \Gamma ^2 Q - \frac{P ^2}{R}.
+\]
+
+Prvi člen nam pove dinamiko, drugi člen nam povečuje kovarianco zaradi dinamičnega šuma, tretji člen pa zmanjša kovarianco zaradi dotoka novih meritev.
+* Vektorske spremenljivke
+
+V sistemu \( S \) popišemo več spremenljivk \( \mathbf{r} = [x,y]^T = [x, v]^T \).
+
+Včasih nam dinamika narekuje, da bi morali opazovati spremenljivk višjega reda, je Newtonov zakon \( \sum_{}^{} F = m a = m \ddot{x} \). Pri njem imamo 2. red spremenljivke \( x(t) \). Namesto tega prevedemo opazovanje na več spremenljivk \( \dot{x} = v \) in \( \dot{v} = \sum\limits_{}^{} \frac{F}{m} \) nižjega reda.
+
+Potem bo opazovani sistem
+
+\[ \frac{\mathrm{d} }{\mathrm{d} t} \begin{bmatrix} x \\ v \end{bmatrix} = \begin{bmatrix}
+                                                                           0 & 1 \\
+                                                                           0 & 0
+                                                                            \end{bmatrix} \begin{bmatrix} x \\ v \end{bmatrix} + \mathbf{c}.
+\]
+
+Sedaj imamo sistem diferencialnih enačb.
+
+Imamo torej spremenljivke
+
+\[ \mathbf{x} = \begin{bmatrix} x_{1} \\ x_{2} \\ x_{3} \\ ldots \\ x_{n} \end{bmatrix}.
+\]
+
+Ocene v sistemu \( M \) s pripadajočimi disperzijami pa so
+
+\[ \hat{\mathbf{x}} = \begin{bmatrix} \hat{x}_{1} \\ \hat{x}_{2} \\ \ldots \\ \hat{x}_{n} \end{bmatrix} \end{bmatrix}.
+\]
+
+Ker so disperzije lahko medseboj korelirane
+
+\[ \left\langle \left( \hat{x}_i - x_i \right) ^2 \right\rangle = \hat{\sigma}_{x_i} ^2 \quad \text{ in } \quad \left\langle \left( \hat{x}_i - x_i \right) \left( \hat{x}_j - x_j \right) \right\rangle = \hat{\sigma}_{x_i, x_j}.
+\]
+
+Zapišemo jih v kovariančno matriko \( P \) za \( \dot{\mathbf{x}} \)
+
+\[ P = \begin{bmatrix}
+       \hat{\sigma}_{1} ^2 & & & & &  \\
+        & \hat{\sigma}_2 ^2 & & & &  \\
+        &  & \ddots & & & \\
+        & & \hat{\sigma}_{ij} & \hat{\sigma}_{ii} ^2 & & \\
+        & & & & \ddots & \\
+        & & & & & \hat{\sigma}_n ^2
+       \end{bmatrix},
+\]
+
+kjer so diagonalni komponenti variance, izvendiagonalne komponente pa korelacije.
+
+#+name: Ostrenje
+#+begin_problem
+
+Imejmo sistem \( S \) s spremenljivkama \( \mathbf{x} = [x, v]^T \). Zajemamo meritve oblike \( z = x + r \), kjer je \( \left\langle r ^2 \right\rangle = \sigma_r ^2\). Ocene v merilnem sistemu \( M \) so
+
+\[ \hat{\mathbf{x}} = \begin{bmatrix} \hat{x} \\ \hat{v} \end{bmatrix} = \begin{bmatrix} x + p_{x} \\ v + p_{v} \end{bmatrix}.
+\]
+
+Povprečje ocene je potem
+
+\[ \left\langle \mathbf{x} \right\rangle = \begin{bmatrix} \left\langle x \right\rangle \\ \left\langle p \right\rangle \end{bmatrix} = \begin{bmatrix} x + m_x  \\ v + m_v \end{bmatrix}.
+\]
+
+[nadomesti langle with bar!]
+
+Veljajo nekorelacije
+
+\[ \left\langle r m_x \right\rangle = \left\langle r p_x \right\rangle = \left\langle r m_v \right\rangle = 0.
+\]
+
+Poskusimo ostriti z linearno superpozicijo
+
+\begin{align*}
+  \hat{x} &= x + p_x = a_{xx } \bar{x} + a_{xv} \bar{v} + b_x z \\
+\hat{v} &= v + p_v = a_{vx } \bar{x} + a_{vv } \bar{v} + b_v z
+\end{align*}
+
+Zapišemo torej
+
+\[ \hat{x} = a_{xx } (x + m_x) + a_{xv}  (v + m_v) + b_x (x + r).
+\]
+
+In ker je
+
+\[ x + p_x = x (a _{xx } + b_x) + a_{xv} v + a_{xv} m_v + a_{xx } m_x + b_x r,
+\]
+
+in na levi strani nimamo nobenega člena z \( v \), zaključimo \( a_{xv} = 0 \). Hkrati pa dobimo tudi pogoj \( a_{xx } + b_x = 1 \). Potem je
+
+\[ p_x = a_{xx } m_x + b_x r = a_{xx } m_x + (1 - a_{xx }) r.
+\]
+
+Pričakovane vrednosti so ničelne, zato bomo gledali variance
+
+\begin{align*}
+  \left\langle p_x ^2 \right\rangle = a_{xx } ^2 \left\langle m_x \right\rangle ^2 + (1 - a_{xx }) ^2 \left\langle r ^2 \right\rangle + a_{xx } (1 - a_{xx }) \left\langle w_x r \right\rangle \\
+&= a_{xx } ^2 \sigma_x ^2 + (1 - a_{xx }) ^2 \sigma_r ^2.
+\end{align*}
+
+Upoštevali smo nekoreliranost. Optimalna ocena je potem pri
+
+\[ \frac{\mathrm{d} }{\mathrm{d} a_{xx }} \left\langle p_x ^2 \right\rangle  = 0,
+\]
+
+kar je pri
+
+\[ a_{xx } \frac{\sigma_r ^2}{\sigma_r ^2 + \sigma_x ^2}.
+\]
+
+Na podoben način pridemo tudi pri \( \hat{v} \)
+
+\[ v + p_v = (a_{vx} + b_v) x + a_{vx} m_x + a_{vv} v + a_{vv} m_v + b_v.
+\]
+
+Zaključimo, da je \( a_{vv} = 1 \) ter \( a_{vx} + b_v = 0 \).
+
+Torej
+
+\[ p_v = a_{vx} m_x + m_r + b_v r = \left( a_{vx} (m_x - r) + m_r \right) ^2.
+\]
+
+Izračunamo kvadrat in varianco
+
+\[ \left\langle p_v ^2 \right\rangle = a_{vx} ^2 \left[ \left\langle m_x ^2 \right\rangle + \left\langle r ^2 \right\rangle \right] + \left\langle m_v ^2 \right\rangle + 2 a_{vx} \left\langle m_x m_v \right\rangle.
+\]
+
+Po odvodu
+
+\[ \frac{\mathrm{d} }{\mathrm{d} a_{vx}} \left\langle p_v ^2 \right\rangle = 0,
+\]
+
+dobimo
+
+\[ a_{vx} = -\frac{\left\langle m_x m_v \right\rangle}{\sigma_x ^2 + \sigma_r ^2}.
+\]
+
+Ocena bo torej, ko nadomestimo vse izpeljane člene
+
+\[ \hat{x} = \bar{x} + \frac{\sigma_x ^2}{\sigma_x ^2 + \sigma_r ^2} \left( z - \bar{x} \right)
+\]
+
+in
+
+\[ \hat{v} = \bar{v} + \frac{\left\langle m_x m_v \right\rangle}{\sigma_x ^2 + \sigma_r ^2} \left( z - \bar{x} \right).
+\]
+
+Zaključimo, da z meritvijo lege in korelacije hkrati ostrimo tudi komponento hitrosti, čeprav je nismo direktno merili.
+
+#+end_problem
