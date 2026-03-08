@@ -14,7 +14,7 @@ Za precej fizikalno lepo homogeno magnetno polje \( \vec{B} \) znotraj tuljave, 
 
 [[file:figures/magnetnoPoljeTuljave.jpg]]
 
-Po besedah profesorja želimo narediti bolj pohleven vektorski potencial, zaradi se poslužimo umeritve. Uvedemo nov magnetni potencial \( \vec{A} \, ' \)
+Po besedah profesorja želimo narediti bolj pohleven vektorski potencial, zaradi česar se poslužimo umeritve. Uvedemo nov magnetni potencial \( \vec{A} \, ' \)
 
 \[ \vec{A} \, ' = \vec{A} + \nabla \zeta \left( \vec{r} \right)
 \]
@@ -124,12 +124,12 @@ kjer je \( \hat{t} \) enotski vektor na zanki. Delo, ki ga opravimo pri tem prem
 
 Torej je delo po integriranju
 
-\[ A = - I \int\limits_S^{} \vec{B} \cdot \mathrm{d} S = - I \phi_m
+\[ A = - I \int\limits_S^{} \vec{B} \cdot \mathrm{d} \vec{S} = - I \Phi_m
 \]
 
 Magnetno energijo želimo zapisati tudi z vektorskim magnetnim potencialnim poljem
 
-\[ A = - I \int\limits_S^{} \left( \nabla \times \vec{A} \right) \, \mathrm{d} \vec{S} = - I \int\limits_{C_2}^{} \vec{A} \cdot \mathrm{d} ^3 \vec{r} + I \int\limits_{C_1}^{} \vec{A} \cdot \mathrm{d} \vec{r},
+\[ A = - I \int\limits_S^{} \left( \nabla \times \vec{A} \right) \, \mathrm{d} \vec{S} = - I \int\limits_{C_2}^{} \vec{A} \cdot \mathrm{d}  \vec{r} + I \int\limits_{C_1}^{} \vec{A} \cdot \mathrm{d}  \vec{r},
 \]
 
 Zanko smo premaknili za \( \mathrm{d} \vec{r} \). Površina \( S \) je površina plašča valja, ki ga omejujeta zanka \( C_1 \) pred premikom in zanka \( C_2 \), ki je \( C_1 \) premaknjena za \( \mathrm{d} \vec{r} \).
@@ -155,15 +155,14 @@ Iz Kirchoffove enačbe vemo, da velja
 
 Potem lahko zapišemo energijo kot
 
-\[ W = \frac{\mu_0}{4 \pi} \int\limits_V^{} \int\limits_{V'}^{} \frac{\vec{\jmath} \left( \vec{r} \right) \vec{\jmath} \left( \vec{r} \, '\right)}{\left| \vec{r} - \vec{r} \, ' \right|} \, \mathrm{d} ^3 \vec{r} \, \mathrm{d} ^3 \vec{r} \, '
+\[ W = \frac{\mu_0}{4 \pi} \int\limits_V^{} \int\limits_{V'}^{} \frac{\vec{\jmath} \left( \vec{r} \right) \vec{\jmath} \, ' \left( \vec{r} \, '\right)}{\left| \vec{r} - \vec{r} \, ' \right|} \, \mathrm{d} ^3 \vec{r} \, \mathrm{d} ^3 \vec{r} \, '
 \]
 
 Ta enačba nam pove energijo tokov \( \vec{\jmath} \) v magnetnem polju, ki ga ustvarja tok \( \vec{\jmath} \, ' \).
 *** Celotna magnetna energija
-
 Zanima nas celotna energija polja/potenciala \( \vec{A} \), ki ga ustvari gostota toka \( \vec{\jmath} \). Uvedemo parameter \( \alpha \in [0, 1] \), ki spremeni magnetni vektorski potencial \( \vec{A} \) iz \( 0 \) do \( \vec{A} \). Ker gostota električnega toka \( \vec{\jmath} \) ustvari vektorski magnetni potencial \( \vec{A} \). Pri nekem \( \alpha \) gostota toka \( \hat{\jmath} = \alpha \vec{\jmath} \) ustvari polje \( \hat{A}, \left| \hat{A} \right| \le \left| \vec{A}\right|  \). Opazujemo spremembo \( \hat{A} \), če povečamo gostoto toka za \( \mathrm{d} \vec{\jmath} \).
 
-Uporabili bomo linearnost Kirchoffove enačb
+Uporabili bomo linearnost Kirchoffove enačbe
 
 \[ \nabla ^2 \left( \hat{A} \right) = \nabla ^2 \left( \vec{A} \right) = - \mu_0 \left( \vec{\jmath} \cdot \alpha \right),
 \]
@@ -230,7 +229,7 @@ Zapišemo prej povedano celotno energijo
 \begin{align*}
   W &= \frac{1}{2} \int\limits_V^{} \vec{\jmath} \cdot \vec{A}  \, \mathrm{d} ^3 \vec{r} \\
 &= \frac{1}{2 \mu_0} \int\limits_V^{} \left( \nabla \times \vec{B} \right) \cdot \vec{A} \, \mathrm{d} ^3 \vec{r} \\
-&= \frac{1}{2\mu_0} \int\limits_V^{} \nabla \left( \vec{B} \times \vec{A} \right) \, \mathrm{d} ^3 \vec{r} + \frac{1}{2 \mu_0} \int\limits_V^{} \vec{B} \cdot \left( \nabla \times \vec{B} \right) \, \mathrm{d} ^3 \vec{r} \\
+&= \frac{1}{2\mu_0} \int\limits_V^{} \nabla \left( \vec{B} \times \vec{A} \right) \, \mathrm{d} ^3 \vec{r} + \frac{1}{2 \mu_0} \int\limits_V^{} \vec{B} \cdot \left( \nabla \times \vec{A} \right) \, \mathrm{d} ^3 \vec{r} \\
 &= \frac{1}{2\mu_0} \left[ \int\limits_V^{} B ^2 \, \mathrm{d} ^3 \vec{r} + \int\limits_{\partial V}^{} \left( \vec{B} \times \vec{A} \right) \, \mathrm{d} \vec{S} \right]
 \end{align*}
 

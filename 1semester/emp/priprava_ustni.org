@@ -1190,7 +1190,7 @@ povsod razen na \( x < 0 \). Vektorski potencial lahko tako torej umerimo kot
 Izpelji Krichoffovo enačbo za magnetni vektorski potencial in zapiši ter komentiraj njeno rešitev. Kakšno povezavo ima z Biot-Savartovim zakonom?
 #+end_problem
 
-Četrta Maxwellova enačba  oz. Amperova enačba se glasi
+Četrta Maxwellova enačba oz. Amperova enačba se glasi
 
 \[ \nabla \times \mathbf{B} = \mu_0 \mathbf{j}.
 \]
@@ -1243,12 +1243,301 @@ Uvedi in razloži
 1) magnetno energijo sklenjene tokovne zanke v zunanjem magnetnem polju z uporabo zakona o ohranitvi energije 
 2) celotne energije magnetnega polja, ki ga ustvarja in vzdržuje neka gostota električnega toka
 #+end_problem
+*** Magnetna energija v zunanjem magnetnem polju
+
+Imamo tokovno zanko \( C \), po kateri teče konstanten, od \( 0 \) različen tok \( I \). Magnetno silo na zanko \( C \) zapišemo po definiciji
+
+\[ \mathbf{F} = \oint\limits_{C}^{} I \mathrm{d} \mathbf{l} \times \mathbf{B} = I \oint\limits_{C}^{} \mathbf{t} \times \mathbf{B} \, \mathrm{d} l,
+\]
+
+kjer je \( \mathbf{t} \) tangentni vektor na zanko.
+
+Zanko premaknemo za \( \mathrm{d} \mathbf{r} \) in po definiciji dela potem velja
+
+\[ \mathrm{d} A = - \mathbf{F} \cdot \mathrm{d} \mathbf{r} = - I \oint\limits_C^{} \mathrm{d} \mathbf{r} \cdot \left( \mathbf{t} \times \mathbf{B} \right) \, \mathrm{d} l.
+\]
+
+Upoštevamo, da velja distributivnost mešanega produkta 
+
+\[ \mathrm{d} \mathbf{r} \cdot \left( \mathbf{t} \times \mathbf{B} \right) = \left( \mathrm{d} \mathbf{r} \times \mathbf{t} \right) \cdot \mathbf{B},
+\]
+
+in delo zapišemo
+
+\[ \mathrm{d} A = - I \oint\limits_C^{} \left( \mathrm{d} \mathbf{r} \times \mathbf{t} \right) \cdot \mathbf{B} \, \mathrm{d} l. 
+\]
+
+Po definiciji je \( \left( \mathrm{d} \mathbf{r} \times \mathbf{t} \right) \mathrm{d} l \) je ravno diferencial površine, ki jo zanka opiše ob premiku. 
+
+Delo je torej
+
+\[ A = - I \int\limits_S^{} \mathbf{B} \cdot \mathrm{d} \mathbf{S} = - I \Phi_M.
+\]
+
+Zapišemo ga lahko tudi z vektorskim potencialom, integral pa lahko razpišemo s pomočjo Stokesovega izreka
+
+\[ A = - I \int\limits_S^{} \left( \nabla \times \mathbf{A} \right) \cdot \mathrm{d} \mathbf{S} = - I \oint\limits_{C_2}^{} \mathbf{A} \cdot \mathrm{d} \mathbf{l} + I \oint\limits_{C_1}^{} \mathbf{A} \cdot \mathrm{d} \mathbf{l}  
+\]
+
+Zanka \( C_2 \) je lega zanke po premiku. Integral lahko iz zanke posplošimo na poljubno volumnsko gostoto toka preko definicije
+
+\[ I \mathbf{t} \mathrm{d} l = \mathbf{j} \mathrm{d} ^3 \mathbf{r}. 
+\]
+
+Opravljeno delo je tako
+
+\[ A = W(2) - W(1) = - \int\limits_{(2)}^{} \mathbf{j}\cdot \mathbf{A} \mathrm{d} ^3 \mathbf{r} + \int\limits_{(1)}^{} \mathrm{j}\cdot \mathbf{A}  \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Zaključimo torej, da je energija gostote toke \( \mathbf{j} \) v zunanjem magnetnem polju z vektorskim potencialom \( \mathbf{A} \)
+
+\[ W = - \int\limits_V^{} \mathbf{j}(\mathbf{r}) \cdot \mathbf{A}(\mathbf{r}) \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Gostota energije toka je
+
+\[ w(\mathbf{r}) = - \mathbf{j}(\mathbf{r}) \cdot \mathbf{A}(\mathbf{r}).
+\]
+*** Magnetna energija kot funkcional toka
+
+Zunanje magnetno polje ustvarja neka gostota toka \( \mathbf{j}' \). Vektorski potencial lahko v izrazu za energijo zunanje magnetnega polja nadomestimo s pomočjo Kirchoffove enačbe
+
+\[ A (\mathbf{r}) = \frac{\mu_0}{4 \pi} \int\limits_V^{} \frac{\mathbf{j}'(\mathbf{r}') \, \mathrm{d} ^3 \mathbf{r}'}{\left| \mathbf{r} - \mathbf{r}' \right|} 
+\]
+
+Spomnimo: Kirchoffova enačba nam pove vrednost vektorskega potencial v točki \( \mathbf{r} \) za gostoto toka, ki teče po volumnu \( V \) in ga opisuje \( \mathbf{r}' \).
+
+Energija v zunanjem magnetnem polju je tako
+
+\[ W = - \int\limits_V^{} \int\limits_{V'}^{} \frac{\mathbf{j}(\mathbf{r}) \cdot \mathbf{j}' (\mathbf{r}') \, \mathrm{d} ^3 \mathbf{r} \, \mathrm{d} ^3 \, \mathbf{r}' }{\left| \mathbf{r} - \mathbf{r}' \right|}.
+\]
+
+Enačba nam tako pove magnetno energijo tokov \( \mathbf{j} \), ki se nahajajo v zunanjem magnetnem polju, ki ga ustvarjajo \( \mathbf{j}' \).
+
+*** Celotna magnetna energija
+
+Imamo gostoto toka \( \mathbf{j} \), ki ustvari magnetni vektorski potencial \( \mathbf{A} \). Zanima nas celotna energija, ki je za to potrebna.
+
+Imejmo konstanto \( \alpha \in [0, 1] \). Kirchoffova enačba je linearna za to konstanto
+
+\[ \nabla ^2 (\alpha \mathbf{A}) = - \alpha \mu_0 \mathbf{j}.
+\]
+
+Podobno kot pri električnem polju bomo področju zviševali gostoto električnega toka \( \mathbf{j} \). Majhno spremembo gostote toka bomo opisali z \( \mathrm{d} \mathbf{j} = \mathbf{j} \mathrm{d}\alpha  \). Posledično se bo spremenil tudi vektorski potencial \( \mathbf{A} '(\mathbf{r}) = \alpha \mathbf{A} (\mathbf{r}) \).
+
+Napačna sprememba energije je potem
+
+\[ \mathrm{d} W = - \int\limits_0^1 \alpha \mathrm{d} \alpha \int\limits_V^{} \mathbf{j}(\mathbf{r}) \mathbf{A}(\mathbf{r}) \, \mathrm{d} ^3 \mathbf{r} = - \frac{1}{2} \int\limits_V^{} \mathbf{j}(\mathbf{r}) \mathbf{A}(\mathbf{r}) \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Napaka je v tem, da ne upoštevamo trošenja energije, ki pride s poganjanjem toka. Pri elektrostatiki je naboj samo /imel/ električno polje. Tukaj pa temu ni tako in magnetno polje je ustvarjeno s tokom.
+
+*Kaj pa v primeru magnetov? Kaj pa energija potrebna za nabiti telo v elektrostatiki?*
+
+Za vzdrževanje toka opravljamo delo, ki ga bomo predstavili z močjo
+
+\[ P = - U \cdot I = - I \oint\limits_{C}^{} \mathbf{E} \cdot \mathrm{d} \mathbf{r}, 
+\] 
+
+kjer je \( C \) zanka, po kateri teče tok \( I \). 
+
+Upoštevamo še (neomenjen do sedaj) Faradeyjev zakon indukcije
+
+\[ \oint\limits_C^{} \mathbf{E} \cdot \mathrm{d} \mathbf{r} = - \frac{\partial }{\partial t} \int\limits_S^{} \mathbf{B} \cdot \mathrm{d} \mathbf{S},
+\]
+
+kjer je \( S \) površina zanke \( C \) s tokom \( I \).
+
+Zaradi definicije moči potem velja
+
+\[ P = I \frac{\partial }{\partial t} \int\limits_{C}^{} \mathbf{B} \cdot \mathrm{d} \mathbf{S} = \frac{\mathrm{d} W}{\mathrm{d} t},
+\]
+
+iz česar zaključimo, da je energija potrebna za ohranjanje toka
+
+\[ W = I \int\limits_S^{} \mathbf{B} \cdot \mathrm{d} \mathbf{S} = I \int\limits_S^{} \nabla \times \mathbf{A} \cdot \mathrm{d} \mathbf{S} = I \oint\limits_{C}^{} \mathbf{A} \cdot \mathrm{d} \mathbf{r} = \int\limits_V^{} \mathbf{j} \cdot \mathbf{A} \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Celotna magnetna energija je tako
+
+\[ W = - \frac{1}{2} \int\limits_V^{} \mathbf{j} \cdot \mathbf{A} \, \mathrm{d} ^3 \mathbf{r} + \int\limits_V^{} \mathbf{j} \cdot \mathbf{A} \, \mathrm{d} ^3 \mathbf{r} = \frac{1}{2} \int\limits_V^{} \mathbf{j} \cdot \mathbf{A} \, \mathrm{d} ^3 \mathbf{r}
+\]
+*** Gostota magnetne energija polja 
+
+Izraz za magnetno energijo želimo napisati v odvisnosti od \( \mathbf{B} \). Za pomoč bomo uporabili Maxwellovo enačbo
+
+\[ \nabla \times \mathbf{B} = \mu_0 \mathbf{j}, 
+\]
+
+ter identiteto
+
+\[ \nabla \cdot \left( \mathbf{B} \times \mathbf{A} \right) = \mathbf{A} \cdot \left( \nabla \times \mathbf{B} \right) - \mathbf{B} \cdot \left( \nabla \times \mathbf{A} \right).
+\]
+
+Gostoto toka v izrazu za energijo torej nadomestimo z Maxwellovo enačbo
+
+\[ W = \frac{1}{2\mu_0} \int\limits_V^{} \left( \nabla \times \mathbf{B} \right) \cdot \mathbf{A} \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Upoštevamo identiteto in zapišemo
+
+\[ W = \frac{1}{2 \mu_0} \int\limits_V^{} \nabla \left( \mathbf{B} \times \mathbf{A} \right) \, \mathrm{d} ^3 \mathbf{r} + \frac{1}{2 \mu_0} \int\limits_V^{} \mathbf{B} \cdot \left( \nabla \times \mathbf{A} \right) \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+V drugem členu prepoznamo definicijo vektorskega potenciala, prvi člen pa pretvorimo po Gaussovem izreku
+
+\[ W = \frac{1}{2 \mu_0} \left[ \int\limits_V^{}B ^2 , \mathrm{d} ^3 \mathbf{r} + \int\limits_{\partial V}^{} \left( \mathbf{B} \times \mathbf{A} \right) \, \mathrm{d} \mathbf{S} \right]
+\]
+
+Predpostavimo, da je rob naše prostornine \( \partial V \) v neskončnosti. Potem sledi
+
+\[ \int\limits_{\partial V}^{} \left( \mathbf{B} \times \mathbf{A} \right) \, \mathrm{d} \mathbf{S} \propto \int\limits_{\partial V}^{} \left( \frac{1}{r} \cdot \frac{1}{r ^2} \right) r ^2 \, \mathrm{d} r \overset{r \to \infty}{\longrightarrow} 0.
+\] 
+
+Celotna energija magnetnega polja zapisanega z \( \mathbf{B} \) je potem
+
+\[ W = \frac{1}{2 \mu_0} \int\limits_V^{} B ^2 \, \mathrm{d} ^3 \mathbf{r}, 
+\]
+
+oziroma zapisano z gostoto kot
+
+\[ w = \frac{1}{2\mu_0} B ^2 (\mathbf{r}) 
+\]
+
 ** 13. vprašanje
 #+begin_problem
-Formuliraj magnetostatsko silo na telo s poljubno gostoto električnega toka, ki se nahaja v zunanjem polju, z uporabo samo magnetnega polja in uvedi napetostni tenzor magnetnega polja. Uporabo napetostnega tenzorja nato pokaži na primeru sile med dvema točkastima nabojema. 
+Formuliraj magnetostatsko silo na telo s poljubno gostoto električnega toka, ki se nahaja v zunanjem polju, z uporabo samo magnetnega polja in uvedi napetostni tenzor magnetnega polja. Uporabo napetostnega tenzorja nato pokaži na primeru sile med dvema ravnima vodnikoma. 
 #+end_problem
+*** Sila kot funkcional magnetnega polja
+
+Zanima nas sila \( \mathbf{F} \) na porazdelitev tokov \( \mathbf{j} \) v prostoru. Silo bi radi izrazili samo s pomočjo magnetnega polja \( \mathbf{B} \). 
+
+Velja
+
+\[ \mathbf{F} = \int\limits_{}^{} \mathbf{j}(\mathbf{r}) \times \mathbf{B}(\mathbf{r}) \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Zgornje magnetno polje \( \mathbf{B} \) vsebuje tako zunanje magnetno polje \( \mathbf{B}_{zun} \) kot magnetno polje \( \mathbf{B}_{not} \), ki je posledica gostote tokov \( \mathbf{j} \).
+
+/Ker sam sebe ne moreš dvigniti/, velja da je sila, ki vsebuje gostoto tokov \( \mathbf{j} \) in magnetno polje \( \mathbf{B}_{not} \), ki ga ustvarja, ničelna
+
+\[ \mathbf{F} = \int\limits_{}^{} \mathbf{j}(\mathbf{r}) \times \mathbf{B}_{not} (\mathbf{r}) \, \mathrm{d} ^3 \mathbf{r}. 
+\]
+
+Hkrati so viri zunanjega magnetnega polja neskončno stran, zato je zunanje polje \( \mathbf{B}_{zun} \) brezvrtinčno in velja
+
+\[ \nabla \times \mathbf{B} = \nabla \times \left( \mathbf{B}_{not} + \mathbf{B}_{zun} \right) = \nabla \times B_{not} + 0.
+\]
+
+Preko četrte Maxwellove enačbe lahko torej silo zapišemo v
+
+\[ \mathbf{F} = \frac{1}{\mu_0} \int\limits_V^{} \left( \nabla \times \mathbf{B} \right) \times \mathbf{B} \, \mathrm{d} ^3 \mathbf{r}. 
+\]
+
+Uporabimo identiteto
+
+\[ \mathbf{B} \times \left( \nabla \times \mathbf{B} \right) = \frac{1}{2} \nabla B ^2 + \nabla \cdot \left( \mathbf{B} \otimes \mathbf{B} \right) + \mathbf{B} \left( \nabla \cdot \mathbf{B} \right).
+\]
+
+Velja, da je \( \nabla \cdot \mathbf{B} = 0 \) in potem zapišemo silo kot
+
+\[ \mathbf{F} = \frac{1}{\mu_0} \int\limits_V^{} \left[ \nabla \left( \mathbf{B} \otimes \mathbf{B} \right) - \frac{1}{2} \nabla B ^2 \right] \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Preko Gaussovega zakona lahko to pretvorimo na ploščinski integral
+
+\[ \mathbf{F} = \frac{1}{\mu_0} \int\limits_{\partial V}^{} \left( \mathbf{B} \otimes \mathbf{B} - \frac{1}{2} B ^2 \underline{I} \right) \, \mathrm{d} \mathbf{S}
+\]
+*** Tenzor napetosti magnetnega polja
+
+Uvedemo tenzor napetosti magnetnega polja
+
+\[ F_i = \oint\limits_{\partial V}^{} T_{ik} n_k \, \mathrm{d} S, 
+\]
+
+kjer je
+
+\[ T_{ik} = \frac{1}{\mu_0} \left[ B_i B_k - \frac{1}{2} B ^2 \delta_{ik} \right].
+\]
+
+Preko Gaussovega izreka lahko ponovno silo zapišemo kot volumnski integral divergence tenzorja napetosti magnetnega polja
+
+\[ F_i = \int\limits_V^{} \frac{\partial T_{ik}}{\partial x_{k}}  \, \mathrm{d} ^3 \mathbf{r},
+\]
+
+kjer je \( f_i = \frac{\partial T_{ik}}{\partial x_{k}}  \) volumnska gostota sile.
+*** Sila med ravnima vodnikoma
+
+[[file:01predavanja_zapiski/figures/EMP_ustni_tenzorSilaMag_13vprasanje.png]]
+
+Imejmo dve vzporedni žici na razdalji \( 2a \), skozi katere teče tok \( I \) v nasprotnih smereh. 
+
+V tem primeru je na simetrijski ravnini med vodnikoma magnetno polje
+
+\[ B_z = B_y = 0, \, B_x \ne 0. 
+\]
+
+Silo zapišemo kot smo jo prej izpeljali
+
+\[ F_z = \frac{1}{\mu_0} \int\limits_{\partial V}^{} \left[ B_z \left( \mathbf{B} \cdot \mathbf{n} \right) - \frac{1}{2} B ^2 n_z \right] \, \mathrm{d} S = - \frac{1}{2\mu_0} \int\limits_{\partial V}^{} B_x ^2 n_z \, \mathrm{d} S
+\]
+
+\( B_x \) komponenta posamezne žice se na simetrijski ravnini sešteva in ima vrednosti
+
+\[ B_x = \frac{\mu_0 I 2 \cos \theta}{2 \pi \sqrt{x ^2 + a ^2}} = \frac{\mu_0 I a}{\pi \left( x ^2 + a ^2 \right)},
+\]
+
+kjer je kot \( \theta \) kot med veznico med žicama in smerjo, v kateri merimo polje. Sila na enoto dolžine med obema žicama je potem
+
+\[ \frac{F_z}{L} = -\frac{1}{2 \mu_0} \frac{\left( \mu_0 I a \right)^2}{\pi ^2} \int\limits_{- \infty}^{\infty} \frac{\mathrm{d} x}{\left( x ^2 + a ^2 \right) ^2} = - \frac{\mu_0 I ^2}{2 \pi \cdot 2 a} 
+\]
 ** 14. vprašanje
 #+begin_problem
 Zapiši in razloži multipolni razvoj magnetnega polja do dipolnega člena z uporabo vektorskega magnetnega potenciala. Razloži multipolni razvoj magnetne energije gostote toka v zunanjem magnetnem potencialu. Kakšna pa sta sila in navor na magnetni dipol v poljubnem zunanjem magnetnem polju?
 #+end_problem
+*** Multipolni razvoj magnetnega polja
+
+Želimo zapisati multipolni razvoj za vektorski potencial \( \mathbf{A} \), ki ga ustvarja gostota tokov \( \mathbf{j} \) na območju \( V_0 \) in jih opisuje \( \mathbf{r}' \).
+
+Kirchoffova enačba poda zvezo med \( \mathbf{A} \) in \( \mathbf{j} \)
+
+\[ \mathbf{A}(\mathbf{r}) = \frac{\mu_0}{4 \pi} \int\limits_V^{} \frac{\mathbf{j}(\mathbf{r}')}{\left| \mathbf{r} - \mathbf{r}' \right|} \, \mathrm{d} ^3 \mathbf{r}'.
+\]
+
+Podobno kot pri električnem multipolnem razvoju, lahko za \( \left| \mathbf{r} \right| \gg \left| \mathbf{r} ' \right|\) razvijemo
+
+\[ \frac{1}{\left| \mathbf{r} - \mathbf{r}' \right|} = \frac{1}{r} - \left( \mathbf{r} \cdot \nabla \right)\frac{1}{r} + \ldots = \frac{1}{r} + \frac{\mathbf{r}' \cdot \mathbf{r}}{r ^3} + \ldots
+\]
+
+Vektorski potencial do drugega reda je tako
+
+\[ \mathbf{A}(\mathbf{r}) = \frac{\mu_0}{4 \pi r} \int\limits_V^{} \mathbf{j}(\mathbf{r}') \, \mathrm{d} ^3 \mathbf{r}' + \frac{\mu_0}{4 \pi r ^3} \int\limits_V^{} \mathbf{j}(\mathbf{r}') \left( \mathbf{r} \cdot \mathbf{r}' \right) \, \mathrm{d} ^3 \mathbf{r}' + \ldots
+\]
+
+Monopolni člen je zaradi sklenjenih tokovnih zank
+
+\[ \int\limits_V^{} \mathbf{j}(\mathbf{r}') \, \mathrm{d} ^3 \mathbf{r}' = 0. 
+\]
+
+Dipolni člen
+
+\[ \mathbf{A}(\mathbf{r}) = \frac{\mu_0}{4 \pi r ^3} \int\limits_V^{} \mathbf{j}(\mathbf{r}') \left( \mathbf{r} \cdot \mathbf{r}' \right) \, \mathrm{d} ^3 \mathbf{r}, 
+\]
+
+pa lahko izrazimo z magnetnim dipolnim momentom
+
+\[ \mathbf{A}(\mathbf{r}) = \frac{\mu_0}{4 \pi} \frac{\mathbf{m} \times \mathbf{r}}{r ^3}, 
+\]
+
+kjer je
+
+\[ \mathbf{m} = \frac{1}{2} \int\limits_V^{} \mathbf{r}' \times \mathbf{j}(\mathbf{r}') \, \mathrm{d} ^3 \mathbf{r}' .
+\]
+
+Sedaj lahko izrazimo tudi magnetno polje magnetnega dipola
+
+\[ \mathbf{B} = \nabla \times \mathbf{A} = \nabla \times \left( \frac{\mu_0}{4 \pi} \frac{\mathbf{m} \times \mathbf{r}}{r ^3} \right) = \frac{\mu_0}{4 \pi} \frac{- r ^2 \mathbf{m} + 3 \mathbf{r} \left( \mathbf{m} \cdot \mathbf{r} \right)}{r ^5}.
+\]
+*** Multipolni razvoj magnetne energije
+*** Sila in navor na magnetni dipol
 ** 15. vprašanje 
