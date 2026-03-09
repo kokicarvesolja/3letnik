@@ -1,0 +1,144 @@
+#+title: Vaje iz Mehanike kontinuov, 11. teden v letu
+#+subtitle: 2026/03/09
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Torzija
+
+Obravnavamo rotacijo v ravnini \( xy \) po osi \( z \)
+
+\[ \phi(z) = \tau z.
+\]
+
+Vektor premika bo potem
+
+\[ \mathbf{u} = \mathbf{\phi} \times \mathbf{r} = (- \tau yz, \tau xz, 0)
+\]
+
+Palica se pri torziji tudi deformira v \( z \) osi. To deformacijo bomo predstavili v odvisnosti od \( u_{x, y} \), kar storimo s torzijsko funkcijo
+
+\[ u_z = \tau \psi(x, y).
+\]
+** Deformacijski tenzor
+
+Po definiciji deformacijskega tenzorja
+
+\[ u_{ik} = \frac{1}{2} \left( \frac{\partial u_{i}}{\partial x_{k}} + \frac{\partial u_{k}}{\partial x_{i}}  \right),
+\]
+
+lahko zaključimo, da so
+
+\[ u_{xx } = u_{yy} = u_{zz} = u_{xy} = 0.
+\]
+
+Iz tega zaključimo, da je tudi sled deformacijskega tenzorja ničelna. Hkrati to pomeni tudi, da je sprememba volumna ničelna.
+
+Torzija je torej primer čiste strižne deformacije
+
+\[ u_{xz} = \frac{1}{2} \left( - \tau y + \tau \frac{\partial \psi}{\partial x}  \right) \quad \text{ in } \quad u_{yz} = \frac{1}{2} \left( \tau x + \tau \frac{\partial \psi}{\partial y}  \right).
+\]
+** Napetostni tenzor
+
+Po definiciji
+
+\[ p_{ik} = \lambda u_{ll} \delta_{ik} + 2 \mu u_{ik}
+\]
+
+in zaključki iz prejšnjega poglavja, sta edini neničelni komponenti napetostnega tenzorja
+
+\[ p_{xz} = \mu \tau \left( - y + \frac{\partial \psi}{\partial x}  \right) \quad \text{ in } \quad p_{yz} = \mu \tau \left( x + \frac{\partial \psi}{\partial y}  \right).
+\]
+** Ravnovesje
+
+V ravnovesju je prostorninska gostota sile na palico ničelna
+
+\[ f_i = \frac{\partial p_{ik}}{\partial x_{k}}.
+\]
+
+Komponenta \( f_x \) je ničelna
+
+\[ f_x = \frac{\partial p_{xx }}{\partial x} + \frac{\partial p_{yy}}{\partial y} + \frac{\partial p_{xz}}{\partial x} = 0,
+\]
+
+saj sta \( p_{xx } = p_{yy} = 0 \) in \( p_{xz} \ne p_{xz} (x) \). Analogno pridemo do zaključka pri \( f_y \). Preostane nam samo še komponenta \( f_z \), za katero velja
+
+\[ f_z = \frac{\partial p_{zx}}{\partial x} + \frac{\partial p_{yz}}{\partial y} + \frac{\partial p_{zz}}{\partial z} = \mu \tau \left( \frac{\partial ^2 \psi}{\partial y ^2} + \frac{\partial ^2 \psi}{\partial x ^2}  \right) = \mu \tau \nabla ^2 \psi.
+\]
+
+Dobimo torej pogoj za ravnovesje
+
+\[ \nabla ^2 \psi = 0.
+\]
+** Prirejena torzijska funkcija
+
+Vpeljemo prirejeno torzijsko funkcijo \( \chi \), za katero zahtevamo, da velja
+
+\[ p_{xz} = 2 \mu \tau \frac{\partial \chi}{\partial y} \quad \text{ in } \quad p_{yz} = -2  \mu \tau \frac{\partial \chi}{\partial x}.
+\]
+
+Če primerjamo zgornja izraza z izrazoma od začetka poglavja, dobimo relaciji
+
+\[ \frac{\partial \psi}{\partial x} = 2 \frac{\partial \chi}{\partial y} + y \quad \text{ in } \quad \frac{\partial \psi}{\partial y}  = - 2 \frac{\partial \chi}{\partial x} - x.
+\]
+
+Prvo enačbo odvajamo po \( y \), drugo enačbo po \( x \) in dobimo Poissonovo enačbo
+
+\[ \nabla ^2 \chi = -1.
+\]
+
+Prirejena torzijska funkcija nam zelo poenostavi robni pogoj. Palica je na staneh neobremenjena in to pomeni, da je površinska gostota sil ničelna \( p_{ik} n_k = 0 \).
+
+Ločni element ima komponente \( \mathrm{d} \mathbf{l} = (\mathrm{d} x, \mathrm{d} y, 0)  \) in normalni vektor je potem
+
+\[ \mathbf{n} = \frac{1}{\mathrm{d} l} \left( - \mathrm{d} y, \mathrm{d}x, 0 \right).
+\]
+
+Površinska gostota sil je
+
+\[ f_z = p_{zx} n_x + p_{zy} n_y + p_{zz} n_z,
+\]
+
+kjer je \( p_{zz}  = 0 \). Vstavimo definiciji \( p_{zx} \) in \( p_{zy} \) z definicijo prirejene torzijske funkcije
+
+\[ f_z = \left[ 2 \mu \tau \frac{\partial \chi}{\partial y}  (- \mathrm{d} y) - 2\mu \tau \frac{\partial \chi}{\partial x}  \mathrm{d} x \right] \frac{1}{\mathrm{d} l} = - \frac{2 \mu \tau}{\mathrm{d} l} \left( \frac{\partial \chi}{\partial y} \mathrm{d} y + \frac{\partial \chi}{\partial x}  \mathrm{d} x \right) = 0
+\]
+
+Dovimo torej robni pogoj
+
+\[ \left. \mathrm{d} \chi \right|_{\partial S} = 0 \implies \left. \chi \right|_{\partial S} = \mathrm{konst}.
+\]
+
+\begin{align*}
+ f_z &= \frac{\mu \tau}{\mathrm{d} l} \left[ \left( - y + \frac{\partial \psi}{\partial x}   \right) \left( - \mathrm{d} y \right) + \left( x + \frac{\partial \psi}{\partial y} \right) \mathrm{d} x \right] \\
+&= \frac{\mu \tau}{\mathrm{d} l}\left[ y \mathrm{d} y + x \mathrm{d} x + \left( - \frac{\partial \psi}{\partial x}  \mathrm{d} y + \frac{\partial \psi}{\partial y} \mathrm{d} x \right)\right] = 0
+\end{align*}
+
+V primeru, če je torzijska funkcija \( \psi = 0 \), potem imamo diferencialno enačbo
+
+\[ x \mathrm{d} x + y \mathrm{d} y = 0 \implies \mathrm{d} \left( x ^2 + y ^2 \right) = 0.
+\]
+
+Torej imamo v primeru torzijske funkcije krog.
+** Elastična energija
+
+V okviru elastične teorije imamo predpostavko \( p_{ik} \propto u_{ik} \).
+
+Prostorninska gostota elastične proste energije je potem
+
+\[ f = \frac{1}{2} p_{ik} = u_{ik} = p_{xz} u_{xz} + p_{yz} u_{yz}.
+\]
+
+Ob upoštevanju izrazov za \( p_{xz} \) in \( p_{yz} \) dobimo
+
+\[ f = 2 \mu \tau ^2 \left[ \left( \frac{\partial ^2 \chi}{\partial x ^2}  \right)^2 + \left( \frac{\partial ^2 \chi}{\partial y ^2}  \right)^2 \right]
+\]
+
+Celotna elastična energija je potem
+
+\[ F = \int\limits_{}^{} f \mathrm{d} x \mathrm{d} y \mathrm{d} z = \frac{1}{2} \int\limits_{} \mathrm{d} z \tau ^2 \int\limits_{}^{} 4 \mu \left( \nabla \chi \right) ^2 \, \mathrm{d} x \mathrm{d} y.
+\]

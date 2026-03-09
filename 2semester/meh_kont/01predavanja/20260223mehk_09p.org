@@ -386,3 +386,120 @@ Cauchyjeva enačba je tako
 \]
 
 kjer zadnji člen zavzema zunanje sile.
+** Delo pri deformaciji
+
+Navdih pri izpeljavi nam bo definicija dela \( W = \mathbf{F} \cdot \mathbf{S} \).
+
+Integralska oblika dela bo
+
+\[ \delta W = \int\limits_{}^{} f_i \delta u_i \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Upoštevamo definicijo napetostnega tenzorja
+
+\[ \delta W = \int\limits_{}^{} \frac{\partial p_{ik}}{\partial x_{k}}  \delta u_i \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Postorimo enak trik kot pri dokazu simetričnosti napetostnega tenzorja
+
+\[ \delta W = \int\limits_{}^{} \frac{\partial }{\partial x_{k}}  \left( p_{ik} \delta u_i \right) \, \mathrm{d} ^3 \mathbf{r} - \int\limits_{}^{} p_{ik} \frac{\partial \delta u_{i}}{\partial x_{k}} \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Zadnji integral ponovno razdelimo na dva dela in ker imamo opravka z nemimi indeksi ter simetrični napetostnim tenzorjem, lahko indekse v drugem seštevancu zamenjamo
+
+\begin{align*}
+  p_{ik} \frac{\partial \delta u_{i}}{\partial x_{k}} &= \frac{1}{2} \left( p_{ik} \frac{\partial \delta u_{i}}{\partial x_{k}}  + p_{ki} \frac{\partial u_{k}}{\partial x_{i}}  \right) \\
+&= p_{ik} \frac{1}{2} \left( \frac{\partial \delta u_{i}}{\partial x_{k}}  + \frac{\partial \delta u_{k}}{\partial x_{i}}  \right)\\
+&= p_{ik} \delta u_{ik},
+\end{align*}
+
+kjer smo prepoznali deformacijski tenzor.
+
+Prvi integral ponovno lahko prevedemo na površinski integral
+
+\[ \delta W = \oint\limits_{}^{} p_{ik} \delta u_i \, \mathrm{d} A_k - \int\limits_{}^{} p_{ik} \delta u_{ik} \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Predpostavimo, da imamo neskončno sredstvo, za katerega naj velja, da ima površino neobremenjeno. Prvi integral bo zato \( 0 \).
+
+Iz termodinamike se spomnimo definicije proste energije \( \mathrm{d} f \), ki je definirana
+
+\[ \mathrm{d} f = - s \, \mathrm{d} T + p_{ik} \mathrm{d} u_{ik},
+\]
+
+kjer je \( s \) prosta entalpija. Odčitamo torej, da je
+
+\[ p_{ik} = \left( \frac{\partial f}{\partial u_{ik}}  \right)_T
+\]
+* Elastična energija
+** Prosta energija izotropnega sredstva
+
+Izotropno sredstvo je sredstvo invariantno na poljubne rotacije okoli poljubne osi, poljubne translacije ali poljubnega zrcaljenja.
+
+Prosta energija \( f \) take preslikave mora biti odvisna od takih količin, ki so invariantne na zgornje preslikave - npr. lastne vrednosti \( u_{ik} \).
+
+Poiščimo sedaj te lastne vrednosti.
+
+\begin{align*}
+ \det \left( u_{ik} - \lambda I \right) &= \begin{vmatrix}
+                                           u_{11} - \lambda & u_{12} & u_{13} \\
+                                           u_{21} & u_{22} - \lambda & u_{23} \\
+                                           u_{31} & u_{32} & u_{33} - \lambda
+                                           \end{vmatrix} \\
+&= - \lambda ^3 + \lambda ^2 (u_{11} + u_{22} + u_{33}) + \lambda \left[-u_{22} u_{33} + u_{23} u_{32} \right. \\
+&\qquad \left. - u_{11} u_{33} - u_{11} u_{22} + u_{12} u_{21} + u_{13} u_{31}\right] + \det u_{ik}  \\
+&= - \lambda ^3 + \lambda ^2 \mathrm{tr} u + \lambda \left[  \left( \mathrm{tr} u \right) ^2 - \mathrm{tr} u ^2 \right].
+\end{align*}
+
+Iz 2. v 3. vrstico pridemo z naslednjim postopkom
+
+\begin{align*}
+  I &= -u_{22} u_{33} + u_{23} u_{32}- u_{11} u_{33} - u_{11} u_{22} + u_{12} u_{21} + u_{13} u_{31} \\
+&= - \frac{1}{2} \left( u_{11} + u_{22} + u_{33} \right) ^2 + \frac{1}{2} \left( u_{11} ^2 + u_{22} ^2 + u_{33} ^2 \right) \\
+& \quad + u_{12} u_{21} + u_{13} u_{31} + u_{23} u_{32} \\
+&= - \left( \mathrm{tr} u ^2 -  \right) + \mathrm{tr} u ^2.
+\end{align*}
+
+Mazohist lahko hitro preveri s kvadriranjem tenzorja \( u_{ik} ^2 \) - za manjšega mazohista računaj zgolj diagonalne člene kvadrata matrike.
+
+Prosta energija je odvisna od invariantnih parametrov
+
+\[ f = f \left( \mathrm{tr} u, \frac{1}{2} \left[ \mathrm{tr} u ^2 - \left( \mathrm{tr} u \right) ^2 \right], \det u_{ik} \right) = f \left( \mathrm{tr} u, \mathrm{tr} u ^2, \det u_{ik} \right).
+\]
+
+Prosto energijo lahko sedaj razvijemo po teh invariantah
+
+\begin{align*}
+  f \approx f_0 &+ A_1 \mathrm{tr} u + A_2 \left( \mathrm{tr} u \right) ^2 + A_3 \left( \mathrm{tr} u \right) ^3 + \ldots \\
+&+ B_1 \mathrm{tr} u ^2 + B_2 \left( \mathrm{tr} u ^2 \right) ^2 + \ldots \\
+&+ C_1  \det u_{ik}  + \ldots \\
+&+ D_1 \mathrm{tr} u \,  \mathrm{tr} u_2 + \ldots
+\end{align*}
+
+Zanima nas harmonična energija \( E_{pr} = \frac{k x ^2}{2} \), zato zanemarimo vse člene, ki imajo red potence večji od kvadrata. Ostane nam
+
+\[ f = f_0 + A_1 \mathrm{tr} u + A_2 \left( \mathrm{tr} u \right) ^2 + B_1 \mathrm{tr} u ^2.
+\]
+
+Razpišemo sled
+
+\[ f = f_0 + A_1 \left( u_{11} + u_{22} + u_{33} \right) + \ldots
+\]
+
+ter upoštevamo definicijo napetostnega tenzorja
+
+\begin{align*}
+  p_{ik} &= \frac{\partial f}{\partial u_{ik}} \\
+&= A_1 \cdot \delta_{ik} + A_2 u^1 \ldots + B_1 u^1\ldots.
+\end{align*}
+
+Koeficient \( A_1 \) predstavlja napetost brez deformacije in ga postavimo na ničlo.
+
+Prosto energijo zapišemo tako
+
+\begin{align*}
+  f &= f_0 + \frac{\lambda}{2} \left( \mathrm{tr} u \right) ^2 + \mu \mathrm{tr} u ^2 \\
+&= f_0 + \frac{\lambda}{2} u_{ll} ^2 + \mu u_{ik} u_{ki},
+\end{align*}
+
+kjer so \( \lambda, \upsilon \) Lamejevi konstanti.
