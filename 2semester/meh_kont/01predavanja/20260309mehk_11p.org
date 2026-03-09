@@ -142,3 +142,120 @@ Celotna elastična energija je potem
 
 \[ F = \int\limits_{}^{} f \mathrm{d} x \mathrm{d} y \mathrm{d} z = \frac{1}{2} \int\limits_{} \mathrm{d} z \tau ^2 \int\limits_{}^{} 4 \mu \left( \nabla \chi \right) ^2 \, \mathrm{d} x \mathrm{d} y.
 \]
+
+* Upogib
+
+Upogib palice karakteriziramo s polmerom ukrivljenosti \( R \) ali ukrivljenostjo \( \frac{1}{R} \).
+
+[glej koordinatni sistem v skripti]
+
+Deformacijo obravnavamo tako kot smo rekli prejšnji teden, da je površinska gostota sil \( f = 0 \).
+
+Za zgornjo ploskev palice v koordinatnem sistemu kakor v zapiski z normalno \( \mathbf{n} = (-1, 0, 0) \) iščemo robne pogoje.. Robni pogoj površinske gostote \( f_i = p_{ik} n_k = 0 \) nam poda
+
+\[ f_x = p_{xx }n_x + p_{xy} n_y + p_{xz} n_z = 0 \implies \left. p_{xx } \right|_{zg.} = 0
+\]
+
+Prav tako dobimo iz \( f_{y} = 0 \) \( p_{yx} = p_{xy} = 0 \) in iz \( f_z = 0 \) \( p_{xz} = 0 \).
+
+Spodnja ploskev ima normalo \( \mathbf{n} = (1, 0, 0) \) in potem dobimo
+
+\[ p_{xx } = p_{xy} = p_{xz} = 0.
+\]
+
+Sprednja ploskev ima normalo \( \mathbf{n} = (0, 1, 0) \) iz česar ponovno sledi \( p_{xy} = p_{yy} = p_{yz} = 0 \).
+
+Enako dobimo za zadnjo ploskev z normalo \( \mathbf{n} = (0, -1, 0) \).
+
+Zaključimo torej, da je 5 komponent napetostnega tenzorja \( p_{ik} \) ničelnih in edina neničelna je \( p_{zz} \ne 0 \). Upogib je torej enoosna deformacija.
+
+[glej sliko 5.4]
+
+Upogib okrog točke nam poda wannabe enakostranični trikotnik. Kot med enako dolgima stranicama je \( \mathrm{d} \phi \).
+
+Pri neupognjeni palici je ta kot predstavljen z
+
+\[ \mathrm{d} \phi = \frac{\mathrm{d} z '}{R}.
+\]
+
+V upognjeni palici pa je v izven ravnine \( x \) je razdalja med krožnico in ravnino
+
+\[ \mathrm{d} \phi = \frac{\mathrm{d} z}{R + x}.
+\]
+
+Kota enačimo in dobimo
+
+\[ \frac{\mathrm{d} z}{\mathrm{d} z'} = \frac{R + x}{R} = 1 + \frac{x}{R}.
+\]
+
+\( z \) komponenta deformacijskega tenzorja je potem
+
+\[ u_{zz} = \frac{\mathrm{d} z - \mathrm{d} z'}{\mathrm{d} z'} = \frac{\mathrm{d} z}{\mathrm{d} z'} - 1 = \frac{x}{R}.
+\]
+
+Posledično je taista komponenta napetostnega tenzorja
+
+\[ p_{zz} = E u_{zz}.
+\]
+
+Preko Poissonovega števila lahko tudi dobimo vrednosti \( u_{xx } \) in \( u_{yy} \) zaradi definicije
+
+\[ \sigma = - \frac{u_{xx }}{u_{zz}} = - \frac{u_{yy}}{u_{zz}}.
+\]
+
+Zaključimo torej
+
+\[ u_{xx } = u_{yy} = - \sigma \frac{x}{R}.
+\]
+
+Iz dobljenih zvez lahko sedaj zapišemo komponente vektorja premika.
+
+Integriramo diagonalne komponente deformacijskega tenzorja in dobimo set enačb
+
+\begin{align*}
+ u_x &= - \frac{\sigma x ^2}{2 R} + g(y, z) \\
+u_y &= - \frac{\sigma  x y}{ R} + h(x, z) \\
+u_z &= \frac{xz}{R} + k(x, y).
+\end{align*}
+
+Funkcije \( g(y, z), h(x, z) \) in \( k(x, y) \) določimo iz izvendiagonalnih komponent deformacijskega tenzorja \( u_{xy} = u_{xz} = u_{yz} = 0 \). Po definiciji
+
+\begin{align*}
+  u_{xy} &= \frac{1}{2} \left( \frac{\partial u_{x}}{\partial y}  + \frac{\partial u_{y}}{\partial x}  \right)= \frac{1}{2} \left( \frac{\sigma y}{R} - \frac{\sigma y}{R} \right) = 0 \\
+u_{xz} &= \frac{1}{2} \left( - \frac{z}{R} + \frac{z}{R} \right) = 0 \\
+u_{yz} &= 0
+\end{align*}
+
+Zaključimo, da je edina neničelna funkcija
+
+\[ g(y, z) = \frac{\sigma y ^2}{2R} - \frac{z ^2}{2R}.
+\]
+
+[zaključki]
+** Elastična energija
+
+Upogibna deformacija je
+
+\[ f = \frac{1}{2} p_{zz} u_{zz}.
+\]
+
+Upoštevamo, da je \( u_{zz} = \frac{x}{R} \) in preko definicije napetostnega tenzorja \( p_{zz} = E u_{zz} \).
+
+Energija elastične deformacije je
+
+\[ F = \int\limits_{}^{} \mathrm{d} z \int\limits_{}^{} \mathrm{d} x \mathrm{d} y f = \int\limits_{}^{} \mathrm{d} z \frac{1}{2} E \left( \frac{1}{R} \right) ^2 \int\limits_{}^{} x ^2 \, \mathrm{d} x \, \mathrm{d} y.
+\]
+
+Krajše zapišemo upogibno energijo kot
+
+\[ F = \int\limits_{}^{} \frac{1}{2} E I \left( \frac{1}{R} \right) ^2 \, \mathrm{d} z,
+\]
+
+kjer je \( E I \) modul in kvadrirana ukrivljenost je kvadrat mere za deformacijo. Integralu
+
+\[ I = \int\limits_{}^{} x ^2 \, \mathrm{d} x \, \mathrm{d} y
+\]
+
+pravimo vztrajnostni moment preseka.
+
+[premisli konceptualno, kaj pomeni ta modul] - upogib palice, če hodiš po njej po širši ali ožji stranici.
