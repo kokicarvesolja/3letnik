@@ -11,6 +11,7 @@
 ** TODO Earnshawyjev teorem
 ** TODO Thomsonov problem
 ** TODO Primeri gostot električnega toka
+** TODO Amperova ekvivalenca
 * Elektrostatika
 ** 1. vprašanje
  #+begin_problem
@@ -1521,7 +1522,31 @@ Monopolni člen je zaradi sklenjenih tokovnih zank
 
 Dipolni člen
 
-\[ \mathbf{A}(\mathbf{r}) = \frac{\mu_0}{4 \pi r ^3} \int\limits_V^{} \mathbf{j}(\mathbf{r}') \left( \mathbf{r} \cdot \mathbf{r}' \right) \, \mathrm{d} ^3 \mathbf{r}, 
+\[ \mathbf{A}(\mathbf{r}) = \frac{\mu_0}{4 \pi r ^3} \int\limits_V^{} \mathbf{j}(\mathbf{r}') \left( \mathbf{r} \cdot \mathbf{r}' \right) \, \mathrm{d} ^3 \mathbf{r},
+\]
+
+pa bomo preprosteje zapisali s pomočjo Gauss-Ostrogradskega izreka za tenzor 3. reda \( \mathbf{r} \otimes \mathbf{r} \otimes \mathbf{A} \).
+
+Velja
+
+\[ \oint\limits_{\partial V}^{} r_i r_j j_k n_k \, \mathrm{d} S = \int\limits_V^{} \left( r_i j_j + r_j j_i + r_i r_j \nabla \cdot \mathbf{j} \right) \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Po predpostavi so vse tokovne zanke zaključene, zato bo levi integral enak nič po zaključeni površini. Na desni strani bo iz istega razloga divergenca gostote toka ničelna. Ostane nam torej enakost
+
+\begin{equation}
+\label{eq:7}
+\int\limits_V^{} r_i j_j \, \mathrm{d} ^3 \mathbf{r} = -\int\limits_V^{} r_j j_i \, \mathrm{d} ^3 \mathbf{r}
+\end{equation}
+
+Posvetimo sedaj svojo pozornost nazaj na dipolni člen, ki je v indeksni notaciji
+
+\[ \mathbf{A}(\mathbf{r}) = \frac{\mu_0}{4 \pi r ^3} \int\limits_V^{} r_j  s_j j_i (\mathbf{s}) \, \mathrm{d} ^3 \mathbf{s}.
+\]
+
+Enačbo \ref{eq:7} lahko drugače razširimo kot
+
+\[ \int\limits_V^{} r_i j_j \, \mathrm{d} ^3 \mathbf{r} = \frac{1}{2} \int\limits_V^{} \left[ r_i j_j - r_j i_i \right] \, \mathrm{d} ^3 \mathbf{r}.
 \]
 
 pa lahko izrazimo z magnetnim dipolnim momentom
@@ -1539,5 +1564,7 @@ Sedaj lahko izrazimo tudi magnetno polje magnetnega dipola
 \[ \mathbf{B} = \nabla \times \mathbf{A} = \nabla \times \left( \frac{\mu_0}{4 \pi} \frac{\mathbf{m} \times \mathbf{r}}{r ^3} \right) = \frac{\mu_0}{4 \pi} \frac{- r ^2 \mathbf{m} + 3 \mathbf{r} \left( \mathbf{m} \cdot \mathbf{r} \right)}{r ^5}.
 \]
 *** Multipolni razvoj magnetne energije
+
+
 *** Sila in navor na magnetni dipol
 ** 15. vprašanje 
