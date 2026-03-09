@@ -1,0 +1,106 @@
+#+title: Vaje iz Fizike trdne snovi, 10. teden v letu
+#+subtitle: 2026/03/02
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Teorija: sipanje
+
+Pri sipanju pošljemo na vzorec rentgensko svetlobo z valovnim vektorjem \( \mathbf{k} \), katerega velikost je
+
+\[ k = \frac{2 \pi}{\lambda}.
+\]
+
+Po sipanju zaznamo odklonjen žarek z valovnim vektorjemk \( \mathbf{k} \) pod kotom \( \theta \) glede na vpadnico. Predpostavljamo, da je sipanje elastično in torej velja \( \mathbf{k} = \mathbf{k}' \).
+
+Dejansko dobimo kolobar, ki je plašč stožca, katerega sredinski kot je \( \theta \).
+
+Braggov pogoj je
+
+\[ 2d \sin \frac{\theta}{2} = n \lambda.
+\]
+
+\( d \) predstavlja razmik med mrežnimi ravninami. Vektor recipročne mreže \( \mathbf{K} \) je pravokoten na mrežne ravnine in zahtevamo, da ima vektor najkrajšo dolžino.
+
+\[ d = \frac{2 \pi}{\left| \mathbf{K} \right|}.
+\]
+
+[glej skice mrežne ravnine na tablici]
+
+\( n \) predstavlja vrednosti, pri katerih bo prišlo do konstruktivne interference.
+
+Možno je Braggov pogoj zapisati kot
+
+\begin{equation}
+\label{eq:1}
+ 2d \sin \frac{\theta}{2} = \lambda,
+\end{equation}
+
+kjer so konstruktivne vrednosti interference skrite znotraj \( d \) kot posledica recipročnega vektorja \( \mathbf{K} \), ki ni več omejen na najmanjšo možno velikost.
+
+Ko obravnavamo vse vrednosti recipročnih vektorjev \( \mathbf{K} \) v enačbi \ref{eq:1}, ne bomo dobili Braggovega pogoja za \( \mathbf{K} \), katerega stukturni faktor \( S_{\mathbf{K}} = 0 \).
+* Naloga
+#+begin_problem
+Sipamo monokromatsko rentgensko svetlobo z \( \lambda = 2 A \). V osnovni kubični celici leži nekje na telesni diagonali atom.
+
+Na vzorcu sta bila storjena dva poskusa:
+
+1) na praškastem vzorcu dobimo dva Braggova vklona in sicer pri \( \theta_1 = 83.60 ^{\degree} \) in \( \theta_2 = 141.1 ^{\degree} \)
+2) pri drugem poskusu pa vrtimo vzorec in pri kotu \( \theta_2 \) dobimo različne intenzitete. Razmerje teh intenzitet je \( I_{2.1}/ I_{2.2} = 1 : 4 \).
+
+Iz danih podatkov izračunaj, kje na telesni diagonali se nahaja atom.
+#+end_problem
+
+Kubično mrežo predstavimo z primitivnimi vektorji
+
+\[ \mathbf{a}_1 = a (1, 0, 0), \quad \mathbf{a}_2 = a(0, 1, 0) \quad \text{ in } \quad \mathbf{a}_3 = a(0, 0, 1).
+\]
+
+z bazama \( \mathbf{r}_1 = 0 \) in \( \mathbf{r}_2 = c(1, 1, 1) \), kjer je \( c = (0, a) \) konstanta, ki jo iščemo.
+
+Obravnavamo Braggov pogoj za vse recipročne vektorje \( \mathbf{K} \) mreže
+
+\[ 2 d \sin \frac{\theta}{2} = \lambda.
+\]
+
+Izluščiti moramo vse \( \mathbf{K} \), katerih \( S_{\mathbf{K}} = 0 \). Strukturni faktor je za recipročni vektor \( \mathbf{K} = \frac{2 \pi}{a} (m_1, m_2, m_3) \) je
+
+\[ S_{\mathbf{K}} = \sum\limits_i^{} exp \left\{ \mathrm{i} \mathbf{K} \cdot \mathbf{r}_i \right\} = 1 + \exp \left\{ - \mathrm{i} \frac{2 \pi c}{a} (m _1 + m_2 + m_3) \right\}.
+\]
+
+V primeru, da je \( c = \frac{a}{2} \) imamo bcc kristalno mrežo. Strukturni faktor je potem
+
+\[ S_{\mathbf{K}} = 1 + \exp \left\{ - \mathrm{i} \pi (m_1 + m_2 + m_3) \right\}.
+\]
+
+Ko je \( m_1 + m_2 + m_3 \) soda, je \( S_{\mathbf{K}} = 2 \), ko pa je vsota liha, pa je \( S_{\mathbf{K}} = 0 \). S tem bi morali izluščiti vse lihe točke.
+
+V Braggovem pogoju nadomestimo razdaljo med mrežnimi ravninama z njeno relacijo, ki jo poveže z recipročnim vektorjem
+
+\[ d = \frac{2 \pi}{a} = \frac{a}{\sqrt{m_1 ^2 + m_2 ^2 + m_3 ^2} }.
+\]
+
+Ko dobimo recipročne vektorje, bomo morali preveriti strukturni faktor.
+
+Iz Braggovega pogoja potem dobimo
+
+\[ \sin \frac{\theta}{2} = \frac{\lambda}{2 a} \sqrt{m_1 ^2 + m_2 ^2 + m_2 ^2}.
+\]
+
+Prva ojačitev bo pri \( \theta_1 \), kar nam poda tri možne vrednosti \( m_i \) in sicer
+
+\[ (1 0 0), \quad (0 1 0) \quad \text{ in } \quad (0 0 1).
+\]
+
+Krajše lahko zapišemo kot \( \left\{ 100 \right\} \), kjer zapis zajame tudi vse simetrijske ravnine.
+
+Za \( \theta_2 \) pa je krajši zapis \( \left\{ 110 \right\} \), ki zajame
+
+\begin{align*}
+  (110), &\, (101),  \, (011) \\
+(1 \bar{1}, 0), & \, (10 \bar{1}), (0 1 \bar{1}).
+\end{align*}

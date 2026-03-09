@@ -138,3 +138,5 @@ Iz stolpcev lahko sedaj preberemo vektorje recipročne mreže.
 
 \[ \mathbf{A}_1 = \frac{2 \pi}{a} \left( 1, - \frac{1}{\sqrt{3}} \right) = \frac{4 \pi}{\sqrt{3}a} (\frac{\sqrt{3}}{2}, - \frac{1}{2}) \quad \text{ in } \quad \mathbf{A}_2 = \frac{2 \pi}{a} \left( 0, \frac{2}{\sqrt{3}} \right) = \frac{4 \pi}{\sqrt{3}a} (0, 1)
 \]
+
+Kot med vektorjema je \( \frac{2\pi}{3} \). Recipročna mreža trikotne mreže je ponovno trikotna mreža, ki je zasukana za \( \frac{\pi}{6} \).
