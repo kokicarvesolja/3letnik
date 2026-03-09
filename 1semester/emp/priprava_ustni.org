@@ -1541,12 +1541,22 @@ Po predpostavi so vse tokovne zanke zaključene, zato bo levi integral enak nič
 
 Posvetimo sedaj svojo pozornost nazaj na dipolni člen, ki je v indeksni notaciji
 
-\[ \mathbf{A}(\mathbf{r}) = \frac{\mu_0}{4 \pi r ^3} \int\limits_V^{} r_j  s_j j_i (\mathbf{s}) \, \mathrm{d} ^3 \mathbf{s}.
+\[ A_i(\mathbf{r}) = \frac{\mu_0}{4 \pi r ^3} \int\limits_V^{} r_j  r'_j j_i (\mathbf{s}) \, \mathrm{d} ^3 \mathbf{s}.
 \]
 
 Enačbo \ref{eq:7} lahko drugače razširimo kot
 
 \[ \int\limits_V^{} r_i j_j \, \mathrm{d} ^3 \mathbf{r} = \frac{1}{2} \int\limits_V^{} \left[ r_i j_j - r_j i_i \right] \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Dipolni člen zapišemo torej
+
+\[ A_i (\mathbf{r}) = \frac{\mu_0}{8 \pi r ^3} r_j \int\limits_V^{} \left( j_i (\mathbf{r}') r'_j - r'_i j_j (\mathbf{r}') \right) \, \mathrm{d} ^3 \mathbf{r},
+\]
+
+oziroma v vektorski notaciji
+
+\[ \mathbf{A}(\mathbf{r}) = \frac{\mu_0}{8 \pi r ^3} \int\limits_V^{} \left(\mathbf{j}(\mathbf{r}') \left( \mathbf{r} \cdot \mathbf{r}' - \mathbf{r} ' \left( \mathbf{j}(\mathbf{r}') \cdot \mathbf{r} \right) \right) \right) \, \mathrm{d} ^3 \mathbf{r}' = - \frac{\mu_0}{8 \pi r ^3} \mathbf{r} \times \int\limits_V^{} \left( \mathbf{r}' \times \mathbf{j}(\mathbf{r}') \right) \, \mathrm{d} ^3 \mathbf{r}'.
 \]
 
 pa lahko izrazimo z magnetnim dipolnim momentom
@@ -1565,6 +1575,103 @@ Sedaj lahko izrazimo tudi magnetno polje magnetnega dipola
 \]
 *** Multipolni razvoj magnetne energije
 
+Magnetna energija je
 
+\[ W = - \int\limits_{V_0}^{} \mathbf{j}(\mathbf{r}) \cdot \mathbf{A} (\mathbf{r}) \, \mathrm{d} ^3 \mathbf{r},
+\]
+
+kjer je \( V_0 \) končen volumen, v katerem se nahaja gostota toka \( \mathbf{j}(\mathbf{r}_0) \), \( \mathbf{A}(\mathbf{r}) \) pa je zunanje magnetno polje.
+
+Magnetni potencial lahko razvijemo v okolici vektorja \( \mathbf{r}_0 \)
+
+\[ \mathbf{A}(\mathbf{r}) = \mathbf{A}(\mathbf{r}_0) + \left( \left[ \mathbf{r} - \mathbf{r}_0 \right] \mathbf{A}(\mathbf{r}_0) \right) + \ldots
+\]
+
+Energija je potem
+
+\[ W = - \int\limits_V^{} \mathbf{j}_0 (\mathbf{r}) \left[ \mathbf{A}(\mathbf{r}_0) + \left( \mathbf{r} - \mathbf{r}_0 \right) \cdot \nabla_{\mathbf{r}_0} \mathbf{A}(\mathbf{r}_0) + \ldots \right] \, \mathrm{d} ^3 \mathbf{r}
+\]
+
+Člen
+
+\[ - \int\limits_V^{} \mathbf{j}_0 (\mathbf{r}) \mathbf{A}(\mathbf{r}_0) \, \mathrm{d} ^3 \mathbf{r} = 0,
+\]
+
+saj imamo sklenjene vse tokovne zanke.
+
+Energijo dipolnega momenta lahko zapišemo v tenzorski notaciji
+
+\[ \int\limits_V^{} \left( \mathbf{r} - \mathbf{r}_0 \right)\cdot \nabla_{\mathbf{r}_0} \mathbf{A}(\mathbf{r}_0) \, \mathrm{d} ^3 \mathbf{r} = \frac{\partial A_{j} (\mathbf{r}_0)}{\partial r_{0_i}} \int\limits_V^{} j_{0_j} \left( \mathbf{r} - \mathbf{r}_0 \right)_i \, \mathrm{d} ^3 \mathbf{r}
+\]
+
+Tukaj velja podobna identiteta kot pri razvoju potenciala
+
+\[ \int\limits_V^{} \left( \mathbf{r} - \mathbf{r}_0 \right)_i j_{0_j} \, \mathrm{d} ^3 \mathbf{r} = - \int\limits_V^{} \left( \mathbf{r} - \mathbf{r}_0 \right)_j j_{0_i} \, \mathrm{d} ^3 \mathbf{r},
+\]
+
+in izraz se prepiše v
+
+\begin{align*}
+  W &= - \frac{\partial A_{j}(\mathbf{r}_0)}{\partial r_{0_i}} \frac{1}{2} \int\limits_V^{} \left( \left( \mathbf{r} - \mathbf{r}_0 \right)_i j_{0_j} - \left( \mathbf{r} - \mathbf{r}_0 \right)_j j_{0_i} \right) \\
+&= - \frac{1}{2} \int\limits_V^{} \left[ \mathbf{j}_0 (\mathbf{r}) \left\{ \left( \mathbf{r} - \mathbf{r}_0 \right) \cdot \nabla_{\mathbf{r}_0} \right\} \mathbf{A}(\mathbf{r}_0) - \left( \mathbf{r} - \mathbf{r}_0 \right) \left( \mathbf{j}_0 (\mathbf{r}) \cdot \nabla_{\mathbf{r}_0} \right) \mathbf{A}(\mathbf{r}_0) \right] \, \mathrm{d} ^3 \mathbf{r}
+\end{align*}
+
+Uporabimo vektorsko identiteto
+
+\[ \left( \mathbf{A} \times \mathbf{B} \right) \left( \mathbf{C} \times \mathbf{D} \right) = \left( \mathbf{A} \cdot \mathbf{C} \right) \left( \mathbf{B} \cdot \mathbf{D} \right) - \left( \mathbf{A} \cdot \mathbf{D} \right) \left( \mathbf{B} \cdot \mathbf{C} \right),
+\]
+
+energija dipolnega momenta pa tako postane
+
+\[ W = - \left( \frac{1}{2} \int\limits_V^{} \left( \mathbf{r} - \mathbf{r}_0 \right) \times \mathbf{j}_0 (\mathbf{r}) \, \mathrm{d} ^3 \mathbf{r} \right) \cdot \nabla_{\mathbf{r}_0} \times \mathbf{A}(\mathbf{r}_0}) = - \mathbf{m} \cdot \mathbf{B}
+\]
 *** Sila in navor na magnetni dipol
-** 15. vprašanje 
+
+Izpeljava za delo in navor je relativno podobna izpeljavi za električni dipol. Sprememba magnetne energije
+
+\[ \mathrm{d} W = - \mathbf{F} \cdot \mathrm{d} \mathbf{r},
+\]
+
+kjer smo gostoto toka \( \mathbf{j} \) v zunanjem magnetnem polju \( \mathbf{B} \) premaknili za \( \mathrm{d} \mathbf{r} \).
+
+Delo je v drugem redu multipolnega razvoje
+
+\[ \mathrm{d} \left( \mathbf{m} \cdot \mathbf{B} \right) = \nabla \left( \mathbf{m} \cdot \mathbf{B} \right) \, \mathrm{d} \mathbf{r}.
+\]
+
+Upoštevamo identiteto
+
+\[ \nabla \left( \mathbf{m} \cdot \mathbf{B} \right) = \mathbf{m} \times \left( \nabla \times \mathbf{B} \right) + \left( \mathbf{m} \cdot \nabla \right) \mathbf{B}.
+\]
+
+Sredinski člen je ničeln, saj ima zunanje magnetno polje \( \mathbf{B} \) gostote tokov \( \mathbf{j}' \), ki ga ustvarjajo, neskončno daleč stran. Rotor magnetnega polja je v tem primeru ničeln.
+
+Sila je torej
+
+\[ \mathbf{F} = \left( \mathbf{m} \cdot \nabla\right) \mathbf{B} (\mathbf{r}) .
+\]
+
+Delo pri navoru za zasuk \( \mathrm{d} \bm{\phi} \) je
+
+\[ \mathrm{d} W = - \mathbf{M} \cdot \mathrm{d} \bm{\phi}.
+\]
+
+Zasuk magnetnega navora za \( \mathrm{d} \bm{\phi} \) je
+
+\[ \mathrm{d} \mathbf{m} = \mathrm{d} \bm{\phi} \times \mathbf{m}.
+\]
+
+Delo je ponovno v drugem redu
+
+\[ \mathrm{d} W = - \mathrm{d} \left( \mathbf{m} \cdot \mathbf{B}(\mathbf{r}) \right) = - \mathrm{d} \mathbf{m} \cdot \mathbf{B}(\mathbf{r}) = - \left( \mathrm{d} \bm{\phi} \times \mathbf{m} \right) \cdot \mathbf{B} (\mathbf{r}).
+\]
+
+Upoštevamo cikličnost mešanega produkta in primerjamo zgornji izraz za delo in delo z navorom ter dobimo
+
+\[ \mathbf{M} = \mathbf{m} \times \mathbf{B}.
+\]
+
+** 15. vprašanje
+#+begin_problem
+Razloži Maxwellovo formulacijo elektromagnetne indukcije in Maxwellov impulz. Zapiši kvazistatičen sistem Maxwellovih enačb in pripadajočo kontinuitetno enačbo ter jih razloži. Kakšna sta ustrezajoča elektromagnetna potenciala za kvazistatična polja?
+#+end_problem
