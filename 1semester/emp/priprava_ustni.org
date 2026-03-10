@@ -1045,7 +1045,7 @@ Električni tok posplošimo z uvedbo gostote električnega toka \( \mathbf{j} \)
 \]
 
 Gostota toka je povezana s smerjo gibanja nosilcev naboja, ki nosijo tok, ima lahko poljubno prostorsko porazdeltiev in ni več vezana na vodnike.
-***  Amperov izrek
+*** Amperov izrek
 
 [[file:01predavanja_zapiski/figures/UI_AmperovIzrek.png]]
 
@@ -1670,8 +1670,157 @@ Upoštevamo cikličnost mešanega produkta in primerjamo zgornji izraz za delo i
 
 \[ \mathbf{M} = \mathbf{m} \times \mathbf{B}.
 \]
-
+* Kvazistatična polja 
 ** 15. vprašanje
 #+begin_problem
 Razloži Maxwellovo formulacijo elektromagnetne indukcije in Maxwellov impulz. Zapiši kvazistatičen sistem Maxwellovih enačb in pripadajočo kontinuitetno enačbo ter jih razloži. Kakšna sta ustrezajoča elektromagnetna potenciala za kvazistatična polja?
+#+end_problem
+*** Maxwellova formulacija EM indukcije in Maxwellov impulz
+
+Faradayjev zakon indukcije
+
+\[ \Gamma_E = - \frac{\mathrm{d} \Phi_{M}}{\mathrm{d} t}, 
+\]
+
+nam kvalitatitvno podaja zvezo, kako časovna sprememba magnetnega pretoka vpliva na električno cirkulacijo.
+
+Ob upoštevanju definicije električne cirkulacije in magnetnega pretoka dobimo zvezo
+
+\[ \oint\limits_C^{} \mathbf{E} \cdot \mathrm{d} \mathbf{r} = - \frac{\mathrm{d} }{\mathrm{d} t} \int\limits_S^{} \mathbf{B} \cdot \mathrm{d} \mathbf{S},
+\]
+
+kjer zanko opisuje krivulja \( C \), njena meja pa podaja površino \( S \). Preko Stokesovega izreka lahko integrala prevedemo na
+
+\[ \int\limits_S^{} \nabla \times \mathbf{E} \cdot \mathrm{d} \mathbf{S} = - \int\limits_S^{} \frac{\partial B}{\partial t} \cdot \mathrm{d} \mathbf{S}.
+\]
+
+Predpostavili smo tudi, da se *zanka s časom ne spreminja*. Dobili smo kinematično Maxwellovo enačbo
+
+\[ \nabla \times \mathbf{E} = - \frac{\partial \mathbf{B}}{\partial t}.
+\]
+
+Enačba ne vsebuje nobene konstante, ampak zgolj podaja direktno zvezo med prostorskimi odvodi električnega polja in časovnim odvodom magnetnega polja.
+
+Iz zgornje kinematične enačbe in definicije vektorskega potenciala \( \mathbf{B} = \nabla \times \mathbf{A} \) lahko zapišemo
+
+\[ \nabla \times \mathbf{E} = - \frac{\partial }{\partial t} \left( \nabla \times \mathbf{A} \right) = - \nabla \times \frac{\partial \mathbf{A}}{\partial t}.
+\]
+
+Za zaključene magnetne silnice velja v splošnem
+
+\[ \mathbf{E} = - \frac{\partial \mathbf{A}}{\partial t}. 
+\]
+
+Faradayjev zakon indukcije lahko torej povežemo z drugim Newtonovim zakonom
+
+\[ \mathbf{F} = e \mathbf{E} = - \frac{\partial e \mathbf{A}}{\partial t} = \frac{\mathrm{d} \mathbf{p}}{\mathrm{d} t},
+\]
+
+kjer je \( \mathbf{p} = e \mathbf{A} \) posplošeni impulz magnetnega polja. Impulz magnetnega polja predstavlja gibalno količino, ki jo ob indukciji dodajamo v sistem.
+*** Kvazistatičen sistem Maxwellovih enačb in kontinuitetna enačba 
+
+Kvazistatičen sistem Maxwellovih enačb so sestavljene iz štirih enačb:
+
+- dve enačbi za izvor
+
+  \[ \nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0} \quad \text{ in } \quad \nabla \cdot \mathbf{B} = 0,
+  \]
+
+- ter dve enačbi za vrtince
+
+  \[ \nabla \times \mathbf{E} = - \frac{\partial \mathbf{B}}{\partial t} \quad \text{ in } \quad \nabla \times \mathbf{B} = \mu_0 \mathbf{j}.  
+  \]
+
+Ta sistem (predvsem zadnja enačba) je pogojen s tem, da so tokovne zanke sklenjene, kar je s kontinuitetno enačbo podano kot
+
+\[ \nabla \cdot \mathbf{j} = 0. 
+\]
+*** Elektromagnetna potenciala
+
+Še vedno velja (in bo) veljalo
+
+\[ \nabla \cdot \mathbf{B} = 0, 
+\]
+
+kar pomeni, da je uvedba vektorskega potenciala \( \mathbf{B} = \nabla \times \mathbf{A} \) korektna odločitev.
+
+Iz Maxwellovega impulza pa sedaj sledi
+
+\[ \nabla \times \mathbf{E} = - \nabla \times \frac{\partial \mathbf{A}}{\partial t} \implies \ \nabla \times \left( \mathbf{E} + \frac{\partial \mathbf{A}}{\partial t}  \right) = 0. 
+\]
+
+Električno polje mora biti še zmeraj brezvrtinčno in ta pogoj bo veljal, če je električno polje definirano s skalarnim električnim potencialom ter časovnim odvodom vektorskega potenciala
+
+\[ \mathbf{E} = \nabla \phi - \frac{\partial \mathbf{A}}{\partial t}. 
+\]
+
+Tak potencial ne vpliva na kvazistatičen sistem Maxwellovih enačb, saj še zmeraj velja
+
+\[ \nabla \cdot \mathbf{B} = \nabla \cdot \left( \nabla \times \mathbf{A} \right) = 0. 
+\]
+
+in
+
+\[ \nabla \times \mathbf{E} = \nabla \times \left( \nabla \phi - \frac{\partial \mathbf{A}}{\partial t} \right) = \frac{\partial \left( \nabla \times \mathbf{A} \right)}{\partial t} = - \frac{\partial \mathbf{B}}{\partial t}.
+\]
+
+** 16. vprašanje
+#+begin_problem
+Razloži, kaj so prevodniki ter zapiši Ohmov zakon. Kje se nahaja naboj v prevodniku, če ga postavimo v zunanje električno polje? Kakšne so tipične časovne skale za premikanje nosilcev naboja?
+#+end_problem
+** 17. vprašanje
+#+begin_problem
+Razloži in opiši Drudejev model prevodnika (mikroskopsko sliko prevodnika). Od česa je odvisna prevodnost? S prevodnostjo poveži upornost vodnika z znano dolžino in presekom.
+#+end_problem
+** 18. vprašanje
+#+begin_problem
+V splošnem vpelji kapacitivnost \( N \) prevodnikov in jo razloži na primeru nabite prevodne krogle.
+#+end_problem
+** 19. vprašanje
+#+begin_problem
+V splošnem vpelji induktivnost \( N \) tokovnih vodnikov - zank - in jo razloži na primeru induktivnosti dolge tuljave.
+#+end_problem
+** 20. vprašanje
+#+begin_problem
+Razloži kožni pojav in zapiši vodilni enačbi (odvisnosti) za električno in magnetno polje. Zapiši oblike polj za izbrano geometrijo in komentiraj posledice.
+#+end_problem
+* Maxwellove enačbe
+** 21. vprašanje
+#+begin_problem
+Zapiši popoln set Maxwellovih enačb in ga razloži. Pojasni tudi matematično ozadje za tako obliko enačb. Uvedi kontinuitetno enačbo v popolni obliki in razloži Maxwellov premikalni tok.
+#+end_problem
+** 22. vprašanje
+#+begin_problem
+Ohranitveni zakoni Maxwellovih enačb: razloži in opiši ohranjanje energije, gibalne in vrtilne količine.
+#+end_problem
+* EMP v snovi
+** 23. vprašanje
+#+begin_problem
+Razloži in opiši magnetno polje v snovi: vezan tok, magnetizacija, konstitutivna relacija, pomen polarizacije in klasifikacija snovi. 
+#+end_problem
+** 24. vprašanje
+#+begin_problem
+Razloži in opiši magnetno polje v snovi: vezan tok, magnetizacija, konstitutivna relacija, pomen magnetizacije in klasifikacija snovi. 
+#+end_problem
+** 25. vprašanje
+#+begin_problem
+Zapiši in razloži Maxwellove enačbe v snovi. Pojasni ohranitvene zakone v snovi (energija, gibalna količina). Kakšna je sila na nehomogeno snov v EM polju?
+#+end_problem
+** 26. vprašanje
+#+begin_problem
+Razloži in izpelji splošne robne pogoje za Maxwellove enačbe v snovi.
+#+end_problem
+* Frekvenčna odvisnost dielektrične funkcije
+** 27. vprašanje
+#+begin_problem
+Uvedi in razloži frekvenčno odvisnost dielektrične funkcie in Kramers-Kronigove relacije. V kakšni povezavi sta disipacija energije in dielektrična funkcija? Zapiši osnovne modele za frekvenčno odvisno dielektrično funkcijo (gibalna količina za vezan naboj, Debyjeva relaksacija, Lorentzova relaksacija, plazemska relaksacija) in razloži, kako sta povezana dielektrična funkcija in prevodnost. 
+#+end_problem
+* Hamiltonske metode v teoriji polja
+** 28. vprašanje
+#+begin_problem
+Določi in razloži Lagrengeovo in Hamiltonovo funkcijo nabitega gibajočega delca v zunanjem električnem in magnetnem polju. Nato izpelji >se Schwartzschildovo invarianto. Nadalje dopolni Lagrangeovo funkcijo še s prispevki zaradi samega polja, ki ga nabiti delci (delec) ustvarjajo in zapiši pripadajoče Euler-Lagrangeve in Rieman-Lorentzove enačbe.
+#+end_problem
+** 29. vprašanje
+#+begin_problem
+Posebna teorija relativnosti: razloži transformacijo EM polj z Lorentzovo transformacijo, vlogo prostora Minkovskega in formulacijo štirivektorjev, štirivektorja gostote toka in štirivektorja EM potenciala.
 #+end_problem
