@@ -146,15 +146,17 @@ z nastavkom
 
  Posledično lahko zgornjo vsoto pomnožimo z ravnim valom in dobimo enačbo
 
- \[ \left( E_{\mathbf{q}}^0 - E \right) c_{\mathbf{q}} + \sum\limits_{\mathbf{K}}^{} c_{\mathbf{q} - \mathbf{K}} U_{\mathbf{K}} = 0.
- \]
-
-** Prva Brillouinova cona
+ \begin{equation}
+ \label{eq:1}
+  \left( E_{\mathbf{q}}^0 - E \right) c_{\mathbf{q}} + \sum\limits_{\mathbf{K}}^{} c_{\mathbf{q} - \mathbf{K}} U_{\mathbf{K}} = 0.
+ \end{equation}
 
 Za vektor \( \mathbf{q} \) lahko zmeraj najdemo tak vektor \( \mathbf{K}'' \), da lahko zgornjo enačbo zapišemo kot
 
 \[ \left( E_{\mathbf{q} - \mathbf{K}}^0 - E \right) c_{\mathbf{k} - \mathbf{K}} + \sum\limits_{\mathbf{K}''}^{} c_{\mathbf{q}  - (\mathbf{K} - \mathbf{K}'')} U_{\mathbf{K}} = 0.
 \]
+
+[uvedli smo koncept Brillouinove cone]
 
 Preindeksiramo \( \mathbf{K} + \mathbf{K}'' = \mathbf{K}' \), iz česar sledi
 
@@ -169,3 +171,81 @@ Valovna funkcija je torej
 \]
 
 Rešili smo se vsote po \( \mathbf{q} \), imamo še zmeraj vsoto po \( \mathbf{K} \), ki je teoretično še zmeraj neskončna, vendar je bolje (dunno why tho). Zgornji enačbi pravimo Blochov teorem.
+
+Zapišemo ga lahko tudi kot
+
+\[ \psi_{\mathbf{k}} (\mathbf{r}) = \sum\limits_{\mathbf{K}}^{} c_{\mathbf{k} - \mathbf{K}} e^{\mathrm{i} (\mathbf{k} - \mathbf{K}) \mathbf{r}} = e^{\mathrm{i} \mathbf{k} \mathbf{r}} U_{n \mathbf{k}}(\mathbf{r}),
+\]
+
+kjer smo definirali \( U_{n \mathbf{k}} (\mathbf{r}) = \sum_{\mathbf{K}} c_{\mathbf{k} - \mathbf{K}} e^{- \mathrm{i} \mathbf{K} \mathbf{r}} \). Iz Blochovega teorema potem sledi (?) periodičnost potenciala
+
+\[ U_{n \mathbf{k}} (\mathbf{r}) = U_{n \mathbf{k}} (\mathbf{r} + \mathbf{R}), \ \forall \mathbf{R} \in BR.
+\]
+
+Če transliramo torej funkcijo \( \psi_{\mathbf{k}} (\mathbf{r}) \) za \( \mathbf{R} \), potem iz tega sledi
+
+\[ T_{\mathbf{R}} = \psi_{\mathbf{k}} (\mathbf{r} - \mathbf{R}) = e^{\mathrm{i} \mathbf{k} (\mathbf{r} - \mathbf{R})} U_{n \mathbf{k}} (\mathbf{r}) = e^{- \mathrm{i} \mathbf{k} \mathbf{R}} \psi_{\mathbf{k}} (\mathbf{r}).
+\]
+
+To je druge oblika Blochovega teorema, kjer smo periodičnost zapisali s fazo.
+
+Poglejmo si rešitve enačbe \ref{eq:1} v eni dimenziji.
+
+#+begin_my_example
+Poglejmo si primer za \( \left| E_{\mathbf{k} - \mathbf{K}_1}^0 - E_{\mathbf{k} - \mathbf{K}}^0 \right| \gg U_{\mathbf{K} - \mathbf{K}_1} \).
+
+Za \( \mathbf{K}_1 \) je enačba
+
+\[ \left( E_{\mathbf{k} - \mathbf{K}_1} ^0 - E \right)c_{\mathbf{k} - \mathbf{K}_1} + \sum\limits_{\mathbf{K}}^{} c_{\mathbf{k} - \mathbf{K}} U_{\mathbf{K} - \mathbf{K}_1} = 0.
+\]
+
+Predpostavimo lahko \( c_{\mathbf{k} - \mathbf{K}_1} \sim 1 \) in \( c_{\mathbf{k} - \mathbf{K}} \sim 0 \).
+
+Za \( K \ne \mathbf{K}_1 \) lahko iz enačbe
+
+\[ \left( E_{\mathbf{k} - \mathbf{K}}^0 - E \right) c_{\mathbf{k} - \mathbf{K}} + c_{\mathbf{k} - \mathbf{K}_1} U_{\mathbf{K}_1 - \mathbf{K}} = 0
+\]
+
+izrazimo koeficiente
+
+\[ c_{\mathbf{k} - \mathbf{K}} = - \frac{c_{\mathbf{k} - \mathbf{K}_1} U_{\mathbf{K}_1 - \mathbf{K}}}{E_{\mathbf{k} - \mathbf{K}} - E}.
+\]
+
+Vstavimo koeficient v enačbo za \( \mathbf{K}_1 \) in dobimo
+
+\[ E = E_{\mathbf{k} - \mathbf{K}_1}^0 \sum\limits_{\mathbf{K}}^{} \frac{ \left| U_{\mathbf{K}_1 - \mathbf{K}} \right| ^2}{E_{\mathbf{k} - \mathbf{K}}^0 - E}.
+\]
+
+V približku lahko tudi
+
+
+\[ E \asymp E_{\mathbf{k} - \mathbf{K}_1}^0 \sum\limits_{\mathbf{K}}^{} \frac{ \left| U_{\mathbf{K}_1 - \mathbf{K}} \right| ^2}{E_{\mathbf{k} - \mathbf{K}}^0 - E_{\mathbf{k} - \mathbf{K}_1}}.
+\]
+#+end_my_example
+
+#+begin_my_example
+Poglejmo si še degeneriran primer, kjer naj velja \( \left| E_{\mathbf{k} - \mathbf{K}_1}^0 - E_{\mathbf{k} - \mathbf{K}_2}^0 \right| \lessim \left| U_{\mathbf{K}_1 - \mathbf{K}_2} \right| \). Predpostavimo vrednosti koeficientov \( c_{\mathbf{k} - \mathbf{K}_1}, c_{\mathbf{k} - \mathbf{K}_2} \sim 1 \).
+
+Enačba je
+
+\[ \left( E_{\mathbf{k} - \mathbf{K}_1}^0 - E \right)c_{\mathbf{k} - \mathbf{K}_1} + c_{\mathbf{k} - \mathbf{K}_2} U_{\mathbf{K}_2 - \mathbf{K}_1} = 0.
+\]
+
+Druga enačba je
+
+\[ U_{\mathbf{K}_1 - \mathbf{K}_2} c_{\mathbf{k} - \mathbf{K}_1} + \left( E_{\mathbf{k} - \mathbf{K}_2}^0 - E \right) c_{\mathbf{k} - \mathbf{K}_2} = 0.
+\]
+
+Rešujemo torej matrični sistem
+
+\[ \begin{bmatrix}
+   E - E_{\mathbf{k} - \mathbf{K}_{1}}^{0} & - U_{\mathbf{K}_{2} - \mathbf{K}_{1}} \\
+   -U_{\mathbf{K}_1 - \mathbf{K}_2} & E - E_{\mathbf{k} - \mathbf{K}_2}^0
+    \end{bmatrix} = 0.
+\]
+
+Rešitev je
+
+\[ E^{\pm} = \frac{1}{2} \left( E_{\mathbf{k} - \mathbf{K}_1}^0 + E_{\mathbf{k} - \mathbf{K}_2}^0 \right) \pm \frac{1}{2} \sqrt{\left( E_{\mathbf{k} - \mathbf{K}_1}^0 - E_{\mathbf{k} - \mathbf{K}_2}^0 + 4 \left| U_{K_1 - \mathbf{K}_2} \right| ^2\right)}
+\]
+#+end_my_example
