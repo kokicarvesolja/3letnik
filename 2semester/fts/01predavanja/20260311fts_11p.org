@@ -1,0 +1,171 @@
+#+title: Predavanja iz Fizike trdne snovi, 11. teden v letu
+#+subtitle: 2026/03/11
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Elektronska stanja v periodičnem potencialu \( U(\mathbf{r}) \)
+
+Na prejšnjem predavanju smo obravnavali gibanje delca v periodičnem potencialu
+
+\[ U(\mathbf{r}) = U(\mathbf{r} + \mathbf{R}), \ \forall R \in BR.
+\]
+
+Iskali smo lastne energije enačbe
+
+\[ \left[ - \frac{\hbar ^2 \nabla ^2}{2m} + U (\mathbf{r}) \right] \psi(\mathbf{r}) = E \psi(\mathbf{r}),
+\]
+
+z nastavkom
+
+\[ \psi(\mathbf{r}) = \sum\limits_{\mathbf{q}}^{} c_{\mathbf{q}} e^{\mathrm{i} \mathbf{q} \cdot \mathbf{r}}.
+\]
+
+ Naj ima naš kristal osnovne primitivne vektorje \( \mathbf{a}_i, \ i = 1, 2, 3 \). Periodičnost zahtevamo z vektorjem \( \mathbf{L}_i = N_i \mathbf{a}_i \), kjer je \( N_i \) celo število za \( i = 1, 2, 3 \).Enačba zahteva periodične robne pogoje, ki jim pravimo tudi /Born von Karmanovi/ robni pogoji
+
+ \[ \psi(\mathbf{r} + \mathbf{L}_i) = \psi(\mathbf{r}).
+ \]
+
+ Upoštevamo nastavek in dobimo pogoj
+
+ \[ e^{\mathrm{i} \mathbf{q} \mathbf{L}_i} = 1,
+ \]
+
+ iz česar sledi \( \mathbf{q} N_i \mathbf{a}_i = m_i 2 \pi \).
+
+ Do tega rezultata lahko pridemo tudi ob upoštevanju identitete
+
+ \[ \mathbf{a}_i \mathbf{A}_j = 2\pi \delta_{ij}.
+ \]
+
+ Če torej definiramo vektor \( \mathbf{q} \) kot
+
+ \[ \mathbf{q} = \sum\limits_{j = 1}^3 \frac{m_j}{N_j} \mathbf{A}_j,
+ \]
+
+ potem sledi
+
+ \[ \mathbf{q} N_i \mathbf{a}_i = \sum\limits_{j = 1}^3 \frac{m_j}{N_j} \mathbf{A}_j \cdot \mathbf{a}_i \cdot N_i = 2 \pi m_i.
+ \]
+
+ Pogoj periodičnega potenciala zadostimo tako, da potencial razvijemo po vektorjih recipročne mreže \( \mathbf{K} = k_1 \mathbf{A}_1 + k_2 \mathbf{A} + k_3 \mathbf{A}_3 \), kjer je \( k_i \in \mathbb{Z}, \ i = 1, 2,3 \)
+
+ \[ U(\mathbf{r}) = \sum\limits_{\mathbf{K}}^{} U_{\mathbf{K}} e^{\mathrm{i} \mathbf{K} \mathbf{r}}.
+ \]
+
+ Ob periodi \( \mathbf{R} \) potem velja
+
+ \[ U(\mathbf{r} + \mathbf{R}) = \sum\limits_{\mathbf{K}}^{} U_{\mathbf{K}} e^{\mathrm{i} \mathbf{K} (\mathbf{r} + \mathbf{R})} = U(\mathbf{r}),
+ \]
+
+ saj je \( e^{\mathrm{i} \mathbf{K} \mathbf{R}} = 1 \).
+
+ \( U_{\mathbf{K}} \) je vektor v Fourierovem prostoru
+
+ \[ U_{\mathbf{K}} = \frac{1}{V_C} \int\limits_{V_C}^{} U(\mathbf{r}) e^{- \mathrm{i} \mathbf{K} \mathbf{r}} \, \mathrm{d} ^3 \mathbf{r},
+ \]
+
+ kjer je \( V_C \) volumen celice. Za \( \mathbf{K} = 0 \) sledi \( U_{\mathbf{K} = 0} = 0 \).
+
+ Potencial mora biti realen, torej velja
+
+ \[ U(\mathbf{r}) = U^{\ast} (\mathbf{r}).
+ \]
+
+ Če upoštevamo razvoj po vektorjih recipročne mreže, se enakost glasi
+
+ \[ \sum\limits_{\mathbf{K}}^{} U_{\mathbf{K}} e^{\mathrm{i} \mathbf{K} \mathbf{r}} = \sum\limits_{\mathbf{K}'}^{} U_{\mathbf{K}'} ^{\ast} e^{- \mathrm{i} \mathbf{K}' \mathbf{r}}.
+ \]
+
+ Vektorji recipročne mreže zasedajo tako pozitivne kot negativne vrednosti, zato lahko rečemo \( \mathbf{K}' = - \mathbf{K} \), iz česar potem sledi
+
+ \[ \sum\limits_{\mathbf{K}}^{} U_{\mathbf{K}} e^{\mathrm{i} \mathbf{K} \mathbf{r}} = \sum\limits_{\mathbf{K}}^{} U_{-\mathbf{K}} ^{\ast} e^{\mathrm{i} \mathbf{K} \mathbf{r}}.
+ \]
+
+ Iz zgornjega rezultata torej velja
+
+ \[ U_{\mathbf{K}} = U_{-\mathbf{K}}^{\ast}.
+ \]
+
+ V primeru, če velja tudi
+
+ \[ U(\mathbf{r}) = U(- \mathbf{r}),
+ \]
+
+ (kar ne velja vedno), potem imamo še strožji pogoj
+
+ \[ U_{\mathbf{K}}^{\ast} = U_{\mathbf{K}}.
+ \]
+
+ Vse te pogoje lahko sedaj upoštevamo pri reševanju Schrödingerjeve enačbe
+
+ \[ \sum\limits_{\mathbf{q}}^{} c_{\mathbf{q}} E^0_{\mathbf{q}} e^{\mathrm{i} \mathbf{q} \mathbf{r}} + \sum\limits_{\mathbf{q}', \mathbf{K}}^{} c_{\mathbf{q}'} U_{\mathbf{K}} e^{\mathrm{i} (\mathbf{q} + \mathbf{K}) \mathbf{r}} = \sum\limits_{\mathbf{q}}^{} c_{\mathbf{q}} E e^{\mathrm{i} \mathbf{q} \mathbf{r}}.
+ \]
+
+ Srednji člen ima dvojno vsoto, kjer preindeksiramo s pomočjo \( \mathbf{q} = \mathbf{q}' + \mathbf{K} \).
+
+ \[ \sum\limits_{\mathbf{q}}^{} \left[ \left( E_{\mathbf{q}}^0 - E \right) c_{\mathbf{q}} e^{\mathrm{i} \mathbf{q} \mathbf{r}} + \sum\limits_{\mathbf{K}}^{} c_{\mathbf{q} - \mathbf{K}} U_{\mathbf{K}} e^{\mathrm{i} \mathbf{q} \mathbf{r}}  \right] = 0.
+ \]
+
+ Ravni valovi so med seboj ortogonalni, vendar bomo vseeno to dokazali
+
+ #+begin_theorem
+ Ravni valovi v periodičnem kristalu so med seboj ortogonalni.
+
+ \[ \frac{1}{V} \int\limits_{}^{} e^{\mathrm{i} (\mathbf{q} - \mathbf{q}') \mathbf{r}} \, \mathrm{d} ^3 \mathbf{r} = \delta_{\mathbf{q}, \mathbf{q}'},
+ \]
+ kjer je \( V \) volumen celotnega kristala.
+ #+end_theorem
+
+ #+begin_proof
+ Imejmo volumen \( V \), ki ga premaknemo za \( \mathbf{d} \), ki je po dolžini manjši od celice. Novi premakanjeni volumen označimo z \( V' \). Ker integriramo po istem volumnu, mora veljati
+
+ \[ \int\limits_V^{} e^{\mathrm{i} \mathbf{q} \mathbf{r}} \, \mathrm{d} ^3 \mathbf{r} = \int\limits_{V'}^{} e^{\mathrm{i} \mathbf{q} (\mathbf{r} - \mathbf{d})} \, \mathrm{d} ^3 \mathbf{r}.
+ \]
+
+ Hkrati pa bo zaradi periodičnosti tudi veljalo
+
+ \[ \int\limits_{V'}^{} e^{\mathrm{i} \mathbf{q} (\mathbf{r} - \mathbf{d})} \, \mathrm{d} ^3 \mathbf{r} = \int\limits_V^{} e^{\mathrm{i} \mathbf{q} (\mathbf{r} - \mathbf{d})} \, \mathrm{d} ^3 \mathbf{r}.
+ \]
+
+ Iz tega sledi ortogonalnost ravnih valov
+
+ \[ \left( 1 - e^{- \mathrm{i} \mathbf{q} \mathbf{d}}  \right) \int\limits_V^{} e^{\mathrm{i} \mathbf{q} \mathbf{r}} \, \mathrm{d} ^3 \mathbf{r} = 0 , \ \forall \mathbf{d},
+ \]
+
+ oziroma
+
+ \[ \frac{1}{V} \int\limits_V^{} e^{\mathrm{i} \mathbf{q} \mathbf{r}} \, \mathrm{d} ^3 \mathbf{r} = \delta_{\mathbf{q}, 0}.
+ \]
+
+ #+end_proof
+
+ Posledično lahko zgornjo vsoto pomnožimo z ravnim valom in dobimo enačbo
+
+ \[ \left( E_{\mathbf{q}}^0 - E \right) c_{\mathbf{q}} + \sum\limits_{\mathbf{K}}^{} c_{\mathbf{q} - \mathbf{K}} U_{\mathbf{K}} = 0.
+ \]
+
+** Prva Brillouinova cona
+
+Za vektor \( \mathbf{q} \) lahko zmeraj najdemo tak vektor \( \mathbf{K}'' \), da lahko zgornjo enačbo zapišemo kot
+
+\[ \left( E_{\mathbf{q} - \mathbf{K}}^0 - E \right) c_{\mathbf{k} - \mathbf{K}} + \sum\limits_{\mathbf{K}''}^{} c_{\mathbf{q}  - (\mathbf{K} - \mathbf{K}'')} U_{\mathbf{K}} = 0.
+\]
+
+Preindeksiramo \( \mathbf{K} + \mathbf{K}'' = \mathbf{K}' \), iz česar sledi
+
+\[ \left( E_{\mathbf{k} - \mathbf{K}}^0 - E \right) c_{\mathbf{k} - \mathbf{K}} + \sum\limits_{\mathbf{K}'}^{} c_{\mathbf{k} - \mathbf{K}'} U_{\mathbf{K}' - \mathbf{K}} = 0.
+\]
+
+Z drugimi besedamo, posamezen vektor \( \mathbf{k} \) je v Brillouinovi coni enolično določen.
+
+Valovna funkcija je torej
+
+\[ \psi(\mathbf{r}) = \psi_{\mathbf{k}} (\mathbf{r}) = \sum\limits_{\mathbf{K}}^{} c_{\mathbf{k} - \mathbf{K}} e^{\mathrm{i} (\mathbf{k} - \mathbf{K}) \mathbf{r}}.
+\]
+
+Rešili smo se vsote po \( \mathbf{q} \), imamo še zmeraj vsoto po \( \mathbf{K} \), ki je teoretično še zmeraj neskončna, vendar je bolje (dunno why tho). Zgornji enačbi pravimo Blochov teorem.
