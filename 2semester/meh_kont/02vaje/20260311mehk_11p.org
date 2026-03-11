@@ -161,3 +161,134 @@ Preostala konstanta je
 
 \[ C = - \frac{2 D}{R_1 ^2} = 2.63 \cdot 10^{-2}.
 \]
+* Elastična krogla
+#+begin_problem
+Iščemo frekvence radialnega lastnega nihanja elastične krogle s polmerom \( R \).
+#+end_problem
+
+Quick cheat sheet vektorskih operatorjev v sferičnih koordinatah
+
+\begin{align*}
+  \nabla f &= \frac{\partial f}{\partial r} \hat{e}_r + \frac{1}{r} \frac{\partial f}{\partial \theta}  \hat{e}_{\theta} + \frac{1}{r \sin \theta} \frac{\partial f}{\partial \phi} \hat{e}_{\phi} \\
+\nabla \cdot \mathbf{u} &= \frac{1}{r ^2} \frac{\partial \left( r ^2 u_r \right)}{\partial r} + \frac{1}{r \sin \theta} \left( \frac{\partial \left( \sin \theta u_{\phi} \right) }{\partial \theta} + \frac{\partial u_{\phi}}{\partial \phi}  \right) \\
+\nabla \times \mathbf{u} &= \frac{1}{r \sin \theta} \left( \frac{\partial (\sin \theta U_{r})}{\partial \theta} - \frac{\partial u_{\theta}}{\partial \phi}  \right) \hat{e}_r \\
+& \quad + \frac{1}{r} \left( \frac{1}{\sin \theta} \frac{\partial u_{r}}{\partial \phi} - \frac{\partial \left( r u_{\phi}\right) }{\partial r}  \right) \hat{e}_{\theta} \\
+& \qquad + \frac{1}{r} \left( \frac{\partial }{\partial r} \left( r u_{\theta} \right) - \frac{\partial u_{r}}{\partial \theta}  \right) \hat{e}_{\phi}.
+\end{align*}
+
+Funkcija bo odvisna zgolj od radialnega dela \( \mathbf{u} = u_r (r) \hat{e}_r \).
+
+Laplaceov člen v Navierovi enačbi ponovno razpišemo na gradient divergence vektorja \( \mathbf{u} \) in rotor rotorja, ki pa bo tokrat ničeln.
+
+Ostane nam
+
+\[ \rho \ddot{\mathbf{u}} = \frac{E}{2 (1 + \sigma)} \nabla (\nabla \cdot \mathbf{u}) \left[ 1 + \frac{1}{1 - 2 \sigma} \right] = \frac{E (2 - 2 \sigma)}{2 (1 + \sigma) (1 - 2 \sigma)} \nabla \left( \nabla \cdot \mathbf{u} \right)
+\]
+
+Vemo, da niha, torej bo časovna odvisna vektorja \( \mathbf{u} = \mathbf{u}_0 e^{\mathrm{i} \omega t} \). Navierova enačba je tako
+
+\[ - \rho \omega ^2 \mathbf{u}_0 = \frac{E (1 - \sigma) \nabla \left( \nabla \cdot \mathbf{u}_0 \right)}{(1 + \sigma) ( 1 - 2\sigma )}.
+\]
+
+Uvedemo konstanto
+
+\[ k ^2 = - \frac{\rho ( 1 + \sigma ) (1 - 2 \sigma)}{E (1 - \sigma)},
+\]
+
+in imamo enačbo
+
+\[ \nabla \left( \nabla \cdot \mathbf{u}_0 \right) + k ^2 \mathbf{u}_0 = 0.
+\]
+
+Razpišemo divergenco in gradient
+
+\[ u_0 k ^2 \hat{e}_r + \frac{\partial }{\partial r}  \left[ \frac{1}{r ^2} \left( \frac{\partial (r ^2 u_0)}{\partial r}  \right) \right] \hat{e}_r = 0
+\]
+
+ter odvajamo
+
+\[ k ^2 u_0 + \frac{2}{r} \frac{\partial u_{0}}{\partial r}  - \frac{2 u_0}{r ^2} + \frac{\partial ^2 u_{0}}{\partial r ^2} = 0.
+\]
+
+Enačbo delimo s \( k ^2 \) in enačba dobi obliko sferične Besslove diferencialne enačbe za spremenlijvko \( x = kr \)
+
+\[ \frac{1}{k ^2} \frac{\partial ^2 u_{0}}{\partial r ^2}  + \frac{2}{k ^2 r} \frac{\partial u_{0}}{\partial r}  + \left( - \frac{2}{k ^2 r ^2} + 1 \right) u_0 = 0
+\]
+
+#+begin_note
+  Sferična Besslova diferencialna enačba je oblike
+
+  \[ \frac{\partial ^2 }{\partial x ^2} z_l (x) + \frac{2}{x} \frac{\partial }{\partial x} z(x) + \left( 1 - \frac{l (l + 1)}{x ^2} \right) z_l (x) = 0
+  \]
+
+  in rešita jo \( j_l (x) \) in \( n_l (x) \).
+#+end_note
+
+Z uvedbo spremenljivke \( x \) enačba postane
+
+\[ \frac{\partial ^2 }{\partial x ^2}   + \frac{2}{x} \frac{\partial u_{0}}{\partial x} + \left( - \frac{2}{x ^2} + 1 \right) u_0 = 0,
+\]
+
+iz česar lahko določimo, da je \( l(l + 1) = 2 \) in posledično \( l = 1 \). Nastavek rešitve bo potem \( u_0 (x) = A J_0 (x) \).
+
+Robni pogoj je, da je površina prosta
+
+\[ \left. p_{rr} \right|_{r = R} = 0.
+\]
+
+Za napetostni tenzor
+
+\[ p_{ij} = \frac{E}{1 + \sigma} \left( u_{ij} + \frac{\sigma}{1 - 2 \sigma} \nabla \cdot \mathbf{u} \, \delta_{ij} \right),
+\]
+
+je element \( p_{rr} \) enak
+
+\begin{align*}
+  p_{rr} &= \frac{E}{1 + \sigma} \left( u_{rr} + \frac{\sigma}{1 - 2 \sigma} \left( \nabla \cdot \mathbf{u} \right) \right) \\
+&= \frac{E}{1 + \sigma} \left( \frac{\partial u_{r}}{\partial r}  + \frac{\sigma}{1 - 2\sigma} \left( \nabla \cdot \mathbf{u} \right) \right) \\
+&= \frac{E}{1 + \sigma} \left( \frac{\partial u_{r}}{\partial r}  + \frac{\sigma}{1 - 2 \sigma} \frac{1}{r ^2} \frac{\partial \left( r ^2 u_r \right)}{\partial r}  \right).
+\end{align*}
+
+Upoštevajoč nastavek zapišemo
+
+\[ p_{rr} = \frac{E A}{1 + \sigma} \left( \frac{\partial J_{1}(x)}{\partial r} + \frac{\sigma}{1 - 2 \sigma} \frac{1}{r ^2} \frac{\partial \left( r ^2 J_1 (x) \right) }{\partial r}   \right)
+\]
+
+ter spremenljivko \( x = kr  \)
+
+\[ p_{rr} &= \frac{E Ak}{1 + \sigma} \left( \frac{\partial j_1 (x)}{\partial x} + \frac{\sigma}{(1 - 2 \sigma)  x ^2} \frac{\partial \left( x ^2 J_1 (x) \right) }{\partial x} \right)
+\]
+
+#+begin_note
+  Iz Kuščer-Kodreta razberemo identitete, s katerimi se sprehajamo čez Besslove funkcije
+
+  \[ - x^{-l} z_{l + 1} = \left( x^{-l} z_l \right) ' \quad \text{ in } \quad x^{l + 1} z_{l - 1} = \left( x^{l + 1} z_l \right)',
+  \]
+
+  kjer je \( j_0 (x) = \frac{\sin x}{x} \).
+#+end_note
+
+Za \( l = 1 \) velja
+
+\[ \frac{\partial \left( x ^2 j_1 (x) \right) }{\partial x} = x ^2 j_0 (x).
+\]
+
+Določimo lahko, da je za \( l = 0 \)
+
+\[ - j_1 (x) = \frac{\partial j_{0}(x)}{\partial x} \implies \ j_1 = - \frac{\cos x}{x} + \frac{\sin x}{x ^2}.
+\]
+
+Odvod je torej
+
+\[ \frac{\partial j_{1}(x)}{\partial x}  = \frac{\sin x}{x} + \frac{\cos x}{x ^2} + \frac{\cos x}{x ^2} - \frac{2 \sin x}{ x ^3}.
+\]
+
+Za robni pogoj pri \( x = k R \) torej dobimo
+
+\[ p_{rr} = 0 = \left[ \frac{\sin (k R)}{kR} - \frac{2 \sin (kR)}{\left( k R \right) ^3} + \frac{2 \cos (k R)}{\left( kR \right) ^2} + \frac{\sigma}{1 - 2 \sigma} \frac{\sin (kR)}{kR} \right].
+\]
+
+Rešitev delimo s \( \frac{kR}{\cos (kR)} \) in izpostavimo \( \tan  \) funkcije, da dobimo transcedentno enačbo
+
+\[ -2 kr = \tan (k R) \left[ \frac{1 - 2 \sigma + \sigma}{ 1 - 2 \sigma} \left( k R \right) ^2 - 2 \right].
+\]
