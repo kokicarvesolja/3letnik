@@ -1,0 +1,163 @@
+#+title: Vaje iz Mehanike kontinuov, 11. teden v letu
+#+subtitle: 2026/03/11
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Jeklena cev s plaščem
+#+begin_problem
+Ažurna verzija elastomehanskih vaj, str. 38.
+#+end_problem
+
+Silo, ki nasprotuje vrtenju izolacijskega sloja, označimo s \( \mathbf{F}_l \). Vektor premika \( \mathbf{u} \) bo imel dve komponenti
+
+\[ \mathbf{u}(r) =  u_r (r) \hat{e}_r + u_{\phi} (r) \hat{e}_{\phi}.
+\]
+
+Navierova enačba za dan primer je
+
+\[ \rho \ddot{\mathbf{u}} = 0 = \frac{E}{2 (1 + \sigma)} \left( \nabla ^2 \mathbf{u} + \frac{1}{1 - 2\sigma} \nabla \nabla \cdot \mathbf{u} \right).
+\]
+
+Upoštevamo identiteto
+
+\[ \nabla ^2 \mathbf{u} = \nabla \nabla \cdot \mathbf{u} - \nabla \times \left( \nabla \times \mathbf{u} \right).
+\]
+
+V cilindričnih koordinatah so gradient, divergenca in rotor
+
+\begin{align*}
+\nabla f &= \frac{\partial }{\partial r}  \hat{e}_r + \frac{1}{r} \frac{\partial f}{\partial \phi} \hat{e}_{\phi} + \frac{\partial f}{\partial z} \hat{e}_z \\
+ \nabla \cdot \mathbf{u} &= \frac{1}{r} \left( \frac{\partial (u_{r} r)}{\partial r}  \right) + \frac{1}{r} \frac{\partial u_{\phi}}{\partial \phi}  + \frac{\partial u_{z}}{\partial z} \\
+   \nabla \times \mathbf{u} &= \left( \frac{1}{r} \frac{\partial u_{r}}{\partial \phi} - \frac{\partial u_{\phi}}{\partial z}  \right) \hat{e}_r + \left( \frac{\partial u_{r}}{\partial z}  - \frac{\partial u_{z}}{\partial r}  \right) \hat{e}_{\phi} + \left( \frac{1}{r} \frac{\partial (r u_{\phi})}{\partial r} - \frac{1}{r} \frac{\partial u_{r}}{\partial \phi}  \right)\hat{e}_z
+\end{align*}
+
+Zaradi odvisnosti vektorja premika so členi, ki se ohranijo pri divergenci
+
+\[ \nabla \cdot \mathbf{u} = \frac{1}{r} \left( \frac{\partial (r u_{r})}{\partial r}  \right).
+\]
+
+Pri gradientu divergence vektorja premika bo se ohrani samo
+
+\begin{equation}
+\label{eq:1}
+ \nabla \left( \nabla \cdot \mathbf{u} \right) = \frac{\partial }{\partial r} \left( \frac{1}{r} \frac{\partial (r u_{r})}{\partial r}  \right) \hat{e}_r.
+\end{equation}
+
+Edini člen,ki bo preživel pri rotorju, pa bo
+
+\[ \nabla \times \mathbf{u} = \frac{1}{r} \frac{\partial (r u_{r})}{\partial r} \hat{e}_z.
+\]
+
+Nadalje
+
+\begin{equation}
+\label{eq:2}
+ \nabla \times \left( \nabla \times \mathbf{u} \right) = - \frac{\partial }{\partial r}  \left( \frac{1}{r} \frac{\partial \left( r u_{r}\right)}{\partial r}  \right)\hat{e}_{\phi}.
+\end{equation}
+
+V Navierovi enačbi sta člena \ref{eq:1} in \ref{eq:2} neodvisna med seboj, kar pomeni, da bo njuna vsota enaka nič, samo ko bosta oba člena posebej ničelna. Člena sta podobna po sestavi, torej bo splošen nedoločen integral
+
+\begin{align*}
+  \frac{1}{r} \frac{\partial (r u_{r})}{\partial r} &= A \\
+ru _r &= \frac{A r ^2}{2} + B
+\end{align*}
+
+Posamezni komponenti sta torej
+
+\[ u_r = \frac{A r}{2} + \frac{B}{r} \quad \text{ in } \quad u_{\phi} = \frac{C r}{2} + \frac{D}{r}.
+\]
+
+Za določitev koeficientov moramo določiti robne pogoje. Prvi robni pogoj je pri polmeru \( r = R_1 \)
+
+\begin{equation}
+\label{eq:3}
+u_r (R_1) = u_{\phi} (R_1) = 0.
+\end{equation}
+
+Tlak, ki deluje na plašč ima radialno smer, torej bo normalni vektor v cilindričnih koordinatah \( \mathbf{n} = (n_r, n_{\phi}, n_z) = (1, 0, 0) \). Splošna enačba robnega pogoja je
+
+\[ p_{ij} n_j = \tilde{F}_i.
+\]
+
+Za naš dotični primer je drugi robni pogoj
+
+\begin{equation}
+\label{eq:4}
+\left. p_{rr} \right|_{r = R_2} = - p_0.
+\end{equation}
+
+Do tega smo prišli preko
+
+\[ \begin{pmatrix}
+   p_{rr} & p_{\phi r} & p_{z r} \\
+   p_{r \phi} & p_{\phi \phi} & p_{\phi z} \\
+   p_{z r} & p_{z \phi} & p_{zz}
+   \end{pmatrix} \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} = \begin{pmatrix} p_{rr} \\ p_{r\phi} \\ p_{r z} \end{pmatrix} = \begin{pmatrix} - p_{0} \\ 0 \\ 0 \end{pmatrix},
+\]
+
+kjer smo upoštevali v zadnjem enačaju, da je to ravno površinska gostota sila, ki deluje na kot posledica stiskanja.
+
+Zadnji robni pogoj pa je, ko plašč zdrsne - to bo takrat, ko tangentni člen ne bo več ničeln pri \( r = R_1 \).
+
+\begin{equation}
+\label{eq:5}
+k p_{rr} = - p_{r \phi}.
+\end{equation}
+
+Do tega pridemo preko
+
+\[ p_{ij} n_j = \begin{pmatrix} p_{rr} \\ p_{r\phi} \\ p_{rz} \end{pmatrix} = \begin{pmatrix} - \frac{F_l}{A} \\ - k \frac{F_l}{A}  \\ 0 \end{pmatrix}.
+\]
+
+Robni pogoj \ref{eq:2} nam da enačbo oblike
+
+\[ \frac{A R_1}{2} + \frac{B}{R_1} = 0,
+\]
+
+iz česar dobimo vrednosti
+
+\[ u_r: \ B = - \frac{A R_1 ^2}{2} \quad \text{ in } \quad u_{\phi}: \ D = \frac{C R_1 ^2}{2}.
+\]
+
+Za drugi robni pogoj \ref{eq:3} moramo upoštevati definicijo napetostnega tenzorja
+
+\[ p_{ij} = \frac{E}{1 + \sigma} \left( u_{ij} + \frac{\sigma}{1 - 2 \sigma} \nabla \cdot \mathbf{u} \delta_{ij} \right).
+\]
+
+Za \( p_{rr} \) komponento potrebujemo \( u_r \), da lahko izračunamo \( u_{rr} \) in \( \nabla \cdot u = \frac{1}{r} \frac{\partial (r u_{r})}{\partial r}  \), ki sta
+
+\[ \frac{\partial u_{r}}{\partial r} = \frac{A}{2} - \frac{B}{r ^2} \quad \text{ in } \quad \nabla \cdot \mathbf{u} = A.
+\]
+
+\begin{align*}
+  p_{rr} &= \frac{E}{1 + \sigma} \left[ A \left( \frac{\sigma}{1 - 2 \sigma} + \frac{1}{2} \right) - \frac{B }{r ^2} \right] \\
+&= \frac{E}{1 + \sigma} \left[ \frac{1}{2 (1 - 2 \sigma)} A - \frac{B}{r ^2} \right] \\
+&= \frac{E}{1 - \sigma} A \left[ \frac{1}{2 (1 - 2 \sigma)} + \frac{1}{2} \frac{R_1 ^2}{r ^2} \right],
+\end{align*}
+
+kjer smo v zadnji vrstici upoštevali rezultat robnega pogoja \ref{eq:3}. Robni pogoj \( p_{rr} (R_2) = - p_0 \) nam poda potem vrednost konstante \( A \)
+
+\[ A = \frac{1 + \sigma}{E} \frac{- p_0}{\frac{1}{2 (1 - 2 \sigma)}} + \frac{1}{2} \frac{R_1 ^2}{R_2 ^2} = -0.0548.
+\]
+
+Upoštevamo še robni pogoj \ref{eq:5}
+
+\[ p_{r \phi} = \frac{E}{1 + \sigma} \left[ \frac{\partial u_{\phi}}{\partial r} - \frac{u_{\phi}}{r} \right] = - \frac{E}{(1 + \sigma)} \frac{D}{r ^2}.
+\]
+
+Vrednost robnega pogoja je \( - p_{r\phi} (R_1) = k p_{rr} (R_2) \), iz česar dobimo
+
+\begin{align*}
+\frac{E}{(1 + \sigma) R_1 ^2} &= k \frac{E}{(1 + \sigma)} A \left[ \frac{1}{2 (1 - 2 \sigma)} + \frac{1}{2} \right] \\
+D &= \frac{1}{2 } k A R_1 ^2 \left[ \frac{1}{1 - 2\sigma} + 1 \right] = -8.22 \cdot 10^{-6} m ^2
+\end{align*}
+
+Preostala konstanta je
+
+\[ C = - \frac{2 D}{R_1 ^2} = 2.63 \cdot 10^{-2}.
+\]
