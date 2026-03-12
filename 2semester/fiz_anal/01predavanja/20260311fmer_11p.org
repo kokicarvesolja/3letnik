@@ -1,0 +1,248 @@
+#+title: Predavanja iz Fizikalnih merjenj, 11. teden v letu
+#+subtitle: 2026/03/11
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+
+Allegedly smo se zmenili, da bomo izpuščali vektorski znak, torej \( \mathbf{x} = x \).
+
+* Vektorske spremenljivke
+** Ostrenje vektorske meritve
+
+Prejšnji teden smo za sistem \( S \) s spremenljivko \( x(t) \), meritev \( z = H x + r \) in ocenami \( x = \bar{x} + m \) spoznali, da je kovariančna matrika izostrene ocene enaka
+
+\begin{equation}
+\label{eq:2}
+ P = \left\langle \hat{p} \hat{p}^{T} \right\rangle = A M A^T + B RB^T
+\end{equation}
+
+z vezjo \( A + BH = I \).
+
+Za ostrenje bomo uporabili Lagrangeev multiplikator z vezjo
+
+\[ \tilde{P} = A M A^T + BRB ^T - \lambda \left( A + BH - I \right).
+\]
+
+V resnici bomo odvajali \( \mathrm{tr} P \), zato je pogoj
+
+\[ \frac{\partial \tilde{P}}{\partial A} = 0
+\]
+
+v resnici
+
+\[ \frac{\partial \mathrm{tr} \tilde{P}}{\partial A} = 0.
+\]
+
+Dobimo 3 pogoje
+
+\begin{align*}
+  \frac{\partial \mathrm{tr} \tilde{P}}{\partial A} &= 0 = 2 Am - \lambda ^T \\
+\frac{\partial \mathrm{tr} \tilde{P}}{\partial B} &= 0 = 2B R - \left( H \lambda \right)^T \\
+\frac{\partial \mathrm{tr} \tilde{P}}{\partial \lambdal} &= 0 = \left( A + BH - I \right)^T .
+\end{align*}
+
+Iz prvega pogoja lahko ob upoštevanju lastnosti transponiranja matrike izrazimo
+
+\[ A^T = M^{-1} \frac{\lambda}{2}.
+\]
+
+Na podoben način iz drugega pogoja izrazimo
+
+\[ B^T = R^{-1} H \frac{\lambda}{2}.
+\]
+
+Transponirane vrednosti vstavimo v tretji pogoj
+
+\[ A^T + H^T B^T = M^{-1} \frac{\lambda}{2} + H^T R^{-1} H \frac{\lambda}{2} = \frac{\lambda}{2} \left( M^{-1} + H^T R^{-1} H \right) = I.
+\]
+
+Posledično lahko izrazimo
+
+\begin{equation}
+\label{eq:3}
+ \frac{\lambda}{2} = \left( M^{-1} + H^T R^{-1} H \right)^{-1}.
+\end{equation}
+
+Izražene vrednosti lahko vstavimo v enačbo \ref{eq:2}
+
+\begin{align*}
+  P &= \frac{\lambda^T}{2} M^{-1} M M^{-1} \frac{\lambda}{2} + \frac{\lambda}{2} H^T R^{-1} R R^{-1} H \frac{\lambda}{2} \\
+&= \frac{\lambda^T}{2} \left( M^{-1} + H^T R^{-1} H \right) \frac{\lambda}{2} = \frac{\lambda}{2}.
+\end{align*}
+
+V oklepaju v zadnji vrstici prepoznamo zgornji izraz in ga nadomestimo z \( \left( \frac{\lambda}{2} \right)^{-1} \).
+
+Torej je \ref{eq:3} enako \( P \) in posledično dobimo
+
+\begin{equation}
+\label{eq:5}
+ P^{-1} = M^{-1} + H^T R^{-1} H,
+\end{equation}
+
+kar je vektorski analog
+
+\[ \frac{1}{\hat{\sigma}_x ^2} + \frac{1}{\bar{\sigma}_x ^2} + \frac{1}{\sigma ^2}.
+\]
+
+Po nekaj čaranja, lahko izrazimo tudi
+
+\[ P = M - M H^T \left( R + H M H^T \right)^{-1} HM
+\]
+
+Izostrena ocena je po definiciji
+
+\[ \hat{x} = A \bar{x} + B z = \frac{\lambda^T}{2} M^{-1} \bar{x} + \left( H \frac{\lambda}{2} \right)^T R^{-1} z.
+\]
+
+Izraza ne spremenimo, če ga razširimo z \( H^T R^{-1} H \bar{x} - H^T R^{-1} H \bar{x} \) in dobimo
+
+\begin{align*}
+  \hat{x} &=  \frac{\lambda^T}{2} M^{-1} \bar{x} + \left( H \frac{\lambda}{2} \right)^T R^{-1} z +  H^T R^{-1} H \bar{x} - H^T R^{-1} H \bar{x} \\
+&= \frac{\lambda^T}{2} \left[  \left( M^{-1} + H^T R^{-1} H \right) \bar{x} + H^T R^{-1} \left( z - H\mathbf{x} \right) \right]
+\end{align*}
+
+Od prej vemo \( P = \frac{\lambda^T}{2} \), hkrati pa je tudi prvi oklepaj prav tako ravno \( \left( \frac{\lambda^T}{2} \right)^{-1} \) in po množenju je izostrena ocena
+
+\[ \hat{x} = \bar{x} + P H^T R^{-1} \left( z - H \bar{x} \right),
+\]
+
+kjer so \( \bar{x} \) napoved, \( PH^T R^{-1} \) utež in \( (z - H \bar{x}) \) inovacija.
+
+** Prehod na zvezno sliko
+
+Podobno kot v pri skalarni izpeljavi, imamo čas vzorčenja \( T \). Nahajamo se v \( n T \) vzorčenju in zanima nas vzorčenje \( n + 1 \).
+
+V sistemu \( S \) imamo
+
+\[ x _{n + 1} = \phi_n x_n + c_n + \Gamma_n w_n,
+\]
+
+kjer je zadnji člen dinamični šum.
+
+V merilnem sistemu \( M \) imamo izostreno oceno \( \hat{x}_n \) in bo ocena za naslednje vzorčenje
+
+\[ \bar{x}_{n + 1} = \phi_n \hat{x}_n  + c_n.
+\]
+
+Kovariančna matrika za naslednje vzorčenje \( M_{n + 1} \) bo po definiciji
+
+\[ M_{n + 1} = \left\langle \left( \bar{x}_{n + 1} - x_{n + 1} \right) \left( \bar{x}_{n + 1} - x_{n + 1} \right)^T \right\rangle.
+\]
+
+Vstavimo vrednosti posameznih spremenljivk in dodatno razpišemo
+
+\begin{align*}
+  M_{n + 1} &= \left\langle \left( \phi_n \left( \hat{x}_n - x_n \right) + \Gamma_n w_n \right) \left( \phi_n \left( \hat{x}_n - x_n \right) + \Gamma_n w_n \right)^T  \right\rangle \\
+&= \left\langle \phi_n \left( \hat{x}_n - x_n \right) \left( \hat{x}_n - x_n \right)^T \phi_n^T \right\rangle + \Phi \left\langle w_n w_n^T \right\rangle \Gamma_n^T + \cancel{\left\langle \ldots \right\rangle}
+\end{align*}
+
+V prvem členu prepoznamo matriko \( P_n  \) in drugi člen pa označimo \( \left\langle w_n w_n^T \right\rangle = Q_n \).
+
+\[ M_{n + 1} = \phi_n P_n \phi_n^T + \Gamma_n Q_n \Gamma_n^T.
+\]
+
+Kalmanov filter za diskretno vektorsko spremenljivko bo torej
+
+\[ P_{n + 1} = M_{n + 1} - M_{n + 1} H^T \left( H M_{n + 1} ^T + R_{n + 1} \right)^{-1} H M_{n + 1},
+\]
+
+kjer smo upoštevali relacijo \ref{eq:5}.
+
+Pojdimo sedaj v zvezno sliko \( \lim_{T \to 0}  \). Za meritvi \( n \) in \( n + 1 \) imamo potem
+
+\[ \frac{\hat{x}_{n + 1} - \hat{x}_n }{T} = \dot{\hat{x}} (t) = \frac{\bar{x}_{n + 1} - P_{n + 1} H^T R_{n + 1}^{-1} \left( z_{n + 1} - H \bar{x}_{n + 1} \right) - \hat{x}_n}{T}
+\]
+
+Upoštevamo prej izpeljane relacije in zapišemo
+
+\begin{align*}
+  \dot{\hat{x}} (t) &= \frac{\phi_{n + 1} \hat{x}_n - \hat{x}_n + c_n + P_{n + 1} H^T R_{n + 1}^{-1} \left( z_{n + 1} - H \bar{x}_{n + 1} \right)}{T} \\
+&= \frac{\phi_{n + 1} - 1}{T} \hat{x}_n + \frac{c_n}{T} + P(t) H^T R(t) ^{-1} \left( z(t) - H \hat{x}(t) \right)
+\end{align*}
+
+Kateri člen je ekvivalent \( \sigma T \) iz analogne slike?
+
+Z uvedbo \( A(t) = \frac{\phi_{n+ 1} - 1}{T} \) in \( c(t) = \frac{c_n}{T} \) dobimo optimalno shemo za sledenje zvezni spremenljivki
+
+\[ \dot{\hat{x}} (t) = A(t) \hat{x} + c(t) + P H^{T} R^{-1} \left( z - H x \right).
+\]
+
+Poglejmo si še \( P \) v zvezni sliki. Zapišemo razliko in upoštevamo definicijo Kalmanovega filtra za zvezno spremenljivko
+
+\[ P_{n + 1} - P_n =  M_{n + 1} - M_{n + 1} H^T \left( H M_{n + 1} ^T + R_{n + 1} \right)^{-1} H M_{n + 1} - P_n.
+\]
+
+Upoštevamo še definicijo kovariančne matriko
+
+\[ P_{n + 1} - P_n = \phi_n P_n \phi_n^T + \Gamma_n Q_n \Gamma_n^T - M_{n + 1} H^T \left( H M_{n + 1} ^T + R_{n + 1} \right)^{-1} H M_{n + 1} - P_n.
+\]
+
+Vemo, da je \( \phi_n = \left( 1 + A \cdot T \right) \) in po deljenju s \( T \) dobimo
+
+\begin{align*}
+ \frac{P_{n + 1} - P_n}{T} &= \frac{\left[ P_n + A P_n \cdot T + P_n A^T \cdot T + A P_n A T ^2 \right] - P_n}{T} \\
+&\quad- \frac{M_{n + 1} H^T \left( H M_{n + 1} ^T + R_{n + 1} \right)^{-1} H M_{n + 1}}{T} + \frac{\Gamma_n Q_n T_n^T}{T}
+\end{align*}
+
+Dobimo
+
+\[ \dot{P} = AP + PA^T + \frac{T_n Q_n T_n^T}{T} - \frac{M_{n + 1} H^T \left( H M_{n + 1} ^T + R_{n + 1} \right)^{-1} H M_{n + 1}}{T}
+\]
+
+V limiti označimo \( \frac{\Gamma_n}{T} = T(t) \) in \( Q(t) = Q_n T \) in potem je
+
+\[ \dot{P} = A P + PA^T + \Gamma Q \Gamma^T - P H^T R^{-1} H P.
+\]
+
+Pri zadnjem členu je bil sledeč razmislek
+
+\[ \frac{\left( H M_{n + 1}^T + R_{n + 1}\right)^{-1}}{T} = T HM_{n + 1}^T + R_{n + 1} T
+\]
+
+Kovariančna matrika \( M_{n + 1} \) gre v limiti proti končni matriki \( P(t) \). Posledično bo zmnožek \( HM_{n + 1} ^T T \) ničeln. Drugi člen pa je vektorski ekvivalent limite
+
+\[ \lim_{T \to 0} \left( T R_{n + 1} \right) = T \sigma ^2.
+\]
+
+Zadnji člen zmanjšuje \( P(t) \) (člen je vedno pozitiven, vendar ima negativen predznak) zaradi dotoka novih meritev. \( R \) pogojuje kovariančno matriko merilnega šuma.
+
+#+name: Odvod matrične norme po matriki
+#+begin_note
+Imejmo dve poljubni matriki \( A, \lambda \). Zmnožimo ju v novo matriko \( B = A \lambda \).
+
+Odvod matrične norme po matriki je nova matrika
+
+\[ C = \frac{\mathrm{d} }{\mathrm{d} A} \left( \mathrm{tr} \left( A \lambda \right) \right).
+\]
+
+Člen \( b_{jk} \) je po definiciji
+
+\[ b_{jk} = \sum\limits_i^{} a_{ji} \lambda_{ik}.
+\]
+
+Sled matrike \( B \) je potem
+
+\[ \mathrm{tr} B = \sum\limits_j^{} b_{ji} = \sum\limits_j^{} \sum\limits_i^{} a_{ji} \lambda_{ji}.
+\]
+
+Člen matrike \( C \) je potem
+
+\[ c_{kl} = \frac{\mathrm{d} }{\mathrm{d} a_{kl}} \mathrm{tr} \left( A \lambda \right) = \sum\limits_j^{} \sum\limits_i^{} \frac{\mathrm{d} }{\mathrm{d} a_{kl}} \left( a_{ji} \lambda_{ji} \right).
+\]
+
+To se ujema, samo ko bosta indeksa v odvodu in in \( a_{ji} \) enaka. Zapišemo lahko s Kronekerjevo delot ko
+
+\[ c_{kl} = \delta_{kj } \delta_{li} \lambda_{ij} = \lambda_{ck}.
+\]
+
+Torej
+
+\[ c_{kl} = \lambda_{ck} = \left( \lambda_{kl} \right)^T.
+\]
+
+#+end_note

@@ -422,7 +422,7 @@ Okno oblike
 
 ni dobro, saj prvi senzor meša kota prvega in drugega nihala.
 #+end_my_example
-** Ostrenje z vektorskimi meritvami.
+** Ostrenje z vektorskimi meritvami
 
 Imamo torej sistem \( S \) s spremenljivkami \( \mathbf{x}(t) \), meritvami \( \mathbf{z} = H \mathbf{x} + \mathbf{r} \) in ocenami \( \bar{\mathbf{x}} = \mathbf{x} + \mathbf{m} \). Prav tako imamo kovariančno matriko \( M = \left\langle \mathbf{m} \mathbf{m}^T \right\rangle \). Prav tako imamo pripadajočo kovariančno matriko merilnega šuma \( R = \left\langle \mathbf{r} \mathbf{r}^T \right\rangle \).
 
@@ -462,5 +462,7 @@ Ker med \( m \) in \( r \) ni korelacije, zaključimo
 
 \[ \left\langle p p^T \right\rangle = P  = A M A^T + B R B^T, \ A + B H = I
 \]
+
+\( A + BH = I \) predstavlja vez.
 
 Na naslednjem predavanju bomo to poskusili optimizirati.
