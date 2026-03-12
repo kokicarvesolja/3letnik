@@ -1,0 +1,106 @@
+#+title: Vaje iz Fizikalnih merjenj, 10. teden v letu
+#+subtitle: 2026/03/03
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Uvod v združevanje odvisnih meritev
+
+Prejšnji teden smo na vajah povedali, da za dve meritvi \( z_1, z_2 \) s pripadajočima variancama \( \sigma_1, \sigma_2 \), ki sta med seboj odvisni \( \sigma_{12} \ne 0 \), velja enačba za optimalno oceno
+
+\[ \hat{x}_{(12)} = z_1 + \frac{\sigma_1 ^2 - \sigma_{12}}{\sigma_1 ^2 + \sigma_2 ^2 - 2 \sigma_{12}} \left( z_2 - z_1 \right).
+\]
+
+Optimalni oceni pripada tudi svoja varianca, ki je določena z oceno
+
+\[ \hat{\sigma}_{(12)} ^2 = \left( 1 - \rho_{12} ^2 \right) \left( \frac{1}{\sigma_1 ^2} + \frac{1}{\sigma_2 ^2} - \frac{2 \rho_{12}}{\sigma_1 \sigma_2} \right) ^{-1},
+\]
+
+kjer je \( \rho_{12} \) korelacijski faktor.
+
+Predpostavimo sedaj, da imamo še tretjo meritev \( x_3 \) in pripadajočo varianco \( \sigma_3 \). Kako bi sedaj združili vse tri meritve skupaj?
+
+To storimo tako, da združimo optimalno oceno \( \hat{x}_{(12)} \) ter \( x_3 \). Njuno korelacijo potem izračunamo po definiciji
+
+\[ \sigma_{x_{(12)}, 3} = \left\langle \left( \hat{x}_{(12)} - x \right) \left( z_3 - x \right) \right\rangle.
+\]
+
+Naše naloge bodo vse vsebovale samo po dve meritvi.
+** Varianca povprečja odvisnih meritev
+
+Imejmo vzorec \( \left\{ z_i \right\}_N \), ki ima Gaussovo porazdelitev. Vse meritve naj majo isto povprečje \( \left\langle z_i \right\rangle = \mu \), vendar ima lahko vsaka meritev svojo varianco
+
+\[ \left\langle \left( z_i - \mu \right) ^2 \right\rangle = \sigma_i ^2.
+\]
+
+Hkrati so lahko med seboj posamezne meritve tudi korelirane
+
+\[ \left\langle \left( z_i - \mu \right) \left( z_j - \mu \right) \right\rangle = \sigma_{ij}\ne 0.
+\]
+
+Povprečje meritev je po definiciji
+
+\[ \bar{z} = \frac{1}{N} \sum\limits_{i = 1}^N z_i,
+\]
+
+pričakovana vrednost povprečja pa je
+
+\[ \left\langle \bar{z} \right\rangle  = \frac{1}{N} \sum\limits_{i = 1}^N \left\langle z_i \right\rangle = \frac{1}{N} \sum\limits_{i = 1}^N \frac{1}{N} N \mu = \mu.
+\]
+
+Varianco povprečja
+
+\[ \sigma_M ^2 = \left\langle \left( \bar{z} - \mu \right) ^2 \right\rangle,
+\]
+
+ kjer indeks \( M \) označuje ang. /mean/ želimo izraziti s poznanimi variancami \( \sigma_i ^2 \) in kovariancami \( \sigma_{ij} \).
+
+ Za začetek v varianci povprečja upoštevamo definicijo povprečja
+
+ \begin{align*}
+   \sigma_M ^2 &= \left\langle \left( \frac{1}{N} \sum\limits_{i = 1}^N z_i - \mu \right) ^2  \right\rangle\\
+&= \frac{1}{N ^2} \left\langle \left( \sum\limits_{i = 1}^N z_i - N \mu \right) ^2 \right\rangle = \frac{1}{N ^2} \left\langle \left( \sum\limits_{i = 1}^N \left[ z_i - \mu \right] \right) ^2 \right\rangle
+ \end{align*}
+
+ V drugi vrstici smo iz oklepaja izpostavili \( \frac{1}{N} \) ter oba člena v vsoti zapisali s pomočjo vsote. V vsoti prepoznamo razliko kvadratov, kar pomeni, da lahko razstavimo na dva dela
+
+ \[ \sigma_M ^2 = \frac{1}{N ^2} \left\langle \sum\limits_{i = 1}^N \left( z_i - \mu \right) \sum\limits_{j = 1}^N \left( z_j - \mu \right)  \right\rangle.
+ \]
+
+ Na izraz sedaj apliciramo pričakovano vrednost in prepoznamo izraza za varianco in kovarianco
+
+ \begin{align*}
+   \sigma_M ^2 &= \frac{1}{N ^2} \left( \left\langle \sum\limits_{i = 1}^N \left( z_i - \mu \right) ^2 \right\rangle + \left\langle \sum\limits_{i, j = 1, \ i \ne j}^N \left( z_i - \mu \right) \left( z_j - \mu \right) \right\rangle \\
+&= \frac{1}{N ^2} \sum\limits_{i, j = 1}^N \sigma_{ij}
+ \end{align*}
+
+ Varianca posamezne meritve je tako zajeta znotraj vsote, saj \( \sigma_{ii} = \sigma_i ^2 \).
+
+ Zapišemo lahko tudi drugače
+
+ \begin{align*}
+  \sigma_m ^2 &= \frac{1}{N ^2} \left( \sum\limits_{i = 1}^N \sigma_i ^2 + \sum\limits_{i, j = 1, \ i \ne j}^N \sigma_{ij} \right) \\
+&= \frac{1}{N ^2} \left( \sum\limits_{i = 1}^N \sigma_i ^2 + 2 \sum\limits_{i > j = 2}^N \sigma_{ij} \right),
+ \end{align*}
+
+ saj je kovarianca simetrična \( \sigma_{ij} = \sigma_{ji} \).
+
+ V primeru neodvisnih izmerkov je kovarianca \( \sigma_{ij} = 0 \) za vsak \( i, j \), in dobimo
+
+ \[ \sigma_M ^2 = \frac{1}{N ^2} \sum\limits_{i = 1}^N \sigma_i ^2.
+ \]
+
+ Če so variance enake, npr. če merimo z istim inštrumentom, \( \sigma_i = \sigma \) za vsak \( i \), potem je varianca povprečja odvisnih meritev
+
+ \[ \sigma_M ^2 = \frac{N}{N ^2} \sigma ^2 = \frac{1}{N} \sigma ^2
+ \]
+
+ Povprečna vrednost je v obeh zgornji primerih porazdeljen po normalni porazdelitvi
+
+ \[ \bar{z} \sim \mathcal{N} \left( \mu, \frac{\sigma ^2}{N} \right).
+ \]
+* Naloga: meritev višina
