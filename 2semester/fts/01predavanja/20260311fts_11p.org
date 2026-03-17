@@ -246,6 +246,30 @@ Rešujemo torej matrični sistem
 
 Rešitev je
 
-\[ E^{\pm} = \frac{1}{2} \left( E_{\mathbf{k} - \mathbf{K}_1}^0 + E_{\mathbf{k} - \mathbf{K}_2}^0 \right) \pm \frac{1}{2} \sqrt{\left( E_{\mathbf{k} - \mathbf{K}_1}^0 - E_{\mathbf{k} - \mathbf{K}_2}^0 + 4 \left| U_{K_1 - \mathbf{K}_2} \right| ^2\right)}
+\[ E^{\pm} = \frac{1}{2} \left( E_{\mathbf{k} - \mathbf{K}_1}^0 + E_{\mathbf{k} - \mathbf{K}_2}^0 \right) \pm \frac{1}{2} \sqrt{\left( E_{\mathbf{k} - \mathbf{K}_1}^0 - E_{\mathbf{k} - \mathbf{K}_2}^0 + 4 \left| U_{K_1 - \mathbf{K}_2} \right| ^2\right)}.
 \]
+
+Preindeksiramo z uvedbo \( \mathbf{q} = \mathbf{k} - \mathbf{K}_1 \) in \( \mathbf{K} = \mathbf{K}_2 - \mathbf{K}_1 \) in rešitev postane
+
+\[ E^{\pm}_{\mathbf{q}} = \frac{1}{2} \left( E_{\mathbf{q}}^0 + E_{\mathbf{q} - \mathbf{K}}^0 \right) \pm \frac{1}{2} \sqrt{\left( E_{\mathbf{q}}^0 - E_{\mathbf{q} - \mathbf{K}}^0 \right) + 4 \left| U_{\mathbf{K}} \right| ^2}
+\]
+
+Pogoj \( E_{\mathbf{q}}^0 = E_{\mathbf{q} - \mathbf{K}}^0 \) nam poda enačbo
+
+\[ q ^2 = q ^2 - 2 \mathbf{q} \mathbf{K} + K ^2 \implies \mathbf{q} \mathbf{K} = \frac{K}{2},
+\]
+
+kar nam pove, da \( \mathbf{q} \) leži na Braggovi ravnini (BR).
+
+\begin{align*}
+  \left. \nabla_{\mathbf{q}} E_{\mathbf{q}}^{\pm}\right|_{BR} &= \frac{1}{2} \frac{\hbar ^2}{2m} \nabla_{\mathbf{q}} \left( 2 q ^2 - 2 \mathbf{q} \cdot \mathbf{K} + K ^2 \right) + 0 \\
+&= \frac{\hbar ^2}{4m} \left( 4 \mathbf{q} - 2 \mathbf{K} \right) \\
+&= \frac{\hbar ^2}{m} \left( \mathbf{q} - \frac{1}{2} \mathbf{K} \right)
+\end{align*}
+
+Torej \( \nabla_{\mathbf{q}} E_{\mathbf{q}}^{\pm} \) leži na Braggovi ravnini (\( \mathbf{q} \)  se že tako nahaja na Braggovi ravnini, medtem ko \( \frac{1}{2} \mathbf{K} \) pa je ravno vektor do Braggove ravnine iz izhodiščne točke, glej skico v zapiskih).
+
+Iz tega sledi, da je \( E_{\mathbf{q}} ^2 \) ploskovna konstanta za pravokotnico na Braggovo ravnino (?).
+
+Poglejmo si še obliko valovne funkcije na Braggovi ravnini (str. 36 v TS2 zapiskih).
 #+end_my_example
