@@ -1,0 +1,173 @@
+#+title: Vaje iz Fizikalnih merjenj, 11. teden v letu
+#+subtitle: 2026/03/10
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Teorija: Kalmanov filter za sledenje spremenljivki \( x(t) \) v diskretni sliki
+
+Dinamični zakon spremenljivke nam pove, kako se količina spreminja in ga podamo v obliki diferencialne enačbe. Za naš sistem \( S \) bo diferenčna enačba, ki služi kot približek diferencialne enačbe
+
+\[ \dot{x} = A(t) x + C(t). 
+\]
+
+V diskretni sliki lahko majhne \( \dot{x} \) zapišemo kot
+
+\[ \frac{x((n + 1)T) - x(nT)}{T} = A(nT) x (nT) - C (nT),
+\]
+
+kjer je \( T \) čas vzorčenja. Slednje lahko dodatno preobrazimo v
+
+\[ x_{n + 1} = \left( 1 + A(n T) T \right) x_n + C(n T) T. 
+\]
+
+Dobili smo zvezi med koeficienti diferenčne in diferencialne enačbe
+
+\[ \Phi_n = 1 + A(nT) T \quad \text{ in } \quad c_n = C(nT).
+\]
+
+Dinamični zakon v diferenčni obliki je potemtakem
+
+\begin{equation}
+\label{eq:1}
+ x_{n + 1} = \Phi_n x_n + c_n \left( + \Gamma_n w_n \right),
+\end{equation}
+
+kjer zadnji člen predstavlja dinamični šum. Vzrok za ta šum je, če ne poznamo dobro dinamike sistema. Členi \( w_n \) so normalno porazdeljeni s povprečjem \( 0 \) in varianco dinamičnega šuma \( Q_n \)
+
+\[ \left\langle w_n w_{n'} \right\rangle = Q_n \delta_{n n'}.
+\]
+
+Ob času \( t = n T \) poznamo optimalno oceno \( \hat{x}_n \) in njeno disperzijo \( \hat{\sigma}_n ^2 \). Ob času \( (n + 1)T \) izmerimo \( z_{n + 1} \). Ocena ob času \( t = (n + 1)T \) se bo premaknila glede na \ref{eq:1} in bo enaka
+
+\[ \bar{x}_{n + 1} = \Phi_n \hat{x}_n + c_n. 
+\]
+
+Disperzija ob tem času pa bo
+
+\[ \bar{\sigma}_{n + 1} ^2 = \Phi_n ^2 \hat{\sigma}_n ^2 + \Gamma_n ^2 Q_n.
+\]
+
+Z meritvijo \( z_{n + 1} \) lahko sedaj izostrimo oceno, kakor smo to naredili v poglavju optimalnega združevanja meritev
+
+\[ \hat{x}_{n + 1} = \bar{x}_{n + 1} + \frac{\bar{\sigma}_{n + 1} ^2}{\bar{\sigma}_{n + 1} ^2 + \sigma_{n + 1}} \left( z_{n + 1} - \bar{x}_{n + 1} \right).
+\]
+
+Njena disperzija je
+
+\[ \bar{\sigma}_{n + 1} ^2 = \frac{\bar{\sigma}_{n + 1} ^2 \sigma_{n + 1} ^2}{\bar{\sigma}_{n + 1} ^2 + \sigma_{n + 1} ^2} = \bar{\sigma}_{n + 1} ^2 - \frac{\bar{\sigma}_{n + 1} ^4}{\bar{\sigma}_{n+1}^2 + \sigma_{n + 1} ^2}.
+\]
+
+Uvedemo nove spremenljivke in sicer
+
+\[
+\begin{array}{|c|c|} \hline
+\sigma_{n + 1} ^2 & R_{n + 1} \\ 
+\bar{\sigma}_{n + 1} ^2 & M_{n + 1} \\ 
+\hat{\sigma}_{n + 1} ^2 & P_{n + 1} \\ \hline
+\end{array}
+\]
+
+V primeru, da ne merimo, potem ni drugega koraka - ostrenja ocene. Napoved je najboljša ocena
+
+\[ \hat{x}_{n + 1} = \bar{x}_{n + 1} \quad \text{ in } \quad P_{n + 1} = M_{n + 1}. 
+\]
+* Naloga: kroglica na stopnicah
+#+begin_problem
+Kroglica se zakotali od vrha petih stopnic do dna. Vse stopnice so natančno enako visoke \( \bar{H} = 30 \mathrm{cm} \) in imajo enako ničelno negotovost višine \( \sigma_H ^2 = 0 \). Kroglica se na vsaki stopnici odbije natančno enkrat in ob vsakem odboju izgubi polovico svoje kinetične energije v vertikalni smeri.
+
+Izračunaj največjo višino zadnjega, 5., odboja in določi njegovo disperzijo. Med odboji po stopnicah ne merimo višine. Začetna višina kroglice je \( 0 \) in je znana samo do variance \( \sigma_0 \). Zanemari dinamični šum.
+#+end_problem
+
+Za začetek reševanja te naloge moramo najprej poiskati rekurzivno zvezo, ki nam bo določila dinamiko. Želimo imeti rekurzivno zvezo oblike Kalmanovega filtra
+
+\[ h_{n + 1} = \Phi_n h_n + c_n + \Gamma_n w_n,
+\]
+
+kjer je \( h \) spremenljivka, ki nas zanima - višina. Označimo izgubo energije po vsakem odboju z \( \delta = \frac{1}{2} \). \( h_0 \) bo začetna višina žoge, ki je v našem primeru \( h_0 = 0 \). 
+
+Potencialna energije kroglice po prvem odboju mora biti enaka polovici potencialne energije pred odbojem, torej \( U_1 = \delta U_0 \). Ob upoštevanju definicije potencialne energije dobimo zvezo
+
+\[ mg h_1 = \delta mg \left( H + h_0 \right) \implies h_1 = \delta h_0 + \delta H.
+\]
+
+Zaradi ničelne negotovosti velja zapis \( \bar{H} = H \). Po drugem odboju \( U_2 = \delta U_1 \) pridemo do podobne zveze
+
+\[ h_2 = \delta h_1 + \delta H. 
+\]
+
+Po \( n \)-tem odboju bo torej višina
+
+\[ h_{n + 1} = \delta h_n + \delta H.
+\]
+
+Sedaj lahko odčitamo vrednosti koeficientov iz diferenčne enačbe. To so \( \Phi_n = \delta \) in \( c_n = \delta H \). Hkrati je \( \Gamma_n = 0 \), saj smo zanemarili dinamični šum.
+
+Sedaj želimo izraziti višin \( n + 1 \) odboja s \( h_0 \). Za \( n = 2 \) to pomeni
+
+\[ \hat{h}_2 = \bar{h}_2 = \delta \hat{h}_1 + \delta H = \delta \left( \delta \hat{h}_0 + \delta H \right) + \delta H = \delta ^2 \hat{h}_0 + \left( \delta ^2 + \delta \right) H.
+\] 
+
+Tukaj smo upoštevali, da ker ni vmesnih meritev, je napoved \( \bar{h} \) najboljša ocena \( \hat{h} \). Nadalje
+
+\[ \hat{h}_3 = \delta \hat{h}_2 + \delta H = \delta ^3 \hat{h}_0 + H \left( \delta + \delta ^2 + \delta ^3 \right).
+\]
+
+Torej bo splošna zveza
+
+\[ h_n = \delta^n h_0 + H \sum\limits_{i = 1}^n \delta^i. 
+\]
+
+Vsoto lahko tudi poenostavimo
+
+\[ S_n = \sum\limits_{i = 1}^n \delta^i = \delta \left( 1 + S_n - \delta^n \right) \implies S_n = \delta \frac{1 - \delta^n}{1 - \delta}. 
+\]
+
+Izostrena ocena po \( n \)-odbojih bo torej
+
+\[ \hat{h}_n = \delta^n \hat{h}_0 + H \delta \frac{1 - \delta^n}{1 - \delta}. 
+\]
+
+V našem primeru za \( n = 5 \) in \( \delta = \frac{1}{2} \) je to enako
+
+\[ \hat{h}_5 = H \left( 1 - \frac{1}{2^5} \right) = \frac{31}{32} H.
+\]
+
+Sedaj pa lahko preko Kalmanovega filtra določimo še varianco petega odboja. Ker nimamo vmesnih meritev, pomeni da ne moremo izostriti vmesnih ocen. Posledično bomo pri dinamiki
+
+\[ M_{n + 1} = \Phi_n ^2 P_n + \underbrace{\Gamma_n ^2 Q_n}_{= 0}
+\]
+
+označili \( P_{n + 1} = M_{n + 1} \). Torej bo veljalo
+
+\[ P_{n + 1} = \Phi_n ^2 P_n = \delta ^2 P_n. 
+\]
+
+Izraženo s \( P_0 \) potem velja
+
+\[ P_n = \left( \delta ^2 \right)^n P_0. 
+\]
+
+Začetna varianca je \( P_0 = \sigma_0 ^2 \), torej bo \( n \)-ti odboj
+
+\[ P_n = \delta^{2n} \hat{\sigma}_0 ^2.
+\]
+
+Zanima nas disperzija, ki je
+
+\[ \hat{\sigma}_n = \sqrt{P_{n}} = \delta^n \sigma^2_0.
+\]
+
+Disperzija 5. odboja bo tako
+
+\[ \hat{\sigma}_5 = \delta ^5 \hat{\sigma}_0 = \frac{1}{32} \hat{\sigma}_0.
+\]
+
+Kapico smo dali disperziji, saj je to naša optimalna ocena. Disperzijo pa bi lahko še znižali, če bi dodatno poznali meritve med posameznimi odboji, vendar se disperzija manjša od začetne vrednost že zaradi dinamike sistema
+
+\[ \lim_{n \to \infty} \hat{\sigma}_n =0. 
+\]
