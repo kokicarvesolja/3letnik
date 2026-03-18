@@ -1,0 +1,105 @@
+#+title: Predavanja iz Fizike trdne snovi, 12. teden v letu
+#+subtitle: 2026/03/18
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Gostota elektronskih stanj \( g(\epsilon) \)
+
+Želimo zapisati poljubno količino
+
+\[ q = \frac{2}{V} \sum\limits_{n \mathbf{k}}^{} Q \left( \epsilon_n (\mathbf{k}) \right),
+\]
+
+kjer je edini pogoj za \( Q \), da je odvisen zgolj od energije elektrona \( \epsilon_n (\mathbf{k}) \). Vsota je tako po vseh možnih stanjih, faktor \( 2 \) pa je posledica Paulijeve prepovedi. Vsoto po vseh stanjih lahko pretvorimo na integral
+
+\[ q = \sum\limits_n^{} \int\limits_{}^{} Q(\epsilon_n (\mathbf{k})) \frac{\mathrm{d} ^3 \mathbf{k}}{4 \pi ^3}.
+\]
+
+Faktor \( \frac{\mathrm{d} ^3 \mathbf{k}}{4 \pi ^3} \) pride kot posledica Fermijeve sfere(?).
+
+Trdimo, da je zgornji integral enak
+
+\[  \sum\limits_n^{} \int\limits_{}^{} Q(\epsilon_n (\mathbf{k})) \frac{\mathrm{d} ^3 \mathbf{k}}{4 \pi ^3} = \int\limits_{}^{} g(\epsilon) Q(\epsilon) \, \mathrm{d} \epsilon.
+\]
+
+#+begin_proof
+Gostoto stanj lahko zapišemo kot vsoto gostot stanj po posameznih nivojih
+
+\[ g(\epsilon) = \sum\limits_n^{} g_n (\epsilon).
+\]
+
+Hkrati pa lahko poljubno \( n \)-to stanje zapišemo kot
+
+\begin{equation}
+\label{eq:1}
+ g_n (\epsilon) = \int\limits_{}^{} \delta \left( \epsilon - \epsilon_n(\mathbf{k}) \right) \frac{\mathrm{d} ^3 \mathbf{k}}{4 \pi ^3},
+\end{equation}
+
+kjer je \( \delta \) Kroneckerjeva delta funkcija. Stanje \( n \) \ref{eq:1} lahko pomnožimo z \( \mathrm{d} \epsilon \). Rezultat je to, da je integral različen od nič samo na določenem delu prostora
+
+\[ g_n (\epsilon) \, \mathrm{d} \epsilon = \begin{cases}
+                                           \int\limits_{}^{} \frac{\mathrm{d} ^3 \mathbf{k}}{4 \pi ^3} &; \epsilon < \epsilon_n (\mathbf{k}) < \epsilon + \mathrm{d} \epsilon \\
+                                           0 &; \text{else}
+                                           \end{cases}
+\]
+
+Označimo površino Fermijeve sfere pri \( \epsilon_n (\mathbf{k}) = \epsilon \) s \( S_n (\mathbf{k}) \). Drugo, večjo Fermijevo površino pa označimo s \( \epsilon_n (\mathbf{k}) = \epsilon + \mathrm{d} \epsilon = S_n ' (\mathbf{k}) \).
+
+Razliko med površinama sfer opisuje vektor \( \delta \mathbf{k} \), ki ima svoj pravokoten del \( \mathbf{k}_{\perp} \) in svoj vzporeden del \( \mathbf{k}_{\parallel} \) na površino.
+
+Energija se spreminja samo z večanjem \( \mathbf{k}_{\perp } \). Sprememba energije je potem
+
+\[ \mathrm{d} \epsilon = \nabla \epsilon_n (\mathbf{k}) \delta \mathbf{k} = \left| \nabla \epsilon_n (\mathbf{k}) \right| \delta k_{\perp}.
+\]
+
+Iz tega dobimo izraz za \( \mathrm{d} \mathbf{k}_{\perp } \).
+
+Integral po površini manjše sfere je torej
+
+\begin{align*}
+  g(\epsilon) \mathrm{d} \epsilon &= \int\limits_{S_n (\mathbf{k})}^{} \frac{\mathrm{d} S}{4 \pi ^3} \mathrm{d} k_{\perp } \\
+&= \int\limits_{S_n (\mathbf{k})}^{} \frac{\mathrm{d} S}{4 \pi ^3 \left| \nabla \epsilon_n (\mathbf{k}) \right|}
+\end{align*}
+
+Če za energijo vstavimo energijo prostih elektronov \( \epsilon(\mathbf{k}) = \frac{\hbar ^2 \mathbf{k} }{2 m} \), potem moramo ven dobiti gostoto stanj za proste elektrone.
+
+\[  \nabla \epsilon(\mathbf{k}) = \frac{\hbar ^2 k}{m}.
+\]
+
+Integral za gostoto stanj je potem
+
+\[ g(\epsilon) = \frac{4 \pi k ^2 m}{4 \pi ^3 \hbar ^2 k} = \frac{k m}{\pi ^2 \hbar ^2}.
+\]
+
+Če upoštevamo
+
+\[ k(\epsilon) = \left(\frac{2m}{\hbar ^2} \right)^{\frac{1}{2}} \sqrt{\epsilon},
+\]
+
+lahko izrazimo \( g(\epsilon) \).
+#+end_proof
+* Metoda tesne vezi
+
+Imamo delce, ki jih počasi stiskamo v manjši prostor. Vsak delec ima svojo valovno funkcijo in z zmanjšanjem razdalje med delci se bodo začele med seboj prekrivati. Valovne funkcije zunanjih elektronov se bodo prej začele prekrivati (npr. p) pred notranjimi elektroni (npr. s).
+
+Rešujemo atomsko Schrödingerjevo enačbo
+
+\[ H_{at} \psi_n (\mathbf{r}) = E_n \psi(\mathbf{r}),
+\]
+
+kjer je
+
+\[ H_{at} = - \frac{\hbar ^2 \nabla ^2}{2m} + U_{at} (\mathbf{r}).
+\]
+
+Potencial razdelimo na dva dela - potencial elektronov ter atomski potencial
+
+\[ U(\mathbf{r}) = U_{at} (\mathbf{r}) + \Delta U(\mathbf{r}).
+\]
+
+[skica potenciala na str. 39]
