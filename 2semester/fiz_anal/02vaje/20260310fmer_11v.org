@@ -171,3 +171,97 @@ Kapico smo dali disperziji, saj je to naša optimalna ocena. Disperzijo pa bi la
 
 \[ \lim_{n \to \infty} \hat{\sigma}_n =0. 
 \]
+** Dinamični šum
+#+begin_problem
+Prejšnji nalog dodamo dinamični šum \( \delta_H \ne 0 \). To pomeni, da smo višini stopnic dodali disperzijo.
+#+end_problem
+
+V tem primeru zapišemo višino stopnice kot
+
+\[ H = \bar{H} + \eta,
+\]
+
+kjer je \( \left\langle \eta \right\rangle = 0 \) in \( \left\langle \eta ^2 \right\rangle = \delta_H ^2 \).
+
+V povprečju so stopnice enako visoke \( \bar{H} \).
+
+Nova dinamika, Kalmanov filter pa je sedaj
+
+\[ h_{n + 1} = \delta h_n + \delta \left( \bar{H} + \eta \right) = \delta h_n + \delta \bar{H} + \delta \eta.
+\]
+
+Posamezni koeficienti enačbe \ref{eq:1} so sedaj
+
+\[ \Phi_n = \delta,\qquad c_n = \delta \bar{H} \quad \text{ in } \quad \Gamma_n w_n = \delta \eta
+\]
+
+Slednji člen predstavlja dinamični šum.
+
+Ocena višine odboja še zmeraj ostane ista zaradi \( \left\langle \eta \right\rangle = 0 \)
+
+\[ \bar{h}_{n + 1} = \hat{h}_{n + 1} = \delta \hat{h}_n + \delta \bar{H}.
+\]
+
+Do spremembe zaradi dinamičnega šuma pride pri varianci. Po izpeljavi v teoretičnem delu je
+
+\[ P_{n + 1} = M_{n + 1} = \Phi_{n + 1} ^2 P_n + \Gamma_n ^2 Q_n.
+\]
+
+Spomnimo, da je varianca dinamičnega šuma
+
+\[ \left\langle \left( \Gamma_n w_n \right) ^2 \right\rangle = \Gamma_n ^2 \left\langle w_n ^2 \right\rangle = \Gamma_n ^2 Q_n.
+\]
+
+Varianco dinamičnega šuma z našo disperzijo zapišemo
+
+\[ \Gamma_n ^2 Q_n = \left\langle \left( \delta \eta \right) ^2 \right\rangle = \delta ^2 \left\langle \eta ^2 \right\rangle = \delta ^2 \sigma_H ^2,
+\]
+
+kjer smo upoštevali navodila naloge.
+
+Disperzija izostrene ocene po prvem odboju je torej
+
+\[ P_1 = \delta ^2 \hat{\sigma}_0 ^2.
+\]
+
+Po drugem odboju je disperzija
+
+\[ P_2 = \delta ^2 \left( \delta ^2 P_0 + \delta ^2 \sigma_H ^2 \right) + \sigma_H ^2 = \delta ^4 P_0 + \delta_H ^2 \left( \delta ^2 + \delta ^4 \right).
+\]
+
+Po \( n \)-tem odboju velja zveza
+
+\[ P_n = \delta^{2n} \hat{\sigma}_0 ^2 + \sigma_H ^2 \sum\limits_{i = 1}^n \delta^{2i}.
+\]
+
+Podobno kakor prej lahko zgornjo vsoto pretvorimo na zvezo
+
+\[ S_n = \sum\limits_{i = 1}^n \delta^{2i} = \delta ^2 \left( 1 + S_n - \delta^{2n} \right) \implies S_n = \delta ^2 \frac{1 - \delta^{2n}}{1 - \delta ^2}.
+\]
+
+Disperzija izostrene ocene glede na Kalmanov filter po dveh odbojih je torej
+
+\[ P_2 = \delta ^4 \hat{\sigma}_0 ^2 + \delta_H ^2 \left( \delta ^2 + \delta ^4\right)
+\]
+
+Napoved višine je po drugem odboju
+
+\[ h_2 = \delta ^2 h_0 + H \left( \delta + \delta ^2 \right) = f(h_0, H),
+\]
+
+kar je funkcija dveh spremenljivk. Vsaka spremenljivka \( h_0 \) in \( H \) ima svojo napako in negotovost lahko izračunamo s širjenjem napake po Gaussovi porazdelitvi.
+
+\[ \hat{\sigma}_2 ^2 = \delta ^4 + \left( \delta + \delta ^2 \right) ^2 \sigma_H ^2 = \delta ^4 \hat{\sigma}_0 ^2 + \left( \delta ^2 + \delta ^4 + 2 \delta ^3 \right) \sigma_H ^2
+\]
+
+Po Kalmanovem filtru dodatnega člena \( 2 \delta ^3 \) ni! Pri širjenju napake po Gaussu smo se pretvarjali, da je vsaka stopnica meritev iste naključne spremenljivke. \( 2 \delta ^3 \) je korelacija med meritvami \( H \).
+
+Širjenje napake po Gaussu bi bilo pravilno, če bi bila vsaka meritev posamezne stopnice svoje spremenljivke \( H_1, H_2, \ldots \).
+
+Višina po \( n \)-tem odboju je potem funkcija \( n + 1 \) spremenljivk
+
+\[ h_n = f \left( h_0, H_1, H_2, \ldots, H_n \right).
+\]
+
+V tem primeru dobimo pravilno rešitev, saj so meritve med seboj nekorelirane.
+* Kalmanov filter za sledenje vektorski spremenljivki v diskretni sliki
