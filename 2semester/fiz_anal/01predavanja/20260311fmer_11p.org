@@ -1,5 +1,5 @@
 #+title: Predavanja iz Fizikalnih merjenj, 11. teden v letu
-#+subtitle: 2026/03/11
+#+subtitle: 2026/03/12
 #+startup: nolatexpreview
 #+startup: entitiespretty nil
 #+startup: show2levels
@@ -244,5 +244,4 @@ Torej
 
 \[ c_{kl} = \lambda_{ck} = \left( \lambda_{kl} \right)^T.
 \]
-
 #+end_note

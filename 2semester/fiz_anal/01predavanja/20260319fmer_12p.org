@@ -1,0 +1,244 @@
+#+title: Predavanja iz Fizikalnih merjenj, 12. teden v letu
+#+subtitle: 2026/03/19
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Vektorske spremenljivke
+
+Prejšnji teden smo izpeljali ostrenje meritve in prehod na zvezno sliko vektorskih spremenljivk kot so sta v 60. letih to naredila Kalman in Bucy.
+
+#+begin_my_example
+Obravnavajmo enodimenzionalni primer delca, ki se premika s hitrostjo \( \dot{x} \). Na delec vplivajo naključne sile, ki jih bomo označili z \( F_x (t) \) in predstavljajo šum. Na delec vpliva Stokesov izrek upora.
+
+
+Dinamiko delca bomo opisali z drugim Newtonovim zakonom, ki je v splošnem
+
+\[ \sum\limits_{}^{} F_i = m \ddot{x}.
+\]
+
+Za naš konkretni primer na delec delujeta sila, ki je posledica Stokesa in naključne sile
+
+\[ \ddot{x} = - \frac{6 \pi R \eta}{m} \dot{x} + \frac{F_x}{m} (t).
+\]
+
+Za dinamični šum velja
+
+\[ \left\langle \frac{F_x(t)}{m}, \frac{F_x(t')}{m} \right\rangle = \delta(t - t')\cdot Q.
+\]
+
+Imamo dve spremenljviki, ki ju vektorsko zapišemo \( \mathbf{x} = [x, v] \). Za dani spremenljivki torej velja dinamika
+
+\begin{align*}
+  \dot{x} &= v \\
+\dot{v} &= - \frac{1}{\tau} v+ \frac{F_x (t)}{m}.
+\end{align*}
+
+Označili smo \( \frac{1}{\tau} = \frac{6\pi R \eta}{m} \).
+
+Gibanje v matrični obliki je tako
+
+\[ \frac{\mathrm{d} }{\mathrm{d} t} \begin{bmatrix} x \\ v \end{bmatrix} = \begin{bmatrix}
+                                                                           0 & 1 \\
+                                                                           0 & -\frac{1}{\tau}
+                                                                            \end{bmatrix} \begin{bmatrix} x \\ v \end{bmatrix} + \frac{F_x (t)}{m} \begin{bmatrix} 0 \\ 1 \end{bmatrix}.
+\]
+
+Dobili smo torej sistem, ki ima dinamiko oblike
+
+\[ \dot{\mathbf{x}} = A \mathbf{x} + \Gamma w,
+\]
+
+kjer je \( w = F_x \).
+
+
+Ob času \( t = 0 \) ničesar ne merimo. To pomeni, da gre \( R \to \infty \). Napoved in njena disperzija je tako
+
+\begin{align*}
+  \bar{x} (0) &= 0 \\
+P(0) &= P_0.
+\end{align*}
+
+Kovariančna matrika ima v odvisnosti od časa obliko
+
+\[ P(t) = \begin{bmatrix}
+          \left\langle x ^2 \right\rangle (t) & \left\langle xv \right\rangle  \\
+        \left\langle xv \right\rangle &  \left\langle v ^2 \right\rangle (t)
+           \end{bmatrix}
+\]
+
+Za \( t > 0 \) pa je naš sistem
+
+\[ \dot{P} = A P + PA^T + \Gamma Q \Gamma^T \cancel{- PH^T R^{-1} H P}.
+\]
+
+Matrika \( A \) je simetrična, torej bo zanjo veljalo \( A = A^T \) in posledično \( PA^T = \left( AP \right)^T \). Sistem torej zapišemo
+
+\begin{align*}
+  \frac{\mathrm{d} }{\mathrm{d} t} P &= \begin{bmatrix}
+                                       0 & 1 \\
+                                       0 & -\frac{1}{\tau}
+                                        \end{bmatrix}
+\begin{bmatrix}
+\left\langle x ^2 \right\rangle & \left\langle xv \right\rangle \\
+\left\langle xv \right\rangle &  \left\langle v ^2 \right\rangle
+ \end{bmatrix}
++ \begin{bmatrix}
+  \left\langle x ^2 \right\rangle & \left\langle xv \right\rangle \\
+\left\langle xv \right\rangle   & \left\langle v ^2 \right\rangle
+   \end{bmatrix}
+\begin{bmatrix}
+0 & 0 \\
+1 & -\frac{1}{\tau}
+ \end{bmatrix} +
+\begin{bmatrix} 0 \\ 1 \end{bmatrix} [0 \quad 1] Q \\
+\frac{\mathrm{d} }{\mathrm{d} t}
+\begin{bmatrix}
+\left\langle x ^2 \right\rangle & \left\langle xv \right\rangle \\
+\left\langle xv \right\rangle &  \left\langle v ^2 \right\rangle
+\end{bmatrix} &=
+\begin{bmatrix}
+\left\langle xv \right\rangle & \left\langle v ^2 \right\rangle \\
+-\frac{1}{\tau}\left\langle xv \right\rangle & - \frac{1}{\tau} \left\langle v ^2 \right\rangle
+ \end{bmatrix} +
+\begin{bmatrix}
+\left\langle xv \right\rangle & - \frac{1}{\tau} \left\langle xv \right\rangle \\
+\left\langle v ^2 \right\rangle & - \frac{1}{\tau} \left\langle v ^2 \right\rangle
+ \end{bmatrix} + \begin{bmatrix}
+                 0 & 0 \\
+                 0 & Q
+                  \end{bmatrix}
+\end{align*}
+
+Dobimo torej sistem enačb
+
+\begin{align*}
+  \frac{\mathrm{d} }{\mathrm{d} t} \left\langle x ^2 \right\rangle &= 2 \left\langle x v \right\rangle \\
+\frac{\mathrm{d} }{\mathrm{d} t}\left\langle xv \right\rangle &= \left\langle v ^2 \right\rangle - \frac{1}{\tau} \left\langle xv \right\rangle \\
+\frac{\mathrm{d} }{\mathrm{d} t} \left\langle v ^2 \right\rangle &= - \frac{2}{\tau} \left\langle v ^2 \right\rangle + Q.
+\end{align*}
+
+Poglejmo si stacionarne rešitve v termodinamskem ravnovesju za \( \frac{\mathrm{d} }{\mathrm{d} t}\left\langle v ^2 \right\rangle = 0 \) - termalizacija.
+
+Potem dobimo enakost
+
+\[ \left\langle v ^2 \right\rangle _{\infty} = \frac{Q \tau}{2}.
+\]
+
+Preko ne-vem-katerega-zakona velja
+
+\[ \frac{1}{2} m \left\langle v ^2 \right\rangle _{\infty} = \left\langle W_t \right\rangle = \frac{k T}{2}
+\]
+
+Izrazimo kvadrat hitrosti ven in dobimo
+
+\[ \left\langle v ^2 \right\rangle _{\infty} = \frac{k T}{m} = \frac{Q \tau}{2} \implies Q = \frac{2k T}{m \tau}.
+\]
+
+Drugi možen primer je, da je \( \frac{\mathrm{d} }{\mathrm{d} t}\left\langle x v \right\rangle = 0 \). V term primeru velja enakost
+
+\[ 0 = \left\langle v ^2 \right\rangle _{\infty} - \frac{1}{\tau} \left\langle xv \right\rangle_{\infty} \implies \frac{Q \tau}{2} = \frac{1}{\tau} \left\langle xv \right\rangle_{\infty}.
+\]
+
+Potem dobimo
+
+\[ \left\langle xv \right\rangle _{\infty} = \frac{Q \tau ^2}{2} = \frac{2k T}{m \tau} \implies \left\langle xv \right\rangle_{\infty} = \frac{k T \tau}{m}.
+\]
+
+Stacionarna rešitev za tretjo enačbo pa je potem
+
+\[ \frac{\mathrm{d} }{\mathrm{d} t} \left\langle x ^2 \right\rangle = 0 = 2 \left\langle xv \right\rangle_{\infty}.
+\]
+
+To ne gre (?), zato integriramo
+
+\begin{align*}
+  \frac{\mathrm{d} }{\mathrm{d} t} \left\langle x ^2 \right\rangle &= 2 \left\langle x v \right\rangle_{\infty} && \left/ \int\limits_0^t \, \mathrm{d} t \right. \\
+\left\langle x ^2 (t) \right\rangle - \left\langle x ^2 (0) \right\rangle = \frac{2 k T \tau}{ m} t.
+\end{align*}
+
+Označimo \( \frac{k T \tau}{m} = D \) in dobimo difuzijsko enačbo
+
+\[ \left\langle x ^2 \right\rangle  = \left\langle x ^2 (0) \right\rangle + 2 D t.
+\]
+
+V treh dimenzijah je potem rešitev
+
+\[ \left\langle r ^2 \right\rangle = \left\langle r ^2 (0) \right\rangle + 6 D t.
+\]
+#+end_my_example
+
+#+begin_my_example
+V zgornji primer sedaj vklopimo še nedoločenost lege \( H = [1 0 ] \). Meritev bo imela obliko \( z = H \mathbf{x} + r \).
+
+Sedaj imamo prej neupoštevan člen \( P H^T R^{-1} H P \), kar je
+
+\[ P H^T R^{-1} HP = \begin{bmatrix}
+                     \left\langle x ^2 \right\rangle & \left\langle xv \right\rangle \\
+                     \left\langle xv \right\rangle & \left\langle v ^2 \right\rangle
+                      \end{bmatrix} \begin{bmatrix} 1 \\ 0 \end{bmatrix} \frac{1}{R} [1 0] \begin{bmatrix}
+                      \left\langle x ^2 \right\rangle & \left\langle xv \right\rangle \\
+                      \left\langle xv \right\rangle & \left\langle v ^2 \right\rangle \end{bmatrix}
+\]
+
+Matrike se med seboj zmnožijo v
+
+\[ P H^T R^{-1} HP = - \frac{1}{R} \begin{bmatrix} \left\langle x ^2 \right\rangle \\ \left\langle xv \right\rangle \end{bmatrix} \left[\left\langle x ^2 \quad \left\langle xv \right\rangle \right\rangle\left] = - \frac{1}{R} \begin{bmatrix}
+\left\langle x ^2 \right\rangle & \left\langle x ^2 \right\rangle \left\langle xv \right\rangle\\
+\left\langle xv \right\rangle \left\langle x ^2 \right\rangle      & \left\langle xv \right\rangle ^2
+\end{bmatrix}
+\]
+
+Potem imamo sistem enačbo
+
+\[ \dot{P} = \begin{bmatrix}
+             2 \left\langle xv \right\rangle - \frac{1}{R} \left\langle x ^2 \right\rangle ^2 & \left\langle v ^2 \right\rangle - \frac{1}{\tau} \left\langle xv \right\rangle - \frac{1}{R} \left\langle x ^2 \right\rangle \left\langle xv \right\rangle \\
+              \left\langle v ^2 \right\rangle - \frac{1}{\tau} \left\langle xv \right\rangle - \frac{1}{R} \left\langle x ^2 \right\rangle \left\langle xv \right\rangle & - \frac{2}{\tau} \left\langle v ^2 \right\rangle - \frac{1}{R} \left\langle xv \right\rangle ^2 + Q
+              \end{bmatrix}
+\]
+
+V termodinamskem ravnovesju \( \dot{P} = 0 \) iščemo stacionarne rešitve za naslednje tri sisteme enačb
+
+\begin{align*}
+  2 \left\langle xv \right\rangle - \frac{1}{R} \left\langle x ^2 \right\rangle ^2 &= 0\\
+\left\langle v ^2 \right\rangle - \frac{1}{\tau} \left\langle xv \right\rangle - \frac{1}{R} \left\langle x ^2 \right\rangle \left\langle xv \right\rangle &= 0 \\
+-\frac{2}{\tau} \left\langle v ^2 \right\rangle - \frac{1}{R} \left\langle xv \right\rangle ^2 + Q &= 0
+\end{align*}
+
+Iz prve enačbe dobimo enakost \( \left\langle xv \right\rangle = \frac{1}{2 R} \left\langle x ^2 \right\rangle ^2\), ki jo nesemo v tretjo enačbo
+
+\begin{align*}
+  \left\langle v ^2 \right\rangle &= \frac{Q \tau}{2} - \frac{\tau}{2 R} \left\langle xv \right\rangle ^2  \\
+&= \frac{Q \tau}{2} - \frac{\tau ^4}{2 R} \cdot \frac{1}{\left( 2R \right) ^2} \frac{\left\langle x ^2 \right\rangle ^4}{\tau ^3} \frac{R}{R}
+\end{align*}
+
+V zadnji vrstici smo razširili in sedaj lahko uvedemo \( Y = \left\langle x ^2 \right\rangle \frac{\tau}{R} \) in imamo torej
+
+\[ \left\langle v ^2 \right\rangle = \frac{Q \tau}{2} - \frac{Y ^4 R}{8 \tau ^3}.
+\]
+
+Slednje vstavimo v drugo enačbo in dobimo rešitev
+
+\[ Y ^4 + 4 Y ^3 + 4 Y ^2 = \frac{4 Q T ^4}{R}.
+\]
+
+Leva stran enačbe je \( f(Y) \). Obstaja rešitev, ko ta funkcija seka \( \frac{4 Q T ^4}{R} \).
+
+Recimo, da imamo "prosto" nedoločenost lege. Potem je \( R \) velik, saj gre proti \( \infty \). Posledično je desna stran enačba majhna in velja \( Y ^4 \ll Y^2 \ll Y = \left\langle x ^2 \right\rangle \frac{\tau}{R} \).
+
+Ostane nam
+
+\[ 4 Y ^4 = \frac{4 Q \tau ^4}{R} \implies Y = \sqrt{\frac{Q}{R}} \tau ^2 = \left\langle x ^2 \right\rangle \frac{\tau}{R}.
+\]
+
+Zaključimo, da je
+
+\[ \left\langle x ^2 \right\rangle = \sqrt{Q R} \cdot \tau.
+\]
+
+Zaključimo, da je kakršnakoli meritev dobrodošla, dokler je \( R < \infty \).
+#+end_my_example
