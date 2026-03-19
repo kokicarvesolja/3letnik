@@ -417,3 +417,130 @@ Velja \( \tau_{eff} < \tau \).
 
 V primeru \( Q \to \infty \) pa gre \( \tau_{eff} \to 0 \). To pomeni, da je potem \( P \) stacionaren in napaka je enaka kakor pri meritvi. Če je \( Q = 0 \), potem moramo celoten čas \( \tau \) počakati, da se meritev umiri in je \( P \) konstanten. Za vse vrednosti vmes je toliko manj časa potrebno, da lahko zaupamo meritvi.
 #+end_my_example
+* Optimalna povratna zanka in poenostavitev Kalmanovega filtra
+
+Opazovalni sistem \( S \) in merilni sistem \( M \) sta povezana preko senzorjev, ki sinhronizirajo med sistem. Povedali smo že, da je linearna diferencialna enačba prvega reda dinamika za optimalni filter, ki ima člen \( K(z - H \hat{x}) \) z ojačevalnim faktorje \( K(t) \).
+
+Kalmanov filter podan v enačbi
+
+\[ \dot{\hat{x}} = A \hat{x} + c + K \left( z - H \hat{x} \right),
+\]
+
+kjer zadnji člen meri stopnjo sinhronizacije. V primeru, da sta sistema \( S \) in \( M \) usklajena, potem je \( \left( z - H\hat{x} \right) \) samo bel šum. Posledično je v tem primeru pričakovana vrednost inovacije \( \left\langle \left( z - H \hat{x} \right) \right\rangle = 0 \).
+
+Po integriranju
+
+\[ K \int\limits_{}^{} \left( z - H \hat{x} \right) \, \mathrm{d} t = 0.
+\]
+
+To nam sporoča, da pomembnost ojačevalnega faktorja časovno pada, kar pomeni, da lahko namesto časovno spremenljivega \( K(t) \) izberemo nek konstanten ojačevalni faktor \( K_{\infty} = PH^T R^{-1} \).
+
+Težave lahko nastopijo le v prestopnem/tranzientnem režimu.
+
+Zanima nas, ali lahko najprej naredimo senzor in potem gledamo za kakšne dinamike je dober? Do sedaj smo postopali tako, da smo si izbrali dinamiko in naredili senzor.
+
+Zanima nas red senzorja glede na dinamiko. V senzor prihaja meritev \( z \) in njegov izhod nam da oceno \( \hat{x} \). Senzor rešuje diferencialno enačbo in red te enačbe bomo označili z \( n \) za oceno \( \hat{x} \).
+
+Red senzorja je direktno koreliran z redom dinamike spremenljivke, ki jo merimo. Torej senzor \( n \)-tega reda obravnavamo kot optimalen senzor za spremenljivko reda dinmaike v sistemu \( S \) in se spreminja kvečjemu kot
+
+\[ \frac{\mathrm{d} ^{(n)} }{\mathrm{d} x^{(n)}} x = 0 + w.
+\]
+
+[glej Markejeve zapiske.]
+** Senzor prvega reda
+
+Senzor prvega reda je optimalen za sledenje
+
+\begin{equation}
+\label{eq:4}
+ \dot{x} = 0 + w,
+\end{equation}
+
+kjer za šum velja
+
+\[ \left\langle w(t) w(t') \right\rangle  = Q \delta(t - t').
+\]
+
+Meritev ima obliko \( z = x + r \), kjer ima merilni šum \( \left\langle r ^2 \right\rangle  = R\).
+
+Sestavimo sedaj Kalmanov filter za sistem \( S \), ki je oblike
+
+\[ \dot{x} = A x + c + \Gamma w.
+\]
+
+Primerjamo z \ref{eq:4} in izluščimo vrednosti koeficientov
+
+\[ A = 0, \quad, C = 0, \quad, H = 1, \quad \text{ in } \quad \Gamma = 1.
+\]
+
+V merilnem sistemu \( M \)  je torej ocena
+
+\[ \dot{\hat{x}} = \cancel{A \dot{x}} + \cancel{c} + K \left( z - H \hat{x} \right) = K \left( z - \hat{x} \right).
+\]
+
+Disperzija je
+
+\[ \dot{P} = \cancel{2 AP} + \Gamma ^2 Q - \frac{P ^2}{R} = Q - \frac{P ^2}{R}.
+\]
+
+Ob konstantnem ojačevalnem faktorju \( K_{\infty} \) je \( \dot{P} = 0 \) in dobimo enakost \( Q = \frac{P_{\infty} ^2}{R} \) iz česar zaključimo
+
+\[ P_{\infty} = \sqrt{Q R}.
+\]
+
+Ojačevalni faktor je potem
+
+\[ K_{\infty} = \frac{P_{\infty}}{R} = \sqrt{\frac{Q}{R}}.
+\]
+
+Torej bo napoved ocene
+
+\[ \dot{\hat{x}}  K_{\infty} \left( z - \hat{x} \right) = \sqrt{\frac{Q}{R}} \left( z - \hat{x} \right).
+\]
+
+Izrazimo meritev
+
+\[ z = \frac{1}{K_{\infty}} \dot{\hat{x}} + \hat{x}
+\]
+
+in označimo \( \tau = \frac{1}{K_{\infty}} \). Senzor prvega reda ima potem obliko
+
+\[ \tau \dot{\hat{x}} + \hat{x} = z,
+\]
+
+kar je optimalen indikator za sledenje konstanti.
+
+Veliko merilcev so senzor 1. reda - termometer, merilnik hitrosti v avtu, itd. Nobeden od njih nam ne bi koristil, če bi imeli odvod. Senzor v peči je primer senzorja, ki ni prvega reda, saj spremlja temperaturo in njen odvod, da ve, kdaj se peč prižge.
+
+#+begin_my_example
+Poglejmo si primer termometra v kavi. Alkohol/živo srebro ima neko temperaturo \( T(t) \), ki se razteza. Kava ima temperaturo \( T_z \) in predstavlja zunanjo temperaturo. \( T(t) \) in \( T_z \) nista isti, saj ima termometer stekleno steno površine \( S \) z debelino \( d \), skozi katero gre toplotni tok \( \mathbf{j} \).
+
+Toplotni tok je potem
+
+\[ \mathbf{j} = - \lambda \nabla T
+\]
+
+Toplotni tok je potem
+
+\[ P = - \lambda \left( \frac{T_z - T}{d - 0} \right) S = - \frac{\lambda S}{d} \left( T_z - T \right).
+\]
+
+Hkrati je torej ta toplotni tok tudi po definiciji spremembi toplote
+
+\[ P = \frac{\mathrm{d} Q}{\mathrm{d} t} = - mc_P \frac{\mathrm{d} T}{\mathrm{d} t}.
+\]
+
+Enačimo in dobimo
+
+\[ \dot{T} = \frac{\lambda S}{m c_P d} \left( T_z - T \right).
+\]
+
+Konstante označimo z \( \Lambda = \frac{\lambda S}{m c_p d} \) in enačba za senzor prvega reda je potem
+
+\[ \frac{1}{\Lambda} \dot{T} + T = T_z.
+\]
+
+V senzor vstopi \( T_z \) izstopi pa \( T \).
+#+end_my_example
+
+Kaj se zgodi v primeru, če s senzorjem prvega reda merimo dinamike višjih redov? Obstajajo tri možnosti.
