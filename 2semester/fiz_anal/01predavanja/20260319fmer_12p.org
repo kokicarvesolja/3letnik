@@ -242,3 +242,178 @@ Zaključimo, da je
 
 Zaključimo, da je kakršnakoli meritev dobrodošla, dokler je \( R < \infty \).
 #+end_my_example
+
+#+begin_my_example
+Merimo napetost na kondenzatorju s kapaciteto \( C \), ki se prazni preko upornika \( R \) - enostaven RC člen. Meritev napetosti \( U_C \) označimo z \( Z \).
+
+V sistemu \( S \) si poglejmo dinamiko. V primeru, da nimamo gonilne napetosti \( U_g \), potem bo veljalo
+
+\[ \sum\limits_i^{} U_i = U_C + U_R = 0.
+\]
+
+Napetost na kondenzatorju je po definiciji \( U_C = \frac{e}{C} \). Po zgornji enačbi torej velja
+
+\[ \frac{e}{C} = - U_R.
+\]
+
+Enačbo sedaj odvajajmo po času
+
+\begin{equation}
+\label{eq:1}
+ \frac{\dot{e}}{C} = - \dot{U}_R.
+\end{equation}
+
+Po času odvajamo tudi prvotno enačbo
+
+\[ \dot{U}_C + \dot{U}_R = 0 \implies \dot{U}_C = - \dot{U}_R.
+\]
+
+V enačbo \ref{eq:1} vstavimo zgornjo enakosti in upoštevamo definicijo električnega toka \( I = \frac{\mathrm{d} e}{\mathrm{d} t} \)
+
+\[ - \frac{I}{C} = \dot{U}_C.
+\]
+
+Napetost v uporniku je podana preko Ohmovega zakona \( U_R = - IR \). Zgornjo enačbo torej lahko zapišemo
+
+\[ \dot{U}_C = - \frac{1}{I RC} U_R = \frac{1}{\tau} U_R = - \frac{1}{\tau} U_C
+\]
+
+Dinamika sistema za \( U_C \) v sistemu \( S \) je
+
+\[ \dot{U}_C + \frac{1}{\tau} U_C = 0.
+\]
+
+Sistem ima lahko seveda tudi naključen šum, torej ima dinamika novo komponento
+
+\begin{equation}
+\label{eq:2}
+ \dot{U}_C = - \frac{1}{\tau} U_C + w(t),
+\end{equation}
+
+za katerega velja
+
+\[ \left\langle w(t), w(t') \right\rangle = \delta(t - t') Q.
+\]
+
+Meritev nam je potem oblike \( z = U_C + r \), kjer je \( \left\langle r ^2 \right\rangle = R \).
+
+Ocena napetosti je \( \hat{U}_C \) s disperzijo
+
+\[ P = \left\langle \left( \hat{U}_C - U_C \right) ^2 \right\rangle .
+\]
+
+Računamo torej skalarno spremenljivko za dinamiko
+
+\[ \dot{P} = 2 A P + Q - \frac{P ^2}{R}.
+\]
+
+Primerjamo enačbo \ref{eq:2} s splošno obliko dinamike \( \dot{x} = A x + \Gamma \), iz česar zaključimo, da so posamezni koeficienti \( A = - \frac{1}{\tau} \) in \( \Gamma = 1 \). Vstavimo jih v zgornjo enačbo in dobimo
+
+\begin{equation}
+\label{eq:3}
+ \dot{P} = - \frac{2}{\tau} P + Q - \frac{P ^2}{R} = 0.
+\end{equation}
+
+V limiti \( t \to \infty \) bo veljalo
+
+\[ - \frac{2}{\tau} P - \frac{P ^2}{R} + Q = 0.
+\]
+
+Želimo najti ničle te kvadratne enačbe, da lahko zapišemo v ničelni(?) obliki
+
+\[ \frac{1}{R} \left( P - P_{1 \infty} \right) \left( P - P_{2 \infty} \right) = 0.
+\]
+
+Poiščimo sedaj \( P_{1, 2} \). Preoblikujemo kvadratno enačbo
+
+\[ \frac{2 R}{\tau} P + P ^2 - Q R = 0.
+\]
+
+Rešitvi kvadratne enačbe sta tako
+
+\[ P_{1, 2} = - \frac{R}{\tau} \pm \frac{R}{2} \sqrt{1 + \frac{Q R \tau ^2}{R ^2}}.
+\]
+
+Označimo \( \alpha = \frac{R}{2} \sqrt{1 + \frac{Q R \tau ^2}{R ^2}}  \) in so ničle \( P_{1, 2} = - \frac{R}{\tau} \pm \alpha \).
+
+Za vsak \( t \) potem lahko diferencialno enačbo \ref{eq:3} integriramo
+
+\[ \int\limits_{}^{} \frac{\mathrm{d} P}{\frac{1}{R} \left( P + \frac{R}{2} - \alpha \right) \left( P + \frac{R}{2} + \alpha \right)} = - \int\limits_{}^{} \, \mathrm{d} t.
+\]
+
+Ulomek razcepimo
+
+\[ \frac{1}{ \left( P + \frac{R}{2} - \alpha \right) \left( P + \frac{R}{2} + \alpha \right)}} = \frac{\frac{1}{2 \alpha}}{\left( P + \frac{R}{2} - \alpha \right)} - \frac{\frac{1}{2 \alpha}}{\left( P + \frac{R}{2} + \alpha \right)}
+\]
+
+Integral torej zapišemo kot
+
+\[ R \left[ \int\limits_{}^{} \frac{1}{2 \alpha} \frac{\mathrm{d} P}{\left( P + \frac{R}{2} - \alpha \right)} - \int\limits_{}^{} \frac{1}{2 \alpha}  \frac{\mathrm{d} P}{\left( P + \frac{R}{2} + \right)} \right] = - \int\limits_{}^{} \, \mathrm{d} t.
+\]
+
+Integrala sedaj trivialno integriramo
+
+\[ - \frac{2 \alpha t}{R} = \left. \left[ \ln \left( P + \frac{R}{2} - \alpha \right) - \ln \left( P + \frac{R}{2} + \alpha \right) \right] \right|_{P_0}^P = \left. \ln \left( \frac{P + \frac{R}{2} - \alpha}{P + \frac{R}{2} + \alpha} \right) \right|_{P_0} ^P.
+\]
+
+Preostane nam
+
+\[ \frac{P + \frac{R}{2} - \alpha}{P + \frac{R}{2} + \alpha} = \frac{P_0 + \frac{R}{2} - \alpha}{P_0 + \frac{R}{2} + \alpha} \exp \left\{ - 2 \alpha t \frac{1}{R} \right\}.
+\]
+
+Še zmeraj istemo stacionarno rešitev \( \dot{P} = 0 \). Ob času \( t = 0 \) je \( P(0) = P_0 \) in bo koeficient pred eksponent približno \( 1 \).
+
+Preostane nam torej
+
+\[ \left( P + \frac{R}{2} - \alpha \right) = \left( P + \frac{R}{2 + \alpha} \right) \exp \left\{ - 2 \alpha \frac{1}{R} \right\}.
+\]
+
+Izrazimo \( P \)
+
+\[ P \left( 1 - \exp \left\{ 2 \alpha t \frac{1}{R} \right\} \right) = - \frac{R}{2} \left[ 1 - \exp \left\{ - 2 \alpha t \frac{1}{R}  \right\} \right] + \alpha \left[ 1 + \exp \left\{ - 2 \alpha t \frac{1}{R} \right\} \right].
+\]
+
+Torej je
+
+\[ P = - \frac{R}{2} + \alpha \left[ \frac{1 + \exp \left\{ - 2 \alpha t \frac{1}{R} \right\}}{1 - \exp \left\{ -2 \alpha t \frac{1}{R} \right\}} \right].
+\]
+
+Za \( t \to \infty \) je potem
+
+\[ P = - \frac{R}{2} + \alpha
+\]
+
+in ob upoštevanju definicije \( \alpha \)  je potem
+
+\[ P_{\infty} = -\frac{R}{2} + \sqrt{\left( \frac{R}{\tau} \right) ^2 + R Q}
+\]
+
+V primeru majhnega dinamičnega šuma \( Q \) je potem
+
+\[ P_{\infty} = - \frac{R}{2} + \frac{R}{2} \sqrt{1 + \frac{Q \tau ^2}{R}},
+\]
+
+kar lahko razvijemo po Taylorju
+
+\[ P = - \frac{R}{2} + \frac{R}{2} \left( 1 + \frac{Q \tau ^2}{2 R} \right) = \frac{Q \tau}{2}.
+\]
+
+Ocena je v tem primeru po Kalmanu
+
+\[ \dot{\hat{U}} = - \frac{1}{\tau} \hat{U} + K \left( z  - \hat{U} \right)
+\]
+
+oziroma
+
+\[ \dot{\hat{U}} = - \frac{1}{\tau} \hat{U} + \frac{Q \tau}{2 R} \left( z - \hat{U} \right).
+\]
+
+Dobili smo sedaj novo časovno neodvisno konstanto, ki jo označimo z \( \frac{1}{\tau_{eff}} \)
+
+\[ \dot{\hat{U}} = - \left( + \frac{1}{\tau} + \frac{Q \tau}{2 R} \right) \hat{U} + \frac{Q \tau}{ 2 R} = \frac{1}{\tau_{eff}} \hat{U}_R + \frac{Q \tau}{2 R}.
+\]
+
+Velja \( \tau_{eff} < \tau \).
+
+V primeru \( Q \to \infty \) pa gre \( \tau_{eff} \to 0 \). To pomeni, da je potem \( P \) stacionaren in napaka je enaka kakor pri meritvi. Če je \( Q = 0 \), potem moramo celoten čas \( \tau \) počakati, da se meritev umiri in je \( P \) konstanten. Za vse vrednosti vmes je toliko manj časa potrebno, da lahko zaupamo meritvi.
+#+end_my_example
