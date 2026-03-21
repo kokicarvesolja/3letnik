@@ -265,3 +265,123 @@ Višina po \( n \)-tem odboju je potem funkcija \( n + 1 \) spremenljivk
 
 V tem primeru dobimo pravilno rešitev, saj so meritve med seboj nekorelirane.
 * Kalmanov filter za sledenje vektorski spremenljivki v diskretni sliki
+
+Imamo \( k \) spremenljivk \( x_1, x_2, \ldots, x_k \), ki jih zapišemo v vektorski obliki kot
+
+\[ \mathbf{x} = \begin{bmatrix} x_{1} \\ x_{2} \\ \vdots \\ x_{k} \end{bmatrix}.
+\]
+
+Ocena in izostrena ocena pa bosta v vektorski obliki
+
+\[ \bar{\mathbf{x}} = \begin{bmatrix} \bar{x}_{1} \\ \bar{x}_2 \\ \vdots \\ \bar{x}_k \end{bmatrix} \quad \text{ in } \quad \hat{\mathbf{x}} = \begin{bmatrix} \hat{x}_{1} \\ \hat{x}_{2} \\ \vdots \\ \hat{x}_k \end{bmatrix}.
+\]
+
+Za vektorske spremenljivke moramo tako kot skalarnih zapisati dinamiko, ki bo ponovno oblike
+
+\[ \mathbf{x}_{n + 1} = \Phi_n \mathbf{x}_n + \mathbf{c}_n + \Gamma_n \mathbf{w}_n.
+\]
+
+Razlika je sedaj v tem, da je \( \Phi_n \) sedaj matrika.
+
+Za vzorčni čas \( T \) in čas \( t = n T \) želimo narediti napoved za čas \( t = (n + 1)T \). Ob času \( nT \) imamo izostreno oceno \( \hat{\mathbf{x}} \) ter pripadajočo kovariančno matriko izostrene ocene \( P_n \). Napoved ocene za novi čas je zaradi dinamike
+
+\[ \bar{\mathbf{x}}_{n + 1} = \Phi_n \hat{\mathbf{x}}_n + \mathbf{c}_n
+\]
+
+s pripadajočo kovariančno matriko
+
+\[ M_{n + 1} = \left\langle \left( \bar{\mathbf{x}}_{n + 1} - \mathbf{x}_{n + 1} \right) \left( \bar{\mathbf{x}}_{n + 1} - \mathbf{x}_{n + 1} \right)^T \right\rangle.
+\]
+
+Razliko napovedi ocene in spremenljvke, ki sledi diferenčni enačbi je
+
+\[ \bar{\mathbf{x}}_{n + 1} - \mathbf{x}_{n + 1} = \Phi_n \hat{\mathbf{x}}_n + c_n - \left( \Phi_n \mathbf{x}_n + \mathbf{c}_n + \Gamma_n \mathbf{w}_n \right) = \Phi_n (\hat{\mathbf{x}}_n - \mathbf{x}_n) - \Gamma_n \mathbf{w}_n.
+\]
+
+Kovariančna matrika npovedi ocene je zato
+
+\begin{align*}
+  M_{n + 1} &= \left\langle \left( \Phi_n \left( \hat{\mathbf{x}}_n - \mathbf{x}_n \right) - \Gamma_n \mathbf{w}_n \right) \left( \Phi_n \left( \hat{\mathbf{x}}_n - \mathbf{x}_n \right) - \Gamma_n \mathbf{w}_n\right)^T \right\rangle \\
+&= \Phi_n P_n \Phi_n^T + \Gamma_n Q_n \Gamma_n ^T,
+\end{align*}
+
+kjer je
+
+\[ P_n = \left\langle \left( \hat{\mathbf{x}}_n - \mathbf{x} \right)\left( \hat{\mathbf{x}}_n - \mathbf{x} \right)^T \right\rangle \quad \text{ in } \quad \left\langle \mathbf{w}_n \mathbf{w}_n^T \right\rangle = Q_n.
+\]
+
+Matriki \( Q_n \) pravimo kovariančna matrika dinamičnih šumov.
+
+Brez dodatnih meritev velja \( P_{n + 1} = M_{n + 1} \) in \( \hat{\mathbf{x}}_{n + 1} = \bar{\mathbf{x}}_{n + 1} \).
+* Naloga: Kalmanov filter prožnega trka dveh teles
+
+#+begin_problem
+Dve kladi z masama \( m_1 \) in \( m_2 \) s pripadajočima hitrostima \( v_1 \) ter \( v_2 \) prožno trčita. Hitrosti imata vsaka svojo nedoločenost \( \sigma_1 \) in \( \sigma_2 \). Izračunaj kovariančno matriko po trku za vektor \( \mathbf{v} = [v_1 ', v_2 ']^T \), kjer sta to hitrosti teles po trku. Predpostavi, da sta začetni hitrosti nekorelirani in telesni dinamiki popolnoma poznani.
+#+end_problem
+
+Pred trkom imamo vektor
+
+\[ \mathbf{v} = \begin{bmatrix} v_{1} \\ v_{2} \end{bmatrix}
+\]
+
+s pripadajočo kovariančno matriko
+
+\[ P = \begin{bmatrix}
+       \sigma_{1} ^2 & 0 \\
+        0 & \sigma_2 ^2
+        \end{bmatrix}.
+\]
+
+Išcemo dinamiko oblike
+
+\[ \mathbf{v}' = \Phi \mathbf{v} + \mathbf{c} + \Gamma \mathbf{w}.
+\]
+
+V navodilih naloge piše, da imamo popolnoma prožni trk, zato bomo nalogo reševali v težiščnem sistemu (CMS). Hitrost posamezne klade označimo z
+
+\[ u_1 = v_1 - v_T \quad \text{ in } \quad u_2 = v_2 - v_T,
+\]
+
+kjer je \( v_T \) hitrost težišča sistema definirana kot
+
+\[ v_T = \frac{m_1 v_1 + m_2 v_2}{m_1 + m_2}.
+\]
+
+Iz zakona o ohranitvi gibalne količine \( \sum\limits_{}^{} p_i = 0 \) dobimo dve enačbi za pred in po trku
+
+\begin{align*}
+  0 &= m_1 u_1 + m_2 u_2 \\
+0 &= m_1 u_1 ' + m_2 u_2 '.
+\end{align*}
+
+Iz danih enačb lahko izrazimo hitrost druge klade glede na hitrost prve klade
+
+\begin{align*}
+  u_2 &= - \frac{m_1}{m_2} u_1 \\
+u_2 ' &= - \frac{m_1}{m_2} u_1 '.
+\end{align*}
+
+Upoštevati moramo tudi zakon o ohranitvi kinetične energije \( \sum\limits_i^{} T_i = \sum\limits_i^{} T_i ' \). Dobimo enačbo
+
+\[ m_1 u_1 ^2 + m_2 u_2 ^2 = m_1 u_1 ' ^2 + m_2 u_2 ' ^2.
+\]
+
+Upoštevamo identitete dobljene iz zakona o gibalni količini in zapišemo
+
+\[ u_1 ^2 \left( m_1 + \frac{m_1 ^2}{m_2} \right) = u_1' ^2 \left( m_1 + \frac{m_1 ^2}{m_2} \right),
+\]
+
+iz česar dobimo
+
+\[ u_1 ' = \pm u_1.
+\]
+
+Za hitrost po trku si bomo izbrali negativen predznak hitrost, saj drugače do trka ni prišlo! Analogno pridemo tudi do \( u_2 ' = - u_2 \).
+
+Po dobljenih identitetah lahko ponovno preidemo iz težiščnega sistema nazaj v normalen sistem. Za \( i = 1, 2 \) dobimo izraza
+
+\begin{align*}
+  u_i ' &= - u_i \\
+\left( v_i ' - v_T \right) &= - \left( v_i - v_T \right) \\
+v_i ' &= - v_i + 2 v_T.
+\end{align*}

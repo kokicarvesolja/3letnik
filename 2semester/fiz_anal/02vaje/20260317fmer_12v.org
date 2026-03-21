@@ -1,0 +1,23 @@
+#+title: Vaje iz Fizikalnih merjenj, 12. teden v letu
+#+subtitle: 2026/03/17
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Naloga: Kalmanov filter prožnega trka dveh teles - nadaljevanje
+
+Nadaljujemo s problemom od zadnjič. Iskali smo dinamiko oblike
+
+\[ \mathbf{v}' = \Phi \mathbf{v} + \mathbf{c} + \Gamma \mathbf{w}.
+\]
+
+Preko težiščnega sistema smo prišli do vrednosti hitrosti po trku za obe telesi
+
+\[ v_1 ' = - v_1 + 2 v_T \quad \text{ in } \quad v_2 ' = - v_2 + 2 v_T,
+\]
+
+kjer je \( v_T = \frac{m_1 v_1 + m_2 v_2}{m _1 + m_2} \) težiščna hitrost.
