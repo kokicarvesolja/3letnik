@@ -76,7 +76,7 @@ Varianco povprečja
  Na izraz sedaj apliciramo pričakovano vrednost in prepoznamo izraza za varianco in kovarianco
 
  \begin{align*}
-   \sigma_M ^2 &= \frac{1}{N ^2} \left( \left\langle \sum\limits_{i = 1}^N \left( z_i - \mu \right) ^2 \right\rangle + \left\langle \sum\limits_{i, j = 1, \ i \ne j}^N \left( z_i - \mu \right) \left( z_j - \mu \right) \right\rangle \\
+   \sigma_M ^2 &= \frac{1}{N ^2} \left( \left\langle \sum\limits_{i = 1}^N \left( z_i - \mu \right) ^2 \right\rangle + \left\langle \sum\limits_{i, j = 1, \ i \ne j}^N \left( z_i - \mu \right) \left( z_j - \mu \right) \right\rangle \right) \\
 &= \frac{1}{N ^2} \sum\limits_{i, j = 1}^N \sigma_{ij}
  \end{align*}
 

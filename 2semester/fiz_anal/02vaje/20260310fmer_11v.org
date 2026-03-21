@@ -64,13 +64,11 @@ Njena disperzija je
 
 Uvedemo nove spremenljivke in sicer
 
-\[
 \begin{array}{|c|c|} \hline
 \sigma_{n + 1} ^2 & R_{n + 1} \\ 
 \bar{\sigma}_{n + 1} ^2 & M_{n + 1} \\ 
 \hat{\sigma}_{n + 1} ^2 & P_{n + 1} \\ \hline
 \end{array}
-\]
 
 V primeru, da ne merimo, potem ni drugega koraka - ostrenja ocene. Napoved je najboljša ocena
 
@@ -173,7 +171,7 @@ Kapico smo dali disperziji, saj je to naša optimalna ocena. Disperzijo pa bi la
 \]
 ** Dinamični šum
 #+begin_problem
-Prejšnji nalog dodamo dinamični šum \( \delta_H \ne 0 \). To pomeni, da smo višini stopnic dodali disperzijo.
+Prejšnji nalogi dodamo dinamični šum \( \delta_H \ne 0 \). To pomeni, da smo višini stopnic dodali disperzijo.
 #+end_problem
 
 V tem primeru zapišemo višino stopnice kot

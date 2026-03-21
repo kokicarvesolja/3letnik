@@ -68,8 +68,8 @@ Dobljeni vrednosti nesemo v varianco in dobimo
 Upoštevamo definicijo variance za spremenljivki \( x \) in \( y \). Poleg tega se zadnjemu členu reče kovarianca, ki nam pove, kako odvisni sta spremenljivki \( x \) in \( y \) medseboj.
 
 \[ \sigma_{\bar{x} \bar{y}} = \left\langle \left( \bar{x} - x \right) \left( \bar{y} - y \right) \right\rangle = \begin{cases}
-                                                                                                                 0 &; \bar{x}, \bar{y} \text{neodvisni} \\
-                                                                                                                 \rho_{\bar{x} \bar{y}} \sigma_{\bar{x}} \sigma_{\bar{y}} &; odvisni
+                                                                                                                 0 &; \bar{x}, \bar{y} \text{ neodvisni} \\
+                                                                                                                 \rho_{\bar{x} \bar{y}} \sigma_{\bar{x}} \sigma_{\bar{y}} &; \text{ odvisni }
                                                                                                                  \end{cases}
 \]
 
@@ -162,7 +162,7 @@ Slednje vrednosti integralov so težko izračunljive, zato se v večini primerov
 \[ \tilde{F} (x, \mu, \sigma ^2) = \int\limits_{- \infty}^x \frac{\mathrm{d} P}{\mathrm{d} z} \, \mathrm{d} z = \int\limits_{- \infty}^x \mathcal{N} (\mu, \sigma ^2) \, \mathrm{d} z,
 \]
 
-kar je kumulativna porazdelitev funkcije normalne porazdelitve. *Ta vrednost ni tabelirana, saj je odvisna od parametra \( x \)*!.
+kar je kumulativna porazdelitev funkcije normalne porazdelitve. *Ta vrednost ni tabelirana, saj je odvisna od parametra \( x \)*!
 
 Namesto tega je tabelirana druga funkcija.
 
