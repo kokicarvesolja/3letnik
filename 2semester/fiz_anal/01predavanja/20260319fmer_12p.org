@@ -12,8 +12,9 @@
 
 Prejšnji teden smo izpeljali ostrenje meritve in prehod na zvezno sliko vektorskih spremenljivk kot so sta v 60. letih to naredila Kalman in Bucy.
 
+#+name: Brownovo gibanje
 #+begin_my_example
-Obravnavajmo enodimenzionalni primer delca, ki se premika s hitrostjo \( \dot{x} \). Na delec vplivajo naključne sile, ki jih bomo označili z \( F_x (t) \) in predstavljajo šum. Na delec vpliva Stokesov izrek upora.
+Obravnavajmo enodimenzionalni primer delca, ki se premika s hitrostjo \( \dot{x} \). Na delec vplivajo naključne sile, ki jih bomo označili z \( F_x (t) \) in predstavljajo šum. Na delec prav tako vpliva Stokesov izrek upora.
 
 
 Dinamiko delca bomo opisali z drugim Newtonovim zakonom, ki je v splošnem
@@ -21,7 +22,7 @@ Dinamiko delca bomo opisali z drugim Newtonovim zakonom, ki je v splošnem
 \[ \sum\limits_{}^{} F_i = m \ddot{x}.
 \]
 
-Za naš konkretni primer na delec delujeta sila, ki je posledica Stokesa in naključne sile
+Za naš konkretni primer na delec deluje vsota sil Stokesa in naključnih sil
 
 \[ \ddot{x} = - \frac{6 \pi R \eta}{m} \dot{x} + \frac{F_x}{m} (t).
 \]
@@ -31,7 +32,7 @@ Za dinamični šum velja
 \[ \left\langle \frac{F_x(t)}{m}, \frac{F_x(t')}{m} \right\rangle = \delta(t - t')\cdot Q.
 \]
 
-Imamo dve spremenljviki, ki ju vektorsko zapišemo \( \mathbf{x} = [x, v] \). Za dani spremenljivki torej velja dinamika
+Imamo dve spremenljivki, ki ju vektorsko zapišemo \( \mathbf{x} = [x, v] \). Za dani spremenljivki torej velja dinamika
 
 \begin{align*}
   \dot{x} &= v \\
@@ -55,13 +56,7 @@ Dobili smo torej sistem, ki ima dinamiko oblike
 
 kjer je \( w = F_x \).
 
-
-Ob času \( t = 0 \) ničesar ne merimo. To pomeni, da gre \( R \to \infty \). Napoved in njena disperzija je tako
-
-\begin{align*}
-  \bar{x} (0) &= 0 \\
-P(0) &= P_0.
-\end{align*}
+Ob času \( t = 0 \) je meritev leg v senzorju prekinjena. Kovariančna matrika ima vrednost \( P(0) = P_0 \), izhodišče koordinatnega sistema \( M \) pa je postavljeno tako, da \( \bar{x} = 0 \) in \( \bar{v} = 0 \).
 
 Kovariančna matrika ima v odvisnosti od časa obliko
 
@@ -73,8 +68,10 @@ Kovariančna matrika ima v odvisnosti od časa obliko
 
 Za \( t > 0 \) pa je naš sistem
 
-\[ \dot{P} = A P + PA^T + \Gamma Q \Gamma^T \cancel{- PH^T R^{-1} H P}.
+\[ \dot{P} = A P + PA^T + \Gamma Q \Gamma^T \cancel{- PH^T R^{-1} H P},
 \]
+
+kjer smo rekli \( R \to \infty \).
 
 Matrika \( A \) je simetrična, torej bo zanjo veljalo \( A = A^T \) in posledično \( PA^T = \left( AP \right)^T \). Sistem torej zapišemo
 
@@ -87,14 +84,15 @@ Matrika \( A \) je simetrična, torej bo zanjo veljalo \( A = A^T \) in posledi�
 \left\langle x ^2 \right\rangle & \left\langle xv \right\rangle \\
 \left\langle xv \right\rangle &  \left\langle v ^2 \right\rangle
  \end{bmatrix}
-+ \begin{bmatrix}
++\begin{bmatrix}
   \left\langle x ^2 \right\rangle & \left\langle xv \right\rangle \\
 \left\langle xv \right\rangle   & \left\langle v ^2 \right\rangle
    \end{bmatrix}
 \begin{bmatrix}
 0 & 0 \\
 1 & -\frac{1}{\tau}
- \end{bmatrix} +
+ \end{bmatrix} \\
+& \quad +
 \begin{bmatrix} 0 \\ 1 \end{bmatrix} [0 \quad 1] Q \\
 \frac{\mathrm{d} }{\mathrm{d} t}
 \begin{bmatrix}
@@ -108,7 +106,8 @@ Matrika \( A \) je simetrična, torej bo zanjo veljalo \( A = A^T \) in posledi�
 \begin{bmatrix}
 \left\langle xv \right\rangle & - \frac{1}{\tau} \left\langle xv \right\rangle \\
 \left\langle v ^2 \right\rangle & - \frac{1}{\tau} \left\langle v ^2 \right\rangle
- \end{bmatrix} + \begin{bmatrix}
+ \end{bmatrix} \\
+& \quad + \begin{bmatrix}
                  0 & 0 \\
                  0 & Q
                   \end{bmatrix}
@@ -122,24 +121,22 @@ Dobimo torej sistem enačb
 \frac{\mathrm{d} }{\mathrm{d} t} \left\langle v ^2 \right\rangle &= - \frac{2}{\tau} \left\langle v ^2 \right\rangle + Q.
 \end{align*}
 
-Poglejmo si stacionarne rešitve v termodinamskem ravnovesju za \( \frac{\mathrm{d} }{\mathrm{d} t}\left\langle v ^2 \right\rangle = 0 \) - termalizacija.
-
-Potem dobimo enakost
+Poglejmo si stacionarne rešitve v termodinamskem ravnovesju za \( \frac{\mathrm{d} }{\mathrm{d} t}\left\langle v ^2 \right\rangle = 0 \).
 
 \[ \left\langle v ^2 \right\rangle _{\infty} = \frac{Q \tau}{2}.
 \]
 
-Preko ne-vem-katerega-zakona velja
+Preko ekviparticijskega izreka jo lahko povežemo s temperaturo \( T \) tekočine.
 
 \[ \frac{1}{2} m \left\langle v ^2 \right\rangle _{\infty} = \left\langle W_t \right\rangle = \frac{k T}{2}
 \]
 
-Izrazimo kvadrat hitrosti ven in dobimo
+Nadomestimo izraz disperzije hitrosti in dobimo vrednost dinamičnega šuma
 
 \[ \left\langle v ^2 \right\rangle _{\infty} = \frac{k T}{m} = \frac{Q \tau}{2} \implies Q = \frac{2k T}{m \tau}.
 \]
 
-Drugi možen primer je, da je \( \frac{\mathrm{d} }{\mathrm{d} t}\left\langle x v \right\rangle = 0 \). V term primeru velja enakost
+Lega delca in njegova hitrost sta korelirani, kakor vidimo iz druge enačbe našega sistem. V stacionarnem primeru upoštevamo vrednost \( \left\langle v ^2 \right\rangle \)
 
 \[ 0 = \left\langle v ^2 \right\rangle _{\infty} - \frac{1}{\tau} \left\langle xv \right\rangle_{\infty} \implies \frac{Q \tau}{2} = \frac{1}{\tau} \left\langle xv \right\rangle_{\infty}.
 \]
@@ -149,22 +146,24 @@ Potem dobimo
 \[ \left\langle xv \right\rangle _{\infty} = \frac{Q \tau ^2}{2} = \frac{2k T}{m \tau} \implies \left\langle xv \right\rangle_{\infty} = \frac{k T \tau}{m}.
 \]
 
-Stacionarna rešitev za tretjo enačbo pa je potem
+Disperzija lege nima stacionarne rešitve zaradi
 
-\[ \frac{\mathrm{d} }{\mathrm{d} t} \left\langle x ^2 \right\rangle = 0 = 2 \left\langle xv \right\rangle_{\infty}.
+\[ \frac{\mathrm{d} }{\mathrm{d} t} \left\langle x ^2 \right\rangle = 2 \left\langle xv \right\rangle_{\infty} \ne 0.
 \]
 
-To ne gre (?), zato integriramo
+Zato bomo enačbo integrirali.
 
 \begin{align*}
   \frac{\mathrm{d} }{\mathrm{d} t} \left\langle x ^2 \right\rangle &= 2 \left\langle x v \right\rangle_{\infty} && \left/ \int\limits_0^t \, \mathrm{d} t \right. \\
-\left\langle x ^2 (t) \right\rangle - \left\langle x ^2 (0) \right\rangle = \frac{2 k T \tau}{ m} t.
+\left\langle x ^2 (t) \right\rangle - \left\langle x ^2 (0) \right\rangle &= \frac{2 k T \tau}{ m} t.
 \end{align*}
 
 Označimo \( \frac{k T \tau}{m} = D \) in dobimo difuzijsko enačbo
 
 \[ \left\langle x ^2 \right\rangle  = \left\langle x ^2 (0) \right\rangle + 2 D t.
 \]
+
+Če ob nekem trenutku prenehamo z meritvami lege delcev, se njihova negotovost začne povečevati tako, da disperzija lege raste linearno s časom.
 
 V treh dimenzijah je potem rešitev
 
@@ -173,7 +172,7 @@ V treh dimenzijah je potem rešitev
 #+end_my_example
 
 #+begin_my_example
-V zgornji primer sedaj vklopimo še nedoločenost lege \( H = [1 0 ] \). Meritev bo imela obliko \( z = H \mathbf{x} + r \).
+Sedaj pa začnemo meriti lego delca. Okno je potem \( H = [1 0 ] \). Meritev bo imela obliko \( z = H \mathbf{x} + r \).
 
 Sedaj imamo prej neupoštevan člen \( P H^T R^{-1} H P \), kar je
 
@@ -187,13 +186,15 @@ Sedaj imamo prej neupoštevan člen \( P H^T R^{-1} H P \), kar je
 
 Matrike se med seboj zmnožijo v
 
-\[ P H^T R^{-1} HP = - \frac{1}{R} \begin{bmatrix} \left\langle x ^2 \right\rangle \\ \left\langle xv \right\rangle \end{bmatrix} \left[\left\langle x ^2 \quad \left\langle xv \right\rangle \right\rangle\left] = - \frac{1}{R} \begin{bmatrix}
+\begin{align*}
+ P H^T R^{-1} HP &= - \frac{1}{R} \begin{bmatrix} \left\langle x ^2 \right\rangle \\ \left\langle xv \right\rangle \end{bmatrix} \left[\left\langle x ^2 \right\rangle \quad \left\langle xv \right\rangle\right] \\
+&= - \frac{1}{R} \begin{bmatrix}
 \left\langle x ^2 \right\rangle & \left\langle x ^2 \right\rangle \left\langle xv \right\rangle\\
 \left\langle xv \right\rangle \left\langle x ^2 \right\rangle      & \left\langle xv \right\rangle ^2
 \end{bmatrix}
-\]
+\end{align*}
 
-Potem imamo sistem enačbo
+Potem imamo sistem enačb
 
 \[ \dot{P} = \begin{bmatrix}
              2 \left\langle xv \right\rangle - \frac{1}{R} \left\langle x ^2 \right\rangle ^2 & \left\langle v ^2 \right\rangle - \frac{1}{\tau} \left\langle xv \right\rangle - \frac{1}{R} \left\langle x ^2 \right\rangle \left\langle xv \right\rangle \\
@@ -216,7 +217,7 @@ Iz prve enačbe dobimo enakost \( \left\langle xv \right\rangle = \frac{1}{2 R} 
 &= \frac{Q \tau}{2} - \frac{\tau ^4}{2 R} \cdot \frac{1}{\left( 2R \right) ^2} \frac{\left\langle x ^2 \right\rangle ^4}{\tau ^3} \frac{R}{R}
 \end{align*}
 
-V zadnji vrstici smo razširili in sedaj lahko uvedemo \( Y = \left\langle x ^2 \right\rangle \frac{\tau}{R} \) in imamo torej
+V zadnji vrstici smo razširili in sedaj lahko uvedemo brezdimenzijsko spremenljivko \( Y = \left\langle x ^2 \right\rangle \frac{\tau}{R} \) in imamo torej
 
 \[ \left\langle v ^2 \right\rangle = \frac{Q \tau}{2} - \frac{Y ^4 R}{8 \tau ^3}.
 \]
@@ -228,14 +229,14 @@ Slednje vstavimo v drugo enačbo in dobimo rešitev
 
 Leva stran enačbe je \( f(Y) \). Obstaja rešitev, ko ta funkcija seka \( \frac{4 Q T ^4}{R} \).
 
-Recimo, da imamo "prosto" nedoločenost lege. Potem je \( R \) velik, saj gre proti \( \infty \). Posledično je desna stran enačba majhna in velja \( Y ^4 \ll Y^2 \ll Y = \left\langle x ^2 \right\rangle \frac{\tau}{R} \).
+Recimo, da imamo grobo meritev lege. Potem je \( R \) velik, saj gre proti \( \infty \). Posledično je desna stran enačba majhna in velja \( Y ^4 \ll Y^2 \ll Y = \left\langle x ^2 \right\rangle \frac{\tau}{R} \).
 
 Ostane nam
 
 \[ 4 Y ^4 = \frac{4 Q \tau ^4}{R} \implies Y = \sqrt{\frac{Q}{R}} \tau ^2 = \left\langle x ^2 \right\rangle \frac{\tau}{R}.
 \]
 
-Zaključimo, da je
+Nedoločenost lege je torej konstantna
 
 \[ \left\langle x ^2 \right\rangle = \sqrt{Q R} \cdot \tau.
 \]
@@ -246,7 +247,7 @@ Zaključimo, da je kakršnakoli meritev dobrodošla, dokler je \( R < \infty \).
 #+begin_my_example
 Merimo napetost na kondenzatorju s kapaciteto \( C \), ki se prazni preko upornika \( R \) - enostaven RC člen. Meritev napetosti \( U_C \) označimo z \( Z \).
 
-V sistemu \( S \) si poglejmo dinamiko. V primeru, da nimamo gonilne napetosti \( U_g \), potem bo veljalo
+V sistemu \( S \) si poglejmo dinamiko. V primeru, da nimamo gonilne napetosti \( U_g \), bo veljalo
 
 \[ \sum\limits_i^{} U_i = U_C + U_R = 0.
 \]
@@ -295,14 +296,14 @@ za katerega velja
 \[ \left\langle w(t), w(t') \right\rangle = \delta(t - t') Q.
 \]
 
-Meritev nam je potem oblike \( z = U_C + r \), kjer je \( \left\langle r ^2 \right\rangle = R \).
+Meritev je oblike \( z = U_C + r \), kjer je \( \left\langle r ^2 \right\rangle = R \).
 
-Ocena napetosti je \( \hat{U}_C \) s disperzijo
+Ocena napetosti je \( \hat{U}_C \) ima začetno vrednost disperzije
 
-\[ P = \left\langle \left( \hat{U}_C - U_C \right) ^2 \right\rangle .
+\[ P_0 = \left\langle \left( \hat{U}_C - U_C \right) ^2 \right\rangle .
 \]
 
-Računamo torej skalarno spremenljivko za dinamiko
+Disperzijo v kasnejšem času opisuje enačba
 
 \[ \dot{P} = 2 A P + Q - \frac{P ^2}{R}.
 \]
@@ -331,71 +332,71 @@ Poiščimo sedaj \( P_{1, 2} \). Preoblikujemo kvadratno enačbo
 
 Rešitvi kvadratne enačbe sta tako
 
-\[ P_{1, 2} = - \frac{R}{\tau} \pm \frac{R}{2} \sqrt{1 + \frac{Q R \tau ^2}{R ^2}}.
+\[ P_{1, 2} = - \frac{R}{\tau} \pm \frac{R}{\tau} \sqrt{1 + \frac{Q R \tau ^2}{R ^2}}.
 \]
 
-Označimo \( \alpha = \frac{R}{2} \sqrt{1 + \frac{Q R \tau ^2}{R ^2}}  \) in so ničle \( P_{1, 2} = - \frac{R}{\tau} \pm \alpha \).
+Označimo \( \alpha = \frac{R}{\tau} \sqrt{1 + \frac{Q R \tau ^2}{R ^2}}  \) in so ničle \( P_{1, 2} = - \frac{R}{\tau} \pm \alpha \).
 
 Za vsak \( t \) potem lahko diferencialno enačbo \ref{eq:3} integriramo
 
-\[ \int\limits_{}^{} \frac{\mathrm{d} P}{\frac{1}{R} \left( P + \frac{R}{2} - \alpha \right) \left( P + \frac{R}{2} + \alpha \right)} = - \int\limits_{}^{} \, \mathrm{d} t.
+\[ \int\limits_{}^{} \frac{\mathrm{d} P}{\frac{1}{R} \left( P + \frac{R}{\tau} - \alpha \right) \left( P + \frac{R}{\tau} + \alpha \right)} = - \int\limits_{}^{} \, \mathrm{d} t.
 \]
 
 Ulomek razcepimo
 
-\[ \frac{1}{ \left( P + \frac{R}{2} - \alpha \right) \left( P + \frac{R}{2} + \alpha \right)}} = \frac{\frac{1}{2 \alpha}}{\left( P + \frac{R}{2} - \alpha \right)} - \frac{\frac{1}{2 \alpha}}{\left( P + \frac{R}{2} + \alpha \right)}
+\[ \frac{1}{\left( P + \frac{R}{\tau} - \alpha \right) \left( P + \frac{R}{\tau} + \alpha \right)} = \frac{\frac{1}{2 \alpha}}{\left( P + \frac{R}{\tau} - \alpha \right)} - \frac{\frac{1}{2 \alpha}}{\left( P + \frac{R}{\tau} + \alpha \right)}
 \]
 
 Integral torej zapišemo kot
 
-\[ R \left[ \int\limits_{}^{} \frac{1}{2 \alpha} \frac{\mathrm{d} P}{\left( P + \frac{R}{2} - \alpha \right)} - \int\limits_{}^{} \frac{1}{2 \alpha}  \frac{\mathrm{d} P}{\left( P + \frac{R}{2} + \right)} \right] = - \int\limits_{}^{} \, \mathrm{d} t.
+\[ R \left[ \int\limits_{}^{} \frac{1}{2 \alpha} \frac{\mathrm{d} P}{\left( P + \frac{R}{\tau} - \alpha \right)} - \int\limits_{}^{} \frac{1}{2 \alpha}  \frac{\mathrm{d} P}{\left( P + \frac{R}{\tau} + \right)} \right] = - \int\limits_{}^{} \, \mathrm{d} t.
 \]
 
 Integrala sedaj trivialno integriramo
 
-\[ - \frac{2 \alpha t}{R} = \left. \left[ \ln \left( P + \frac{R}{2} - \alpha \right) - \ln \left( P + \frac{R}{2} + \alpha \right) \right] \right|_{P_0}^P = \left. \ln \left( \frac{P + \frac{R}{2} - \alpha}{P + \frac{R}{2} + \alpha} \right) \right|_{P_0} ^P.
+\[ - \frac{2 \alpha t}{R} = \left. \left[ \ln \left( P + \frac{R}{\tau} - \alpha \right) - \ln \left( P + \frac{R}{\tau} + \alpha \right) \right] \right|_{P_0}^P = \left. \ln \left( \frac{P + \frac{R}{\tau} - \alpha}{P + \frac{R}{\tau} + \alpha} \right) \right|_{P_0} ^P.
 \]
 
 Preostane nam
 
-\[ \frac{P + \frac{R}{2} - \alpha}{P + \frac{R}{2} + \alpha} = \frac{P_0 + \frac{R}{2} - \alpha}{P_0 + \frac{R}{2} + \alpha} \exp \left\{ - 2 \alpha t \frac{1}{R} \right\}.
+\[ \frac{P + \frac{R}{\tau} - \alpha}{P + \frac{R}{\tau} + \alpha} = \frac{P_0 + \frac{R}{\tau} - \alpha}{P_0 + \frac{R}{\tau} + \alpha} \exp \left\{ - 2 \alpha t \frac{1}{R} \right\}.
 \]
 
-Še zmeraj istemo stacionarno rešitev \( \dot{P} = 0 \). Ob času \( t = 0 \) je \( P(0) = P_0 \) in bo koeficient pred eksponent približno \( 1 \).
+Še zmeraj istemo stacionarno rešitev \( \dot{P} = 0 \). Ob času \( t = 0 \) je \( P(0) = P_0 \) in bo koeficient pred eksponentom približno \( 1 \).
 
 Preostane nam torej
 
-\[ \left( P + \frac{R}{2} - \alpha \right) = \left( P + \frac{R}{2 + \alpha} \right) \exp \left\{ - 2 \alpha \frac{1}{R} \right\}.
+\[ \left( P + \frac{R}{\tau} - \alpha \right) = \left( P + \frac{R}{\tau} + \alpha \right) \exp \left\{ - 2 \alpha \frac{1}{R} \right\}.
 \]
 
 Izrazimo \( P \)
 
-\[ P \left( 1 - \exp \left\{ 2 \alpha t \frac{1}{R} \right\} \right) = - \frac{R}{2} \left[ 1 - \exp \left\{ - 2 \alpha t \frac{1}{R}  \right\} \right] + \alpha \left[ 1 + \exp \left\{ - 2 \alpha t \frac{1}{R} \right\} \right].
+\[ P \left( 1 - \exp \left\{ 2 \alpha t \frac{1}{R} \right\} \right) = - \frac{R}{\tau} \left[ 1 - \exp \left\{ - 2 \alpha t \frac{1}{R}  \right\} \right] + \alpha \left[ 1 + \exp \left\{ - 2 \alpha t \frac{1}{R} \right\} \right].
 \]
 
 Torej je
 
-\[ P = - \frac{R}{2} + \alpha \left[ \frac{1 + \exp \left\{ - 2 \alpha t \frac{1}{R} \right\}}{1 - \exp \left\{ -2 \alpha t \frac{1}{R} \right\}} \right].
+\[ P = - \frac{R}{\tau} + \alpha \left[ \frac{1 + \exp \left\{ - 2 \alpha t \frac{1}{R} \right\}}{1 - \exp \left\{ -2 \alpha t \frac{1}{R} \right\}} \right].
 \]
 
 Za \( t \to \infty \) je potem
 
-\[ P = - \frac{R}{2} + \alpha
+\[ P = - \frac{R}{\tau} + \alpha
 \]
 
 in ob upoštevanju definicije \( \alpha \)  je potem
 
-\[ P_{\infty} = -\frac{R}{2} + \sqrt{\left( \frac{R}{\tau} \right) ^2 + R Q}
+\[ P_{\infty} = -\frac{R}{\tau} + \sqrt{\left( \frac{R}{\tau} \right) ^2 + R Q}
 \]
 
 V primeru majhnega dinamičnega šuma \( Q \) je potem
 
-\[ P_{\infty} = - \frac{R}{2} + \frac{R}{2} \sqrt{1 + \frac{Q \tau ^2}{R}},
+\[ P_{\infty} = - \frac{R}{\tau} + \frac{R}{\tau} \sqrt{1 + \frac{Q \tau ^2}{R}},
 \]
 
 kar lahko razvijemo po Taylorju
 
-\[ P = - \frac{R}{2} + \frac{R}{2} \left( 1 + \frac{Q \tau ^2}{2 R} \right) = \frac{Q \tau}{2}.
+\[ P = - \frac{R}{\tau} + \frac{R}{\tau} \left( 1 + \frac{Q \tau ^2}{2 R} \right) = \frac{Q \tau}{\tau}.
 \]
 
 Ocena je v tem primeru po Kalmanu
@@ -407,6 +408,8 @@ oziroma
 
 \[ \dot{\hat{U}} = - \frac{1}{\tau} \hat{U} + \frac{Q \tau}{2 R} \left( z - \hat{U} \right).
 \]
+
+Zaradi dinamičnega šuma se ojačevalni faktor optimalnega filtra ustali pri končni vrednosti \( K_{\infty} \).
 
 Dobili smo sedaj novo časovno neodvisno konstanto, ki jo označimo z \( \frac{1}{\tau_{eff}} \)
 
@@ -441,12 +444,11 @@ Zanima nas, ali lahko najprej naredimo senzor in potem gledamo za kakšne dinami
 
 Zanima nas red senzorja glede na dinamiko. V senzor prihaja meritev \( z \) in njegov izhod nam da oceno \( \hat{x} \). Senzor rešuje diferencialno enačbo in red te enačbe bomo označili z \( n \) za oceno \( \hat{x} \).
 
-Red senzorja je direktno koreliran z redom dinamike spremenljivke, ki jo merimo. Torej senzor \( n \)-tega reda obravnavamo kot optimalen senzor za spremenljivko reda dinmaike v sistemu \( S \) in se spreminja kvečjemu kot
+Red senzorja je direktno koreliran z redom dinamike spremenljivke, ki jo merimo. Senzor \( n \)-tega reda obravnavamo kot optimalen sledilni sistem za spremenljivke \( \mathbf{x}(t) \), katerih dnamika se spreminja kvečjemu kot
 
 \[ \frac{\mathrm{d} ^{(n)} }{\mathrm{d} x^{(n)}} x = 0 + w.
 \]
 
-[glej Markejeve zapiske.]
 ** Senzor prvega reda
 
 Senzor prvega reda je optimalen za sledenje
@@ -510,7 +512,7 @@ in označimo \( \tau = \frac{1}{K_{\infty}} \). Senzor prvega reda ima potem obl
 
 kar je optimalen indikator za sledenje konstanti.
 
-Veliko merilcev so senzor 1. reda - termometer, merilnik hitrosti v avtu, itd. Nobeden od njih nam ne bi koristil, če bi imeli odvod. Senzor v peči je primer senzorja, ki ni prvega reda, saj spremlja temperaturo in njen odvod, da ve, kdaj se peč prižge.
+Veliko merilcev so senzor 1. reda - termometer, merilnik hitrosti v avtu, itd. Nobeden od njih nam ne bi koristil, če bi imeli odvod. Senzor v peči je primer senzorja, ki ni prvega reda, saj spremlja temperaturo in njen odvod, da ve, kdaj se mora peč prižgati.
 
 #+begin_my_example
 Poglejmo si primer termometra v kavi. Alkohol/živo srebro ima neko temperaturo \( T(t) \), ki se razteza. Kava ima temperaturo \( T_z \) in predstavlja zunanjo temperaturo. \( T(t) \) in \( T_z \) nista isti, saj ima termometer stekleno steno površine \( S \) z debelino \( d \), skozi katero gre toplotni tok \( \mathbf{j} \).
@@ -543,4 +545,4 @@ Konstante označimo z \( \Lambda = \frac{\lambda S}{m c_p d} \) in enačba za se
 V senzor vstopi \( T_z \) izstopi pa \( T \).
 #+end_my_example
 
-Kaj se zgodi v primeru, če s senzorjem prvega reda merimo dinamike višjih redov? Obstajajo tri možnosti.
+Kaj se zgodi v primeru, če s senzorjem prvega reda merimo dinamike višjih redov? Obstajajo tri možnosti, o katerih bomo več povedali naslednji teden na predavanjih.

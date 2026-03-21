@@ -15,6 +15,8 @@ V primeru, da ne poznamo dinamike, potem bo najboljša dinamike kar
 \[ \hat{x}(t) = z(t).
 \]
 
+Z drugimi besedamo, meritve rabimo opravljati čim pogosteje in natančneje, stare pa zavreči.
+
 Varianca je potem kar
 
 \[ \hat{\sigma}_x ^2 (t) = R.
@@ -32,26 +34,26 @@ V diskretnem prostoru, kjer vzorčimo s časom \( T \), bo zgornja diferencialna
 
 kjer sta \( x_{n + 1} = x((n + 1)T) \) in \( x_n = x(n T) \). Potem lahko izrazimo \( x_{n + 1} \)
 
-\[ x_{n + 1} = x_n + \left( A (nT) x_n + C(nT) \right) T = \left( 1 + A(nT) T \right) x_n + C(nT).
+\[ x_{n + 1} = x_n + \left[ A (nT) x_n + C(nT) \right] \cdot T = \left[ 1 + A(nT) \cdot T \right] x_n + C(nT).
 \]
 
-Z uvedbo \( \phi_n = (1 + A(nT) T) \) in \( c_n = C(n T) T \) je krajši zapis
+Z uvedbo \( \Phi_n = [1 + A(nT) \cdot T] \) in \( c_n = C(n T) \cdot T \) dobimo zapis za dinamični zakon v diferenčni enačbi
 
-\[ x_{n + 1} = \phi_n x_n + c_n.
+\[ x_{n + 1} = \Phi_n x_n + c_n.
 \]
 
-Porazdeljenost se ohranja tudi znotraj diferenčne enačbe, saj sta množenje in seštevanje linearni operaciji.
+Porazdeljenost se ohranja tudi znotraj diferenčne enačbe, saj sta množenje in seštevanje linearni operaciji. Sedaj starih meritev ne smemo zanemariti kakor smo pri neznani dinamiki.
 
 Isto dinamiko privzamemo tudi za oceno \( \hat{x} \) v merilnem sistemu \( M \).
 
 Recimo, da smo opravili \( n \) vzorčenj. Z znano dinamiko v času \( t = n T \) in optimalno oceno \( \hat{x}_n \) in \( \hat{\sigma}_n ^2 \), lahko napovemo oceno v času \( t = (n + 1) T \)
 
-\[ \bar{x}_{n + 1} = \phi_n \hat{x}_n + c_n \quad \text{ in } \quad \bar{\sigma}_{n + 1} ^2 = \phi_{n ^2} \hat{\sigma}_n ^2.
+\[ \bar{x}_{n + 1} = \Phi_n \hat{x}_n + c_n \quad \text{ in } \quad \bar{\sigma}_{n + 1} ^2 = \phi_{n ^2} \hat{\sigma}_n ^2.
 \]
 
-Dokažimo, da ta napoved ocene drži.
+Dokažimo, da ta napoved variance ocene drži.
 
-Varianco zapišemo po definiciji
+Varianco ob času \( t = nT \) zapišemo po definiciji
 
 \[ \hat{\sigma}_n ^2 = \left\langle \left( \hat{x}_n - x_n \right) ^2 \right\rangle.
 \]
@@ -63,12 +65,12 @@ Napoved variance pa je
 
 Upoštevamo napoved ocene in razpišemo
 
-\[ \bar{\sigma}_{n + 1} ^2 = \left\langle \left[ \left( \phi_n \hat{x}_n + c_n \right) ^2 - \left( \phi_n x_n + c_n \right) ^2\right] \right\rangle = \left\langle \left[ \phi_n \left( \hat{x}_n - x_n \right) \right] ^2 \right\rangle.
+\[ \bar{\sigma}_{n + 1} ^2 = \left\langle \left[ \left( \Phi_n \hat{x}_n + c_n \right) ^2 - \left( \Phi_n x_n + c_n \right) ^2\right] \right\rangle = \left\langle \left[ \Phi_n \left( \hat{x}_n - x_n \right) \right] ^2 \right\rangle.
 \]
 
 Zaključimo torej
 
-\[ \bar{\sigma}_{n + 1} ^2 = \phi_n ^2 \left\langle \left( \hat{x}_n - x_n \right) ^2 \right\rangle = \phi_n ^2 \hat{\sigma}_n ^2.
+\[ \bar{\sigma}_{n + 1} ^2 = \Phi_n ^2 \left\langle \left( \hat{x}_n - x_n \right) ^2 \right\rangle = \Phi_n ^2 \hat{\sigma}_n ^2.
 \]
 
 Za meritev \( z_{n + 1} \) z varianco \( \sigma ^2 \) lahko izostrimo oceno v času \( t = (n + 1) T \) z enačbami
@@ -86,14 +88,14 @@ Z novimi oznakami imamo tako
 \]
 ** Dinamični šum
 
-Dinamiko spremenljivke \( x(t) \) v sistemu \( S \) ne poznamo eksaktno.
+Dinamiko spremenljivke \( x(t) \) v sistemu \( S \) ne poznamo eksaktno, torej imata \( \Phi_n \) in \( c_n \) svojo negotovost.
 
 Spremenljivko spreminja nek neznan člen
 
-\[ x_{n + 1} = \phi_n x_n + c_n + w(t),
+\[ x_{n + 1} = \Phi_n x_n + c_n + \Gamma_n w(t),
 \]
 
-za katerega ne vemo ali je pozitiven ali negativen. Posledično lahko zaključimo, da je njena pričakovana vrednost \( \left\langle w \right\rangle = 0 \). Neznanemu členu pravimo naključeno šum.
+za katerega ne vemo ali je pozitiven ali negativen. Posledično lahko zaključimo, da je njena pričakovana vrednost \( \left\langle w \right\rangle = 0 \). Neznanemu členu pravimo naključeno šum, \( \Gamma_n \) pa je multiplikativni faktor.
 
 Primer takega šuma so trki med delci: okolica deluje na delec v pozitivni ali negativni smeri.
 
@@ -108,12 +110,12 @@ Ponovna analogija s trki med delci: kam se delec odbije v naslednjem trenutku je
 
 V diskretni obliki spremenljivko \( x \) zapišemo z dinamičnim šumom
 
-\[ x_{n + 1} = \phi_n x_n + c_n + \Gamma_n w_n.
+\[ x_{n + 1} = \Phi_n x_n + c_n + \Gamma_n w_n.
 \]
 
 V sistemu \( M \) pa bo odstopanje od spremenljivko v sistemu \( S \) ravno \( \Gamma_n w_n \), saj ne poznamo dinamike šuma. V sistemu \( M \) je ocena
 
-\[ \bar{x}_{n + 1} = \phi \hat{x}_n + c_n.
+\[ \bar{x}_{n + 1} = \Phi \hat{x}_n + c_n.
 \]
 
 To odstopanje na ostrenje z meritvijo
@@ -127,20 +129,20 @@ Poglejmo si, kakšen vpliv pa bo imela na kovarianco napovedi
 
 \begin{align*}
   M_{n + 1} &= \left\langle \left[ \left( \bar{x}_{n + 1} - x_{n + 1} \right) \right]^2 \right\rangle \\
-&= \left\langle\left[ \left( \phi_n \hat{x}_n  + c_n \right) - \left( \phi_n x_n + c_n + \Gamma_n w_n \right)\right] ^2  \right\rangle \\
-&= \left\langle \left[ \phi_n \left( \hat{x}_n - x_n \right) - \Gamma_n w_n \right] ^2 \right\rangle.
+&= \left\langle\left[ \left( \Phi_n \hat{x}_n  + c_n \right) - \left( \Phi_n x_n + c_n + \Gamma_n w_n \right)\right] ^2  \right\rangle \\
+&= \left\langle \left[ \Phi_n \left( \hat{x}_n - x_n \right) - \Gamma_n w_n \right] ^2 \right\rangle.
 \end{align*}
 
 Kvadriramo oklepaje in ni korelacije med \( \hat{x}_n, x_n \) in \( w_n \), nam ostane samo
 
 \begin{align*}
-  M_{n + 1} &= \left\langle \phi_n ^2 \left( \hat{x}_n - x \right) ^2 + \left( \Gamma_n w_n \right) ^2 \right\rangle \\
-&= \phi_n ^2 P_n + \Gamma_n ^2 \left\langle w_n ^2 \right\rangle.
+  M_{n + 1} &= \left\langle \Phi_n ^2 \left( \hat{x}_n - x \right) ^2 + \left( \Gamma_n w_n \right) ^2 \right\rangle \\
+&= \Phi_n ^2 P_n + \Gamma_n ^2 \left\langle w_n ^2 \right\rangle.
 \end{align*}
 
 Kovarianca napovedi ima torej v vsakem trenutku prišteto dodaten konstanten člen
 
-\[ M_{n + 1} = \phi_n ^2 P_n + Q_n.
+\[ M_{n + 1} = \Phi_n ^2 P_n + Q_n.
 \]
 
 Pri prehodu v zvezno sliko je ocena spremenljivke v sistemu \( M \)
@@ -150,12 +152,12 @@ Pri prehodu v zvezno sliko je ocena spremenljivke v sistemu \( M \)
 
 Upoštevamo definicijo napovedi in
 
-\[ \frac{\hat{x}_{n + 1} - x_n}{T} = \frac{\phi_n \hat{x}_n + c_n - \hat{x}_n + K_{n + 1} (z_{n + 1} - \bar{x}_{n + 1})}{T}.
+\[ \frac{\hat{x}_{n + 1} - x_n}{T} = \frac{\Phi_n \hat{x}_n + c_n - \hat{x}_n + K_{n + 1} (z_{n + 1} - \bar{x}_{n + 1})}{T}.
 \]
 
 Dodatno lahko pretvorimo v
 
-\[ \frac{\hat{x}_{n + 1} - \hat{x}_n}{T} = \frac{\left( \phi_n - 1 \right)}{T} \hat{x}_n + \frac{c_n}{T} + \frac{P_{n + 1}}{\sigma ^2 T} \left( z _{n + 1} - \bar{x}_{n + 1} \right).
+\[ \frac{\hat{x}_{n + 1} - \hat{x}_n}{T} = \frac{\left( \Phi_n - 1 \right)}{T} \hat{x}_n + \frac{c_n}{T} + \frac{P_{n + 1}}{\sigma ^2 T} \left( z _{n + 1} - \bar{x}_{n + 1} \right).
 \]
 
 V limiti \( T \to 0 \) dobimo enačbo
@@ -163,21 +165,21 @@ V limiti \( T \to 0 \) dobimo enačbo
 \[ \dot{\hat{x}} = A(t) \hat{x}(t) + c(t) + \frac{P(t)}{R} \left( z(t) - \hat{x}(t) \right),
 \]
 
-kjer je \( \frac{\phi_n - 1}{T} = A(t) \) in \( \sigma ^2 T = R \). Upoštevali smo, da v limiti \( \hat{x}_n = \bar{x}_n = \hat{x}(t) \) in napoved kovariance \( M_{n + 1} \) je \( P(t) \) (prav tako je v limiti \( P_{n + 1} = P(t) \)).
+kjer je \( \frac{\Phi_n - 1}{T} = A(t) \) in \( \sigma ^2 T = R \). Upoštevali smo, da v limiti \( \hat{x}_n = \bar{x}_n = \hat{x}(t) \) in napoved kovariance \( M_{n + 1} \) je \( P(t) \) (prav tako je v limiti \( P_{n + 1} = P(t) \)).
 
 Na podoben način želimo preiti v zvezno sliko tudi pri kovarianci izostrene ocene
 
-\[ P_{n + 1} = M_{n + 1} - \frac{M_{n + 1} ^2}{M_{n + 1} + \sigma ^2} = \phi_n ^2 P_n + \Gamma_n Q_n - \frac{\left( \phi_n ^2 P_n + \Gamma_n  ^2 Q_n \right) ^2}{M_{n + 1} + \sigma ^2}.
+\[ P_{n + 1} = M_{n + 1} - \frac{M_{n + 1} ^2}{M_{n + 1} + \sigma ^2} = \Phi_n ^2 P_n + \Gamma_n Q_n - \frac{\left( \Phi_n ^2 P_n + \Gamma_n  ^2 Q_n \right) ^2}{M_{n + 1} + \sigma ^2}.
 \]
 
 Za postopanje do odvoda zapišemo
 
-\[ \frac{P_{n + 1} - P_n}{T}= \frac{\left( \phi_n ^2 - 1 \right)P_n}{T} + \frac{\Gamma_n ^2 Q_n}{T} - \frac{\phi_n ^2 P_n ^2 + 2 \phi_n ^2 P_n \Gamma_n ^2 Q_n + \Gamma_n ^4 Q_n ^2}{TM_{n + 1} + \sigma ^2 T} .
+\[ \frac{P_{n + 1} - P_n}{T}= \frac{\left( \Phi_n ^2 - 1 \right)P_n}{T} + \frac{\Gamma_n ^2 Q_n}{T} - \frac{\Phi_n ^2 P_n ^2 + 2 \Phi_n ^2 P_n \Gamma_n ^2 Q_n + \Gamma_n ^4 Q_n ^2}{TM_{n + 1} + \sigma ^2 T} .
 \]
 
-V limiti \( T \to 0 \) gre \( \phi_n \to 1 \), hkrati pa upoštevamo identiteto od prej in lahko prvi člen zapišemo
+V limiti \( T \to 0 \) gre \( \Phi_n \to 1 \), hkrati pa upoštevamo identiteto od prej in lahko prvi člen zapišemo
 
-\[ \frac{\left( \phi_n ^2 - 1 \right)P_n}{T} = \left( \phi_n - 1 \right)\frac{\left( \phi_n - 1 \right) }{T} P_n = 2 A P(t).
+\[ \frac{\left( \Phi_n ^2 - 1 \right)P_n}{T} = \left( \Phi_n - 1 \right)\frac{\left( \Phi_n - 1 \right) }{T} P_n = 2 A P(t).
 \]
 
 Povejmo še nekaj limit. Po definicije nekorelacije velja \( \left\langle w_k w_{k'} \right\rangle = \delta_{k k'} Q_n \), iz česar sledijo limite
@@ -195,7 +197,7 @@ Drugi člen moramo pomnožiti s \( \frac{T}{T} \), da lahko zapišemo limito
 
 Pri zadnjem členu pa je v limiti
 
-\[ \frac{\phi_n ^2 P_n ^2 + 2 \phi_n ^2 P_n \Gamma_n ^2 Q_n + \Gamma_n ^4 Q_n ^2}{TM_{n + 1} + \sigma ^2 T} =  \frac{1}{T M(t) + R} \left[ P ^2(t) + \frac{2 P \Gamma Q T}{T} + \Gamma ^2 (t) Q(t) T ^2 \right].
+\[ \frac{\Phi_n ^2 P_n ^2 + 2 \Phi_n ^2 P_n \Gamma_n ^2 Q_n + \Gamma_n ^4 Q_n ^2}{TM_{n + 1} + \sigma ^2 T} =  \frac{1}{T M(t) + R} \left[ P ^2(t) + \frac{2 P \Gamma Q T}{T} + \Gamma ^2 (t) Q(t) T ^2 \right].
 \]
 
 Zadnje dva člena smo razširili s \( T \) in v limiti sta potem ničelna. Končna enačba je torej
@@ -222,12 +224,12 @@ Sedaj imamo sistem diferencialnih enačb.
 
 Imamo torej spremenljivke
 
-\[ \mathbf{x} = \begin{bmatrix} x_{1} \\ x_{2} \\ x_{3} \\ ldots \\ x_{n} \end{bmatrix}.
+\[ \mathbf{x} = \begin{bmatrix} x_{1} \\ x_{2} \\ x_{3} \\ \vdots \\ x_{n} \end{bmatrix}.
 \]
 
 Ocene v sistemu \( M \) s pripadajočimi disperzijami pa so
 
-\[ \hat{\mathbf{x}} = \begin{bmatrix} \hat{x}_{1} \\ \hat{x}_{2} \\ \ldots \\ \hat{x}_{n} \end{bmatrix} \end{bmatrix}.
+\[ \hat{\mathbf{x}} = \begin{bmatrix} \hat{x}_{1} \\ \hat{x}_{2} \\ \vdots \\ \hat{x}_{n} \end{bmatrix}.
 \]
 
 Ker so disperzije lahko medseboj korelirane
@@ -259,17 +261,16 @@ Imejmo sistem \( S \) s spremenljivkama \( \mathbf{x} = [x, v]^T \). Zajemamo me
 
 Povprečje ocene je potem
 
-\[ \left\langle \mathbf{x} \right\rangle = \begin{bmatrix} \left\langle x \right\rangle \\ \left\langle p \right\rangle \end{bmatrix} = \begin{bmatrix} x + m_x  \\ v + m_v \end{bmatrix}.
+\[ \bar{\mathbf{x}} = \begin{bmatrix} \bar{x} \\ \bar{p} \end{bmatrix} = \begin{bmatrix} x + m_{x} \\ v + m_{v} \end{bmatrix}
 \]
 
-[nadomesti langle with bar!]
 
 Veljajo nekorelacije
 
 \[ \left\langle r m_x \right\rangle = \left\langle r p_x \right\rangle = \left\langle r m_v \right\rangle = 0.
 \]
 
-Poskusimo ostriti z linearno superpozicijo
+Poskusimo izostriti z linearno superpozicijo
 
 \begin{align*}
   \hat{x} &= x + p_x = a_{xx } \bar{x} + a_{xv} \bar{v} + b_x z \\
@@ -286,7 +287,7 @@ In ker je
 \[ x + p_x = x (a _{xx } + b_x) + a_{xv} v + a_{xv} m_v + a_{xx } m_x + b_x r,
 \]
 
-in na levi strani nimamo nobenega člena z \( v \), zaključimo \( a_{xv} = 0 \). Hkrati pa dobimo tudi pogoj \( a_{xx } + b_x = 1 \). Potem je
+na levi strani nimamo nobenega člena z \( v \), zaključimo \( a_{xv} = 0 \). Hkrati pa dobimo tudi pogoj \( a_{xx } + b_x = 1 \). Potem je
 
 \[ p_x = a_{xx } m_x + b_x r = a_{xx } m_x + (1 - a_{xx }) r.
 \]
@@ -294,7 +295,7 @@ in na levi strani nimamo nobenega člena z \( v \), zaključimo \( a_{xv} = 0 \)
 Pričakovane vrednosti so ničelne, zato bomo gledali variance
 
 \begin{align*}
-  \left\langle p_x ^2 \right\rangle = a_{xx } ^2 \left\langle m_x \right\rangle ^2 + (1 - a_{xx }) ^2 \left\langle r ^2 \right\rangle + a_{xx } (1 - a_{xx }) \left\langle w_x r \right\rangle \\
+  \left\langle p_x ^2 \right\rangle &= a_{xx } ^2 \left\langle m_x \right\rangle ^2 + (1 - a_{xx }) ^2 \left\langle r ^2 \right\rangle + a_{xx } (1 - a_{xx }) \left\langle w_x r \right\rangle \\
 &= a_{xx } ^2 \sigma_x ^2 + (1 - a_{xx }) ^2 \sigma_r ^2.
 \end{align*}
 
@@ -346,7 +347,6 @@ in
 \]
 
 Zaključimo, da z meritvijo lege in korelacije hkrati ostrimo tudi komponento hitrosti, čeprav je nismo direktno merili.
-
 #+end_problem
 ** Disperzija in korelacija med komponentami vektorskih količin
 
@@ -382,7 +382,7 @@ Označimo korelacijo
 \]
 ** Senzor več spremenljivk
 
-Imamo sistem \( S \) s spremenljivkami \( \mathbf{x} = [x_1, x_2, x_3, \ldots, x_n] \) in zajemamo podatke preko večih senzorjev z meritvami \( \mathbf{z} = [z_1, z_2, z_3, \ldots, z_s] \). Okno \( H \) je matrika \( s \times n \) preslika meritve v spremenljivke in velja enačba
+Imamo sistem \( S \) s spremenljivkami \( \mathbf{x} = [x_1, x_2, x_3, \ldots, x_n] \) in zajemamo podatke preko večih senzorjev z meritvami \( \mathbf{z} = [z_1, z_2, z_3, \ldots, z_s] \). Okno \( H \) je matrika \( s \times n \), ki preslika meritve v spremenljivke. Signali iz senzorjev so
 
 \[ \mathbf{z} = H \mathbf{x} + \mathbf{r}.
 \]
@@ -424,21 +424,21 @@ ni dobro, saj prvi senzor meša kota prvega in drugega nihala.
 #+end_my_example
 ** Ostrenje z vektorskimi meritvami
 
-Imamo torej sistem \( S \) s spremenljivkami \( \mathbf{x}(t) \), meritvami \( \mathbf{z} = H \mathbf{x} + \mathbf{r} \) in ocenami \( \bar{\mathbf{x}} = \mathbf{x} + \mathbf{m} \). Prav tako imamo kovariančno matriko \( M = \left\langle \mathbf{m} \mathbf{m}^T \right\rangle \). Prav tako imamo pripadajočo kovariančno matriko merilnega šuma \( R = \left\langle \mathbf{r} \mathbf{r}^T \right\rangle \).
+Imamo torej sistem \( S \) s spremenljivkami \( \mathbf{x}(t) \), meritvami \( \mathbf{z} = H \mathbf{x} + \mathbf{r} \) in ocenami \( \bar{\mathbf{x}} = \mathbf{x} + \mathbf{m} \). Prav tako imamo kovariančno matriko \( M = \left\langle \mathbf{m} \mathbf{m}^T \right\rangle \) in pripadajočo kovariančno matriko merilnega šuma \( R = \left\langle \mathbf{r} \mathbf{r}^T \right\rangle \).
 
-Izostrena ocena je \( \hat{x} = x + p \) v matrični formi
+Izostrena ocena je linearna kombinacija \( \hat{x} = x + p \) v matrični formi
 
 \[ \hat{x} = A \bar{x} + B z,
 \]
 
 kjer sta \( A \in \mathbb{R}^{n \times n} \) in \( B \in \mathbb{R}^{n \times s} \) matrični uteži. Želimo ju določiti.
 
-\[ \mathbf{x} + \hat{p} = A (\mathbf{x} + \mathbf{m}) + B(H\mathbf{x} + \mathbf{r}).
+\[ \mathbf{x} + \hat{\mathbf{p}} = A (\mathbf{x} + \mathbf{m}) + B(H\mathbf{x} + \mathbf{r}).
 \]
 
 Razrešimo oklepaje in iz enakosti
 
-\[ \mathbf{x} + \hat{p} = \left( A + B H \right) \mathbf{x} + A \mathbf{m} + B \mathbf{r},
+\[ \mathbf{x} + \hat{\mathbf{p}} = \left( A + B H \right) \mathbf{x} + A \mathbf{m} + B \mathbf{r},
 \]
 
 dobimo enakosti

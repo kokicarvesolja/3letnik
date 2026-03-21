@@ -109,9 +109,9 @@ teži h Gaussovi porazdelitvi ne glede na porazdelitev (manjka beseda) posamezni
 
 To je motnja zaradi napajanja z AC napetostjo pri frekvenci \( \nu = 50 \mathrm{Hz} \).
 
-[skica nihanja okrog vrednosti iz Narkotovih zapiskov]
+[[file:figures/08p_BrumovSum.png]]
 
-Meritev izvedemo zelo hitro, predpostavimo trenutno meritev, ki jo označímo z \( U_m \).
+Meritev izvedemo zelo hitro, predpostavimo trenutno meritev, ki jo označimo z \( U_m \).
 
 Opazovalni sistem je \( U = U_0 \cos (\omega t) \). Povprečna vrednost je
 
@@ -137,6 +137,6 @@ kjer smo upoštevali
 
 Takemu šumu pravimo Brumov šum.
 
-[skica Brumovega šuma Narko, str. 2, desno zgoraj]
+[[file:figures/08p_BrumovSum2.png]]
 
 Z večanjem števila prispevkov gre in fact res proti Gaussovi porazdelitvi - konvolucija prispevkov.

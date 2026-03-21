@@ -43,7 +43,7 @@ Dobimo 3 pogoje
 \begin{align*}
   \frac{\partial \mathrm{tr} \tilde{P}}{\partial A} &= 0 = 2 Am - \lambda ^T \\
 \frac{\partial \mathrm{tr} \tilde{P}}{\partial B} &= 0 = 2B R - \left( H \lambda \right)^T \\
-\frac{\partial \mathrm{tr} \tilde{P}}{\partial \lambdal} &= 0 = \left( A + BH - I \right)^T .
+\frac{\partial \mathrm{tr} \tilde{P}}{\partial \lambda} &= 0 = \left( A + BH - I \right)^T .
 \end{align*}
 
 Iz prvega pogoja lahko ob upoštevanju lastnosti transponiranja matrike izrazimo
@@ -75,7 +75,7 @@ Izražene vrednosti lahko vstavimo v enačbo \ref{eq:2}
 &= \frac{\lambda^T}{2} \left( M^{-1} + H^T R^{-1} H \right) \frac{\lambda}{2} = \frac{\lambda}{2}.
 \end{align*}
 
-V oklepaju v zadnji vrstici prepoznamo zgornji izraz in ga nadomestimo z \( \left( \frac{\lambda}{2} \right)^{-1} \).
+V oklepaju v zadnji vrstici prepoznamo \ref{eq:3} in ga nadomestimo z \( \left( \frac{\lambda}{2} \right)^{-1} \).
 
 Torej je \ref{eq:3} enako \( P \) in posledično dobimo
 

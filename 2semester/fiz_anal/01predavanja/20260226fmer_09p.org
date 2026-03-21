@@ -44,7 +44,7 @@ Uvedemo novo spremenljivko \( \frac{r ^2}{2 \sigma ^2} = u ^2 \) in \( \mathrm{d
 
 saj je vrednost integrala \( \frac{\pi}{2} \).
 
-V primeru uvedbe spremenljivke \( u = \frac{r}{\sigma} \), potem je \( u \) porazdeljen po \( N (0, 1) \), kar je standardizirana normalna porazdelitev.
+V primeru uvedbe spremenljivke \( u = \frac{r}{\sigma} \) je \( u \) porazdeljen po \( N (0, 1) \), kar je standardizirana normalna porazdelitev.
 ** Povprečevanje
 
 Imamo izmerke \( z_i \) za \( i = 1,2, \ldots, N \), ki so porazdeljeni po \( N(x, \sigma) \). Povprečje teh izmerkov je potem
@@ -52,7 +52,7 @@ Imamo izmerke \( z_i \) za \( i = 1,2, \ldots, N \), ki so porazdeljeni po \( N(
 \[ \bar{z} = \frac{1}{N} \sum\limits_{i = 1}^N z_i.
 \]
 
-Zanima nas, kakšna pa je porazdelitev povprečne vrednosti \( \frac{\mathrm{d} P}{\mathrm{d} \mathbf{z}} \).
+Zanima nas, kakšna je porazdelitev povprečne vrednosti \( \frac{\mathrm{d} P}{\mathrm{d} \mathbf{z}} \).
 
 Povprečna vrednost odstopanja za \( i \to \infty \) je ničeln
 
@@ -83,7 +83,7 @@ Zaključimo torej, da je povprečna vrednost porazdeljena po ožji normalni pora
 \]
 
 To je tudi smisel ponavljanja in povprečevanja vrednosti.
-** 2 oceni iste količine z različnima disperzijama
+*** Združevanje ocen z različnima disperzijama
 
 Imejmo dve oceni
 
@@ -135,11 +135,43 @@ kar lahko zapišemo tudi kot
 kjer je \( \bar{z}_3 \) nova ocena, \( \bar{z}_1 \) stara ocena, faktor pred oklepajem utež in razlika v oklepaju je inovacija.
 
 \( \sigma_1 \ll \sigma_2 \) nam pove, da ima bolj natančna ocena večjo utež. Enačba \ref{eq:1} je optimalno združena ocena.
-** Kvadratna forma
-[dopolni]
+*** Kvadratna forma
+
+S kvadratno formo \( 2 \dot{J}(x) \) bomo prišli do podobnega zaključka kot v prejšnjem poglavju. Imejmo dve meritvi
+
+\[ z_1 = \mathcal{N}(x, \sigma_1) \quad \text{ in } \quad z_2 = \mathcal{N}(x, \sigma_2).
+\]
+
+Meritvi lahko pretvorimo v standardno normalno Gaussovo porazdelitev \( \mathcal{N}(0, 1) \)
+
+\[ \mathcal{N}(0, 1) = \frac{\left( z_1 - x \right)}{\sigma_1} = \frac{\left( z_2 - x \right)}{\sigma_2}.
+\]
+
+Kvadratno forma je potem
+
+\[ 2 J(x) =   \frac{\left( z_1 - x \right) ^2}{\sigma_1 ^2} + \frac{\left( z_2 - x \right) ^2}{\sigma_2 ^2}.
+\]
+
+Cilj je dobiti optimalno združitev, zato minimiziramo zgornji seštevek in zahtevamo
+
+\begin{align*}
+  0 &= \frac{\mathrm{d} }{\mathrm{d} x} \left( 2 J(x) \right) \\
+&= - \frac{2 \left( z_1 - x \right)}{\sigma_1 ^2} - \frac{2 \left( z_2 - x \right)}{\sigma_2 ^2}
+\end{align*}
+
+Izpostavimo lahko sprmemenljivko \( x \)
+
+\[ x \left[ \frac{1}{\sigma_1 ^2} + \frac{1}{\sigma_2 ^2} \right] = \frac{z_1}{\sigma_1 ^2} + \frac{z_2}{\sigma_2 ^2}
+\]
+
+in optimalno združevanje je potem
+
+\[ x = z_3 = \left( \frac{1}{\sigma_1 ^2} + \frac{1}{\sigma_2 ^2} \right) ^{-1} \left[ \frac{z_1}{\sigma_1 ^2} + \frac{z_2}{\sigma_2 ^2} \right]
+\]
+
 ** Disperzija optimalno združene ocene
 
-Imamo dva izmerki
+Imamo dva izmerka
 
 \[ z_1 = x + r_1, \ \left\langle r_1 ^2 \right\rangle = \sigma_1 ^2 \quad \text{ in } \quad z_2 = x + r_2, \ \left\langle r_2 ^2 \right\rangle = \sigma_2 ^2.
 \]
@@ -183,16 +215,16 @@ Dobimo potrditev, da je to dejansko optimalno združena meritev, saj sta enaka r
 
 Imamo 2 seta meritev \( \left\{ x_i \right\} \) in \( \left\{ y_i \right\} \) za \( i = 1, 2, \ldots, N \).
 
-Obstaja povezava med šumom prve in druge meritve
+Naj obstaja povezava med šumom prve in druge meritve
 
 \[ w_x = x_i - \bar{x} \quad \text{ in } \quad w_y = y_i - \bar{y},
 \]
 
-kjer je \( \bar{w}_x = \bar{w}_y =0 \) in \( \bar{w}_x ^2 = \sigma_x ^2 \) in \( \bar{w}_y ^2 = \sigma_2 \)
+kjer je \( \left\langle w_x \right\rangle = \left\langle w_y \right\rangle =0 \) in \( \left\langle w_x ^2 \right\rangle = \sigma_x ^2 \) in \( \left\langle w_y ^2 \right\rangle = \sigma_y ^2 \).
 
 Definicija kovariance je
 
-\[ \sigma_{xy} = \rho_{xy} \sigma_x \sigma_y = \overline{w_x w_y},
+\[ \sigma_{xy} = \rho_{xy} \sigma_x \sigma_y = \left\langle w_x w_y \right\rangle
 \]
 
 kjer je \( \rho_{xy} \) korelacijski koeficient in zaseda vrednosti \( \left| \rho_{xy} \right| \le 1\).
@@ -213,29 +245,29 @@ Upoštevamo defincije
 &= \overline{xy} - \bar{x} \bar{y}
 \end{align*}
 
-Za nekolerirane ocene velja \( \rho = 0 \), z popolnoma (anti)korelirane \( x = (-)y \) velja \( \rho = (-) 1 \).
+Za nekolerirane ocene velja \( \rho = 0 \), za popolnoma (anti)korelirane \( x = (-)y \) velja \( \rho = (-) 1 \).
 ** Združevanje koreliranih meritev
 
 Imejmo dva izmerka \( z_1, \sigma_1 \) in \( z_2, \sigma_2 \), ki imata korelacijski koeficient \( \rho \).
 
 Posamezne izmerka sta definirana kot
 
-\[ z_1 = x + w_1, \ \bar{w}_1 ^2 = \sigma_1 ^2 \quad \text{ in } \quad z_2 = x + w_2 , \ \bar{w}_2 ^2 = \sigma_2 ^2
+\[ z_1 = x + w_1, \ \left\langle w_1 ^2 \right\rangle  = \sigma_1 ^2 \quad \text{ in } \quad z_2 = x + w_2 , \ \left\langle w_2 ^2 \right\rangle  = \sigma_2 ^2
 \]
 
-in velja \( \overline{w_1 w_2} \ne 0 \).
+in velja \(  \left\langle w_1 w_2 \right\rangle \ne 0 \).
 
 Po definiciji bo korelacija
 
 \[ \sigma_{12} = \rho \sigma_1 \sigma_2 = \left\langle \left( z_1 - x \right) \left( z_2 - x \right) \right\rangle = \left\langle w_1 w_2 \right\rangle.
 \]
 
-Šuma nista neodvisna, torej ga lahko zapišemo kot linearnoa kombinacijo druge meritve in neodvisnega dela \( w_1 = \alpha w_2 + w \), kjer velja \( \left\langle w_2 w \right\rangle = 0\), kar je ekvivalentno
+Šuma nista neodvisna, torej ga lahko zapišemo kot linearno kombinacijo druge meritve in neodvisnega dela \( w_1 = \alpha w_2 + w \), kjer velja \( \left\langle w_2 w \right\rangle = 0\), kar je ekvivalentno
 
 \[ (z_1 - x) = \alpha (z_2 - x) + w, \ \left\langle w (z_2 - x) \right\rangle  = 0.
 \]
 
-Linearno odvisnost upoštevamo v korelaciji
+To linearno odvisnost upoštevamo v korelaciji
 
 \begin{align*}
   \rho \sigma_1 \sigma_2 &= \left\langle \left( \alpha w_2 + w \right) \right\rangle \\
@@ -309,7 +341,7 @@ Za \( \rho = 1 \) imamo potem
 
 \[ x = \left( \frac{1 + 1 - 2 \rho}{\sigma ^2} \right)^{-1} \left( \frac{\left( z_1 + z_2 \right) - \rho (z_1 - z_2)}{\sigma ^2} \right) = \frac{z_1 + z_2}{2} .
 \]
-* On-line sledenje konstantnim količinam
+* On-line sledenje konstantnim skalarnim količinam
 
 Imamo sistem \( S \) s spremenljivkami \( x \) in merilni sistem \( M \), ki ju povezuje senzor z izmerki \( z_j \). Merilni sistem \( M \) ima ocene \( \hat{x} \). S časom \( T \) vzorčimo - merimo. Dobimo rezultate oblike
 
@@ -323,9 +355,7 @@ Merilni šum je nekoreliran, kar matematično zapišemo
 \[ \left\langle r_i r_j \right\rangle  = \delta_{ij} \sigma ^2.
 \]
 
-Idealizacija bi bila, da je tudi ob manjšanju \( T \to 0 \), šum še vedno nekoreliran.
-
-V primeru znane dinamike (konstantna).
+Idealizacija bi bila, da je tudi ob manjšanju \( T \to 0 \) šum še vedno nekoreliran.
 
 Opravili smo že \( n \) meritev, torej smo ob času \( t = n T \). Optimalna ocena ob \( n \)-ti meritvi je tudi že znana
 
@@ -359,7 +389,7 @@ Za varianco velja
 
 Novo oceno torej lahko zapišemo kot
 
-\[ \hat{x}_{n + 1} = \hat{x}_n = \frac{\hat{\sigma}_{n + 1} ^2}{\sigma ^2} \left( z_{n + 1} - \hat{x}_n \right),
+\[ \hat{x}_{n + 1} = \hat{x}_n + \frac{\hat{\sigma}_{n + 1} ^2}{\sigma ^2} \left( z_{n + 1} - \hat{x}_n \right),
 \]
 
 kjer je \( \hat{x}_n \) stara ocena, faktor z variancami je utež, in kakor od prej \( (z_{n + 1} - \hat{x}_n) \) je inovacija. To je primer principa povratne zanke.
@@ -388,7 +418,7 @@ potem je koreliranost
 \[ \left\langle r(t) r(t') \right\rangle  = \delta(t - t') R
 \]
 
-Definciramo \( \tau \) kot končen (minimalen) čas fluktuacij.
+Definiramo \( \tau \) kot končen (minimalen) čas fluktuacij.
 
 Ločimo dva primera za časovne intervale \( t \), s katerimi merimo
 
@@ -455,4 +485,4 @@ Dobili smo način, kako deluje naš filter. Sproti rešuje diferencialno enačbo
 \[ \dot{\hat{x}} = \frac{\hat{\sigma}_x ^2}{R} \left( z - \hat{x} \right) \quad \text{ in } \quad \dot{\hat{\sigma}} = - \frac{\left( \hat{\sigma}_x ^2 \right) ^2}{R}
 \]
 
-[vstavi sliko [115234]]
+[[file:figures/09p_Kalman.png]]
