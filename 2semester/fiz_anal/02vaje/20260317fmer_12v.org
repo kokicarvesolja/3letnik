@@ -21,3 +21,124 @@ Preko težiščnega sistema smo prišli do vrednosti hitrosti po trku za obe tel
 \]
 
 kjer je \( v_T = \frac{m_1 v_1 + m_2 v_2}{m _1 + m_2} \) težiščna hitrost.
+
+V dobljenih hitrostih posameznega telesa razpišemo težiščno hitrost
+
+\begin{align*}
+  v_1 ' &= \frac{-m_1 v_1 - m_2 v_1 + 2m_1 v_2 + 2m_2 v_2}{m_1 + m_2} \\
+&= \frac{m_1 v_1 - m_2 v_1 + 2 m_2 v_2}{m_1 + m_2} \\
+&= \frac{1 - \mu}{1 + \mu} v_1 + \frac{2 \mu}{1 + \mu} v_2,
+\end{align*}
+
+kjer smo označili razmerje \( \mu = \frac{m_2}{m_1} \). Analogno lahko naredimo z drugo hitrostjo po trku
+
+\[ v_2 ' = \frac{\mu - 1}{1 + \mu} v_2 + \frac{2 \mu}{1 + \mu}.
+\]
+
+Dobljeno lahko sedaj zapišemo v vektorski obliki
+
+\[ \mathbf{v}' = \begin{bmatrix} v_{1}' \\ v_{2}' \end{bmatrix} = \frac{1}{1 + \mu} \begin{bmatrix}
+                                                                                    1 - \mu & 2\mu \\
+                                                                                    2 & \mu - 1
+                                                                                     \end{bmatrix} \begin{bmatrix} v_{1} \\ v_{2} \end{bmatrix} + 0 + 0.
+\]
+
+Prepoznamo torej matriko \( \Phi \), hkrati pa vidimo, da sta \( \mathbf{c} = \Gamma \mathbf{w} = 0 \). Ker ni meritev, je kovariančna matrika izostrene ocene \( P \) kar kovariančna matrika \( M \). Dinamičnega šuma ni in torej imamo samo zapis
+
+\[ P' = M' = \Phi P \Phi^T + \cancel{\Gamma Q \Gamma^T},
+\]
+
+kjer je \( P \) kovariančna matrika pred trkom.
+
+Definiramo nove oznake \( A = \frac{1}{1 + \mu} \) in \( a = 1- \mu \) in matrika
+
+\[ \Phi = A \begin{bmatrix}
+            a & 2\mu \\
+            2 & -a
+             \end{bmatrix}.
+\]
+
+Sedaj lahko izračunamo matriko \( P' \)
+
+\begin{align*}
+ P' &= A ^2 \begin{bmatrix}
+            a & 2\mu \\
+            2 & -a
+             \end{bmatrix} \begin{bmatrix}
+                           \sigma_{1}^{2} & 0 \\
+                           0 & \sigma_{2}^{2}
+                            \end{bmatrix}
+\begin{bmatrix}
+a & 2 \\
+2\mu & -a
+ \end{bmatrix} \\
+&= A ^2 \begin{bmatrix}
+        a & 2\mu \\
+        2 & -a
+         \end{bmatrix}
+\begin{bmatrix}
+a \sigma_{1}^{2} & 2 \sigma_{1}^{2} \\
+2 \mu \sigma^{2}_2 & -a \sigma_2 ^2
+ \end{bmatrix}\\
+&= A ^2 \begin{bmatrix}
+        a ^2 \sigma_1 ^2 + 4 \mu ^2 \sigma_2 ^2 & 2 a \sigma_1 ^2 - 2 a \mu \sigma_2 ^2 \\
+        2a \sigma_1 ^2 - 2 a \mu \sigma_2 ^2 & 4 \sigma_1 ^2 + \left( 1 - \mu \right) ^2 \sigma_2 ^2
+         \end{bmatrix}
+\end{align*}
+
+Kovariančna matrika izostrene ocene je po trku torej
+
+\[ P' = \frac{1}{\left( 1 + \mu \right) ^2} \begin{bmatrix}
+                                            \left( 1 - \mu \right) ^2 \sigma_1 ^2 + 4 \mu ^2 \sigma_2 ^2 & 2 \left( 1 - \mu  \right) \left( \sigma_1 ^2 - \mu \sigma_2 ^2 \right) \\
+                                            2 \left( 1 - \mu \right) \left( \sigma_1 ^2 - \mu \sigma_2 ^2 \right) & 4 \sigma_1 ^2 + \left( 1 - \mu \right) ^2 \sigma_2 ^2
+                                             \end{bmatrix}
+\]
+
+Navkljub temu da je bila pred trkom \( P \) diagonalna in torej začetni hitrosti nista bili korelirani, po trku očitno sta. V primeru, da je \( m_1 = m_2 \), potem je \( \mu = 1 \) in
+
+\[ P' = \begin{bmatrix}
+        \sigma_{2} ^2 & 0 \\
+         0& \sigma_1 ^2
+         \end{bmatrix}
+\]
+
+V tem primeru se nedoločenosti po trku ravno zamenjata.
+* Naloga: geometrijska optika
+#+begin_problem
+Žarek svetlobe z začetno kovariančno matriko
+
+\[ P = \begin{bmatrix}
+       \sigma_y ^2 & 0 \\
+        0 & \sigma_{\phi} ^2
+        \end{bmatrix}
+\]
+
+s lomi na konveksni meji. Kako se spremeni kovariančna matrika \( P' \) na prehodu?
+
+Pri računih upoštevaj obosno aproksimacijo (ang. /paraxial approximation/), kjer je kot med žarkom in optično osjo majhen \( \tan \phi = \phi \).
+
+[[file:figures/v12_optika1.png]]
+#+end_problem
+** Teorija: geometrijska optika
+
+Žarek bomo predstvili z dvema parametroma \( y \) in \( \phi \), ki je v vektorski obliki
+
+\[ \mathbf{y} = \begin{bmatrix} y_0 \\ \tan \phi \end{bmatrix} \approx \begin{bmatrix} y_0 \\ \phi \end{bmatrix}.
+\]
+
+Žarek po lomljenju pa je
+
+\[ \mathbf{y}' = \begin{bmatrix} y_{0} \\ \phi' \end{bmatrix}.
+\]
+
+Lomljenje žarka bomo predstavili z matriko prehoda (ang. /transfer matrix/) \( A \).
+
+Za naš specifičen primer, ki ga prikazuje slika v navodilih naloge je prehodna matrika
+
+\[ A_{conv} = \begin{bmatrix}
+              1 & 0 \\
+              \frac{1}{R} \left( 1 - \frac{n_1}{n_2} \right) & \frac{n_1}{n_2}
+               \end{bmatrix},
+\]
+
+kjer je \( R \) polmer konveksne leče. .
