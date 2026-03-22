@@ -10,8 +10,9 @@
 #+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
 * Jeklena cev s plaščem
 #+begin_problem
-Ažurna verzija elastomehanskih vaj, str. 38.
+Jeklena cev s polmerom \( R_1 = 2.5 \mathrm{cm} \) je obdana s \( 5 \)-centimetrskim plaščem (\( R_2 = 7.5 \mathrm{cm} \)) izolacije iz umetne mase. Plašč želimo zasukati okrog cevi: najprej ga primemo, t.j. v radialni smeri enakomerno stisnemo s tlakom \( p_0 = 10^6 \mathrm{Pa} \), nato pa počasi zasučemo. Izračunaj, za kolikšen kot je treba zavrteti zunanji del plašča, da izolacija zdrsne okrog cevi. Vzdolž simetrijske osi ni deformacije. Youngov modul umetne mase je \( E = 10^7 \mathrm{Pa} \), Poissonovo število \( \sigma = 0.4 \), koeficient lepenja med jeklom in umetno maso pa \( k = 0.8 \). Deformacija cevi je zanemarljiva.
 #+end_problem
+Vir: Naloge iz elastomehanike, D. Svenšek, str. 39
 
 Silo, ki nasprotuje vrtenju izolacijskega sloja, označimo s \( \mathbf{F}_l \). Vektor premika \( \mathbf{u} \) bo imel dve komponenti
 
@@ -256,7 +257,7 @@ Upoštevajoč nastavek zapišemo
 
 ter spremenljivko \( x = kr  \)
 
-\[ p_{rr} &= \frac{E Ak}{1 + \sigma} \left( \frac{\partial j_1 (x)}{\partial x} + \frac{\sigma}{(1 - 2 \sigma)  x ^2} \frac{\partial \left( x ^2 J_1 (x) \right) }{\partial x} \right)
+\[ p_{rr} = \frac{E Ak}{1 + \sigma} \left( \frac{\partial j_1 (x)}{\partial x} + \frac{\sigma}{(1 - 2 \sigma)  x ^2} \frac{\partial \left( x ^2 J_1 (x) \right) }{\partial x} \right)
 \]
 
 #+begin_note
@@ -290,5 +291,5 @@ Za robni pogoj pri \( x = k R \) torej dobimo
 
 Rešitev delimo s \( \frac{kR}{\cos (kR)} \) in izpostavimo \( \tan  \) funkcije, da dobimo transcedentno enačbo
 
-\[ -2 kr = \tan (k R) \left[ \frac{1 - 2 \sigma + \sigma}{ 1 - 2 \sigma} \left( k R \right) ^2 - 2 \right].
+\[ \tan (kR) = \frac{k R}{1 - \frac{1 - \sigma}{2 (1 - 2 \sigma)} \left( k R \right) ^2}
 \]

@@ -1,0 +1,172 @@
+#+title: Vaje iz Mehanike kontinuov, 12. teden v letu
+#+subtitle: 2026/03/16 in 2026/03/18
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Elastična krogla - nadaljevanje
+
+Prejšnji teden nismo dokončali naloge, kjer smo iskali frekvence radialnega lastnega nihanja elastične krogle s polmerom \( R \).
+
+Izluščili smo transcedentno enačbo
+
+\[ \tan (kR) = \frac{kR}{1 - \frac{1 - \sigma}{2 (1 - 2\sigma)} \left( kR \right) ^2}.
+\]
+
+[[file:figures/12mehk_eigenfreq.png]]
+
+Na zgornji sliki lahko vidimo grafične rešitve te enačbe za \( k = 1 \). Opazimo lahko, da se z večanjem \( x = kR > 0 \) približujejo te vrednosti k \( x = n \pi, \ n = 0, 1, 2, \ldots \).
+
+#+begin_my_example
+Kot primer si vzemimo \( \sigma = 0.25 \), ki pripadaj jeklu. Prvih nekaj rešitev so
+
+\begin{array}{c|c}
+n & x_n \\ \hline
+1 & 2.563 \\
+2 & 6.059 \\
+3 & 9.280 \\
+4 & 12.459 \\
+\end{array}
+
+Na začetku naloge smo definirali \( k \) kot
+
+\[ k ^2 = \rho \omega ^2 \frac{\left( 1 + \sigma \right) \left( 1 - 2 \sigma \right)}{E \left( 1 - \sigma \right)}.
+\]
+
+Hkrati pa vemo, da so njegove diskretne vrednosti definirane preko ničel sferičnih Besselovih funkcij \( k_n = \frac{\xi_n}{R} \). Lastne frekvence nihanja za kroglo s premerom \( R = 5 \mathrm{cm} \), gostoto \( \rho = 7800 \frac{\mathrm{kg}}{\mathrm{m} ^3} \) ter Youngovim modulom \( E = 2.0 \cdot 10^{11} \frac{\mathrm{N}}{\mathrm{m} ^2} \) so
+
+\begin{array}{c|c}
+n & \nu_n [Hz] \\ \hline
+1 & 90.5 \\
+2 & 214 \\
+3 & 328 \\
+4 & 440 \\
+\end{array}
+#+end_my_example
+* Teorija: kristali
+
+Elastična prosta energija kristala ima obliko kvadratne forme
+
+\[ f(u) = \frac{1}{2} C_{ijkl} u_{ij} u_{kl}.
+\]
+
+Iz definicije napetostnega tenzorja
+
+\[ p_{ij} = \frac{\partial f}{\partial u_{ij}} = C_{ijkl} u_{kl},
+\]
+
+vidimo, da je simetričen, saj velja \( u_{ij} = u_{ji} \). Nadalje velja tudi simetrija \( u_{kl} = u_{lk} \), iz česar sledi, da ima tenzor elastičnih konstant \( C_{ijkl} \) maksimalno 21 neodvisnih konstant.
+* Tetragonalen kristal
+#+begin_problem
+Zapišimo deformacijsko prosto energijo za kristal s tetragonalno simetrijo. Vir: MEHK, vaje
+#+end_problem
+
+Tetragonalna struktura ima sledečo enakost stranic \( a = b \ne c \). Izberemo si tak kristal, ki pripada simetrijski grupi \( C_{4v} \). Slednja vsebuje štirištevno os \( z \) ter 2 zrcaljenji preko med seboj pravokotnih ravnin, ki vsebujeta prej omenjeno os. Naj normali teh ravnin kažeta v smeri \( x \) in \( y \).
+
+Poglejmo si zrcaljenje
+
+\[ x \to - x, \quad y \to y, \quad z \to z.
+\]
+
+*Komponente tenzorjev se transformirajo kot produkti komponent vektorjev*. Zgornje zrcaljenje transformira element tenzorja \( C_{xyyy} \) v \( - C_{xyyy} \), ter \( C_{xxyy} \to C_{xxyy} \). Če je transformacija hkrati tudi simetrijska operacija kristala - kot npr. prva transformacija \( C_{xyyy} \to - C_{xyyy} \) - potem so komponente, ki se slikajo druga v drugo enake. Torej bo \( C_{xyyy} = - C_{xyyy} = 0 \). Zaradi obeh zrcaljenj bodo vsi elementi tenzorja, ki imajo liho število indeksov \( x \) ali \( y \) ničelni.
+
+Ostane nam še druga simetrijska operacija - zasuk za \( \frac{\pi}{2} \)
+
+\[ x \to y, \quad y \to -x , \quad z \to z.
+\]
+
+Nekateri elementi tenzorja, ki se preslikajo so
+
+\begin{align*}
+  C_{xxxx } &\to C_{yyyy}= C_{xxxx} \\
+C_{xxzz} &\to C_{yy zz} = C_{xxzz} \\
+C_{xzxz} &\to C_{yzyz} = C_{xzxz}
+\end{align*}
+
+V prosti energiji se nam pojavita dva člena, ki bosta nakazovala, kaj naredijo transformacije in simetrijske operacije.
+
+\[ C_{xxyy} u_{xx } u_{yy} + C_{yy xx } u_{yy} u_{xx } = 2 C_{xx yy} u_{xx } u_{yy}.
+\]
+
+Gostota proste energije bo tako
+
+\begin{equation}
+\label{eq:1}
+\begin{aligned}
+  f(u) = \frac{1}{2} & \left[ C_{xxxx } \left( u_{xx } ^2 + u_{yy} ^2 \right) + C_{zzzz} u_{zz} ^2 + 2 C_{xx zz} \left( u_{xx } u_{zz} + u_{yy} u_{zz} \right) \right. \\
+& \left. C_{xxyy} u_{xx} u_{yy} + 4 C_{xyxy} u_{xy} ^2 + 4 C_{xzxz} \left( u_{xz} ^2 + u_{yz} ^2 \right) \right],
+\end{aligned}
+\end{equation}
+
+saj velja \( C_{yxyx} = C_{xyxy} = C_{yxxy} = C_{xyyx} \).
+
+* Kubičen kristal
+#+begin_problem
+Zapišimo deformacijsko prosto energijo za kristal s kubično simetrijo. Vir: MEHK, vaje
+#+end_problem
+
+Kubičen kristal ima napram tetragonalnemu kristalu dodatne simetrije:
+
+- trikratno štirištevno os
+- štirikratno trištevno os
+- šestkratno dvoštevno os
+
+Kot osnovo lahko vzamemo prosto energijo kristala iz \ref{eq:1}, vendar se bodo določeni členi še izničili. Zaradi rotacij za kot \( \frac{\pi}{2} \) okoli osi \( x \) in \( y \) imamo sledeči transformaciji
+
+\[ x \to x, \quad y \to z, \quad z \to -y
+\]
+
+in
+
+\[ x \to -z, \quad y \to y, \quad z \to x.
+\]
+
+Te transformacije podajo tudi simetrijske operacije
+
+\begin{align*}
+  C_{zzzz} &\to C_{xxxx} = C_{zzzz} \\
+C_{xxzz} &\to C_{xxyy} = C_{xxzz} \\
+C_{xzxz} &\to C_{xyxy} = C_{xzxz}.
+\end{align*}
+
+Gostota proste energije za kubičen kristal bo tako
+
+\begin{align*}
+ f(u) = \frac{1}{2} & \left[ C_{xxxx} \left( u_{xx} ^2 + u_{yy} ^2 + u_{zz} ^2 \right) + 2 C_{xxyy} \left( u_{xx} u_{yy} + u_{yy}u_{zz} + u_{xx} u_{zz} \right) + \right. \\
+& + \left. 4C_{xyxy} \left( u_{xy} ^2 + u_{xz} ^2 + u_{yz} ^2 \right)  \right]
+\end{align*}
+* Teorija: deformacije tankih plošč
+
+Zanima nas dogajanje s tankimi ploščami, če so obremenjene v v prečni smeri \( z \). Odmik bomo označevali z \( u_z = Z(x, y) \), enačba, ki opisuje odmike pa je
+
+\[ D \Delta_{\perp} ^2 u_z - P = 0.
+\]
+
+Operator \( \Delta_{\perp} = \nabla ^2_{\perp} \), \( P(x, y) \) je površinska gostota sile (tlak) in \( D \) konstanta, ki je odvisna od materiala
+
+\[ D = \frac{E h ^3}{12 \left( 1 - \sigma ^2 \right)}.
+\]
+
+Plošča je lahko vpeta na dva možna načina. Togo vpeta plošča ima robna pogoja
+
+\[ \left. u_z \right|_{\partial S} = 0 \quad \text{ in } \quad \left. \frac{\partial u_z}{\partial \mathbf{n}} \right|_{\partial S} = 0,
+\]
+
+kjer \( \partial S \) označuje rob plošče in je \( \frac{\partial }{\partial n}  \) odvod v smeri, ki je vzporedna z ravnino plošče in pravokotna na njen rob.
+
+V primeru prislonjene plošče pa sta robna pogoja
+
+\[ \left. u_z \right|_{\partial S} = 0 \quad \text{ in } \quad  \left. \left( \frac{\partial ^2 u_{z}}{\partial n ^2}  + \sigma \frac{\partial \theta}{\partial l}  \frac{\partial u}{\partial n}  \right) \right|_{\partial S} = 0,
+\]
+
+kjer je \( \phi \) kot med tangento na rob plošče in osjo \( x \), \( \frac{\partial }{\partial l}  \) pa je odvod po dolžini roba. Odvod \( \frac{\partial \phi}{\partial l}  \) podaja obliko robu plošče.
+* Deformacija plošče zaradi lastne teže
+#+begin_problem
+Kako se zaradi lastne teže povesi tanka okrogla plošča, ki je na robu togo vpeta?
+#+end_problem
+
+Problem je simetričen glede na polarni kot \( \phi \) in naša rešitev torej ne bo odvisna od njega.
