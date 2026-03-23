@@ -1,4 +1,4 @@
-#+title: Vaje iz Mehanike kontinuov, 11. teden v letu
+#+title: Predavanja iz Mehanike kontinuov, 11. teden v letu
 #+subtitle: 2026/03/09
 #+startup: nolatexpreview
 #+startup: entitiespretty nil

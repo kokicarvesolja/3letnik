@@ -1,0 +1,120 @@
+#+title: Predavanja iz Mehanike kontinuov, 13. teden v letu
+#+subtitle: 2026/03/23
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Globalna teorija palice
+
+[dopolni zapiske]
+
+V lastnem sistemu palice \( \hat{e}_{\zeta}, \hat{e}_{\xi}  \) in \( \hat{e}_{\eta} \) je upogibna energija
+
+\[ F = \frac{1}{2} \int\limits_{}^{} \left[ E I_{\xi\xi} \Omega_{\xi} ^2 + E I_{\eta\eta} \Omega_{\eta} ^2 + C \Omega_{\zeta} ^2 \right] \, \mathrm{d} l
+\]
+
+V primeru okrogle palice pa velja še dodatno \( I_{\xi \xi} = I_{\eta\eta} \).
+** Ravnovesje sil in navorov
+
+Opazujemo delček žice dolžine \( \mathrm{d} x \). Sila pri \( \mathbf{x} \), ki deluje na ploskev, je \( - \mathbf{F} \). Sila pri \( \mathbf{x} + \mathrm{d} \mathbf{x} \), ki deluje na dotično ploskev pa je \( \mathbf{F} + \mathrm{d} \mathbf{F} \). Dodali smo člen \( \mathrm{d} \mathbf{F} \), saj vsebuje silo, npr. teže, za delček debeline \( \mathrm{d} \mathbf{x} \).
+
+Ravnovesje je potem
+
+\[ \mathbf{F} + \mathrm{d} \mathbf{F} + \left( - \mathbf{F} \right) + \mathbf{K} \cdot \, \mathrm{d} l = 0,
+\]
+
+in zaključimo
+
+\[ \mathrm{d} \mathbf{F} = - \mathbf{K} \, \mathrm{d} l.
+\]
+
+Pri ravnovesju navorov imamo podoben razmislek. Normali nasprotnih ploskev bosta kazali v nasprotni smeri. Pri \( \mathbf{x} \) naj bo navor \( - \mathbf{M} \), pri \( \mathbf{x} + \mathrm{d} \mathbf{x} \) pa navor \( \mathbf{M} + \mathrm{d} \mathbf{M} \). Hkrati pa moramo upoštevati še ročico, ki si jo izberemo v točki \( \mathbf{x} + \mathrm{d} \mathbf{x} \). Iz ravnovesja sil vemo, da je sila pri \( \mathbf{x} \) enaka \( - \mathbf{F} \). Torej
+
+\[ \mathbf{M} + \mathrm{d} \mathbf{M} + \left( - \mathbf{M} \right) + \left( - \mathrm{d} \mathbf{x} \times \left( - \mathbf{F} \right) \right) = 0.
+\]
+
+Upoštevamo lastnosti vektorskega produkta \( \mathbf{a} \times \mathbf{b} = - \mathbf{b} \times \mathbf{a} \)
+
+\[ \mathrm{d} \mathbf{M}  = \mathbf{F} \times \mathrm{d} \mathbf{x}.
+\]
+
+Delček \( \mathrm{d} \mathbf{x} \) je enak \( x \mathrm{d} l \) in zaključimo, da je ravnovesje navorov
+
+\[ \frac{\mathrm{d} \mathbf{M}}{\mathrm{d} l} = \mathbf{F} \times \mathbf{t},
+\]
+
+kjer je \( \mathbf{t} \) tangentni vektor.
+** Robni pogoji
+
+Imamo več vrst robnih pogojev:
+
+- palica je vzidana, kjer je na robu \( \mathbf{r} = 0 \) in tangentni vektor \( \mathbf{t} = \mathrm{konst} \).
+- palica je prislonjena in na tisti točki je \( \mathbf{r} = 0 \), tangentni vektor \( \mathbf{t} \) ni definiran, navor pa je \( \mathbf{M} = 0 \).
+- prosti konec palice ima silo in navor \( \mathbf{F} = \mathbf{M} = 0 \).
+** Bernoullijeva teorija
+
+Bernoullijeva teorija deluje zgolj za majhne povese palice. Upogib palice označimo \( \mathbf{r} (l) = \left( X(l), Y(l) , l \right) \). Za primer prostega konca palice je tangentni vektor
+
+\[ \mathbf{t} = \frac{\mathrm{d} \mathbf{r}}{\mathrm{d} l} = \left( X', Y', 1 \right).
+\]
+
+Normala pa
+
+\[ \frac{\mathrm{d} \mathbf{t}}{\mathrm{d} l} = \left( X'', Y'', 0 \right).
+\]
+
+Njun vektorski produkt bo
+
+\[ \mathbf{t} \times \frac{\mathrm{d} \mathbf{t}}{\mathrm{d} l} = \left( - Y'', X'', X' Y'' - Y' X'' \right) \sim \left( - Y'', X'', 0 \right).
+\]
+
+Razliko produktov prvega in drugega odvoda zanemarimo zaradi harmonske teorije.
+
+Za okroglo palico bo potem upogibna palice
+
+\[ F = \frac{1}{2} \int\limits_{}^{} E I \left( X'' ^2 + Y'' ^2 \right) \, \mathrm{d} l.
+\]
+
+Slednje je variacijski račun in Euler-Lagrangeeva enačba nam bo potem dala diferencialno enačbo 4. reda, kar za rešitev zahteva 4 robne pogoje.
+** Kirchoffova teorija palice
+
+Teorija se osredotoča na okrogle palice, ki se deformirajo - brez torzije. Zanima nas elastična energija
+
+\[ F = \frac{1}{2} \int\limits_{}^{} \left[ E I \Omega_{\xi} ^2 + EI \Omega_{\eta} ^2 + C \Omega_{\zeta} ^2 \right] \, \mathrm{d} l.
+\]
+
+Podobno kot je imel Hookov zakon obliko \( F = kx \) iščemo sedaj \( M = \ldots \Omega \). Enako je tudi za prosto energijo \( F = \ldots \Omega ^2 \), ki naj ima podobno obliko prožnostni energiji \( E_{pr} = \frac{k x ^2}{2} \).
+
+Posamezne komponente navora so
+
+\begin{align*}
+  M_{\xi} &= E I \Omega_{\xi} \\
+M_{\eta} &= E I \Omega_{\eta} \\
+M_{\zeta} &= C \Omega_{\zeta}.
+\end{align*}
+
+Pri upogibu brez torzije je torej navor
+
+\[ \mathbf{M} = EI \mathbf{t} \times \frac{\mathrm{d} \mathbf{t}}{\mathrm{d} l}.
+\]
+
+Smer navora smo že poznali, tisto, kar smo tukaj pridelali je vrednost koeficienta pred njim \( EI \).
+
+Dobljeno lahko sedaj vstavimo v enačbo ravnovesja navorov \( \frac{\mathrm{d} \mathbf{M}}{\mathrm{d} l} \) in dobimo
+
+\[  \frac{\mathrm{d} }{\mathrm{d} l} \left( EI \mathbf{t} \times \frac{\mathrm{d} \mathbf{t}}{\mathrm{d} l} \right) = EI \frac{\mathrm{d} \mathbf{t}}{\mathrm{d} l} \times \frac{\mathrm{d} \mathbf{t}}{\mathrm{d} l} + EI \mathbf{t} \times \frac{\mathrm{d} ^2 \mathbf{t}}{\mathrm{d} l ^2}.
+\]
+
+Vektorski produkt istih členov je ničeln, zato
+
+\[ E I \mathbf{t} \times \frac{\mathrm{d} ^2 \mathbf{t}}{\mathrm{d} l ^2} = \mathbf{F} \times \mathbf{t},
+\]
+
+kar je Kirchoffova teorija palice. Drugače zapisano
+
+\[ EI \frac{\mathrm{d} \mathbf{r}}{\mathrm{d} l} \times \frac{\mathrm{d} ^3 \mathbf{r}}{\mathrm{d} l ^2} = \mathbf{F} \times \frac{\mathrm{d} \mathbf{r}}{\mathrm{d} l}.
+\]
