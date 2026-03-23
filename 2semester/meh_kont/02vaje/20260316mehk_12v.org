@@ -347,7 +347,6 @@ vrednosti koeficientov pa so tako
 B &= - \frac{\alpha}{4} \left[ \frac{3 + \sigma}{2 (1 + \sigma)} \left( R ^2 - r_0 ^2 \right) - r_0 ^2 \ln \frac{R}{r_0} \right].
 \end{align*}
 * Upogib plošče zaradi lastne teže - variacijski pristop (str. 52)
-
 #+begin_problem
 Upogib prislonjene vodoravne kvadratne plošče s stranico \( a \) opišemo z razvojem
 
@@ -356,3 +355,62 @@ Upogib prislonjene vodoravne kvadratne plošče s stranico \( a \) opišemo z ra
 
 Variacijsko določimo poves sredine železne plošče s stranico \( 1 \mathrm{m} \) in debelino \( 1 \mathrm{cm} \) zaradi lastne teže. Ocenimo napako, ki jo naredimo, če upoštevamo le prvi člen razvoja. Prožnostni modul železa je \( E = 2 \cdot 10^{11} \frac{\mathrm{N}}{\mathrm{m} ^2} \), Poissonovo število \( \sigma = 0.25 \), gostota pa \( \rho = 7800 \frac{\mathrm{kg}}{\mathrm{m} ^3} \).
 #+end_problem
+
+Variacijski pristop zahteva uoprabo funkcionala proste energije, ki smo ga izpeljali na predavanjih
+
+\begin{equation}
+\label{eq:3}
+ F = F_0 + \frac{1}{2} D \int\limits_{}^{} \left[ \left( \Delta_{\perp} + 2 ( 1- \sigma ) \left\{ \left( \frac{\partial u_{z}}{\partial x \partial y}  \right) ^2 - \frac{\partial ^2 u_z}{\partial x ^2} \frac{\partial ^2 u_{z}}{\partial y ^2}   \right\} \right) \right] \, \mathrm{d} S - \int\limits_{}^{} u_z P \, \mathrm{d} S.
+\end{equation}
+
+Robna pogoja specifičnega problema sta
+
+\[ \left. u_z \right|_{\partial S} = 0 \quad \text{ in } \quad \left. \left( \frac{\partial ^2 u_{z}}{\partial r ^2} + \sigma \frac{\partial \theta}{\partial l} \frac{\partial z}{\partial r}   \right) \right|_{\partial S} = 0. 
+\]
+
+Nastavek podan v navodili zadosti robnim pogojem.
+
+Del enačbe \ref{eq:3}, ki je znotraj \( \left\{ \ldots \right\} \) lahko zapišemo tudi malo drugače. Za poljubno funkcijo \( z \) se vsebina oklepaja prepiše v
+
+\begin{align*}
+  z_{xy} ^2 + z_{xx } z_{yy} &= \partial_x \left( z_y z_{xy} \right) + \partial_y \left( - z_y z_{xx } \right) \\
+&= \nabla \cdot \mathbf{z}.
+\end{align*}
+
+Našli smo torej vektor s komponentami \( \mathbf{z} = \left( z_y  z_{xy}, - z_y z_{xx } \right) \), ki ga lahko zapišemo z divergenco.  Ploskovni integral lahko preko Stokesovega izreka pretvorimo na integral po zaključenem robu ploskve
+
+\[ \int\limits_{S}^{} \nabla \cdot \mathbf{z} \, \mathrm{d} S = \oint\limits_{\partial S}^{} \mathbf{z} \cdot \hat{n} \, \mathrm{d} l = 0.
+\]
+
+Funkcional proste energije ima sedaj obliko
+
+\[ F = F_0 + \frac{1}{2} D \int\limits_{}^{} \left( \Delta_{\perp } ^2 z \right) \, \mathrm{d} S - \int\limits_{}^{} P z \, \mathrm{d} S
+\]
+
+Nastavek podan v navodilih je sestavljen iz funkcij, ki so ortogonalne na kvadratu. Posledično v integral z \( \Delta_{\perp } \)  ne bo imel mešanih členov \( A_{mn} A_{ij} \). Apliciramo operator na nastavek
+
+\[ \Delta_{\perp } = - \sum\limits_{m, n}^{} A_{mn} \left[ \left( \frac{m \pi}{a} \right) ^2 \sin \frac{m \pi x}{a} \sin \frac{n \pi y}{a} + \left( \frac{n \pi}{a} \right) ^2 \sin \frac{m \pi x}{a} \sin \frac{n \pi x}{a} \right].
+\]
+
+Za računanje bomo vzeli prevladujoč člen, ki ima indeksa \( n = 1 \) in \(  m = 1 \). Vstavimo člen v funckional proste energije
+
+\begin{align*}
+  F &= F_0 + \frac{1}{2} D \int\limits_{}^{} \left( - A_{11} 2 \left( \frac{\pi}{a} \right) ^2 \sin \frac{\pi x}{a} \sin \frac{\pi y}{a} \right) ^2 \, \mathrm{d} S \\
+&\quad - \int\limits_{}^{} P z \, \mathrm{d} S \\
+&= F_0 + \frac{2D A_{11} ^2 \pi ^4}{a ^4} \int\limits_0^a \sin ^2 \left( \frac{\pi y}{a} \right) \, \mathrm{d} y \int\limits_0^a \sin ^2 \left( \frac{\pi x}{a} \right) \, \mathrm{d} x \\
+& \quad - \int\limits_0^a \int\limits_0^a P A_{11} \sin \left( \frac{\pi x}{a} \right) \sin \left( \frac{\pi y}{a} \right) \, \mathrm{d} x \, \mathrm{d} y  \\
+&= F_0 + \frac{2 D A_{11} ^2 \pi ^4 }{a ^4} \left( \frac{a}{2} \right) ^2 - \frac{4 A_{11} P a ^2}{\pi ^2} 
+\end{align*}
+
+V zadnji enačbi smo dobili odvisnost proste energije od prvega člena \( A_{11} \). Zahtevamo, da je variacija proste energije ničelna in izračunano
+
+\[ \frac{\partial F}{\partial A_{11}}  = 0 = \frac{ A_{11} \pi ^4}{a ^2} - \frac{4 P a ^2}{\pi ^2}  
+\]
+
+Sledi, da je variacija za dotičen koeficient ničelna pri
+
+\[ A_{11} = \frac{4 P a ^4}{D \pi ^6}.
+\]
+
+
+
