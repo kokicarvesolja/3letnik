@@ -87,13 +87,17 @@ Iščemo lastne energije \( \epsilon \) stacionarne Schrödingerjeve enačbe s H
 
 V intervalu \( n - 1 \) in \( n \) bomo uporabili nastavek
 
-\[ \psi_{n - 1} (x) = A_{n - 1} e^{\mathrm{i} q x} + B_{n - 1} e^{- \mathrm{i} q x},
-\]
+\begin{equation}
+\label{eq:2}
+ \psi_{n - 1} (x) = A_{n - 1} e^{\mathrm{i} q x} + B_{n - 1} e^{- \mathrm{i} q x},
+\end{equation}
 
 na intervalu \( n \) in \( n + 1 \) pa nastavek
 
-\[ \psi_n (x) = A_n e^{\mathrm{i} q x} + B_n e^{- \mathrm{i} q x}.
-\]
+\begin{equation}
+\label{eq:3}
+ \psi_n (x) = A_n e^{\mathrm{i} q x} + B_n e^{- \mathrm{i} q x}.
+\end{equation}
 
 Za določitev konstant zahtevamo zveznost in zveznost odvoda
 
@@ -122,3 +126,67 @@ Pogoju \( e^{\mathrm{i} N k a} = 1 \) bomo zadostili z \( z \in \mathbb{Z} \)
 \]
 
 Na intervalu dolžine \( 2 \pi \) bomo opisali vse možne lastne vrednosti operatorja translacije. Ponavadi izberemo interval \( \left[ - \frac{\pi}{a}, \frac{\pi}{a} \right] \), ki mu pravimo prva Brillouinova cona [check spelling].
+
+Aplicirajmo operator translacije na nastavek \( \psi_{n - 1} (x) \). Dobili bomo
+
+\[ T \psi_{n - 1} (x) = e^{\mathrm{i} k a} \psi_{n - 1} (x) = \psi_n (x + a),
+\]
+
+kjer je \( e^{\mathrm{i} k a} \) lastna vrednost, \( \psi_n (x + a) \) pa rezultat translacijskega operatorja.
+
+Vstavimo nastavka \ref{eq:2} in \ref{eq:3} in dobimo dodatni dve enačbi
+
+\begin{align*}
+  A_n e^{\mathrm{i} q a} &= A_{n - 1} e^{\mathrm{i} ka} \\
+B_n e^{- \mathrm{i} q a} &= B_{n - 1} e^{\mathrm{i} ka}.
+\end{align*}
+
+Skupaj s pogojema zveznosti in zveznosti odvoda imamo sedaj sistem štirih enačb za štiri neznanke. Po eni uri trdega dela nam preostane enačba
+
+\begin{equation}
+\label{eq:4}
+ \cos (ka) = \cos (qa) + Q a \frac{\sin (qa)}{qa}.
+\end{equation}
+
+Ponovimo, kaj je posamezen parameter: \( k \) predstavlja vrednosti preko katerih so definirane lastne vrednosti operatorja translacije. \( q = \sqrt{\frac{2m \epsilon}{\hbar ^2}} \) je nadomestek za energijo in \( Q = \frac{m \lambda}{\hbar ^2} \) je konstanta.
+
+Vrednosti \( q \), ki rešijo enačbo za izbran \( k \) nam podajo lastne vrednosti energije.
+
+Vrednost \( q = 0 \) ni lastna vrednost, saj je \( \cos (0 \cdot a) < 1 + Qa \).
+
+[graf \( \cos (ka) \)  v odvisnosti od \( qa \)]
+
+[graf \( \epsilon(k) \)]
+
+Obravnavajmo primer skoraj prostih elektronov, kjer bo veljalo \( Q a \ll 1 \).
+
+Želimo določiti intervale energijskih rež. Desna stran enačbe \ref{eq:4} ima možni vrednosti \( \cos (ka) = \pm 1 \), desno stran pa razvijemo po Taylorju okoli \( qa = n \pi + \eta \).
+
+Enačba je
+
+\[ \left( -1 \right)^n = \left( 1 - \frac{1}{2} \eta ^2 \right) \left( -1 \right) ^n + Qa \frac{\eta \left( -1 \right) ^n}{n \pi + \eta}.
+\]
+
+Preuredimo v
+
+\[ \frac{1}{2} \eta ^2 = Q a \frac{\eta}{n \pi + \eta},
+\]
+
+ampak \( \eta \) v imenovalcu lahko zanemarimo, saj ima \( \eta ^2 \) večji doprinos. Velikost intervala je torej
+
+\[ \eta = 2 Q a \frac{1}{n \pi}.
+\]
+
+Energijska reža je torej na intervalu \( \left[ n \pi, n \pi + \frac{2 Q a}{n \pi} \right] \). Interval želimo izraziti še z energijo
+
+\[ \epsilon \in \left[ \frac{\hbar ^2 n ^2 \pi ^2}{2 m a ^2}, \frac{\hbar ^2 \left( n \pi + \frac{2 Q a}{n \pi} \right) ^2}{2 m a ^2} \right].
+\]
+
+Interval eenrgijske reže torej zapišemo
+
+\begin{align*}
+  \Delta \epsilon_{n, n + 1} &= \frac{\hbar}{2m a ^2} \left[ \left( n \pi + \frac{2 Q a}{n \pi} \right) ^2 - n ^2 \pi ^2 \right] \\
+&= \frac{\hbar ^2}{2 m a ^2} \hbar Q a =\frac{2 \lambda}{a}.
+\end{align*}
+
+Zadnji člen kvadriranja zanemarimo, saj velja \( Q a \ll 1 \).
