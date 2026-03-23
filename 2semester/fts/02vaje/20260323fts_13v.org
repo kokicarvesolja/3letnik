@@ -1,0 +1,124 @@
+#+title: Vaje iz Fizike trdne snovi, 13. teden v letu
+#+subtitle: 2026/03/23
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Teorija (?)
+
+Prosta energija elektronov je
+
+\[ \epsilon (\mathbf{k}) = \frac{\hbar ^2 k ^2}{2m}.
+\]
+
+Gostota stanj je podana
+
+\[ g(\epsilon) = \frac{1}{V} \frac{\mathrm{d} N(\epsilon, - \epsilon + \mathrm{d} \epsilon)}{\mathrm{d} \epsilon} = A_d  \epsilon^{\frac{d}{2} - 1} \Theta(\epsilon), \ d = 1, 2, 3,
+\]
+
+kjer je \( \Theta \) Heavisideova funkcija(?).
+
+Zanima nas število delcev \( N \) pri \( T = 0 \), ki jo bomo izračunali kot
+
+\[ N = V \int\limits_{- \infty}^{\infty} g(\epsilon) \, \mathrm{d} \epsilon.
+\]
+
+Slednje lahko razširimo tudi na \( T > 0 \) z uvedbo Fermi-Diracove porazdelitve
+
+\[ N = V \int\limits_{- \infty}^{\infty} g(\epsilon) f(\epsilon) \, \mathrm{d} \epsilon,
+\]
+
+kjer je \( f(\epsilon) \) definirana
+
+\[ f(\epsilon) = \frac{1}{\exp \left\{ \beta \left( \epsilon - \mu \right) + 1 \right\}.
+\]
+
+\( \mu \) je kemijski potencial in je odvisen od temperature.
+
+Velja \( \mu(T = 0) = \epsilon_F \), kjer je \( \epsilon_F \) Fermijeva energija.
+
+Sommerfeldov razvoj, ki ga letos ne bomo izpeljevali na vajah se glasi
+
+\[ \mu (T) = \epsilon_F - \frac{\pi ^2}{6} \left( k_B T \right) ^2 \frac{g' (\epsilon_F)}{g(\epsilon_F)},
+\]
+
+ki velja za majhne temperature.
+* Naloga
+
+Gostota stanj je, kakor povedano v teoretičnem uvodu,
+
+\[ g(\epsilon) = A_d \epsilon^{\frac{d}{2} - 1} \Theta(\epsilon).
+\]
+
+Odvod gostote stanj je
+
+\[ g'(\epsilon) = A_d \left( \frac{d}{2} - 1 \right) \epsilon^{\frac{d}{2} - 2} \Theta(\epsilon),
+\]
+
+in Sommerfeldov približek je potem
+
+\begin{equation}
+\label{eq:1}
+ \mu(T) = \epsilon_F \left[ 1 - \frac{\pi ^2}{6} \left( k_B T \right) ^2 \left( \frac{d}{2} - 1 \right) \frac{1}{\epsilon_F ^2} \right]
+\end{equation}
+
+#+begin_note
+Pri sobni temperaturi je \( k_B T = \frac{1}{40} \mathem{eV} \) in Fermijeva energija \( \epsilon_F = 2.5 \mathrm{eV} \). Njuno razmerje je potem
+
+\[ \frac{k_B T}{\epsilon_F} = 0.01.
+\]
+
+Sledi, da Sommerfeldov približek \ref{eq:1} za kovine tudi pri sobni temperaturi uporaben!
+#+end_note
+* Naloga: Kronig-Penneyjev model
+
+Obravnavamo kristal v eni dimenziji, ki ga opisuje potencial
+
+\[ V(x) = \lambda \sum\limits_n^{} \delta(x - na), \ \lambda > 0.
+\]
+
+Osnovna celica in primitivni vektor je kar vektor \( \mathbf{a} \) med dvema \( \delta \) potenciala.
+
+Iščemo lastne energije \( \epsilon \) stacionarne Schrödingerjeve enačbe s Hamiltonjanom \( H = \frac{p ^2}{2m} + V(x) \). Rešitev SSE med potenciali je kar ravni val z energijo \( \epsilon = \frac{\hbar ^2 k ^2}{2m}\).
+
+V intervalu \( n - 1 \) in \( n \) bomo uporabili nastavek
+
+\[ \psi_{n - 1} (x) = A_{n - 1} e^{\mathrm{i} q x} + B_{n - 1} e^{- \mathrm{i} q x},
+\]
+
+na intervalu \( n \) in \( n + 1 \) pa nastavek
+
+\[ \psi_n (x) = A_n e^{\mathrm{i} q x} + B_n e^{- \mathrm{i} q x}.
+\]
+
+Za določitev konstant zahtevamo zveznost in zveznost odvoda
+
+\begin{align*}
+  \psi_{n - 1} (na ) &= \psi_n (na) \\
+\psi_n ' (na) - \psi_{n - 1} ' (na) &= 2 m \lambda \frac{1}{ \hbar ^2} \psi_n (na).
+\end{align*}
+
+To je problem samo za en mejo. Imamo pa periodičen robni pogoj \( \psi( x+ Na ) = \psi(x) \), kar pomeni, da imamo v resnici problem velikost \( 2n \times 2n \).
+
+Operator translacije \( T: \psi(x) = \psi(x + a) \) komutira s Hamiltonjanom \( [H, T] = 0 \). Po aplikaciji operatorja translacije \( N \)-krat
+
+\[ T^N \psi(x) = \psi(x + Na) = \psi(x),
+\]
+
+kjer smo upoštevali enakost periodičnega robnega pogoja. Zaradi komutacije vemo, da bodo lastne vrednosti enega operatorja tudi lastne vrednosti drugega operatorja. Zapišemo lahko torej
+
+\[ T^N \psi(x) = c^N \psi(x) = \psi(x).
+\]
+
+Preberemo \( c^N = 1 \), kjer je \( c \) lastna vrednost operatorja translacije. \( c \) je lahko kompleksno število in če ga definiramo kot \( c^N = e^{\mathrm{i} N k a} = 1 \) smo dobili parameter faze.
+
+Pogoju \( e^{\mathrm{i} N k a} = 1 \) bomo zadostili z \( z \in \mathbb{Z} \)
+
+\[ k = \frac{2 \pi}{N a} \in \mathbb{R}.
+\]
+
+Na intervalu dolžine \( 2 \pi \) bomo opisali vse možne lastne vrednosti operatorja translacije. Ponavadi izberemo interval \( \left[ - \frac{\pi}{a}, \frac{\pi}{a} \right] \), ki mu pravimo prva Brillouinova cona [check spelling].
