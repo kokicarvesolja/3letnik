@@ -53,7 +53,7 @@ Verjetnost bomo zapisali s kumulativnimi funkcijami
 
 Upoštevamo lastnost kumulativnih funkcij \( F(-u) = 1- F(u) \). Verjetnost je tako
 
-\[  P  \left( - R < x(t_2) < R \right) = 2 F \left( \frac{R}{\sigma_x (t_2)} \right).
+\[  P  \left( - R < x(t_2) < R \right) = 2 F \left( \frac{R}{\sigma_x (t_2)} \right) - 1.
 \]
 ** Dinamika - gibalna enačba
 
@@ -239,3 +239,162 @@ Vrnimo se nazaj k verjetnosti
 \]
 
 Vrednost \( F(0.595) \) smo prebrali iz tabele.
+
+#+begin_note
+Po prehodu skozi prva svetlobna vrata lahko opravimo meritev \( z_1 \) in opravimo izostreno oceno \( \hat{x} \). Na vratih torej uporabimo diskreten Kalmanov filter. Dobljene rezultate lahko potem propagiramo preko zveznega Kalmanovega filtra do drugih vrat.
+#+end_note
+* Naloga: jašek
+
+#+begin_problem
+Imamo globok jašek napolnjen z vodo. Po sredini jaška spuščamo kroglice z maso \( m \).
+
+Kroglico spustimo v vodo. Po dolgem času je varianca hitrosti enaka \( \frac{1}{4} \) začetne variance hitrosti.
+
+a) Zapiši Kalmanov filter za vektor \( \mathbf{x} = [y, v]^T \)
+b) Poišči varianco hitrosti ob času \( \tilde{t} \), kjer je \( \beta \tilde{t} = 1 \). \( \beta \) je definiran s silo upora
+
+   \[ \mathbf{F}_u = - m \beta \mathbf{v}.
+   \]
+
+   Upoštevaj tudi vpliv naključnih sil (aka dinamičen šum).
+#+end_problem
+
+Uskladimo za začetek koordinatni sistem. Naj bo os \( y \) usmerjena navzdol v pozitivni smeri, vzporedno z jaškom. Kroglice spuščamo iz koordinate \( y = 0  \).
+** Dinamika - gibalna enačba
+
+Podobno kot v prejšnji nalogi zapišemo 2. Newtonov zakon
+
+\[ \sum\limits_i^{} F_i = m a_y = m \ddot{y}.
+\]
+
+Na kroglico deluje sila teže v vzporedni smeri \( \mathbf{F} = m \mathbf{g} \), v negativni smeri pa še sila vzgona \( \mathbf{F}_{vzg} \) in sila upora \( \mathbf{F}_u \). V poljubni navpični smeri deluje pa še dinamičen šum \( F(t) \).
+
+Drugi Newtonov zakon je za naš specifičen primer
+
+\[ m \ddot{y} = mg - F_{vzg} - m \beta v + F(t).
+\]
+
+Vsoto sile teže in sile vzgona bomo definirali kot efektivni težnosti pospešek
+
+\[ F_{eff} = F_g - F_{vzg} = mg - F_{vzg} = m g_{eff}.
+\]
+
+Preostane nam LDE 2. reda
+
+\[ \ddot{y} = g_{eff} - \beta v + \frac{F(t)}{m}.
+\]
+
+Ponovno želimo zapisati v vektorski obliki, da bomo lahko uporabili Kalmanov filter
+
+\[ \dot{\mathbf{x}} = \begin{bmatrix} \dot{x} \\ \dot{v} \end{bmatrix} = \begin{bmatrix}
+                                                                         0 & 1 \\
+                                                                         0 & - \beta
+                                                                          \end{bmatrix} \begin{bmatrix}
+                                                                          y \\ v \end{bmatrix} + \begin{bmatrix}
+                                                                          0 \\ g_{eff} \end{bmatrix} + \begin{bmatrix} 0 \\ w \end{bmatrix}.
+\].
+
+Matrika \( AP \) je
+
+\[ AP = \begin{bmatrix}
+        0 & 1 \\
+        0 & -\beta
+         \end{bmatrix}
+         \begin{bmatrix}
+         p_{11} & p_{12} \\
+         p_{21} & p_{22}
+          \end{bmatrix} = \begin{bmatrix}
+                          p_{12} & p_{22} \\
+                          -\beta p_{12} & -\beta p_{22}
+                           \end{bmatrix}.
+\]
+
+Transponiramo, da dobimo
+
+\[ PA^T = \begin{bmatrix}
+          p_{12} & - \beta p_{12} \\
+          p_{22} &  - \beta p_{22}
+           \end{bmatrix}.
+\]
+
+Podobno kakor prej ima matrika dinamičnega šuma obliko
+
+\[ \Gamma Q \Gamma^T = \begin{bmatrix}
+                       0 & 0 \\
+                       0 & Q
+                        \end{bmatrix}.
+\]
+
+Imamo torej matrično enačbo
+
+\[ \mathbf{P} = \begin{bmatrix}
+                2 p_{12} & p_{22} - \beta p_{12} \\
+                p_{22} - \beta p_{12} & Q - 2 \beta p_{22}
+                 \end{bmatrix}.
+\]
+** Točka b
+
+Iščemo \( \sigma_v ^2 (\tilde{t}) = p_{22} (\tilde{t}) \).
+
+Za razliko od prejšnjega primera tokrat ne rabimo reševati celotnega sistema, ampak rešimo samo
+
+\[ \dot{p}_{22} = Q - 2 \beta p_{22}.
+\]
+
+V enačbi ne poznamo dinamičnega šuma \( Q \).
+
+Zgornjo nehomogeno LDE lahko rešimo z uvedbo nove spremenljivke
+
+\[ u = Q - 2 \beta p_{22}.
+\]
+
+Novo spremenljivko odvajamo
+
+\[ \dot{u} = - 2 \beta \dot{p}_{22}.
+\]
+
+Namesto \( \dot{p}_{22} \) pa vstavimo \( u \) in rešujemo torej
+
+\[ \frac{\dot{u}}{2 \beta} = - u \implies u(t) = C e^{- 2 \beta t}
+\]
+
+z začetnim pogojem \( u(0) = C \).
+
+Zapišemo
+
+\[ u(t) = u(0) e^{- 2 \beta t},
+\]
+
+in upoštevamo definicijo
+
+\begin{equation}
+\label{eq:2}
+ Q - 2 \beta p_{22} (t) = \left( Q - 2 B p_{22} (0) \right) e^{- \beta t}.
+\end{equation}
+
+Po dolgem času \( t \to \infty \), dobimo vrednost
+
+\[ Q - 2 \beta p_{22} (\infty) = 0 \implies Q = 2 \beta p_{22} (\infty).
+\]
+
+Dobljeno vrednosti vstavimo v enačbo \ref{eq:2}
+
+\[ 2 \beta p_{22} (\infty) - 2 \beta p_{22} (t) = \left( 2 \beta p_{22}(\infty) - 2 \beta p_{22} (0) \right) e^{- 2 \beta t}.
+\]
+
+Pokrajšamo člene in nam preostane
+
+\[ p_{22} (t) = p_{22}(\infty) - \left( p_{22} (\infty) - p_{22} (0) \right) e^{- 2 \beta t}.
+\]
+
+Poznamo podatek \( p_{22} (\infty) = \frac{1}{4} p_{22} (0) \) in ga upoštevamo
+
+\[ p_{22} (t) = \frac{1}{4} p_{22} (0) t \frac{3}{4} p_{22} (0) e^{- 2 \beta t} = \frac{p_{22} (0)}{4} \left( 1 + 3 e^{- 2 \beta t} \right).
+\]
+
+Ob času \( \tilde{t} \) je potem
+
+\begin{align*}
+  p_{22} (\tilde{t}) &= \frac{p_{22} (0)}{4} \left( 1 + 3 e^{- 2 \beta \tilde{t}} \right) \\
+&= \frac{p_{22} (0)}{4} \left( 1 + 3 e^{-2} \right) = \frac{p_{22} (0)}{3} = 0.35 \cdot p_{22} (0).
+\end{align*}
