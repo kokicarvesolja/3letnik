@@ -1,0 +1,241 @@
+#+title: Vaje iz Fizikalnih merjenj, 13. teden v letu
+#+subtitle: 2026/03/24
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Teorija: Kalmanov filter za vektorske spremenljivke v zvezni sliki
+
+Dinamiko sistema opisuje enačba
+
+\[ \dot{\mathbf{x}} = A(t) \mathbf{x} + \mathbf{c}(t) + \Gamma \mathbf{w}(t),
+\]
+
+kjer je \( \mathbf{w} \) vektor dinamičnega šuma. Za tako dinamiko lahko uporabimo Kalmanov filter za kovariančno matriko
+
+\[ \mathbf{P} = AP + PA^T + \Gamma Q \Gamma^T - PH^TR^{-1} HP.
+\]
+
+Zadnji člen ostri kovariančno matriko, \( H \) je okenska matrika, \( \mathbf{R} \) pa je kovariančna matrika meritev. V večini primerov bomo uporabljali samo
+
+\[ \mathbf{P} = AP + PA^T + \Gamma Q \Gamma^T.
+\]
+* Naloga:
+
+#+begin_problem
+Kroglice z maso \( m \) spuščamo skozi dvojna svetlobna vrata. V prečni smeri med padanjem kroglic delujejo naključne sile \( F(t) \), za katere velja \( \left\langle F(t) \right\rangle = 0 \).
+Imamo dvoja svetlobna vrata enakih dimenzij. Vsaka vrata imajo polmer \( R \) in medsebojna razdalja je \( h \). Iz višine \( h \) nad prvimi svetlobnimi vrati spuščamo kroglice mase \( m \).
+
+Skozi prva vrata pade \( \frac{2}{3} \) vseh kroglic. Kolikšen delež kroglic pade skozi druga vrata? Nedoločenost lege in hitrosti ob času \( t = 0 \) oziroma na izhodišču je \( \sigma_x (t = 0) = 0 \) in \( \sigma_v(t = 0) = 0. \)
+#+end_problem
+
+Sile bomo opisali kot dinamični šum. Čas ob prehodu skozi prva vrata bomo označili s \( t_1 \), skozi druga vrata pa s \( t_2 \).
+
+Trajektorije v prečni smeri ne moremo izračunati, saj na kroglice delujejo samo naključne sile.
+
+S padanjem kroglice se bo širina Gaussove porazdelitve širila zaradi naključnih sil. Začetna Gaussova porazdelitev je zaradi nedoločenosti lege \( \sigma_x (t = 0) = 0 \) kar \( \delta \) funkcija.
+
+Zanima na torej verjetnost
+
+\[ P \left( - R < x(t_2) < R \right) = P \left( x(t_2) < R \right) - P \left( x(t_2) < -R \right).
+\]
+
+Središče Gaussovih porazdelitev se ne bo premikalo. Premikalo bi se v primeru, če bi \( \left\langle F(t) \right\rangle  = F_0 \). Če bi to držalo, bi naključne sile opisali kot \( F(t) = F_0 + f(t) \), kjer je \( \left\langle f(t) \right\rangle = 0\).
+
+Verjetnost bomo zapisali s kumulativnimi funkcijami
+
+\[ P  \left( - R < x(t_2) < R \right) = F \left( \frac{R - 0}{\sigma_x (t_2)} \right) - F\left( \frac{- R + 0}{\sigma_x (t_2)} \right).
+\]
+
+Upoštevamo lastnost kumulativnih funkcij \( F(-u) = 1- F(u) \). Verjetnost je tako
+
+\[  P  \left( - R < x(t_2) < R \right) = 2 F \left( \frac{R}{\sigma_x (t_2)} \right).
+\]
+** Dinamika - gibalna enačba
+
+Poiščimo dinamiko našega sistema, izhajali pa bomo iz drugega Newtonovega zakona.
+
+\[ \sum\limits_i^{} F_i = ma_x = m \ddot{x} = F(t).
+\]
+
+Pospeške potem označimo kot
+
+\[ \ddot{x} = \frac{F(t)}{m} = a(t) = w(t).
+\]
+
+Pospešek v prečni smeri bo torej dinamični šum. Ker Kalmanov filter deluje samo za LDE 1. reda, moramo preiti na vektorsko sliko, kjer sta spremenljivki in enačbi \( \dot{x} = v \) in \( \dot{v} = \ddot{x} = w \). V vektorskem zapisu
+
+\[ \mathbf{x} = \begin{bmatrix} \dot{x} \\ \dot{v} \end{bmatrix}.
+\]
+
+Dinamiko lahko sedaj zapišemo kot
+
+\[ \begin{bmatrix} \dot{x} \\ \dot{v} \end{bmatrix} = \begin{bmatrix}
+                                                      0 & 1 \\
+                                                      0 & 0
+                                                       \end{bmatrix} \begin{bmatrix} x \\ v \end{bmatrix} + \begin{bmatrix} 0 \\ 0 \end{bmatrix} + \begin{bmatrix} 0 \\ w \end{bmatrix}.
+\]
+
+Kovariančna matrika bo imela obliko
+
+\[ P = \begin{bmatrix}
+       \sigma_{x} ^{2} & \sigma_{xv} \\
+       \sigma_{vx} & \sigma_{v} ^2
+        \end{bmatrix} = \begin{bmatrix}
+                        p_{11} & p_{12} \\
+                        p_{21} & p_{22}
+                         \end{bmatrix}.
+\]
+
+Mi pa iščemo z novo oznako \( \sigma_x (t) = \sqrt{p_{11}} \).
+** Kovariančna matrika
+
+Uporabili bomo enačbo povedano v teoretičnem delu
+
+\[ \dot{P} = AP + PA^T + \Gamma Q \Gamma^T.
+\]
+
+Vrednosti elementov v matriki \( P \) ne poznamo in to niso začetne vrednosti,
+
+\[ P = \begin{bmatrix}
+       p_{11} & p_{12} \\
+       p_{21} & p_{22}
+        \end{bmatrix}.
+\]
+
+Ob času \( t = 0 \) je kovariančna matrika
+
+\[ P(t = 0) = \begin{bmatrix}
+              0 & 0 \\
+              0 & 0
+               \end{bmatrix}.
+\]
+
+Ni potrebe po računanju členov \( AP \) in \( PA^T \), saj velja, da je matrika simetrična \( \left( AP \right)^T = P^T A^T = PA^T \).
+
+Torej zapišemo
+
+\[ AP = \begin{bmatrix}
+        0 & 1 \\
+        0 & 0
+         \end{bmatrix} \begin{bmatrix}
+                       p_{11} & p_{12} \\
+                       p_{12} & p_{22}
+                        \end{bmatrix} = \begin{bmatrix}
+                                        p_{12} & p_{22} \\
+                                       0  & 0
+                                         \end{bmatrix},
+\]
+
+kjer smo upoštevali simetričnost matrike \( p_{12} = p_{21} \). Nadalje
+
+\[ PA^T = \begin{bmatrix}
+          p_{12} & 0 \\
+          p_{22} & 0
+           \end{bmatrix}.
+\]
+
+Poglejmo si še dinamičen šum, ki je definiran
+
+\[ \Gamma Q \Gamma^T = \left\langle \Gamma \mathbf{w} \left( \Gamma \mathbf{w} \right)^T \right\rangle.
+\]
+
+Vemo, da spremenljivka \( \dot{x} \) nima dinamičnega šuma in bo element \( q_{11} = 0 \). Poznamo pa dinamičen šum \( q_{22} = Q \), kjer je \( Q \) varianca dinamičnega šuma in je neznana. Hkrati pa so te matrike ponavadi diagonalne, torej
+
+\[ \Gamma Q \Gamma^T = \begin{bmatrix}
+                       0 & 0 \\
+                       0 & Q
+                        \end{bmatrix}.
+\]
+
+Kovariančna matrika je torej
+
+\[ \dot{P} = \begin{bmatrix}
+             2p_{12} & p_{22} \\
+             p_{22} &  Q
+              \end{bmatrix}.
+\]
+
+Sedaj lahko iz matričnega sistema preberemo sistem parcialnih enačb
+
+\begin{align*}
+  \dot{p}_{11} &= 2p_{12} \\
+\dot{p}_{12} &= p_{22} \\
+\dot{p}_{22} &= Q.
+\end{align*}
+
+Privzamemo \( Q \ne Q(t) \). Postopek rešévanja bo sledeč: rešili bomo spodnjo, potem srednjo in na koncu rezultat vstavili v prvo enačbo.
+
+Integriranje spodnje enačbe nam poda rezultat
+
+\[ p_{22} (t) = Q t + p_{22} (0).
+\]
+
+Integriramo še srednjo enačbo ob upoštevanju rezultata spodnje enačbe
+
+\[ p_{12} (t) = \frac{1}{2} Q ^2 + p_{22} (0)t + p_{12} (0).
+\]
+
+Podobno, vstavimo enačbo v zadnjo enačbo in integriramo
+
+\[ p_{11} (t) = \frac{1}{3} Q t ^3 + p_{22} (0) t ^2 + 2 p_{12 } (0) t + p_{11} (0).
+\]
+
+Upoštevamo iz začetnih pogojev \( p_{22} = p_{12} = p_{11} = 0 \). Ostale nam enačba
+
+\[ p_{11} (t) = \frac{1}{3} Q t ^3.
+\]
+
+Varianca lege je torej
+
+\begin{equation}
+\label{eq:1}
+ \sigma_x ^2 (t_2) = p_{11} (t_2) = \frac{1}{3} Q t_2 ^3.
+\end{equation}
+
+Še zmeraj moramo določiti varianco dinamičnega šuma, kar bomo naredili s pomočjo zadnjega neupoštevanega dejstva \( P \left( - R < x(t_1) < R \right) = \frac{2}{3} \).
+
+Pomagali si bomo z dejstvom, da
+
+\[ P \left( \sigma_1 (t_1) < x (t_1) < \sigma_x (t_1) \right) = 68 \%.
+\]
+
+Ko primerjamo parametre, razberemo \( \sigma_x (t_1) = R \).
+
+Pri prehodu skozi prva svetlobna vrata torej velja enačba
+
+\[ \sigma_x ^2 (t_1) \cdot R ^2 = \frac{1}{3} Q ^3 t_1 ^3 \implies Q = \frac{3 R ^2}{t_1 ^3}.
+\]
+
+Vstavimo vrednost \( Q \) v enačbo \ref{eq:1} in dobimo, da je varianca lege torej
+
+\[ \sigma_x ^2 (t_2) = R ^2 \left( \frac{t_2}{t_1} \right) ^3
+\]
+
+Sedaj izračunajmo še časa \( t_1 \) in \( t_2 \)
+
+\begin{align*}
+  h &= \frac{1}{2} g t_1 ^2
+2h &= \frac{1}{2} g t_2 ^2,
+\end{align*}
+
+kar dobimo
+
+\[ t_1 = \sqrt{\frac{2 h}{g}} \quad \text{ in } \quad t_2 = \sqrt{\frac{4h}{g}}.
+\]
+
+Variance lege ob času \( t_2 \) je potem
+
+\[ \sigma_x ^2 (t_2) = R ^2 \cdot *^{\frac{1}{2}} \implies \sigma_x (t_2) = R \cdot 8^{\frac{1}{4}}.
+\]
+
+Vrnimo se nazaj k verjetnosti
+
+\[ P \left( - R < x(t_2) < R \right) = 2 F \left( \frac{R}{\sigma_x (t_2)} \right) - 1 = 2 F \left( 8^{- \frac{1}{4}} \right) -1 = 2 F \left( 0.595 \right) = 45\%.
+\]
+
+Vrednost \( F(0.595) \) smo prebrali iz tabele.
