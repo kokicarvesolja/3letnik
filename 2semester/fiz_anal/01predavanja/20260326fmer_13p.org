@@ -370,8 +370,10 @@ Rešitev je potem
 
 Drugače lahko še zapišemo
 
-\[ G(t) = x = \frac{\omega}{\sqrt{1 - \xi ^2}} \sin \left( \sqrt{1 - \xi ^2} \omega t \right) e^{- \xi \omega t}.
+\[ G(t) = x = \frac{\omega}{\sqrt{1 - \xi ^2}} \sin \left( \sqrt{1 - \xi ^2} \omega t \right) e^{- \xi \omega t},
 \]
+
+kar je Greenova funkcija senzorja 2. reda za poljuben \( \xi \).
 
 Ločimo tri primere:
 
@@ -380,11 +382,19 @@ Ločimo tri primere:
   \[ x(t) = \omega \sin \left( \omega t \right).
   \]
 
-- v primeru \( \xi \to \frac{1}{\sqrt{2}} \) smo rešitev že zapisali in je optimalna rešitev senzorja 2. reda
+  V tem primeru mamo nedušeno.
+
+- v primeru \( \xi \to \frac{1}{\sqrt{2}} \) smo rešitev že zapisali in je optimalna rešitev senzorja 2. reda, ki eksponentno zaduši oscilatoren zapis
 
 - v \( \xi \gg 1 \) imamo predušen senzor, kar pomeni, da lahko sinus razvijemo
 
-  [dopolni]
+  \begin{align*}
+   x(t) &= \frac{\omega}{\sqrt{1 - \xi ^2 }} \sin \left( \sqrt{1 - \xi ^2 } \omega t \right) e^{- \omega t} \\
+   &= \frac{\omega}{\xi ^2 - 1} \mathrm{sh} \left( \sqrt{\xi ^2 - 1 } \omega t \right)e^{- \xi \omega t}
+  \end{align*}
+
+  in nimamo več oscilatornega obnašanja.
+
 *** Primer senzorja 2. reda
 
 #+begin_my_example
@@ -414,4 +424,142 @@ Potem
 \]
 
 kjer je \( \gamma \) koeficient upora in viskoznost \( \eta \).
+#+end_my_example
+** Laplaceova transformacija
+
+Imamo meritve \( z(t) \) in ocene \( x(t) \), ki jih povezuje senzor prvega reda. Želeli bi tako integralsko transformacijo, ki diferencialno enačbo pretvori v algebraično.
+
+Laplaceova transformacija \( \mathcal{L} \) je preslikava \( \mathcal{L}(x (t)) = x(s) \).
+
+#+begin_definition
+Laplaceova transformacija \( \mathcal{L}: f(t) \to F(s), \ s \in \mathbb{C} \) funkcije \( f(t) \) je
+
+\[ \mathcal{L} \left( f(t) \right) = \int\limits_0^{\infty} f(t) e^{- st} \, \mathrm{d} t = F(s).
+\]
+#+end_definition
+
+#+begin_theorem
+Za funkcijo \( f(t) \) zahtevamo, da je njena vrednost in vsi odvodi ob času \( t = 0 \) ničelni.
+Lastnosti Laplaceove transformacije so:
+
+- \[ \mathcal{L}(1) = \int\limits_0^{\infty} e^{- s t} \, \mathrm{d} t = \left. \frac{1}{s} e^{-st} \right|_0^{\infty} = \frac{1}{s}.
+  \]
+
+- \[ \mathcal{L} \left( e^{at} \right) = \int\limits_0^{\infty} e^{(s - a) t} \, \mathrm{d} t = \frac{1}{s - a}.
+  \]
+
+- Produkt funkcije z eksponentno bodo
+  \[ \mathcal{L} \left( f(t) e^{a t} \right) = \int\limits_0^{\infty} f(t) e^{(s - a) t} \, \mathrm{d} t = F(s - a).
+  \]
+
+- odvod funckije po parametru
+
+  \[ \mathcal{L} \left( \frac{\mathrm{d} }{\mathrm{d} t} f(t) \right) = \int\limits_0^{\infty} \frac{\mathrm{d} }{\mathrm{d} t} f(t) e^{- st} \, \mathrm{d} t = s F(s)
+  \]
+  To se izračuna s pomočjo integriranja po delih za \( u = e^{- st} \) in \( \mathrm{d} v = \frac{\mathrm{d} }{\mathrm{d} t} f(t) \, \mathrm{d} t \).
+
+- \[ \mathcal{L} \left( t \right) = \int\limits_0^{\infty} t e^{- st }\, \mathrm{d} t = \frac{1}{s ^2}.
+  \]
+
+  Do te identitete lahko pridemo tudi z uporabo prve alineje in lastnosti odvajanja.
+
+- Podobno kot prejšnja alineja
+
+  \[ \mathcal{L} \left( t^n \right) = n! \frac{1}{s ^{n + 1}}.
+  \]
+
+- z uporabo druge alineje za \( e^{\mathrm{i} \omega t} \) lahko dobimo vrednost za kosinus in sinus
+
+  \[ \mathcal{L} \left( \cos (\omega t) + \mathrm{i} \sin (\omega t)  \right) = \mathcal{L} \left( e^{\mathrm{i} \omega t} \right) = \frac{s}{s ^2 + \omega ^2} + \mathrm{i} \frac{\omega}{s ^2 + \omega ^2}.
+  \]
+
+  Torej
+
+  \[ \mathcal{L} \left( \cos \left( \omega t \right) \right) = \frac{s}{s ^2 + \omega ^2} \quad \text{ in } \quad \mathcal{L} \left( \sin \left( \omega t \right) \right) = \frac{\omega}{s ^2 + w ^2}.
+  \]
+#+end_theorem
+** Prenosna funkcija senzorja
+
+Splošna diferencialna enačba senzorja je oblike
+
+\[\frac{\mathrm{d} ^{n}}{\mathrm{d} t^{n}} x + a_{n - 1} \frac{\mathrm{d} ^{n - 1}}{\mathrm{d} t^{n - 1}} x + \ldots + a_1 \frac{\mathrm{d} }{\mathrm{d} t} x+ a_0 x = \frac{\mathrm{d} ^{m}}{\mathrm{d} t^{m}} z + b_{m - 1} \frac{\mathrm{d} ^{m - 1}}{\mathrm{d} t^{m - 1}} z_1 + \ldots b_1 \frac{\mathrm{d} }{\mathrm{d} t} z + b_0 z.
+\]
+
+Enačbo lahko Laplaceovo transformiramo v
+
+\[ \left( s^n + a_{n - 1} s^{n - 1} + \ldots + a_1 s + a_0 \right) x(s) = \left( s^m + b_{m - 1} s^{m - 1} +  \ldots + b_1 s + b_0 \right) z(s),
+\]
+
+kjer smo upoštevali \( \mathcal{L}(x(t)) = x(s) \) in \( \mathcal{L} (z(t)) = z(s) \). Njuno razmerje bo potem
+
+\[ \frac{x(s)}{z(s)} = H(s) = \frac{s^m + b_{m - 1} s^{m - 1} +  \ldots + b_1 s + b_0 }{s^n + a_{n - 1} s^{n - 1} + \ldots + a_1 s + a_0}
+\]
+
+Kjer smo uvedli \( H(s) \) kot prenosno funkcijo senzorja. Zahtevamo \( n \ge m \) in \( n \ge 3 \).
+
+#+begin_my_example
+Za senzor prvega reda je prenosna funkcija
+
+\begin{equation}
+\label{eq:2}
+ \frac{x(s)}{z(s)} = H(s) = \frac{1}{1 + \tau s}.
+\end{equation}
+
+Do nje pridemo preko Laplaceov transformacije enačbe senzorja 1. reda
+
+\[ \tau \dot{x} + x = z(t),
+\]
+
+ki je
+
+\[ \left( \tau s + 1 \right) x(s) = z(s).
+\]
+#+end_my_example
+
+#+begin_my_example
+Za senzor prvega reda je Laplaceova transformacije enačbe
+
+\[ \left( s ^2 + 2 \xi \omega s + \omega ^2 \right) x(s) = \left( 2 \xi \omega s + \omega ^2 \right) z(s)
+\]
+
+in potem je prenosna funckija za senzor drugega reda
+
+\[ H(s) = \frac{\omega ^2 + 2 \xi \omega s}{s ^2 + 2 \xi \omega s + \omega ^2}.
+\]
+#+end_my_example
+
+#+begin_my_example
+Vrnimo se nazaj k tipičnemu signalu \( \delta(t) \) za senzor prvega reda.
+
+Laplaceova transformacije tipičnega signala je \( z(s) = 1 \). Upoštevamo enačbo \ref{eq:2} in dobimo
+
+\[ x(s) = H(s) z(s) = 1 \left( \frac{1}{1 + \tau s} \right) = \frac{1}{\frac{1}{\tau} + s} \left( \frac{1}{\tau} \right).
+\]
+
+Prepoznamo v ulomku \( \mathcal{L} \left( e^{- \frac{t}{\tau}} \right) \) in je torej
+
+\[ x(t) = \frac{1}{\tau} e^{- \frac{t}{\tau}}.
+\]
+#+end_my_example
+
+#+begin_my_example
+Tipičen signal Heavisideove funkcije je
+
+\[ z(t) = H (t) z_0 .
+\]
+
+Njena Laplaceova transformiranka je
+
+\[ z(s) = \frac{1}{s} z_0.
+\]
+
+Za senzor prvega reda je potem
+
+\[ x(s) = \frac{1}{s} \cdot \frac{1}{1 + \tau s} z_0.
+\]
+
+Razcepimo na parcialna ulomka
+
+\[ x(s) = z_0 \left[ \frac{1}{s} - \frac{\tau}{1 + \tau s} \right].
+\]
 #+end_my_example
