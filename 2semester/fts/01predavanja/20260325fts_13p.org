@@ -1,0 +1,152 @@
+#+title: Predavanja iz Fizike trdne snovi, 13. teden v letu
+#+subtitle: 2026/03/25
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Elektron v kristalu
+
+Imamo elektrone v kristalu, ki jih opišemo z ravnimi valovi, katerega valovni vektor \( \mathbf{k} \) je del 1. Brillouinove cone. Indeks \( n \) nam bo povedal, v katerem pasu se nahaja. Pasove smo dobili tako, da smo pasove s \( \mathbf{k} \) izven 1. BR cone prepognili vanjo. To sta naša dobra kvantna števila.
+** Opis gibanja \( e^- \) v periodičnem potencialu pod vplivom \( \mathbf{E} \) in \( \mathbf{B} \)
+
+Blochova funkcija (?)
+
+\[ \psi_{n \mathbf{k}} \left( \mathbf{r} \right) = e^{\mathrm{i} \mathbf{k} \mathbf{r}} U_{n \mathbf{k}} (\mathbf{r})
+\]
+
+ne komutira z operatorjem gibalne količine \( \hat{p} = -\mathrm{i} \hbar \nabla \).
+
+Naredimo sedaj primerjave med prostih elektronom in Blochovim elektronom
+
+\[
+\begin{array} {c|c|c}
+\text{ lastnost } & \text{ prost el. } & \text{ Blochov el. } \\ \hline
+\text{kv. število} & \mathbf{q}_i & \mathbf{k} \in 1. BR \text{ in } n \\
+\text{ energija } & \epsilon (\mathbf{k})= \frac{\hbar ^2 k ^2}{2m} & \epsilon_n (\mathbf{k}) = \epsilon_n (\mathbf{k} + \mathbf{K}), \ \forall \mathbf{K} \in RBR \\
+\text{ hitrost } & \mathbf{v} = \frac{\hbar \mathbf{k}}{m} & \mathbf{v}_n (\mathbf{k}) = \frac{1}{\hbar} \nabla_{\mathbf{k}} \epsilon_n (\mathbf{k}) \\
+\text{ valovna funckija } & \psi(\mathbf{r}) = A e^{\mathrm{i} \mathbf{k} \mathbf{r}} & \psi_{n \mathbf{k}} (\mathbf{r})
+\end{array}
+\]
+
+V vrstici z energijo zahtevamo, da je energija Blochovega elektrona periodična. in RBR označuje recipročno Bravaisovo rešetko.
+
+#+begin_quote
+Koga lahko očarate s svojim znanjem uporabe vektorskih operatorjev.
+#+end_quote
+*** Blochove enačbe za elektron v \( \mathbf{E} \) in \( \mathbf{B} \)
+
+Blochove enačba za elektron v električnem polju \( \mathbf{E}(\mathbf{r}, t) \) in magnetnem polju \( \mathbf{B} (\mathbf{r}, t) \) za poznane energije \( \epsilon_n (\mathbf{k}) \) so sledeče
+
+\begin{align*}
+  \mathbf{v}_n (\mathbf{k}) &= \frac{1}{\hbar} \nabla_{\mathbf{k}} \epsilon_n (\mathbf{k}) \\
+\hbar \dot{\mathbf{k}} &= - e \left( \mathbf{E} + \mathbf{v} \times \mathbf{B} \right) \\
+n & = \mathrm{konst}.
+\end{align*}
+
+Količini \( \mathbf{v}_n \) pravimo grupna hitrost. Druga enačba, kristalna gibalna količina, ki vsebuje Lorenzovo silo, nam poda odvisnost \( \mathbf{k} = \mathbf{k}(t) \). Zadnja enačba nam pove, da elektron ne more preskočiti med pasovi.
+
+Za elektron s časovno odvisno energijo \( \epsilon_n (\mathbf{k}(t)) \) bo njegova celotna energija
+
+\[  \epsilon_n (\mathbf{k}(\mathbf{r})) - e \phi (\mathbf{r} (t)) = \mathrm{konst}, \quad \mathbf{E} = - \nabla_{\mathbf{r}} \phi (\mathbf{r}).
+\]
+
+Če zgornja enačba drži, jo lahko odvajamo po času. Prvi člen odvajamo s pomočjo posrednega odvoda
+
+\[ \nabla_{\mathbf{k}} \cdot \dot{\mathbf{k}} - e \nabla_{\mathbf{r}} \phi (\mathbf{r}) \dot{\mathbf{r}} = 0.
+\]
+
+V enačbi prepoznamo grupno hitrost \( \mathbf{v}_n \) v obeh členih (torej tudi \( \dot{\mathbf{r}} \)), če enačbo pomnožimo s \( \frac{1}{\hbar} \) ter izraz za električno polje
+
+\[ \mathbf{v}_n (\mathbf{k}) \left( \hbar \dot{\mathbf{k}} + e \mathbf{E} \right) = 0
+\]
+
+(\( \mathbf{r} \) predstavlja lego elektronov?)
+
+Pred nadaljevanjem postavimo pogoj, da je \( e E a \ll \frac{\epsilon_{gap} ^2}{\epsilon_F} \), kjer je \( a \) mrežna razdalja, \( \epsilon_{gap} \) širina energijske reže in \( \epsilon_F \) Fermijeva energija.
+
+Za vrednosti \( \epsilon_F \sim 1 \mathem{eV} \), \( E \sim 10^{-2} \frac{\mathrm{eV}}{\mathrm{cm}} \) in \( a \sim 10^{-8} \mathrm{cm} \) je potem res
+
+\[ \sqrt{e E a \epsilon_{F}} = \sqrt{10^{-5} \left( \mathrm{eV} \right) ^2} \sim 10^{-5} \ll \epsilon_{gap}
+\]
+
+#+begin_my_example
+Poglejmo si primer konstantnega električnega polja v eni dimenziji.
+#+end_my_example
+** Vrzeli
+** Opis gibanja \( e^- \) v magnetnem polju \( \mathbf{B} \)
+
+Elektron v kristalu z energijo \( \epsilon_n (\mathbf{k}) \) ima ob prisotnem magnetnem polju \( B = B_0 \hat{e}_z \) konstantno energijo. To je relativno lahko dokazati. Energijo odvajamo po času
+
+\[ \frac{\mathrm{d} \epsilon_{n}(\mathbf{k}(t))}{\mathrm{d} t} = 0.
+\]
+
+Preko posrednega odvoda dobimo enakost
+
+\[ \frac{1}{\hbar} \nabla_{\mathbf{k}} \epsilon_n (\mathbf{k}) \dot{\mathbf{k}}\hbar = \mathbf{v} \cdot \left( - e \right) \left( \mathbf{v} \times \mathbf{B} \right),
+\]
+
+in ker je hitrost \( \mathbf{v} \) pravokotna na magnetno polje, je skalarni produkt ničeln. V enačbi smo upoštevali drugo Blochovo enačbo
+
+\[ \hbar \dot{\mathbf{k}} = e \mathbf{v} \times \mathbf{B}
+\]
+* Kovinske vezi v kristalu
+** Žlahtni plini
+
+Žlahtni plini (od izključno helija naprej) tvorijo kristale. Njihove orbitale so zaradi polne zasedenosti sferično simetrične. Kaj torej veže žlahtne pline v kristale? Van der Waalsove sile. V klasični fiziki smo izhajali iz Coulumbskega zakona
+
+\[ F = \frac{e_1 e_2}{4 \pi \epsilon_0 r ^2}.
+\]
+
+Nevtralni krogli se je zaradi pojava influence porazdelil naboj in ustvaril pola, ko smo približali nabito kroglo. Van der Waalsove sile pa so popolnoma kvantno mehanski pojav, kjer obe krogli zaradi kvantnih oscilacij ustvarita pola.
+
+Poglejmo si model dveh atomov, ki sta na razdalji \( R \) med seboj. Vsako jedro bo sestavljeno iz pozitivnega jedra, ki se bo nahajal na koordinati \( x_{+} = 0 \) in \( x_{-} = R \), ter negativno nabitega elektronskega oblaka, ki se bo nahajal na razdalji \( x_1 \) in \( x_2 \) od pozitivnega jedra. Velja \( x_1, x_2 \ll R \).
+
+Vez med pozitivnim jedrom in negativnim nabitim elektronskim oblakom predstavimo kot harmonski oscilator. Koeficient \( k_{1, 2} \) vsebuje privlačne (Coulumb) in odbijajoče se sile. Harmonski oscilator, ki potem opiše interakcijo teh jeder je
+
+\begin{align*}
+  H &= \frac{n_1 ^2}{2m} + k \frac{x_1 ^2}{2} + \frac{n_2 ^2}{2m} + k \frac{x_2 ^2}{2} + \frac{e ^2}{R} + \frac{e ^2 }{R - x_1 + x_2} - \frac{e ^2}{R + x _2} - \frac{e ^2}{R - x_1}\\
+&= \frac{n_1 ^2}{2m} + k \frac{x_1 ^2}{2} + \frac{n_2 ^2}{2m} + k \frac{x_2 ^2}{2} - \frac{2 ^2 x_1 x_2}{R ^3}
+\end{align*}
+
+Uvedemo nove spremenljivke
+
+\begin{align*}
+  x_s &= \frac{1}{\sqrt{2}} \left( x_1 + x_2 \right)\\
+  x_a &= \frac{1}{\sqrt{2}} \left( x_1 - x_2 \right)\\
+  p_s &= \frac{1}{\sqrt{2}} \left( p_1 + p_2 \right)\\
+  p_a &= \frac{1}{\sqrt{2}} \left( p_1 - p_2 \right)
+\end{align*}
+
+Velja identiteta \( x_s ^2 - x_a ^2 = 2 x_1 x_2 \) in Hamiltonian potem zapišemo
+
+\[ H = \frac{p_s ^2}{2m} + \frac{1}{2} \left( k - \frac{2 e ^2}{R ^3} \right) x_s ^2 + \ldots
+\]
+
+Iz Hamiltoniana odčitamo vrednost koeficient novega harmonskega oscilatorja
+
+\[ \frac{1}{2} \hbar \omega ^2 = \frac{1}{2} \left( k - \frac{2 e ^2}{R ^3} \right).
+\]
+
+Torej so možne frekvence valovanja
+
+\[  \omega^{\pm} = \sqrt{\frac{k \pm \frac{2 e^2}{R ^3}}{m}}
+\]
+
+Lastna energija stanja bo potem
+
+\[ E = \frac{1}{2}  \hbar \left( \omega^- + \omega^+ \right) = E_0 - \frac{\Delta}{R ^6}.
+\]
+
+Zaključimo torej, da Van der Waalsova sila pada s faktorjem \( \frac{1}{R^6} \).
+** Ionske vezi
+
+Ionske vezi si poglejmo na kristalu soli \( NaCl \), ki jo sestavljata dva iona \( Na^ \) in \( Cl^- \)
+** Vodikova vez \( H_2 \) in kovalentna vez
+
+* Polprevodniki
+
+Pri \( T \to 0 \) so polprevodniki izolatorji in imajo zapolnjene pasove.

@@ -1,5 +1,5 @@
 #+title: Predavanja iz Fizike trdne snovi, 12. teden v letu
-#+subtitle: 2026/03/18
+#+subtitle: 2026/03/18 in manjka 2026/03/19
 #+startup: nolatexpreview
 #+startup: entitiespretty nil
 #+startup: show2levels

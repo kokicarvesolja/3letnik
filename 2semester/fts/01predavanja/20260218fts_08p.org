@@ -99,17 +99,21 @@ Izbrano mrežno točko povežemo z vsemi najbližnjimi sosednjimi mrežnimi toč
 
 [[file:figures/08wignerSeitz.png]]
 #+end_my_example
-** Primeri kristalnih struktur :nadaljuj_tukaj:
+** Koordinacijo število
+
+Vsaka točka v BR ima neko število najbližjih sosedov. Zaradi lastnosti BR bo vsaka točka v kristalu imela to število enako in ga poimenujemo koordinacijsko število \( N_C \).
+** Primeri kristalnih struktur 
 *** Preprosta kubična Bravaisova rešetka (ang. /simple cubic/ or /sc/)
 
 Preprosto kubično rešetko določajo bazni vektorji \( \mathbf{a}_1 = (a, 0, 0), \mathbf{a}_2 = (0, a, 0) \) in \( \mathbf{a}_3 = (0, 0, a) \).
 
-Definiramo koordinacijsko število \( N_C \), ki nam pove, koliko najbližjih sosednjih točk ima poljubna točka. Koordinacijsko število za kubično rešetko \( N_C = 6 \).
-*** Telesno centrirana B.R. (ang. /body-centered cubic/ or /bcc/)
+*** Telesno centrirana BR (ang. /body-centered cubic/ or /bcc/)
+
+Telesno centrirano BR dobimo tako, da v središče kubične mreže postavimo dodatno točko. Na novo središčno točko znotraj kristala lahko gledamo kot še eno kubično celico, ki jo tvorijo še ostale bližnje središčne točke. 
 
 Primitivni osnovni vektorji v tej mreži so
 
-\[ \mathbf{a}_1' = (a, 0, 0), \quad \mathbf{a}_2 ' = (0, a, 0), \quad \mathbf{a}_3' = \frac{1}{2} (a, 0, a).
+\[ \mathbf{a}_1' = (a, 0, 0), \quad \mathbf{a}_2 ' = (0, a, 0), \quad \mathbf{a}_3' = \frac{1}{2} (a, a, a).
 \]
 
 Slednji ne odražajo lepo simetrije kristalne strukture, zato raje definiramo
@@ -117,10 +121,16 @@ Slednji ne odražajo lepo simetrije kristalne strukture, zato raje definiramo
 \[ \mathbf{a}_1 = \frac{1}{2} (-a, a, a), \quad \mathbf{a}_2 = \frac{1}{2} (a, -a, a), \quad \mathbf{a}_3 = \frac{1}{2} (a, a, -a).
 \]
 
+Slednje vektorje lahko vidimo na spodnji sliki
+
+[[file:figures/08bccSymetricPrimitiveVectors.png]]
+
+Vir: https://postfiles10.naver.net/MjAxNzA0MDlfMjY1/MDAxNDkxNzM1MTE4OTM3.gxIGAbgxooImAvDd_TH-X1bEqtTRmnVnEFqyLmN1gOwg.RGKgupq2sPijLRokCq9YecmO7Z1SFLgEekU9ZkR7QQog.PNG.ocairy/image.png?type=w773
+
 Koordinacijsko število je \( N_{bcc} = 8 \).
 
 Elementi, ki kristalizirajo v to strukturo, so barij, krom, cezij, železo in uran.
-*** Ploskovno centrirana B.R. (ang. /face-centered cubic/ or /fcc/)
+*** Ploskovno centrirana BR (ang. /face-centered cubic/ or /fcc/)
 
 Primitivni osnovni vektorji, ki sestavljajo to strukturo so
 
