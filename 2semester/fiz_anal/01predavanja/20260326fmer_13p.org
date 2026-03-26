@@ -124,7 +124,7 @@ za naš primer je potem
                                                                             \end{bmatrix} + \begin{bmatrix} 0 \\ 1 \end{bmatrix} w.
 \]
 
-Naš senzor zajema \( z = H\mathbf{x} + r \), kjer je okno \( H = \left| 1 \ 0 \right| \) - spremljamo torej samo spremenljivko \( x \).
+Naš senzor zajema \( z = H\mathbf{x} + r \), kjer je okno \( H = \left| 1 \ 0 \right| \) - merimo torej samo spremenljivko \( x \) in ne njenega odvoda.
 
 V merilnem sistemu \( M \) imamo oceno
 
@@ -281,3 +281,137 @@ ter
 \]
 
 Enačbe \ref{eq:1} je enačba senzorja 2. reda.
+*** Tipičen vhod \( \delta(t) \)
+
+Podobno kot pri senzorjih prvega reda enačbo \ref{eq:1} integriramo po intervalu \( \left[ -\epsilon, \epsilon \right] \).
+
+\[ \int\limits_{-\epsilon}^{\epsilon} \ddot{x} \, \mathrm{d} t + \int\limits_{- \epsilon}^{\epsilon} 2 \xi \omega \dot{x} \, \mathrm{d} t + \int\limits_{- \epsilon}^{\epsilon} \omega ^2 x \, \mathrm{d} t = \omega ^2 \int\limits_{- \epsilon}^{\epsilon} \delta(t) \, \mathrm{d} t.
+\]
+
+Zahtevamo začetne pogoje \( x(-t) = \dot{x}(-t) = 0 \).
+
+Preostane nam
+
+\[ \dot{x}(0) + 2 \xi \omega x(0) = \omega ^2.
+\]
+
+Začetni pogoji senzorja so
+
+\[ x(0) = 0 \quad \text{ in } \quad \dot{x}(0) = \omega ^2.
+\]
+
+Homogen diferencialne enačbe
+
+\[ \ddot{x} + 2 \xi \omega + \omega ^2 x = 0
+\]
+
+bomo rešili z nastavkom \( x = e^{\lambda x} \). Rešitvi za \( \lambda \) sta
+
+\[ \lambda_{1, 2} = - \frac{2 \xi \omega \pm \sqrt{4 \xi ^2 \omega ^2 - \omega ^2}}{2}
+\]
+
+Prepišemo lahko ob upoštevanju \( \xi = \frac{1}{2} \) v
+
+\begin{align*}
+  \lambda_{1, 2} &= - \omega \left( \xi \mp \sqrt{\xi ^2 - 1} \right)\\
+&= - \omega \left( \xi \mp \sqrt{1 - \xi ^2} \right) \\
+&= - \omega \left( \frac{1}{\sqrt{2}} \mp \mathrm{i} \frac{1}{\sqrt{2}} \right)
+\end{align*}
+
+Karakteristični rešitvi zgornje enačbe sta torej
+
+\[ \lambda_{1, 2} = - \frac{\omega}{\sqrt{2}} \left( 1 \mp \mathrm{i} \right).
+\]
+
+Njuna razlika je
+
+\[ \lambda_1 - \lambda_2 = - \frac{2 \omega}{\sqrt{2} \mathrm{i}}.
+\]
+
+Imamo torej nastavek
+
+\[ x = C_1 e^{\lambda_1 t} + C_2 e^{\lambda_2 t}.
+\]
+
+Ob upoštevanju začetnih pogojev \( x(0) = 0 \) dobimo \( C_1 = - C_2 \). Pred upoštevanjem drugega začetnega pogoja moramo odvajati nastavek
+
+\[ \dot{x}(t) = C_1 \lambda_1 e^{\lambda_1 t} - C_1 \lambda_2 e^{\lambda_2 t}.
+\]
+
+Drugi začetni pogoj \( \dot{x}(0) = \omega ^2 \) dobimo vrednost konstante
+
+\[ C_1 = \frac{\omega ^2}{\lambda_1 - \lambda_2} = \frac{\omega \sqrt{2}}{2 \mathrm{i}}.
+\]
+
+Rešitev je potem
+
+\[ x(t) = \frac{\omega \sqrt{2}}{2 \mathrm{i}} \left(e^x - e^{- x} \right) e^{- \frac{\omega t}{\sqrt{2}}} = \omega \sqrt{2} \sin \left( \frac{\omega t}{\sqrt{2}} \right) e^{- \frac{\omega t}{\sqrt{2}}} = G(t).
+\]
+
+Za splošen \( \xi \) pa je sta rešitvi kvadratne enačbe
+
+\[ \lambda_{1, 2} = - \xi \omega \pm \mathrm{i} \omega \sqrt{1 - \epsilon ^2}.
+\]
+
+Njuna razlika je
+
+\[ \lambda_1 - \lambda_2 = + \mathrm{i} \omega 2 \sqrt{1 - \xi ^2}.
+\]
+
+Enako enačbo dobimo za prvi začetni pogoj, za drugi začetni pogoj pa nam poda vrednost koeficienta
+
+\[ C_1 = \frac{\omega ^2}{\lambda_1 - \lambda_2} = \frac{\omega}{\sqrt{1 - \xi ^2 } 2 \mathrm{i}}.
+\]
+
+Rešitev je potem
+
+\[ x(t) = \frac{\omega}{\sqrt{1 - \xi ^2}} \left[ \frac{e^{\mathrm{i} \omega \sqrt{1 - \xi ^2} t} - e^{- \mathrm{i} \omega \sqrt{1 - \xi ^2} t}}{2 \mathrm{i}} \right] e^{- \xi \omega t} .
+\]
+
+Drugače lahko še zapišemo
+
+\[ G(t) = x = \frac{\omega}{\sqrt{1 - \xi ^2}} \sin \left( \sqrt{1 - \xi ^2} \omega t \right) e^{- \xi \omega t}.
+\]
+
+Ločimo tri primere:
+
+- \( \xi \to 0 \), kjer bo potem rešitev
+
+  \[ x(t) = \omega \sin \left( \omega t \right).
+  \]
+
+- v primeru \( \xi \to \frac{1}{\sqrt{2}} \) smo rešitev že zapisali in je optimalna rešitev senzorja 2. reda
+
+- v \( \xi \gg 1 \) imamo predušen senzor, kar pomeni, da lahko sinus razvijemo
+
+  [dopolni]
+*** Primer senzorja 2. reda
+
+#+begin_my_example
+Poglejmo si primer amortizerja oz. blažilnika.
+
+Premikamo se na vrhu kolesa z amortizerjem. Naša vodoravna hitrost bo \( v \) in imamo maso \( m \).
+
+Pri vožnji po kamenčkih se nam spreminja višina \( z(t) \). Zanima nas, kako se bo spreminjala naša višina \( x(t) \) v odvisnosti od odmika \( z(t) \).
+
+V ravnovesju označimo \( x (t) = z(t) = 0 \).
+
+Dinamika našega sistema bo odvisna od naše relativne lege in sile upora \( F_u = - \beta v \).
+
+\[ m \ddot{x} = k \left( z - x \right) - \beta \left( \dot{x} - \dot{z} \right).
+\]
+
+Sila upora je ponovno odvisna od relativne lege. Dinamiko lahko prepišemo v
+
+\[ \ddot{x} + \frac{\beta}{m} \dot{x} + \frac{k}{m} x = \frac{k}{m} z + \frac{\beta}{m} \dot{z}.
+\]
+
+Primerjamo enačbo \ref{eq:1} z zgornjo in lahko izluščimo vrednosti naših koeficientov. V primeru optimalnega senzorja bo še veljalo \( \xi = \frac{1}{\sqrt{2}} \).
+
+Potem
+
+\[ 2 \frac{1}{\sqrt{2}} \sqrt{\frac{k}{m}} = \frac{\beta}{m} \implies \beta = \sqrt{2 km} = \gamma \eta,
+\]
+
+kjer je \( \gamma \) koeficient upora in viskoznost \( \eta \).
+#+end_my_example
