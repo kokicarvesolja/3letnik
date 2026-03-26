@@ -119,14 +119,14 @@ Podobno kot v pri skalarni izpeljavi, imamo čas vzorčenja \( T \). Nahajamo se
 
 V sistemu \( S \) imamo
 
-\[ x _{n + 1} = \phi_n x_n + c_n + \Gamma_n w_n,
+\[ x _{n + 1} = \Phi_n x_n + c_n + \Gamma_n w_n,
 \]
 
 kjer je zadnji člen dinamični šum.
 
 V merilnem sistemu \( M \) imamo izostreno oceno \( \hat{x}_n \) in bo ocena za naslednje vzorčenje
 
-\[ \bar{x}_{n + 1} = \phi_n \hat{x}_n  + c_n.
+\[ \bar{x}_{n + 1} = \Phi_n \hat{x}_n  + c_n.
 \]
 
 Kovariančna matrika za naslednje vzorčenje \( M_{n + 1} \) bo po definiciji
@@ -137,13 +137,13 @@ Kovariančna matrika za naslednje vzorčenje \( M_{n + 1} \) bo po definiciji
 Vstavimo vrednosti posameznih spremenljivk in dodatno razpišemo
 
 \begin{align*}
-  M_{n + 1} &= \left\langle \left( \phi_n \left( \hat{x}_n - x_n \right) + \Gamma_n w_n \right) \left( \phi_n \left( \hat{x}_n - x_n \right) + \Gamma_n w_n \right)^T  \right\rangle \\
-&= \left\langle \phi_n \left( \hat{x}_n - x_n \right) \left( \hat{x}_n - x_n \right)^T \phi_n^T \right\rangle + \Phi \left\langle w_n w_n^T \right\rangle \Gamma_n^T + \cancel{\left\langle \ldots \right\rangle}
+  M_{n + 1} &= \left\langle \left( \Phi_n \left( \hat{x}_n - x_n \right) + \Gamma_n w_n \right) \left( \Phi_n \left( \hat{x}_n - x_n \right) + \Gamma_n w_n \right)^T  \right\rangle \\
+&= \left\langle \Phi_n \left( \hat{x}_n - x_n \right) \left( \hat{x}_n - x_n \right)^T \Phi_n^T \right\rangle + \Phi \left\langle w_n w_n^T \right\rangle \Gamma_n^T + \cancel{\left\langle \ldots \right\rangle}
 \end{align*}
 
 V prvem členu prepoznamo matriko \( P_n  \) in drugi člen pa označimo \( \left\langle w_n w_n^T \right\rangle = Q_n \).
 
-\[ M_{n + 1} = \phi_n P_n \phi_n^T + \Gamma_n Q_n \Gamma_n^T.
+\[ M_{n + 1} = \Phi_n P_n \Phi_n^T + \Gamma_n Q_n \Gamma_n^T.
 \]
 
 Kalmanov filter za diskretno vektorsko spremenljivko bo torej
@@ -161,13 +161,13 @@ Pojdimo sedaj v zvezno sliko \( \lim_{T \to 0}  \). Za meritvi \( n \) in \( n +
 Upoštevamo prej izpeljane relacije in zapišemo
 
 \begin{align*}
-  \dot{\hat{x}} (t) &= \frac{\phi_{n + 1} \hat{x}_n - \hat{x}_n + c_n + P_{n + 1} H^T R_{n + 1}^{-1} \left( z_{n + 1} - H \bar{x}_{n + 1} \right)}{T} \\
-&= \frac{\phi_{n + 1} - 1}{T} \hat{x}_n + \frac{c_n}{T} + P(t) H^T R(t) ^{-1} \left( z(t) - H \hat{x}(t) \right)
+  \dot{\hat{x}} (t) &= \frac{\Phi_{n + 1} \hat{x}_n - \hat{x}_n + c_n + P_{n + 1} H^T R_{n + 1}^{-1} \left( z_{n + 1} - H \bar{x}_{n + 1} \right)}{T} \\
+&= \frac{\Phi_{n + 1} - 1}{T} \hat{x}_n + \frac{c_n}{T} + P(t) H^T R(t) ^{-1} \left( z(t) - H \hat{x}(t) \right)
 \end{align*}
 
 Kateri člen je ekvivalent \( \sigma T \) iz analogne slike?
 
-Z uvedbo \( A(t) = \frac{\phi_{n+ 1} - 1}{T} \) in \( c(t) = \frac{c_n}{T} \) dobimo optimalno shemo za sledenje zvezni spremenljivki
+Z uvedbo \( A(t) = \frac{\Phi_{n+ 1} - 1}{T} \) in \( c(t) = \frac{c_n}{T} \) dobimo optimalno shemo za sledenje zvezni spremenljivki
 
 \[ \dot{\hat{x}} (t) = A(t) \hat{x} + c(t) + P H^{T} R^{-1} \left( z - H x \right).
 \]
@@ -179,10 +179,10 @@ Poglejmo si še \( P \) v zvezni sliki. Zapišemo razliko in upoštevamo definic
 
 Upoštevamo še definicijo kovariančne matriko
 
-\[ P_{n + 1} - P_n = \phi_n P_n \phi_n^T + \Gamma_n Q_n \Gamma_n^T - M_{n + 1} H^T \left( H M_{n + 1} ^T + R_{n + 1} \right)^{-1} H M_{n + 1} - P_n.
+\[ P_{n + 1} - P_n = \Phi_n P_n \Phi_n^T + \Gamma_n Q_n \Gamma_n^T - M_{n + 1} H^T \left( H M_{n + 1} ^T + R_{n + 1} \right)^{-1} H M_{n + 1} - P_n.
 \]
 
-Vemo, da je \( \phi_n = \left( 1 + A \cdot T \right) \) in po deljenju s \( T \) dobimo
+Vemo, da je \( \Phi_n = \left( 1 + A \cdot T \right) \) in po deljenju s \( T \) dobimo
 
 \begin{align*}
  \frac{P_{n + 1} - P_n}{T} &= \frac{\left[ P_n + A P_n \cdot T + P_n A^T \cdot T + A P_n A T ^2 \right] - P_n}{T} \\

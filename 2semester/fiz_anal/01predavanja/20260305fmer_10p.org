@@ -443,24 +443,24 @@ Razrešimo oklepaje in iz enakosti
 
 dobimo enakosti
 
-\[ A + B H = I \quad \text{ in } \quad A \mathbf{m} + B \mathbf{r} = \hat{p},
+\[ A + B H = I \quad \text{ in } \quad A \mathbf{m} + B \mathbf{r} = \hat{\mathbf{p}},
 \]
 
 kjer je \( I \) identiteta.
 
 \begin{align*}
-  \left\langle p p^T \right\rangle &= \left\langle \left( A \mathbf{m} + B \mathbf{r} \right) \left( A \mathbf{m} + B \mathbf{r} \right)^T \right\rangle \\
+  \left\langle \mathbf{p} \mathbf{p}^T \right\rangle &= \left\langle \left( A \mathbf{m} + B \mathbf{r} \right) \left( A \mathbf{m} + B \mathbf{r} \right)^T \right\rangle \\
 &= \left\langle \left( A \mathbf{m} + B \mathbf{r} \right) \left( \mathbf{m}^T A ^T + \mathbf{r}^T B^T\right) \right\rangle.
 \end{align*}
 
 Oklepaje zmnožimo med sabo in dobimo
 
-\[ \left\langle p p^{T} \right\rangle = \left\langle  A \mathbf{m} \mathbf{m}^T A^T + B \mathbf{r} \mathbf{r} B^T + A \mathbf{m} \mathbf{r}^T B^T + B \mathbf{r} \mathbf{m}^T A^T \right\rangle.
+\[ \left\langle \mathbf{p} \mathbf{p}^{T} \right\rangle = \left\langle  A \mathbf{m} \mathbf{m}^T A^T + B \mathbf{r} \mathbf{r} B^T + A \mathbf{m} \mathbf{r}^T B^T + B \mathbf{r} \mathbf{m}^T A^T \right\rangle.
 \]
 
 Ker med \( m \) in \( r \) ni korelacije, zaključimo
 
-\[ \left\langle p p^T \right\rangle = P  = A M A^T + B R B^T, \ A + B H = I
+\[ \left\langle \mathbf{p} \mathbf{p}^T \right\rangle = P  = A M A^T + B R B^T, \ A + B H = I
 \]
 
 \( A + BH = I \) predstavlja vez.
