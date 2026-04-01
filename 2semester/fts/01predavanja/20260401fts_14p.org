@@ -1,0 +1,96 @@
+#+title: Predavanja iz Fizike trdne snovi, 14. teden v letu
+#+subtitle: 2026/04/01
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Polprevodniki
+
+Gostota stanj vrzeli \( n_c \) ima eksponentno odvisnost \( \exp \left\{ - \frac{E_g}{2 k_B T} \right\} \).
+
+Meritev širine energijske reže \( E_{gap} = \epsilon_c - \epsilon_v \), kjer je \( \epsilon_c \) energija valenčnega nivoja in \( \epsilon_v \) energija vrzeli. Če v kristal obsevamo s fotoni, ki imajo ravno energijo \( E_{gap} \), potem lahko elektron izbije v valenčni pas. V takem primeru velja enačba
+
+\[ E_f = E_{gap} = h \nu.
+\]
+
+#+begin_my_example
+Za \( E_{gap} = 1 \mathrm{eV} \) mora biti valovna dolžina fotona \( \lambda \sim 1240 \mathrm{nm} \), saj
+
+\[ E_{gap} = 1 \mathrm{eV} = \frac{h c}{\lambda} = \frac{1240 \mathrm{eV \, nm} }{\lambda}
+\]
+
+Valovni vektor ima potem vrednost
+
+\[ k_F = \frac{2 \pi}{\lambda} \sim 2 \pi \cdot 10^{-3} \mathrm{nm}^{-1}
+\]
+
+in recipročni vektor ima vrednost \( K \sim 2 \pi \cdot 10 \mathrm{nm}^{-1} \). Preko enačbe
+
+\[ K = \frac{2 \pi}{a}
+\]
+
+dobimo vrednost razdalje elektronske reže \( a \sim 0.1 \mathrm{nm} \).
+#+end_my_example
+
+\[
+\begin{array} {c|c}
+& E_g [ \mathrm{eV}] \\ \hline
+\mathrm{Si} & 1.12 \\
+\mathrm{Ge} & 0.67 \\
+\mathrm{Te} & 0.35 \\
+\mathrm{InAs} & 0.350 \\
+\mathrm{GaAs} & 1.40 \\
+\end{array}
+\]
+
+Energijo elektronov ali vrzeli lahko razvijemo okoli minimuma - za elektrone je to valenčni pas, za vrzeli pa vrh spodnjega pasu.
+
+\[ \epsilon_{e /v} (\mathbf{k}) = \epsilon_c (\mathbf{k}_0) \pm  \frac{1}{2}  ^2 \sum\limits_{i, j}^{} \delta_{ki} \left( M^{-1} \right)_{ij} \delta_{kj},
+\]
+
+kjer je \( M \) masni tenzor. Slednji je realen in simetričen in ga lahko zapišemo tudi z lastnimi vrednostmi
+
+\[ \epsilon_{c / v} (\mathbf{k}) = \epsilon_{c/ v} \pm \frac{1}{2}\hbar ^2 \left( \frac{k_1 ^2}{m_{ef, c/v}} + \frac{k_2 ^2}{m_{ef, c/v}} + \frac{k_3 ^2}{m_{ef, c/v}}   \right),
+\]
+
+kjer je \( m_{ef} \) efektivna masa. Lastne vrednosti \( k_i, i = 1, 2, 3 \) nam povejo oddaljenost od minimuma.
+
+V primeru kubične simetrije je energija potem
+
+\[ \epsilon_{c/v} = \epsilon_{c/ v} \left( \hbar \right) \pm \frac{\hbar ^2 k ^2}{2m_{ef,c/v}}.
+\]
+
+Enačba za gostota stanj elektronov v valenčnem pasu se izračuna po enačbi
+
+\[ n_c (T) = \int\limits_{\epsilon_c}^{\infty} g_c (\epsilon) f(\epsilon) \, \mathrm{d} \epsilon.
+\]
+
+Meje integrala so tako določene, saj imajo vzbujeni elektroni energijo višjo od pasu pod valenčnim pasom.
+
+Analogen razmislek za vrzeli je
+
+\[ n_v (T) = \int\limits_{- \infty}^{\epsilon_v} g_v (\epsilon) \left( 1- f(\epsilon) \right) \, \mathrm{d} \epsilon.
+\]
+
+Ker elektroni in vrzeli živijo okoli ekstrema, lahko za aproksimacijo uporabimo gostoto stanj prostih elektronov
+
+\begin{align*}
+  g_c (\epsilon) &= \sqrt{2 \left( \epsilon - \epsilon_c \right) } \frac{m_c ^{\frac{3}{2}}}{\pi ^2 \hbar ^3} \\
+g_v (\epsilon) &= \sqrt{2 \left( \epsilon_v - \epsilon \right)} \frac{m_v^{\frac{3}{2}}}{\pi ^2 \hbar ^3}
+\end{align*}
+
+Eksponent v Fermi-Diracovi porazdelitvi
+
+\[ f(\epsilon) = \frac{1}{\exp \left\{ \frac{\epsilon - \mu}{k_B T} \right\} + 1},
+\]
+
+je lahko hitro večji od \( 1 \). Pri sobni temperaturi ima produkt vrednost \( k_B T= \frac{1}{40} \mathrm{eV} \ll \epsilon - \mu \). Iz tega potem sledi
+
+\[ \epsilon_c - \mu \gg k_B T \quad \text{ in } \quad \mu - \epsilon_v \gg k_B T.
+\]
+
+Porazdelitev \( f(\epsilon) \) lahko potem aproksimiramo z eksponentom \( f(\epsilon) \sim e^{- \beta \left( \epsilon - \mu \right)} \), kjer je \( \beta = \frac{1}{k_B T} \).

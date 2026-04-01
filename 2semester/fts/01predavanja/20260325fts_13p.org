@@ -149,4 +149,6 @@ Ionske vezi si poglejmo na kristalu soli \( NaCl \), ki jo sestavljata dva iona 
 
 * Polprevodniki
 
+
+
 Pri \( T \to 0 \) so polprevodniki izolatorji in imajo zapolnjene pasove.
