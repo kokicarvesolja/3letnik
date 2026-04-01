@@ -94,3 +94,106 @@ je lahko hitro večji od \( 1 \). Pri sobni temperaturi ima produkt vrednost \( 
 \]
 
 Porazdelitev \( f(\epsilon) \) lahko potem aproksimiramo z eksponentom \( f(\epsilon) \sim e^{- \beta \left( \epsilon - \mu \right)} \), kjer je \( \beta = \frac{1}{k_B T} \).
+
+Integral se poenostavi v
+
+\[ n_c (T) = \int\limits_{\epsilon_c}^{\infty} g_c (\epsilon) e^{- \beta \left( \epsilon - \mu \right)} \, \mathrm{d} \epsilon.
+\]
+
+Eksponent lahko razširimo z \( \epsilon_c - \epsilon_c \) in izpostavimo eksponent, ki je neodvisen od energije
+
+\begin{align*}
+  n_c (T) &= e^{- \beta \left( \epsilon_c - \mu \right)} \int\limits_{\epsilon_c}^{\infty} \sqrt{2 \left( \epsilon - \epsilon_c \right)} \frac{m_c ^{\frac{3}{2}}}{\pi ^2 \hbar ^3} e^{- \beta \left( \epsilon - \epsilon_c \right)} \, \mathrm{d} \epsilon \\
+&= e^{- \beta \left( \epsilon_c - \mu \right)} \frac{\sqrt{2} m_c ^{\frac{3}{2}}}{\pi ^2 \hbar ^3 \beta^{\frac{3}{2}}} \int\limits_0^{\infty} \sqrt{x} e^{-x} \, \mathrm{d} x = N_c (T) e^{- \beta \left( \epsilon_c - \mu \right)}.
+\end{align*}
+
+Zadnji integral, ki se pojavi v zgornji enačbi je definicija \( \Gamma \) funkcija za \( s = \frac{1}{2} \).
+
+Število elektronov je podano z enačbo
+
+\[ N_c (T) = \frac{1}{4} \left( \frac{2 m _c k_B T}{\pi \hbar ^2} \right)^{\frac{3}{2}}.
+\]
+
+Pri vrzelih pa je porazdelitev
+
+\[ 1 - f(\epsilon) = \frac{1}{\exp \left\{ - \beta \left( \epsilon - \mu \right) + 1 \right\}
+\]
+
+in volumnska gostota vrzeli je potem
+
+\[ p_v (T) = P_v (T) e^{- \beta \left( \mu - \epsilon_v \right)},
+\]
+
+kjer je
+
+\[ P_v = \frac{1}{4} \left( \frac{2 m_v  k_B T}{\pi \hbar ^2} \right)^{\frac{3}{2}}
+\]
+
+Ohranja se naboja in torej velja
+
+\[ n_c (T) = n_p (T) = n_i (T),
+\]
+
+kjer indeks \( i \) pomeni čist oz. ang. /intrinsic/.
+
+Kvadrat \( n_i \) lahko zapišemo
+
+\[ n_i ^2 = n_c (T) p_v (T) = N_c (T) P_v (T) \exp \left\{ - \frac{\left( \epsilon_c - \epsilon_v \right)}{k_B T} \right\},
+\]
+
+njen koren pa je potem
+
+\[ n_i = n_c = p_v = \sqrt{N_{c} (T) P_{v}(T)} \exp \left\{ - \frac{E_g}{2 k_B T} \right\}.
+\]
+
+Sedaj lahko preverimo, če je bil naš približek polovice energijske režen pravilen.
+
+Iz zgornje enačbe velja
+
+\[ N_c (T) e^{- \beta \left( \epsilon_c - \mu \right)} = P_v (T) e^{- \beta \left( \mu - \epsilon_v \right)},
+\]
+
+po logaritmiranju pa potem velja
+
+\[ k_B T \ln \frac{N_c}{P_v} - \left( \epsilon_c - \mu \right) = - \left( - \mu - \epsilon_v \right).
+\]
+
+Iz enačbe lahko izrazimo kemijski potencial in upoštevamo \( \epsilon_c = \epsilon_v + E_{gap} \).
+
+\begin{align*}
+  \mu &= \frac{1}{2} \left( \epsilon_c + \epsilon_v \right) + \frac{1}{2} k_B T \ln \frac{P_v}{N_c} \\
+\mu &= \epsilon_v + \frac{E_g}{2} + \frac{3}{4} k_B T \ln \left( \frac{m_v}{m_c} \right).
+\end{align*}
+
+If we crunch some numbers, dobimo potrdilo, da je izpolnjeno \( \epsilon - \mu \gg k_B T \).
+
+V primeru dopiranja dobimo različno gostoto elektronov in vrzeli \( n_c \ne p_v \). Razliko gostoto označimo
+
+\begin{equation}
+\label{eq:1}
+ n_c - p_v = \Delta n.
+\end{equation}
+
+Navkljub dopiranju bo še zmeraj veljalo
+
+\[ n_i = N_c e^{- \beta \left( \epsilon_c - \mu_i \right)},
+\]
+
+kjer je \( \mu_i \) kemijski potencial čistega polprevodnika. Zaradi enačbe \ref{eq:1} pa bo veljalo, da je kemijski potencial \( \mu \) dopiranega polprevnodika premaknjen glede \( \mu_i \). Gostota elektronov v valenčnem pasu je
+
+\[ n_c = N_c e^{- \beta \left( \epsilon_c - \mu \right)} = n_i e^{- \beta \left( \mu_i - \mu \right)}.
+\]
+
+Analogno za valenčni pas lahko zapišemo
+
+\[ p_v = n_i e^{- \beta \left( \mu - \mu_i \right)}.
+\]
+
+Poleg enačbe \ref{eq:1} bo še zmeraj veljala
+
+\begin{equation}
+\label{eq:2}
+n_c p_v = n_i ^2.
+\end{equation}
+
+To se zgodi ob predpostavki, da je nečistoč v polprevodniku enostavno tako malo, da se kristalna struktura ne spremeni bistveno - zgolj kemijski potencial.
