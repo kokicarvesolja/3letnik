@@ -1,0 +1,266 @@
+#+title: Vaje iz Mehanike kontinuov, 14. teden v letu
+#+subtitle: 2026/04/01
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Teorija: upogib palice
+
+Palico parametrizira krivulja \( \mathbf{r}(l) \). Neupognjena palica naj leži vzporedno z osjo \( z \), njene koordinate pa so \( \left( x(z), y(z), z \right) \). Za majhne upogibe velja \( l \sim z \) in potem tudi \( \frac{\partial }{\partial l} = \frac{\partial }{\partial l}  \).
+
+Zunanja sila gravitacija je opisana s \( K_x = \frac{m g}{l} \).
+* Naloga: Poves palice pod lastno težo (str. 71)
+
+#+begin_problem
+Za koliko se pod lastno težo povesi vodoravna palica dolžine \( L \), ki je na eni strani togo vpeta, na drugi strani pa prosto visi? S kolikšno silo in navorom deluje palica na steno?
+
+Izračunaj tudi navor na steno.
+#+end_problem
+
+Os \( z \) je usmerjena vodoravno, os \( x \) pa naj kaže pravokotno na os \( z \) navzdol. V primeru ravnovesja palice bosta veljali enačbi
+
+\begin{align*}
+ 0 &=  E I x^{(4)} - F_z x'' - F_z' x' - K_x  \\
+ 0 &=  E I y^{(4)} - F_z y'' - F_z' y' - K_y,
+\end{align*}
+
+kjer \( ' \) označuje odvod po koordinati \( z \).
+
+Vzdolž palice ni sile, kar pomeni, da \( F_z = F_z ' = 0 \). Iz prve enačbe ravnovesja imamo torej
+
+\[ x^{(4)} = \alpha,
+\]
+
+kjer smo označili \( \alpha = \frac{mg}{LEI} \). Po štirih integracijah dobimo splošno rešitev našega problema
+
+\[ x(z) = \frac{\alpha z ^4}{24} + C_1 z ^3 + C_2 z ^2 + C_3 z + C_4.
+\]
+
+Določimo, da je palica togo vpeta pri \( z = 0 \). Potrebujemo štiri robne pogoje in to so
+
+\begin{align*}
+  x(0) &= 0 \\
+x' (0) &= 0 \\
+F_x (L) &= 0 \\
+\mathbf{M}(L) &= 0
+\end{align*}
+
+Iz prvih dveh pogojev določimo \( C_4 = C_3 = 0 \). Tretji robni pogoj ima v splošnem enačbo
+
+\begin{equation}
+\label{eq:1}
+ F_x = - EI x^{(3)} + F_z x'.
+\end{equation}
+
+Upoštevamo pogoj in določimo konstanto \( C_1 \)
+
+\[ 0 = F_x (L) = - EI \left( 6C_1 + \alpha L \right) \implies C_1 = - \frac{\alpha L}{6}.
+\]
+
+Drugi robni pogoj določa enačba
+
+\[ \mathbf{M} = EI \left( -y'', x'', 0 \right),
+\]
+
+za naš specifičen primer pa je
+
+\[ 0 = M_y (L) = EI x'' = EI \left( \frac{\alpha L ^2 \cdot 12}{24} + 6 C_1 L + 2 C_2 \right).
+\]
+
+Ob upoštevanju vrednosti \( C_1 \) rešujemo enačbo
+
+\[ 0 = \frac{\alpha L ^2}{2} - \alpha L ^2 + 2 C_2 \implies C_2 = \frac{\alpha L ^2}{4}.
+\]
+
+Rešitev je potem
+
+\[ x = \frac{mg}{LEI} \left( \frac{z ^4}{24} - \frac{L}{6} z ^3 + \frac{L^2}{6} z ^2 \right).
+\]
+
+
+Pri \( z = 0 \) si zamislimo skrajno ploščo debeline \( \mathrm{d} \mathbf{r} \). Na desno ploskev plošče z normalo \( \mathbf{r} \), ki se nahaja pri \( z= \mathrm{d} \mathbf{r}  \) deluje sila \( \mathbf{F}_p \), ki je posledice preostalega dela palice. Normala leve strani plošče je ravno obratna \( - \mathbf{r} \). V ravnovesju bo sila, ki deluje na to ploskev ravno obratna sili \( \mathbf{F}_p \). Torej \( \mathbf{F}_n = - \mathbf{F}_p \).
+
+Sila palice na steno pa bo po Newtonovem zakonu ravno obratna sili \( \mathbf{F}_n \). Torej
+
+\[ \mathbf{F}_{pal \to st} = - \mathbf{F}_n = - \left( \mathbf{F}_p \right) = \mathbf{F}_p.
+\]
+
+V enačbo \ref{eq:1} vstavimo rešitev in določimo, da je sila \( F(0) = mg \).
+* Naloga: Poves podprte palice (str. 72)
+
+#+begin_problem
+Vodoravna palica dolžine \( L \) je na enem koncu togo vpeta v steno, na drugem koncu pa je podprta in sicer tako, da sta obe krajišči na isti višini. Zanima nas kakšen je upogib palice zaradi lastne teže ter kolikšna je velikost sile \( F_0 \) v krajišču, kjer je palica podprta.
+#+end_problem
+
+Splošna rešitev je še zmeraj enaka kakor v prejšnji nalogi, torej
+
+\[ x(z) = \frac{\alpha z ^4}{24} + C_1 z ^3 + C_2 z ^2.
+\]
+
+Robna pogoja togo vpetega konca sta
+
+\[ \left. x \right|_{z = L} = 0 \quad \text{ in } \quad \left. x'' \right|_{z = L} = 0.
+\]
+
+Dobimo dve enačbi
+
+\begin{align*}
+  0 &= \frac{\alpha L ^4}{24} + C_1 L ^3 + C_2 L ^2 \\
+0 &= \frac{\alpha L ^2}{2} + 6C_1 L + 2 C_2
+\end{align*}
+
+Iz druge enačbe izrazimo
+
+\[ C_2 = - \frac{\alpha L ^2}{4} - 3 C_1 L,
+\]
+
+ki jo vstavimo nato v prvo enačbo in dobimo vrednost
+
+\[ C_1 = - \frac{5 \alpha L}{48}.
+\]
+
+Konstanta \( C_2 = \frac{\alpha L ^2}{16} \).
+* Naloga: Eulerjeva nestabilnost (str. 72)
+
+#+begin_problem
+Dolgo lahko palico z dolžino \( L \), ki je na obeh koncu vrtljivo vpeta, obremenimo z vzdolžno silo \( F_0 \). Pri kolikšni sili se palica ukrivi?
+#+end_problem
+
+Naj bo os \( z \) navpična in naj palica leži vzporedno z njo. Sila \( F_z \) je konstantna, palica pa naj bo lahka.
+
+Ravnovesna enačba je zaradi konstantne sile
+
+\[ E I x^{(4)} + F_0 x'' = 0.
+\]
+
+Uvedemo novo spremenljivko \( v = x'' \) in je rešitev
+
+\[ v(z) = A \sin (kz) + B \cos (kz),
+\]
+
+kjer je \( k =  \frac{F_0}{EI} \). Upoštevamo definicijo spremenljivke in dvakrat integriramo
+
+\[ x(z) = A \sin (kz) + B \cos (kz) + Cz + D.
+\]
+
+Robna pogoji pogoji naše palice so
+
+\begin{align*}
+  x(0) &= 0 \\
+x(L) &= 0 \\
+\mathbf{M}(0) &= 0 \\
+ \mathbf{M} (L) &= 0.
+\end{align*}
+
+Tretji robni pogoj nam poda enakost \( B = 0 \). Prvi robni pogoj nam poda \( B + D = 0 \) in nadalje \( D = 0 \).
+
+Četrti robni pogoj ima enačbo
+
+\[ x'' (L) = - Ak ^2 \sin (k L) = 0
+\]
+
+Ničle sinusa so \( k L = n \pi \), kar nam določi vrednosti koeficientov \( k_l = \frac{n \pi}{L} \).
+
+Za obremenilno silo potem dobimo pogoj
+
+\[ F_0 = \frac{\pi ^2}{L ^2} EI.
+\]
+* Naloga: lastna nihanja palice (str. 76)
+
+#+begin_problem
+Poiščimo lastna nihanja lahke homogene palice dolžine \( L \), ki je enem krajišču togo vpeta, na drugem pa prosta.
+#+end_problem
+
+Dinamična enačba za odmik palice je
+
+\[ EI x^{(4)} - F_z x'' - F_z ' x ' - K_x = - \rho_l \frac{\partial ^2 x}{\partial t ^2},
+\]
+
+kjer je \( \rho_l \) dolžinska gostota. Nimamo zunanjih sil in tudi \( F_z = 0 \). Rešujemo torej enačbo
+
+\[ x^{(4)} = - \frac{\rho}{EI} \frac{\partial ^2 x}{\partial t ^2}.
+\]
+
+Uporabimo nastavek \( x(z, t) = v(z)  e^{- \mathrm{i} \omega t} \), ki ga vstavimo v enačbo
+
+\[ v^{(4)} e^{- \mathrm{i} \omega t} = - \frac{\rho}{EI} \left( - \omega ^2 e^{- \mathrm{i} \omega t}\right).
+\]
+
+Označimo \( \alpha = \frac{\omega ^2 \rho}{EI} \). Rešujemo torej enačbo
+
+\[ v^{(4)} = \alpha ^4 v,
+\]
+
+ki ima splošno rešitev
+
+\[ v(z) = A \mathrm{cosh} (\alpha z) + B \mathrm{sinh} (\alpha z) + C \cos (\alpha z) + D \sin (\alpha z).
+\]
+
+Vse 4 funkcije imajo 4. odvod enak osnovni funkciji. Konstante bomo določili s pomočjo 4 robnih pogojev
+
+\begin{align*}
+  x(0, t) &= 0 \\
+\left. \frac{\partial x}{\partial z} (z, t) \right|_{z = 0} &= 0 \\
+F(L, t) &= 0 \\
+\mathbf{M} \left( L, t \right) &= 0
+\end{align*}
+
+Enačbe, ki jih dobimo iz robnih pogojev so
+
+\begin{align*}
+0 &=  A + C  \\
+0 &= B \alpha + D \alpha \\
+0 &= \left. \frac{\partial ^2 x}{\partial z ^2} \right|_{z = L} \\
+0 &= A \alpha ^2 \mathrm{cosh} \left( a L \right) + B \alpha ^2 \mathrm{sinh} \left( \alpha L \right) - C \alpha ^2 \cos (\alpha L) - D \alpha \sin (\alpha L).
+\end{align*}
+
+Enačbi prvih dveh pogojev nam spremenita četrti pogoj v
+
+\[ A \left( \mathrm{cosh} (\alpha L) + \cos (\alpha L) \right) + B \left( \mathrm{sinh} (\alpha L) + \sin (\alpha L) \right) = 0.
+\]
+
+V tretji robni pogoj vstavimo našo splošno rešitev in dobimo enakost
+
+\[ A \left( \mathrm{sinh} (\alpha L) - \sin (\alpha L) \right) + B \left( \mathrm{cosh} (\alpha L) + \cos (\alpha L)  \right) &= 0.
+\]
+
+Dobili smo dve enačbi za dve spremenljivki, ki ju lahko zapišemo v matrično obliko
+
+\[ \begin{bmatrix}
+   \mathrm{cosh} + c & \mathrm{sinh} + s \\
+   \mathrm{sinh} - s & \mathrm{cosh} + c
+    \end{bmatrix} \begin{bmatrix} A \\ B \end{bmatrix} = 0
+\]
+
+Determinanta sistema je
+
+\begin{align*}
+0 &=  \left( \mathrm{cosh} + c \right) ^2 - \left( \mathrm{sinh} ^2 - s ^2 \right) \\
+\mathrm{cosh} (\alpha L) \cdot \cos (\alpha L) &= - 1
+\end{align*}
+
+Drugače zapišemo kot
+
+\[ \cos (\xi) = - \frac{1}{\mathrm{cosh} (\xi)}.
+\]
+
+V limiti velja
+
+\[ \lim_{x \to \infty} \frac{1}{\mathrm{cosh} x} \approx 0.
+\]
+
+Torej rešujemo
+
+\[ \cos (\xi) = 0 \implies \xi = \frac{\pi}{2} + n \pi.
+\]
+
+Ničle osnovnega nihanja za \( \xi_{n = 2} \approx \frac{\pi}{2} + 2 \pi \approx 7.854 \).
+
+Frekvence so torej
+
+\[ \omega_n = \frac{\xi_n ^2}{L ^2} \sqrt{\frac{EI}{\rho}}.
+\]

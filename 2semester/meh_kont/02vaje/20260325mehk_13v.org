@@ -1,0 +1,196 @@
+#+title: Vaje iz Mehanike kontinuov, 13. teden v letu
+#+subtitle: 2026/03/25
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Naloga (str. 46)
+
+#+begin_problem
+V točki na sredini okrogle plošče, ki je na robovih prislonjena, deluje sila \( F_0 \). Izračunajmo poves plošče \( u \), če je poves zaradi lastne teže zanemarljiv.
+#+end_problem
+
+V nadaljevanju bomo dve identiteti. Prvo že poznamo,
+
+\[ \Delta_{\perp} f = \frac{1}{r} \left( r \frac{\partial }{\partial r} f \right),
+\]
+
+drugo pa preberemo iz Bronštajna
+
+\[ \Delta_{\perp} \log r = \frac{\delta(r)}{r}.
+\]
+
+Enačbo, ki označuje odmik
+
+\[ D \Delta_{\perp} ^2 u_z = P.
+\]
+
+Določimo lahko vrednost površinske gostote sil
+
+\[ F_0 = \int\limits_{}^{} 2 \pi r P \, \mathrm{d} r \implies P = \frac{F_0 \delta(r)}{2 \pi r}.
+\]
+
+Označimo konstante z \( a = \frac{F_0}{2 \pi D} \).
+
+Imamo enačbo
+
+\begin{equation}
+\label{eq:1}
+ \frac{1}{r} \frac{\partial }{\partial r}  \left\{ r \frac{\partial }{\partial r}  \left[ \frac{1}{r} \frac{\partial }{\partial r} \left( r \frac{\partial }{\partial r} u_z \right) \right] \right\} = \alpha \frac{\delta(r)}{r}.
+\end{equation}
+
+Enačbo pomnožimo z \( r \) in integriramo po vseh točkah razen v \( r = 0 \)
+
+\[ r \frac{\partial }{\partial r} \left[ \frac{1}{r} \frac{\partial }{\partial r} \left( r \frac{\partial }{\partial r} u_z  \right) \right] = C_1.
+\]
+
+Enačbo integriramo
+
+\[ \frac{1}{r} \frac{\partial }{\partial r}  \left( r \frac{\partial }{\partial r} u_z \right) = C_1 \ln \frac{r}{R} + C_2.
+\]
+
+Pred nadaljevanjem nam bo v pomoč identiteta
+
+\[ \int\limits_{}^{} x \log \frac{x}{x_0} = \frac{x ^2}{2} \log \frac{x}{x_0} - \frac{x ^2}{4}.
+\]
+
+Druga integracija nam poda enačbo
+
+\begin{align*}
+  r \frac{\partial u_{z}}{\partial r} &= C_1 \int\limits_{}^{} r \ln \frac{r}{R} \, \mathrm{d} r + r C_2 + C_3\\
+& = C_1 \left( \frac{r ^2}{2} \ln \frac{r}{R_0} - \frac{r ^2}{4}  \right) + \frac{1}{2} r ^2 C_2 + C_3
+\end{align*}
+
+Zadnje deljenje z \( r \) in integriranje poda
+
+\begin{align*}
+  u_z &= C_1 \int\limits_{}^{} \left( \frac{r}{2} \ln \frac{r}{R} - \frac{r}{4} + \frac{1}{4} r ^2 C_2 + C_3 \ln \frac{r}{R} + C_4 \right) \, \mathrm{d} r \\
+&= \frac{1}{2} C_1 \left[ \frac{r ^2}{2} \ln \frac{r}{R} - \frac{r ^2}{4} - \frac{1}{4} r ^2 \right] + \frac{1}{4} r ^2 C_2 +C_3 \ln \frac{r}{R} + C_4 \\
+&= A r ^2 \ln \frac{r}{R} + B r ^2 + C
+\end{align*}
+
+Zaradi nezveznosti v izhodišču vrednost konstante \( C_1 \) ne more biti nič. Hkrati pa lahko rečemo, da je \( C_3 = 0 \), saj ne želimo, da rešitev divergira v \( r = 0 \).
+
+Dobili smo splošen nastavek, ki reši to enačbo. Nastavek sedaj po obratnem postopku kakor smo integrirali, odvajamo in primerno množimo z \( r \).
+
+Dobimo
+
+\[ \frac{1}{r} \frac{\partial }{\partial r} \left( r \frac{\partial }{\partial r} \left[ 4 A \ln  \frac{r}{R} + 4 (A + B) \right] \right) = \alpha \frac{\delta(r)}{r}.
+\]
+
+Dobljeno primerjamo s \ref{eq:1} in lahko zaključimo, da velja \( 4 A + 4 B = 0 \). Iz enačbe
+
+\[ \Delta_{\perp} \left( 4A \ln \frac{r}{R} \right) = \alpha \frac{\delta(r)}{r}
+\]
+
+določimo
+
+\[ 4 A \Delta_{\perp} \ln \frac{r}{R} = \alpha \frac{\delta(r)}{r} \implies A = \frac{\alpha}{4}.
+\]
+
+Nastavek, ki torej reši našo enačbo je
+
+\[ \mathcal{L} = \frac{\alpha}{4} r ^2 \ln \frac{r}{R} + B r ^2 + C
+\]
+
+Upoštevamo še robna pogoja, da je plošča prislonjena
+
+\[ u_z (R) = 0 \quad \text{ in } \quad \left. \left( \frac{\partial ^2 u_{z}}{\partial r ^2} + \sigma \frac{\partial \theta}{\partial l}  \frac{\partial u_{z}}{\partial r} \right) \right|_{r = R} = 0
+\]
+
+Za upoštevanje prvega in drugega odvoda jih moramo izračunati
+
+\begin{align*}
+  \frac{\partial u_{z}}{\partial r} &= \frac{\alpha}{2} r \ln \frac{r}{R} + \left( \frac{\alpha}{4} + 2 B \right) r \\
+\frac{\partial ^2 u_{z}}{\partial r ^2} &= \frac{\alpha}{2} \left( \ln \frac{r}{R} + 1 \right) + \frac{\alpha}{4} + 2B.
+\end{align*}
+
+Ob upoštevanju \( \frac{\partial \theta}{\partial l} = \frac{1}{R} \)
+
+[dopolni]
+* Teorija: palice
+** Torzija palice
+
+Navpično postavljeno palico zasukamo za kot \( \phi \) okoli osi \( z \). Zasuk zapišemo kot \( \phi = \tau \hat{e}_z \). Premik je potem
+
+\[ \mathbf{u} = \bm{\phi} \times \mathbf{r},
+\]
+
+kjer je \( \bm{\phi} = \left( 0, 0, \tau z \right) \). Posamezne komponente odmika bodo
+
+\begin{align*}
+  u_x &= - \tau y z \\
+u_y &= \tau x z \\
+u_z &= \tau \psi(x, y).
+\end{align*}
+
+Za harmonsko teorijo bo veljalo
+
+\begin{align*}
+  u_{xz} &= \frac{1}{2 } \left( - \tau y + \tau \frac{\partial \psi}{\partial x}  \right) \\
+u_{yz} &= \frac{1}{2} \left( \tau x + \tau \frac{\partial \psi}{\partial y}  \right).
+\end{align*}
+
+Napetostni tenzor je po definiciji
+
+\[ p_{ij} = 2 \mu u_{ij} + \lambda u_{ll} \delta_{ij}.
+\]
+
+Napetostni tenzor ima komponente
+
+\begin{align*}
+  p_{xz} &= u \tau \left( - y + \frac{\partial \psi}{\partial x}  \right)\\
+p_{yz} &= u \tau \left( x + \frac{\partial \psi}{\partial y}  \right).
+\end{align*}
+
+Zanima nas, kako je to vplivalo na palico v smeri osi \( z \). Za to potrebujemo rešiti stacionarno enačbo
+
+\[ f_i = \frac{\partial p_{ij}}{\partial x_{j}} = 0 \implies  f_z = \frac{\partial p_{zx}}{\partial x} + \frac{\partial p_{zy}}{\partial y}  = 0.
+\]
+
+Dobimo torej Laplaceovo enačbo
+
+\[ \nabla ^2 \psi =0.
+\]
+
+Uvedemo prirejeno torzijsko funkcijo \( \chi(x, y) \). Komponenti posameznih elementov napetostnih tenzorjev je
+
+\begin{align*}
+  p_{xz} &= 2 \mu \tau \frac{\partial \chi}{\partial y} \\
+p_{yz} &= 2 \mu \tau \frac{\partial \chi}{\partial x}.
+\end{align*}
+
+Dobimo Poissonovo enačbo
+
+\[ \nabla ^2 \chi = -1.
+\]
+
+Iz dobljenega \( \chi \) lahko nato določimo še
+
+\begin{align*}
+  \frac{\partial \psi}{\partial x} &= y + 2 \frac{\partial \chi}{\partial y}  \\
+\frac{\partial \psi}{\partial y} &= - x - 2 \frac{\partial \chi}{\partial x} .
+\end{align*}
+
+Za določitev potrebujemo še robne pogoje. Eden od njih bo
+
+\[ p_{zx} n_x + p_{xy} n_y = 0.
+\]
+
+Zahtevamo, da je \( \chi = \mathrm{konst} \). V primeru, da je površina osnovne ploskve palice enostavno povezana, potem je \( \chi = 0 \). V primeru, da površina ni enostavno povezana, potem rečemo, da je \( \chi =0 \) na izbrani površini, na drugem delu površine pa je \( \chi = \mathrm{konst} \).
+
+Navor je
+
+\[ M sth sth
+\]
+
+V primeru enostavne povezane pa.
+* Naloga (str. 56)
+
+#+begin_problem
+Izračunajmo deformacijo palice s profilom v obliki elipse, ki jo torzijsko obremenimo z navorom \( M \).
+#+end_problem
