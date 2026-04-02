@@ -1,5 +1,5 @@
 #+title: Vaje iz Fizike trdne snovi, 14. teden v letu
-#+subtitle: 2026/03/30
+#+subtitle: 2026/03/30 in 2026/04/02
 #+startup: nolatexpreview
 #+startup: entitiespretty nil
 #+startup: show2levels
@@ -69,3 +69,101 @@ Izračunajmo še Fourierov razvoj potenciala
 \end{align*}
 
 Energijska reža v prvem približku je potem \( \Delta \epsilon = 2 \left| V_{\mathbf{K}_2 - \mathbf{K}_1} \right| = \frac{2 \lambda}{a} \). Dobili smo enako rešitev kakor prejšnji teden.
+
+Želimo zapisati še lastni valovni funkciji z izračunanima energijama
+
+\[ \psi_{\pm} = \sum\limits_{\mathbf{K} \in \left\{ \mathbf{K}_1, \mathbf{K}_2 \right\} }^{} c^{\pm}_{k - K} e^{\mathrm{i} (k - K) x}.
+\]
+
+Za \( K_1 = 0 \), \( K_2 = \frac{2 \pi}{a} \) in \( k = \frac{\pi}{a} \) je valovna funkcija linearna kombinacija nasproti potujočih ravnih valov
+
+\[ \psi_{\pm} = c_{k - K_1}^{\pm} e^{\mathrm{i} \left( \frac{\pi}{a} - 0 \right)} + c^{\pm}_{k - K_2} e^{\mathrm{i} \left( \frac{\pi}{a} - \frac{2 \pi}{a} \right) x} =  c^{\pm} e^{\mathrm{i} \frac{\pi}{a} x} + c_{k - K_2}^{\pm} e^{- \mathrm{i} \frac{\pi}{a} x}.
+\]
+
+
+Za periodičen potencial ima zgornja matrična enačba obliko
+
+\[ \left[ \mp \left| V_{K_2 - K_1} \right| \ V_{K_2 - K_1} \right] \begin{bmatrix} c^{\pm}_{k - K_{1}} \\ c^{\pm}_{k - K_{2}} \end{bmatrix} = [ \mp \frac{2 \lambda}{a} \ \frac{2 \lambda}{a} ] \begin{bmatrix} c^{\pm}_{k - K_1} \\ c^{\pm}_{k - K_2} \end{bmatrix} = 0.
+\]
+
+Lastna vektorja te enačbe sta \( \epsilon_+ = [1 1]^T \) in \( \epsilon_- = [1 -1]^T \). V matrični enačbi smo upoštevali rezultata Kronig-Penneyjevega modela.
+
+Lastni valovni funkciji v periodičnem potencialu sta potem
+
+\begin{align*}
+  \psi_+ &\propto \cos \left( \frac{\pi}{a} x \right) \\
+\psi_- &\propto \sin \left( \frac{\pi}{a} x \right)
+\end{align*}
+
+Lastni energiji zasedata vrednosti \( \epsilon_+ = \epsilon^0 + \frac{2 \lambda}{a} \) in \( \epsilon_- = \epsilon^0 \). Sinusna funkcija ima vozle na točkah, kjer je \( \delta \) funkcija in je posledično ne čuti. Kosinus jo pa čuti in ima temu primerno zvišano lastno energijo.
+* Naloga
+
+#+begin_problem
+Imamo ploskovno centrirano kubično mrežo (fcc), ki ima periodičen potencial usklajen s fcc mrežo. Zanima nas energijska reža v prvi Brillouinovi coni.
+#+end_problem
+
+Recipročna mreža FCC je BCC, ni primitivna osnovna celica - to vlogo bo za naš primer igrala Wigner-Seitzova celica, ki je sestavljena iz pravilnih kvadratov in šestkotnikov. Središče Brillouinove cone in središče BCC mreže označimo z \( \Gamma \). Središče kvadrata označimo z \( X \), središče šestkotnika \( L \), točko, ki razpolovi stranico kvadrata označimo z \( U \), in točko, ki razpolovi stranico šestkotnika, ki so dotika stranice drugega šestkotnika pa s \( K \).
+
+Potencial nimamo, \( V (\mathbf{r}) = 0 \). Energijska disperzija je štiridimenzionalni paraboloid
+
+\[ \epsilon(\mathbf{q}) = \frac{\hbar ^2 q ^2}{2m}.
+\]
+
+Disperzijo zapišemo z recipročnim vektorjem \( \mathbf{K} \) ob upoštevanju \( \mathbf{q} = \mathbf{k} - \mathbf{K} \)
+
+\[ \epsilon(\mathbf{q}) = \frac{\hbar ^2 (\mathbf{k} - \mathbf{K}) ^2}{2m}
+\]
+
+Podobno kot v nalogi v ponedeljek imamo skupek paraboloidov.
+
+Zamislimo si zaključeno pot \( \Gamma \to X \to W \to \Gamma \). V točki \( K_1 \) lahko rečemo, da je energija ničelna. Razdalja do točke \( K_2 \) je največja in sicer \( 2 \). Torej bo energija največja. Točki \( K_3 \) in \( K_4 \) sta napram \( \Gamma \) in \( X \) enako oddaljeni in sicer \( \sqrt{3} \) ter \( \sqrt{2} \). \( K_2 \) je od \( X \) oddaljena za \( 1 \).
+
+Energija bo pri premikanju iz \( \Gamma \) v \( X \) padala parabolično, vendar se bodo zaradi različne oddaljenost od \( \Gamma \) različno visoko začele in različno visoko končale zaradi različne oddaljenosti od \( X \) (razen \( K_3 \) in \( K_4 \), ki sta enako oddaljeni).
+
+Podoben razmislek opravimo pri premiku iz \( \Gamma \) v \( W \) ter premiku iz \( W \) v \( X \).
+
+[prosi Jana za graf + skico kvadrata]
+
+Točka \( W \) je enako oddaljena od vseh točka \( K_i, \ i = 1, 2, 3, 4 \).
+
+Nastali graf je tridimenzionalna verzija tistega iz ponedeljka.
+
+Računamo determinanto
+
+\[ \det \begin{bmatrix}
+        \epsilon^{0} - \underline{\epsilon} & V_{\mathbf{K}_2 - \mathbf{K}_1} & V_{\mathbf{K}_3 - \mathbf{K}_1} & V_{\mathbf{K}_4 - \mathbf{K}_1} \\
+         V_{\mathbf{K}_1 - \mathbf{K}_2}& \epsilon^0 - \underline{\epsilon} & V_{\mathbf{K}_3 - \mathbf{K}_2} & V_{\mathbf{K}_4 - \mathbf{K}_2} \\
+         V_{\mathbf{K}_1 - \mathbf{K}_3} & V_{\mathbf{K}_2 - \mathbf{K}_3} & \epsilon^0 - \underline{\epsilon} & V_{\mathbf{K}_4 - \mathbf{K}_2} \\
+         V_{\mathbf{K}_1 - \mathbf{K}_4} & V_{\mathbf{K}_2 - \mathbf{K}_4} & \mathbf{V}_{\mathbf{K}_3 - \mathbf{K}_4} & \epsilon^0 - \underline{\epsilon}
+        \end{bmatrix}
+\]
+
+Potencial ni več ničeln \( V (\mathbf{r}) = 0 \), je periodičen \( V(\mathbf{r} + \mathbf{R}) = V(\mathbf{r}) \) in velja operacija \( V( A \mathbf{r}) = V(\mathbf{r}) \), kjer je \( A \in \mathcal{G} \) matrika simetrijske grupe.
+
+Fourierova transformacija je
+
+\[ \underline{\underline{V_{\mathbf{K}}}} = \frac{1}{V_{oc}} \int\limits_{oc}^{} V(\mathbf{r}) e^{- \mathrm{i} \mathbf{K} \cdot \mathbf{r}} \, \mathrm{d} \mathbf{r}
+\]
+Potencial ima še lastnost \( V_{- \mathbf{K}} = V_{\mathbf{K}}^{\ast} \).
+
+Če imamo operacijo naše simetrijske grupe, ga bo zasuk vektorja recipročne mreže \( \mathbf{K} \) preslikal v vektor recipročne mreže:
+
+\begin{align*}
+  V_{A \mathbf{K}} &= \frac{1}{V_{oc}} \int\limits_{oc}^{} V(\mathbf{r}) e^{- \mathrm{i} A \mathbf{K} \cdot \mathbf{r}} \, \mathrm{d} \mathbf{r} && I = A A^{-1} \\
+&= \frac{1}{V_{oc}} \frac{1}{V_{oc}} \int\limits_{oc}^{} V(\mathbf{r}) e^{- \mathrm{i} A \mathbf{K} \cdot A A^{-1} \mathbf{r}} \, \mathrm{d} \mathbf{r} \\
+&= \frac{1}{V_{oc}} \int\limits_{}^{} V(\mathbf{r}) e^{- \mathrm{i \mathbf{K} \cdot \mathbf{A} \mathbf{r}}}
+\end{align*}
+
+V zadnji vrstici smo upoštevali \( A\mathbf{K} = \mathbf{K} \) za Wigner-Seitzovo celico. Uvedemo novo spremenljivko \( \mathbf{r} = A\mathbf{u}  \) in potem dobimo
+
+\[ V_{A\mathbf{K}} = \frac{1}{V_{oc}} \int\limits_{oc}^{} V(A \mathbf{u}) e^{- \mathrm{i} \mathbf{K} \cdot \mathbf{u}} \, \mathrm{d} \mathbf{u} = \frac{1}{V_{oc}} \int\limits_{oc}^{} V(\mathbf{u}) e^{- \mathrm{i} \mathbf{K} \cdot \mathbf{u}} \, \mathrm{d} \mathbf{u} = V_{\mathbf{K}}.
+\]
+
+Zaradi ne vem, katere lastnosti velja še
+
+\begin{align*}
+  V_{\mathbf{K}_2 - \mathbf{K}_1} = V_{\mathbf{K}_4 - \mathbf{K}_3} &= V_1 \\
+V_{\mathbf{K}_3 - \mathbf{K}_4} = V_{\mathbf{K}_4 - \mathbf{K}_1} = V_{\mathbf{K}_3 - \mathbf{K}_2} &= V_2
+\end{align*}
+
+Hkrati dokažemo tudi, da sta \( V_1 \) in \( V_2 \) realni matriki.
