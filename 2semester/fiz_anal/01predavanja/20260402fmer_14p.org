@@ -212,3 +212,147 @@ Prenosna funkcija je potem \( H_{int} = \frac{1}{\mathrm{i} \omega} \). Za \( \o
 \]
 
 V teoriji je lahko integrator za majhne frekvence pri \( \tau \to \infty \), ampak v tem primeru zaradi zgornje enačbe signal zamre.
+*** High-pass filter (HPF)
+
+Impedanca filtra je
+
+\[ Z = \frac{1}{\mathrm{i} \omega C} + R.
+\]
+
+Označimo karakteristični čas \( \tau = RC \). Tok iz vhodne napetosti je
+
+\[ I = \frac{U_{in}}{Z} = U_{in}  \frac{- \mathrm{i} \omega c}{1 + \mathrm{i} \omega RC}.
+\]
+
+Izhodna napetost je potem
+
+\[ U_{out} = I \cdot R = U_{in} \cdot \frac{\mathrm{i} \omega \tau}{1 + \mathrm{i} \omega \tau}.
+\]
+
+Prenosna funkcija ima potem vrednost
+
+\[ H = \frac{U_{out}}{U_{in}} = \frac{\mathrm{i} \omega \tau}{1 + \mathrm{i} \omega \tau}.
+\]
+
+Njena absolutna vrednost je
+
+\[ \left| H \right|  = \frac{\omega \tau}{\sqrt{1 + \omega ^2 \tau ^2}}.
+\]
+
+Značilne vrednost HPF filtra so
+
+\begin{align*}
+  20 \cdot \ln \left| H \right| = 20 \ln \left( \omega \tau \right) \to - \infty & \impliedby \tau \omega \ll 1 \\
+20 \cdot \ln \left| H \right| \to 0 &\impliedby \omega \tau \gg 1 \\
+20 \cdot \ln \frac{1}{\sqrt{2}} = - 3 & \impliedby \omega \tau = 1.
+\end{align*}
+
+Diferenca frekvence je
+
+\[ \nu_0 e^{\mathrm{i} \omega t} \to \mathrm{i} \omega \nu_0 e^{\mathrm{i} \omega t}.
+\]
+
+Diferenciator je torej \( H_{dif} = \mathrm{i} \omega \). Za \( \omega < \frac{1}{\tau} \) je
+
+\[ H = \mathrm{i} \omega \tau = H_{dif} \cdot \tau.
+\]
+
+V frekvenčnem območju, kjer gre \( \tau \to 0 \) (torej za višje frekvence), gre amplituda izhodnega signala proti \( 0 \).
+*** 2. red
+
+Prenosna funkcija za 2. red, kjer upoštevamo \( s = \mathrm{i} \omega \), je
+
+\[ H(s) = \frac{1}{\frac{s ^2}{\omega_0 ^2} + \frac{2 \epsilon s}{\omega} + 1} = \frac{1}{\left( 1- \frac{\omega ^2}{\omega_0 ^2} + \frac{2 \xi \mathrm{i} \omega}{\omega_0} \right)}
+\]
+
+Absolutna vrednost prenosne funkcije je
+
+\begin{align*}
+  \left| H(\mathrm{i} \omega) \right| &= \frac{1}{\sqrt{\left[ 1 - \left( \frac{\omega}{\omega_0} \right)^2 \right] ^2 + 4 \xi ^2 \left( \frac{\omega}{\omega_0} \right) ^2}} \\
+&= \left( \left( 1 - x ^2 \right)^2 + 4 \xi ^2 x ^2 \right)^{- \frac{1}{2}} \\
+&= \left( 1 - 2x ^2 + x ^4 + 4 \xi ^2 x ^2 \right)^{- \frac{1}{2}},
+\end{align*}
+
+kjer smo označili \( x = \frac{\omega}{\omega_0} \). Limitne vrednosti do
+
+\begin{align*}
+  20 \ln \left| H \right| = \ln 1 \to 0 &\impliedby x = \frac{\omega}{\omega_0} = x \ll 1 \\
+20 \ln \left| H \right| = 20 \ln x ^2 = - 40 \ln x &\impliedby x = \frac{\omega}{\omega_0} = x \gg 1 \\
+20 \ln \frac{1}{\sqrt{2}} = - 10 \ln 2 = - 3&\impliedby x = \frac{\omega}{\omega_0} = x = 1
+\end{align*}
+
+Fazni del prenosne funkcije pa je
+
+\[ H (\mathrm{i} \omega) = \frac{\left( 1 - \frac{\omega ^2}{\omega_0 ^2} \right) - 2 \xi \mathrm{i} \left( \frac{\omega}{\omega_0} \right)}{\left( 1 - \frac{\omega ^2}{\omega_0 ^2} \right) ^2 + 4 \xi ^2 \left( \frac{\omega}{\omega_0} \right) ^2}
+\]
+
+Faza je potem
+
+\[ \tan \delta = \frac{\mathrm{Im} H}{\mathrm{Re} H} = - \frac{2 \xi \frac{\omega}{\omega_0}}{1 - \frac{\omega ^2}{\omega_0 ^2}}.
+\]
+
+Limitine vrednosti so
+
+\begin{align*}
+  \tan \delta = 0 \iff \delta = 0 &\impliedby \omega \to 0 \\
+\tan \delta = - \frac{2 \xi}{\frac{\omega}{\omega_0}} = - 2 \xi \frac{1}{x} \iff \delta = - \pi &\impliedby \omega \to \infty \\
+\tan \delta = - \frac{2 \xi}{1 - x} \iff \delta = - \frac{\pi}{2} &\impliedby x = 1.
+\end{align*}
+** Vpliv senzorja na opazovani sistem
+
+Iščemo merilo za vpliv senzorja na sistem \( S \). Ena možnost bi bila meritev moči \( P \), ki jo senzor črpa iz sistem \( S \) za delovanje (manjša moč je boljša). Energija, ki jo senzor črpa iz sistema \( S \) je enkratna meritev za merilo vpliva senzorja.
+
+Senzor je linearen sistem za merjenje napetosti.
+
+Napetost med točkama \( A \) in \( B \) v sistemu \( S \) označimo z \( U_{AB} \), izmerimo pa \( U_m \). Moč, ki jo senzor črpa iz sistema \( S \) je
+
+\[ P = \frac{U_m ^2}{Z_m},
+\]
+
+kjer je \( Z_m = Z_v \) vhodna napetost voltmetra. Idealno bi bilo \( U_m \le U_{AB} \) in \( Z_m \to \infty \).
+
+#+name: Theveninov izrek
+#+begin_theorem
+Vsako električno vezje sestavljeno iz linearnih elementov (RCL) v poljubnih točkah \( A  \) in \( B \) lahko nadomestimo z generatorjem napetosti \( U_{AB} \) in notranjo upornostjo \( Z_{AB} \).
+#+end_theorem
+
+Vezje za senzor sistem \( S \) lahko nadomestimo z vezjem, ki ima napetostni izvor \( U_{AB} \) ter impedanco \( Z = Z_{AB} + Z_m \). Tok je potem
+
+\[ I = \frac{U_{AB}}{Z_{AB} + Z_m}
+\]
+
+Napetost v merilnem sistemu \( U_m \) z uporom \( Z_m \) je
+
+\[ U_m = I Z_m = U_{AB} \frac{Z_m}{Z_{AB} + Z_m}.
+\]
+
+Moč na senzorju je potem
+
+\begin{equation}
+\label{eq:3}
+P_m = \frac{U_m ^2}{Z_m} = \frac{U_{AB} ^2 Z_m}{\left(Z_{AB} + Z_m\right) ^2}
+\end{equation}
+
+Za maksimalno moč, ki jo senzor črpa iz sistema, odvajamo po \( Z_m \) in dobimo
+
+\[ \frac{\mathrm{d} P}{\mathrm{d} Z_{m}} = 0 = U_{AB} \left[ \frac{Z_m + Z_{AB}}{\left( Z_{AB} + Z_m \right)} - \frac{2 Z_m}{\left( Z_{AB} + Z_m \right) ^2} \right]
+\]
+
+Največ moči porabimo, ko \( Z_{AB} = Z_m \), njena vrednost pa je
+
+\[ P_{max} = U_{AB} ^2 \frac{1}{4 Z_{AB}}
+\]
+
+Izraz razširimo s \( 4 Z_{AB} \) in zapišemo
+
+\begin{align*}
+  P_m &= 4 P_{max} \frac{Z_{AB}}{\left( 1 + \frac{Z_m}{Z_{AB}} \right) ^2} \\
+&= P_{max} \frac{Z_m}{Z_{AB}} \frac{4}{\left( \frac{Z_m}{Z_{AB}} \right) ^2}
+\end{align*}
+
+Dobimo razmerje
+
+\[ \frac{P_m}{P_{max}} = 4 \frac{Z_{AB}}{Z_m}
+\]
+
+Moč bo minimalna \( P \ll P_{max} \), ko bo \( Z_m \gg Z_{AB} \) velik.
