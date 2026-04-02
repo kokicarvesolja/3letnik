@@ -1,0 +1,214 @@
+#+title: Predavanja iz Fizikalnih merjenj, 14. teden v letu
+#+subtitle: 2026/04/02
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Senzorji
+** Prenosna funkcija senzorja
+
+Reducirana prenosna funkcija senzorja ni odvisna od odvoda, zato zanemarimo člen \( 2 \xi \omega s \). Funkcije je potem
+
+\begin{equation}
+\label{eq:1}
+ H(s) = \frac{\omega ^2}{s ^2 + 2 \xi \omega s + \omega ^2}.
+\end{equation}
+
+#+begin_my_example
+Laplaceova transformiranka \( z(t) = \delta(t) \) je \( \mathcal{L} \left( \delta(t) \right) = 1 \), kar pomeni, da za prenosno funkcijo potem velja
+
+\[ H(s) z(s) = H(s) = x(s).
+\]
+
+Zapis v imenovalcu \ref{eq:1} nas spominja na popolni kvadrat, zato zapišemo
+
+\begin{align*}
+  x(s) &= \frac{\omega ^2}{\left( s + \xi \omega \right) ^2 - \xi ^2 \omega ^2 + \omega ^2} \\
+&= \frac{\omega \cdot \omega \sqrt{1 - \xi ^2}}{\left( s + \xi \omega \right) ^2 + \left( \omega \sqrt{1 - \xi ^2 } \right) ^2} \cdot \frac{1}{\sqrt{1 - \xi ^2}}
+\end{align*}
+
+V zadnji vrstici smo razširili z \( \frac{\sqrt{1 - \xi ^2}}{\sqrt{1 - \xi ^2}} \). Obratna Laplaceova transformacija je potem
+
+\[ x(t) = \frac{1 \omega}{\sqrt{1 - \xi ^2 }} \sin \left( \omega \sqrt{1 - \xi ^2 } t \right) e^{- \xi \omega t}.
+\]
+#+end_my_example
+** Bodejevi diagrami - odziv senzorja na periodične vhode
+
+Na vhod senzorja prihaja signal oblike \( z(t) = z_0 e^{\mathrm{i} \omega t} \). Na izhodu iz senzorja potem pričakujemo signal, ki ima lahko različno amplitudo \( x_0 \) in je zamaknjen za fazo \( \delta \)
+
+\[ x = x_0 e^{\mathrm{i} \omega t} e^{\mathrm{i} \delta}.
+\]
+
+Odvod vhodnega signala je \( \dot{z} = \mathrm{i} \omega z \). V splošnem za Laplaceovo transformacijo odvoda velja
+
+\[ \mathcal{L} \left( \frac{\mathrm{d} }{\mathrm{d} t} f(t) \right) = s \mathcal{L} (f).
+\]
+
+Laplaceova transformiranka našega signala je torej \( s = \mathrm{i} \omega \). Prenosna funkcija se transformira kot \( H(s) \to H(\mathrm{i} \omega) \).
+
+#+begin_my_example
+Funkcija \( \frac{1}{1 + \tau s} \) se bo transformirala kot \( \frac{1}{1 + \mathrm{i} \omega \tau} \).
+#+end_my_example
+
+Po definiciji je prenosna funkcija \( H(s) \) definirana kot
+
+\[ H(\mathrm{i} \omega) \cdot z(\mathrm{i} \omega) = x(\mathrm{i} \omega),
+\]
+
+kjer sta \( x(\mathrm{i} \omega) \) in \( z(\mathrm{i} \omega) \) Laplaceovi transformiranki dotičnih funkcij. Zapišemo torej lahko
+
+\begin{equation}
+\label{eq:2}
+ H(\mathrm{i} \omega) \cdot z_0  \mathcal{L} \left( e^{\mathrm{i } \omega t} \right) = x_0 e^{\mathrm{i} \delta} \mathcal{L} \left( e^{\mathrm{i} \omega t} \right).
+\end{equation}
+
+Apliciramo absolutno vrednost na zgornji izraz in potem je razmerje
+
+\[ \frac{x_0}{z_0} = \left| H(\mathrm{i} \omega) \right| .
+\]
+
+Če je prenosna funkcija \( H(\mathrm{i} \omega) \in \mathbb{C} \), potem je kompleksni kot \( \alpha \) po definiciji
+
+\[ \tan \alpha = \frac{\mathrm{Im} H (\mathrm{i} \omega)}{\mathrm{Re} H(\mathrm{i} \omega)}.
+\]
+
+V kompleksnem zapisu je potem
+
+\[ H(\mathrm{i} \omega) = \left| H (\mathrm{i} \omega) \right| e^{\mathrm{i} \alpha}.
+\]
+
+Dobljeno vrednost vstavimo v \ref{eq:2}
+
+\[ \left| H(\mathrm{i} \omega)  \right|  e^{\mathrm{i} \alpha} z_0 \mathcal{L} \left( e^{\mathrm{i} \omega t} \right) = x_0 e^{\mathrm{i} \delta} \mathcal{L} \left( e^{\mathrm{i} \omega t} \right).
+\]
+
+Preostane nam enakost
+
+\[ e^{\mathrm{i} \alpha} = e^{\mathrm{i} \delta},
+\]
+
+iz česar sledi enakost
+
+\[ \alpha = \delta = \frac{\mathrm{Im} H (\mathrm{i} \omega)}{\mathrm{Re} H(\mathrm{i} \omega)}.
+\]
+
+Prenosno funkcijo lahko zapišemo kot kombinacijo prenosnih funkcij prvega in drugega reda
+
+\[ H(s) = \frac{H_1 H_2}{H_3 H_4}.
+\]
+
+Slednje lahko logaritmiramo in potem zapišemo
+
+\[ \ln \left| H \right| = \ln \left| H_1 \right| + \ln \left| H_2 \right| + \ldots - \ln \left| H_3 \right| - \ln \left| H_4 \right|.
+\]
+
+Vsako prenosno funkcijo 1. in 2. reda lahko zapišemo v obliki \( H_i = \left| H_i \right| e^{\mathrm{i} \delta_i} \). Funkcijo \( H(s) \) je torej
+
+\[ H(s) = \frac{\left| H_1 \right| \left| H_2 \right|}{\left| H_3 \right| \left| H_4 \right|} e^{\mathrm{i} \left( \delta_1 + \delta_2 - \delta_3 - \delta_4 \right)}.
+\]
+
+Označimo \( \Delta =  \left( \delta_1 + \delta_2 - \delta_3 - \delta_4 \right) \).
+
+Definiramo decibel (\( \mathrm{dB} \)) kot
+
+\[ 20 \ln \left| H(\mathrm{i} \omega) \right| = 10 \ln \left| H(\mathrm{i} \omega) \right| ^2
+\]
+
+[dopolni, Markejevi zapiski o dveh vrstah Bodejevih diagramov]
+
+#+begin_my_example
+Za sezor 1. reda, npr
+
+\[ H(s) = \frac{1}{1 + \tau s} \to H(\mathrm{i} \omega) = \frac{1}{1 + \mathrm{i} \omega \tau}.
+\]
+
+Absolutna vrednosti prenosne funkcije je
+
+\[ \left| H \right| = \frac{1}{\sqrt{1 + \omega ^2 \tau ^2 }}.
+\]
+
+Limitni pogoji so \( \omega \to 0 \), \( \omega \to \infty \) ter \( \omega \to 1 \). Pripadajoče vrednosti so
+
+\begin{align*}
+  20 \ln \left| H \right| \to 0 &\impliedby \omega \to 0 \\
+20 \ln \frac{1}{\omega \tau} \to - 20 \ln (\omega t) &\impliedby \omega \to \infty \\
+20 \ln \frac{1}{\sqrt{2}} = - 10 \ln 2 = - 3 &\impliedby \omega = 1
+\end{align*}
+
+Fazni del Bodejevega diagrama pa je
+
+\[ H(\mathrm{i} \omega) = \frac{1}{1 + \mathrm{i} \omega \tau} = \frac{1 - \mathrm{i} \omega \tau}{1 + \omega ^2 \tau ^2}.
+\]
+
+Fazni del je potem
+
+\[ \frac{\mathrm{Im} H}{\mathrm{Re} H} = \tan \delta = - \omega \tau.
+\]
+
+\begin{align*}
+  \tan \delta = 0 &\impliedby \omega \tau \to 0 \\
+\delta = - \frac{\pi}{2} &\impliedby \omega \tau \to \infty\\
+\delta = - \frac{\pi}{4} &\impliedby \omega \tau \to 1
+\end{align*}
+#+end_my_example
+
+#+begin_my_example
+Za \( n = 1, 2, 3, \ldots \) si poglejmo prenosno funkcijo
+
+\[ H(\mathrm{i} \omega) = \left( \mathrm{i} \omega \right)^n = \omega ^n e^{\mathrm{i} n \frac{\pi}{2}}.
+\]
+
+[dopolni]
+#+end_my_example
+*** Low-pass filter (LPF)
+
+Impedance posameznih električnih komponent so
+
+\begin{align*}
+  Z_R &= R \\
+Z_C &= \frac{1}{\mathrm{i} \omega C} \\
+Z_L &= \mathrm{i} \omega L.
+\end{align*}
+
+Impedanca za vezje (glej Merkejeve zapiske) je
+
+\[ Z = R + Z_C = \frac{\mathrm{i} \omega R C + 1}{\mathrm{i} \omega C}.
+\]
+
+Ohmov zakon se v tem primeru glasi \( I Z = U \). Napetost na izhodu \( U_{out} \) je
+
+\[ U_{out} = I \cdot Z_C.
+\]
+
+Za tok \( I \) pa velja
+
+\[ I = \frac{U_{in}}{Z} = \dot{U}_{in}  \frac{\mathrm{i} \omega C}{1 + \mathrm{i} \omega C R}.
+\]
+
+Napetost na izhodu je torej
+
+\[ U_{out} = U_{in} \frac{1}{1 + \mathrm{i} \omega RC}.
+\]
+
+Razmerje napetosti na izhodu in vhodu je
+
+\[ \frac{U_{out}}{U_{in}} = \frac{1}{1 + \mathrm{i} \omega \tau}, \ \tau = RC,
+\]
+
+kjer je \( \tau \) karakteristični čas.
+
+Trdimo, da je zgornja funkcija integrator. Za frekvenco \( \nu = \nu_0 e^{\mathrm{i} \omega t} \). Njen integral je
+
+\[ \int\limits_{}^{} \nu \,\mathrm{d} t = \nu_0 \int\limits_{}^{} e^{\mathrm{i} \omega t} = \nu_0 \frac{1}{\mathrm{i} \omega} e^{\mathrm{i} \omega t}.
+\]
+
+Prenosna funkcija je potem \( H_{int} = \frac{1}{\mathrm{i} \omega} \). Za \( \omega \tau \gg 1 \) je funkcija integrator.
+
+\[ H = \frac{1}{\mathrm{i} \omega \tau} = \frac{1}{\mathrm{i} \omega} \frac{1}{\tau} = H_{\mathrm{i} \omega t} \cdot \frac{1}{\tau}.
+\]
+
+V teoriji je lahko integrator za majhne frekvence pri \( \tau \to \infty \), ampak v tem primeru zaradi zgornje enačbe signal zamre.

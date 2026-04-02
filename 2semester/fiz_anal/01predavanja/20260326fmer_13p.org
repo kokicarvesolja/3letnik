@@ -560,6 +560,11 @@ Za senzor prvega reda je potem
 
 Razcepimo na parcialna ulomka
 
-\[ x(s) = z_0 \left[ \frac{1}{s} - \frac{\tau}{1 + \tau s} \right].
+\[ x(s) = z_0 \left[ \frac{1}{s} - \frac{\tau}{1 + \tau s} \right]
+\]
+
+in iz lastnosti Laplaceove transformacije prepoznamo inverzne transformacije
+
+\[ x(t) = z_0 \left[ \mathcal{L} (1) - \mathcal{L} \left( e^{- \frac{t}{\tau}} \right) \right] = \left( 1 - e^{- \frac{t}{\tau}} \right) z_0
 \]
 #+end_my_example
