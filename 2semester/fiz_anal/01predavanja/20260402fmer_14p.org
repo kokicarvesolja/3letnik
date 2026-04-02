@@ -356,3 +356,82 @@ Dobimo razmerje
 \]
 
 Moč bo minimalna \( P \ll P_{max} \), ko bo \( Z_m \gg Z_{AB} \) velik.
+
+#+name: Kondenzatorski senzor premika
+#+begin_my_example
+V merilnem sistemu opazujemo premik \( \xi(t) \). Hitrost premikanja označimo s \( \dot{\xi} (t) \). V merilnem sistemu bo to električno vezje s kondenzatorjem, ki se mu bo premikala ena od plošč.
+
+Začetna kapaciteto označimo z razdaljo \( \xi_0 \)
+
+\[ C = \frac{\epsilon \epsilon_0 S}{x}.
+\]
+
+Majhna sprememba kapacitete je potem
+
+\[ \mathrm{d} C = - \frac{\epsilon \epsilon_0 S}{x ^2} \, \mathrm{d} x.
+\]
+
+Nadalje
+
+\[ \mathrm{d} C = - \left( \frac{\epsilon \epsilon_0 S}{x} \right) \frac{\mathrm{d} x}{x}.
+\]
+
+Sprememba kapacitete skozi čas je
+
+\[ \frac{\mathrm{d} C}{\mathrm{d} t} = - \left( \frac{C}{x_0} \right) \frac{\mathrm{d} x}{\mathrm{d} t}.
+\]
+
+Pri razširjanju plošč deluje električna sila \( F_e \). Energija kondenzatorja je
+
+\[ W_C = \frac{1}{2} C \cdot U_C ^2.
+\]
+
+Sprememba energije kondenzatorja pa je
+
+\[ \mathrm{d} W_C =  \frac{1}{2} U_C ^2 \, \mathrm{d} C.
+\]
+
+Upoštevamo vrednost \( \mathrm{d} C \) in dobimo
+
+\[ \mathrm{d} W_C = - \frac{1}{2} U_C ^2 \left( \frac{C}{x_0} \right) \, \mathrm{d} x.
+\]
+
+Iz tega lahko sedaj izpeljemo električno silo, saj
+
+\[ F_e = \frac{\mathrm{d} W_{C}}{\mathrm{d} x} = \frac{1}{2} \left( \frac{e}{C} \right) ^2 \left( \frac{C}{x_0} \right) = \frac{1}{2} e \frac{1}{C} \frac{e}{x_0}.
+\]
+
+Upoštevali smo \( e = U_C \cdot C \). Električna sila je torej
+
+\[ F_e = \frac{1}{2} e E, \ E = \frac{1}{C} \frac{e}{x_0}.
+\]
+
+Moč, ki jo merilni sistem črpa
+
+\begin{align*}
+  P = \frac{\mathrm{d} A}{\mathrm{d} t} &= \frac{1}{2} e E \cdot \dot{\xi} \\
+&= \frac{1}{2} \left( CU_0 \right) \left( \frac{U_C}{\xi_0} \right) \dot{\xi}.
+\end{align*}
+
+Izraz za moč j etorej
+
+\[ P = \frac{1}{2} C U_0 ^2 \frac{\dot{\xi}}{\xi_0}.
+\]
+
+Za optimalno vrednost moči potrebujemo majhen \( C \) in \( U_C \) in velik \( \xi_0 \).
+
+Tok je \( U_m = IR \). Upoštevamo definicijo toka
+
+\[ R \left( \frac{\mathrm{d} e}{\mathrm{d} t} \right) = R \dot{\left( C ^2 U_C \right)} = RU_C \dot{C}
+\]
+
+Merilna napetost je potem
+
+\[ U_m = R U_C \frac{C}{\xi_0} \dot{\xi}.
+\]
+
+Tukaj pa zahteavmo velik \( U_m \) in posledično \( C \) ter \( U_C \) velika ter \( \xi_0 \) majhen.
+#+end_my_example
+* Instrumentacijski ojačevalnik
+
+Diferencialni predojačevalnik sestavljajo trije OPAMP, kjer je OPAMP operacijski ojačevalnik.
