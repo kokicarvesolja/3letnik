@@ -1,0 +1,197 @@
+\documentclass[10pt,landscape]{article}
+\usepackage{multicol}
+\usepackage[landscape, inner=1cm, outer=1cm, top=1cm, bottom=1cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{icomma}
+\usepackage{soul}
+\usepackage{physics}
+\usepackage[european]{circuitikz}
+
+% Turn off header and footer
+\pagestyle{empty}
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+	{-1ex plus -.5ex minus -.2ex}%
+	{0.5ex plus .2ex}%x
+	{\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+	{-1explus -.5ex minus -.2ex}%
+	{0.5ex plus .2ex}%
+	{\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+	{-1ex plus -.5ex minus -.2ex}%
+	{1ex plus .2ex}%
+	{\normalfont\small\bfseries}}
+\makeatother
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+% My environments
+\theoremstyle{definition}
+\newtheorem*{primer}{Primer}
+
+\begin{document}
+\begin{multicols}{3}
+\section{Optimalno filtriranje}
+Spremenljivko \( z  \) izmerimo z \( z_i = x + r_i, \ i = 1, 2, \ldots, N \). Šum \( r_i \) je porazdeljen po normalno (Gaussovi) porazdelitvi \( r_i \sim \mathcal{N} (0, \sigma_i)  \)
+
+\begin{equation}
+\label{eq:1}
+ \frac{\mathrm{d} P}{\mathrm{d} z} = \frac{1}{\sqrt{2 \pi} \sigma} \exp \left\{ - \frac{\left( z - \mu \right)}{2 \sigma ^2} \right\} = \mathcal{N} \left( \mu, \sigma ^2 \right).
+\end{equation}
+Možne tudi oznake \( \mu = \left\langle z \right\rangle \) in \( \sigma ^2 = \left\langle \left( z - \left\langle z \right\rangle \right) ^2 \right\rangle = \left\langle \sigma ^2 - \mu ^2 \right\rangle \).
+\subsection{Združevanje meritev}
+
+Nabor meritev \( \left\{ \left( z_i, \sigma_i \right) \right\}_{i = 1}^N \).
+
+Povprečje meritev je
+
+\( \bar{z} = \frac{1}{N} \sum\limits_{i = 1}^N z_i \sim \mathcal{N} \left( x, \sigma_{\bar{z}} \right)
+\)
+
+Negotovost povprečja je
+
+\( \sigma_{\bar{z}} = \frac{\sigma}{\sqrt{N}}.
+\)
+
+\subsubsection{Dve neodvisni meritvi z različno disperzijo}
+
+Dve različni meritvi \( \left( \bar{z}_1, \sigma_1 = \frac{\sigma}{\sqrt{N}} \right) \) in \( \left( \bar{z}_2, \sigma_2 = \frac{\sigma}{M} \right) \) združimo v tretjo
+
+\( \bar{z}_3 = \bar{z}_1 + \frac{\sigma_1}{\sigma_1 ^2 + \sigma_2 ^2} \left( \bar{z}_2 - \bar{z}_1 \right) = \sigma_3 ^2 \sum\limits_{}^{} \frac{\bar{z}_i}{\sigma_i ^2}.
+\)
+
+Variance tretje meritve je \( \sigma_3 ^{-2} = \sigma_1^{-2} + \sigma_2^{-2} \).
+
+\subsubsection{Širjenje napak}
+
+Dve spremenljivki \( x, y \) s pripadajočima ocenama \( \bar{x}, \bar{y} \) in negotovostima \( \sigma_{\bar{x}}, \sigma_{\bar{y}} \). Funkcijo obeh spremenljivk \( u \) razvijemo po Taylorju
+
+\( u = f(x, y) = f \left( \bar{x}, \bar{y} \right) + \partial f_x \left( \bar{x}, \bar{y} \right) \left( x - \bar{x} \right) + \partial_y f \left( \bar{x}, \bar{y} \right).
+\)
+
+Ocena funkcije \( u \) je potem \( \bar{u} \approx f \left( \bar{x}, \bar{y} \right) \).
+
+Varianca funkcije \( u \) je po definiciji \( \sigma_{\bar{u}} = \left\langle \left( \bar{u} - u \right) ^2 \right\rangle \)
+
+\( \sigma_{\bar{u}} ^2 = \left( \partial_x f \right) ^2 \sigma_{\bar{x}} ^2 + \left( \partial_y f \right) ^2 \sigma_{\bar{y}} ^2 + 2 \partial_x f \partial_y  f \sigma_{\bar{x} \bar{y}}.
+\)
+
+Kovarianca \( \sigma_{\bar{x} \bar{y}} = \left\langle \left( \bar{x} - x \right) \left( \bar{y} - y \right) \right\rangle \) je \( 0 \) za neodvisni spremenljivki \( x, y  \) in \( \rho_{xy} \sigma_x \sigma_y \) za odvisni.
+\subsubsection{Širjenje napak, splošni predpis}
+
+Za več funkcij \( u_1, u_2, \ldots, u_m \), ki so odvisne od spremenljivk \( x_1, x_2, \ldots, x_n \), zapišemo vektorsko \( \mathbf{x} = [x_1, x_2, \ldots, x_n]^T \) in \( \mathbf{u} = [f_1 (x_1, x_2, \ldots, x_n) , f_2 (\ldots), \ldots, f_m (\ldots) ]^T \). \( \bar{\mathbf{x}} \) so ocene.
+
+Definiramo kovariančno matriko \( \left( M \right)_{ij} = \sigma_{ij} = \left\langle \left( \bar{x}_i - x_i \right) \left( \bar{x}_j - x_j \right) \right\rangle = \left\langle m_i m_j \right\rangle \). Diagonalni elementi so variance, izvendiagonalni pa kovariance. Matrično zapišemo \( M = \left\langle \left( \bar{\mathbf{x}} - \mathbf{x} \right) \left( \bar{\mathbf{x}} - \mathbf{x} \right)^T \right\rangle \). Kovariančna matrika je simetrična \( M = M^T \).
+
+Kovariančna matrika \( U \) funkcij \( \mathbf{u} \) je po \( J_{\mathbf{u}} \left( \bar{\mathbf{x}} \right) M J_{\mathbf{u}} \left( \bar{\mathbf{x}} \right), \) kjer je \( J_{\mathbf{u}} (\mathbf{x}) \) Jacobijeva matrika
+
+\[ J_{\mathbf{u}} (\mathbf{x}) = \begin{bmatrix}
+                                 \partial_{x_{1}}f_1 & \partial_{x_2} f_2  & \ldots & \partial_{x_n} f \\
+                                 \vdots & \ddots &  &  \\
+                                  &  & \ddots  &  \\
+                                  \partial_{x_1} f_m & \partial_{x_2} f_m & \ldots & \partial_{x_n} f_n
+                                 \end{bmatrix}.
+\]
+
+\begin{primer}[TOF]
+  Senzorja na koordinatah \( x_1 \) in \( x_2 \) s pripadajočima negotovostima \( \sigma_1 \) in \( \sigma_2 \). TOF me senzorjema označimo z \( \Delta t \). Izračunaj \( \mathbf{u} = \left( x_1, x_2, v \right)^T \). Vektor ocen je \( \bar{\mathbf{x}} = [\bar{x}_1, \bar{x}_2]^T \) in kovariančna matrika
+
+  \[ M = \begin{bmatrix}
+         \sigma_{1} ^2 &  \\
+          & \sigma_2 ^2
+          \end{bmatrix}.
+  \]
+
+  Hitrost izračunamo po formuli \( v = \frac{x_2 - x_1}{\Delta t} \). Vektor je \( \mathbf{u} = [x_1, x_2, v(x_1, x_2)] \). Jacobijeva matrika je
+
+  \[ J_{\mathbf{u}} = \begin{bmatrix}
+                      1 & 0 \\
+    0 & 1 \\
+   - \frac{1}{\Delta t} & \frac{1}{\Delta t}
+                       \end{bmatrix}.
+  \]
+
+  Kovariančna matrika je potem \( U = J_{\mathbf{u}} M J_{\mathbf{u}}^T \).
+\end{primer}
+
+\subsubsection{Združevanje odvisnih meritev}
+
+Dve meritvi \( z_1 = x + r_1, \ \left\langle r_1 ^2 \right\rangle = \sigma_1 ^2 \) in \( z_2 = x + r_2, \ \left\langle r_2 ^2 \right\rangle = \sigma_2 ^2\), ki sta korelirani \( \left\langle r_1 r_2 \right\rangle = \sigma_{12} \ne 0 \), združimo optimalno
+
+\( \hat{x} = z_1 + \frac{\sigma_1 ^2 - \sigma_{12}}{\sigma_1 ^2 + \sigma_2 ^2 - 2 \sigma_{12}} \left( z_2 - z_1 \right).
+\)
+
+Negotovost optimalne ocene je
+\begin{align*}
+  \hat{\sigma} ^2 &= \left( 1 - \rho_{12} ^2 \right) \left( \sigma_1 ^{-2} + \sigma_2 ^{-2} - \frac{2 \rho_{12}}{\sigma_1 \sigma_2} \right)^{-1}\\
+  &= \left( 1- \rho_{12} ^2 \right) \left( \frac{\sigma_1 ^2 + \sigma_2 ^2 - 2 \sigma_{12}}{\sigma_1 ^2 \sigma_2 ^2} \right)^{-1}.
+\end{align*}
+
+\subsubsection{Povprečje \textbf{odvisnih} meritev}
+
+Povprečje po definiciji \( \bar{z} = \frac{1}{N} \sum_{i = 1}^N z_i \). Zaradi odvisnosti imamo variance \( \sigma_i ^2 \) in kovariance \( \sigma_{ij} \). Variance povprečne meritve je
+
+\( \sigma_M ^2 = \frac{1}{N ^2} \left( \sum_{i = 1}^N \sigma_i ^2 + 2 \sum_{i > j = 2}^N \sigma_{ij} \right) \).
+
+\section{Merjenje skalarne konstante}
+
+Kalmanov filter za združevanje neodvisnih meritev konstante združi optimalno oceno \( n \)-tega koraka \( \hat{x}_n, \hat{\sigma}_n ^2 \) z meritvijo \( z_{n + 1}, \sigma_{n + 1} ^2 \).
+\[ \hat{x}_{n + 1} = \hat{x}_n + \frac{\sigma_n ^2}{\hat{\sigma}_n ^2 + \sigma_{n + 1} ^2} \left( z_{n + 1} - \hat{x}_n \right) \quad \hat{\sigma}_{n + 1} ^2 = \frac{\hat{\sigma}_n ^2 \sigma_{n + 1} ^2}{\hat{\sigma}_n ^2 + \sigma_{n + 1} ^2}
+\]
+
+Za tabelirane vrednosti uporabljamo utežena povprečja (namesto računanja vmesnih rezultatov s Kalmanovim filtrom)
+
+\[ \hat{x}_n = \sum_{i = 1}^n \frac{z_i}{\sigma_i ^2} \left( \sum_{i = 1}^N \frac{1}{\sigma_i ^2} \right)^{-1} \quad \hat{\sigma}_n ^2 = \left( \sum_{i = 1}^N \frac{1}{\sigma_i ^2} \right).
+\]
+
+\section{Merjenje skalarne spremenljivke}
+
+Merimo spremenljivko \( x = x(t) \) z izmerki \( z_i = x + r_i, \ r_i \sim \mathcal{N} (0, \sigma) \) v časovnih razmikih. Dinamiko opisuje \( \dot{x}(t) = A(t) x(t) = c(t) \).
+
+\subsection{Diskretno}
+
+V diskretni sliki dinamiko opisuje \( x_{n + 1} = \Phi_n  x_n + c_n + \Gamma_n w_n \), kjer sta \( \Phi_n = 1 + A (nT) T \) in \( c_n = c(nT) T \). Zadnji člen je dinamični šum in velja \( \left\langle w_n w_{n'} \right\rangle = Q_n \delta_{n, n'} \).
+
+Napovemo naslednjo meritev z optimalno oceno \( \hat{x}_n, \hat{\sigma}_n \), ki bo \( \bar{x}_{n + 1} = \Phi_n \hat{x}_n + c_n \) in njena disperzija bo \( \bar{\sigma}_{n + 1} ^2 = \Phi_n ^2 \hat{\sigma}_n ^2 + \Gamma_n ^2 Q_n \). Z meritvijo \( z_{n + 1} = x + r_{n + 1} \) sedaj izostrimo oceno
+
+\[ \hat{x}_{n + 1} = \bar{x}_{n + 1} + \frac{M_{n + 1}}{M_{n + 1} + R_{n + 1}} \left( z_{n + 1} - \bar{x}_{n + 1} \right) \quad M_{n + 1} = \Phi_n ^2 P_n + \Gamma_n ^2 Q_n.
+\]
+
+Velja \( R_{n + 1} = \sigma_{n + 1} ^2 \) (varianca meritve), \( \bar{\sigma}_{n + 1} ^2 = M_{n + 1} \) (varianca napovedi), \( \hat{\sigma}_{n + 1} ^2 = P_{n + 1} \) (varianca ostrene ocene).
+\section{Misc}
+
+Verjetnost za dogodek \( x \) med vrednostima \( a \) in \( b \) označimo \( P (a < x < b) = P(x < b) - P(x < a) \). V splošnem bo \( P (x < a) = \int_{- \infty}^{a} \mathcal{N} (\mu, \sigma ^2) \, \mathrm{d} z \).  Uvedemo novo spremenljivko \( u = \frac{z - \mu}{\sigma} \) v enačbi \ref{eq:1} in dobimo \textbf{kumulativno funkcijo standardizirane normalne porazdelitve} \( F(x) = \int_{- \infty}^x \mathcal{N}(0, 1) \, \mathrm{d} u \). Za \( x < a \) je potem
+
+\[ P(x < a) = \int\limits_{- \infty}^{\frac{a - \mu}{\sigma}} \mathbf{N}(0, 1) \, \mathrm{d} u = F \left( \frac{a - \mu}{\sigma} \right).
+\]
+
+Lastnosti
+
+\begin{itemize}
+  \item \( F(0) = \frac{1}{2} \)
+  \item \( F(- \infty) = 0 \)
+  \item \( F(\infty) = 1 \)
+  \item \( F(- x) = 1 - F(x) \)
+\end{itemize}
+
+Potem bo \( P(a < x < b) = F \left( \frac{b - \mu}{\sigma} \right) - F \left( \frac{a - \mu}{\sigma} \right) \) in, če \( \mu = 0, \ a = - b \), \( P(a < x < b) = 2F \left( \frac{a}{\sigma} \right) - 1 \).
+
+\begin{primer}[Poševni met kamna]
+  Kamen vržemo z začetno hitrost \( v_0 = \left( 10 \pm 1 \right) \frac{\mathrm{m}}{\mathrm{s}} \) pod kotom \( \alpha = \left( \frac{\pi}{6} \pm 50\cdot 10^{-3} \right) \mathrm{rad} \). Vodoravna koordinata je \( x(t) = v_0 t \cos \alpha \), čas leta pa bo \( T = \frac{2v_0}{g} \sin \alpha \). Domet je funkcija dveh spremenljivk \( d = f(v_{0}, \alpha) = \frac{v_0 ^2}{g} \sin (2 \alpha) \). Parcialni odvodi so \( \partial_{v_0} f = \frac{2 v_0}{g} \sin (2 \alpha) \) in \( \partial_{\alpha} f = 2 \frac{v_0 ^2}{g} \cos (2 \alpha) \). Negotovost dometa je potem \( \sigma_{\bar{d}} = \sqrt{\sigma_{\bar{d}} ^2} = \sqrt{3. 24 \mathrm{m} ^2} = 1.8 \mathrm{m} \). Verjetnost, da pade kamen znotraj intervala \( \pm 2 \) okoli pričakovane vrednosti je \( P (-2 + \mu < x < \mu + 2) = 2 F (1.11) - 1 \).
+\end{primer}
+
+\end{multicols}
+\end{document}
