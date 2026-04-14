@@ -155,7 +155,7 @@ Kalmanov filter za združevanje neodvisnih meritev konstante združi optimalno o
 
 Za tabelirane vrednosti uporabljamo utežena povprečja (namesto računanja vmesnih rezultatov s Kalmanovim filtrom)
 
-\[ \hat{x}_n = \sum_{i = 1}^n \frac{z_i}{\sigma_i ^2} \left( \sum_{i = 1}^N \frac{1}{\sigma_i ^2} \right)^{-1} \quad \hat{\sigma}_n ^2 = \left( \sum_{i = 1}^N \frac{1}{\sigma_i ^2} \right).
+\[ \hat{x}_n = \sum_{i = 1}^n \frac{z_i}{\sigma_i ^2} \left( \sum_{i = 1}^N \frac{1}{\sigma_i ^2} \right)^{-1} \quad \hat{\sigma}_n ^2 = \left( \sum_{i = 1}^N \frac{1}{\sigma_i ^2} \right)^{-1}.
 \]
 
 \section{Merjenje skalarne spremenljivke}
@@ -179,11 +179,11 @@ Velja \( R_{n + 1} = \sigma_{n + 1} ^2 \) (varianca meritve), \( \bar{\sigma}_{n
 \begin{primer}[Padec kroglice]
   Kroglica pada po stopnicah enake velikost \( H = \bar{H} + \eta, \ \left\langle \eta ^2 \right\rangle = \sigma_H ^2 \), ob vsakem odboju izgubi polovico svoje vertikalne kinetične energije. Višina \( n + 1 \) odboja bo
 
-  \( h_{n + 1} = \delta h_n = \delta \bar{H} + \delta \eta  \), kjer je \( \delta = \frac{1}{2} h_0 \).
+  \( h_{n + 1} = \delta h_n = \delta \left( h_n + \bar{H} + \eta  \right)    \), kjer je \( \delta = \frac{1}{2} h_0 \).
 
   Prepoznamo člene \( \Phi_n = \delta \), \( c_n = \delta \bar{H} \) in \( \Gamma_n w_n = \delta \eta \). Ocena odboja je zaradi \( \left\langle \eta \right\rangle = 0 \) samo \( \bar{h}_{n + 1} = \hat{h}_{n + 1} = \delta \hat{h}_n + \delta \hat{H} \).
 
-  Varianca bo \( P_{n + 1} = M_{n + 1} = \Phi_{n + 1} ^2 P_n + \Gamma_n ^2 Q_n \), kjer je \( \Gamma_n ^2 Q_n = \delta ^2 \sigma_H ^2 \).
+  Varianca bo \( P_{n + 1} = M_{n + 1} = \Phi_{n + 1} ^2 P_n + \Gamma_n ^2 Q_n \), kjer je \( \Gamma_n ^2 Q_n = \left\langle \Gamma_n ^2 w_n ^2 \right\rangle = \left\langle \delta ^2 \eta ^2 \right\rangle = \delta ^2 \sigma_H ^2 \).
 \end{primer}
 
 \subsection{Merjenje vektorske spremenjivke}
