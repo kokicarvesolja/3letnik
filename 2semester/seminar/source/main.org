@@ -1,0 +1,6 @@
+#+title: Mehurčne komore - seminar
+
+* Zgodovina
+** TODO Opis odkritja Gargamella
+* Uporaba mehurčne komore
+** TODO Definicija hitrih nevtronov 

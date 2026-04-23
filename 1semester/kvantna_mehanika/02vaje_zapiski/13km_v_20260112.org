@@ -83,8 +83,6 @@ Zapišemo ponovno integral koeficienta
 &= - \frac{\mathrm{i} \lambda}{4} \left( \frac{\exp \left\{ \mathrm{i} (\gamma + \omega)  \right\} - 1}{\mathrm{i} (\gamma + \omega)} - \frac{\exp \left\{ \mathrm{i} (\gamma - \omega) \right\} - 1}{\mathrm{i} (\gamma - \omega)} \right)
 \end{align*}
 
-[dopolni]
-
 Zanima nas, kdaj ima prvi red motnje težave. Zato, da smo lahko zapisali teorijo motnje mora biti \( \lambda \ll 1 \). Hkrati pa je lahko tudi imenovalec \( (\gamma - \omega) \) blizu 0, kar pomeni, da tisti ulomek postane velik. To je problematično, četudi je \( \lambda \) majhen.
 
 Radi bi rešili to težavo brez odkrivanja tople vode.
@@ -101,8 +99,10 @@ S tem nastavkom bi radi rešili nestacionarno Schrödingerjevo enačbo
 
 z začetnim pogojem \( \left| \psi, 0 \right\rangle = \left| \downarrow \right\rangle\).
 
-\[ \mathrm{i} \hbar \mathrm{i} \omega \left( -c_{\uparrow} (t) \left| \uparrow \right\rangle \exp \left\{ - \mathrm{i} \omega' t \right\} + c_{\downarrow} (t) \left| \downarrow \right\rangle \exp \left\{ \mathrm{i} \omega' t \right\}\right) + \mathrm{i} \hbar \left( \dot{c}_{\uparrow}(t) \left| \uparrow \right\rangle \exp \left\{ - \mathrm{i} \omega' t \right\} + \dot{c}_{\downarrow}(t) \exp \left\{ - \mathrm{i} \omega t \right\} \right) = \left[ \gamma \frac{\hbar}{2} \left( \left| \uparrow \right\rangle \left\langle \uparrow \right| - \left| \downarrow \right\rangle \left\langle \downarrow \right|  \right) + \lambda \cos (\omega t)  \frac{\hbar}{2} \left( \left| \uparrow \right\rangle \left\langle \downarrow \right| + \left| \downarrow \right\rangle \left\langle \uparrow \right| \right) \right] \left( c_{\uparrow} (t) \left| \uparrow \right\rangle \exp \left\{ - \mathrm{i} \omega ' t \right\} + c_{\downarrow} (t) \left| \downarrow \right\rangle \exp \left\{ \mathrm{i} \omega' t \right\}\right)
-\]
+\begin{align*}
+ -\hbar \omega \left( -c_{\uparrow} (t) \left| \uparrow \right\rangle e^{- \mathrm{i} \omega' t}+ c_{\downarrow} (t) \left| \downarrow \right\rangle e^{\mathrm{i} \omega' t} \right) + \mathrm{i} \hbar \left( \dot{c}_{\uparrow}(t) \left| \uparrow \right\rangle e^{- \mathrm{i} \omega' t} + \dot{c}_{\downarrow}(t) e^{- \mathrm{i} \omega t}\right) &=\\
+ =\frac{\hbar}{2}\left[ \gamma  \left( \left| \uparrow \right\rangle \left\langle \uparrow \right| - \left| \downarrow \right\rangle \left\langle \downarrow \right|  \right) + \lambda \cos (\omega t) \left( \left| \uparrow \right\rangle \left\langle \downarrow \right| + \left| \downarrow \right\rangle \left\langle \uparrow \right| \right) \right] \left( c_{\uparrow} (t) \left| \uparrow \right\rangle e^{- \mathrm{i} \omega' t}+ &c_{\downarrow} (t) \left| \downarrow \right\rangle e^{\mathrm{i} \omega' t} \right)
+\end{align*}
 
 Velja
 
@@ -119,21 +119,19 @@ To lahko hitro preverimo z
 
 Operatorjema \( \sigma_z \) in \( \sigma_x \) pustimo, da vplivata na stanji in dobimo
 
-\[ \left[ \gamma \frac{\hbar}{2} \sigma_z + \lambda \cos (\omega t) \frac{\hbar}{2} \sigma_x \right] \left( c_{\uparrow} (t) \left| \uparrow \right\rangle \exp \left\{ - \mathrm{i} \omega' t \right\}+ c_{\downarrow}(t) \left| \downarrow \right\rangle \exp \left\{ \mathrm{i} \omega ' t \right\} \right) = \gamma\frac{\hbar}{2} \left( c_{\uparrow} (t) \left| \uparrow \right\rangle \exp \left\{ - \mathrm{i} \omega' t \right\} - c_{\downarrow}(t) \left| \downarrow \right\rangle \exp \left\{ \mathrm{i} \omega' t \right\} \right) + \lambda \cos (\omega t) \left( c_{\downarrow} (t) \left| \uparrow \right\rangle \exp \left\{ \mathrm{i} \omega ' t \right\} + c_{\uparrow}(t) \left| \downarrow \right\rangle \exp \left\{ - \mathrm{i} \omega' t \right\}  \right).
-\]
+\begin{align*}
+  \frac{\hbar}{2}\left[ \gamma \sigma_z + \lambda \cos (\omega t) \sigma_x \right] \left( c_{\uparrow} (t) \left| \uparrow \right\rangle e^{- \mathrm{i} \omega ' t} + c_{\downarrow}(t) \left| \downarrow \right\rangle e^{\mathrm{i} \omega' t} \right) &= \\
+ =\gamma\frac{\hbar}{2} \left( c_{\uparrow} (t) \left| \uparrow \right\rangle e^{- \mathrm{i} \omega' t} - c_{\downarrow}(t) \left| \downarrow \right\rangle e^{\mathrm{i} \omega' t}\right) + \lambda \cos (\omega t) \left( c_{\downarrow} (t) \left| \uparrow \right\rangle e^{\mathrm{i} \omega' t} + &c_{\uparrow}(t) \left| \downarrow \right\rangle e^{- \mathrm{i} \omega' t} \right).
+\end{align*}
 
 Dobimo sistem dveh enačb za stanje \( \left| \uparrow \right\rangle \) in stanje \( \downarrow \).
 
 \begin{align*}
-\mathrm{i} \hbar \dot{c}_{\uparrow}(t) \exp \left\{ - \mathrm{i} \omega' t \right\} &= - \hbar \omega' c_{\uparrow} (t) \exp \left\{ - \mathrm{i} \omega' t \right\} + \gamma \frac{\hbar}{2} c_{\uparrow} (t) \exp \left\{ - \mathrm{i} \omega' t \right\} + \frac{\hbar}{2} \lambda \cos (\omega t) \exp \left\{ \mathrm{i} \omega t \right\} c_{\downarrow} (t) \\
-\mathrm{i} \hbar \dot{c}_{\downarrow}(t) \exp \left\{ \mathrm{i} \omega' t \right\} &= + \hbar \omega' c_{\downarrow} (t) \exp \left\{ - \mathrm{i} \omega' t \right\} - \gamma \frac{\hbar}{2} c_{\downarrow} (t) \exp \left\{  \mathrm{i} \omega' t \right\} + \frac{\hbar}{2} \lambda \cos (\omega t) \exp \left\{r- \mathrm{i} \omega t \right\} c_{\uparrow} (t) \\
+\mathrm{i} \hbar \dot{c}_{\uparrow}(t) e^{- \mathrm{i} \omega ' t} &= - \hbar \omega' c_{\uparrow} (t) e^{- \mathrm{i} \omega' t}+ \gamma \frac{\hbar}{2} c_{\uparrow} (t) e^{- \mathrm{i} \omega' t} + \frac{\hbar}{2} \lambda \cos (\omega t) e^{\mathrm{i} \omega ' t} c_{\downarrow} (t) \\
+\mathrm{i} \hbar \dot{c}_{\downarrow}(t) e^{\mathrm{i} \omega' t}&= + \hbar \omega' c_{\downarrow} (t) e^{- \mathrm{i} \omega' t}- \gamma \frac{\hbar}{2} c_{\downarrow} (t) e^{\mathrm{i} \omega' t} + \frac{\hbar}{2} \lambda \cos (\omega t) e^{- \mathrm{i} \omega ' t} c_{\uparrow} (t) \\
 \end{align*}
 
-Zgornjo enačbo pomnožimo z \( \frac{1}{\hbar} \exp \left\{ \mathrm{i} \omega ' t \right\} \), spodnjo enačbo pa z \( \frac{1}{\hbar} \exp \left\{- \mathrm{i} \omega' t \right\} \)
-
-[dopolni]
-
-Preostane nam
+Zgornjo enačbo pomnožimo z \( \frac{1}{\hbar} \exp \left\{ \mathrm{i} \omega ' t \right\} \), spodnjo enačbo pa z \( \frac{1}{\hbar} \exp \left\{- \mathrm{i} \omega' t \right\} \). Prav tako upoštevamo, da je \( \cos (\omega t) = \frac{1}{2} \left( e^{\mathrm{i} \omega t} + e^{ -\mathrm{i} \omega t} \right) \) in preostane nam
 
 \begin{align*}
  \mathrm{i} \dot{c}_{\uparrow} (t) &= \left( - \omega ' + \frac{\gamma}{2} \right) c_{\uparrow}(t) + \frac{\lambda}{4} \left( \exp \left\{ \mathrm{i} (\omega + 2 \omega') t \right\} + \exp \left\{ \mathrm{i} (\omega + 2\omega') t \right\} \right) c_{\downarrow} (t) \\

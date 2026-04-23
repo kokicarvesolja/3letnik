@@ -404,7 +404,11 @@ Rešujemo sistem enačb
 \]
 
 Vidimo, da je problem identičen \ref{eq:5}, kar pomeni, da bi do rešitve postopali enako kakor prej.
-* Simetrija na obrat časa z Rashbovo sklopitvijo
+* Simetrija na obrat časa z Rashbovo sklopitvijo :nismo_delali:
+
+#+begin_note
+  Te naloge se v letu 2025/26 na vajah ni delalo. Iz interesa (in ker sem manjkal na samih vajah) sem jo vseeno naredil in vključil v zapiske.
+#+end_note
 
 Imamo Hamiltonian
 
@@ -611,7 +615,7 @@ To pomeni, da je spinski del Hilbertovega prostora 6-dimenzionalen, saj \( 2 \cd
 
 Baza je oblike \( \left| s_1 m_1 \right\rangle \left| s_2, m_2 \right\rangle\), vendar ker sta \( s_1 \) in \( s_2 \) fiksirana, bomo okrajšali zapis v \( \left| m_1 \right\rangle \left| m_2 \right\rangle \). Krajše zapisana baza je tako
 
-\[ \left\{ \left| \uparrow \right\rangle \left| 1 \right\rangle, \left| \uparrow \right\rangle \left| 0 \right\rangle, \left| \uparrow \right\rangle \left|- 1 \right\rangle, \left| \downarrow \right\rangle \left| 1 \right\rangle, \left| \downarrow \right\rangle \left| 0 \right\rangle, \left| \downarrow \right\rangle \left| -1 \right\rangle \}
+\[ \left\{ \left| \uparrow \right\rangle \left| 1 \right\rangle, \left| \uparrow \right\rangle \left| 0 \right\rangle, \left| \uparrow \right\rangle \left|- 1 \right\rangle, \left| \downarrow \right\rangle \left| 1 \right\rangle, \left| \downarrow \right\rangle \left| 0 \right\rangle, \left| \downarrow \right\rangle \left| -1 \right\rangle \right\}
 \]
 
 Drugi način skupne baze pa je baza z dobrim skupnim spinom \( \vec{S} = \vec{S}_1 + \vec{S}_2 \), kjer \( S ^2, S_z, S_1 ^2, S_2 ^2 \) komutirajo. Vrednosti, ki jih zavzame skupni spin je
@@ -669,125 +673,6 @@ Sipalna matrika je unitarna, kar pomeni, da velja \( S ^{\dagger} S = I \). Iz t
 \]
 
 kjer sta \( T \) in \( R \) verjetnosti za prepuščenost in odbitost delca.
-** Sipanje na \( \delta \) potencialu s spinom
-
-Hamiltonian
-
-\[ H = \frac{p_1 ^2}{2m} - \frac{\lambda}{\hbar ^2} \vec{S}_1 \cdot \vec{S}_2 \delta(x_1),
-\]
-
-bomo zapisali drugače tako, da nadomestimo zapis za skalarni produkt. Iz baze z dobrim skupnim spinom velja \( \vec{S} = \vec{S}_1 + \vec{S}_2 \), kar pomeni, da po kvadriranju dobimo
-
-\[ S ^2 = S_1 ^2 + 2 \vec{S}_1 \cdot \vec{S}_2 + S_2 ^2 \implies \vec{S}_1 \cdot \vec{S}_2 = \frac{1}{2} \left( S ^2 - S_1 ^2 - S_2 ^2 \right),
-\]
-
-kar lahko vstavimo v Hamiltonian
-
-\[  H = \frac{p_1 ^2}{2m} - \frac{\lambda}{2 \hbar ^2} \left( S ^2 - S_1 ^2 - S_2 ^2 \right) \delta(x_1).
-\]
-
-Vsi operatorji v bazi z dobrim skupnim spinom komutirajo med sabo, potem tudi vsi komutirajo s Hamiltonianom
-
-\[ \left[ H, S ^2 \right] = \left[ H, S_1 ^2 \right] = \left[ H, S_2 ^2 \right] = \left[ H, S_z \right] = 0
-\]
-
-Lastne funkcije enega operatorja so tudi lastne funkcije vseh ostalih operatorjev.
-
-Rešimo sedaj Schrödingerjevo enačbo
-
-\[ H \left| \psi \right\rangle = E \left| \psi \right\rangle,
-\]
-
-z nastavkom \( \left| \psi \right\rangle = \left| \psi_1 \right\rangle \otimes \left| s , m\right\rangle\). To lahko naredimo zaradi komutacije med Hamiltonianom in spinskimi operatorji. Dobimo enačbo
-
-\begin{align*}
-  H \left| \psi_1 \right\rangle \otimes \left| s, m \right\rangle &= \left( \frac{p_1 ^2}{2m} \left| \psi_1 \right\rangle \right) \otimes \left| s, m \right\rangle - \frac{\lambda}{2 \hbar ^2} \delta(x_1) \left| \psi_1 \right\rangle \otimes \left( S ^2 - S_1 ^2 - S_2 ^2 \right) \left| s, m \right\rangle \\
-&= E \left| \psi_1 \right\rangle \otimes \left| s, m \right\rangle
-\end{align*}
-
-Spinski operatorji \( S \), \( S_1 ^2 \) in \( S_2 ^2 \) delujejo na lastna stanja, kar pomeni, da lahko operatorje nadomestimo z njihovimi lastnimi stanji
-
-\begin{align*}
-    H \left| \psi_1 \right\rangle \otimes \left| s, m \right\rangle &= \left( \frac{p_1 ^2}{2m} \left| \psi_1 \right\rangle \right) \otimes \left| s, m \right\rangle - \frac{\lambda}{2 \hbar ^2} \delta(x_1) \left| \psi_1 \right\rangle \otimes \left[ \hbar ^2 s(s + 1) - \hbar ^2 s_1 (s_1 - 1) - \hbar ^2 s_2 (s_2 + 1) \right] \left| s, m \right\rangle \\
-&= E \left| \psi_1 \right\rangle \otimes \left| s, m \right\rangle
-\end{align*}
-
-\( \left| s, m \right\rangle \) se pokrajša iz enačbe. Prav tako nadomestimo \( s_1 \) in \( s_2 \) z njunima vrednostima
-
-\[ \left( \frac{p_1 ^2}{2m} - \frac{\lambda}{2} \delta(x_1) \left[ s (s + 1) - \frac{3}{4} - 2 \right] \right) \left| \psi_1 \right\rangle  = E \left| \psi_1 \right\rangle.
-\]
-
-Rešitev Schrödingerjeve enačbe krajevnega dela bo odvisna samo od spina \( s \), ki lahko zavzema dve vrednosti - \( \frac{1}{2} \) in \( \frac{3}{2} \).
-
-Za \( s = \frac{3}{2} \) imamo enačbo
-
-\[ \left[ \frac{p_1 ^2}{2m} - \frac{\lambda}{2} \delta(x_1) \right] \left| \psi_1 \right\rangle = E \left| \psi_1 \right\rangle.
-\]
-
-Za \( s = \frac{1}{2} \) pa je enačba
-
-\[ \left[ \frac{p_1 ^2}{2m} + \lambda \delta(x_1) \right] \left| \psi_1 \right\rangle = E \left| \psi_1 \right\rangle.
-\]
-
-Naš problem smo tako preobrazili v problem sipanja na \( \delta \) funkciji, ki ni odvisna od spina. Rešitve tega problema že poznamo.
-
-- Vezana stanja ima samo \( \delta \) potencial, ki je usmerjena navzdol - torej samo \( s = \frac{3}{2} \). Stanje \( s = \frac{1}{2} \) ima pozitivno vrednost \( \delta \) potenciala.
-   Definiramo \( \lambda_{\frac{3}{2}} = \frac{\lambda}{2} \) in pripadajoč Hamiltonian je
-
-   \[ \frac{p_1 ^2}{2m} - \lambda_{\frac{3}{2}} \delta(x_1) = H_{S = \frac{3}{2}}.
-   \]
-
-   Analogno definiramo \( \lambda_{\frac{1}{2}} = - \lambda \) in Hamiltonian je
-
-   \[ \frac{p_1 ^2}{2m} - \lambda_{\frac{1}{2}} \delta(x_1) = H_{S = \frac{1}{2}}.
-   \]
-
-   Vezano stanje ima energijo
-
-   \[ E_0 = - \frac{\hbar ^2 \kappa_{\frac{3}{2}} ^2}{2m}, \ \kappa_{\frac{3}{2}} = \frac{m \lambda_{\frac{3}{2}}}{\hbar ^2} = \frac{m \lambda}{2 \hbar ^2} ,
-   \]
-
-   in lastno funkcijo
-
-   \[ \left| \psi_0^m \right\rangle = \sqrt{\kappa_{\frac{3}{2}}} \exp \left\{ - \kappa_{\frac{3}{2}} \left| x \right| \right\} \left| \frac{3}{2} m \right\rangle.
-   \]
-
-   \( m \) zaseda vrednosti \( \left\{ \frac{3}{2}, \frac{1}{2}, - \frac{1}{2}, - \frac{3}{2} \right\} \). To pomeni, da imamo štirikrat degenerirano stanje. V zgornjem zapisu smo uporabili mešanico koordinatne in Diracove reprezentacije. Dogovorimo se, da zgornji zapis pomeni
-
-   \[ \psi(x_1) \left| s, m \right\rangle = \left[ \int\limits_{}^{} \psi(x_1) \left| x_1 \right\rangle \, \mathrm{d} x_1 \right] \left| s, m \right\rangle
-   \]
-
-- Poglejmo sedaj še sipalna stanja. Na območju levo od delta potenciala bomo imeli dva valova - vpadajoči in odbiti. Desno od delta potenciala pa bo prepuščeni val.
-
-  \begin{equation}
-  \label{eq:6}
-  \left| \psi_b^- \right\rangle = \left( e^{\mathrm{i} k x} + r_s e^{- \mathrm{i} k x} \right) \left| s, m \right\rangle; \ x_1 < 0
-  \end{equation}
-
-  Na desni pa bo
-
-  \begin{equation}
-  \label{eq:7}
-   \left| \psi_b^+ \right\rangle  = t_s e^{\mathrm{i} k x} \left| s, m \right\rangle; x_1 > 0.
-  \end{equation}
-
-  Sipalna matrika je oblike
-
-  \[ \mathbf{S}_S = \begin{bmatrix}
-                    r_{s} & t_{s}' \\
-                    t_{s} & r_{s}'
-                     \end{bmatrix},
-  \]
-
-  in je enaka tisti iz začetka leta, saj je krajevni del enačbe identičen. Torej
-
-  \[ \mathbf{S}_S = \frac{1}{k + \mathrm{i} \kappa_S} \begin{bmatrix}
-                                                      -\mathrm{i} \kappa_S & k \\
-                                                       k& - \mathrm{i} \kappa_S
-                                                       \end{bmatrix}; \ \kappa_{\frac{3}{2}} = \frac{m \lambda_{\frac{3}{2}}}{\hbar ^2} = \frac{m \lambda}{2 \hbar ^2} \text{ in } \kappa_{\frac{1}{2}} = \frac{m \lambda_{\frac{1}{2}}}{\hbar ^2} = - \frac{m \lambda}{\hbar ^2}.
-  \]
-
-  Opomba, da matrika je sicer enake oblike, vendar parametra \( r_s \) in \( t_s \) sta odvisna od spina.
 ** Reševanje naloge
 
 Imamo delec 1 s spinom \( \left| \uparrow \right\rangle \), ki je levo od delca 2 s spinom \( \left| 0 \right\rangle \). Zanima nas sipano stanje teh dveh delcev.
@@ -803,7 +688,7 @@ Začetno stanje bomo pretvorili v iz produktne baze v bazo z dobrim skupnim spin
 
 [[file:figures/09Clebsch-Gordan.png]]
 
-Vir: [[https://ejmastnak.com/notes/fmf/qm/qm-exercises.pdf][Mastnak zapiski, stran 77]]
+Vir: [[https://ejmastnak.com/notes/fmf/qm/qm-exercises.pdf][Mastnak zapiski, stran 77]], posnetek zaslona
 
 Na listu z GC koefienti najprej poiščemo tabelo, katere naslov ima našo kombinacijo spinov. V našem primeru sta to \( s_1 = \frac{1}{2} \) in \( s_2 = 1 \). Začetno stanje našega problema ima spinsko stanje \( \left| \uparrow \right\rangle \left| 0 \right\rangle = \left| \frac{1}{2} \right\rangle \left| 0 \right\rangle \).
 
@@ -831,7 +716,7 @@ za \( x_1 > 0 \) pa
 \[ \psi_b^+ = t_s e^{\mathrm{i} k x} \left| s, m \right\rangle.
 \]
 
-Če primerjamo lastni stanji \( \psi_b^- \) z začetnim stanjem \ref{eq:8} lahko opazimo, da moramo prvi člen obtežiti s koeficientom \( \sqrt{\frac{3}{2}} \), drugo člen pa s koeficientom \( -\sqrt{\frac{1}{3}} \). Lastna funkcija za \( x_1 < 0 \) bo tako
+Če primerjamo lastni stanji \( \psi_b^- \) z začetnim stanjem \ref{eq:8} lahko opazimo, da moramo prvi člen obtežiti s koeficientom \( \sqrt{\frac{3}{2}} \), drugi člen pa s koeficientom \( -\sqrt{\frac{1}{3}} \). Lastna funkcija za \( x_1 < 0 \) bo tako
 
 \begin{equation}
 \label{eq:9}
@@ -927,3 +812,123 @@ Iz unitarnosti \( S^{\dagger} S = I \) in posledično
 \]
 
 sledi, da je \( P_{tot} = 1 \).
+** Sipanje na \( \delta \) potencialu s spinom
+
+Hamiltonian
+
+\[ H = \frac{p_1 ^2}{2m} - \frac{\lambda}{\hbar ^2} \vec{S}_1 \cdot \vec{S}_2 \delta(x_1),
+\]
+
+bomo zapisali drugače tako, da nadomestimo zapis za skalarni produkt. Iz baze z dobrim skupnim spinom velja \( \vec{S} = \vec{S}_1 + \vec{S}_2 \), kar pomeni, da po kvadriranju dobimo
+
+\[ S ^2 = S_1 ^2 + 2 \vec{S}_1 \cdot \vec{S}_2 + S_2 ^2 \implies \vec{S}_1 \cdot \vec{S}_2 = \frac{1}{2} \left( S ^2 - S_1 ^2 - S_2 ^2 \right),
+\]
+
+kar lahko vstavimo v Hamiltonian
+
+\[  H = \frac{p_1 ^2}{2m} - \frac{\lambda}{2 \hbar ^2} \left( S ^2 - S_1 ^2 - S_2 ^2 \right) \delta(x_1).
+\]
+
+Vsi operatorji v bazi z dobrim skupnim spinom komutirajo med sabo, potem tudi vsi komutirajo s Hamiltonianom
+
+\[ \left[ H, S ^2 \right] = \left[ H, S_1 ^2 \right] = \left[ H, S_2 ^2 \right] = \left[ H, S_z \right] = 0
+\]
+
+Lastne funkcije enega operatorja so tudi lastne funkcije vseh ostalih operatorjev.
+
+Rešimo sedaj Schrödingerjevo enačbo
+
+\[ H \left| \psi \right\rangle = E \left| \psi \right\rangle,
+\]
+
+z nastavkom \( \left| \psi \right\rangle = \left| \psi_1 \right\rangle \otimes \left| s , m\right\rangle\). To lahko naredimo zaradi komutacije med Hamiltonianom in spinskimi operatorji. Dobimo enačbo
+
+\begin{align*}
+  H \left| \psi_1 \right\rangle \otimes \left| s, m \right\rangle &= \left( \frac{p_1 ^2}{2m} \left| \psi_1 \right\rangle \right) \otimes \left| s, m \right\rangle - \frac{\lambda}{2 \hbar ^2} \delta(x_1) \left| \psi_1 \right\rangle \otimes \left( S ^2 - S_1 ^2 - S_2 ^2 \right) \left| s, m \right\rangle \\
+&= E \left| \psi_1 \right\rangle \otimes \left| s, m \right\rangle
+\end{align*}
+
+Spinski operatorji \( S \), \( S_1 ^2 \) in \( S_2 ^2 \) delujejo na lastna stanja, kar pomeni, da lahko operatorje nadomestimo z njihovimi lastnimi stanji
+
+\begin{align*}
+    H \left| \psi_1 \right\rangle \otimes \left| s, m \right\rangle &= \left( \frac{p_1 ^2}{2m} \left| \psi_1 \right\rangle \right) \otimes \left| s, m \right\rangle \\
+&\quad- \frac{\lambda}{2 \hbar ^2} \delta(x_1) \left| \psi_1 \right\rangle \otimes \left[ \hbar ^2 s(s + 1) - \hbar ^2 s_1 (s_1 - 1) - \hbar ^2 s_2 (s_2 + 1) \right] \left| s, m \right\rangle \\
+&= E \left| \psi_1 \right\rangle \otimes \left| s, m \right\rangle
+\end{align*}
+
+\( \left| s, m \right\rangle \) se pokrajša iz enačbe. Prav tako nadomestimo \( s_1 \) in \( s_2 \) z njunima vrednostima
+
+\[ \left( \frac{p_1 ^2}{2m} - \frac{\lambda}{2} \delta(x_1) \left[ s (s + 1) - \frac{3}{4} - 2 \right] \right) \left| \psi_1 \right\rangle  = E \left| \psi_1 \right\rangle.
+\]
+
+Rešitev Schrödingerjeve enačbe krajevnega dela bo odvisna samo od spina \( s \), ki lahko zavzema dve vrednosti - \( \frac{1}{2} \) in \( \frac{3}{2} \).
+
+Za \( s = \frac{3}{2} \) imamo enačbo
+
+\[ \left[ \frac{p_1 ^2}{2m} - \frac{\lambda}{2} \delta(x_1) \right] \left| \psi_1 \right\rangle = E \left| \psi_1 \right\rangle.
+\]
+
+Za \( s = \frac{1}{2} \) pa je enačba
+
+\[ \left[ \frac{p_1 ^2}{2m} + \lambda \delta(x_1) \right] \left| \psi_1 \right\rangle = E \left| \psi_1 \right\rangle.
+\]
+
+Naš problem smo tako preobrazili v problem sipanja na \( \delta \) funkciji, ki ni odvisna od spina. Rešitve tega problema že poznamo.
+
+- Vezana stanja ima samo \( \delta \) potencial, ki je usmerjena navzdol - torej samo \( s = \frac{3}{2} \). Stanje \( s = \frac{1}{2} \) ima pozitivno vrednost \( \delta \) potenciala.
+   Definiramo \( \lambda_{\frac{3}{2}} = \frac{\lambda}{2} \) in pripadajoč Hamiltonian je
+
+   \[ \frac{p_1 ^2}{2m} - \lambda_{\frac{3}{2}} \delta(x_1) = H_{S = \frac{3}{2}}.
+   \]
+
+   Analogno definiramo \( \lambda_{\frac{1}{2}} = - \lambda \) in Hamiltonian je
+
+   \[ \frac{p_1 ^2}{2m} - \lambda_{\frac{1}{2}} \delta(x_1) = H_{S = \frac{1}{2}}.
+   \]
+
+   Vezano stanje ima energijo
+
+   \[ E_0 = - \frac{\hbar ^2 \kappa_{\frac{3}{2}} ^2}{2m}, \ \kappa_{\frac{3}{2}} = \frac{m \lambda_{\frac{3}{2}}}{\hbar ^2} = \frac{m \lambda}{2 \hbar ^2} ,
+   \]
+
+   in lastno funkcijo
+
+   \[ \left| \psi_0^m \right\rangle = \sqrt{\kappa_{\frac{3}{2}}} \exp \left\{ - \kappa_{\frac{3}{2}} \left| x \right| \right\} \left| \frac{3}{2} m \right\rangle.
+   \]
+
+   \( m \) zaseda vrednosti \( \left\{ \frac{3}{2}, \frac{1}{2}, - \frac{1}{2}, - \frac{3}{2} \right\} \). To pomeni, da imamo štirikrat degenerirano stanje. V zgornjem zapisu smo uporabili mešanico koordinatne in Diracove reprezentacije. Dogovorimo se, da zgornji zapis pomeni
+
+   \[ \psi(x_1) \left| s, m \right\rangle = \left[ \int\limits_{}^{} \psi(x_1) \left| x_1 \right\rangle \, \mathrm{d} x_1 \right] \left| s, m \right\rangle
+   \]
+
+- Poglejmo sedaj še sipalna stanja. Na območju levo od delta potenciala bomo imeli dva valova - vpadajoči in odbiti. Desno od delta potenciala pa bo prepuščeni val.
+
+  \begin{equation}
+  \label{eq:6}
+  \left| \psi_b^- \right\rangle = \left( e^{\mathrm{i} k x} + r_s e^{- \mathrm{i} k x} \right) \left| s, m \right\rangle; \ x_1 < 0
+  \end{equation}
+
+  Na desni pa bo
+
+  \begin{equation}
+  \label{eq:7}
+   \left| \psi_b^+ \right\rangle  = t_s e^{\mathrm{i} k x} \left| s, m \right\rangle; x_1 > 0.
+  \end{equation}
+
+  Sipalna matrika je oblike
+
+  \[ \mathbf{S}_S = \begin{bmatrix}
+                    r_{s} & t_{s}' \\
+                    t_{s} & r_{s}'
+                     \end{bmatrix},
+  \]
+
+  in je enaka tisti iz začetka leta, saj je krajevni del enačbe identičen. Torej
+
+  \[ \mathbf{S}_S = \frac{1}{k + \mathrm{i} \kappa_S} \begin{bmatrix}
+                                                      -\mathrm{i} \kappa_S & k \\
+                                                       k& - \mathrm{i} \kappa_S
+                                                       \end{bmatrix}; \ \kappa_{\frac{3}{2}} = \frac{m \lambda_{\frac{3}{2}}}{\hbar ^2} = \frac{m \lambda}{2 \hbar ^2} \text{ in } \kappa_{\frac{1}{2}} = \frac{m \lambda_{\frac{1}{2}}}{\hbar ^2} = - \frac{m \lambda}{\hbar ^2}.
+  \]
+
+  Opomba, da matrika je sicer enake oblike, vendar parametra \( r_s \) in \( t_s \) sta odvisna od spina.

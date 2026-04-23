@@ -31,8 +31,12 @@ Zanima nas prostorninska gostota vezanega naboja, ki je definirana kot
 
 \begin{equation}
 \label{eq:2}
- \rho_v = - \vec{\nabla} \cdot \vec{P}.
+ \rho_v = - \vec{\nabla} \cdot \vec{P},
 \end{equation}
+
+kjer je \( \vec{P} \) polarizacija in je samo v snovi.
+
+Vezani naboj so naboji, ki so v snovi in so vanjo vezani. Navadno jih najdemo v obliki električnih dipolov, kjer se pozitiven in negativen del naboj oddaljita drug od drugega.
 
 Če se posvetujemo slike, lahko opazimo, da je gostota vezanega naboja negativna, saj imajo dipoli usmerjene pozitivne naboje navzven in negativne naboje proti središču sfere. Negativni naboji so torej bolj skoncentrirani proti središču in posledično je gostota vezanega naboja negativna.
 
@@ -55,7 +59,12 @@ Površinska gostota naboja je pozitivna, saj kažejo pozitivni konci električni
 
 V prostorninsko gostoto naboja lahko samo vstavimo radialno odvisnost \ref{eq:1} in dobimo
 
-\[ \rho_v = - \vec{\nabla} \cdot \vec{P} = - \vec{\nabla} \cdot k \vec{r} = - k \vec{\nabla} \cdot \vec{r} = - 3k.
+\[ \rho_v = - \vec{\nabla} \cdot \vec{P} = - \vec{\nabla} \cdot k \vec{r} = - k \vec{\nabla} \cdot \vec{r} = - 3k,
+\]
+
+saj za \( \vec{r} = (x, y, z) \) velja
+
+\[ \nabla \cdot \vec{r} = \frac{\partial x}{\partial x} + \frac{\partial y}{\partial y} + \frac{\partial z}{\partial z} = 3
 \]
 
 Radij vektor \( \vec{r} \) in normalni vektor v površinski gostoti naboja sta vzporedna
@@ -228,7 +237,7 @@ Zamislimo si majhen presek stranice kondenzatorja, ki je v ravnini slike. Uporab
 \[ \vec{\nabla} \times \vec{E} = - \frac{\partial \vec{B}}{\partial t} = 0.
 \]
 
-Zaradi statičnega primer velja \( \frac{\partial \vec{B}}{\partial t} = 0 \).
+Zaradi statičnega primera velja \( \frac{\partial \vec{B}}{\partial t} = 0 \).
 
 Slednje integriramo po površini, ki tesno objema eno od kondenzatorskih plošč (glej sliko) in preko Stokesovega izreka prevedemo na integral po zaključeni zanki površine - pravokotniku, ki tesno objema kondenzatorske plošče.
 

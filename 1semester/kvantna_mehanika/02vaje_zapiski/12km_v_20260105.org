@@ -81,7 +81,7 @@ Povzetek simetrij, ki smo jih uporabili
 
 V zgornjih simetrijah so kvantna števila braja so označene z \( l' \) in \( m' \), medtem ko so stanja keta označena brez črtice.
 
-Edini integral, ki ga moramo tako izračunati je stanje \( \left\langle 210 \middle| z \middle| 100 \right\rangle \)..
+Edini integral, ki ga moramo tako izračunati je stanje \( \left\langle 210 \middle| z \middle| 100 \right\rangle \).
 
 Splošna oblika valovne funkcije v koordinatni reprezentaciji je
 
@@ -92,7 +92,8 @@ Iz tabele odčitamo radialne funkcije ter sferne harmonike in matrični element 
 
 \begin{align*}
   \left\langle 210 \middle| z \middle| 100 \right\rangle &= \int\limits_{}^{} \psi_{210}^{\ast} \left( \vec{r} \right) z \psi_{100} \left( \vec{r} \right) \, \mathrm{d} \vec{r} \\
-&= \int\limits_{}^{} \frac{1}{\sqrt{3}} \frac{1}{\left( 2r_B \right)^{\frac{3}{2}}} \frac{r}{r_B} \exp \left\{ - \frac{r}{2 r_B} \right\} \cdot \sqrt{\frac{3}{4 \pi}} \cos \theta r \cos \theta \frac{2}{r_B^{\frac{3}{2}}} \exp \left\{ - \frac{r}{r_B} \right\} \frac{1}{\sqrt{4 \pi}} \cdot r ^2 \, \mathrm{d} r \, \mathrm{d} (\cos \theta) \, \mathrm{d} \phi\\
+&= \int\limits_{}^{} \frac{1}{\sqrt{3}} \frac{1}{\left( 2r_B \right)^{\frac{3}{2}}} \frac{r}{r_B} \exp \left\{ - \frac{r}{2 r_B} \right\} \\
+&\quad \cdot \sqrt{\frac{3}{4 \pi}} \cos \theta r \cos \theta \frac{2}{r_B^{\frac{3}{2}}} \exp \left\{ - \frac{r}{r_B} \right\} \frac{1}{\sqrt{4 \pi}} \cdot r ^2 \, \mathrm{d} r \, \mathrm{d} (\cos \theta) \, \mathrm{d} \phi\\
 &= 2 \pi \cdot \frac{2}{3} \cdot \frac{1}{4 \pi} \frac{1}{\left( 2 r_B \right)^{\frac{3}{2}}} \frac{1}{r_B} \frac{2}{r_B^{\frac{3}{2}}} \int\limits_{}^{} r^4 \exp \left\{ - \frac{r}{2r_B} - \frac{r}{r_B} \right\} \, \mathrm{d} r
 \end{align*}
 

@@ -197,3 +197,8 @@ n_c p_v = n_i ^2.
 \end{equation}
 
 To se zgodi ob predpostavki, da je nečistoč v polprevodniku enostavno tako malo, da se kristalna struktura ne spremeni bistveno - zgolj kemijski potencial.
+
+Iz enačb \ref{eq:1} in \ref{eq:2} dobimo kvadratni enačbo, katere rešitev je
+
+\[ \begin{bmatrix} n_{c} \\ p_{v} \end{bmatrix} = \frac{1}{2}\sqrt{\Delta n ^2 + 4 n_i ^2} \pm \frac{\Delta n}{2}.
+\]

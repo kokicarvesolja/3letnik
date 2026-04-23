@@ -217,8 +217,8 @@ V dveh dimnzijah imamo rešitve za različne vrednosti \( \lambda \).
 
   \begin{align*}
     G \left( \vec{r} , \vec{r}_0 \right) &= \frac{1}{4} Y_0 \left( k \left| \vec{r} - \vec{r}_0 \right| \right) \\
-           G \left( \vec{r} , \vec{r}_0 \right) &= - \frac{\mathrm{i}}{4} H_0^{(1)} \left( k \left| \vec{r} - \vec{r}_0 \right| \right) \\
-            G \left( \vec{r} , \vec{r}_0 \right) &= \frac{\mathrm{i}}{4} H_0^{(2)} \left( k \left| \vec{r} - \vec{r}_0 \right| \right)
+           G \left( \vec{r} , \vec{r}_0 \right) &= - \frac{\mathrm{i}}{4} H_0^{(1)} \left( k \left| \vec{r} - \vec{r}_0 \right| \right)  && \text{ valovanje se širi navzven} \\
+            G \left( \vec{r} , \vec{r}_0 \right) &= \frac{\mathrm{i}}{4} H_0^{(2)} \left( k \left| \vec{r} - \vec{r}_0 \right| \right) && \text{ valovanje se širi navznoter }
   \end{align*}
 
 - za \( \lambda = - k ^2 \) pa imamo

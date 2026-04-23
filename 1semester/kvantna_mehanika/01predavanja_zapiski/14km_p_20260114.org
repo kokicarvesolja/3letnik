@@ -176,8 +176,30 @@ kar je diagonalna matrika
                   \end{bmatrix}.
 \]
 
+Vrednost \( Z \) je vrednost imenovalca.
+
 Želimo izračunati pričakovano vrednosti spina, ki leti iz škatle
 
-\[ \left\langle \sigma_z \right\rangle  = \mathrm{tr} \rho \sigma_z.
+\[ \left\langle \sigma_z \right\rangle  = \mathrm{tr} \rho \sigma_z
 \]
+
+Paulijeva matrika \( \sigma_z \) je
+
+\[ \sigma_z = \begin{bmatrix}
+              1 & 0 \\
+              0 & -1
+               \end{bmatrix}.
+\]
+
+Pričakovana vrednost je
+
+\begin{align*}
+  \left\langle \sigma_z \right\rangle &= \mathrm{tr} \rho \sigma_z \\
+&= \left\langle \uparrow \middle| \rho \sigma_z \middle| \uparrow \right\rangle + \left\langle \downarrow \middle| \rho \sigma_z \middle| \downarrow \right\rangle \\
+&= \frac{1}{Z} e^{\beta E_B} - \frac{1}{Z} e^{- \beta E_B} \\
+&= \frac{e^{\beta E_B} - e^{-\beta E_B}}{e^{\beta E_B} + e^{- \beta E_B}} = - \mathrm{th} \frac{\mu B_0}{k_B T} = p_{\uparrow} - p_{\downarrow}.
+\end{align*}
+
+
+Za \( B_0 \to \infty \) ali \( T \to 0 \) je pri vrednosti argumenta v  \( - \infty \) stanje mešano s prevladajočim spinom navzgor \( \left| \uparrow \right\rangle \). V vrednosti argumenta \( 0 \) je mešanica stanj s spinom gor in dol, pri \( \infty \) pa prevladuje stanje s spinom navzdol.
 #+end_my_example

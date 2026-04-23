@@ -25,8 +25,8 @@ Zanima nas razcep pasov, ki se zgodi v točki \( x = \frac{\pi}{a} \), kjer se s
 Zapišemo lahko dve enačbi za osnovno in prvo vzbujeno stanje
 
 \begin{align*}
-  \left( \epsilon^0_{\mathbf{k} - \mathbf{K}_1} - \epsilon \right) c_{\mathbf{k} - \mathbf{K}_0} + \sum\limits_{\mathbf{K}' \in \left\{ \mathbf{K}_1, \mathbf{K}_2 \right\}}^{} V_{\mathbf{K}' - \mathbf{K}_1} c_{\mathbf{k} - \mathbf{K}'} &= 0 \\
-  \left( \epsilon^0_{\mathbf{k} - \mathbf{K}_2} - \epsilon \right) c_{\mathbf{k} - \mathbf{K}_0} + \sum\limits_{\mathbf{K}' \in \left\{ \mathbf{K}_1, \mathbf{K}_2 \right\}}^{} V_{\mathbf{K}' - \mathbf{K}_2} c_{\mathbf{k} - \mathbf{K}'} &= 0.
+  \left( \epsilon^0_{\mathbf{k} - \mathbf{K}_1} - \epsilon \right) c_{\mathbf{k} - \mathbf{K}_1} + \sum\limits_{\mathbf{K}' \in \left\{ \mathbf{K}_1, \mathbf{K}_2 \right\}}^{} V_{\mathbf{K}' - \mathbf{K}_1} c_{\mathbf{k} - \mathbf{K}'} &= 0 \\
+  \left( \epsilon^0_{\mathbf{k} - \mathbf{K}_2} - \epsilon \right) c_{\mathbf{k} - \mathbf{K}_2} + \sum\limits_{\mathbf{K}' \in \left\{ \mathbf{K}_1, \mathbf{K}_2 \right\}}^{} V_{\mathbf{K}' - \mathbf{K}_2} c_{\mathbf{k} - \mathbf{K}'} &= 0.
 \end{align*}
 
 Označimo \( \mathbf{k} = \frac{\mathbf{K}_1 - \mathbf{K}_2}{2} \). Energiji \( \epsilon_{\mathbf{k} - \mathbf{K}_1}^0 \) in \( \epsilon_{\mathbf{k} - \mathbf{K}_2} \) sta enaki in ju bomo označili samo z \( \epsilon^0 \).

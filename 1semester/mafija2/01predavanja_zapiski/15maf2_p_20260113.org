@@ -253,4 +253,21 @@ Minimizirati moramo torej
 \]
 
 Napaka je za 3.7%.
+
+Če upoštevamo še drugi člen variacijskega nastavka
+
+\[ k ^2 = A \left( 1 - \left( \frac{r}{R} \right) ^2 \right) + B \left( 1 - \left( \frac{r}{R} \right) ^2 \right) ^2.
+\]
+
+Z minimizacijo dobimo
+
+\[ k ^2_{min} = = \frac{20 (2 + 4B + 2B ^2)}{10 + 15B + 6B ^2} = 5.78413
+\]
+
+in napaka je \( 1.00016 \xi_0^{(1)} ^2 \). Z nadaljnimi členi ne pridobimo signifikantne natančnosti.
+
+Za večjo natančnost brez potrebe računanja novih parametrov členov bomo uporabili Fredholmovo enačbo
+
+\[ u (\mathbf{r}) = \left( - k ^2 \right) \int\limits_{}^{} G \left( \mathbf{r}, \mathbf{r}_0 \right) u (\mathbf{r}_0) \, \mathrm{d} S
+\]
 #+end_my_example

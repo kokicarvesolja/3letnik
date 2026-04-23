@@ -153,6 +153,8 @@ c) Prejšnji rezultat primerjaj s časovnim odvodom energije elktromagnetnega po
 Pri vseh računih zanemarik popačitev polj ob zunanjem robu špranje. Špranjo torej obravnavaj kot ploščati kondenzator. Upornost vodnika je zanemarljivo majhna.
 #+end_problem
 
+[[file:figures/prekinjenVodnik.png]]
+
 Naboj, ki se nabira na ploskvah je linearen s časom, torej
 
 \[ e = It.

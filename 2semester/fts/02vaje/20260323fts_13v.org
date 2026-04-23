@@ -186,7 +186,7 @@ Interval eenrgijske reže torej zapišemo
 
 \begin{align*}
   \Delta \epsilon_{n, n + 1} &= \frac{\hbar}{2m a ^2} \left[ \left( n \pi + \frac{2 Q a}{n \pi} \right) ^2 - n ^2 \pi ^2 \right] \\
-&= \frac{\hbar ^2}{2 m a ^2} \hbar Q a =\frac{2 \lambda}{a}.
+&= \frac{\hbar ^2}{2 m a ^2} 2 Q a =\frac{2 \lambda}{a}.
 \end{align*}
 
 Zadnji člen kvadriranja zanemarimo, saj velja \( Q a \ll 1 \).

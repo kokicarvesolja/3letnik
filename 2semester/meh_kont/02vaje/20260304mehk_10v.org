@@ -8,56 +8,6 @@
 #+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
 #+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
 #+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
-* Teoretičen uvod/recap
-
-Hookov zakon \( F = k \Delta x \) je opisan s pomočjo deformacijskega tenzorja
-
-\[ u_{ij} = \frac{1}{2} \left( \frac{\partial u_{i}}{\partial x_{j}} + \frac{\partial u_{j}}{\partial x_{i}}  \right),
-\]
-
-ki igra vlogo razteznega koeficienta, ter napetostnega tenzorja \( p_{ij} \), ki igra vlogo sile. Definiran je kot
-
-\[ f_i = \frac{\partial }{\partial x_{j}}  p_{ij}.
-\]
-
-Drugi Newtonov zakon v zveznem mediju je Cauchyjeva enačba
-
-\[ \rho \ddot{u}_i = f_i + \frac{\partial p_{ik}}{\partial x_{k}},
-\]
-
-kjer so \( f_i \) zunanje sile, ki delujejo po gostoti površine (gravitacija, električno polje). V primeru ravnovesja velja
-
-\[ f_i \frac{\partial p_{ik}}{\partial x_{k}} = 0.
-\]
-
-Zvezni medij ima robne pogoje
-
-\[ p_{ik}  n_k = \tilde{F}_i,
-\]
-
-kjer je \( \tilde{F}_i \) opisuje sile na meji medija.
-
-Hookov zakon lahko zapišemo z Laméjevimi koeficienti ali pa z Youngovim modulom in Poissonovim številom
-
-\[ p_{ij} = 2 \mu u_{ij} + \lambda u_{ll} \delta_{ij} = \frac{E}{1 + \sigma} \left( u_{ij} + \frac{\sigma}{1 - 2 \sigma} u_{kk} \delta_{ij} \right).
-\]
-
-Deformacijski tenzor pa izrazimo iz Hookovega zakona
-
-\begin{equation}
-\label{eq:1}
- u_{ij} = \frac{1}{2 \mu} p_{ij} - \frac{\lambda}{2 \mu \left( 2 \mu + 3 \lambda \right)} p_{ll} \delta_{ij} = \frac{1}{E} \left[ \left( 1 + \sigma \right) p_{ij} - \sigma p_{ll} \delta_{ij} \right] .
-\end{equation}
-
-Ko združimo Cauchyjevo enačbo in Hookov zakon, dobimo Navierovo enačbo
-
-\[ \rho \ddot{u}_i = f_i + \mu \nabla ^2 u_i + \left( \mu + \lambda \right) \frac{\partial }{\partial x_{i}} \left( \frac{\partial u_{i}}{\partial x_{k}} \right),
-\]
-
-oz. vektorsko
-
-\[ \rho \ddot{\mathbf{u}} = \mathbf{f} + u \nabla ^2 \mathbf{u} + \left( \mu + \lambda \right) \nabla \nabla \mathbf{u}
-\]
 * Enoosna deformacija palice
 
 #+begin_problem
@@ -182,6 +132,56 @@ Vsi diagonalni elementi napetostnega tenzorja  so si medseboj enaki je
 \]
 
 Sprememba volumna je torej
+* Teoretičen uvod/recap
+
+Hookov zakon \( F = k \Delta x \) je opisan s pomočjo deformacijskega tenzorja
+
+\[ u_{ij} = \frac{1}{2} \left( \frac{\partial u_{i}}{\partial x_{j}} + \frac{\partial u_{j}}{\partial x_{i}}  \right),
+\]
+
+ki igra vlogo razteznega koeficienta, ter napetostnega tenzorja \( p_{ij} \), ki igra vlogo sile. Definiran je kot
+
+\[ f_i = \frac{\partial }{\partial x_{j}}  p_{ij}.
+\]
+
+Drugi Newtonov zakon v zveznem mediju je Cauchyjeva enačba
+
+\[ \rho \ddot{u}_i = f_i + \frac{\partial p_{ik}}{\partial x_{k}},
+\]
+
+kjer so \( f_i \) zunanje sile, ki delujejo po gostoti površine (gravitacija, električno polje). V primeru ravnovesja velja
+
+\[ f_i \frac{\partial p_{ik}}{\partial x_{k}} = 0.
+\]
+
+Zvezni medij ima robne pogoje
+
+\[ p_{ik}  n_k = \tilde{F}_i,
+\]
+
+kjer je \( \tilde{F}_i \) opisuje sile na meji medija.
+
+Hookov zakon lahko zapišemo z Laméjevimi koeficienti ali pa z Youngovim modulom in Poissonovim številom
+
+\[ p_{ij} = 2 \mu u_{ij} + \lambda u_{ll} \delta_{ij} = \frac{E}{1 + \sigma} \left( u_{ij} + \frac{\sigma}{1 - 2 \sigma} u_{kk} \delta_{ij} \right).
+\]
+
+Deformacijski tenzor pa izrazimo iz Hookovega zakona
+
+\begin{equation}
+\label{eq:1}
+ u_{ij} = \frac{1}{2 \mu} p_{ij} - \frac{\lambda}{2 \mu \left( 2 \mu + 3 \lambda \right)} p_{ll} \delta_{ij} = \frac{1}{E} \left[ \left( 1 + \sigma \right) p_{ij} - \sigma p_{ll} \delta_{ij} \right] .
+\end{equation}
+
+Ko združimo Cauchyjevo enačbo in Hookov zakon, dobimo Navierovo enačbo
+
+\[ \rho \ddot{u}_i = f_i + \mu \nabla ^2 u_i + \left( \mu + \lambda \right) \frac{\partial }{\partial x_{i}} \left( \frac{\partial u_{i}}{\partial x_{k}} \right),
+\]
+
+oz. vektorsko
+
+\[ \rho \ddot{\mathbf{u}} = \mathbf{f} + u \nabla ^2 \mathbf{u} + \left( \mu + \lambda \right) \nabla \nabla \mathbf{u}
+\]
 * Vrteč elastičen cilinder
 
 #+begin_problem

@@ -134,23 +134,23 @@ z robnm pogojem \( \left. H_{\perp} \right|_{\partial} = 0 \) na robu domene. Z 
 
 kjer vrednosti \( \kappa \) zasedajo
 
-\[ \kappa_m = \frac{\xi_n ^{(m)} '}{ a},
+\[ \kappa_m = \frac{\xi_n ' ^{(m)} }{ a},
 \]
 
-kjer je \( \xi_n^{(m)} ' \) \( n \)-ta ničla odvoda \( m \)-te Besslove funkcije.
+kjer je \( \xi_n' ^{(m)}  \) \( n \)-ta ničla odvoda \( m \)-te Besslove funkcije.
 
-Najnižja veja je pri \( J_1 ' \), katera ničla je pri \( \epsilon_1^{(1)} ' = 1.84 \), druga najnižja veja pa je pri \( \xi_1^{(2)}' = 3.05  \).
+Najnižja veja je pri \( J_1 ' \), katera ničla je pri \( \epsilon_1 ' ^{(1)} = 1.84 \), druga najnižja veja pa je pri \( \xi_1 ' ^{(2)} = 3.05  \).
 
 Širina pasu je
 
-\[ \Delta \omega = \frac{c_0}{a} \left( \xi_1^{(2)} ' - \xi_1^{(1)}' \right)
+\[ \Delta \omega = \frac{c_0}{a} \left( \xi_1' ^{(2)} - \xi_1 ' ^{(1)} \right)
 \]
 
 in disperzijska relacija
 
-\[ \omega (k) = c_0 \sqrt{k ^2 + \left( \frac{\xi_n^{(m)} ' }{a} \right) ^2}
+\[ \omega (k) = c_0 \sqrt{k ^2 + \left( \frac{\xi_n' ^{(m)}}{a} \right) ^2}
 \]
-* Valovni vodnik s presekom dela kroga.
+* Valovni vodnik s presekom dela kroga
 
 Imamo valovni vodnik četrtine valja z radijem \( r = a \) ter \( \phi \in \left[ 0, \frac{\pi}{2} \right] \).
 
@@ -169,7 +169,7 @@ Imamo tri robne pogoje:
   \]
 
   Torej imamo manj vej.
-* TEM način v koaksialnem vodniku.
+* TEM način v koaksialnem vodniku
 
 TEM način je hkrati način, kjer sta TM in TE hkrati. Velja \( E_z , H_z = 0 \). V praznem prostoru je samo to mogoče.
 

@@ -92,7 +92,6 @@ Enačba, ki dokazuje, da nimamo izvorov, je
  \frac{\partial \rho}{\partial t} + \nabla \cdot \vec{\jmath} = q
 \end{equation}
 
-
 Verjetnostno gostoto nadomestimo z definicijo in upoštevamo odvod produkta. \( \Psi^{\ast} \) je kompleksna konjugiranka valovne funkcije, ki jo dobimo s konjugiranjem Schrödingerjeve enačbe in izražavo odvoda po času.
 
 \begin{align}\label{ali:ss}

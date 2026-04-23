@@ -96,20 +96,28 @@ Uspešno smo ločili spremenljivke in to velja za vsak položaj in vsak čas. Po
 
 kjer je \( \psi \) lastna funkcija in \( E \) lastna energija.
 * Tretji set vprašanj
-
 #+begin_problem
 Izpelji kontinuitetno enačba za verjetnost. Ali je valovna funkcija vedno normirana? Kaj so lastnosti valovne funkcije?
 #+end_problem
 ** Kontinuitetna enačba
 
-Želimo dokazati, da je valovna funkcija normirana tudi ob drugih časih, če je že ob danem. Gostoto verjetnosti odvajamo po času z odvodom produkta
+Diferencialna oblika kontinuitetne enačbe ima obliko
+
+\[ \frac{\partial \rho}{\partial t} + \nabla \cdot \mathbf{j} = q,
+\]
+
+kjer je \( \rho \) gostota količine, \( \mathbf{j} \) je gostota toka, \( \sigma \) pa izraža nastajanje količine \( q \) na enoto volumna na enoto časa.
+
+Želimo dokazati, da lahko tudi valovno funkcijo zapišemo v obliki kontinuitetne enačbe.
+
+Gostoto verjetnosti odvajamo po času z odvodom produkta
 
 \[ \frac{\partial \rho \left( \vec{r}, t \right)}{\partial t} = \frac{\left| \Psi \left( \vec{r}, t \right) \right| ^2}{\partial t} = \frac{\partial \Psi \left( \vec{r}, t \right)}{\partial t} \Psi^{\ast} \left( \vec{r}, t \right) + \frac{\partial \Psi^{\ast} \left( \vec{r}, t \right)}{\partial t} \Psi \left( \vec{r}, t \right)
 \]
 
 Upoštevali smo definicije absolutne vrednosti kompleksne vrednosti \( \left| z \right| ^2 = z \cdot z^{\ast}, \ z \in \mathbb{C} \).
 
-Nadomestimo vrednosti \( \Psi \) z nastavkom Schrödingerjeve enačbe, da dobimo izraz
+Nadomestimo vrednosti \( \Psi \) z vrednostjo nestacionarne Schrödingerjeve enačbe \( \mathrm{i} \hbar \frac{\partial \psi}{\partial t} = - \frac{\mathrm{i} \hbar ^2}{2m} \nabla \cdot \psi + V \psi \), da dobimo izraz
 
 \begin{align*}
   \frac{\partial \rho \left( \vec{r}, t \right) }{\partial t} = & \left( - \frac{\hbar \mathrm{i}}{2m} \nabla ^2 \Psi^{\ast} \left( \vec{r}, t \right)+ \frac{\mathrm{i}}{\hbar} V^{\ast} \left( \vec{r}, t \right) \Psi^{\ast} \left( \vec{r}, t \right) \right) \Psi \left( \vec{r}, t \right) \\
@@ -137,5 +145,198 @@ kjer je
 \]
 
 To velja za realne potencialne energije \( V \left( \vec{r}, t \right) \).
+
+** Normiranost
+
+Za valovne funkcija zahtevamo, da so normirane
+
+\[ P(t) = \int\limits_V^{} \left| \psi \left( \mathbf{r}, t \right) \right| ^2 \, \mathrm{d} ^3 \mathbf{r} = 1
+\]
+
+ob nekem času \( t \).
+
+Pred nadaljevanjem zapišimo kontinuitetno enačbo v eni dimenziji
+
+\[ \frac{\partial \rho}{\partial t} (x, t) + \frac{\partial }{\partial x} \mathbf{j} (x, t) = q (x, t). 
+\]
+
+Odvajajmo po času in izrazimo integrand s kontinuitetno enačbo
+
+\[ \frac{\mathrm{d} P(t)}{\mathrm{d} t} = 0 = \int\limits_V^{} \frac{\partial \rho}{\partial t} \, \mathrm{d} x.
+\]
+
+Če naj bo valovna funkcija normirana, mora biti \( q = 0 \). Preostane nam
+
+\[ \frac{\mathrm{d} P(t)}{\mathrm{d} t} = - \int\limits_{- \infty}^{\infty} \frac{\partial \mathbf{j}}{\partial x} \, \mathrm{d} x = \mathbf{j}(-\infty) - j(\infty) = 0
+\]
+
+Slednje drži, saj zahtevamo, da so naše valovne funkcije del Schwarzovega prostora. 
+
+#+name: Schwarzev razred funkcij
+#+begin_definition
+Schwarzev razred funkcij je množica vseh funkcija \( f: \mathbb{R} \to \mathbb{C} \), za katere veljata naslednji dve lastnosti:
+1. \( f \) je neskončnokrat zvezno odvedljiva (gladka)
+
+   \[ f \in \mathcal{C}^{\infty} (\mathbb{R}) \implies \exists f^{(n)} \, \forall n \in \mathbb{N}
+   \]
+
+2. \( x \mapsto f^{(n)} (x) \cdot x^m \) so omejene funkcije za vse \( m, n \ge 0 \).
+#+end_definition
+
+Torej, odvod verjetnosti po času je ničeln, kar pomeni, da je verjetnost konstanta in tudi normirana. Zaradi zgornjega dokaza pa je valovna funkcija normirana tudi v vseh ostalih časih, če je normirana ob nekem času \( t \).
+
 ** Lastnosti valovne funkcije
+
+Opazujemo lastnosti rešitev \( \psi(x) \) stacionarne Schrödingerjeve enačbe v eni dimenziji
+
+\[ - \frac{\hbar ^2}{2m} \frac{\mathrm{d} ^2 }{\mathrm{d} x ^2} \psi(x) + V (x) \psi(x) = E \psi(x). 
+\]
+
+*** Zveznost prvega odvoda
+
+Z integriranjem stacionarne Schrödingerjeve enačbe na poljubnem intervalu \( x \in [a, b] \), dobimo
+
+\[ - \frac{\hbar ^2}{2m} \int\limits_a^b \psi'' (x) \, \mathrm{d} x + \int\limits_a^b V(x) \psi(x) \, \mathrm{d} x = E \int\limits_a^b \psi(x) \, \mathrm{d} x.
+\]
+
+Izvrednotimo integral z dvojnim odvodom, da dobimo pogoj
+
+\[ \psi'(b) - \psi'(a) = \frac{2m}{\hbar ^2} \int\limits_a^b V(x) \psi(x) \, \mathrm{d} x - \frac{2m E}{\hbar ^2} \int\limits_a^b \psi(x) \, \mathrm{d} x 
+\]
+
+Zanima nas limitni primer \( a \to b \). Rešitev \( \psi(x) \) je zvezna, saj mora biti dvakrat odvedljiva, da reši SSE. Iz tega sledi, da je \( \int\limits_a^b \psi(x) \, \mathrm{d} x \to 0 \), ko \( a \to b \).
+
+Če je potencial \( V(x) \) zvezen, potem je tudi \( V(x) \psi(x) \) zvezen, in integral \( \int\limits_a^b V(x) \psi(x) \, \mathrm{d} x \to 0 \), ko \( a \to b \). 
+
+Iz tega sledi
+
+\[ \lim_{a \to b} \left[ \psi'(b) - \psi'(a) \right] = 0.
+\]
+
+Z danimi pogoji je prvi odvod valovne funkcije \( \psi(x) \) tudi zvezen.
+
+**** Nezveznost
+
+V primeru nezveznega potenciala \( V(x) \) pa je tudi prvi odvod valovne funkcije \( \psi(x) \) nezvezen. 
+
+#+name: Potencial delta funkcija
+#+begin_my_example
+Naj bo potencial oblike \( V(x) = C \delta(x) \), kjer je \( C \) konstanta. V tem primeru imamo nezveznost prvega odvoda oblike
+
+\[ \lim_{a \to b} \left[ \psi'(b) - \psi'(a) \right] = \frac{2m C}{\hbar ^2} \psi(a) 
+\]
+#+end_my_example
+*** Nezveznost drugega odvoda
+
+Predpostavimo, da je potencial \( V(x) \) nezvezen in ima potencialni skok. S preobrazbo SSE lahko pridemo do nekaj kvalitativnih opazkov naše rešitve
+
+\[ \frac{1}{\psi(x)} \frac{\mathrm{d} ^2 }{\mathrm{d} x ^2}\psi(x) = \frac{2m}{\hbar ^2} \left[ V(x) - E \right].
+\]
+
+Za \( E > V(x) \) bo realna valovna funkcija \( \psi(x) \) konkavna, ter ob \( E < V(x) \) konveksna. Prevoj iz konkavne v konveksno funkcijo in obratno se bo zgodil na obračalni točki \( x_c \), kjer velja \( E = V(x_c) \).
+
+Na obračalnih točkah zahtevamo gladkost valovne funkcije, saj drugače valovna funkcija ni zvezna.
+*** Degeneriranost
+
+Če ima lastna energija \( E \) več različnih pripadajočih lastnih funkcij \( \psi(x) \), pravimo, da so ta stanja degenerirana. 
+
+#+begin_claim
+P1: \( \left\{ E_n \right\} \) je spekter lastnih energij 
+
+P2: \( \psi_n \) so pripadajoče lastne funkcije \( n \)-te lastne energije
+
+P3: Vezan sistem ima lastno energijo \( E_n \) manjšo od potenciala \( V(x) \) za \( x \to \infty \). 
+
+Vezana stanja v enodimenzionalnem sistemu so nedegenerirana.
+#+end_claim
+
+#+name: Determinanta Wronskega
+#+begin_definition
+Če so \( \mathbf{y}_1, \mathbf{y}_2, \ldots, \mathbf{y}_n \), \( n \)-razsežne vektorske funkcije na nekeme odprtem intervalu \( I \subset \mathbb{R} \), torej \( \mathbf{y}_j : I \to \mathbb{R}^n, \, \forall j = 1, 2, \ldots, n \), potem se \( W = \det Y \), kjer je \( Y = \left[ \mathbf{y}_1 \, \ldots \, \mathbf{y}_n \right]: I \to R^{n \times n} \), imenuje determinanta Wronskega. 
+#+end_definition
+
+#+begin_proof
+1. A1: Energija \( E \)
+
+   A2: Lastno stanje \( \psi_1 \) pripada energiji E.
+
+   A3: Lastno stanje \( \psi_2 \) je različno od \( \psi_1 \) in pripada energiji E.
+
+   Lastni stanji zadoščata enačbama
+
+   \begin{align*}
+     -\frac{\hbar ^2}{2m} \frac{\mathrm{d} ^2 }{\mathrm{d} x ^2}\psi_1 (x) + \left( V(x) - E \right) \psi_1 &= 0 \\
+        -\frac{\hbar ^2}{2m} \frac{\mathrm{d} ^2}{\mathrm{d} t ^2}\psi_2 (x) + \left( V(x) - E \right) \psi_2 &= 0 \\
+   \end{align*}
+
+   Dokaz: Definicija SSE.
+
+2. Enačbi iz (1) lahko zapišemo kot
+
+   \[ \psi_1 \frac{\mathrm{d} ^2 \psi_{2}}{\mathrm{d} x ^2} - \psi_2 \frac{\mathrm{d} ^2 \psi_{1}}{\mathrm{d} x ^2} = 0 
+   \] 
+
+   Dokaz: Prvo enačbo iz (1) pomnožimo z \( \psi_2 \), drugo enačbo pa z \( \psi_1 \) ter ju odštejemo med seboj.
+
+3. A4: determinanta Wronskega je
+
+   \[ W = \det \begin{vmatrix}
+               \psi_{1} & \psi_{2} \\
+               \psi_{1}' & \psi_2'
+                \end{vmatrix} 
+   \]
+
+   Velja
+
+   \[ \frac{\mathrm{d} }{\mathrm{d} x} \left( \psi_1 \frac{\mathrm{d} }{\mathrm{d} x} \psi_2 - \psi_2 \frac{\mathrm{d} }{\mathrm{d} x} \psi_1 \right) = \frac{\mathrm{d} W}{\mathrm{d} x} = 0 
+   \]
+
+   Dokaz: Mešani odvodi se odštejejo in dobimo (2).
+
+4. \( W \) je konstanta.
+
+   Dokaz: (3) nam pove, da je odvod \( W \) ničeln.
+
+5. \( W = 0 \) 
+
+   Dokaz:
+
+   1. Velja
+
+      \[ \psi_1 \frac{\mathrm{d} }{\mathrm{d} x} \psi_2 - \psi_2 \frac{\mathrm{d} }{\mathrm{d} x} \psi_1 = W
+      \]
+
+      Dokaz: Definicija determinante Wronskega.
+
+   2. \( \psi_{1, 2} \to 0 \) za \( \left| x \right| \to \infty \).
+
+      Dokaz: P3.
+
+   3. Odvoda sta omejena.
+
+      Dokaz: normiranost funkcije (?).
+
+   4. QED
+
+      Dokaz: iz (2) in (3) sledi, da je (1) enako 0.
+
+6. A5: \( \psi_1 \psi_2 \ne 0 \).
+
+   \[ \psi_1 \frac{\mathrm{d} \psi_{2}}{\mathrm{d} x} = \psi_2 \frac{\mathrm{d} \psi_{1}}{\mathrm{d} x} \implies \frac{\mathrm{d} }{\mathrm{d} x} \left( \ln \psi_1 - \ln \psi_2 \right) = 0 
+   \] 
+
+   Dokaz: deljenje z \( \psi_1 \psi_2 \), ter integriranje po \( \psi_1 \) in \( \psi_2 \).
+
+7. \[ \ln \frac{\psi_1}{\psi_2} = C => \psi_1 (x) = D \psi_2 (x),
+   \]
+
+   kjer sta \( C,D \) konstanti.
+
+   Dokaz: Integriranje (6) po \( x \) poda konstanto \( C \), preobrazimo logaritem. 
+
+8. QED
+
+   Dokaz: (7) nam pove, da sta lastni funkciji \( \psi_1 \) in \( \psi_2 \) linearno odvisni, kar pa je v nasprotju s predpostavki, da sta linearno neodvisni.
+#+end_proof
+
 

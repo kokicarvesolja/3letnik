@@ -46,7 +46,7 @@ Zaradi ortogonalnosti spina se naša matrika poenostavi v bločno matriko
     \end{bmatrix},
 \]
 
-kjer sta neničelna bloka \( 4 \times 4 \) matrika. Če diagonaliziramo en blok in pridobimo njene lastne vrednosti, bomo pridobili tudi lastne vrednosti druge matrike (?). Zapišimo sedaj zgornji blok matrik
+kjer sta neničelna bloka \( 4 \times 4 \) matrika. Če diagonaliziramo en blok in pridobimo njene lastne vrednosti, bomo pridobili tudi lastne vrednosti druge matrike (?). Zapišimo sedaj zgornji blok matrike
 
 \[ D = \begin{bmatrix}
        \left\langle 200 \middle| H' \middle| 200 \right\rangle & \left\langle 200 \middle| H' \middle| 21 -1 \right\rangle & \left\langle 200 \middle| H' \middle| 210 \right\rangle & \left\langle 200 \middle| H' \middle| 211 \right\rangle \\
@@ -64,7 +64,7 @@ V koordinatnem zapisu je naključni matrični element
 \end{equation}
 
 
-Računanje 16 takih integralov je precej nadležna naloga, še posebej zaradi tega, ker nam leta zmanjkuje. Namesto tega se bomo poslužili hermitskosti operatorja
+Računanje 16 takih integralov je precej nadležna naloga, še posebej zaradi tega, ker nam zmanjkuje leta. Namesto tega se bomo poslužili hermitskosti operatorja
 
 \[ \left\langle \psi \middle| H \middle| \Phi \right\rangle = \left\langle \Phi \middle| H \middle| \Psi \right\rangle ^{\ast} \implies H = H^{\ast}
 \]
@@ -73,7 +73,7 @@ To pomeni, da imamo v resnici simetrično bločno matriko in namesto 16 integral
 
 Uvedemo operator parnosti \( P: \vec{r} \to - \vec{r} \), ki komutira s \( H_0 \).
 
-Pri izbiri operatorjev, ki komutirajo s Hamiltonianom \( H_0 \), morajo ti tudi komutirati med seboj. Kot primer težave navedemo operatorja \( L_x \) in \( L_z \), ki komutirata s \( H_0 \), vendar ne komutirata med seboj. To pomeni, da rešitve, niso lastna stanja obeh operatorjev (glej Rashba coupling).
+Pri izbiri operatorjev, ki komutirajo s Hamiltonianom \( H_0 \), morajo ti tudi komutirati med seboj. Kot primer težave navedemo operatorja \( L_x \) in \( L_z \), ki komutirata s \( H_0 \), vendar ne komutirata med seboj. To pomeni, da rešitve niso lastna stanja obeh operatorjev (glej poglavje Rashbove sklopitve).
 
 Operatorji, ki komutirajo s \( H_0 \) so operator vrtilne količine \( L ^2 \), \( L_z \), spina \( S ^2 \), \( S_z \) in parnost \( P \). Spinski operatorji nas zaradi postavitve problema (aka matrike) ne zanimajo.
 
@@ -166,7 +166,7 @@ Vrnimo se nazaj k matriki \( D \). Oskrunjena oblika je
 
 Izračunajmo sedaj zgornji matrični element
 
-\[   \left\langle 200 \middle| H' \middle| 210 \right\rangle &= \int\limits_{}^{} R_{20} ^{\ast} Y_{00}^{\ast} \left( - \epsilon r \cos \theta \right) R_{21} Y_{10} \, \mathrm{d} \vec{r}
+\[   \left\langle 200 \middle| H' \middle| 210 \right\rangle = \int\limits_{}^{} R_{20} ^{\ast} Y_{00}^{\ast} \left( - \epsilon r \cos \theta \right) R_{21} Y_{10} \, \mathrm{d} \vec{r}
 \]
 
 Iz tabel (*ki jih prinesi s seboj na kolokvij*) odčitamo radialne in sferične funkcije. V našem primeru je to
@@ -179,7 +179,8 @@ Iz tabel (*ki jih prinesi s seboj na kolokvij*) odčitamo radialne in sferične 
 Posamezne člene \( R_{20}^{\ast}, Y_{00}^{\ast}, R_{21} \) in \( Y_{10} \) sem med seboj ločil z \( \cdot \). \( a \) je Bohrov radij. Nadalje razpišemo
 
 \begin{align*}
-    \int\limits_{}^{} R_{20} ^{\ast} Y_{00}^{\ast} \left( - \epsilon r \cos \theta \right) R_{21} Y_{10} \, \mathrm{d} \vec{r} = & -2 \left( \frac{1}{2a} \right)^{\frac{3}{2}} \frac{1}{\sqrt{4 \pi}} e \epsilon \frac{1}{\sqrt{3}} \left( \frac{1}{2a} \right)^{\frac{3}{2}} \frac{1}{a} \sqrt{\frac{3}{4 \pi}} \int\limits_0^{\infty} \left( 1 - \frac{r}{2a} \right) r e^{- \frac{2r}{2a}} r \cdot r ^2 \, \mathrm{d} r  \int\limits_{-1}^1 \cos ^2 \theta \, \mathrm{d} \left( \cos \theta \right) \int\limits_0^{2 \pi} \, \mathrm{d} \phi \\
+    \int\limits_{}^{} R_{20} ^{\ast} Y_{00}^{\ast} \left( - \epsilon r \cos \theta \right) R_{21} Y_{10} \, \mathrm{d} \vec{r} = & -2 \left( \frac{1}{2a} \right)^{\frac{3}{2}} \frac{1}{\sqrt{4 \pi}} e \epsilon \frac{1}{\sqrt{3}} \left( \frac{1}{2a} \right)^{\frac{3}{2}} \frac{1}{a} \sqrt{\frac{3}{4 \pi}} \\
+&\cdot \int\limits_0^{\infty} \left( 1 - \frac{r}{2a} \right) r e^{- \frac{2r}{2a}} r \cdot r ^2 \, \mathrm{d} r  \int\limits_{-1}^1 \cos ^2 \theta \, \mathrm{d} \left( \cos \theta \right) \int\limits_0^{2 \pi} \, \mathrm{d} \phi \\
 &= - \frac{2}{4 \pi } \cdot \left( \frac{1}{4a ^2} \right)^{\frac{3}{2}} e\epsilon \frac{1}{a} \int\limits_0^{\infty} \left( r ^4 - \frac{r^5}{2a} \right) e^{- \frac{r}{a}} \, \mathrm{d} r \cdot \left. \frac{1}{3} \left[ \cos ^3 \theta \right] \right|_{-1}^1 \cdot 2 \pi\\
 \end{align*}
 

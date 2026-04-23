@@ -4,3 +4,7 @@
 *.stfolder/
 *.stversions/
 *.stignore
+*05izpiti/*
+*main*
+!main.tex
+!main.org

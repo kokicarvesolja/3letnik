@@ -1,0 +1,70 @@
+\documentclass[12pt ]{article} 
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage[slovene]{babel}
+\usepackage[
+sorting=nyt,
+style=numeric]{biblatex}
+\usepackage{import}
+%\usepackage{tocbind}
+%\usepackage[T1]{fontenc} 
+\usepackage{float}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks,
+  linkcolor={black},
+  citecolor={black},
+  urlcolor={blue!80!black}
+}
+\geometry{a4paper,
+ total={160mm,240mm}}
+  
+\newfloat{slika}{htbp}{loc}
+\floatname{slika}{Slika}
+
+\newfloat{tabela}{htbp}{loc}
+\floatname{tabela}{Tabela}
+ \begin{document}
+ $~$ 
+ 
+ \vspace{2cm}
+ 
+ \centerline{\bf \huge   Naslov}
+ 
+ \vspace{1cm}
+ 
+  \centerline{\huge  Avtor: Kristofer Č. Povšič}
+  
+   \vspace{1cm}
+  
+  \centerline{\large Mentor: prof. dr. Simon Širca}
+  
+  \vspace{1cm}
+  
+  \centerline{\large Seminar, 3. letnik}
+  
+  \vspace{1cm}
+  
+  \centerline{\large Oddelek za fiziko, FMF, UL, 2021/2022}
+  
+  \vspace{6cm}
+  
+  \begin{minipage}[c]{0.9\hsize}
+  {\bf Povzetek}
+  
+    \end{minipage}
+
+ 
+ \newpage
+  
+ \input{01uvod.tex}
+ \input{02zgodovina.tex}
+ \input{03delovanje.tex}
+ \input{04drawbacks.tex}
+ \input{05uporaba.tex}
+ \input{06zakljucek.tex}
+ 
+\end{document} 

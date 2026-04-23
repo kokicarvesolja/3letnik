@@ -1,0 +1,49 @@
+#+title: Vaje iz Fizikalnih merjenj, 14. teden v letu
+#+subtitle: 2026/03/31
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Kalmanov filter za nelinearno dinamiko
+
+Kalmanovemu filtru za nelinearno dinamiko pravimo tudi razširjeni Kalmanov filter (ang. /Extended Kalman Filter/ ali /EKF/).
+
+Bralca spomnimo, kako deluje navaden Kalmanov filter. Opisuje dinamiko oblike
+
+\[ \mathbf{x}_{n + 1} = \Phi_n \mathbf{x}_n + \mathbf{c}_n + \Gamma_n \mathbf{w}_n.
+\]
+
+Napoved meritve se izračuna po enačbi
+
+\[ \bar{\mathbf{x}}_{n + 1} = \Phi_n \hat{\mathbf{x}}_n + \mathbf{c}_n
+\]
+
+in napoved bo imela kovariančno matriko \( M \), ki se jo izračuna po enačbi
+
+\[ M_{n + 1} = \Phi_n P_n \Phi_n^T + \Gamma_n Q_n \Gamma_n^T,
+\]
+
+kjer so \( P_n \) kovariančna matrika izostrene ocene in \( Q_n \) dinamičen šum.
+
+Napovedano ocen lahko tudi ostrimo z meritvijo \( \mathbf{z}_{n + 1} = H_{n + 1} \mathbf{x}_{n + 1} + \mathbf{r}_{n + 1} \). \( H \) je okenska matrika, \( \mathbf{r} \) pa šum. Izostrena ocena se izračuna po enačbi
+
+\[ \hat{\mathbf{x}}_{n + 1} = \bar{\mathbf{x}}_{n + 1} + K_{n + 1} \left( \mathbf{z}_{n + 1} - H_{n + 1} \bar{\mathbf{x}}_{n + 1} \right),
+\]
+
+kjer je \( K_{n + 1} = P_{n + 1} H_{n + 1}^T P_{n + 1}^{-1} \) ojačevalni faktor.
+
+V nelinearnem primeru pa je napoved ocene
+
+\[ \mathbf{x}_{n + 1} = f \left( \mathbf{x}_n \right) + \Gamma_n \mathbf{w}_n.
+\]
+
+Opravljena meritev pa je
+
+\[ \mathbf{z}_{n + 1} = h \left( \mathbf{x}_{n + 1} \right) + \mathbf{r}_{n + 1},
+\]
+
+kjer sta funkciji \( f, h \) nelinearni funkciji.
