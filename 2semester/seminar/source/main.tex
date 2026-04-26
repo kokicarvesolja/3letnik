@@ -17,7 +17,7 @@ style=numeric]{biblatex}
   colorlinks,
   linkcolor={black},
   citecolor={black},
-  urlcolor={blue!80!black}
+  %urlcolor={blue!80!black}
 }
 \geometry{a4paper,
  total={160mm,240mm}}
@@ -27,6 +27,8 @@ style=numeric]{biblatex}
 
 \newfloat{tabela}{htbp}{loc}
 \floatname{tabela}{Tabela}
+
+\addbibresource{refs.bib}
  \begin{document}
  $~$ 
  
@@ -66,5 +68,6 @@ style=numeric]{biblatex}
  \input{04drawbacks.tex}
  \input{05uporaba.tex}
  \input{06zakljucek.tex}
- 
+ \printbibliography
+
 \end{document} 

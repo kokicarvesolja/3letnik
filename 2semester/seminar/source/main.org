@@ -3,4 +3,5 @@
 * Zgodovina
 ** TODO Opis odkritja Gargamella
 * Uporaba mehurčne komore
-** TODO Definicija hitrih nevtronov 
+** TODO Definicija hitrih nevtronov
+** TODO uporaba proste entalpije za razlago pregrete kapljevine
