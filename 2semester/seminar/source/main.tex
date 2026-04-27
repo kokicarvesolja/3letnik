@@ -32,11 +32,12 @@ style=numeric]{biblatex}
 
 \addbibresource{refs.bib}
  \begin{document}
+ \pagenumbering{gobble}
  $~$ 
  
  \vspace{2cm}
  
- \centerline{\bf \huge   Naslov}
+ \centerline{\bf \huge   Mehurčne komore}
  
  \vspace{1cm}
  
@@ -52,24 +53,30 @@ style=numeric]{biblatex}
   
   \vspace{1cm}
   
-  \centerline{\large Oddelek za fiziko, FMF, UL, 2021/2022}
+  \centerline{\large Oddelek za fiziko, FMF, UL, 2025/2026}
   
   \vspace{6cm}
   
   \begin{minipage}[c]{0.9\hsize}
-  {\bf Povzetek}
+  {\bf Povzetek} V tem seminarju\footnote{Seminar je bil napisan brez neposredne uporabe umetne inteligence.}
   
     \end{minipage}
 
  
  \newpage
+
+ \pagenumbering{arabic}
+ \tableofcontents
   
+ \newpage
+
  \input{01uvod.tex}
  \input{02zgodovina.tex}
  \input{03delovanje.tex}
  \input{04drawbacks.tex}
  \input{05uporaba.tex}
  \input{06zakljucek.tex}
- \printbibliography
+ \printbibliography[heading=bibintoc,
+ title=Bibliografija]
 
 \end{document} 

@@ -8,7 +8,7 @@ V seminarju bom predstavil dve od možnih teorij, kako nastanejo mehurčki v meh
 
 Komora je napolnjena s pregreto kapljevino kot so helij, devterij, vodik, propan, freon ali ksenon\footnote{Glaser je v komunikaciji s Seitzom predstavil dokaze, da zelo čist(?) ksenon ni občutljiv na sevanje, vendar postane ob dodajanju malih količin etilena\cite{seitz_theory_1958}.}. Spomnimo, da je pregreta kapljevina kapljevina, ki smo jo počasi segreli nad njeno vrelišče pri konstantnem tlaku, brez da bi kapljevina zavrela. To lahko storimo, če je stena posode gladka, kapljevina miruje in v njej ni drugih delcev. Metastabilno stanje pregrete kapljevine se popravi v stabilno v trenutku, ko nastane v njej mehurček, kapljevina pa eksplozivno vzkipi. Temperatura kapljevine pri tem pade na vrelišče\cite{strnad_fizika_2016}.
 
-Ko gre skozi kapljevino delec z visoko energijo, nastanejo sekundarni elektroni z različnimi energijami velikost nekaj 100 \( \mathrm{eV} \), ki jim pravimo \( \delta \) žarki\cite{glaser_bubble_1958, konstantinov_how_1998, seitz_theory_1958}. Elektroni tako oddajo svojo energijo, ki povzročijo lokalizirana področja z višjo temperaturo oz. temperaturni skok, v kateri pregreta kapljevina vzkipi v mehurček. Če ta doseže t.i. kritično velikost, se ne bo sesedel sam vase, ampak rasel s tem, ko tekočina izhlapeva v njegovi notranjosti\cite{seitz_theory_1958}. 
+Ko gre skozi kapljevino delec z visoko energijo, nastanejo sekundarni elektroni z različnimi energijami velikost nekaj 100 \( \mathrm{eV} \), ki jim pravimo \( \delta \) žarki\cite{glaser_bubble_1958, konstantinov_how_1998, seitz_theory_1958}. Elektroni tako oddajo svojo energijo, ki povzročijo lokalizirana področja z višjo temperaturo oz. toplotni skok, v kateri pregreta kapljevina vzkipi v mehurček. Če ta doseže t.i. kritično velikost, se ne bo sesedel sam vase, ampak rasel s tem, ko tekočina izhlapeva v njegovi notranjosti\cite{seitz_theory_1958}. 
 
 \subsubsection*{Energija stacionarnega mehurčka}
 
@@ -34,8 +34,6 @@ iz česar lahko izrazimo kritičen radij \( R_C \) za stabilen mehurček
 \end{equation}
 
 V večini primerov mehurčnih komor velja \( p_g \gg p_f \). Vsi mehurčki z radijem \( r \) večjim od \( R_C \) pri tlaku \( p_g \) bodo rasli, saj okoliška kapljevina izhlapeva vanje\cite{seitz_theory_1958}.
-
-V tem seminarju nas bodo zanimali pogoji, ki pripeljejo do mehurčka z radijem enakim ali večjim od kritičnega, saj je fizika makroskopskih mehurčkov že dobro poznana\cite{plesset_growth_1954}.
 
 Minimalna energija potrebna za nastanek stabilnega mehurčka je sestavljena iz površinske energije ter toplote, ki je posledica izhlapevanja energije. Predpostavimo, da nastanek mehurčka adiabatna sprememba. Energija bo potem
 
@@ -239,5 +237,19 @@ in nima drastično različnih rezultatov od enačbe \ref{eq:23}.
 
 Viskoznost pri širjenju mehurčka v propanu potemtakem igra pomembno vlogo, medtem ko jo v vodiku lahko zanemarimo.
 
+\subsubsection*{Širjenje mehurčka preko kritičnega radija}
+
+Ko mehurček doseže kritičen radij v pregreti tekočini, viskoznost in njegova rast postaneta zanemarljivi. Glavni razlog za rast mehurčka je toplotni tok, ki teče iz okoliške tekočine do njegove površine, saj s tem omogoča dodatno izhlapevanje tekočine in njegovo širjenje.
+
+Kakor smo povedali v uvodu tega modela, imajo hlapi v mehurčku temperaturo vrelišča, medtem ko je daleč stran od mehurčka tekočina še zmeraj pregreta s temperaturo \( T_b \). Gradient temperature \( T_{b} - T \) ima debelino \( 2 \left( D t \right)^{1/2} \), kjer je \( D \) difuzijski koeficient in \( t \) čas od nastanka mehurčka kritične velikosti.
+
+Asimptotski približek rasti mehurčka je
+
+\begin{equation}
+\label{eq:25}
+R = 2 \left( \frac{3}{\pi} \right)^{1/2} \lambda \left( T - T_b \right) \frac{V_m t^{1/2}}{H_s D^{1/2}},
+\end{equation}
+
+kjer je \( \lambda \) toplotna prevodnost, \( V_m \) molski volumen pare ter \( H_s \) sublimacijska toplota\cite{plesset_growth_1954}. 
 \subsection{Mehanski model}\label{sec:mehmod}
 
