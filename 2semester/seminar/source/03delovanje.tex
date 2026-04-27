@@ -4,7 +4,7 @@ Izumitelj mehurčne komore, D. A. Glaser, je predpostavil, da je za nastanek meh
 
 V seminarju bom predstavil dve od možnih teorij, kako nastanejo mehurčki v mehurčni komori. Zaradi narave uporabe mehurčne komore, tj. visokoenergijske raziskave, fokus nikoli ni bil na njenem delovanju, ampak na možnih novih spoznanjih kot posledica raziskav. Prva teorija predstavi toplotni model, ki ga je oblikoval Seitz, in predpostavlja nastanek ``toplotnih skokov'' (ang. \textit{thermal spikes})\cite{seitz_theory_1958}. Druga teorija je novejša, iz leta 1998, in nastanek mehurčkov v vodikovih in helijevih komorah pripisuje mehanskemu procesu\cite{konstantinov_how_1998}. Seitzov model je trenutno sprejet kot najboljša razlaga nukleacije mehurčkov kot posledice sevanja v pregretih tekočinah\cite{bruno_critical_2019}.
 
-\subsection{toplotni model}
+\subsection{Toplotni model}
 
 Komora je napolnjena s pregreto kapljevino kot so helij, devterij, vodik, propan, freon ali ksenon\footnote{Glaser je v komunikaciji s Seitzom predstavil dokaze, da zelo čist(?) ksenon ni občutljiv na sevanje, vendar postane ob dodajanju malih količin etilena\cite{seitz_theory_1958}.}. Spomnimo, da je pregreta kapljevina kapljevina, ki smo jo počasi segreli nad njeno vrelišče pri konstantnem tlaku, brez da bi kapljevina zavrela. To lahko storimo, če je stena posode gladka, kapljevina miruje in v njej ni drugih delcev. Metastabilno stanje pregrete kapljevine se popravi v stabilno v trenutku, ko nastane v njej mehurček, kapljevina pa eksplozivno vzkipi. Temperatura kapljevine pri tem pade na vrelišče\cite{strnad_fizika_2016}.
 
@@ -180,6 +180,64 @@ kjer je \( c_0 = p_0 / p \). Enačba \ref{eq:12} nam pove delo, ki ga opravi meh
 
 kjer je \( z = R/ R_0 - 1 \)\cite{seitz_theory_1958}.
 
+V primeru propana pa viskoznosti ne smemo zanemariti, saj je toliko večja od vodikove, da upor, ki nasprotuje širjenju mehurčka ni več zanemarljiv. Izpeljava, ki sledi, je najboljša ocena glede \cite{seitz_theory_1958} in ni točna. 
+
+Nastavek \ref{eq:15} bo imel radialno stisljivost oblike
+
+\begin{equation}
+\label{eq:18}
+\dot{\epsilon} = 2 \frac{\dot{R} R ^2}{r ^3}.
+\end{equation}
+
+Za medij z viskoznostjo \( \eta \), bo tlak stislijvosti
+
+\begin{equation}
+\label{eq:19}
+P_{\tau} = 2 \eta \dot{\epsilon} = - 4 \eta \frac{R ^2 \dot{R}}{r ^3}.
+\end{equation}
+
+Tlak \( P_{\tau} \) bo manjšal pospešek, s katerimi se bo mehurček širil. Pri steni mehurčka bo vrednost enačbe \ref{eq:19}
+
+\begin{equation}
+\label{eq:20}
+P_R = - 4 \eta \frac{\dot{R}}{R}.
+\end{equation}
+
+V primeru, ko je \( P_R \) primerljiva s \( P \), lahko enačbo \ref{eq:11} poenostavimo tako, da zanemarimo \( \ddot{R} \). Rešitev je tako
+
+\begin{equation}
+\label{eq:21}
+\dot{R} ^2 = \frac{2}{3} c_0 \left( \frac{R_0}{R} \right)^{3\gamma}.
+\end{equation}
+
+Iz kvadrata enačbe \ref{eq:20} potem dobimo
+
+\begin{equation}
+\label{eq:22}
+P_R ^2 = P ^2 = 16 \eta ^2 \frac{\dot{R} ^2}{R ^2} = 32 \eta ^2 \frac{p_0 R_0 ^{3\gamma}}{3 \rho R ^{3 \gamma - 2}}.
+\end{equation}
+
+Enačbo \ref{eq:22} sedaj razširimo z dvema ulomkoma: \( V_0 / \left( (4 \pi R_0 ^3 / 3 \right) \) in \( R_C^{3(\gamma - 1)}/ R_C^{3(\gamma - 1)} \) in dobi obliko
+
+\begin{equation}
+\label{eq:23}
+\left( \frac{R}{R_C} \right)^{3\gamma - 2} = \left( \frac{9}{128 \pi} \right) \left( \frac{\rho}{\eta ^2} \right) \left( \frac{p_0 V_0}{R_C} \right) \left( \frac{R_0}{R_C} \right)^{3(\gamma - 1)}.
+\end{equation}
+
+Za vodik z viskoznostjo \( \eta = 10^{-5} \mathrm{Pas} \) in \( 3 \gamma - 2 = 2.2 \) je razmerje \( R / R_C = 0.8 \), kar je precej blizu ena. Za propan z viskoznostjo \( \eta = \approx 10^{-3} \mathrm{Pa s} \) pa je razmerje \( R/ R_C = 3.5 \cdot 10^{-3} \) \cite{seitz_theory_1958}.
+
+Iz razmerij lahko vidimo, da tlak stisljivosti kot posledica viskoznosti, na vodik skoraj nima vpliva, saj je enakost tlakov \( P = P_C \) pri \( 0.8 R_C \). Pri propanu pa viskoznost ima vpliv, saj je \( P = P_C \) pri zelo majhen radiju \( R \approx 10^{-3} R_C \). 
+
+Nepoenostavljena rešitev \ref{eq:11} ima za propan obliko
+
+\begin{equation}
+\label{eq:24}
+\left( \frac{R}{R_C} \right)^{6\gamma - 5} = \left( \frac{3}{128 \pi} \right) \left( \ln \frac{R}{R_0}\right)^{-1} \left( \frac{\rho}{\eta ^2} \right) \left( \frac{p_0V_0}{R_C} \right) \left( \frac{R_{0}}{R_C} \right)^{6(\gamma - 1)},
+\end{equation}
+
+in nima drastično različnih rezultatov od enačbe \ref{eq:23}.
+
+Viskoznost pri širjenju mehurčka v propanu potemtakem igra pomembno vlogo, medtem ko jo v vodiko lahko zanemarimo.
 
 \subsection{Mehanski model}\label{sec:mehmod}
 
