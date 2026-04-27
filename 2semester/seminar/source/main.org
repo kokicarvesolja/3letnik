@@ -5,6 +5,7 @@
 * Uporaba mehurčne komore
 ** TODO Definicija hitrih nevtronov
 ** TODO uporaba proste entalpije za razlago pregrete kapljevine - On critical dark energy, str. 4/8
-** TODO razširi razlago o makroskopskih mehurčkih
+** DONE razširi razlago o makroskopskih mehurčkih
+CLOSED: [2026-04-27 pon 22:41]
 * Splošno
 ** TODO check resources - [[https://inspirehep.net/literature/2752452]]
