@@ -44,7 +44,7 @@ Minimalna energija potrebna za nastanek stabilnega mehurčka je sestavljena iz p
 E_m = 4 \pi \sigma R_C ^2 + \frac{4 \pi}{3} R_C ^3 n H_s,
 \end{equation}
 
-kjer je \( n \) molska gostota plina pri tlaku \( p_g \) in \( H_s \) molska toplota sublimacija(?)\cite{seitz_theory_1958}. \cite{bruno_critical_2019} v tabeli na strani 3 predstavi, kako so skozi desetletja različni avtorji dodajali in odstranjevali še druge člene, vendar so sta v vseh primerih oba člena iz enačbe \ref{eq:4}. V naslednjem delu \ref{sec:mehmod} bomo tudi upoštevali enega od dodatnih členov - kinetičnega. 
+kjer je \( n \) molska gostota plina pri tlaku \( p_g \) in \( H_s \) molska toplota sublimacije(?)\cite{seitz_theory_1958}. \cite{bruno_critical_2019} v tabeli na strani 3 predstavi, kako so skozi desetletja različni avtorji dodajali in odstranjevali še druge člene, vendar so sta v vseh primerih oba člena iz enačbe \ref{eq:4}. V naslednjem delu \ref{sec:mehmod} bomo tudi upoštevali enega od dodatnih členov - kinetičnega. 
 
 Ob upoštevanju enačbe \ref{eq:3} in \( p_g \gg p_f \) lahko enačbo zapišemo v obliki
 
@@ -60,9 +60,33 @@ in nadalje še z kompresijskim faktorjem \( Z_g = p_g V / R T \), kjer je \( V \
 E_m = 16 \pi \frac{\sigma ^3}{p_g ^2} \left( 1 +  H_s \frac{2}{3 Z_g R T} \right).
 \end{equation}
 
-Opazimo lahko v enačbi \ref{eq:6}, da je energija zelo odvisna od tlaka plina \( p_g \) in površinske napetosti \( \sigma \). Energija je manjša za večji tlak plina in večja za večjo površinsko napetost.
+V enačbi \ref{eq:6} opazimo, da je energija zelo odvisna od tlaka plina \( p_g \) in površinske napetosti \( \sigma \). Energija je manjša za večji tlak plina in večja za večjo površinsko napetost.
 
-V primeru naše pregrete kapljevine energija pada, ko temperatura raste. To je direktna posledica Boylovega in Gay-Lussacovega zakona, kjer se tlak veča z višanjem temperature, medtem ko se površinska napetost manjša\cite{strnad_fizika_2016}.
+V primeru naše pregrete kapljevine energija pada, ko temperatura raste. To je direktna posledica Boylovega in Gay-Lussacovega zakona, kjer se tlak veča z višanjem temperature, medtem ko se površinska napetost manjša\cite{strnad_fizika_2016, seitz_theory_1958}.
+
+Energija stabilnih mehurčkov za vodik je \( E_m (H_2) = 4.08 \mathrm{eV}  \) in za propan \( E_m (C_3 H_8) = 131 \mathrm{eV} \)\cite{seitz_theory_1958}.
+
+\subsubsection*{Elektroni prejmejo energijo vpadnega delca}
+
+S štetjem mehurčkov, ki se pojavijo na sledi delca, in poznanimi pogoji, pod katerimi deluje komora, lahko empirično ocenimo sipalni presek \( \sigma_e \) elektrona. Naj bo \( E_t \), ki jo vpadni delec odda elektronu preko Rutherfordovega sipanja. Preko enačbe
+
+\begin{equation}
+\label{eq:7}
+\sigma_e = 8 \pi r_b ^2 \frac{R_h ^2}{m_e v ^2 E_t},
+\end{equation}
+
+kjer je \( r_b \) Bohrov radij, \( R_h \) Rydbergova energija, \( m_e \) masa elektrona in \( v \) hitrost vpadnega delca, lahko določimo energijo \( E_t \) z določenim \( \sigma_e \).
+
+V primeru vodika je bilo število mehurčkov \( n_{H_2} = 15 \mathrm{cm}^{-1} \). Molska masa vodika je \( M_{H_2} = 2 \mathrm{g} \) in gostota \( \rho_{H_2} = 0.050 \mathrm{g} / \mathrm{cm} ^3 \). Sipalni presek vodika je potem \( \sigma_e(H_2) = 0.996 \cdot 10^{-21} \) in elektron prejme \( E_t = 513 \mathrm{eV} \).
+
+Za propan je bilo preštetih mehurčkov \( n_{C_3H_8} = 16 \), njegova molska masa je \( M_{C_3H_8} = 44.1 \mathrm{g} \) in gostota je \( \rho_{C_3H_8} = 0.330 \mathrm{g}/\mathrm{cm} ^3 \). Sipalni presek propana je \( \sigma_e (C_3 H_8) = 3.55 \cdot 10^{-21} \), njegov elektron pa prejme \( E_t = 1890 \mathrm{eV} \)\cite{seitz_theory_1958}.
+
+Vidimo torej, da vpadni delec odda več kot dovolj energije \( E_t \) v obliki toplote za nastanek mehurčka z energijama \( E_m \). S tem načinom lahko tudi zanemarimo nastanek mehurčkov kot posledica Rutherfordovega sipanja na nukleonih v jedru, saj je potem prejeta energija \( E_t' \) manjša od zahtevane za stabilen mehurček.
+
+
+\subsubsection*{Razširjanje mehurčka}
+
+
 
 \subsection{Mehanski model}\label{sec:mehmod}
 
