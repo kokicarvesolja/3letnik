@@ -6,9 +6,17 @@
 ** TODO Why they fell out of use
 ** TODO Ponoven resurgance
 * Uporaba mehurčne komore
-** TODO Definicija hitrih nevtronov
 ** TODO uporaba proste entalpije za razlago pregrete kapljevine - On critical dark energy, str. 4/8
+** TODO Delovanje PICO
+
+Datoteke [[file:~/Documents/02Areas/FMF/3letnik/2semester/seminar/viri/BubbleChamberPICO.pdf]] in article, ki vsebuje shemo [[file:~/Documents/02Areas/FMF/3letnik/2semester/seminar/viri/BubbleChamberPICOResults.pdf]].
+
+Vključi graf izključenih sipalnih presekov ter detektor.
+** TODO Delovanje MOSCAB
+
+Tehnika za zaznavo [[file:~/Documents/02Areas/FMF/3letnik/2semester/seminar/viri/Bertoni.pdf]] in točen opis projekta [[file:~/Documents/02Areas/FMF/3letnik/2semester/seminar/viri/MOSCAB.pdf]].
 ** DONE razširi razlago o makroskopskih mehurčkih
 CLOSED: [2026-04-27 pon 22:41]
 * Splošno
-** TODO check resources - [[https://inspirehep.net/literature/2752452]]
+** DONE check resources - [[https://inspirehep.net/literature/2752452]]
+CLOSED: [2026-04-28 Tue 18:20]
