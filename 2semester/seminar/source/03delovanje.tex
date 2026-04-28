@@ -101,7 +101,9 @@ Iz tabele \ref{tab:2} lahko vidimo, da vpadni delec odda več kot dovolj energij
       & H_2 & C_3 H_8 \\ \hline
       D[ \mathrm{cm ^2}/ \mathrm{s}] & 3.22 \cdot 10^{-3} & 2.02 \cdot 10^{-3} \\
       t_C [\mathrm{s}] & 1.139 \cdot 10^{-11} & 9.60 \cdot 10^{-11} \\
-      v_c [ \mathrm{cm} / \mathrm{s}] & 3.36 \cdot 10^4 & 0.918 \cdot 10^4\\\hline
+      v_c [ \mathrm{cm} / \mathrm{s}] & 3.36 \cdot 10^4 & 0.918 \cdot 10^4\\
+      \beta_a [ \mathrm{cm}/ \mathrm{N}] \cdot 10^{12} & 500 & 100 \\
+      c_a [ \mathrm{cm}/ \mathrm{s}] & 1.7 \cdot 10^5 & 1.9 \cdot 10^5 \\ \hline
     \end{array}
 \]
     \captionof{tabela}{\small Tabela prikazuje vrednosti difuzijskega koeficiena \( D \), karakteristični čas \( \tau_C \) za stabilen mehurček ter hitrost mehurčnih sten \( v_C \)~\cite{seitz_theory_1958}.} \label{tab:3}
@@ -110,14 +112,14 @@ Iz tabele \ref{tab:2} lahko vidimo, da vpadni delec odda več kot dovolj energij
   
 Večdesetkratno razliko v magnitudi energij \( E_t \) in \( E_m \) lahko upravičimo, saj je nastanek mehurčka ob izhlapevanju drastično različen proces od stabilnega mehurčka. Pri nastanku prvega moramo tudi izločiti, da nastane zaradi drugih pojavov v tekočini. Primera tega sta, da mehurček nastane kot posledica difuzije toplote, ki ne bo nujno na sledi delca ali nastanek zaradi združenja večih manjših mehurčkov v večjega.
 
-Elektron naj odda energijo v kroglo z radijem \( R_0 < R_C \), tako da je toplota enakomerno porazdeljena. \textbf{cilinder}. Relaksacijski čas \( \tau_h \) za difuzijo toplote v sferičnem toplotnem skoku z radijem \( r \) je
+Elektron odda svojo energijo v kroglo z radijem \( R_0 < R_C \), tako da je toplota enakomerno porazdeljena. Relaksacijski čas \( \tau_h \) za difuzijo toplote v sferičnem toplotnem skoku z radijem \( r \) je
 
 \begin{equation}
 \label{eq:8}
 \tau_h = \frac{r ^2}{4 D},
 \end{equation}
 
-kjer je \( D \) difuzijski koeficient toplote. Določen je s toplotno prevodnostjo \( \lambda \), gostoto \( \rho \) in specifično toploto \( c \)
+kjer je \( D \) difuzijski koeficient tekočine. Določen je s toplotno prevodnostjo \( \lambda \), gostoto \( \rho \) in specifično toploto \( c \)
 
 \begin{equation}
 \label{eq:9}
@@ -133,10 +135,20 @@ v_C = \frac{R_C}{\tau_C} = \frac{4 D}{R_C},
 
 kjer je \( \tau_C \) karakteristični čas \( \tau_h \) za \( r = R_C \)~\cite{seitz_theory_1958}. Vrednosti za vodik in propan lahko vidimo v tabeli \ref{tab:3}.
 
-  
 \subsubsection*{Razširjanje mehurčka}
 
-Predpostavimo, da se mehurček širi radialno navzven in da je hitrost širjenja manjša od hitrosti zvoka v kapljevini. V tem primeru je rešitev našega hidrodinamskega problema kar rešitev udarnega vala, če je viskoznost zanemarjena~\cite{seitz_theory_1958}. Za vodik je neviskozna tekočina primerna rešitev, za propan pa ne, kar bomo v nadaljevanju dodali.
+Predpostavimo, da se mehurček širi radialno navzven in da je hitrost širjenja manjša od hitrosti zvoka v kapljevini.
+
+Adiabatna zvočna hitrost v mediju je podana z enačbo
+
+\begin{equation}
+\label{eq:28}
+c_a = {\left( \rho \beta_a \right)}^{-1/2},
+\end{equation}
+
+kjer je \( \rho \) gostota medija, \( \beta_a \) pa adiabatna stisljivost. V tabeli \ref{tab:3} lahko vidimo, da je hitrost \( v_C \) res manjša od zvočne.
+
+V tem primeru je rešitev našega hidrodinamskega problema kar rešitev udarnega vala, če je viskoznost zanemarjena~\cite{seitz_theory_1958}. Za vodik je neviskozna tekočina primerna rešitev, za propan pa ne, kar bomo v nadaljevanju dodali.
 
 Kroglo, ki se širi radialno navzven \( R(t) \), določa enačba za nestisljivo tekočino
 
