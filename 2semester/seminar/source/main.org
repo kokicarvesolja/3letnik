@@ -7,6 +7,7 @@
 ** TODO Ponoven resurgance
 * Uporaba mehurčne komore
 ** TODO uporaba proste entalpije za razlago pregrete kapljevine - On critical dark energy, str. 4/8
+** TODO povezava masa - sipalni presek
 ** TODO Delovanje PICO
 
 Datoteke [[file:~/Documents/02Areas/FMF/3letnik/2semester/seminar/viri/BubbleChamberPICO.pdf]] in article, ki vsebuje shemo [[file:~/Documents/02Areas/FMF/3letnik/2semester/seminar/viri/BubbleChamberPICOResults.pdf]].
