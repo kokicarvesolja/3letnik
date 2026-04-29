@@ -7,13 +7,14 @@
 ** TODO Ponoven resurgance
 * Uporaba mehurčne komore
 ** TODO uporaba proste entalpije za razlago pregrete kapljevine - On critical dark energy, str. 4/8
-** TODO povezava masa - sipalni presek
-** TODO Delovanje PICO
+** DONE Delovanje PICO
+CLOSED: [2026-04-30 Thu 00:53]
 
 Datoteke [[file:~/Documents/02Areas/FMF/3letnik/2semester/seminar/viri/BubbleChamberPICO.pdf]] in article, ki vsebuje shemo [[file:~/Documents/02Areas/FMF/3letnik/2semester/seminar/viri/BubbleChamberPICOResults.pdf]].
 
 Vključi graf izključenih sipalnih presekov ter detektor.
-** TODO Delovanje MOSCAB
+** DONE Delovanje MOSCAB
+CLOSED: [2026-04-30 Thu 00:53]
 
 Tehnika za zaznavo [[file:~/Documents/02Areas/FMF/3letnik/2semester/seminar/viri/Bertoni.pdf]] in točen opis projekta [[file:~/Documents/02Areas/FMF/3letnik/2semester/seminar/viri/MOSCAB.pdf]].
 ** DONE razširi razlago o makroskopskih mehurčkih
