@@ -19,17 +19,26 @@ Sipanje je odvisno od lokalne gostote toka \( X \) in sipalnega preseka za inter
 
 Sipalni presek spinsko odvisnih interakcij je odvisen od jedrskega spinskega števila. Opisana projekta oba uporabljata na floru bazirane tekočine v mehurčni komori, saj ima jedro flora \( ^{19}F \) en nepoparjen proton, hkrati pa nima izotopov~\cite{ellis_realistic_1988}. Take tekočine imajo torej edinstveno prednost.
 
-Mehurčne komore so dobri detektorji za direktno iskanje WIMP-ov, saj so neobčutljivi na \( \beta \) in \( \gamma \) sevanje, saj se nahajajo globoko v Zemlji\cite{collaboration_moscab_2017}. Dober detektor bo imel torej tarčo s čim večjo maso, hkrati pa bo bil občutljiv na energije pri sipanju v velikosti \( 1 - 100 \mathrm{keV} \)~\cite{amole_dark_2019}.
+Mehurčne komore so dobri detektorji za direktno iskanje WIMP-ov, saj so neobčutljivi na \( \beta \) in \( \gamma \) sevanje, saj se nahajajo globoko v Zemlji~\cite{collaboration_moscab_2017}. Dober detektor bo imel torej tarčo s čim večjo maso, hkrati pa bo bil občutljiv na energije pri sipanju v velikosti \( 1 - 100 \mathrm{keV} \)~\cite{amole_dark_2019}.
 
-PICO je eden od projektov, ki preko direktne zaznave iščejo dokaze o temni snovi. Je del podzemnega laboratorija SNOLAB, ki se nahaja v Sudbury, Ontaorio v Kanadi. Od svojega nastanka 2013, ko sta se združila projekta PICASSO laboratorija SNOLAB in COUPP laboratorija Fermilab, je potekala že vrsta eksperimentov PICO-2, PICO-40 in PICO-60, kjer številka izraža količino freona v mehurčni komori. V pripravah je PICO-500\cite{noauthor_pico_nodate}. 
-
-\begin{wrapfigure}{r}{8cm}
+\begin{wrapfigure}{R}{8cm}
   \begin{center}
   \includegraphics[width=0.25\textwidth]{./figures/PICO60Run2_IV_label}
   \end{center}
-  \caption{\small Detektor PICO60~\cite{amole_dark_2019}}
+  \caption{\small Detektor PICO60~\cite{amole_dark_2019}}\label{fig:pico60}
 \end{wrapfigure}
 
-PICO mehurčna komora je precej drugačna od 
+PICO je eden od projektov, ki preko direktne zaznave iščejo dokaze o temni snovi. Je del podzemnega laboratorija SNOLAB, ki se nahaja v Sudbury, Ontaorio v Kanadi. Od svojega nastanka 2013, ko sta se združila projekta PICASSO laboratorija SNOLAB in COUPP laboratorija Fermilab, je potekala že vrsta eksperimentov PICO-2, PICO-40 in PICO-60, kjer številka izraža količino freona v mehurčni komori. V pripravah je PICO-500\cite{noauthor_pico_nodate}. 
+
+PICO mehurčna komora je precej drugačna od tistih omenjenih v \ref{sec:uvod}, ker mora biti freon v komori čim dlje časa v pregretem stanju, saj se s tem maksimizira čas iskanja WIMP-ov. Sočasno morata biti tlak in temperatura pod takimi pogoji, da je tekočina neodzivna na ionizirajočo radiacijo Sipanje na jedru proizvede zgolj en mehurček in vpadni delec ne pušča sledi. Edina možna sled je več mehurčkov kot posledica sipanja nevtronov. Detektor prav tako vsebuje akustične senzorje, s katerimi lahko izločijo razpade \( \alpha \) radona. Razpadi \( \alpha \) imajo večjo akustično moč, kakor sipanje. Na sliki \ref{fig:pico60} je shema detektorja PICO-60~\cite{bressler_buffer-free_2019}.
+
+Vodna v okolici drži tekočino v mehurčni komori na konstanti temperaturi. Zadnji poskus pred prenehanjem eksperimenta je bil opravljen na temperaturi \( T = {\left(19.9 \pm 0.1\right)}^{\degree} \mathrm{C} \) in tlaku \( p = 25.5 \mathrm{psia} \approx 1.76 \mathrm{bar} \). Spodnja limita energijske občutljivosti je izračunana po izboljšani različici enačbe \eqref{eq:4}, z obliko
+
+\begin{equation}
+\label{eq5:1}
+E_t = 4 \pi R_C ^2 \left( \sigma - T {\left( \frac{\partial \sigma}{\partial T} \right)}_{\mu} \right) + \frac{4}{3} R_C ^3 \rho_v \left( h_v - h_l \right) - \frac{4 \pi}{3} R_C ^3 \left( p_v - p_l \right).
+\end{equation}
+
+Indeks \( v \) označuje lastnosti plina v mehurčku, indeks \( l \) lastnosti tekočine. \( \rho \) je gostota, \( T \) je temperatura, \( h \) je specifična entalpija in indeks \( \mu \) označuje ravnovesje kemijskega potenciala med tekočino in plinom. Energija je bila izračunana na \( E_t \approx \left(1.20 \pm 0.1\right) \mathrm{keV} \).
 
 
