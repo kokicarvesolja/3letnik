@@ -2,6 +2,9 @@
 
 * Zgodovina
 ** TODO Opis odkritja Gargamella
+
+The name of the chamber derives from the giantess Gargamelle in the works of François Rabelais; she was Gargantua's mother.
+
 ** TODO Delovanje mehurčne komore kot detektor
 ** TODO Why they fell out of use
 ** TODO Ponoven resurgance
@@ -17,6 +20,7 @@ Vključi graf izključenih sipalnih presekov ter detektor.
 CLOSED: [2026-04-30 Thu 00:53]
 
 Tehnika za zaznavo [[file:~/Documents/02Areas/FMF/3letnik/2semester/seminar/viri/Bertoni.pdf]] in točen opis projekta [[file:~/Documents/02Areas/FMF/3letnik/2semester/seminar/viri/MOSCAB.pdf]].
+** TODO Rezultati eksperimentov PICO MOSCAB
 ** DONE razširi razlago o makroskopskih mehurčkih
 CLOSED: [2026-04-27 pon 22:41]
 * Splošno
