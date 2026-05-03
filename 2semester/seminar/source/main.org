@@ -1,13 +1,17 @@
 #+title: Mehurčne komore - seminar
 
 * Zgodovina
-** TODO Opis odkritja Gargamella
+** DONE Opis odkritja Gargamella
+CLOSED: [2026-04-30 Thu 10:49]
 
 The name of the chamber derives from the giantess Gargamelle in the works of François Rabelais; she was Gargantua's mother.
 
-** TODO Delovanje mehurčne komore kot detektor
-** TODO Why they fell out of use
-** TODO Ponoven resurgance
+** DONE Delovanje mehurčne komore kot detektor
+CLOSED: [2026-04-30 Thu 10:49]
+** DONE Why they fell out of use
+CLOSED: [2026-04-30 Thu 10:49]
+** DONE Ponoven resurgance
+CLOSED: [2026-04-30 Thu 10:49]
 * Uporaba mehurčne komore
 ** TODO uporaba proste entalpije za razlago pregrete kapljevine - On critical dark energy, str. 4/8
 ** DONE Delovanje PICO
