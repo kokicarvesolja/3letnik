@@ -12,8 +12,10 @@
 
 Enačba
 
-\[ \left( \epsilon_{\mathbf{k} - \mathbf{K}}^0 - \epsilon \right) C_{\mathbf{k} - \mathbf{K}} + \sum\limits_{\mathbf{K}}^{} V_{\mathbf{K}' - \mathbf{K}} c_{\mathbf{k} - \mathbf{K}'} = 0
-\]
+\begin{equation}
+\label{eq:2}
+ \left( \epsilon_{\mathbf{k} - \mathbf{K}}^0 - \epsilon \right) C_{\mathbf{k} - \mathbf{K}} + \sum\limits_{\mathbf{K}}^{} V_{\mathbf{K}' - \mathbf{K}} c_{\mathbf{k} - \mathbf{K}'} = 0
+\end{equation}
 
 je samo še ena oblika Schrödingerjeve enačbe. Količini \( \epsilon^0 (\mathbf{q}) = \frac{\hbar ^2 q ^2}{2m} \) je disperzija energije prostih elektronov. Na grafu \( \epsilon^0 (\mathbf{q}) \) je skupek parabol, ki imajo teme v vektorjih recipročne mreže \( K = \frac{2 \pi}{a} n \).
 * Naloga: Razcep pasov
@@ -33,12 +35,13 @@ Označimo \( \mathbf{k} = \frac{\mathbf{K}_1 - \mathbf{K}_2}{2} \). Energiji \( 
 
 Sistem lahko zapišemo v matrični obliki za vektor \( \mathbf{c} = [c_{\mathbf{k} - \mathbf{K}_1} \ c_{\mathbf{k} - \mathbf{K}_2}]^T \)
 
-\[ \begin{bmatrix}
+\begin{equation}
+\label{eq:3}
+ \begin{bmatrix}
    \epsilon^0 - \epsilon + V_0 & V_{\mathbf{K}_2 - \mathbf{K}_1} \\
     V_{\mathbf{K}_1 - \mathbf{K}_2} &  \epsilon^0 - \epsilon + V_0
     \end{bmatrix} \begin{bmatrix} c_{\mathbf{k} - \mathbf{K}_{1}} \\ c_{\mathbf{k} - \mathbf{K}_{2}} \end{bmatrix} = 0.
-\]
-
+\end{equation}
 
 Matrični sistem nam predstavlja problem lastnih vrednosti
 
@@ -102,42 +105,104 @@ Lastni energiji zasedata vrednosti \( \epsilon_+ = \epsilon^0 + \frac{2 \lambda}
 Imamo ploskovno centrirano kubično mrežo (fcc), ki ima periodičen potencial usklajen s fcc mrežo. Zanima nas energijska reža v prvi Brillouinovi coni.
 #+end_problem
 
-Recipročna mreža FCC je BCC, ni primitivna osnovna celica - to vlogo bo za naš primer igrala Wigner-Seitzova celica, ki je sestavljena iz pravilnih kvadratov in šestkotnikov. Središče Brillouinove cone in središče BCC mreže označimo z \( \Gamma \). Središče kvadrata označimo z \( X \), središče šestkotnika \( L \), točko, ki razpolovi stranico kvadrata označimo z \( U \), in točko, ki razpolovi stranico šestkotnika, ki so dotika stranice drugega šestkotnika pa s \( K \).
+Iz prejšnjih vaj vemo, da ima FCC mreža BCC recipročno mrežo s stranico \( \frac{4 \pi}{a} \). Kakor vemo iz predavanj (ali pa iz Ashcroft & Mermina), Wigner-Seitzova celica recipročne mreže je prva Brillouinova cona. Iz prejšnjih vaj torej vemo, da je ima prva Brillouinova cona obliko prisekanega oktaedra.
 
-Potencial nimamo, \( V (\mathbf{r}) = 0 \). Energijska disperzija je štiridimenzionalni paraboloid
+Po dogovoru, označimo središče oktaedra z \( \Gamma \). Središča kvadratov na površini označimo z \( X \), središča šestkotnikov z \( L \), oglišča z \( W \), razpolovišča stranic kvadratov z \( U \) in razpolovišča stranic šestkotnikov s \( K \).
 
-\[ \epsilon(\mathbf{q}) = \frac{\hbar ^2 q ^2}{2m}.
+[[file:figures/fts14v_wsbcc.png]]
+
+Glede na skico so koordinate točk
+
+\[ \Gamma = (0, 0, 0), \quad X = \frac{4 \pi}{a} \left( \frac{1}{2}, 0, 0 \right) \quad \text{in} \quad W = \frac{4 \pi}{a} \left( \frac{1}{2}, \frac{1}{4}, 0  \right),
 \]
 
-Disperzijo zapišemo z recipročnim vektorjem \( \mathbf{K} \) ob upoštevanju \( \mathbf{q} = \mathbf{k} - \mathbf{K} \)
+kjer je ravnina \( xy \) tista, ki vsebuje točke \( \Gamma, W, X \).
 
-\[ \epsilon(\mathbf{q}) = \frac{\hbar ^2 (\mathbf{k} - \mathbf{K}) ^2}{2m}
+Predpostavimo, da nimamo potenciala, torej \( V(\mathbf{r}) = 0 \). Prost elektron bo imel energijsko disperzijo enako tisti v uvodu, torej
+
+\[ \epsilon^0 (\mathbf{q}) = \frac{\hbar ^2 q ^2}{2m}. 
 \]
 
-Podobno kot v nalogi v ponedeljek imamo skupek paraboloidov.
+V našem primeru treh dimenzij bo disperzija tvorila štiridimenzionalni paraboloid. Zapišemo jo lahko z recipročnim vektorjem, če upoštevamo relacijo \( \mathbf{q} = \mathbf{k} - \mathbf{K}  \)
 
-Zamislimo si zaključeno pot \( \Gamma \to X \to W \to \Gamma \). V točki \( K_1 \) lahko rečemo, da je energija ničelna. Razdalja do točke \( K_2 \) je največja in sicer \( 2 \). Torej bo energija največja. Točki \( K_3 \) in \( K_4 \) sta napram \( \Gamma \) in \( X \) enako oddaljeni in sicer \( \sqrt{3} \) ter \( \sqrt{2} \). \( K_2 \) je od \( X \) oddaljena za \( 1 \).
+\[ \epsilon(\mathbf{k}) = \frac{\hbar ^2 \left( \mathbf{k} - \mathbf{K} \right) ^2}{2m}. 
+\]
 
-Energija bo pri premikanju iz \( \Gamma \) v \( X \) padala parabolično, vendar se bodo zaradi različne oddaljenost od \( \Gamma \) različno visoko začele in različno visoko končale zaradi različne oddaljenosti od \( X \) (razen \( K_3 \) in \( K_4 \), ki sta enako oddaljeni).
+Vsak recipročni vektor \( \mathbf{K} \) je teme svojega paraboloida kakor smo jih imeli pri prejšnji nalogi. Zamislimo si sedaj zaključeno pot \( \Gamma \to X \to W \to \Gamma \) in narišimo graf \( \epsilon (\mathbf{k}) \).
 
-Podoben razmislek opravimo pri premiku iz \( \Gamma \) v \( W \) ter premiku iz \( W \) v \( X \).
+[[file:figures/fts14v_eOdK.png]]
 
-[prosi Jana za graf + skico kvadrata]
+Za točko \( \mathbf{K}_1 \), ki je ista točka kot \( \Gamma \), lahko predpostavimo ničelno energijo. 
 
-Točka \( W \) je enako oddaljena od vseh točka \( K_i, \ i = 1, 2, 3, 4 \).
 
-Nastali graf je tridimenzionalna verzija tistega iz ponedeljka.
+Zamislimo si zaključeno pot \( \Gamma \to X \to W \to \Gamma \). V točki \( K_1 \) glede na \( \Gamma \) je energija ničelna. Razdalja od \( \Gamma \) do \( K_2 = \frac{4 \pi}{a} (1, 0, 0) \) je največja, torej bo energija tudi največja. Izračunamo jo po enačbi
 
-Računamo determinanto
+\[ \epsilon_{\mathbf{K}_2} (\Gamma) = \frac{\hbar ^2}{2m} \left( \Gamma - \mathbf{K}_2 \right) = 16 \frac{\hbar ^2 \pi ^2}{2m a ^2} 
+\]
+
+Točki \( K_3 = \frac{4 \pi}{a} \left( \frac{1}{2}, \frac{1}{2}, - \frac{1}{2} \right) \) in \( K_4 = \frac{4 \pi}{a} \left( \frac{1}{2}, \frac{1}{2}, \frac{1}{2} \right) \) sta enako oddaljeni od \( \Gamma \) in sicer \( \frac{4 \pi}{a} \sqrt{3} \). Njuna energija je potem
+
+\[ \epsilon_{\mathbf{K}_{3, 4}}(\Gamma) = 12 \frac{\hbar ^2 \pi ^2}{2 m a ^2}.
+\]
+
+Na podoben način izračunamo še energije za preostali točki \( X \) in \( W \). Prva je od \( \mathbf{K}_1 \) in \( \mathbf{K}_2 \) enako oddaljena za \( \frac{2 \pi}{a} \) in njuna energija bo degenerirana z vrednostjo
+
+\[ \epsilon_{\mathbf{K}_{1, 2}} (X) = 4 \frac{\hbar ^2 \pi ^2}{ 2m a ^2},
+\]
+
+druga pa je oddaljena za \( \frac{\sqrt{5} \pi}{a} \) in energija bo
+
+\begin{equation}
+\label{eq:1}
+\epsilon_{\mathbf{K}_{1, 2}} (W) = 5 \frac{\hbar ^2 \pi ^2}{2 m a ^2}.
+\end{equation}
+
+Točka \( X \) je od \( K_{3, 4} \) oddaljena za \( \frac{\sqrt{8} \pi}{a} \) in njuna energija bo
+
+\[ \epsilon_{\mathbf{K}_{3, 4} }(X) = 8 \frac{\hbar ^2 \pi ^2}{2m a ^2}.
+\]
+
+Razdalja do \( W \) je ekvidistančna do vseh točk \( K_i, i = 1, 2, 3, 4 \), kar pomeni, da bo energija povsod enaka \eqref{eq:1}. Točka \( W \) je torej štirikratno degenerirana.
+
+Po enačbi \eqref{eq:2} imamo torej problem lastnih vrednosti velikosti \( 4 \times 4 \) podobno kot smo imeli pri \eqref{eq:3} dvodimenzionalni problem. Izračunati želimo torej determinanto
 
 \[ \det \begin{bmatrix}
         \epsilon^{0} - \underline{\epsilon} & V_{\mathbf{K}_2 - \mathbf{K}_1} & V_{\mathbf{K}_3 - \mathbf{K}_1} & V_{\mathbf{K}_4 - \mathbf{K}_1} \\
          V_{\mathbf{K}_1 - \mathbf{K}_2}& \epsilon^0 - \underline{\epsilon} & V_{\mathbf{K}_3 - \mathbf{K}_2} & V_{\mathbf{K}_4 - \mathbf{K}_2} \\
          V_{\mathbf{K}_1 - \mathbf{K}_3} & V_{\mathbf{K}_2 - \mathbf{K}_3} & \epsilon^0 - \underline{\epsilon} & V_{\mathbf{K}_4 - \mathbf{K}_2} \\
          V_{\mathbf{K}_1 - \mathbf{K}_4} & V_{\mathbf{K}_2 - \mathbf{K}_4} & \mathbf{V}_{\mathbf{K}_3 - \mathbf{K}_4} & \epsilon^0 - \underline{\epsilon}
-        \end{bmatrix}
+        \end{bmatrix}.
 \]
 
+Surovo računanje takega lastnega problema je precej boleče, zato ga bomo oklestili s pomočjo simetrije FCC mreže. Simetrijska operacija \( A \in \mathcal{G} \), kjer je \( \mathcal{G} \) simetrijska grupa, na recipročni mreži bo podala nazaj samo vase. Za potencial potem velja
+
+\[ V (\mathbf{R} \mathbf{r}) = V(\mathbf{r}). 
+\]
+
+Brez izgube splošnosti si lahko izberemo potencial \( U_0 = U_{\mathbf{K}_i - \mathbf{K}_i} = 0 \). Fourierove komponente zgornje matrike so
+
+\[ U_{\mathbf{K}} = \frac{1}{V_0} \int\limits_{V_0}^{} V(\mathbf{r}) e^{- \mathrm{i} \mathbf{K} \cdot \mathbf{r}} \, \mathrm{d} ^3 \mathbf{r},
+\]
+
+kjer je \( V_0 \) volumen osnovne celice.
+
+Za realen potencial \( V(\mathbf{r}) \), za katerega velja \( U = U^{\ast} \), bo Fourierova komponenta
+
+\begin{equation}
+\label{eq:4}
+V_{\mathbf{K}} = \left( V_{\mathbf{K}}^{\ast} \right)^{\ast} = \left( \frac{1}{V_0} \int\limits_{V_0}^{} V(\mathbf{r}) e^{\mathrm{i} \mathbf{K} \cdot \mathbf{r}} \, \mathrm{d} ^3\mathbf{r} \right)^{\ast} = U^{\ast}_{- \mathbf{K}}.
+\end{equation}
+
+Potencial \( V(\mathbf{r}) \) je neodvisen na inverzijo prostora \( \mathbf{r} \to - \mathbf{r} \), dobimo iz enačbe \eqref{eq:4} identiteto
+
+\begin{equation}
+\label{eq:5}
+V_{\mathbf{K}} = \frac{1}{V_0} \int\limits_{V_0}^{} V(- \mathbf{r}) e^{- \mathrm{i} \mathbf{K} \cdot \left( - \mathbf{r} \right)} \, \mathrm{d} ^3\mathbf{r}  = \frac{1}{V_0} \int\limits_{V_0}^{} V(\mathbf{r}) e^{\mathrm{i} \mathbf{K} \cdot \mathbf{r}} \, \mathrm{d} ^3 \mathbf{r} = V_{- \mathbf{K}}
+\end{equation}
+
+Iz tega zaključimo, da sta \( V_{\mathbf{K}} = V_{-\mathbf{K}}  \) in realna.
+
+[ostal tukaj]
 Potencial ni več ničeln \( V (\mathbf{r}) = 0 \), je periodičen \( V(\mathbf{r} + \mathbf{R}) = V(\mathbf{r}) \) in velja operacija \( V( A \mathbf{r}) = V(\mathbf{r}) \), kjer je \( A \in \mathcal{G} \) matrika simetrijske grupe.
 
 Fourierova transformacija je
