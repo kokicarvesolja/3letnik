@@ -26,6 +26,8 @@ CLOSED: [2026-04-30 Thu 00:53]
 
 Tehnika za zaznavo [[file:~/Documents/02Areas/FMF/3letnik/2semester/seminar/viri/Bertoni.pdf]] in točen opis projekta [[file:~/Documents/02Areas/FMF/3letnik/2semester/seminar/viri/MOSCAB.pdf]].
 ** TODO Rezultati eksperimentov PICO MOSCAB
+** TODO Definicija žarkov \( \delta \)
+[[https://www-pub.iaea.org/mtcd/publications/pdf/pub1196_web.pdf]] na str. 25, zadnja alineja.
 ** DONE razširi razlago o makroskopskih mehurčkih
 CLOSED: [2026-04-27 pon 22:41]
 * Splošno
