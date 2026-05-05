@@ -1,4 +1,5 @@
 #+title: Mehurčne komore - seminar
+#+startup: show2levels
 
 * Zgodovina
 ** DONE Opis odkritja Gargamella
@@ -30,3 +31,13 @@ CLOSED: [2026-04-27 pon 22:41]
 * Splošno
 ** DONE check resources - [[https://inspirehep.net/literature/2752452]]
 CLOSED: [2026-04-28 Tue 18:20]
+* Predstavitev
+** TODO uporaba piva v mehurčni komori 
+
+#+begin_quote
+However, Glaser needed a liquid with a low enough surface tension. Too high, and the liquid would not bubble even if a energized by a charged particle.
+
+His experiments with beer left nothing but a stench in the room and raised a few eyebrows, he said. Instead, he filled the tubes with diethyl ether. 
+#+end_quote
+
+from: [[https://web.archive.org/web/20171224093552/http://www2.lbl.gov/Publications/Currents/Archive/Jul-21-2006.html#6]]
