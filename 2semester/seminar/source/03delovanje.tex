@@ -95,7 +95,7 @@ kjer je \( D \) difuzijski koeficient tekočine in je neodvisen od tlaka v okoli
 kjer je \( \tau_C \) karakteristični čas \( \tau_h \) za \( r = R_C \). Vrednosti za vodik in propan so podane v tabeli~\ref{tab:3}.
 
 \begin{tabela}[H]
-  \caption{\small Tabela prikazuje vrednosti difuzijskega koeficiena \( D \), karakteristični čas \( \tau_C \) za stabilen mehurček ter hitrost mehurčnih sten \( v_C \)~\cite{seitz_theory_1958}.} \label{tab:3}
+  \caption{\small Vrednosti difuzijskega koeficiena \( D \), karakteristični čas \( \tau_C \) za stabilen mehurček in hitrost \( v_C \) sten mehurčka~\cite{seitz_theory_1958}.}\label{tab:3}
   \centering
   \[
     \begin{array}{|c|c|c|} \hline
@@ -115,7 +115,7 @@ Predpostavimo, da se mehurček v vodiku širi radialno navzven in da je hitrost 
 
 \[  c_a = {\left( \rho \beta_a \right)}^{-1/2},
 \]
-kjer je \( \rho \) gostota sredstva, \( \beta_a \) pa adiabatna stisljivost. V tabeli~\ref{tab:3} lahko vidimo, da je hitrost \( v_C \) res manjša od zvočne. Predpostavke nam omogočijo obravnavo širjenja mehurčka kot širjenje v nestisljivi tekočini, kjer zanemarimo viskoznost.
+kjer je \( \rho \) gostota sredstva, \( \beta_a \) pa adiabatna stisljivost. V tabeli~\ref{tab:3} lahko vidimo, da je hitrost \( v_C \) res manjša od zvočne. Predpostavke nam omogočijo obravnavo širjenja mehurčka, kot širjenje v nestisljivi tekočini, kjer zanemarimo viskoznost.
 
 Kroglo, ki se širi radialno navzven s trenutnim polmerom \( R(t) \), določa enačba za nestisljivo tekočino
 
@@ -128,7 +128,7 @@ skupaj s kontinuitetno enačbo \( \frac{\partial }{\partial r} \left( r ^2 v \ri
 \frac{P(t)}{\rho} = \ddot{R} R + \left[ \frac{3}{2} {\left( \dot{R}  \right)}^2 \right].
 \end{equation}
 
-Enačba adiabatne spremembe za začetni vrednosti \( p_0 \), \( R_0 \) in \( \gamma = 4 / 3 \) za vodik je \( p = p_0 {\left( R_0 /R \right)}^{3 \gamma} \). Enačba širjenja mehurčka sledi po dvakratni integraciji:
+Identiteta adiabatne spremembe za začetni vrednosti \( p_0 \), \( R_0 \) in \( \gamma = 4 / 3 \) za vodik je \( p = p_0 {\left( R_0 /R \right)}^{3 \gamma} \). Enačba širjenja mehurčka sledi po dvakratni integraciji:
 \[  \frac{c_0 t}{R_0} = {\left( 2 z \right)}^{1/2} \left( 1 + \frac{2z}{3} + \frac{z ^2}{5} \right),
 \]
 kjer je \( z = R/ R_0 - 1 \) in \( c_0 = p_0 / p \).
@@ -149,7 +149,7 @@ Kvadrat enačbe~\eqref{eq3:5} je
 
 \[  P_R ^2 = P ^2 = 16 \eta ^2 \frac{\dot{R} ^2}{R ^2} = 32 \eta ^2 \frac{p_0 R_0 ^{3\gamma}}{3 \rho R ^{3 \gamma - 2}},
 \]
-ki jo razširimo z dvema ulomkoma: \( V_0 / \left( 4 \pi R_0 ^3 / 3 \right) \) in \( R_C^{3(\gamma - 1)}/ R_C^{3(\gamma - 1)} \). To nam omogoči, da izrazimo razmerje mehurčkovega in kritičnega polmera.  
+ki jo razširimo z dvema ulomkoma: \( V_0 / \left( 4 \pi R_0 ^3 / 3 \right) \) in \( R_C^{3(\gamma - 1)}/ R_C^{3(\gamma - 1)} \). To nam omogoči, da izrazimo razmerje mehurčkovega in kritičnega polmera v odvisnosti od začetnih pogojev
 
 \[  {\left( \frac{R}{R_C} \right)}^{3\gamma - 2} = \left( \frac{9}{128 \pi} \right) \left( \frac{\rho}{\eta ^2} \right) \left( \frac{p_0 V_0}{R_C} \right) {\left( \frac{R_0}{R_C} \right)}^{3(\gamma - 1)}.
 \]
@@ -189,7 +189,7 @@ Tekočine in trdnine lahko v nasprotju s plinom dosežejo negativen tlak. Če pl
 \begin{slika}[H]
   \centering
   \input{./figures/mehmod.tex}
-  \caption{\small Graf energije mehurčka v odvisnosti od polmera \( R \) in različnih vrednosti za tlak in površinsko napetost \( \sigma = 0.3544 \cdot 10^{-7} \, \mathrm{J} / \mathrm{cm} ^2 \) za helij~\cite{classen_electrons_1998}. Točka \( A \) je minimum energije in točka \( B \) je njen maksimum. Jasno se vidi monotono padanje energije za dovolj negativne vrednosti \( P \).}\label{fig:mehmod}
+  \caption{\small Graf energije mehurčka v odvisnosti od polmera \( R \) in različnih vrednosti za tlak in površinsko napetost \( \sigma = 0.3544 \cdot 10^{-7} \, \mathrm{J} / \mathrm{cm} ^2 \) za helij~\cite{classen_electrons_1998}. Točka \( A \) je minimum energije in točka \( B \) pa njen maksimum za \( P = -1 \). Jasno se vidi monotono padanje energije za dovolj negativne vrednosti \( P \).}\label{fig:mehmod}
 \end{slika}
 
 Kakor vidimo na sliki~\ref{fig:mehmod}, mehurček za tlak \( P = 0 \) na začetku raste preko radija \( R_{\min} \), vendar sčasoma preneha rasti in se vrne v stanje z najmanjšo energijo. Za majhne negativne tlake kot npr. \( P = -1 \), minimumu energije sledi maksimum v točki \( B \) s polmerom \( R_{\max} \). Za tlake manjše od \( P = -2 \) energija monotono pada. Z nižanjem tlaka se točki \( R_{\min} \) in \( R_{\max} \) približujeta, dokler pri tlaku manjšem od kritične točke \( -P_C \) energija nima več minimuma in mehurček postane nestabilen~\cite{classen_electrons_1998}.
