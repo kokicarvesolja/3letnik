@@ -17,7 +17,12 @@ sortcites=true]{biblatex}
 \usepackage{wrapfig}
 \usepackage{siunitx}
 \usepackage{caption}
-\usepackage{tikz}
+\usepackage{pgfplots}
+
+% externalize figures: create PDFs which are then imported into the document
+\pgfplotsset{width=5cm}
+\usepgfplotslibrary{external}
+\tikzexternalize
 \hypersetup{
   colorlinks,
   linkcolor={black},
