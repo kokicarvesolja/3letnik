@@ -53,6 +53,7 @@ V enačbi~\eqref{eq:6} opazimo, da je energija obratno sorazmerna s kvadratom tl
 V primeru pregrete kapljevine energija pada, ko temperatura raste. To je neposredna posledica Boylovega in Gay-Lussacovega zakona, po katerem se tlak veča z višanjem temperature, medtem ko se površinska napetost manjša~\cite{seitz_theory_1958, strnad_fizika_2016}
 
 \begin{wraptable}{R}{7cm}
+\captionof{tabela}{\small Vrednost gostote mehurčkov na sledi delca, molska masa \( n \), gostota \( \rho \) in energija \( E_t \), ki jo vpadni delec odda posameznemu elektronskemu sistemu, za vodik in propan~\cite{seitz_theory_1958}.}\label{tab:2}
   \centering
 \[
     \begin{array}{|c|c|c|} \hline
@@ -64,40 +65,32 @@ V primeru pregrete kapljevine energija pada, ko temperatura raste. To je neposre
       E_t [ \mathrm{eV}] & 513 & 1890 \\ \hline
     \end{array}
 \]
-\captionof{tabela}{\small Tabela prikazuje vrednosti gostote mehurčkov na sledi delca, molsko maso, gostoto, sipalni presek ter energijo, ki jo vpadni delec odda posameznemu elektronskemu sistemu za vodik in propan ~\cite{seitz_theory_1958}.} \label{tab:2}
 \end{wraptable}
   
 Energija stabilnih mehurčkov s polmerom \( R_C \) za vodik je \( E_m (H_2) = 4.08 \, \mathrm{eV}  \) in za propan \( E_m (C_3 H_8) = 131 \, \mathrm{eV} \)~\cite{seitz_theory_1958}.
 
 \subsubsection*{Elektroni prejmejo energijo vpadnega delca}
 
-
-S štetjem mehurčkov, ki se pojavijo na sledi delca, in poznanimi pogoji, pod katerimi deluje komora, lahko empirično ocenimo sipalni presek \( \sigma_e \) elektrona. Naj bo \( E_t \) energija, ki jo vpadni delec odda elektronu pri Rutherfordovem sipanju. Preko enačbe
+Naj bo \( E_t \) energija, ki jo vpadni delec odda elektronu pri Rutherfordovem sipanju. V tabeli~\ref{tab:2} se nahajajo empirični sipalni preseki \( \sigma_e \) za prenos energije večje od \( E_t \) elektronu, ki so bili izračunani s pomočjo gostote mehurčkov na sledi vpadnih protonov in pionov s hitrostjo \( 915 \, \mathrm{MeV} \). Preko enačbe
 
 \begin{equation}
 \label{eq:7}
 \sigma_e = 8 \pi r_b ^2 \frac{R_h ^2}{m_e v ^2 E_t},
 \end{equation}
+kjer je \( r_b \) Bohrov radij, \( R_h \) Rydbergova energija, \( m_e \) masa elektrona in \( v \) hitrost vpadnega delca, izračunamo energijo \( E_t \).
 
-kjer je \( r_b \) Bohrov radij, \( R_h \) Rydbergova energija, \( m_e \) masa elektrona in \( v \) hitrost vpadnega delca, lahko določimo \( E_t \) z izračunanim \( \sigma_e \).
+Iz tabele~\ref{tab:2} vidimo, da vpadni delec odda več kot dovolj energije \( E_t \) za oblikovanje stabilnega mehurčka z energijo \( E_m \). S tem lahko tudi zanemarimo nastanek mehurčkov kot posledico Rutherfordovega sipanja na nukleonih v jedru, saj je potem prejeta energija \( E_t' \) zaradi mase nukleonov manjša od zahtevane za stabilen mehurček.
 
-Iz tabele \ref{tab:2} vidimo, da vpadni delec odda več kot dovolj energije \( E_t \) za oblikovanje stabilnega mehurčka z energijo \( E_m \). S tem lahko tudi zanemarimo nastanek mehurčkov kot posledica Rutherfordovega sipanja na nukleonih v jedru, saj je potem prejeta energija \( E_t' \) zaradi mase nukleonov manjša od zahtevane za stabilen mehurček.
+Energija \( E_t \) za vodik je dva velikostna reda večja od energije stabilnega mehurčka \( E_m \), za propan pa en velikostni red. S preprosto fizikalno razlago si oglejmo, s kakšno hitrostjo se širijo stene nastalega mehurčka.
 
-Večdesetkratno razliko v magnitudi energij \( E_t \) in \( E_m \) lahko upravičimo, saj je nastanek mehurčka ob izhlapevanju drastično različen proces od stabilnega mehurčka. Oglejmo si, s kakšno hitrostjo se širijo stene nastalega mehurčka.
-
-Elektron se v tekočini ustavi in odda svojo energijo v kroglo z radijem \( R_0 < R_C \). Predpostavimo, da je toplota v njej enakomerno porazdeljena. Relaksacijski čas \( \tau_h \) za difuzijo toplote v sferičnem toplotnem skoku z radijem \( r \) je
+Elektron se v tekočini ustavi in odda svojo energijo v kroglo s polmerom \( R_0 < R_C \). Predpostavimo, da je toplota v njej enakomerno porazdeljena. Relaksacijski čas \( \tau_h \) za difuzijo toplote v sferičnem toplotnem skoku s polmerom \( r \) je
 
 \begin{equation}
 \label{eq:8}
 \tau_h = \frac{r ^2}{4 D},
 \end{equation}
+kjer je \( D \) difuzijski koeficient tekočine in je neodvisen od tlaka v okolici \( p_g \).
 
-kjer je \( D \) difuzijski koeficient tekočine. Določen je s toplotno prevodnostjo \( \lambda \), gostoto \( \rho \) in specifično toploto \( c \)
-
-\begin{equation}
-\label{eq:9}
-D = \frac{\lambda}{\rho c}.
-\end{equation}
 
 \begin{wraptable}{r}{8cm}
   \centering
@@ -114,14 +107,13 @@ D = \frac{\lambda}{\rho c}.
   \captionof{tabela}{\small Tabela prikazuje vrednosti difuzijskega koeficiena \( D \), karakteristični čas \( \tau_C \) za stabilen mehurček ter hitrost mehurčnih sten \( v_C \)~\cite{seitz_theory_1958}.} \label{tab:3}
 \end{wraptable}
 
-Čas, ki je potreben, da mehurček doseže kritičen radij, mora biti manjši od časa, v katerem izgubimo preveč energije za nastanek mehurčka zaradi difuzije toplote. Minimalna hitrost sten je določena z enačo
+Čas, ki je potreben, da mehurček doseže kritični radij, mora biti manjši od časa, v katerem se izgubi preveč energije za nastanek mehurčka zaradi difuzije toplote. Minimalna hitrost sten je določena z enačbo
 
 \begin{equation}
 \label{eq:10}
 v_C = \frac{R_C}{\tau_C} = \frac{4 D}{R_C},
 \end{equation}
-
-kjer je \( \tau_C \) karakteristični čas \( \tau_h \) za \( r = R_C \). Vrednosti za vodik in propan lahko vidimo v tabeli \ref{tab:3}.
+kjer je \( \tau_C \) karakteristični čas \( \tau_h \) za \( r = R_C \). Vrednosti za vodik in propan so podane v tabeli~\ref{tab:3}.
 
 \subsubsection*{Razširjanje mehurčka}
 
