@@ -6,59 +6,51 @@ Glaser je predpostavil, da je za nastanek mehurčkov kriva elektrostatska sila m
 
 Komora je napolnjena s pregreto kapljevino, kot je helij, devterij, vodik, propan, freon ali ksenon. Spomnimo, da je pregreta kapljevina kapljevina, ki smo jo počasi segreli nad njeno vrelišče pri konstantnem tlaku, ne da bi kapljevina zavrela. To lahko storimo, če je stena posode gladka, kapljevina miruje in v njej ni nečistoč. Metastabilno stanje pregrete kapljevine se spremeni v stabilno v trenutku, ko nastane v njej mehurček, kapljevina pa eksplozivno vzkipi. Temperatura kapljevine pri tem zniža na vrelišče~\cite{strnad_fizika_2016}.
 
-Ko gre skozi kapljevino delec z visoko energijo, preko elastičnega sipanja odda svojo energijo elektronom v kapljevini. Elektron zaradi sipanja odnese nezanemarljivo daleč stran od poti vpadnega delca~\cite{podgorsak_radiation_nodate}, preostala energija elektrona pa se pojavi v obliki toplote v vzbujeni molekuli in njenih sosedah~\cite{seitz_theory_1958}. Tem elektronom pravimo žarki \( \delta \) in so sorazmerno povezani s številom nastalih mehurčkov v tekočini~\cite{seitz_theory_1958, glaser_bubble_1958}. Če je toplote dovolj, nastane mehurček in če ta doseže t.i.\,kritično velikost, se ne sesede sam vase, ampak se širi, ko okoliška tekočina izhlapeva v njegovo notranjost. Predstavljen toplotni model je povzet po Seitzu in predpostavi, da je vpadni delec lahek v primerjavi s šibko interagirajočim masivnim delcem iz poglavja~\ref{sec:dark}~\cite{seitz_theory_1958}.
+Ko gre skozi kapljevino delec z visoko energijo, preko elastičnega sipanja odda svojo energijo elektronom v kapljevini. Elektron zaradi sipanja odnese nezanemarljivo daleč stran od poti vpadnega delca~\cite{podgorsak_radiation_nodate}, preostala energija elektrona pa se pojavi v obliki toplote v vzbujeni molekuli in njenih sosedah~\cite{seitz_theory_1958}. Tem elektronom pravimo žarki \( \delta \) in so sorazmerno povezani s številom nastalih mehurčkov v tekočini~\cite{seitz_theory_1958, glaser_bubble_1958}. Če je toplote dovolj, nastane mehurček in če ta doseže t.i.\ kritično velikost, se ne sesede sam vase, ampak se širi, ko okoliška tekočina izhlapeva v njegovo notranjost. Predstavljen toplotni model je povzet po Seitzu in predpostavi, da je vpadni delec lahek v primerjavi s šibko interagirajočim masivnim delcem iz poglavja~\ref{sec:dark}~\cite{seitz_theory_1958}.
 
 \subsubsection*{Energija stacionarnega mehurčka}
 
-Razlika tlakov med notranjostjo in zunanjostjo mehurčka z radijem \( r \) je
+Razlika tlakov med notranjostjo in zunanjostjo mehurčka s polmerom \( r \) je
 
-\begin{equation}
-\label{eq:1}
-\Delta p = \frac{2 \sigma}{r},
-\end{equation}
-
-kjer je \( \sigma \) površinska napetost~\cite{kuscer_toplota_2017, seitz_theory_1958}. V stacionarnem mehurčku bo torej \( \Delta p \) razlika tlakov med zunanjo kapljevino \( p_f \) in notranjim plinom \( p_g \). Radij takega mehurčka bo zadoščal enačbi
+\[  \Delta p = \frac{2 \sigma}{r},
+\]
+kjer je \( \sigma \) površinska napetost~\cite{kuscer_toplota_2017, seitz_theory_1958}. V stacionarnem mehurčku je torej \( \Delta p \) razlika tlakov med zunanjo kapljevino \( p_f \) in notranjim plinom \( p_g \). Polmer takega mehurčka zadošča enačbi
 
 \begin{equation}
 \label{eq:2}
  p_g - p_f = \frac{2 \sigma}{R_C},
 \end{equation}
-
-iz česar lahko izrazimo kritičen radij \( R_C \) za stabilen mehurček
+iz česar lahko izrazimo kritični polmer \( R_C \) za stabilen mehurček:
 
 \begin{equation}
 \label{eq:3}
  R_C = \frac{2 \sigma}{p_g - p_f}.
 \end{equation}
 
-V večini primerov mehurčnih komor velja \( p_g \gg p_f \). Vsi mehurčki z radijem \( r \) večjim od \( R_C \) pri tlaku \( p_g \) bodo rasli, saj okoliška kapljevina izhlapeva vanje.
+V večini mehurčnih komor velja \( p_g \gg p_f \). Vsi mehurčki s polmerom, večjim od \( R_C \) pri tlaku \( p_g \) rastejo, saj okoliška kapljevina izhlapeva vanje.
 
-Minimalna energija potrebna za nastanek stabilnega mehurčka je sestavljena iz površinske energije ter toplote, ki je posledica izhlapevanja tekočine. Predpostavimo, da je nastanek mehurčka adiabatna sprememba. Energija bo potem
+Minimalna energija, potrebna za nastanek stabilnega mehurčka, je sestavljena iz površinske energije in toplote, ki je posledica izhlapevanja tekočine. Predpostavimo, da je nastanek mehurčka adiabatna sprememba. Energija mehurčka \( E_m \) je 
 
 \begin{equation}
 \label{eq:4}
 E_m = 4 \pi \sigma R_C ^2 + \frac{4 \pi}{3} R_C ^3 n H_s,
 \end{equation}
+kjer je \( n \) molska gostota plina pri tlaku \( p_g \) in \( H_s \) specifična entalpija. Vir~\cite{bruno_critical_2019} v tabeli na strani 3 predstavi, kako so skozi desetletja različni avtorji dodajali in odstranjevali še druge člene, vendar sta v vseh primerih oba člena iz enačbe \eqref{eq:4}. V razdelku~\ref{sec:mehmod} bomo tudi upoštevali enega od dodatnih členov -\ kinetičnega. 
 
-kjer je \( n \) molska gostota plina pri tlaku \( p_g \) in \( H_s \) specifična entalpija. Vir~\cite{bruno_critical_2019} v tabeli na strani 3 predstavi, kako so skozi desetletja različni avtorji dodajali in odstranjevali še druge člene, vendar sta v vseh primerih oba člena iz enačbe \eqref{eq:4}. V delu~\ref{sec:mehmod} bomo tudi upoštevali enega od dodatnih členov -\ kinetičnega. 
+Ob privzetku \( p_g \gg p_f \) enačbo~\eqref{eq:3} zapišemo v obliki
 
-Ob upoštevanju enačbe~\eqref{eq:3} in \( p_g \gg p_f \) lahko enačbo zapišemo v obliki
-
-\begin{equation}
-\label{eq:5}
- E_M = 16 \pi\frac{\sigma ^3}{p_g ^2} \left( 1 + \frac{2}{3} \frac{n}{p_g} H_s \right),
-\end{equation}
-
-in nadalje prepišemo še s kompresijskim faktorjem \( Z_g = p_g V / R T \), kjer je \( V_m \) molski volumen in \( R \) plinska konstanta
+\[  E_m = 16 \pi\frac{\sigma ^3}{p_g ^2} \left( 1 + \frac{2}{3} \frac{n}{p_g} H_s \right),
+\]
+kar lahko s kompresijskim faktorjem \( Z_g = p_g V / (RT) \), kjer je \( V_m \) molski volumen in \( R \) plinska konstanta, prepišemo v obliko
 
 \begin{equation}
 \label{eq:6}
 E_m = 16 \pi \frac{\sigma ^3}{p_g ^2} \left( 1 +  H_s \frac{2}{3 Z_g R T} \right).
 \end{equation}
 
-V enačbi~\eqref{eq:6} opazimo, da je energija obratno sorazmerna s kvadratom plina \( p_g \) in sorazmerna s kubom površinske napetosti \( \sigma \). Energija je manjša za večji tlak plina in večja za večjo vrednost površinske napetosti.
+V enačbi~\eqref{eq:6} opazimo, da je energija obratno sorazmerna s kvadratom tlaka plina \( p_g \) in sorazmerna s kubom površinske napetosti \( \sigma \).
 
-V primeru naše pregrete kapljevine energija pada, ko temperatura raste. To je direktna posledica Boylovega in Gay-Lussacovega zakona, kjer se tlak veča z višanjem temperature, medtem ko se površinska napetost manjša~\cite{seitz_theory_1958, strnad_fizika_2016}
+V primeru pregrete kapljevine energija pada, ko temperatura raste. To je neposredna posledica Boylovega in Gay-Lussacovega zakona, po katerem se tlak veča z višanjem temperature, medtem ko se površinska napetost manjša~\cite{seitz_theory_1958, strnad_fizika_2016}
 
 \begin{wraptable}{R}{7cm}
   \centering
@@ -75,7 +67,7 @@ V primeru naše pregrete kapljevine energija pada, ko temperatura raste. To je d
 \captionof{tabela}{\small Tabela prikazuje vrednosti gostote mehurčkov na sledi delca, molsko maso, gostoto, sipalni presek ter energijo, ki jo vpadni delec odda posameznemu elektronskemu sistemu za vodik in propan ~\cite{seitz_theory_1958}.} \label{tab:2}
 \end{wraptable}
   
-Energija stabilnih mehurčkov radija \( R_C \) za vodik je \( E_m (H_2) = 4.08 \, \mathrm{eV}  \) in za propan \( E_m (C_3 H_8) = 131 \, \mathrm{eV} \)~\cite{seitz_theory_1958}.
+Energija stabilnih mehurčkov s polmerom \( R_C \) za vodik je \( E_m (H_2) = 4.08 \, \mathrm{eV}  \) in za propan \( E_m (C_3 H_8) = 131 \, \mathrm{eV} \)~\cite{seitz_theory_1958}.
 
 \subsubsection*{Elektroni prejmejo energijo vpadnega delca}
 
