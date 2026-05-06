@@ -1,0 +1,53 @@
+\begin{tikzpicture}
+  \begin{axis}[
+    title={Energija mehurčka v odvisnosti od polmera in tlaka $[\mathrm{bar}]$},
+    axis lines = left,
+    xlabel = {\(\text{Polmer} \ [\si{\angstrom}]\)},
+    ylabel = {\( \text{Energija} \ [\mathrm{eV}]\)},
+    ymax=2,
+    ymin=-1,
+    legend pos = north west,
+]
+
+\addplot [
+    domain=5:100, 
+    samples=100, 
+    color=blue,
+    dotted,
+    thick,
+    mark=none,
+]
+{37.612 / (x^2) + 4 * pi * 2.212 * x^2 / (10^5)};
+\addlegendentry{P = 0}
+
+\addplot [
+    domain=5:100, 
+    samples=100, 
+    color=black,
+    ]
+    {37.612 / (x^2) + 4 * pi * 2.212 * x^2 / (10^5) - 4 * pi * 6.241 * x^3 / (3 * 10^7)};
+\addlegendentry{P = -1}
+
+\addplot [
+    domain=5:100, 
+    samples=100, 
+    color=red,
+    dashed,
+    thick,
+    mark=none,
+    ]
+    {37.612 / (x^2) + 4 * pi * 2.212 * x^2 / (10^5) - 8 * pi * 6.241 * x^3 / (3 * 10^7)};
+\addlegendentry{P = -2}
+
+\addplot [
+    domain=5:100, 
+    samples=100, 
+    color=green,
+    dashdotted,
+    thick,
+    mark=none,
+    ]
+    {37.612 / (x^2) + 4 * pi * 2.212 * x^2 / (10^5) - 4 * pi * 6.241 * x^3 / (10^7)};
+\addlegendentry{P = -3}
+\end{axis}
+\end{tikzpicture}

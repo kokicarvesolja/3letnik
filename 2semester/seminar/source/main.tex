@@ -20,9 +20,10 @@ sortcites=true]{biblatex}
 \usepackage{pgfplots}
 
 % externalize figures: create PDFs which are then imported into the document
-\pgfplotsset{width=5cm}
+\pgfplotsset{width=10cm}
 \usepgfplotslibrary{external}
 \tikzexternalize
+\usetikzlibrary {arrows.meta}
 \hypersetup{
   colorlinks,
   linkcolor={black},
@@ -83,9 +84,7 @@ sortcites=true]{biblatex}
  \newpage
 
  \input{01uvod.tex}
- \input{02zgodovina.tex}
  \input{03delovanje.tex}
- \input{04drawbacks.tex}
  \input{05uporaba.tex}
  \input{06zakljucek.tex}
  \newpage
