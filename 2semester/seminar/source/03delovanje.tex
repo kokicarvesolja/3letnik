@@ -115,132 +115,67 @@ v_C = \frac{R_C}{\tau_C} = \frac{4 D}{R_C},
 \end{equation}
 kjer je \( \tau_C \) karakteristični čas \( \tau_h \) za \( r = R_C \). Vrednosti za vodik in propan so podane v tabeli~\ref{tab:3}.
 
-\subsubsection*{Razširjanje mehurčka}
+\subsubsection*{Razširjanje mehurčka in viskoznost tekočine}
 
-Predpostavimo, da se mehurček širi radialno navzven in da je hitrost širjenja manjša od hitrosti zvoka v kapljevini.
-
-Adiabatna zvočna hitrost v mediju je podana z enačbo
+Predpostavimo, da se mehurček v vodiku širi radialno navzven in da je hitrost širjenja manjša od hitrosti zvoka v kapljevini. Adiabatna zvočna hitrost sredstva je podana z enačbo
 
 \begin{equation}
 \label{eq:28}
 c_a = {\left( \rho \beta_a \right)}^{-1/2},
 \end{equation}
+kjer je \( \rho \) gostota sredstva, \( \beta_a \) pa adiabatna stisljivost. V tabeli~\ref{tab:3} lahko vidimo, da je hitrost \( v_C \) res manjša od zvočne. Predpostavke nam omogočijo obravnavo širjenja mehurčka kot širjenje v nestisljivi tekočini, kjer zanemarimo viskoznost.
 
-kjer je \( \rho \) gostota medija, \( \beta_a \) pa adiabatna stisljivost. V tabeli \ref{tab:3} lahko vidimo, da je hitrost \( v_C \) res manjša od zvočne.
-
-V tem primeru je rešitev našega hidrodinamskega problema kar rešitev udarnega vala iz teorije fizike o zvoku, če je viskoznost zanemarjena. Za vodik je neviskozna tekočina primerna rešitev, za propan pa ne, kar bomo videli v nadaljevanju.
-
-Kroglo, ki se širi radialno navzven \( R(t) \), določa enačba za nestisljivo tekočino
+Kroglo, ki se širi radialno navzven s trenutnim polmerom \( R(t) \), določa enačba za nestisljivo tekočino
 
 \begin{equation}
 \label{eq:13}
 \frac{\partial v}{\partial t} + v \frac{\partial v}{\partial r}  = - \frac{1}{\rho} \frac{\partial p}{\partial r}
 \end{equation}
-
-skupaj s kontinuitetno enačbo
-
-\begin{equation}
-\label{eq:14}
-\frac{\partial \left(r ^2 v\right) }{\partial r} = 0, 
-\end{equation}
-
-kjer je \( v \) hitrosti tekočine v točki \( r \), \( \rho \) gostota tekočine in tlak \( p \), ki je odvisen od časa in položaja~\cite{landau_fluid_1987}. Nastavek
-
-\begin{equation}
-\label{eq:15}
-v = \dot{R} \frac{R ^2}{r ^2}.
-\end{equation}
-
-vstavimo v enačbo \eqref{eq:13} in integriramo po \( r \), kjer je za \( r \to \infty \) tlak enak \( p' \). Rešitev za tlak je~\cite{landau_fluid_1987}
+skupaj s kontinuitetno enačbo \( \frac{\partial }{\partial r} \left( r ^2 v \right) = 0 \), kjer je \( v \) hitrosti tekočine v točki \( r \), \( \rho \) gostota tekočine in tlak \( p \), ki je odvisen od časa in položaja~\cite{landau_fluid_1987}. Uporabimo nastavek \( v = \dot{R} R ^2 / r ^2 \) za rešitev tlaka \( P(t) \) ob steni mehurčka~\cite{landau_fluid_1987}
 
 \begin{equation}
 \label{eq:11}
-\frac{p' - P(t)}{\rho} = \ddot{R} R + \left[ \frac{3}{2} {\left( \dot{R}  \right)}^2 \right].
+\frac{P(t)}{\rho} = \ddot{R} R + \left[ \frac{3}{2} {\left( \dot{R}  \right)}^2 \right].
 \end{equation}
 
-Ob predpostavki, da je širjenje mehurčka adiabatna sprememba, bo za tlak veljala enačba
+Enačba adiabatne spremembe za začetni vrednosti \( p_0 \), \( R_0 \) in \( \gamma = 4 / 3 \) za vodik je \( p = p_0 {\left( R_0 /R \right)}^{3 \gamma} \). Enačba širjenja mehurčka sledi po dvakratni integraciji:
+\[  \frac{c_0 t}{R_0} = {\left( 2 z \right)}^{1/2} \left( 1 + \frac{2z}{3} + \frac{z ^2}{5} \right),
+\]
+kjer je \( z = R/ R_0 - 1 \) in \( c_0 = p_0 / p \).
 
-\begin{equation}
-\label{eq:12}
-p = p_0 {\left( \frac{R_0}{R} \right)}^{3\gamma},
-\end{equation}
-
-kjer sta \( p_0 \) in \( R_0 \) začetni vrednosti~\cite{seitz_theory_1958, strnad_fizika_2016}. Za \( p' = 0 \) bo prvi integral enačbe \eqref{eq:11} enak
-
-\begin{equation}
-\label{eq:16}
-\dot{R} ^2 = \frac{2 c_0 ^2}{3 \left( \gamma - 1 \right)} \left[ \left( \frac{R_0}{R} \right) ^3 - \left( \frac{R_0}{R} \right)^{3\gamma} \right],
-\end{equation}
-
-kjer je \( c_0 = p_0 / p \). Enačba \eqref{eq:12} nam posredno pove delo, ki ga opravi mehurček za razširjanje. Če bi bilo to delo majhno, bi bil \( \gamma = 1 \), vendar ni za \( r < R_C \). Posledično ga lahko ocenimo z razmerjem specifičnih toplot pri konstantem tlaku in temperaturi. Za vodik to pomeni \( \gamma = 4/3 \) in enačbo \eqref{eq:16} lahko še nadalje integriramo v končen rezultat
-
-\begin{equation}
-\label{eq:17}
-\frac{c_0 t}{R_0} = {\left( 2 z \right)}^{1/2} \left( 1 + \frac{2z}{3} + \frac{z ^2}{5} \right),
-\end{equation}
-
-kjer je \( z = R/ R_0 - 1 \).
-
-V primeru propana pa viskoznosti ne smemo zanemariti, saj je toliko večja od vodikove, da upor, ki nasprotuje širjenju mehurčka ni več zanemarljiv. Izpeljava, ki sledi, je najboljša ocena glede~\cite{seitz_theory_1958} in ni točna. 
-
-Nastavek \eqref{eq:15} bo imel radialno stisljivost oblike
-
-\begin{equation}
-\label{eq:18}
-\dot{\epsilon} = 2 \frac{\dot{R} R ^2}{r ^3}.
-\end{equation}
-
-Za medij z viskoznostjo \( \eta \), bo tlak stislijvosti
-
-\begin{equation}
-\label{eq:19}
-P_{\tau} = 2 \eta \dot{\epsilon} = - 4 \eta \frac{R ^2 \dot{R}}{r ^3}.
-\end{equation}
-
-Tlak \( P_{\tau} \) bo manjšal pospešek, s katerimi se bo mehurček širil. Pri steni mehurčka bo vrednost enačbe \eqref{eq:19}
+Pri širjenju mehurčka v propanu viskoznosti ne smemo zanemariti. Tlak zaradi viskoznosti upočasnjuje rast mehurčka v radialni smeri. Pri steni mehurčka bo ta tlak določala enačba
 
 \begin{equation}
 \label{eq:20}
 P_R = - 4 \eta \frac{\dot{R}}{R}.
 \end{equation}
 
-V primeru, ko je \( P_R \) primerljiva s \( P \), lahko enačbo \eqref{eq:11} poenostavimo tako, da zanemarimo \( \ddot{R} \). Rešitev je tako
+V primeru, da je \( P_R \) primerljiv s \( P \), v enačbi~\eqref{eq:11} zanemarimo \( \ddot{R} \) in velja identiteta
 
 \begin{equation}
 \label{eq:21}
 \dot{R} ^2 = \frac{2}{3} c_0 {\left( \frac{R_0}{R} \right)}^{3\gamma}.
 \end{equation}
 
-Iz kvadrata enačbe \eqref{eq:20} potem dobimo
+Kvadrat enačbe~\eqref{eq:20} je
 
 \begin{equation}
 \label{eq:22}
-P_R ^2 = P ^2 = 16 \eta ^2 \frac{\dot{R} ^2}{R ^2} = 32 \eta ^2 \frac{p_0 R_0 ^{3\gamma}}{3 \rho R ^{3 \gamma - 2}}.
+P_R ^2 = P ^2 = 16 \eta ^2 \frac{\dot{R} ^2}{R ^2} = 32 \eta ^2 \frac{p_0 R_0 ^{3\gamma}}{3 \rho R ^{3 \gamma - 2}},
 \end{equation}
 
-Enačbo \eqref{eq:22} sedaj razširimo z dvema ulomkoma: \( V_0 / \left( 4 \pi R_0 ^3 / 3 \right) \) in \( R_C^{3(\gamma - 1)}/ R_C^{3(\gamma - 1)} \). Izrazimo lahko razmerje radija mehurčka \( R \) in kritičnega radija \( R_C \)
+ki jo razširimo z dvema ulomkoma: \( V_0 / \left( 4 \pi R_0 ^3 / 3 \right) \) in \( R_C^{3(\gamma - 1)}/ R_C^{3(\gamma - 1)} \). To nam omogoči, da izrazimo razmerje mehurčkovega in kritičnega polmera.  
 
 \begin{equation}
 \label{eq:23}
 {\left( \frac{R}{R_C} \right)}^{3\gamma - 2} = \left( \frac{9}{128 \pi} \right) \left( \frac{\rho}{\eta ^2} \right) \left( \frac{p_0 V_0}{R_C} \right) {\left( \frac{R_0}{R_C} \right)}^{3(\gamma - 1)}.
 \end{equation}
 
-Za vodik z viskoznostjo \( \eta = 10^{-5}\, \mathrm{Pas} \) in \( 3 \gamma - 2 = 2.2 \) je razmerje \( R / R_C = 0.8 \). Za propan z viskoznostjo \( \eta = 10^{-3}\, \mathrm{Pa s} \) pa je razmerje \( R/ R_C = 3.5 \cdot 10^{-3} \)~\cite{seitz_theory_1958}.
-
-Iz razmerij lahko vidimo, da tlak stisljivosti kot posledica viskoznosti, na vodik skoraj nima vpliva, saj upočasni rast mehurčka, ko je že skoraj dovolj velik. Pri propanu pa viskoznost ima vpliv, saj je \( P = P_C \) pri zelo majhen radiju \( R \approx 10^{-3} R_C \). 
-
-Nepoenostavljena rešitev~\eqref{eq:11} ima za propan obliko
-
-\begin{equation}
-\label{eq:24}
-{\left( \frac{R}{R_C} \right)}^{6\gamma - 5} = \left( \frac{3}{128 \pi} \right) {\left( \ln \frac{R}{R_0}\right)}^{-1} \left( \frac{\rho}{\eta ^2} \right) \left( \frac{p_0V_0}{R_C} \right) {\left( \frac{R_{0}}{R_C} \right)}^{6(\gamma - 1)},
-\end{equation}
-
-in nima drastično različnih rezultatov od enačbe~\eqref{eq:23}.
+Za vodik z viskoznostjo \( \eta = 10^{-5}\, \mathrm{Pas} \) in \( 3 \gamma - 2 = 2.2 \) je razmerje \( R / R_C = 0.8 \). Za propan z viskoznostjo \( \eta = 10^{-3}\, \mathrm{Pa s} \) pa je razmerje \( R/ R_C = 3.5 \cdot 10^{-3} \)~\cite{seitz_theory_1958}. Pri vodiku ima tlak zaradi viskoznosti zanemarljiv vpliv, saj je \( P_R = P \) pri mehurčku, ki je malo manjši od kritične velikosti. Pri propanu pa je enakost tlakov pri zelo majhnem mehurčku s polmerom \( R \approx 10^{-3} R_C \).
 
 Viskoznost pri širjenju mehurčka v propanu potemtakem igra pomembno vlogo, medtem ko jo v vodiku lahko zanemarimo.
 
-\subsubsection*{Širjenje mehurčka preko kritičnega radija}
+\subsubsection*{Širjenje mehurčka preko kritičnega polmera}
 
 Ko mehurček doseže kritičen radij v pregreti tekočini, viskoznost in njegova rast postaneta zanemarljivi. Glavni razlog za rast mehurčka je toplotni tok, ki teče iz okoliške tekočine do njegove površine, saj s tem omogoča dodatno izhlapevanje tekočine in njegovo širjenje.
 
