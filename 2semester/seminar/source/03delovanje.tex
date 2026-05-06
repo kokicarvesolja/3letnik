@@ -6,7 +6,7 @@ Glaser je predpostavil, da je za nastanek mehurčkov kriva elektrostatska sila m
 
 Komora je napolnjena s pregreto kapljevino, kot je helij, devterij, vodik, propan, freon ali ksenon. Spomnimo, da je pregreta kapljevina kapljevina, ki smo jo počasi segreli nad njeno vrelišče pri konstantnem tlaku, ne da bi kapljevina zavrela. To lahko storimo, če je stena posode gladka, kapljevina miruje in v njej ni nečistoč. Metastabilno stanje pregrete kapljevine se spremeni v stabilno v trenutku, ko nastane v njej mehurček, kapljevina pa eksplozivno vzkipi. Temperatura kapljevine pri tem zniža na vrelišče~\cite{strnad_fizika_2016}.
 
-Ko gre skozi kapljevino delec z visoko energijo, preko elastičnega sipanja odda svojo energijo elektronom v kapljevini. Elektron zaradi sipanja odnese nezanemarljivo daleč stran od poti vpadnega delca~\cite{podgorsak_radiation_nodate}, preostala energija elektrona pa se pojavi v obliki toplote v vzbujeni molekuli in njenih sosedah~\cite{seitz_theory_1958}. Tem elektronom pravimo žarki \( \delta \) in so sorazmerno povezani s številom nastalih mehurčkov v tekočini~\cite{seitz_theory_1958, glaser_bubble_1958}. Če je toplote dovolj, nastane mehurček in če ta doseže t.i.\ kritično velikost, se ne sesede sam vase, ampak se širi, ko okoliška tekočina izhlapeva v njegovo notranjost. Predstavljen toplotni model je povzet po Seitzu in predpostavi, da je vpadni delec lahek v primerjavi s šibko interagirajočim masivnim delcem iz poglavja~\ref{sec:dark}~\cite{seitz_theory_1958}.
+Ko gre skozi kapljevino delec z visoko energijo, preko elastičnega sipanja odda svojo energijo elektronom v kapljevini. Elektron zaradi sipanja odnese nezanemarljivo daleč stran od poti vpadnega delca~\cite{podgorsak_radiation_nodate}, preostala energija elektrona pa se pojavi v obliki toplote v vzbujeni molekuli in njenih sosedah~\cite{seitz_theory_1958}. Tem elektronom pravimo žarki \( \delta \)~\cite{seitz_theory_1958, glaser_bubble_1958}. Če je toplote dovolj, nastane mehurček in če ta doseže t.i.\ kritično velikost, se ne sesede sam vase, ampak se širi, ko okoliška tekočina izhlapeva v njegovo notranjost. Predstavljen toplotni model je povzet po Seitzu in predpostavi, da je vpadni delec lahek v primerjavi s šibko interagirajočim masivnim delcem iz poglavja~\ref{sec:dark}~\cite{seitz_theory_1958}.
 
 \subsubsection*{Energija stacionarnega mehurčka}
 
@@ -93,6 +93,7 @@ kjer je \( D \) difuzijski koeficient tekočine in je neodvisen od tlaka v okoli
 
 
 \begin{wraptable}{r}{8cm}
+  \captionof{tabela}{\small Tabela prikazuje vrednosti difuzijskega koeficiena \( D \), karakteristični čas \( \tau_C \) za stabilen mehurček ter hitrost mehurčnih sten \( v_C \)~\cite{seitz_theory_1958}.} \label{tab:3}
   \centering
   \[
     \begin{array}{|c|c|c|} \hline
@@ -104,7 +105,6 @@ kjer je \( D \) difuzijski koeficient tekočine in je neodvisen od tlaka v okoli
       c_a [ \mathrm{cm}/ \mathrm{s}] & 1.7 \cdot 10^5 & 1.9 \cdot 10^5 \\ \hline
     \end{array}
   \]
-  \captionof{tabela}{\small Tabela prikazuje vrednosti difuzijskega koeficiena \( D \), karakteristični čas \( \tau_C \) za stabilen mehurček ter hitrost mehurčnih sten \( v_C \)~\cite{seitz_theory_1958}.} \label{tab:3}
 \end{wraptable}
 
 Čas, ki je potreben, da mehurček doseže kritični radij, mora biti manjši od časa, v katerem se izgubi preveč energije za nastanek mehurčka zaradi difuzije toplote. Minimalna hitrost sten je določena z enačbo
@@ -143,7 +143,7 @@ Enačba adiabatne spremembe za začetni vrednosti \( p_0 \), \( R_0 \) in \( \ga
 \]
 kjer je \( z = R/ R_0 - 1 \) in \( c_0 = p_0 / p \).
 
-Pri širjenju mehurčka v propanu viskoznosti ne smemo zanemariti. Tlak zaradi viskoznosti upočasnjuje rast mehurčka v radialni smeri. Pri steni mehurčka bo ta tlak določala enačba
+Pri širjenju mehurčka v propanu viskoznosti ne smemo zanemariti. Viskozno dušenje upočasnjuje rast mehurčka v radialni smeri. Pri steni mehurčka bo to določala enačba
 
 \begin{equation}
 \label{eq:20}
@@ -171,49 +171,41 @@ ki jo razširimo z dvema ulomkoma: \( V_0 / \left( 4 \pi R_0 ^3 / 3 \right) \) i
 {\left( \frac{R}{R_C} \right)}^{3\gamma - 2} = \left( \frac{9}{128 \pi} \right) \left( \frac{\rho}{\eta ^2} \right) \left( \frac{p_0 V_0}{R_C} \right) {\left( \frac{R_0}{R_C} \right)}^{3(\gamma - 1)}.
 \end{equation}
 
-Za vodik z viskoznostjo \( \eta = 10^{-5}\, \mathrm{Pas} \) in \( 3 \gamma - 2 = 2.2 \) je razmerje \( R / R_C = 0.8 \). Za propan z viskoznostjo \( \eta = 10^{-3}\, \mathrm{Pa s} \) pa je razmerje \( R/ R_C = 3.5 \cdot 10^{-3} \)~\cite{seitz_theory_1958}. Pri vodiku ima tlak zaradi viskoznosti zanemarljiv vpliv, saj je \( P_R = P \) pri mehurčku, ki je malo manjši od kritične velikosti. Pri propanu pa je enakost tlakov pri zelo majhnem mehurčku s polmerom \( R \approx 10^{-3} R_C \).
+Za vodik z viskoznostjo \( \eta = 10^{-5}\, \mathrm{Pas} \) in \( 3 \gamma - 2 = 2.2 \) je razmerje \( R / R_C = 0.8 \). Za propan z viskoznostjo \( \eta = 10^{-3}\, \mathrm{Pa s} \) pa je razmerje \( R/ R_C = 3.5 \cdot 10^{-3} \)~\cite{seitz_theory_1958}. Pri vodiku ima viskozno dušenje zanemarljiv vpliv, saj je \( P_R = P \) pri mehurčku, ki je malo manjši od kritične velikosti. Pri propanu pa je enakost tlakov pri zelo majhnem mehurčku s polmerom \( R \approx 10^{-3} R_C \).
 
 Viskoznost pri širjenju mehurčka v propanu potemtakem igra pomembno vlogo, medtem ko jo v vodiku lahko zanemarimo.
 
 \subsubsection*{Širjenje mehurčka preko kritičnega polmera}
 
-Ko mehurček doseže kritičen radij v pregreti tekočini, viskoznost in njegova rast postaneta zanemarljivi. Glavni razlog za rast mehurčka je toplotni tok, ki teče iz okoliške tekočine do njegove površine, saj s tem omogoča dodatno izhlapevanje tekočine in njegovo širjenje.
+Na rast mehurčka kritične velikost v pregreti tekočini vpliva zgolj toplotni tok, ki teče iz okoliške tekočine do njegove površine. Tekočina izhlapeva v notranjost mehurčka.
 
-Kakor smo povedali v uvodu tega modela, imajo hlapi v mehurčku temperaturo vrelišča, medtem ko je daleč stran od mehurčka tekočina še zmeraj pregreta s temperaturo \( T_b \). Gradient temperature \( T_{b} - T \) ima debelino \( 2 {\left( D t \right)}^{1/2} \), kjer je \( D \) difuzijski koeficient in \( t \) čas od nastanka mehurčka kritične velikosti.
+Kakor smo povedali v uvodu tega modela, imajo hlapi v mehurčku temperaturo vrelišča, medtem ko je daleč stran od mehurčka tekočina še zmeraj pregreta s temperaturo \( T_b \). Gradient temperature \( T_{b} - T \) ima debelino \( 2 {\left( D t \right)}^{1/2} \), kjer je \( D \) difuzijski koeficient in \( t \) čas od nastanka mehurčka kritične velikosti. Asimptotski približek rasti mehurčka je
 
-Asimptotski približek rasti mehurčka je
-
-\begin{equation}
-\label{eq:25}
-R = 2 {\left( \frac{3}{\pi} \right)}^{1/2} \lambda \left( T - T_b \right) \frac{V_m t^{1/2}}{H_s D^{1/2}},
-\end{equation}
-
+\[  R = 2 {\left( \frac{3}{\pi} \right)}^{1/2} \lambda \left( T - T_b \right) \frac{V_m t^{1/2}}{H_s D^{1/2}},
+\]
 kjer je \( \lambda \) toplotna prevodnost, \( V_m \) molski volumen pare ter \( H_s \) sublimacijska toplota~\cite{plesset_growth_1954}. 
-
 
 \subsection{Mehanski model}\label{sec:mehmod}
 
-Razlaga za mehanski model delovanja mehurčne komore je v večini povzeto po~\cite{konstantinov_how_1998} in razloži pojav mehurčkov samo za vodik ter helij. Predpostavimo, da je v mehurčni komori tekoči helij pri temperaturi \( T = 0 \). Posledično je tudi nasičeni tlak \( P_{svp} = 0 \). Kapljevino obravnavamo kot nestisljivo.
+Razlaga za mehanski model delovanja mehurčne komore je v večini povzeta po~\cite{konstantinov_how_1998} in razloži pojav mehurčkov samo za vodik in helij. Predpostavimo, da je v mehurčni komori tekoči helij pri temperaturi \( T = 0 \). Posledično je tudi nasičeni tlak \( P_{nt} = 0 \). Kapljevino obravnavamo kot nestisljivo.
 
-Visokoenergijski delec pri prehodu skozi tekočino povzroči nastanek \( \delta \) žarkov, ki bodo prepotovali kratko razdaljo in se nato ustavili. Ustavljen elektron bo v heliju občutil odbojni potencial \( V_0 \approx 1 \mathrm{eV} \), zaradi katerega bo bolj ugodno, da se elektron nahaja v sferi, v kateri ni helijevih atomov. Energija sfere in elektrona je
+Žarek \( \delta \) se je v razdelku~\ref{sec:topmod} ustavil in oddal toploto vzbujeni molekuli in njenim sosedom. V mehanskem modelu ustavljen elektron v heliju občuti odbojni potencial \( V_0 \approx 1 \mathrm{eV} \), zaradi katerega je ugodneje, da se elektron nahaja v sferi, v kateri ni helijevih atomov. Skupna energija elektrona in okoliške sfere s polmerom \( R \) je
 
 \begin{equation}
 \label{eq:26}
 E_B = E_{e} + 4 \pi R ^2 \sigma + \frac{4}{3} \pi R ^3 P + 2 \pi R ^3 \rho \dot{R} ^2,
 \end{equation}
+kjer je \( E_e = h ^2 / {\left(8 m_e R ^2\right)} \) osnovno stanje elektrona z maso \( m_e \), \( \sigma \) površinska napetost, \( P \) tlak okoliške tekočine in \( \rho \) gostota tekočine. Enačba nas spominja na~\eqref{eq:4} z dodanima členoma energije elektrona in kinetične energije tekočine, ko mehurček raste s hitrostjo \( \dot{R} \).
 
-kjer je \( E_e = h ^2 / {\left(8 m_e R ^2\right)} \) osnovno stanje elektrona z maso \( m_e \) in \( \rho \) gostota tekočine. Enačba nas spominja na~\eqref{eq:4} z dodanima členoma energije elektrona ter kinetične energija tekočine, ko mehurček raste s hitrostjo \( \dot{R} \).
-
-Za tlak \( P = 0 \) in stabilen mehurček bo ekstrem energije pri radiju
+Pri tlaku \( P = 0 \) je ekstrem energije stabilnega mehurčka pri polmeru
 
 \begin{equation}
 \label{eq:27}
 R_{min} = {\left( \frac{h ^2}{32 \pi m_e \sigma} \right)}^{1/4},
 \end{equation}
+kar je za \( T = 0 \) znaša \( R = 19 \si{\angstrom} \). Radij mehurčka se z višanjem mehurčka rahlo poveča, saj se zmanjša površinska napetost~\cite{classen_electrons_1998}. 
 
-kar je za \( T = 0 \) \( R = 19 \si{\angstrom} \). Radij mehurčka se bo z višanjem temperature rahlo povečal, saj se zmanjša površinska napetost~\cite{classen_electrons_1998}. 
-
-Tekočine in trdnine lahko za razliko od plina dosežejo negativen tlak. Če plinu v zaprti posodi z batom povečamo prostornino, bo plin zapolnil novo nastali prostor, tlak pa se bo znižal. Pri nestisljivi tekočini bo povečanje volumna posode povzročilo negativen tlak. Ta tlak ne more rasti do neskončnosti, ampak bo tekočina začela razpadati - vreti~\cite{imre_how_2007}.
+Tekočine in trdnine lahko v nasprotju s plinom dosežejo negativen tlak. Če plinu v zaprti posodi z batom povečamo prostornino, plin zapolni novo nastali prostor, tlak pa se zniža. Pri nestisljivi tekočini povečanje volumna posode povzroči negativen tlak. Ta tlak ne more rasti do neskončnosti, ampak tekočina začne vreti~\cite{imre_how_2007}.
 
 Sfera z elektronom se bo zmanjšala, če tlak povečamo, vendar se bo povečala za negativen tlak, saj se poveča minimum energije v enačbi~\eqref{eq:26}. Za dovolj majhen negativen tlak in radij \( R > R_{\min} \) bo energija dosegla maksimum v točki \( R_{\max} \), potem pa bo začela monotono padati in bo v nekem trenutku postala negativna. Z nižanjem tlaka se bosta točki \( R_{\min} \) in \( R_{\max} \) približevali, dokler pri tlaku manjšem od kritične točke \( -P_C \) energija nima več minimuma in mehurček postane nestabilen~\cite{classen_electrons_1998}.
 
