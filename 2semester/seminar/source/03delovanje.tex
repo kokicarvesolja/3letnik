@@ -18,7 +18,9 @@ kjer je \( \sigma \) površinska napetost~\cite{kuscer_toplota_2017, seitz_theor
 
 \[  p_g - p_f = \frac{2 \sigma}{R_C},
 \]
-iz česar lahko izrazimo kritični polmer \( R_C \) za stabilen mehurček:
+iz česar lahko izrazimo kritični polmer \( R_C \):
+
+
 
 \begin{equation}
 \label{eq3:1}
@@ -49,9 +51,20 @@ E_m = 16 \pi \frac{\sigma ^3}{p_g ^2} \left( 1 +  H_s \frac{2}{3 Z_g R T} \right
 V enačbi~\eqref{eq3:3} opazimo, da je energija obratno sorazmerna s kvadratom tlaka plina \( p_g \) in sorazmerna s kubom površinske napetosti \( \sigma \).
 
 V primeru pregrete kapljevine energija pada, ko temperatura raste. To je neposredna posledica Boylovega in Gay-Lussacovega zakona, po katerem se tlak veča z višanjem temperature, medtem ko se površinska napetost manjša~\cite{seitz_theory_1958, strnad_fizika_2016}
+  
+Energija stabilnih mehurčkov s polmerom \( R_C \) za vodik je \( E_m (H_2) = 4.08 \, \mathrm{eV}  \) in za propan \( E_m (C_3 H_8) = 131 \, \mathrm{eV} \)~\cite{seitz_theory_1958}.
 
-\begin{wraptable}{R}{7cm}
-\captionof{tabela}{\small Vrednost gostote mehurčkov na sledi delca, molska masa \( n \), gostota \( \rho \) in energija \( E_t \), ki jo vpadni delec odda posameznemu elektronskemu sistemu, za vodik in propan~\cite{seitz_theory_1958}.}\label{tab:2}
+
+\subsubsection*{Elektroni prejmejo energijo vpadnega delca}
+
+Naj bo \( E_t \) energija, ki jo vpadni delec odda elektronu pri Rutherfordovem sipanju. V tabeli~\ref{tab:2} se nahajajo empirični sipalni preseki \( \sigma_e \) za prenos energije večje od \( E_t \) elektronu, ki so bili izračunani s pomočjo gostote mehurčkov na sledi vpadnih protonov in pionov s hitrostjo \( 915 \, \mathrm{MeV} \). Preko enačbe
+
+\[  \sigma_e = 8 \pi r_b ^2 \frac{R_h ^2}{m_e v ^2 E_t},
+\]
+kjer je \( r_b \) Bohrov radij, \( R_h \) Rydbergova energija, \( m_e \) masa elektrona in \( v \) hitrost vpadnega delca, izračunamo energijo \( E_t \).
+
+\begin{tabela}[H]
+\caption{\small Vrednost gostote mehurčkov na sledi delca, molska masa \( n \), gostota \( \rho \) in energija \( E_t \), ki jo vpadni delec odda posameznemu elektronskemu sistemu, za vodik in propan~\cite{seitz_theory_1958}.}\label{tab:2}
   \centering
 \[
     \begin{array}{|c|c|c|} \hline
@@ -63,17 +76,7 @@ V primeru pregrete kapljevine energija pada, ko temperatura raste. To je neposre
       E_t [ \mathrm{eV}] & 513 & 1890 \\ \hline
     \end{array}
 \]
-\end{wraptable}
-  
-Energija stabilnih mehurčkov s polmerom \( R_C \) za vodik je \( E_m (H_2) = 4.08 \, \mathrm{eV}  \) in za propan \( E_m (C_3 H_8) = 131 \, \mathrm{eV} \)~\cite{seitz_theory_1958}.
-
-\subsubsection*{Elektroni prejmejo energijo vpadnega delca}
-
-Naj bo \( E_t \) energija, ki jo vpadni delec odda elektronu pri Rutherfordovem sipanju. V tabeli~\ref{tab:2} se nahajajo empirični sipalni preseki \( \sigma_e \) za prenos energije večje od \( E_t \) elektronu, ki so bili izračunani s pomočjo gostote mehurčkov na sledi vpadnih protonov in pionov s hitrostjo \( 915 \, \mathrm{MeV} \). Preko enačbe
-
-\[  \sigma_e = 8 \pi r_b ^2 \frac{R_h ^2}{m_e v ^2 E_t},
-\]
-kjer je \( r_b \) Bohrov radij, \( R_h \) Rydbergova energija, \( m_e \) masa elektrona in \( v \) hitrost vpadnega delca, izračunamo energijo \( E_t \).
+\end{tabela}
 
 Iz tabele~\ref{tab:2} vidimo, da vpadni delec odda več kot dovolj energije \( E_t \) za oblikovanje stabilnega mehurčka z energijo \( E_m \). S tem lahko tudi zanemarimo nastanek mehurčkov kot posledico Rutherfordovega sipanja na nukleonih v jedru, saj je potem prejeta energija \( E_t' \) zaradi mase nukleonov manjša od zahtevane za stabilen mehurček.
 
@@ -85,8 +88,14 @@ Elektron se v tekočini ustavi in odda svojo energijo v kroglo s polmerom \( R_0
 \]
 kjer je \( D \) difuzijski koeficient tekočine in je neodvisen od tlaka v okolici \( p_g \).
 
-\begin{wraptable}{r}{8cm}
-  \captionof{tabela}{\small Tabela prikazuje vrednosti difuzijskega koeficiena \( D \), karakteristični čas \( \tau_C \) za stabilen mehurček ter hitrost mehurčnih sten \( v_C \)~\cite{seitz_theory_1958}.} \label{tab:3}
+Čas, ki je potreben, da mehurček doseže kritični radij, mora biti manjši od časa, v katerem se izgubi preveč energije za nastanek mehurčka zaradi difuzije toplote. Minimalna hitrost sten je določena z enačbo
+
+\[  v_C = \frac{R_C}{\tau_C} = \frac{4 D}{R_C},
+\]
+kjer je \( \tau_C \) karakteristični čas \( \tau_h \) za \( r = R_C \). Vrednosti za vodik in propan so podane v tabeli~\ref{tab:3}.
+
+\begin{tabela}[H]
+  \caption{\small Tabela prikazuje vrednosti difuzijskega koeficiena \( D \), karakteristični čas \( \tau_C \) za stabilen mehurček ter hitrost mehurčnih sten \( v_C \)~\cite{seitz_theory_1958}.} \label{tab:3}
   \centering
   \[
     \begin{array}{|c|c|c|} \hline
@@ -98,13 +107,7 @@ kjer je \( D \) difuzijski koeficient tekočine in je neodvisen od tlaka v okoli
       c_a [ \mathrm{cm}/ \mathrm{s}] & 1.7 \cdot 10^5 & 1.9 \cdot 10^5 \\ \hline
     \end{array}
   \]
-\end{wraptable}
-
-Čas, ki je potreben, da mehurček doseže kritični radij, mora biti manjši od časa, v katerem se izgubi preveč energije za nastanek mehurčka zaradi difuzije toplote. Minimalna hitrost sten je določena z enačbo
-
-\[  v_C = \frac{R_C}{\tau_C} = \frac{4 D}{R_C},
-\]
-kjer je \( \tau_C \) karakteristični čas \( \tau_h \) za \( r = R_C \). Vrednosti za vodik in propan so podane v tabeli~\ref{tab:3}.
+\end{tabela}
 
 \subsubsection*{Razširjanje mehurčka in viskoznost tekočine}
 
@@ -179,17 +182,17 @@ Pri tlaku \( P = 0 \) je ekstrem energije stabilnega mehurčka pri polmeru
 
 \[  R_{\min} = {\left( \frac{h ^2}{32 \pi m_e \sigma} \right)}^{1/4},
 \]
-kar za \( T = 0 \) znaša \( R = 19 \si{\angstrom} \). Radij mehurčka se z višanjem mehurčka rahlo poveča, saj se zmanjša površinska napetost~\cite{classen_electrons_1998}. 
+kar za \( T = 0 \) znaša \( R = 19 \, \si{\angstrom} \). Radij mehurčka se z višanjem mehurčka rahlo poveča, saj se zmanjša površinska napetost~\cite{classen_electrons_1998}. 
 
 Tekočine in trdnine lahko v nasprotju s plinom dosežejo negativen tlak. Če plinu v zaprti posodi z batom povečamo prostornino, plin zapolni novo nastali prostor, tlak pa se zniža. Pri nestisljivi tekočini povečanje volumna posode povzroči negativen tlak. Ta tlak ne more rasti do neskončnosti, ampak tekočina začne vreti~\cite{imre_how_2007}.
 
-\begin{slika}[h]
+\begin{slika}[H]
   \centering
   \input{./figures/mehmod.tex}
-  \caption{\small Graf energije mehurčka v odvisnosti od polmera \( R \) in različnih vrednosti za tlak in površinsko napetost \( \sigma = 0.3544 \cdot 10^{-7} \mathrm{J} / \mathrm{cm} ^2 \) za helij~\cite{classen_electrons_1998}. Točka \( A \) je minimum energije in točka \( B \) je njen maksimum. Jasno se vidi monotono padanje energije za dovolj negativne vrednosti \( P \).}\label{fig:mehmod}
+  \caption{\small Graf energije mehurčka v odvisnosti od polmera \( R \) in različnih vrednosti za tlak in površinsko napetost \( \sigma = 0.3544 \cdot 10^{-7} \, \mathrm{J} / \mathrm{cm} ^2 \) za helij~\cite{classen_electrons_1998}. Točka \( A \) je minimum energije in točka \( B \) je njen maksimum. Jasno se vidi monotono padanje energije za dovolj negativne vrednosti \( P \).}\label{fig:mehmod}
 \end{slika}
 
-Kakor vidimo na sliki~\ref{fig:mehmod}, mehurček na začetku raste preko radija \( R_{\min} \), vendar sčasoma preneha rasti in se vrne v stanje z najmanjšo energijo. Za majhne negativne tlake kot npr. \( P = -1 \), minimumu energije sledi maksimum v točki \( B \) s polmerom \( R_{\max} \). Za tlake manjše od \( P = -2 \) energija monotono pada. Z nižanjem tlaka se točki \( R_{\min} \) in \( R_{\max} \) približujeta, dokler pri tlaku manjšem od kritične točke \( -P_C \) energija nima več minimuma in mehurček postane nestabilen~\cite{classen_electrons_1998}.
+Kakor vidimo na sliki~\ref{fig:mehmod}, mehurček za tlak \( P = 0 \) na začetku raste preko radija \( R_{\min} \), vendar sčasoma preneha rasti in se vrne v stanje z najmanjšo energijo. Za majhne negativne tlake kot npr. \( P = -1 \), minimumu energije sledi maksimum v točki \( B \) s polmerom \( R_{\max} \). Za tlake manjše od \( P = -2 \) energija monotono pada. Z nižanjem tlaka se točki \( R_{\min} \) in \( R_{\max} \) približujeta, dokler pri tlaku manjšem od kritične točke \( -P_C \) energija nima več minimuma in mehurček postane nestabilen~\cite{classen_electrons_1998}.
 
 Za neko vrednost \( P_0 \) mehurček pridobi dovolj energije pri rasti iz \( R = 0 \) do \( R_{\min} \), da lahko zraste do kritičnega polmera \( R_C \), kjer postane stabilen.
 
