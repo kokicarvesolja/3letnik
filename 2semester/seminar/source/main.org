@@ -1,4 +1,6 @@
 #+title: Mehurčne komore - seminar
+#+startup: entitiespretty nil
+#+startup: nolatexpreview 
 #+startup: show2levels
 
 * Zgodovina
@@ -25,11 +27,39 @@ Vključi graf izključenih sipalnih presekov ter detektor.
 CLOSED: [2026-04-30 Thu 00:53]
 
 Tehnika za zaznavo [[file:~/Documents/02Areas/FMF/3letnik/2semester/seminar/viri/Bertoni.pdf]] in točen opis projekta [[file:~/Documents/02Areas/FMF/3letnik/2semester/seminar/viri/MOSCAB.pdf]].
-** TODO Rezultati eksperimentov PICO MOSCAB
-** TODO Definicija žarkov \( \delta \)
+** DONE Rezultati eksperimentov PICO MOSCAB
+CLOSED: [2026-05-10 ned 14:33]
+** DONE Definicija žarkov \( \delta \)
+CLOSED: [2026-05-10 ned 14:33]
 [[https://www-pub.iaea.org/mtcd/publications/pdf/pub1196_web.pdf]] na str. 25, zadnja alineja.
 ** DONE razširi razlago o makroskopskih mehurčkih
 CLOSED: [2026-04-27 pon 22:41]
+** Integracija fundamentalne enačbe dinamike mehurčka
+
+Source:https://archive.org/details/philosophical-magazine-vol-45-1923/page/259/mode/2up str. 257
+
+Fundamentalna enačba dinamike mehurčka z začetnim polmerom \( R_0 \) je
+
+\[ \frac{p(t) - p'}{\rho} = R \ddot{R} + \frac{3}{2} \left( \dot{R} \right) ^2,
+\]
+
+kjer je \( R \) polmer mehurčka ob času \( t \). Širjenje mehurčka je adiabatno in ga opisuje identita
+
+\[ p = p_0 \left( \frac{R}{R_0} \right) ^{3\gamma},
+\]
+
+kjer sta \( p_0, R_0 \) začetni vrednosti ob času \( t = 0 \).
+
+Fundamentalno enačbo lahko prepišemo v obliko
+
+\[ \frac{\mathrm{d} }{\mathrm{d} t} \left( R ^3 \dot{R} ^2 \right) = 2 c_0 \dot{R} R ^2 \left( \frac{R_0}{R} \right)^{3\gamma},
+\]
+
+in jo integriramo po času \( t' \in [0, t] \) z uvedbo spremenljivke \( u = R \)
+
+\[ R ^3 \dot{R} ^2 = 2 c_0 R_0^{3\gamma} \int\limits_{R_0}^{R} u^{2 - 3\gamma} \, \mathrm{d}u = \frac{2c_0}{3 (\gamma - 1)} R_0^{3\gamma - 3} \left( R_0^{3 - 3\gamma} - R^{3\gamma - 3} \right).
+\]
+
 * Splošno
 ** DONE check resources - [[https://inspirehep.net/literature/2752452]]
 CLOSED: [2026-04-28 Tue 18:20]
