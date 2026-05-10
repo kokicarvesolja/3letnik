@@ -60,6 +60,11 @@ in jo integriramo po času \( t' \in [0, t] \) z uvedbo spremenljivke \( u = R \
 \[ R ^3 \dot{R} ^2 = 2 c_0 R_0^{3\gamma} \int\limits_{R_0}^{R} u^{2 - 3\gamma} \, \mathrm{d}u = \frac{2c_0}{3 (\gamma - 1)} R_0^{3\gamma - 3} \left( R_0^{3 - 3\gamma} - R^{3\gamma - 3} \right).
 \]
 
+Na koncu izrazimo \( \dot{R} ^2 \):
+
+\[ \dot{R} ^2 = \frac{2c_0}{3(\gamma - 1)}\left[ \left( \frac{R_0}{R} \right)^3 - \left( \frac{R_0}{R} \right)^{3\gamma} \right].
+\]
+
 * Splošno
 ** DONE check resources - [[https://inspirehep.net/literature/2752452]]
 CLOSED: [2026-04-28 Tue 18:20]
