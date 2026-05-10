@@ -52,7 +52,7 @@ Opazimo, da je energija obratno sorazmerna s kvadratom tlaka plina \( p_g \) in 
 
 V primeru pregrete kapljevine energija pada, ko temperatura raste. To je neposredna posledica Boylovega in Gay-Lussacovega zakona, po katerem se tlak veča z višanjem temperature, medtem ko se površinska napetost manjša~\cite{seitz_theory_1958, strnad_fizika_2016}
   
-Energija stabilnih mehurčkov s polmerom \( R_C \) za vodik je \( E_m (H_2) = 4.08 \, \mathrm{eV}  \) in za propan \( E_m (C_3 H_8) = 131 \, \mathrm{eV} \)~\cite{seitz_theory_1958}.
+Energija stabilnih mehurčkov s polmerom \( R_C \) za vodik je \( E_m (\mathrm{H}_2) = 4.08 \, \mathrm{eV}  \) in za propan \( E_m (\mathrm{C}_3 \mathrm{H}_8) = 131 \, \mathrm{eV} \)~\cite{seitz_theory_1958}.
 
 
 \subsubsection*{Elektroni prejmejo energijo vpadnega delca}
@@ -137,24 +137,25 @@ Pri širjenju mehurčka v propanu viskoznosti ne smemo zanemariti. Viskozno duš
 
 \begin{equation}
 \label{eq3:5}
-P_R = - 4 \eta \frac{\dot{R}}{R}.
+p_R = - 4 \eta \frac{\dot{R}}{R},
 \end{equation}
+kjer je \( \eta \) koeficient viskoznosti.
 
-Kadar je \( P_R \) primerljiv s \( P \), v enačbi~\eqref{eq3:4} zanemarimo \( \ddot{R} \) in velja
+Kadar je \( p_R \) primerljiv s tlakom \( p \) pri mehurčni steni, v enačbi~\eqref{eq3:4} zanemarimo \( \ddot{R} \) in velja
 
 \[  \dot{R} ^2 = \frac{2}{3} c_0 {\left( \frac{R_0}{R} \right)}^{3\gamma}.
 \]
 
 Kvadrat enačbe~\eqref{eq3:5} je
 
-\[  P_R ^2 = P ^2 = 16 \eta ^2 \frac{\dot{R} ^2}{R ^2} = 32 \eta ^2 \frac{p_0 R_0 ^{3\gamma}}{3 \rho R ^{3 \gamma - 2}},
+\[  p_R ^2 = p ^2 = 16 \eta ^2 \frac{\dot{R} ^2}{R ^2} = 32 \eta ^2 \frac{p_0 R_0 ^{3\gamma}}{3 \rho R ^{3 \gamma - 2}},
 \]
 ki jo razširimo z dvema ulomkoma: \( V_0 / \left( 4 \pi R_0 ^3 / 3 \right) \) in \( R_C^{3(\gamma - 1)}/ R_C^{3(\gamma - 1)} \). To nam omogoči, da izrazimo razmerje mehurčkovega in kritičnega polmera v odvisnosti od začetnih pogojev
 
 \[  {\left( \frac{R}{R_C} \right)}^{3\gamma - 2} = \left( \frac{9}{128 \pi} \right) \left( \frac{\rho}{\eta ^2} \right) \left( \frac{p_0 V_0}{R_C} \right) {\left( \frac{R_0}{R_C} \right)}^{3(\gamma - 1)}.
 \]
 
-Za vodik z viskoznostjo \( \eta = 10^{-5}\, \mathrm{Pas} \) in \( 3 \gamma - 2 = 2.2 \) je razmerje \( R / R_C = 0.8 \). Za propan z viskoznostjo \( \eta = 10^{-3}\, \mathrm{Pa s} \) pa je razmerje \( R/ R_C = 3.5 \cdot 10^{-3} \)~\cite{seitz_theory_1958}. Pri vodiku ima viskozno dušenje zanemarljiv vpliv, saj je \( P_R = P \) pri mehurčku, ki je malo manjši od kritične velikosti. Pri propanu pa je enakost tlakov pri zelo majhnem mehurčku s polmerom \( R \approx 10^{-3} R_C \).
+Za vodik z viskoznostjo \( \eta = 10^{-5}\, \mathrm{Pas} \) in \( 3 \gamma - 2 = 2.2 \) je razmerje \( R / R_C = 0.8 \). Za propan z viskoznostjo \( \eta = 10^{-3}\, \mathrm{Pa s} \) pa je razmerje \( R/ R_C = 3.5 \cdot 10^{-3} \)~\cite{seitz_theory_1958}. Pri vodiku ima viskozno dušenje zanemarljiv vpliv, saj je \( p_R = p \) pri mehurčku, ki je malo manjši od kritične velikosti. Pri propanu pa je enakost tlakov pri zelo majhnem mehurčku s polmerom \( R \approx 10^{-3} R_C \).
 
 Viskoznost pri širjenju mehurčka v propanu potemtakem igra pomembno vlogo, medtem ko jo v vodiku lahko zanemarimo.
 
@@ -170,15 +171,15 @@ kjer je \( \lambda \) toplotna prevodnost, \( V_m \) molski volumen pare ter \( 
 
 \subsection{Mehanski model}\label{sec:mehmod}
 
-Razlaga za mehanski model delovanja mehurčne komore je v večini povzeta po~\cite{konstantinov_how_1998} in razloži pojav mehurčkov samo za vodik in helij. Predpostavimo, da je v mehurčni komori tekoči helij pri temperaturi \( T = 0 \). Posledično je tudi nasičeni tlak \( P_{nt} = 0 \). Kapljevino obravnavamo kot nestisljivo.
+Razlaga za mehanski model delovanja mehurčne komore je v večini povzeta po~\cite{konstantinov_how_1998} in razloži pojav mehurčkov samo za vodik in helij. Predpostavimo, da je v mehurčni komori tekoči helij pri temperaturi \( T = 0 \). Posledično je tudi nasičeni tlak \( p_{nt} = 0 \). Kapljevino obravnavamo kot nestisljivo.
 
 Žarek \( \delta \) se je v razdelku~\ref{sec:topmod} ustavil in oddal toploto vzbujeni molekuli in njenim sosedom. V mehanskem modelu ustavljen elektron v heliju občuti odbojni potencial \( V_0 \approx 1 \mathrm{eV} \), zaradi katerega je ugodneje, da se elektron nahaja v sferi, v kateri ni helijevih atomov. Skupna energija elektrona in okoliške sfere s polmerom \( R \) je
 
-\[  E_B = E_{e} + 4 \pi R ^2 \sigma + \frac{4}{3} \pi R ^3 P + 2 \pi R ^3 \rho \dot{R} ^2,
+\[  E_B = E_{e} + 4 \pi R ^2 \sigma + \frac{4}{3} \pi R ^3 p + 2 \pi R ^3 \rho \dot{R} ^2,
 \]
-kjer je \( E_e = h ^2 / {\left(8 m_e R ^2\right)} \) osnovno stanje elektrona z maso \( m_e \), \( \sigma \) površinska napetost, \( P \) tlak okoliške tekočine in \( \rho \) gostota tekočine. Enačba nas spominja na~\eqref{eq3:2} z dodanima členoma energije elektrona in kinetične energije tekočine, ko mehurček raste s hitrostjo \( \dot{R} \).
+kjer je \( E_e = h ^2 / {\left(8 m_e R ^2\right)} \) osnovno stanje elektrona z maso \( m_e \), \( \sigma \) površinska napetost, \( p \) tlak okoliške tekočine in \( \rho \) gostota tekočine. Enačba nas spominja na~\eqref{eq3:2} z dodanima členoma energije elektrona in kinetične energije tekočine, ko mehurček raste s hitrostjo \( \dot{R} \).
 
-Pri tlaku \( P = 0 \) je ekstrem energije stabilnega mehurčka pri polmeru
+Pri tlaku \( p = 0 \) je ekstrem energije stabilnega mehurčka pri polmeru
 
 \[  R_{\min} = {\left( \frac{h ^2}{32 \pi m_e \sigma} \right)}^{1/4},
 \]
@@ -189,13 +190,13 @@ Tekočine in trdnine lahko v nasprotju s plinom dosežejo negativen tlak. Če pl
 \begin{slika}[H]
   \centering
   \input{./figures/mehmod.tex}
-  \caption{\small Energija mehurčka v odvisnosti od polmera \( R \) in različnih vrednosti za tlak, ob površinski napetosti \( \sigma = 0.3544 \cdot 10^{-7} \, \mathrm{J} / \mathrm{cm} ^2 \) za helij~\cite{classen_electrons_1998}. Točka \( A \) je minimum energije in točka \( B \) pa njen maksimum za \( P = -1 \). Jasno se vidi monotono padanje energije za dovolj negativne vrednosti \( P \).}\label{fig:mehmod}
+  \caption{\small Energija mehurčka v odvisnosti od polmera \( R \) in različnih vrednosti za tlak, ob površinski napetosti \( \sigma = 0.3544 \cdot 10^{-7} \, \mathrm{J} / \mathrm{cm} ^2 \) za helij~\cite{classen_electrons_1998}. Točka \( A \) je minimum energije in točka \( B \) pa njen maksimum za \( p = -1 \, \mathrm{bar} \). Jasno se vidi monotono padanje energije za dovolj negativne vrednosti \( p \).}\label{fig:mehmod}
 \end{slika}
 
-Kakor vidimo na sliki~\ref{fig:mehmod}, mehurček za tlak \( P = 0 \) na začetku raste preko radija \( R_{\min} \), vendar sčasoma preneha rasti in se vrne v stanje z najmanjšo energijo. Za majhne negativne tlake, kot npr. \( P = -1 \), minimumu energije sledi maksimum v točki \( B \) s polmerom \( R_{\max} \). Za tlake, manjše od \( P = -2 \), energija monotono pada. Z nižanjem tlaka se točki \( R_{\min} \) in \( R_{\max} \) približujeta, dokler pri tlaku manjšem od kritične točke \( -P_C \) energija nima več minimuma in mehurček postane nestabilen~\cite{classen_electrons_1998}.
+Kakor vidimo na sliki~\ref{fig:mehmod}, mehurček za tlak \( p = 0 \) na začetku raste preko radija \( R_{\min} \), vendar sčasoma preneha rasti in se vrne v stanje z najmanjšo energijo. Za majhne negativne tlake, kot npr.~\( p = -1\, \mathrm{bar}\), minimumu energije sledi maksimum v točki \( B \) s polmerom \( R_{\max} \). Za tlake, manjše od \( p = -2\, \mathrm{bar} \), energija monotono pada. Z nižanjem tlaka se točki \( R_{\min} \) in \( R_{\max} \) približujeta, dokler pri tlaku manjšem od kritične točke \( -p_C \) energija nima več minimuma in mehurček postane nestabilen~\cite{classen_electrons_1998}.
 
-Za neko vrednost \( P_0 \) mehurček pridobi dovolj energije pri rasti od \( R = 0 \) do \( R_{\min} \), da lahko zraste do kritičnega polmera \( R_C \), kjer postane stabilen.
+Za neko vrednost \( p_0 \) mehurček pridobi dovolj energije pri rasti od \( R = 0 \) do \( R_{\min} \), da lahko zraste do kritičnega polmera \( R_C \), kjer postane stabilen.
 
-Helijeve mehurčne komore ponavadi delujejo v območju temperatur \( T \in [3.5, 4.5] \, \mathrm{K} \), tlak \( P \) je manjši od \( P_{nt} \), vendar pozitiven, in odbojni potencial \( V_0 \) je manjši zaradi manjše gostote tekočine. Mehurček se med rastjo napolni z izhlapelo okoliško tekočino. Ko je dosežen kritičen radij, je prispevek elektrona k mehurčkovi energiji zanemarljiv, energijo pa podaja enačba~\eqref{eq3:2}
+Helijeve mehurčne komore ponavadi delujejo v območju temperatur \( T \in [3.5, 4.5] \, \mathrm{K} \), tlak \( p \) je manjši od \( p_{nt} \), vendar pozitiven, in odbojni potencial \( V_0 \) je manjši zaradi manjše gostote tekočine. Mehurček se med rastjo napolni z izhlapelo okoliško tekočino. Ko je dosežen kritičen radij, je prispevek elektrona k mehurčkovi energiji zanemarljiv, energijo pa podaja enačba~\eqref{eq3:2}
 
 
