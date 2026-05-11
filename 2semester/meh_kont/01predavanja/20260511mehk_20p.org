@@ -1,0 +1,18 @@
+#+title: Predavanja iz Mehanike kontinuov, 20. teden v letu
+#+subtitle: 2026/05/11
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Reynoldsovo število
+** Hidrodinamična podobnost
+** Stokesov približek
+
+Velikostni red odvoda \( \nabla \cdot \mathbf{v} \) ocenimo z \( \frac{1}{l} \), saj odvod po kraju zmanjša \( \nabla [m ^2] \to [m] \).
+* Stokesova formula
+
+Pravi oz. polarni vektor je vektor, ki ob inverziji prostora spremeni smer. Hitrost \( \mathbf{v} \) je pravi vektor, medtem ko navor \( \mathbf{M} = \mathbf{r} \times \mathbf{F} \) ni, saj ob inverziji prostora kaže v enako smer, čeprav \( \mathbf{r} \) in \( \mathbf{F} \) zamenjata smer.
