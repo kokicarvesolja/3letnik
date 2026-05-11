@@ -16,3 +16,4 @@ Velikostni red odvoda \( \nabla \cdot \mathbf{v} \) ocenimo z \( \frac{1}{l} \),
 * Stokesova formula
 
 Pravi oz. polarni vektor je vektor, ki ob inverziji prostora spremeni smer. Hitrost \( \mathbf{v} \) je pravi vektor, medtem ko navor \( \mathbf{M} = \mathbf{r} \times \mathbf{F} \) ni, saj ob inverziji prostora kaže v enako smer, čeprav \( \mathbf{r} \) in \( \mathbf{F} \) zamenjata smer.
+
