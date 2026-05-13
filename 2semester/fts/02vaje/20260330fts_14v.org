@@ -99,7 +99,7 @@ Lastni valovni funkciji v periodičnem potencialu sta potem
 \end{align*}
 
 Lastni energiji zasedata vrednosti \( \epsilon_+ = \epsilon^0 + \frac{2 \lambda}{a} \) in \( \epsilon_- = \epsilon^0 \). Sinusna funkcija ima vozle na točkah, kjer je \( \delta \) funkcija in je posledično ne čuti. Kosinus jo pa čuti in ima temu primerno zvišano lastno energijo.
-* Naloga
+* Naloga: Energijska reža v FCC kristalu 
 
 #+begin_problem
 Imamo ploskovno centrirano kubično mrežo (fcc), ki ima periodičen potencial usklajen s fcc mrežo. Zanima nas energijska reža v prvi Brillouinovi coni.
