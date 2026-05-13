@@ -1,0 +1,111 @@
+#+title: Vaje iz Mehanike kontinuov, 20. teden v letu
+#+subtitle: 2026/05/13
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Naloga, str. 51 
+
+#+begin_problem
+Dolga gred s polmerom \( R \) se s krožno frekvenco \( \omega \) vrti v razsežni oljni kopeli. Za koliko se tlak olja ob gredi razlikuje od tlaka daleč stran? S kolikšno močjo moramo vrteti gred? Viskoznost olja je \( \eta \), gostota pa \( \rho \).
+#+end_problem
+
+Stacionarna Navier-Stokesova enačba, ki je bila izpeljana na prejšnjih vajah, je
+
+\begin{equation}
+\label{eq:1}
+ -\rho \frac{v ^2 (r)}{r} \hat{e}_r = - \frac{\partial p}{\partial r}  \hat{e}_r - \frac{\partial p}{\partial z} \hat{e}_z + \eta \frac{\partial }{\partial r} \left[ \frac{1}{r} \frac{\partial (r v)}{\partial r}  \right] \hat{e}_{\phi}.
+\end{equation}
+
+Tangentna komponenta zgornje enačba mora biti
+
+\[ \frac{\partial }{\partial r}  \left[ \frac{1}{r} \frac{\partial (rv)}{\partial r}  \right] = 0. 
+\]
+
+Po dvakratni integraciji je rešitev enačbe
+
+\[ v(r) = \frac{1}{2} A r + \frac{B}{r}, 
+\]
+
+ki pa ne divergira za \( r \to \infty \), hkrati pa zadosti robnemu pogoju \( v(R) = \omega R \). Rešitev hitrosti je
+
+\[ v(r) = \frac{\omega R ^2}{r}. 
+\]
+
+Tlak lahko izračunamo preko enačbe, ki nam jo podajo radialne komponente enačbe \eqref{eq:1}
+
+\[ - \rho \frac{v ^2}{r} = - \frac{\partial p}{\partial r}. 
+\]
+
+Tlak je potem
+
+\[ p(r) = p_0 - \frac{1}{2} \frac{\omega ^2 R ^4}{2 r ^2} \rho. 
+\]
+** Moč za vrtenje grede preko viskoznosti
+
+Sila na tekočino
+
+\[ \frac{\mathrm{d} F_{t}}{\mathrm{d} S} = \sigma_{ij} n_j = \begin{bmatrix}
+                                                             0 & - 2\eta \frac{\omega R ^2}{r ^2}  \\
+                                                             -2\eta \frac{\omega R ^2}{r ^2} & 0
+                                                              \end{bmatrix} \begin{bmatrix} -1 \\ 0 \end{bmatrix} = 2 \eta \frac{\omega R ^2}{r ^2},
+\]
+
+saj normala kaže radialno navznoter. Sila na valj bo po 3. NZ ravno obratno od sile na tekočine torej
+
+\[ \frac{\mathrm{d} F}{\mathrm{d} S} = - 2 \eta \frac{\omega R ^2}{r ^2}. 
+\]
+
+Diferencial površine \( \mathrm{d} S \) za krog s polmerom \( R \) je \( \mathrm{d} S = R l \mathrm{d} \phi \). Viskozna sila je
+
+\[ \mathrm{d} \mathbf{F} = - 2 \eta \omega R l \, \mathrm{d} \phi. 
+\]
+
+Navor je po definiciji \( \mathrm{d} M = R \mathrm{d} F \), kjer vstavimo ravno izraženo silo ter integriramo
+
+\begin{align*}
+  M &= - 2 \eta \int\limits_0^{2 \pi} R ^2 \omega l \, \mathrm{d} \phi \\
+&= - 4 \pi \eta R ^2 \omega l 
+\end{align*}
+
+Moč, ki jo izgubljamo zaradi tekočine, je
+
+\[ P_t = \omega \cdot M = - 4 \pi \eta R ^2 \omega ^2 l  
+\]
+
+Moč, s katero moramo vrteti gredo je obratno nasprotna od izračunane, torej
+
+\[ P_v = 4\pi \eta R ^2 \omega ^2 l  
+\]
+** Moč za vrtenje grede preko izgubljanja energije
+
+Iz predavanj vemo, da je disipirana moč, ki se pretvarja v notranjo energijo,
+
+\[ P = - 2 \eta \int\limits_{}^{} v_{ij} v_{ij} \, \mathrm{d} V. 
+\]
+
+Sled produkta tenzorjev v cilindričnih koordinatah je \( v_{ij} v_{ij} = v_{rr} ^2 + v_{\phi\phi} ^2 + 2v_{r\phi} ^2  \) in moč
+
+\[ P = - 2\eta \int\limits_{}^{} 2 \left( - \frac{\omega R ^2}{r ^2} \right) \, \mathrm{d} V = - 4 \eta \int\limits_{}^{} \frac{\omega ^2 R ^4}{r ^4} \, \mathrm{d} V
+\]
+* Naloga, str. 54
+
+#+begin_problem
+Aparat za merjenje frekvenčne odvisnosti mehanskih lastnosti kapljevin (reometer) sestavljata vzporedni ravni razsežni plošči, med katerima je merjena kapljevina z gostoto \( \rho \) in viskoznostjo \( \eta \). Eno od plošč s krožno frekvenco \( \omega \) premo sinusno nihamo v smeri, vzporedni s ploščama, s čimer v kapljevini generiramo periodični strižni tok. Izračunajmo hitrostno polje kapljevine v odvisnosti od časa. Kolikšna je vdorna globina strižne deformacije? Kako se fazni zamik nihanja spreminja z oddaljenostjo od nihajoče plošče? Predpostavimo, da je razdalja med ploščama velika v primerjavi z vdorno globino.
+#+end_problem
+
+Os \( x \) je vzporedna s ploščama in \( z \) naj kaže navzdol. Oblika hitrostnega polja je
+
+\[ \mathbf{v} = v(z, t) \hat{e}_x. 
+\]
+
+Navier-Stokesova enačba
+
+\[ \rho \left( \frac{\partial \mathbf{v}}{\partial t}  + \left( \mathbf{v} \cdot \nabla \right) \mathbf{v} \right) = \eta \nabla ^2 \mathbf{v} - \nabla p, 
+\]
+
+nima advekcijskega in tlačnega člena, saj prva komponenta hitrosti nima odvisnosti od \( x \).

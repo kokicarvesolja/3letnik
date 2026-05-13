@@ -1,0 +1,51 @@
+#+title: Vaje iz Fizike trdne snovi, 16. teden v letu
+#+subtitle: 2026/04/13
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Nadaljevanje naloge: Energijska reža v FCC kristalu
+
+Na zadnjih vajah smo ostali pri reševanju poenostavljenega \( 4\times 4 \) sistema
+
+\[ \begin{bmatrix}
+   \epsilon^{0} - \epsilon & V_1 & V_2 & V_2 \\
+    V_1 & \epsilon^0 - \epsilon & V_2 & V_2 \\
+    V_2 & V_2 & \epsilon^0 - \epsilon & V_1 \\
+    V_2 & V_2 &  V_1 & \epsilon^0 - \epsilon
+   \end{bmatrix} \begin{bmatrix} c_{\mathbf{W} - \mathbf{K}_1} \\ c_{\mathbf{W} - \mathbf{K}_2} \\ c_{\mathbf{W} - \mathbf{K}_3} \\ c_{\mathbf{W} - \mathbf{K}_4} \end{bmatrix} = 0.
+\]
+
+Problem lastnih vrednosti dodatno poenostavimo z elementarnimi vrstičnimi operacijami v
+
+\[ M = \begin{bmatrix}
+       \epsilon^{0} - \epsilon - V_{1} & 0 & 0 & 0 \\
+       V_{1} & \epsilon^{0} - \epsilon + V_{1} & 2 V_{2} & V_{2} \\
+       V_{2} & 2V_{2} & \epsilon^{0} - \epsilon + V_{1} & V_{1} \\
+       0 & 0 & 0 & \epsilon^{0} - \epsilon - V_1
+       \end{bmatrix}.
+\]
+
+(Trivialno) razvijemo matriko po vrsticah - najprej prvi, potem pa četrti - in nam preostane karakteristični polinom
+
+\[ \det M = \left( \epsilon^0 - \epsilon - V_1 \right) \left[ \left( \epsilon^0 - E - V_1 \right) \cdot \left[ \left( \epsilon^0 - \epsilon + V_1 \right) ^2 - \left( 2 U_2 \right) ^2 \right]  \right].
+\]
+
+Lastne vrednosti nam poda enačba \( \det M = 0 \) in so
+
+\begin{align*}
+  \epsilon_{1, 2} &= \epsilon^0 - V_1 \\
+\epsilon_3 &= \epsilon^0 + V_1 - 2 V_2 \\
+\epsilon_4 &= \epsilon^0 + V_1 + 2 V_2
+\end{align*}
+
+** Disperzija v bližini točke razcepa
+
+
+
+
+
