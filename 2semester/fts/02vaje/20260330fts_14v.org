@@ -200,16 +200,36 @@ Potencial \( V(\mathbf{r}) \) je neodvisen na inverzijo prostora \( \mathbf{r} \
 V_{\mathbf{K}} = \frac{1}{V_0} \int\limits_{V_0}^{} V(- \mathbf{r}) e^{- \mathrm{i} \mathbf{K} \cdot \left( - \mathbf{r} \right)} \, \mathrm{d} ^3\mathbf{r}  = \frac{1}{V_0} \int\limits_{V_0}^{} V(\mathbf{r}) e^{\mathrm{i} \mathbf{K} \cdot \mathbf{r}} \, \mathrm{d} ^3 \mathbf{r} = V_{- \mathbf{K}}
 \end{equation}
 
-Iz tega zaključimo, da sta \( V_{\mathbf{K}} = V_{-\mathbf{K}}  \) in realna.
+Iz tega zaključimo, da sta \( V_{\mathbf{K}} = V_{-\mathbf{K}}  \) in realna. \( 4 \times 4 \) sistem smo poenostavili na zgolj 6 komponent, v našem primeru se osredotočimo na zgornje trikoten del matrike.
 
-[ostal tukaj]
-Potencial ni več ničeln \( V (\mathbf{r}) = 0 \), je periodičen \( V(\mathbf{r} + \mathbf{R}) = V(\mathbf{r}) \) in velja operacija \( V( A \mathbf{r}) = V(\mathbf{r}) \), kjer je \( A \in \mathcal{G} \) matrika simetrijske grupe.
+Zasuk vektorja \( \mathbf{K} \) recipročne mreže ga preslika nazaj v vektor recipročne mreže \( A \mathbf{K} = \mathbf{K} \). Po definiciji grupe ima zasuk \( A \) inverz \( A^{-1} \), za katerega velja \( I = A A^{-1} \). Fourierova komponenta zasukanega vektorja je
 
-Fourierova transformacija je
+\begin{align*}
+  V_{A\mathbf{K}} &= \frac{1}{V_0} \int\limits_{V_0}^{} V(\mathbf{r}) e^{- \mathrm{i} A \mathbf{K} \cdot \mathbf{r}} \, \mathrm{d} ^3 \mathbf{r} \\
+&= \frac{1}{V_0} \int\limits_{V_0}^{} V(\mathbf{r}) e^{- \mathrm{i} A \mathbf{K} \cdot A A^{-1} \mathbf{r} } \, \mathrm{d} ^3 \mathbf{r}
+\end{align*}
 
-\[ \underline{\underline{V_{\mathbf{K}}}} = \frac{1}{V_{oc}} \int\limits_{oc}^{} V(\mathbf{r}) e^{- \mathrm{i} \mathbf{K} \cdot \mathbf{r}} \, \mathrm{d} \mathbf{r}
+Rotacija ohranja skalarni produkt, kar pomeni, da velja \( (A \mathbf{a}) \cdot (A \mathbf{b}) = \mathbf{a} \cdot \mathbf{b} \). V našem primeru velja
+
+\[ \left[ A \mathbf{K} \right] \cdot \left[ A \left(A^{-1} \mathbf{r}\right) \right] = \mathbf{K} \cdot \left( A^{-1} \mathbf{r} \right).
 \]
-Potencial ima še lastnost \( V_{- \mathbf{K}} = V_{\mathbf{K}}^{\ast} \).
+
+Fourierova komponenta je
+
+\[ V_{A\mathbf{K}} = \frac{1}{V_0} \int\limits_{V_0}^{} V(\mathbf{r}) e^{- \mathrm{i} \mathbf{K} \cdot A^{-1} \mathbf{r}} \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Uvedemo novo spremenljivko \( \mathbf{r} = A \mathbf{u} \)
+
+\begin{align*}
+  V_{A\mathbf{K}} &= \frac{1}{V_0} \int\limits_{V_0}^{} V(\mathbf{r}) e^{- \mathrm{i} \mathbf{K} \cdot A^{-1} \mathbf{r}} \, \mathrm{d} ^3 \mathbf{r} \\
+&= \frac{1}{V_0} \int\limits_{V_0}^{} V (A\mathbf{u}) e^{- \mathrm{i} \mathbf{K} \mathbf{u}} \left| \det A \right| \, \mathrm{d} ^3 \mathbf{r} \\
+&= \frac{1}{V_0} \int\limits_{V_0}^{} V(\mathbf{u}) = V_{\mathbf{K}},
+\end{align*}
+
+kjer smo upoštevali, da je \( \left| \det A \right| = 1 \) za rotacijsko matriko.
+
+
 
 Če imamo operacijo naše simetrijske grupe, ga bo zasuk vektorja recipročne mreže \( \mathbf{K} \) preslikal v vektor recipročne mreže:
 
