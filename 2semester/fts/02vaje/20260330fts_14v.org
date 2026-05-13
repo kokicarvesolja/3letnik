@@ -227,28 +227,24 @@ Uvedemo novo spremenljivko \( \mathbf{r} = A \mathbf{u} \)
 &= \frac{1}{V_0} \int\limits_{V_0}^{} V(\mathbf{u}) = V_{\mathbf{K}},
 \end{align*}
 
-kjer smo upoštevali, da je \( \left| \det A \right| = 1 \) za rotacijsko matriko.
+kjer smo upoštevali, da je \( \left| \det A \right| = 1 \) za rotacijsko matriko. Sedaj lahko poiščemo, katere simetrijske operacije na določeni Fourierovi komponenti kot rezultat podajo drugi Fourierovo komponento.
 
+Bralcu priporočam pomoč pri vizualizaciji s prvo zgornjo sliko. Zasuk za \( \frac{\pi}{2} \) okoli osi \( k_y \) preslika \( V_{\mathbf{K}_2 - \mathbf{K}_1} \) v \( V_{\mathbf{K}_4 - \mathbf{K}_3} \). Označimo
 
-
-Če imamo operacijo naše simetrijske grupe, ga bo zasuk vektorja recipročne mreže \( \mathbf{K} \) preslikal v vektor recipročne mreže:
-
-\begin{align*}
-  V_{A \mathbf{K}} &= \frac{1}{V_{oc}} \int\limits_{oc}^{} V(\mathbf{r}) e^{- \mathrm{i} A \mathbf{K} \cdot \mathbf{r}} \, \mathrm{d} \mathbf{r} && I = A A^{-1} \\
-&= \frac{1}{V_{oc}} \frac{1}{V_{oc}} \int\limits_{oc}^{} V(\mathbf{r}) e^{- \mathrm{i} A \mathbf{K} \cdot A A^{-1} \mathbf{r}} \, \mathrm{d} \mathbf{r} \\
-&= \frac{1}{V_{oc}} \int\limits_{}^{} V(\mathbf{r}) e^{- \mathrm{i \mathbf{K} \cdot \mathbf{A} \mathbf{r}}}
-\end{align*}
-
-V zadnji vrstici smo upoštevali \( A\mathbf{K} = \mathbf{K} \) za Wigner-Seitzovo celico. Uvedemo novo spremenljivko \( \mathbf{r} = A\mathbf{u}  \) in potem dobimo
-
-\[ V_{A\mathbf{K}} = \frac{1}{V_{oc}} \int\limits_{oc}^{} V(A \mathbf{u}) e^{- \mathrm{i} \mathbf{K} \cdot \mathbf{u}} \, \mathrm{d} \mathbf{u} = \frac{1}{V_{oc}} \int\limits_{oc}^{} V(\mathbf{u}) e^{- \mathrm{i} \mathbf{K} \cdot \mathbf{u}} \, \mathrm{d} \mathbf{u} = V_{\mathbf{K}}.
+\[ V_{\mathbf{K}_2 - \mathbf{K}_1} = V_{\mathbf{K}_4 - \mathbf{K}_3} = V_1 \in \mathbf{R}.
 \]
 
-Zaradi ne vem, katere lastnosti velja še
+Zrcaljenje preko ravnin pravokotnih na \( k_x, k_y \) in \( k_z \) preslika \( V_{\mathbf{K}_3 - \mathbf{K}_1}, V_{\mathbf{K}_4 - \mathbf{K}_1}, V_{\mathbf{K}_3 - \mathbf{K}_2} \) in \( V_{\mathbf{K}_4 - \mathbf{K}_2} \) medseboj. Označimo
 
-\begin{align*}
-  V_{\mathbf{K}_2 - \mathbf{K}_1} = V_{\mathbf{K}_4 - \mathbf{K}_3} &= V_1 \\
-V_{\mathbf{K}_3 - \mathbf{K}_4} = V_{\mathbf{K}_4 - \mathbf{K}_1} = V_{\mathbf{K}_3 - \mathbf{K}_2} &= V_2
-\end{align*}
+\[  V_{\mathbf{K}_3 - \mathbf{K}_1}= V_{\mathbf{K}_4 - \mathbf{K}_1}= V_{\mathbf{K}_3 - \mathbf{K}_2} = V_{\mathbf{K}_4 - \mathbf{K}_2} = V_2 \in \mathbf{R}.
+\]
 
-Hkrati dokažemo tudi, da sta \( V_1 \) in \( V_2 \) realni matriki.
+Zgornji sistem smo poenostavili na dve komponenti \( V_1 \) in \( V_2 \):
+
+\[ \begin{bmatrix}
+   \epsilon^{0} - \epsilon & V_1 & V_2 & V_2 \\
+    V_1 & \epsilon^0 - \epsilon & V_2 & V_2 \\
+    V_2 & V_2 & \epsilon^0 - \epsilon & V_1 \\
+    V_2 & V_2 &  V_1 & \epsilon^0 - \epsilon
+   \end{bmatrix} \begin{bmatrix} c_{\mathbf{W} - \mathbf{K}_1} \\ c_{\mathbf{W} - \mathbf{K}_2} \\ c_{\mathbf{W} - \mathbf{K}_3} \\ c_{\mathbf{W} - \mathbf{K}_4} \end{bmatrix} = 0
+\]
