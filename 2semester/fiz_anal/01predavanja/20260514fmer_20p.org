@@ -1,0 +1,51 @@
+#+title: Predavanja iz Fizikalnih merjenj, 20. teden v letu
+#+subtitle: 2026/05/14
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Merjenje frekvence
+** Fazni detektor 
+
+Napetost na izhodu faznega detektorja je razlika faz vhodnega in izhodnega signala \( \theta_e = \theta_1 - \theta_2  \). Za fazi, ki sta si blizu, bo ta razlika majhna.
+** VCO (ang. /voltage-controlled oscilator/)
+** PLL
+
+Faza za PLL je ob upoštevanju zgornjih rezultatov za fazni detektor in VCO
+
+\[ \theta_2 (s) = \frac{1}{s} K_0 K_{FD} F(s) \theta_e (s).
+\] 
+
+Preko identitete \( \theta_2 = \theta_1 - \theta_e \) izrazimo \( \theta_1 \), ki je
+
+\[ \theta_1 (s) = \theta_e \left[ 1 + \frac{K_0 K_{FD} F(s)}{s} \right]. 
+\]
+
+Prenosna funkcija PLL je
+
+\[ \frac{\theta_e (s)}{\theta_1 (s)} = \frac{1}{1 + \frac{K_0 K_{FD} F(s)}{s}}, 
+\]
+kjer filtra \( F(s) \) ne poznamo.
+
+Iščemo optimalno PLL zanko in izbira \( F(s) \) ključno vpliva na to. Posredno to pomeni, da iščemo optimalno dušenje.
+
+Obravnavamo PLL zanko kot optimalen senzor za fazo 2. reda. Označimo \( \theta_s \) fazo v sistemu \( S \), ki je ne poznamo. Faza se s časom spreminja kot \( \dot{\theta}_s = \omega_s \). Velja
+
+\[ \dot{\omega}_s = 0 + W, 
+\]
+
+kjer je \( W \) dinamski šum \( \left\langle W(t) W(t') \right\rangle = \delta(t - t') Q \). Poznamo fazo \( \theta_1 \) in zašumljen izmerek faz oscilatorja je
+
+\[ \theta_1 = z = \sigma_s + r_s (t),
+\]
+kjer velja \( \left\langle r_s (t) r_s (t') \right\rangle = \delta(t - t') R \).
+
+
+
+
+
+
