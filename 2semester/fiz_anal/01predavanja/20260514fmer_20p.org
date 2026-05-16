@@ -44,6 +44,20 @@ kjer je \( W \) dinamski šum \( \left\langle W(t) W(t') \right\rangle = \delta(
 \]
 kjer velja \( \left\langle r_s (t) r_s (t') \right\rangle = \delta(t - t') R \).
 
+Po Kalmanu je ocena za v merskem sistemu \( M \)
+
+\[ \dot{\hat{\theta}}_s = \hat{\omega}_s + K_{\theta} \left( z - \hat{\theta}_s \right), 
+\]
+ki je po odvajanju
+
+\[ \dot{\hat{\omega}}_s = 0 + K_{\omega} (z - \hat{\sigma}_s). 
+\]
+
+Dobljeno nadomestimo v napovedi oceni
+
+\[ \ddot{\hat{\theta}}_s = \dot{\omega}_s + K_{\theta} \left( \dot{z} - \dot{\hat{\theta}}_s \right) 
+\]
+
 
 
 

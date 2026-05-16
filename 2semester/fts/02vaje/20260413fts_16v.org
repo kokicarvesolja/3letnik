@@ -45,7 +45,108 @@ Lastne vrednosti nam poda enačba \( \det M = 0 \) in so
 
 ** Disperzija v bližini točke razcepa
 
+Vrnimo se nazaj k nalogi prejšnjega tedna o razcepu pasov v dveh dimenzijah. Energija prostega elektrona je parabola
+
+\[ \epsilon^0 (\mathbf{q}) = \frac{\hbar ^2 q ^2}{2m}. 
+\]
+
+Razcep pasov se zgodi v točki \( x = \frac{\pi}{a} \) in točko v bližini razcepa označimo s \( \mathbf{k} = \left( \frac{\pi}{a} - p_x, p_y \right) \), kjer je \( p_x \ll \frac{\pi}{a} \). Problem lastnih vrednosti je, podobno kot prejšnji teden
+
+\[  \det \begin{bmatrix}
+         \epsilon^0 \left( \mathbf{k} - \mathbf{K}_1 \right) - \epsilon & V \\
+          V^{\ast} & \epsilon^0 \left( \mathbf{k} - \mathbf{K}_2 \right) - \epsilon
+          \end{bmatrix} = 0.
+\]
+
+Označimo \( \epsilon^0 \left( \mathbf{k} - \mathbf{K}_i \right) = \epsilon_i, \ i = 1, 2 \).
+
+[[file:figures/16disperzija.png]]
+
+Lastni vrednosti matrike sta
+
+\begin{equation}
+\label{eq:1}
+ \epsilon_{\pm} = \frac{\epsilon_1 + \epsilon_2}{2} \pm \frac{1}{2} \sqrt{\left( \epsilon_1 - \epsilon_2 \right) ^2 + 4 \left| V \right| ^2},
+\end{equation}
+kjer je \( \left| V \right| = V_{\mathbf{K}_2 - \mathbf{K}_1} V^{\ast}_{\mathbf{K}_2 - \mathbf{K}_1}\). Po definiciji velja
+
+\begin{align*}
+  \epsilon_1 &= \epsilon^0 \left( \mathbf{k} - \mathbf{K}_1 \right) = \frac{\hbar ^2}{2m} \left[ \left( \frac{\pi}{a} - p_x \right) ^2 + k_y ^2 \right] \\
+\epsilon_2 &= \epsilon^0 \left( \mathbf{k} - \mathbf{K}_2 \right) = \frac{\hbar ^2}{2m} \left[ \left( \frac{\pi}{a} + p_y \right) ^2 + k_y ^2 \right],
+\end{align*}
+s čimer lahko izrazimo
+
+\[ \frac{\epsilon_1 - \epsilon_2}{2} = \frac{\hbar ^2}{2m} \frac{\pi}{a} p_x \quad \text{ in } \quad \frac{\epsilon_1 + \epsilon_2}{2} = \frac{\hbar ^2}{2m} \left( p_x + \left( \frac{\pi}{a} \right)^2 + p_y ^2 \right).
+\]
+
+Dobljeni vrednosti vstavimo v enačbo \eqref{eq:1}, kjer koren razvijemo po Taylorju za šibek potencial \( \left| V \right|  \ll \frac{\hbar ^2}{2m} \frac{\pi}{a} \)
+
+\begin{align*}
+\epsilon_{\pm} &= \frac{\hbar ^2}{2m} \left[ p_x ^2 + \left( \frac{\pi}{a} \right) ^2 + p_y ^2 \right] \pm \sqrt{\left( \frac{\hbar ^2}{2m} \frac{\pi}{a} p_x \right) ^2 + \left| V \right| ^2}  \\
+&= \frac{\hbar ^2}{2m} \left[ \left( \frac{\pi}{a} \right) ^2 + p_y ^2 + p_x ^2 \right] \pm \left| V \right| \left[ 1 + \frac{1}{2} \frac{\left( \frac{\hbar ^2}{2m} \frac{\pi}{a} p_x \right) ^2}{\left| V \right| ^2} + \ldots \right] \\
+&= \frac{\hbar ^2}{2m} \left[ \left( \frac{\pi}{a} \right) ^2 + p_y ^2 \right] \pm \left| V \right| + \frac{\hbar ^2}{2m} p_x ^2 \left[ 1 \pm \frac{\frac{\hbar ^2}{2m} \left( \frac{\pi}{a} \right) ^2}{\left| V \right|} \right].
+\end{align*}
+
+Prva dva člena predstavljata disperzijo vzdolž roba 1. Brillouinove cone, medtem ko je zadnji člen popravek, če se premaknemo stran od roba. V zadnjem členu lahko zanemarimo \( 1 \), saj bo zaradi šibkega potenciala prevladoval ulomek s potencialom. Energijska stanja lahko še nekoliko preuredimo
+
+\[ \epsilon_{\pm} = \frac{\hbar ^2}{2m} \left( \frac{\pi}{a} \right) ^2 \pm \left| V \right| + \frac{\hbar ^2}{2m} \left( p_y ^2 \pm \frac{1}{2} \frac{\frac{\hbar ^2}{2m} \left( \frac{\pi}{a} \right) ^2}{\left| V \right|} p_x ^2 \right)
+\]
+
+Ob robu se pasova razcepita, kakor se vidi na zgornji sliki. Drugi oklepaj v ravnokar izpeljani enačbi pa nam pove še nekaj dodatnih informacij:
+
+- zgornji pas (s predznakom \( + \)) ima na robu minimum
+
+  \[ \epsilon_+ = \frac{\hbar ^2}{2m} \left( \frac{\pi}{a} \right) ^2 + \left| V \right| + \frac{\hbar ^2}{2m} \left( p_y ^2 + \frac{1}{2} \frac{\frac{\hbar ^2}{2m} \left( \frac{\pi}{a} \right) ^2}{\left| V \right|} p_x ^2 \right),
+  \]
+  izohipse pa imajo obliko elips.
+
+  [[file:figures/16plus.png]]
+
+- spodnji pas (s predznakom \( - \)) ima na robu sedlo
+
+  \[ \epsilon_- = \frac{\hbar ^2}{2m} \left( \frac{\pi}{a} \right) ^2 - \left| V \right| + \frac{\hbar ^2}{2m} \left( p_y ^2 - \frac{1}{2} \frac{\frac{\hbar ^2}{2m} \left( \frac{\pi}{a} \right) ^2}{\left| V \right|} p_x ^2 \right),
+  \]
+  izohipse pa imajo obliko hiperbol.
+
+  [[file:figures/16minus.png]]
+  
+  
+Sedaj uvedemo tenzor efektivne mase. Energijo prostega elektrona lahko prepišemo v
+
+\[ \epsilon(\mathbf{q}) = \frac{\hbar ^2}{2m_e} \mathbf{q} ^2 = \frac{\hbar ^2}{2} \mathbf{q} \cdot \underline{m}^{-1} \mathbf{q},
+\]
+kjer je \( \underline{m}^{-1} = \frac{1}{m_e} I \) in je \( I \) identiteta. Energije pasov zapišemo s tenzorjem efektivne mase \( \underline{m}^{\ast} \)
+
+\[ \epsilon_{\pm} = \frac{\hbar ^2}{2} \mathbf{p} \cdot {m^{\ast}}^{-1} \mathbf{p} + C,
+\]
+kjer je \( C \) konstanta. Ločimo tenzor efektivne mase za zgornji pas (levo) in za spodnji pas (desno)
+
+\[ {\underline{m}^{\ast}}^{-1}_+ = \begin{bmatrix}
+                                   \frac{\frac{\hbar ^2}{2m} \left( \frac{\pi}{a} \right) ^2}{m \left| V \right|} & 0 \\
+                                    0 & \frac{1}{m}
+                                    \end{bmatrix} \quad \text{ in } \quad  {\underline{m}^{\ast}}^{-1}_- = \begin{bmatrix}
+                                   -\frac{\frac{\hbar ^2}{2m} \left( \frac{\pi}{a} \right) ^2}{m \left| V \right|} & 0 \\
+                                    0 & \frac{1}{m}
+                                    \end{bmatrix}.
+\]
+
+Ob odsotnosti potenciala ločimo dva primera:
+
+- Fermijeva površina je popolnoma znotraj Brillouinove cone ali
+
+- Fermijeva površina je ponekod zunaj cone. V tem primeru se deli, ki gledajo zunaj cone, pravokotno preslikajo navznoter čez rob.
+
+  [[file:figures/16fermi.png]]
+* Naloga: Kronig-Penneyjev model s približkom tesne vezi 
+** Teorija: Približek tesne vezi (ang. /tight-binding model/)
+
+Približek tesne vezi je še en od načinov, kako opišemo elektrone v kristalu. Spoznali smo že približek šibkega potenciala, v katerem predpostavimo, proste elektroni s pripadajočimi lastnimi valovnimi funkcijami, ki jih perturbiramo s šibkim periodičnim potencialom. V približku tesne vezi predpostavimo, da elektron ni prost in je njegova valovna funkcija funkcija elektrona v izoliranem atomu.
 
 
+
+
+
+
+  
 
 
