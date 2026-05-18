@@ -151,5 +151,12 @@ Rešitev logaritmiramo in delimo z \( \beta  \)
 &= \frac{1}{2} (\epsilon_c + \epsilon_d) - \frac{3}{4} \ln T 
 \end{align*}
 
-Za \( A \ll 1 \) smo v limiti visoke temperature, kjer moramo paziti, da še zmeraj drži predpostavka \( \mu - \epsilon_v \gg k_B T \)
+Za \( A \ll 1 \) smo v limiti visoke temperature, kjer moramo paziti, da še zmeraj drži predpostavka \( \mu - \epsilon_v \gg k_B T \). Koren razvijemo s Taylorjevo vrsto
+
+\[ \epsilon^{\beta \mu} = \frac{N_d}{N_c} e^{\beta \epsilon_c}, 
+\]
+kjer je po logaritmiranju
+
+\[ \mu = \epsilon_c + k_B T \ln \frac{N_d}{N_c} = \epsilon_c - \frac{3}{2} k_B T \ln T +\ldots
+\]
 
