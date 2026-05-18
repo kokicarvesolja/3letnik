@@ -1,0 +1,155 @@
+#+title: Vaje iz Fizike trdne snovi, 21. teden v letu
+#+subtitle: 2026/05/18
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Kvazi-klasičen približek
+** Ciklotronska frekvenca 
+
+Energija elektrona v bližini spodnjega roba, ki naj bo središče 1. BC, minimalno
+
+\[ \epsilon (\mathbf{k}) = \epsilon_{min} + \frac{\hbar ^2}{2} \mathbf{k} {\underline{m}^{\ast}}^{-1} \mathbf{k},  
+\]
+kjer je
+
+\[ {\underline{m}^{\ast}} = \begin{bmatrix}
+                            m_{xx} & m_{xy} & m_{xz} \\
+                            m_{yx} & m_{yy} & m_{yz} \\
+                            m_{zx} & m_{zy} & m_{zz}
+                            \end{bmatrix} = {\underline{m}^{\ast}}^T. 
+\]
+
+Drugi Newtonov zakon v kvazi-klasičnem približku je
+
+\[ {\underline{m}}^{\ast} \dot{\mathbf{v}} = e \mathbf{v} \times \mathbf{B}.
+\]
+
+Magnetno polje naj bo usmerjeno v smeri osi \( z \), \( \mathbf{B} = B \hat{e}_z \) in hitrost ima obliko ravnega valova \( \mathbf{v} = \mathbf{v}_0 e^{- \mathrm{i} \omega t} \). Dobili smo sistem enačb
+
+\[ \begin{bmatrix}
+   m_{xx} & m_{xy} - \frac{\mathrm{i} e B}{\omega}  & m_{xz} \\
+   m_{yx} + \frac{\mathrm{i} e B}{\omega} & m_{yy} & m_{yz} \\
+   m_{zx} & m_{zy} & m_{zz}
+   \end{bmatrix} \begin{bmatrix} v_{0x} \\ v_{0y} \\ v_{0z} \end{bmatrix} = 0
+\]
+
+Za izračun determinante bi lahko razvili matriko po stolpcih, vendar je lažji način, da jo izrazimo kot vsoto determinante brez popravkov magnetnega polja in popravkov magnetnega polja
+
+\[ 0 = \det m_B^{\ast} = \det m^{\ast} - \left( \frac{qB \sqrt{m_{zz}}}{\omega} \right) ^2.
+\]
+
+Iz zgornje enačbe sedaj izrazimo frekvenco, s katero sistem oscilira
+
+\[ \omega = \frac{\left| q \right| B \sqrt{m_{zz}}}{\sqrt{\det m^{\ast}}}.
+\]
+
+Frekvenco lahko sedaj primerjamo s ciklotronsko frekvenco \( \omega_C = \left| q \right| \frac{B}{m} \) in definiramo efektivno ciklotronsko frekvenco \( m_c^{\ast} \), ki ima obliko
+
+\[ m_c^{\ast} = \sqrt{\frac{\det m^{\ast}}{m_{zz}}}. 
+\]
+
+Efektivno ciklotronsko frekvenco želimo izraziti z vektorskim zapisom neodvisno od koordinat, zato uvedemo \( \mathbf{B} = B \hat{e}_B  \), izraz za \( m_c^{\ast} \) pa potem posodobimo v
+
+\[ m_c^{\ast} = \sqrt{\frac{\det m^{\ast}}{\hat{e}_B \cdot m^{\ast} \cdot \hat{e}_B}}.
+\]
+
+V anizotropni snovi lastnosti izražamo z efektivno maso preko determinante tenzorja \( m^{\ast} \). Gostota stanj v izotropni snovi je, kakor smo napisali v enem izmed prejšnjih predavanj,
+
+\[ g(\epsilon) = \frac{ \sqrt{2m ^3}}{\pi ^2 \hbar ^3} \sqrt{\epsilon}. 
+\]
+
+V anizotropni snovi pa zapišemo
+
+\[ g (\epsilon) = \frac{\sqrt{2 m^{\ast}}}{\pi ^2 \hbar ^3} \sqrt{\epsilon}, 
+\]
+kjer je \( m^{\ast} = \sqrt[3]{\det m^{\ast}} \).
+* Polprevodniki
+
+Efektivna masa \( e^- \) v prevodnem pasu ima enako oznako kot ciklotronska efektivna masa
+
+\[ m_c^{\ast} = \sqrt[3]{\det m_c^{\ast}},
+\]
+efektivna masa vrzeli v valečnem pasu pa označimo z
+
+\[ m_v^{\ast} = \sqrt[3]{\left| \det m_v^{\ast} \right|}. 
+\]
+
+Za energijsko režo \( \epsilon_g \) velja \( \epsilon_c - \epsilon_d, \epsilon_a - \epsilon_v \ll \epsilon_g \).
+
+Pri temperaturi \( T = 0 \ \mathrm{K} \) velja \( n_c = p_d = p_v = 0 \).
+
+Pri končni temperaturi \( T \ne 0 \) velja \( n_c = n_c (T) \), \( p_d = p_d (T) \) in \( p_v = p_v (T) \).
+
+Za izračun \( n_c (T) \) moramo najti kemijski potencial \( \mu(T) \)
+
+\[ n_c (T) = \int\limits_{}^{} g(\epsilon) f(\epsilon) \, \mathrm{d} \epsilon,
+\]
+kjer je
+
+\[ f(\epsilon) = {\left( e^{\beta (\epsilon - \mu)} + 1 \right)}^{-1}. 
+\]
+
+Analitično to ni izračunljivo, zato uporabimo približek nedegeneriranega polprevodnika, za katerega velja \( \epsilon_c - \mu \gg k_B T \) in \( \mu - \epsilon_v \gg k_B T \). Na koncu je dobro, da preverimo, če to res drži. 
+
+Iz predavanj vemo, da potem velja
+
+\[ n_c = N_c e^{- \beta \left( \epsilon_c - \mu \right)}, \quad N_c = \frac{1}{4} \left( \frac{2 m_c^{\ast} k_B T}{\pi \hbar ^2} \right)^{\frac{3}{2}} 
+\]
+in 
+\[ p_v = P_v e^{- \beta \left( \epsilon_c - \mu \right)}, \quad P_v = \frac{1}{4} \left( \frac{2 m_v^{\ast} k_B T}{\pi \hbar ^2} \right)^{\frac{3}{2}}.
+\]
+
+Prav tako vemo iz predavanj, da je gostota vrzeli
+
+\[ p_d = \frac{N_d}{1 + 2 e^{- \beta (\epsilon_d - \mu)}}.
+\]
+
+Kemijski potencial \( \mu(T) \) bomo našli preko ohranitve naboja
+
+\begin{align*}
+n_c &= p_d + p_v \\
+  N_c e^{- \beta (\epsilon_c - \mu)} &= \frac{N_d}{1 + 2e ^{- \beta (\epsilon_d - \mu)}} + P_v e^{- \beta (\mu - \epsilon_v)}
+\end{align*}
+
+Ker ne želimo reševati polinoma tretje stopnje, lahko fizikalno zanemarimo zadnji člen. Število vrzeli v spodnjem pasu je pri sobni temperaturi zanemarljivo, saj elektroni nimajo dovolj energije za preskok v valenčni pas.
+
+Kvadratna enačba je
+
+\[ e^{2 \beta \mu} + \frac{1}{2} e^{\beta \epsilon_d} e^{\beta \mu} - \frac{N_d}{2 N_c} e^{\beta (\epsilon_c + \epsilon_d)} = 0, 
+\]
+in rešitvi sta
+
+\[ e^{\beta \mu} = - \frac{1}{4} e^{\beta \epsilon_d} \pm \sqrt{\left( \frac{1}{4} e^{\beta \epsilon_d} \right) ^2 + \frac{N_d}{2N_c} e^{\beta (\epsilon_d - \epsilon_c)}} 
+\]
+oziroma
+
+\[  e^{\beta \mu} = \frac{1}{4} e^{\beta \epsilon_d} \left[ -1 \pm \sqrt{1 + \frac{8N_d}{N_c} e^{\beta(\epsilon_d - \epsilon_c)}} \right],
+\]
+kjer vzamemo rešitev s plusom, saj je drugače rezultat negativen.
+
+Definirajmo 
+
+\[ A = \sqrt{1 + \frac{8 N_d}{N_c} e^{\beta (\epsilon_d - \epsilon_c)} }.
+\]
+
+Za \( A \gg 1 \) smo v limiti nizke temperature (edina člena odvisna od temperature sta \( \beta = \beta(T) \) in \( N_c = N_c (T) \)). V tej limiti  velja
+
+\begin{align*}
+  e^{\beta \mu} &\approx \frac{1}{4} e^{\beta \epsilon_d} \sqrt{8 e^{\beta(\epsilon_d - \epsilon_c)} \frac{N_d}{N_c}} \\
+&= \frac{1}{2} \sqrt{\frac{2N_d}{N_c}} e^{\frac{\beta}{2} (\epsilon_c + \epsilon_d)}
+\end{align*}
+
+Rešitev logaritmiramo in delimo z \( \beta  \)
+
+\begin{align*}
+  \mu(T) &= \frac{1}{2} \left( \epsilon_c + \epsilon_d \right) + k_B T \ln \left( \sqrt{\frac{N_c}{2N_d}} \right) \\
+&= \frac{1}{2} (\epsilon_c + \epsilon_d) - \frac{3}{4} \ln T 
+\end{align*}
+
+Za \( A \ll 1 \) smo v limiti visoke temperature, kjer moramo paziti, da še zmeraj drži predpostavka \( \mu - \epsilon_v \gg k_B T \)
+
