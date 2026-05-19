@@ -20,8 +20,6 @@ kjer je \( \sigma \) površinska napetost~\cite{kuscer_toplota_2017, seitz_theor
 \]
 iz česar lahko izrazimo kritični polmer \( R_C \):
 
-
-
 \begin{equation}
 \label{eq3:1}
  R_C = \frac{2 \sigma}{p_g - p_f}.
@@ -41,12 +39,11 @@ Ob privzetku \( p_g \gg p_f \) v enačbi~\eqref{eq3:1}, enačbo~\eqref{eq3:1} za
 
 \[  E_m = 16 \pi\frac{\sigma ^3}{p_g ^2} \left( 1 + \frac{2}{3} \frac{n}{p_g} H_s \right),
 \]
-kar lahko s kompresijskim faktorjem \( Z_g = p_g V_m / (RT) \), kjer je \( V_m \) molski volumen in \( R \) plinska konstanta, prepišemo v obliko
+kar lahko s kompresijskim faktorjem \( Z_g = p_g / (nRT) \), kjer \( R \) plinska konstanta, prepišemo v obliko
 
-\begin{equation}
-\label{eq3:3}
-E_m = 16 \pi \frac{\sigma ^3}{p_g ^2} \left( 1 +  H_s \frac{2}{3 Z_g R T} \right).
-\end{equation}
+\begin{equation*}
+E_m = 16 \pi \frac{\sigma ^3}{p_g ^2} \left( 1 + \frac{2}{3} \frac{H_s}{Z_g R T}\right).
+\end{equation*}
 
 Opazimo, da je energija obratno sorazmerna s kvadratom tlaka plina \( p_g \) in sorazmerna s kubom površinske napetosti \( \sigma \).
 
@@ -57,28 +54,34 @@ Energija stabilnih mehurčkov s polmerom \( R_C \) za vodik je \( E_m (\mathrm{H
 
 \subsubsection*{Elektroni prejmejo energijo vpadnega delca}
 
-Naj bo \( E_t \) energija, ki jo vpadni delec odda elektronu pri Rutherfordovem sipanju. V tabeli~\ref{tab:2} se navedeni empirični sipalni preseki \( \sigma_e \) za prenos energije na elektron, ki so večje od \( E_t \), izračunani s pomočjo gostote mehurčkov na slédi vpadnih protonov in pionov s hitrostjo \( 915 \, \mathrm{MeV} \). Preko enačbe
+Predpostavimo, da je vsak mehurček, ki nastane na poti vpadnega delca, posledica prenosa energije \( E_t \) iz vpadnega delca na elektron pri Rutherfordovem sipanju. Seitz je empirično določil sipalni presek \( \sigma_{e, m} \) na molekulo za prenos energije, ki ga je ocenil s pomočjo gostote mehurčkov na slédi vpadnih proton z gibalno količino \( 915 \mathrm{MeV} / \mathrm{c} \). Ocene \( \sigma_{e, m} \) so vidne v tabeli~\ref{tab:2}.
+
+Želimo izračunati energijo \( E_t \). Sipalni presek za prenos energije \( E_t \) elektronu pri Rutherfordovem sipanju je
 
 \[  \sigma_e = 8 \pi r_b ^2 \frac{R_h ^2}{m_e v ^2 E_t},
 \]
-kjer je \( r_b \) Bohrov radij, \( R_h \) Rydbergova energija, \( m_e \) masa elektrona in \( v \) hitrost vpadnega delca, izračunamo energijo \( E_t \).
+kjer je \( r_b \) Bohrov radij, \( R_h \) Rydbergova energija, \( m_e \) masa elektrona in \( v \) hitrost vpadnega delca. Sedaj izrazimo energijo
 
-\begin{tabela}[H]
-\caption{\small Vrednost gostote mehurčkov na sledi delca, molska masa \( n \), gostota \( \rho \) in energija \( E_t \), ki jo vpadni delec odda posameznemu elektronskemu sistemu, za vodik in propan~\cite{seitz_theory_1958}.}\label{tab:2}
+\[ E_t = 8\pi r_b ^2 \frac{R_h ^2 Z_e}{m_e v ^2 \sigma_{e, m}},
+\]
+kjer smo ulomek razširili s številom elektronov na molekulo \( Z_e \) in upoštevali \( \sigma_{e, m} = Z_e \sigma_e \).
+
+\begin{wraptable}[14]{r}{8cm}
+\captionof{tabela}{\small Vrednost gostote mehurčkov na sledi delca, molska masa \( n \), gostota \( \rho \) in energija \( E_t \), ki jo vpadni delec odda elektronu, za vodik in propan~\cite{seitz_theory_1958}.}\label{tab:2}
   \centering
 \[
     \begin{array}{|c|c|c|} \hline
       & H_2 & C_3 H_8 \\ \hline
-      n [ \mathrm{cm}^{-1}] & 15 & 16 \\
-      M [\mathrm{g}] & 2 & 44.1 \\
-      \rho [\mathrm{g}/ \mathrm{cm}^3] & 0.050 & 0.330 \\
-      \sigma_e [ \mathrm{cm} ^2 ] & 0.996 \cdot 10^{-21} & 3.55 \cdot 10^{-21} \\
-      E_t [ \mathrm{eV}] & 513 & 1890 \\ \hline
+      n \ [ \mathrm{cm}^{-1}] & 15 & 16 \\
+      M \ [\mathrm{g}] & 2 & 44.1 \\
+      \rho \ [\mathrm{g}/ \mathrm{cm}^3] & 0.050 & 0.330 \\
+      \sigma_{e,m} \ [ \mathrm{cm} ^2 ] & 0.996 \cdot 10^{-21} & 3.55 \cdot 10^{-21} \\
+      E_t \ [ \mathrm{eV}] & 513 & 1890 \\ \hline
     \end{array}
 \]
-\end{tabela}
+\end{wraptable}
 
-Iz tabele~\ref{tab:2} vidimo, da vpadni delec odda več kot dovolj energije \( E_t \) za oblikovanje stabilnega mehurčka z energijo \( E_m \). S tem lahko tudi zanemarimo nastanek mehurčkov kot posledico Rutherfordovega sipanja na nukleonih v jedru, saj je v tem primeru prejeta energija \( E_t' \) zaradi mase nukleonov manjša od zahtevane za stabilen mehurček.
+V tabeli~\ref{tab:2} so vidne izračunane vrednosti energije \( E_t \) za znane vrednosti sipalnega preseka \( \sigma_{e, m} \) na molekulo in vidimo, da vpadni delec odda več kot dovolj energije \( E_t \) za oblikovanje stabilnega mehurčka z energijo \( E_m \). S tem lahko tudi zanemarimo nastanek mehurčkov kot posledico Rutherfordovega sipanja na nukleonih v jedru, saj je v tem primeru prejeta energija \( E_t' \) zaradi mase nukleonov manjša od zahtevane za stabilen mehurček.
 
 Energija \( E_t \) za vodik je dva velikostna reda večja od energije stabilnega mehurčka \( E_m \), za propan pa en velikostni red. S preprosto fizikalno razlago si oglejmo, s kakšno hitrostjo se širijo stene nastalega mehurčka.
 
@@ -94,21 +97,6 @@ kjer je \( D \) difuzijski koeficient tekočine in je neodvisen od tlaka v okoli
 \]
 kjer je \( \tau_C \) karakteristični čas \( \tau_h \) za \( r = R_C \). Vrednosti za vodik in propan so podane v tabeli~\ref{tab:3}.
 
-\begin{tabela}[H]
-  \caption{\small Vrednosti difuzijskega koeficiena \( D \), karakteristični čas \( \tau_C \) za stabilen mehurček in hitrost \( v_C \) sten mehurčka~\cite{seitz_theory_1958}.}\label{tab:3}
-  \centering
-  \[
-    \begin{array}{|c|c|c|} \hline
-      & H_2 & C_3 H_8 \\ \hline
-      D[ \mathrm{cm ^2}/ \mathrm{s}] & 3.22 \cdot 10^{-3} & 2.02 \cdot 10^{-3} \\
-      t_C [\mathrm{s}] & 1.139 \cdot 10^{-11} & 9.60 \cdot 10^{-11} \\
-      v_c [ \mathrm{cm} / \mathrm{s}] & 3.36 \cdot 10^4 & 0.918 \cdot 10^4\\
-      \beta_a [ \mathrm{cm}/ \mathrm{N}] \cdot 10^{12} & 500 & 100 \\
-      c_a [ \mathrm{cm}/ \mathrm{s}] & 1.7 \cdot 10^5 & 1.9 \cdot 10^5 \\ \hline
-    \end{array}
-  \]
-\end{tabela}
-
 \subsubsection*{Razširjanje mehurčka in viskoznost tekočine}
 
 Predpostavimo, da se mehurček v vodiku širi radialno navzven in da je hitrost širjenja manjša od hitrosti zvoka v kapljevini. Adiabatna zvočna hitrost sredstva je podana z enačbo
@@ -116,6 +104,21 @@ Predpostavimo, da se mehurček v vodiku širi radialno navzven in da je hitrost 
 \[  c_a = {\left( \rho \beta_a \right)}^{-1/2},
 \]
 kjer je \( \rho \) gostota sredstva, \( \beta_a \) pa adiabatna stisljivost. V tabeli~\ref{tab:3} lahko vidimo, da je hitrost \( v_C \) res manjša od zvočne. Predpostavke nam omogočijo obravnavo širjenja mehurčka, kot širjenje v nestisljivi tekočini, kjer zanemarimo viskoznost.
+
+\begin{wraptable}[26]{r}{9cm}
+  \captionof{tabela}{\small Vrednosti difuzijskega koeficiena \( D \), karakteristični čas \( \tau_C \) za stabilen mehurček in hitrost \( v_C \) sten mehurčka~\cite{seitz_theory_1958}.}\label{tab:3}
+  \centering
+  \[
+    \begin{array}{|c|c|c|} \hline
+      & H_2 & C_3 H_8 \\ \hline
+      D \ [ \mathrm{cm ^2}/ \mathrm{s}] & 3.22 \cdot 10^{-3} & 2.02 \cdot 10^{-3} \\
+      t_C \  [\mathrm{s}] & 1.139 \cdot 10^{-11} & 9.60 \cdot 10^{-11} \\
+      v_c \  [ \mathrm{cm} / \mathrm{s}] & 3.36 \cdot 10^4 & 0.918 \cdot 10^4\\
+      \beta_a \  [ \mathrm{cm}/ \mathrm{N}] \cdot 10^{12} & 500 & 100 \\
+      c_a \ [ \mathrm{cm}/ \mathrm{s}] & 1.7 \cdot 10^5 & 1.9 \cdot 10^5 \\ \hline
+    \end{array}
+  \]
+\end{wraptable}
 
 Kroglo z začetnim polmerom \( R_0 \), ki se širi radialno navzven s trenutnim polmerom \( r(t) \), določa enačba za nestisljivo tekočino,
 
