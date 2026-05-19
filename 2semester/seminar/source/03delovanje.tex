@@ -35,7 +35,7 @@ E_m = 4 \pi \sigma R_C ^2 + \frac{4 \pi}{3} R_C ^3 n H_s,
 \end{equation}
 kjer je \( n \) molska gostota plina pri tlaku \( p_g \) in \( H_s \) specifična entalpija. Vir~\cite{bruno_critical_2019} v tabeli na strani 3 predstavi, kako so skozi desetletja različni avtorji dodajali in odstranjevali še druge člene, vendar sta v vseh primerih prisotna oba člena iz enačbe~\eqref{eq3:2}. V razdelku~\ref{sec:mehmod} bomo tudi upoštevali enega od dodatnih členov -\ kinetičnega. 
 
-Ob privzetku \( p_g \gg p_f \) v enačbi~\eqref{eq3:1}, enačbo~\eqref{eq3:1} zapišemo v obliki
+Ob privzetku \( p_g \gg p_f \) v enačbi~\eqref{eq3:1}, enačbo~\eqref{eq3:2} zapišemo v obliki
 
 \[  E_m = 16 \pi\frac{\sigma ^3}{p_g ^2} \left( 1 + \frac{2}{3} \frac{n}{p_g} H_s \right),
 \]
@@ -54,7 +54,7 @@ Energija stabilnih mehurčkov s polmerom \( R_C \) za vodik je \( E_m (\mathrm{H
 
 \subsubsection*{Elektroni prejmejo energijo vpadnega delca}
 %sprememba
-\color{blue}Predpostavimo, da je vsak mehurček, ki nastane na poti vpadnega delca, posledica prenosa energije \( E_t \) iz vpadnega delca na elektron pri Rutherfordovem sipanju. Seitz je empirično določil sipalni presek \( \sigma_{e, m} \) na molekulo za prenos energije, ki ga je ocenil s pomočjo gostote mehurčkov na slédi vpadnih proton z gibalno količino \( 915 \ \mathrm{MeV} / \mathrm{c} \). Ocene \( \sigma_{e, m} \) so vidne v tabeli~\ref{tab:2}.
+\color{blue}Predpostavimo, da je vsak mehurček, ki nastane na poti vpadnega delca, posledica prenosa energije \( E_t \) iz vpadnega delca na elektron pri Rutherfordovem sipanju. Seitz je ocenil sipalni presek \( \sigma_{e, m} \) na molekulo za prenos energije s pomočjo gostote mehurčkov na slédi vpadnih proton z gibalno količino \( 915 \ \mathrm{MeV} / \mathrm{c} \). Ocene \( \sigma_{e, m} \) so vidne v tabeli~\ref{tab:2}.
 
 Želimo izračunati energijo \( E_t \). Sipalni presek za prenos energije \( E_t \) elektronu pri Rutherfordovem sipanju je
 
@@ -104,8 +104,8 @@ Predpostavimo, da se mehurček v vodiku širi radialno navzven in da je hitrost 
 \[  c_a = {\left( \rho \beta_a \right)}^{-1/2},
 \]
 kjer je \( \rho \) gostota sredstva, \( \beta_a \) pa adiabatna stisljivost. V tabeli~\ref{tab:3} vidimo, da je hitrost \( v_C \) res manjša od zvočne.
-% sprememba
-Radialno širjenje mehurčka z začetnim polmerom \( R_0 \) obravnavamo v nestisljivi in neviskozni tekočini, zato hitrostno polje in tlak zadoščata Eulerjevi enačbi 
+
+\color{blue}Radialno širjenje mehurčka z začetnim polmerom \( R_0 \) obravnavamo v nestisljivi in neviskozni tekočini, zato hitrostno polje in tlak zadoščata Eulerjevi enačbi 
 
 \[  \frac{\partial v}{\partial t} + v \frac{\partial v}{\partial r} = - \frac{1}{\rho} \frac{\partial p}{\partial r},
 \]
@@ -113,7 +113,8 @@ in kontinuitetni enačbi za sferno simetričen tok
 
 \[ \frac{\partial }{\partial r} \left( r ^2 v \right) = 0, 
 \]
-kjer je \( v \) hitrost tekočine v točki \( r \), \( \rho \) gostota tekočine in tlak \( p \). Uporabimo nastavek \( v = \dot{R} R ^2 / r ^2 \), kjer je \( R \) polmer po času \( t \), za rešitev tlaka \( p \) ob steni mehurčka~\cite{landau_fluid_1987}, tako da je
+kjer je \( v \) hitrost tekočine v točki \( r \), \( \rho \) gostota tekočine in tlak \( p \).
+\color{black} Uporabimo nastavek \( v = \dot{R} R ^2 / r ^2 \), kjer je \( R \) polmer po času \( t \), za rešitev tlaka \( p \) ob steni mehurčka~\cite{landau_fluid_1987}, tako da je
 
 \begin{equation}
 \label{eq3:4}
@@ -204,11 +205,6 @@ in znaša \( R = 19 \, \si{\angstrom} \). Radij mehurčka se z višanjem mehurč
 
 Tekočine in trdnine lahko v nasprotju s plinom dosežejo podtlak (ang. \textit{negative pressure}). Če plinu v zaprti posodi z batom povečamo prostornino, plin zapolni novo nastali prostor, tlak pa se zniža. Pri nestisljivi tekočini povečanje volumna posode povzroči podtlak. Ta tlak ne more rasti do neskončnosti, ampak tekočina začne vreti~\cite{imre_how_2007}.
 
-\begin{slika}[H]
-  \centering
-  \input{./figures/mehmod.tex}
-  \caption{\small Energija mehurčka v odvisnosti od polmera \( R \) in različnih vrednosti za tlak, ob površinski napetosti \( \sigma = 0.3544 \cdot 10^{-7} \, \mathrm{J} / \mathrm{cm} ^2 \) za helij~\cite{classen_electrons_1998}. Točka \( A \) je minimum energije in točka \( B \) pa njen maksimum za \( p = -1 \, \mathrm{bar} \). Jasno se vidi monotono padanje energije za dovolj negativne vrednosti \( p \).}\label{fig:mehmod}
-\end{slika}
 
 Kakor vidimo na sliki~\ref{fig:mehmod}, mehurček za tlak \( p = 0 \) na začetku raste preko radija \( R_{\min} \), vendar sčasoma preneha rasti in se vrne v stanje z najmanjšo energijo. Za majhne podtlake, kot npr.~\( p = -1\, \mathrm{bar}\), minimumu energije sledi maksimum v točki \( B \) s polmerom \( R_{\max} \). Za tlake, manjše od \( p = -2\, \mathrm{bar} \), energija monotono pada. Z nižanjem tlaka se točki \( R_{\min} \) in \( R_{\max} \) približujeta, dokler pri tlaku manjšem od kritične točke \( -p_C \) energija nima več minimuma in mehurček postane nestabilen~\cite{classen_electrons_1998}.
 
@@ -216,4 +212,9 @@ Za neko vrednost \( p_0 \) mehurček pridobi dovolj energije pri rasti od \( R =
 
 Helijeve mehurčne komore ponavadi delujejo v območju temperatur \( T \in [3.5, 4.5] \, \mathrm{K} \), tlak \( p \) je manjši od \( p_{nt} \), vendar pozitiven, in odbojni potencial \( V_0 \) je manjši zaradi manjše gostote tekočine. Mehurček se med rastjo napolni z izhlapelo okoliško tekočino. Ko je dosežen kritičen radij, je prispevek elektrona k mehurčkovi energiji zanemarljiv, energijo pa podaja enačba~\eqref{eq3:2}.
 
+\begin{slika}[htbp]
+  \centering
+  \input{./figures/mehmod.tex}
+  \caption{\small Energija mehurčka v odvisnosti od polmera \( R \) in različnih vrednosti za tlak, ob površinski napetosti \( \sigma = 0.3544 \cdot 10^{-7} \, \mathrm{J} / \mathrm{cm} ^2 \) za helij~\cite{classen_electrons_1998}. Točka \( A \) je minimum energije in točka \( B \) pa njen maksimum za \( p = -1 \, \mathrm{bar} \). Jasno se vidi monotono padanje energije za dovolj negativne vrednosti \( p \).}\label{fig:mehmod}
+\end{slika}
 
