@@ -103,9 +103,24 @@ Predpostavimo, da se mehurček v vodiku širi radialno navzven in da je hitrost 
 
 \[  c_a = {\left( \rho \beta_a \right)}^{-1/2},
 \]
-kjer je \( \rho \) gostota sredstva, \( \beta_a \) pa adiabatna stisljivost. V tabeli~\ref{tab:3} lahko vidimo, da je hitrost \( v_C \) res manjša od zvočne. Predpostavke nam omogočijo obravnavo širjenja mehurčka, kot širjenje v nestisljivi tekočini, kjer zanemarimo viskoznost.
+kjer je \( \rho \) gostota sredstva, \( \beta_a \) pa adiabatna stisljivost. V tabeli~\ref{tab:3} vidimo, da je hitrost \( v_C \) res manjša od zvočne.
 
-\begin{wraptable}[26]{r}{9cm}
+Radialno širjenje mehurčka z začetnim polmerom \( R_0 \) obravnavamo v nestisljivi in neviskozni tekočini, zato hitrostno polje in tlak zadoščata Eulerjevi enačbi 
+
+\[  \frac{\partial v}{\partial t} + v \frac{\partial v}{\partial r} = - \frac{1}{\rho} \frac{\partial p}{\partial r},
+\]
+in kontinuitetni enačbi za sferno simetričen tok
+
+\[ \frac{\partial }{\partial r} \left( r ^2 v \right) = 0, 
+\]
+kjer je \( v \) hitrost tekočine v točki \( r \), \( \rho \) gostota tekočine in tlak \( p \). Uporabimo nastavek \( v = \dot{R} R ^2 / r ^2 \), kjer je \( R \) polmer po času \( t \), za rešitev tlaka \( p \) ob steni mehurčka~\cite{landau_fluid_1987}, tako da je
+
+\begin{equation}
+\label{eq3:4}
+\frac{p}{\rho} = \ddot{R} R + \left[ \frac{3}{2} {\left( \dot{R}  \right)}^2 \right].
+\end{equation}
+
+\begin{wraptable}[14]{r}{9cm}
   \captionof{tabela}{\small Vrednosti difuzijskega koeficiena \( D \), karakteristični čas \( \tau_C \) za stabilen mehurček in hitrost \( v_C \) sten mehurčka~\cite{seitz_theory_1958}.}\label{tab:3}
   \centering
   \[
@@ -113,28 +128,17 @@ kjer je \( \rho \) gostota sredstva, \( \beta_a \) pa adiabatna stisljivost. V t
       & H_2 & C_3 H_8 \\ \hline
       D \ [ \mathrm{cm ^2}/ \mathrm{s}] & 3.22 \cdot 10^{-3} & 2.02 \cdot 10^{-3} \\
       t_C \  [\mathrm{s}] & 1.139 \cdot 10^{-11} & 9.60 \cdot 10^{-11} \\
-      v_c \  [ \mathrm{cm} / \mathrm{s}] & 3.36 \cdot 10^4 & 0.918 \cdot 10^4\\
+      v_C \  [ \mathrm{cm} / \mathrm{s}] & 3.36 \cdot 10^4 & 0.918 \cdot 10^4\\
       \beta_a \  [ \mathrm{cm}/ \mathrm{N}] \cdot 10^{12} & 500 & 100 \\
       c_a \ [ \mathrm{cm}/ \mathrm{s}] & 1.7 \cdot 10^5 & 1.9 \cdot 10^5 \\ \hline
     \end{array}
   \]
 \end{wraptable}
 
-Kroglo z začetnim polmerom \( R_0 \), ki se širi radialno navzven s trenutnim polmerom \( r(t) \), določa enačba za nestisljivo tekočino,
-
-\[  \frac{\partial v}{\partial t} + v \frac{\partial v}{\partial r}  = - \frac{1}{\rho} \frac{\partial p}{\partial r},
-\]
-skupaj s kontinuitetno enačbo \( \frac{\partial }{\partial r} \left( r ^2 v \right) = 0 \), kjer je \( v \) hitrosti tekočine v točki \( r \), \( \rho \) gostota tekočine in tlak \( p \), ki je odvisen od časa in položaja. Uporabimo nastavek \( v = \dot{R} R ^2 / r ^2 \), kjer je \( R \) polmer po času \( t \), za rešitev tlaka \( p \) ob steni mehurčka~\cite{landau_fluid_1987}, tako da je
-
-\begin{equation}
-\label{eq3:4}
-\frac{p}{\rho} = \ddot{R} R + \left[ \frac{3}{2} {\left( \dot{R}  \right)}^2 \right].
-\end{equation}
-
 Identiteta adiabatne spremembe za začetni vrednosti \( p_0 \), \( R_0 \) in \( \gamma = 4 / 3 \) za vodik je \( p = p_0 {\left( R_0 /R \right)}^{3 \gamma} \). Enačba širjenja mehurčka sledi dvakratni integraciji po času \( t \):
 \[  \frac{c_0 t}{R_0} = {\left( 2 z \right)}^{1/2} \left( 1 + \frac{2z}{3} + \frac{z ^2}{5} \right),
 \]
-kjer je \( z = R/ R_0 - 1 \) in \( c_0 = p_0 / p \). Vmesni koraki integracije so opisani v~\cite{lamb_xxiii_1923}.
+kjer je \( z = R/ R_0 - 1 \) in \( c_0 = p_0 / \rho \). Vmesni koraki integracije so opisani v~\cite{lamb_xxiii_1923}.
 
 Pri širjenju mehurčka v propanu viskoznosti ne smemo zanemariti. Viskozno dušenje upočasnjuje rast mehurčka v radialni smeri. Pri steni mehurčka to določa enačba
 
