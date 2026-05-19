@@ -53,7 +53,7 @@ Energija stabilnih mehurčkov s polmerom \( R_C \) za vodik je \( E_m (\mathrm{H
 
 
 \subsubsection*{Elektroni prejmejo energijo vpadnega delca}
-
+%sprememba
 Predpostavimo, da je vsak mehurček, ki nastane na poti vpadnega delca, posledica prenosa energije \( E_t \) iz vpadnega delca na elektron pri Rutherfordovem sipanju. Seitz je empirično določil sipalni presek \( \sigma_{e, m} \) na molekulo za prenos energije, ki ga je ocenil s pomočjo gostote mehurčkov na slédi vpadnih proton z gibalno količino \( 915 \mathrm{MeV} / \mathrm{c} \). Ocene \( \sigma_{e, m} \) so vidne v tabeli~\ref{tab:2}.
 
 Želimo izračunati energijo \( E_t \). Sipalni presek za prenos energije \( E_t \) elektronu pri Rutherfordovem sipanju je
@@ -104,7 +104,7 @@ Predpostavimo, da se mehurček v vodiku širi radialno navzven in da je hitrost 
 \[  c_a = {\left( \rho \beta_a \right)}^{-1/2},
 \]
 kjer je \( \rho \) gostota sredstva, \( \beta_a \) pa adiabatna stisljivost. V tabeli~\ref{tab:3} vidimo, da je hitrost \( v_C \) res manjša od zvočne.
-
+% sprememba
 Radialno širjenje mehurčka z začetnim polmerom \( R_0 \) obravnavamo v nestisljivi in neviskozni tekočini, zato hitrostno polje in tlak zadoščata Eulerjevi enačbi 
 
 \[  \frac{\partial v}{\partial t} + v \frac{\partial v}{\partial r} = - \frac{1}{\rho} \frac{\partial p}{\partial r},
@@ -162,7 +162,7 @@ ki jo razširimo z dvema ulomkoma: \( V_0 / \left( 4 \pi R_0 ^3 / 3 \right) \) i
 \[  {\left( \frac{R}{R_C} \right)}^{3\gamma - 2} = \left( \frac{9}{128 \pi} \right) \left( \frac{\rho}{\eta ^2} \right) \left( \frac{p_0 V_0}{R_C} \right) {\left( \frac{R_0}{R_C} \right)}^{3(\gamma - 1)}.
 \]
 
-Za vodik z viskoznostjo \( \eta = 10^{-5}\, \mathrm{Pas} \) in \( 3 \gamma - 2 = 2.2 \) je razmerje \( R / R_C = 0.8 \). Za propan z viskoznostjo \( \eta = 10^{-3}\, \mathrm{Pa s} \) pa je razmerje \( R/ R_C = 3.5 \cdot 10^{-3} \)~\cite{seitz_theory_1958}. Pri vodiku ima viskozno dušenje zanemarljiv vpliv, saj je \( p_R = p \) pri mehurčku, ki je malo manjši od kritične velikosti. Pri propanu pa je enakost tlakov pri zelo majhnem mehurčku s polmerom \( R \approx 10^{-3} R_C \).
+Za vodik z viskoznostjo \( \eta = 10^{-5}\, \mathrm{Pa}\cdot \mathrm{s} \) in \( 3 \gamma - 2 = 2.2 \) je razmerje \( R / R_C = 0.8 \). Za propan z viskoznostjo \( \eta = 10^{-3}\, \mathrm{Pa}\cdot \mathrm{s} \) pa je razmerje \( R/ R_C = 3.5 \cdot 10^{-3} \)~\cite{seitz_theory_1958}. Pri vodiku ima viskozno dušenje zanemarljiv vpliv, saj je \( p_R = p \) pri mehurčku, ki je malo manjši od kritične velikosti. Pri propanu pa je enakost tlakov pri zelo majhnem mehurčku s polmerom \( R \approx 10^{-3} R_C \).
 
 Viskoznost pri širjenju mehurčka v propanu potemtakem igra pomembno vlogo, medtem ko jo v vodiku lahko zanemarimo.
 
@@ -170,7 +170,8 @@ Viskoznost pri širjenju mehurčka v propanu potemtakem igra pomembno vlogo, med
 
 Na rast mehurčka kritične velikost v pregreti tekočini vpliva zgolj toplotni tok, ki teče iz okoliške tekočine do njegove površine. Tekočina izhlapeva v notranjost mehurčka.
 
-Kakor smo povedali v uvodu tega modela, imajo hlapi v mehurčku temperaturo vrelišča, medtem ko je daleč stran od mehurčka tekočina še zmeraj pregreta s temperaturo \( T_b \). Gradient temperature \( T_{b} - T \) ima debelino \( 2 {\left( D t \right)}^{1/2} \), kjer je \( D \) difuzijski koeficient in \( t \) čas od nastanka mehurčka kritične velikosti. Asimptotski približek rasti mehurčka je
+Kakor smo povedali v uvodu tega modela, imajo hlapi v mehurčku temperaturo vrelišča \( T_v \), medtem ko je daleč stran od mehurčka tekočina še zmeraj pregreta s temperaturo \( T_b \). Gradient temperature \( T_{b} - T_v \), ima debelino \( 2 {\left( D t \right)}^{1/2} \), kjer je \( D \) difuzijski koeficient in \( t \) čas od nastanka mehurčka kritične velikosti. Asimptotski približek rasti mehurčka je
+% za izpeljavo asimptotskega približka glej the growth of vapour bubble (Plesset), zadnje 2 strani 
 
 \[  R = 2 {\left( \frac{3}{\pi} \right)}^{1/2} \lambda \left( T - T_b \right) \frac{V_m t^{1/2}}{H_s D^{1/2}},
 \]
@@ -178,7 +179,7 @@ kjer je \( \lambda \) toplotna prevodnost, \( V_m \) molski volumen pare ter \( 
 
 \subsection{Mehanski model}\label{sec:mehmod}
 
-Razlaga za mehanski model delovanja mehurčne komore je v večini povzeta po~\cite{konstantinov_how_1998} in razloži pojav mehurčkov samo za vodik in helij. Predpostavimo, da je v mehurčni komori tekoči helij pri temperaturi \( T = 0 \). Posledično je tudi nasičeni tlak \( p_{nt} = 0 \). Kapljevino obravnavamo kot nestisljivo.
+Razlaga za mehanski model delovanja mehurčne komore je v večini povzeta po~\cite{konstantinov_how_1998} in razloži pojav mehurčkov samo za vodik in helij. Predpostavimo, da je v mehurčni komori tekoči helij pri temperaturi \( T = 0 \ \mathrm{K} \). Posledično je tudi nasičeni tlak \( p_{nt} = 0 \). Kapljevino obravnavamo kot nestisljivo.
 
 Žarek \( \delta \) se je v razdelku~\ref{sec:topmod} ustavil in oddal toploto vzbujeni molekuli in njenim sosedom. V mehanskem modelu ustavljen elektron v heliju občuti odbojni potencial \( V_0 \approx 1 \mathrm{eV} \), zaradi katerega je ugodneje, da se elektron nahaja v sferi, v kateri ni helijevih atomov. Skupna energija elektrona in okoliške sfere s polmerom \( R \) je
 
