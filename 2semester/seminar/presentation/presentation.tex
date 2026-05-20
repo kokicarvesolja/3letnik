@@ -1,3 +1,7 @@
+% this presentation is largerly addapter from Elijan Mastnak's
+% FMF Seminar presentation. I was compelled to use it due to its
+% minimal visual noise,
+% https://github.com/ejmastnak/fmf-seminar/blob/main/presentation-slo/presentation-slo.tex
 \documentclass[14pt, t]{beamer}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
@@ -5,10 +9,19 @@
 \usepackage{amssymb}
 \usepackage{gensymb}
 \usepackage[slovene]{babel}
+\usepackage[
+sorting=none,
+style=numeric,
+sortcites=true]{biblatex}
 \usepackage{siunitx}
-\usepackage{pgfplots}
 
-\pgfplotsset{width=5cm}
-\usepgfplotslibrary{external}
-\tikzexternalize
-\usetikzlibrary{arrows.meta}
+\addbibresource{../source/refs.bib}
+\title{\large Mehurčne komore}
+\author{\small Avtor: Kristofer Č. Povšič \\ \small Mentor: prof. dr. Simon Širca}
+\date{26. maj 2026}
+
+\begin{document}
+\begin{frame}
+  \titlepage
+\end{frame}
+\end{document}

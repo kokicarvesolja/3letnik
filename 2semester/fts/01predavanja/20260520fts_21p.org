@@ -54,7 +54,7 @@ Prvo odvajanje nam poda vrednost \( x = - \frac{g}{2K} \).
 V integralu prepoznamo eliptičen integral, ki ga rešimo s pomočjo solz in matematičnega priporočnika
 
 \begin{align*}
-  E(k) &= \int\limits_0^{\frac{\pi}{2}} \sqrt{1 - k ^2 \sin ^2 g} \, \mathrm{d} g = Elliptic[k ^2]
+  E(k) &= \int\limits_0^{\frac{\pi}{2}} \sqrt{1 - k ^2 \sin ^2 g} \, \mathrm{d} g = Elliptic[k ^2] \\
 \int\limits_0^{\frac{\pi}{2}} \sqrt{1 + a ^2 \cos ^2 k } \, \mathrm{d} k &= \int\limits_0^{\frac{\pi}{2}} \sqrt{1 + a ^2 - a ^2 \sin ^2 k} \, \mathrm{d} k \\
 &= \sqrt{1 + a ^2} \int\limits_0^{ \frac{\pi}{2}} \sqrt{1 - \frac{a ^2}{1 - a ^2} \sin ^2 k} \, \mathrm{d} k= \sqrt{1 + a ^2 } E \left( \frac{a}{\sqrt{1 + a ^2}} \right).
 \end{align*}
