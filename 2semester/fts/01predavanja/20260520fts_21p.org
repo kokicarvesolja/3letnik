@@ -1,0 +1,71 @@
+#+title: Predavanja iz Fizike trdne snovi, 21. teden v letu
+#+subtitle: 2026/05/20
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Peierls prehod
+
+Hamiltonian sistema je
+
+\[ H = - t \sum\limits_j^{} \left( \left| j \right\rangle_o _e\left\langle j \right| + c.c. + \left| j \right\rangle_e _o \left\langle j + 1 \right| + c. c. \right) + g \sum\limits_j^{} \left| j \right\rangle_o _o \left\langle j \right| x_o + \left| j \right\rangle_e _e \left\langle j \right| x_e + \frac{NK}{2} \left( x_o ^2 + x_e ^2 \right),
+\]
+kjer indeks \( e \) označuje sod elektron v osnovni celici (ang. /even/) in \( o \) označuje lih elektron v osnovni celici (ang. /odd/).
+
+Naš sistem ima \( N_{atom} \) in \( N_{el} \) in velikost osnovne celice je \( 2a \). 1. Brillouinova cona je potem v \( k \) prostoru razpeta na intervalu \( \left[ - \frac{\pi}{2a}, \frac{\pi}{2a} \right] \). V nadaljevanju privzamemo, da je \( a = 1 \).
+
+Lastne energije Hamiltoniana so
+
+\[ E^{\pm} (k) = \frac{1}{2} \left( g(x_o + x_e) \right) \pm \sqrt{g ^2 \left( x_o - x_e \right) ^2 + 16 t ^2\cos ^2 (ka)}.
+\] 
+
+Energija celotnega sistema \( N \) atomov je potem
+
+\[ E_{tot} = N \frac{K}{2} \left( x_o ^2 + x_e ^2 \right) + \sum\limits_{i = - \frac{\pi}{2}}^{\frac{\pi}{2}} E^- (k),
+\]
+kjer smo privzeli \( a = 1 \) ter, da je \( E^- \) nižja energija od \( E^+ \). Energijo \( E_{tot} \) lahko prevedemo tudi na integral
+
+\[ E_{tot} =  N \frac{K}{2} \left( x_o ^2 + x_e ^2 \right) + \frac{N}{\pi} \int\limits_{- \frac{\pi}{2}}^{\frac{\pi}{2}} E^- (k) \, \mathrm{d} k.
+\]
+
+Nadalje preobrazimo
+
+\[ \frac{E_{tot}}{N} = \frac{N}{2} \left( x_o ^2 + x_e ^2 \right) + \frac{1}{2} g \left( x_o + x_e  \right) - \frac{g}{\pi} \int\limits_{- \frac{\pi}{2}}^{\frac{\pi}{2}} \sqrt{\left( x_0 - x_e \right) ^2 + \frac{16 t ^2}{g ^2} \cos ^2 k} \, \mathrm{d} k. 
+\]
+
+Položaj lihega elektron opišemo z \( x_o = x + \epsilon \), položaj sodega pa \( x_e = x - \epsilon \) in celotna energija sistema je
+
+\[ \frac{E_{tot}}{N} = K \left( x ^2 + \epsilon ^2 \right) + g x - \frac{2 g \epsilon}{\pi} \int\limits_0^{ \frac{\pi}{2}} \sqrt{1 + \frac{4 t ^2}{\epsilon ^2 g ^2} \cos ^2 k} \, \mathrm{d} k,
+\]
+
+kjer smo upoštevali, da je koren na intervalu 1. Brillouinove cone sod.
+
+Navkljub temu da energija narašča zaradi zadnjega člena v Hamiltonianu, ima še zmeraj minimum, ki ga dobimo tako, da parcialno odvajamo
+
+\[ \frac{\partial E_{tot}}{\partial x}  = 0 \quad \text{ in } \quad \frac{\partial E_{tot}}{\partial \epsilon}  = 0.
+\]
+
+Prvo odvajanje nam poda vrednost \( x = - \frac{g}{2K} \).
+
+V integralu prepoznamo eliptičen integral, ki ga rešimo s pomočjo solz in matematičnega priporočnika
+
+\begin{align*}
+  E(k) &= \int\limits_0^{\frac{\pi}{2}} \sqrt{1 - k ^2 \sin ^2 g} \, \mathrm{d} g = Elliptic[k ^2]
+\int\limits_0^{\frac{\pi}{2}} \sqrt{1 + a ^2 \cos ^2 k } \, \mathrm{d} k &= \int\limits_0^{\frac{\pi}{2}} \sqrt{1 + a ^2 - a ^2 \sin ^2 k} \, \mathrm{d} k \\
+&= \sqrt{1 + a ^2} \int\limits_0^{ \frac{\pi}{2}} \sqrt{1 - \frac{a ^2}{1 - a ^2} \sin ^2 k} \, \mathrm{d} k= \sqrt{1 + a ^2 } E \left( \frac{a}{\sqrt{1 + a ^2}} \right).
+\end{align*}
+
+Rešitev energije je potem
+
+\[ \frac{E_{tot}}{N} = - \frac{g ^2}{4 x} + K \epsilon ^2 - \frac{2 g \epsilon}{\pi}  \sqrt{1 + \frac{4 t ^2}{g ^2 \epsilon ^2}} E \left( \frac{2t}{\sqrt{4 t ^2 + g ^2 \epsilon ^2}} \right). 
+\]
+
+[nisem ujel fizikalne razlage za tem, glej spletno učilnico za rešitev Mathematice]
+
+V naslednji uri se reši ta model za 2 delca.
+
+
