@@ -111,5 +111,111 @@ sortcites=true]{biblatex}
   \end{columns}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Nastanek mehurčka -~toplotni model}
+  \begin{itemize}
+    \item <1-> visokoenergijski delec se sipa na pregreti tekočini (vodik, propan)
+    \item <2-> nastanejo žarki \( \delta \), ki se nadaljno sipajo
+    \item <3-> toplota zaradi sipanja povzroči vretje
+    \item <4-> mehurček kritične velikosti se ne sesede
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Nastanek mehurčka -~toplotni model}
+  \begin{block}{Nastanek stabilnega mehurček}
+    \begin{itemize}
+      \item <1-> razlika tlakov $ \Delta p = 2 \sigma / r  $
+
+      \item <2-> kritični radij $ R_C = 2 \sigma / (p_g - p_f)  $
+
+      \item <3-> energija $ E_m = 4 \pi \sigma R_C ^2 + \frac{4 \pi}{3} R_C ^3 n H_s$
+    \end{itemize}
+    \vspace{1cm}
+    \only<3->{
+    \[ E_m \approx 16 \pi \frac{\sigma ^3}{p_g ^2} \left( 1 + \frac{2}{3} \frac{n}{p_g} H_s \right) 
+    \]
+    }
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Nastanek mehurčka -~toplotni model}
+  \begin{block}{Sipanje vpadnega delca na tekočini}
+    \begin{itemize}
+      \item <1-> ocena sipalnega preseka za prenos energije \( E_t \) iz gostote mehurčkov na sledi vpadnega delca
+      \item <2-> sipalni presek za prenos energije pri Rutherfordovem sipanju
+      \item <3-> energija \( E_t \) na molekulo
+    \end{itemize}
+
+  \end{block}
+  \only<2>{
+    \[ \sigma_e = 8 \pi r_b ^2  \frac{R_h ^2}{m_e v ^2 E_t} 
+    \]}
+  \only<3->{
+    \[   E_t = 8 \pi r_b ^2 \frac{R_h ^2 Z_e}{m_e v ^2 \sigma_{e, m}}
+    \]}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Nastanek mehurčka -~toplotni model}
+  \begin{block}{Energija sipanja}
+    \[   E_t = 8 \pi r_b ^2 \frac{R_h ^2 Z_e}{m_e v ^2 \sigma_{e, m}}
+    \]
+  \end{block}
+  \begin{block}{Eksperimentalni podatki}
+    Sipanje protona z gibalno količino \( 915 \, \mathrm{MeV}/ \mathrm{c} \) na vodiku in propanu
+  \end{block}
+  \begin{center}
+    \[\begin{array}{|c|c|c|} \hline
+      & \mathrm{H}_2 & \mathrm{C}_3 \mathrm{H}_8 \\ \hline
+      E_m \, [ \mathrm{eV}] & 4.08 & 131 \\
+      E_t \, [ \mathrm{eV}] & 513 & 1890 \\ \hline
+      \end{array}
+    \]
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Nastanek mehurčka -~toplotni model}
+  \begin{block}{Hitrost sten mehurčka}
+    \begin{itemize}
+      \item<1-> žarek \( \delta \) odda energijo v kroglo \( R_0 < R_C \). 
+      \item<2-> difuzija toplote \( \tau_h = r ^2 / (4D) \)
+      \item <3-> hitrost sten mehurčka
+    \end{itemize}
+
+    \only<3->{
+      \[ v_C = \frac{R_C}{\tau_C} = \frac{4D}{R_C}. 
+      \]
+    }
+  \end{block}
+
+  \only<4>{
+    \begin{block}{Hitrost zvoka v snovi}
+      \[     c_a = \left( \rho \beta_a \right)^{-1/2} 
+      \]
+    \end{block}}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Nastanek mehurčka -~toplotni model}
+  \begin{block}{Eksperimentalni podatki - hitrosti sten mehurčka}
+    \begin{center}
+      \[\begin{array}{|c|c|c|}\hline
+        & \mathrm{H}_2 & \mathrm{C}_3 \mathrm{H}_8 \\\hline
+        D \, [ \mathrm{cm} ^2 / \mathrm{s} ] & 3.22 \cdot 10^{-3} & 2.02 \cdot 10^{-3} \\
+        v_C \, [ \mathrm{cm} / \mathrm{s}] & 3.36 \cdot 10^4 & 0.918 \cdot 10^4 \\
+        \beta_a [ \mathrm{cm} / \mathrm{N}] \cdot 10^{12} & 500 & 100 \\ 
+        c_a [ \mathrm{cm} / \mathrm{s}] & 1.7 10^5 & 1.9 \cdot 10^{5} \\ \hline
+      \end{array}
+    \]
+  \end{center}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Razširjanje mehurčka -~toplotni model}
+\end{frame}
 
 \end{document}
