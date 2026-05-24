@@ -69,7 +69,8 @@ Na koncu izrazimo \( \dot{R} ^2 \):
 ** DONE check resources - [[https://inspirehep.net/literature/2752452]]
 CLOSED: [2026-04-28 Tue 18:20]
 * Predstavitev
-** TODO uporaba piva v mehurčni komori 
+** DONE uporaba piva v mehurčni komori 
+CLOSED: [2026-05-24 ned 15:55]
 
 #+begin_quote
 However, Glaser needed a liquid with a low enough surface tension. Too high, and the liquid would not bubble even if a energized by a charged particle.
@@ -79,3 +80,8 @@ His experiments with beer left nothing but a stench in the room and raised a few
 
 from: [[https://web.archive.org/web/20171224093552/http://www2.lbl.gov/Publications/Currents/Archive/Jul-21-2006.html#6]]
 ** TODO video uporabe mehurčne komore
+** TODO [[https://cerncourier.com/a/in-the-tracks-of-the-bubble-chamber/][In the tracks of the bubble chamber]] BEBC slika
+** DONE pregreta tekočina na primeru vode
+CLOSED: [2026-05-24 ned 15:59]
+Pregreto tekočino dobimo s tem, da pri konstantni temperaturi zmanjšamo tlak (ustvarimo podtlak). Narišem na tablo?
+[[file:figures/grafVoda.png]]
