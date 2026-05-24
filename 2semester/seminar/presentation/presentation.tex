@@ -20,6 +20,9 @@ sortcites=true]{biblatex}
 \setbeamertemplate{navigation symbols}{}
 
 \setbeamertemplate{footline}{\raisebox{5.5pt}{\makebox[\paperwidth]{\hfill \makebox[20pt]{\scriptsize \insertframenumber/\inserttotalframenumber}}}}
+
+% should give no caption
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
 %====================================================================== 
 
 \addbibresource{../source/refs.bib}
@@ -34,18 +37,35 @@ sortcites=true]{biblatex}
 
 \begin{frame}
 \frametitle{Pregled vsebine}
-  \begin{list}{}{}
+  \begin{itemize}{}{}
   \item Hiter pregled zgodovine mehurčne komore
   \item Nastanek mehurčka v komori
   \begin{enumerate}
   \item Toplotni model
   \item Mehanski model
   \end{enumerate}
-  \item Uporaba v sodobni znanosti
-  \end{list}
+  \item Detekcija temne snovi z mehurčno komoro
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
-\frametitle{Izum mehurčne komore}
+\frametitle{Pregled zgodovine}
+\begin{columns}
+  \column{0.4\linewidth}
+  \begin{block}{Izum mehurčne komore}
+    \begin{itemize}
+      \item Donald A. Glaser, 1952
+      \item pregret dietil eter in sevalec \( \beta \) \( ^{60} \mathrm{Co} \).
+      \item Nobelova nagrada, 1960
+    \end{itemize}
+  \end{block}
+  \column{0.6\linewidth}
+  \begin{figure}[htbp]
+  \centerline{\includegraphics[width=0.7\linewidth]{../source/figures/Glaser}}
+  \caption{Glaser, 1960, vir:~\cite{noauthor_donald_nodate}}
+  \end{figure}
+\end{columns}
 \end{frame}
+
+
 \end{document}
