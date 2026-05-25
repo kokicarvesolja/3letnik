@@ -289,5 +289,93 @@ sortcites=true]{biblatex}
   \]}
 \end{frame}
 
+\begin{frame}
+\frametitle{Razširjanje mehurčka -~toplotni model}
+\begin{block}{Širjenje preko kritične velikosti}
+  \begin{itemize}
+    \item<1-> izhlapevanje tekočine
+    \item <2-> temperaturni gradient \( T_b - T_v \) debeline \( 2 \left( D t \right)^{1/2} \)
+    \item <3-> asimptotska rast mehurčka
+  \end{itemize}
+\end{block}
+\only<3->{
+\[ R \approx 2 \lambda \left( T_v - T_b \right) \frac{t^{1/2}}{\rho' H_s D^{1/2}} 
+\]}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Mehanski model}
+  \begin{itemize}
+    \item<1-> vodik, helij
+    \item <2-> nestisljiva tekočina pri \( T = 0 \)
+    \item <3-> elektron v potencialni jami z obliko sfere, potencial \( V_0 \approx 1 \, \mathrm{eV} \)
+  \end{itemize}
+  \vspace{1cm}
+  \only<3->{
+    \[ E_B = \frac{h ^2}{8 m_e R ^2} + 4 \pi R ^2 \sigma + \frac{4}{3} \pi R ^3 p + 2 \pi R ^3 \rho {\left( \dot{R} \right)} ^2
+    \]}
+\end{frame}
+
+\begin{frame}
+\frametitle{Mehanski model}
+\begin{columns}
+  \column{0.4\linewidth}
+  \[ R_{min} = \left( \frac{h ^2}{32 \pi m_e \sigma} \right)^{1/4}
+  \]
+  \begin{itemize}
+    \item  pri tlaku \( p = 0 \) je \( 19 \si{\angstrom} \)
+    \item kritični podtlak \( p = -0.69 \mathrm{bar} \)
+  \end{itemize}
+  \vspace{1cm}
+  \column{0.6\linewidth}
+  \begin{figure}[htbp]
+    \centerline{\includegraphics[width=\linewidth]{../source/main-figure0.pdf}}
+  \end{figure}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Detekcija temne snovi}
+\begin{block}{Temna snov}
+  \begin{enumerate}
+    \item barionska (MACHO)
+    \item nebarionska (WIMP)
+  \end{enumerate}
+\end{block}
+
+\only<2->{
+\begin{block}{WIMP}
+\begin{itemize}
+  \item masa \( m_X \sim 10 \, \mathrm{GeV} - \mathrm{TeV} \)
+  \item ohlajanje vesolja, število WIMP-ov pada
+  \item širjenje vesolja, nemogoča medsebojna anihilacija
+\end{itemize}
+\end{block}
+}
+\end{frame}
+
+\begin{frame}
+\frametitle{Detekcija temne snovi}
+\begin{block}{Detekcija}
+\begin{itemize}
+  \item <1-> posredna
+  \item <2-> trkalniki
+  \item <3-> neposredna
+\end{itemize}
+\end{block}
+\only<1>{
+\[ X \ X \to \mathrm{SM} \ \mathrm{SM} 
+\]}
+\only<2>{
+\[ \mathrm{SM} \ \mathrm{SM} \to X \ X + \left\{ \mathrm{SM} \right\} 
+\]}
+\only<3>{
+\[ X \ \mathrm{SM} \to X \ \mathrm{SM} 
+\]}
+\end{frame}
+
+\begin{frame}
+\frametitle{Detekcija temne snovi -~mehurčne komore}
+\end{frame}
 
 \end{document}
