@@ -25,6 +25,7 @@ sortcites=true]{biblatex}
 \setbeamertemplate{caption}{\raggedright\insertcaption\par}
 %====================================================================== 
 
+\renewcommand{\bibfont}{\footnotesize}
 \addbibresource{../source/refs.bib}
 \title{\large Mehurčne komore}
 \author{\small Avtor: Kristofer Č. Povšič \\ \small Mentor: prof. dr. Simon Širca}
@@ -92,7 +93,6 @@ sortcites=true]{biblatex}
 \begin{frame}
   \frametitle{Pregled zgodovine in uporaba}
   \begin{columns}
-    \only<1->{
       \column{0.4\linewidth}
       Gargamelle (1970--1976) in \textit{Big European Bubble Chamber} ali BEBC (1973--1984)
       % Gargamelle je mati Gargantua iz romana Francoisa Rabelaisa [Fransua Rabele], Gargantua in Pantagruel
@@ -100,14 +100,14 @@ sortcites=true]{biblatex}
       \begin{figure}[htbp]
         \centerline{\includegraphics[width=\linewidth]{../source/figures/BEBC}}
         \caption{BEBC, vir:~\cite{cern_tracks_2004}}
-      \end{figure}}
+      \end{figure}
     \column{0.6\linewidth}
-    \only<2>{
+    \pause
       % Feynmannov diagram charged and neutral current
       \begin{figure}[htbp]
         \centerline{\includegraphics[width=\linewidth]{../source/figures/slovenskoGargamelle.jpg}}
         \caption{Odkritje nevtralne šibke interakcije, vir:~\cite{riesselmann_50th_2023}}
-      \end{figure}}
+      \end{figure}
   \end{columns}
 \end{frame}
 
@@ -116,7 +116,7 @@ sortcites=true]{biblatex}
   \begin{itemize}
     \item <1-> visokoenergijski delec se sipa na pregreti tekočini (vodik, propan)
     \item <2-> nastanejo žarki \( \delta \), ki se nadaljno sipajo
-    \item <3-> toplota zaradi sipanja povzroči vretje
+    \item <3-> lokalna območja z višjo temperaturo (toplotni skok)
     \item <4-> mehurček kritične velikosti se ne sesede
   \end{itemize}
 \end{frame}
@@ -376,6 +376,111 @@ sortcites=true]{biblatex}
 
 \begin{frame}
 \frametitle{Detekcija temne snovi -~mehurčne komore}
+\begin{itemize}
+  \item <1-> sipanje WIMP-a na jedru
+        \begin{itemize}
+        \item primerjava z nevtronom
+        \end{itemize}
+  \item <2-> nizek energijski prag za detekcijo, \( 1 - 100 \ \mathrm{keV} \)
+  \item <3-> neobčutljive na sevanje \( \gamma \) in \( \beta \)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Detekcija temne snovi -~PICO}
+\begin{itemize}
+  \item Kanada, 2013
+  \item eksperimenti PICO-2, PICO-40, PICO-60
+  \item freon \( \mathrm{C}_3 \mathrm{F_8} \) dolgo časa v pregretem stanju
+  \item izločitev ozadja - sipanje nevtronov in razpadi \( \alpha \) radona
+\end{itemize}
+\only<2->{
+  \begin{align*}
+    E_t = 4 \pi R_C ^2 & \left( \sigma - T \left( \frac{\partial \sigma}{\partial T} _{\mu} \right) \right) + \frac{4}{3} R_C ^3 \rho_v \left( H_v - H_l \right) \\
+    &- \frac{4 \pi}{3} R_C ^3 (p_v - p_l)
+  \end{align*}
+}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Detekcija temne snovi -~PICO}
+  \begin{columns}
+    \column{0.4\linewidth}
+    \begin{block}{Najnižji energijski prag}
+      \[ E_t = \left( 1.20 \pm 0.1 \right)\, \mathrm{keV} 
+      \]
+      pri \( T = 19.9^{\degree} \mathrm{C} \) in \( p = 1.76 \, \mathrm{bar} \)
+    \end{block}
+    \column{0.6\linewidth}
+    \begin{figure}[htbp]
+    \centerline{\includegraphics[width=0.5\linewidth]{../source/figures/PICO60Run2_IV_label}}
+    \caption{Shema detektorja PICO-60, vir:~\cite{amole_dark_2019}}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Detekcija temne snovi -~MOSCAB}
+  \begin{columns}
+    \column{0.4\linewidth}
+    \begin{block}{\textbf{M}ateria \textbf{Osc}ura \textbf{A} \textbf{B}olle}
+      \begin{itemize}
+        \item testni eksperimenti v Milanu
+        \item premik podzemljo, laboratorij Gran Sasso
+        \item tehnika gejzirja
+      \end{itemize}
+    \end{block}
+    \column{0.6\linewidth}
+    \begin{figure}[htbp]
+      \centerline{\includegraphics[width=0.5\linewidth]{../source/figures/moscabC}}
+    \caption[]{Shema detektorja MOSCAB, vir:~\cite{collaboration_moscab_2017}}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Detekcija temne snovi -~MOSCAB}
+  \begin{figure}[htbp]
+  \centerline{\includegraphics[width=\linewidth]{../source/figures/tvorbaC}}
+  \caption{Izbruh gejzirja, vir:~\cite{collaboration_moscab_2017}}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Detekcija temne snovi -~rezultati}
+  \begin{columns}
+    \column{0.4\linewidth}
+    \begin{itemize}
+      \item <1-> ni (še) potrdila o obstoju WIMP-ov
+      \item <2-> MOSCAB kot detektor hitrih nevtronov
+      \item <3-> izboljšan interval mase WIMP-ov
+      \item <4-> v pripravah PICO-500
+    \end{itemize}
+    \column{0.6\linewidth}
+    \begin{figure}[htbp]
+    \centerline{\includegraphics[width=0.8\linewidth]{../source/figures/PLR_limit_SI.png}}
+    \caption{Limita SI WIMP-nukleon sipalnih presekov}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Povzetek seminarja}
+  \begin{itemize}
+    \item nastanek mehurčka zaradi \textit{toplotnih skokov}
+    \item nastanek mehurčka zaradi potenciala
+    \item aktivni projekti na področju detekcije temne snovi
+  \end{itemize}
+
+  \pause
+  \begin{center}
+  \large{Hvala!}
+  \end{center}
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+    \frametitle{Viri}
+    \printbibliography
 \end{frame}
 
 \end{document}
