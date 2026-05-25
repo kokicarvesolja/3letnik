@@ -114,7 +114,7 @@ sortcites=true]{biblatex}
 \begin{frame}
   \frametitle{Nastanek mehurčka -~toplotni model}
   \begin{itemize}
-    \item <1-> visokoenergijski delec se sipa na pregreti tekočini (vodik, propan)
+    \item <1-> visokoenergijski delec se sipa na pregreti tekočini 
     \item <2-> nastanejo žarki \( \delta \), ki se nadaljno sipajo
     \item <3-> lokalna območja z višjo temperaturo (toplotni skok)
     \item <4-> mehurček kritične velikosti se ne sesede
@@ -125,13 +125,14 @@ sortcites=true]{biblatex}
   \frametitle{Nastanek mehurčka -~toplotni model}
   \begin{block}{Nastanek stabilnega mehurček}
     \begin{itemize}
-      \item <1-> razlika tlakov $ \Delta p = 2 \sigma / r  $
-
-      \item <2-> kritični radij $ R_C = 2 \sigma / (p_g - p_f)  $
-
-      \item <3-> energija $ E_m = 4 \pi \sigma R_C ^2 + \frac{4 \pi}{3} R_C ^3 n H_s$
+      \item <1-> energija mehurčka \( E_m \)
+      \item <2-> razlika tlakov $ p_g - p_f = 2 \sigma / R  $
+      \item <3-> mehurček kritične velikosti s polmerom \( R_C = 2 \sigma / p_g \)
     \end{itemize}
     \vspace{1cm}
+    \only<1-2>{
+    \[ E_m = 4 \pi \sigma R ^2 + \frac{4\pi}{3} R ^3 n H_s
+    \]}
     \only<3->{
     \[ E_m \approx 16 \pi \frac{\sigma ^3}{p_g ^2} \left( 1 + \frac{2}{3} \frac{n}{p_g} H_s \right) 
     \]
@@ -143,16 +144,17 @@ sortcites=true]{biblatex}
   \frametitle{Nastanek mehurčka -~toplotni model}
   \begin{block}{Sipanje vpadnega delca na tekočini}
     \begin{itemize}
-      \item <1-> ocena sipalnega preseka za prenos energije \( E_t \) iz gostote mehurčkov na sledi vpadnega delca
-      \item <2-> sipalni presek za prenos energije pri Rutherfordovem sipanju
-      \item <3-> energija \( E_t \) na molekulo
+      \item <1-> sipalni presek \( \sigma_{e, m} \) za prenos energije večje od energijskega pragu \( E_t \) na molekulo
+      \item <2-> Seitz oceni \( \sigma_{e,m} \) iz gostote mehurčkov na sledi vpadnega delca
+      \item <3-> sipalni presek za prenos energije pri Rutherfordovem sipanju na elektronu
+      \item <4-> energijski prag \( E_t \) na molekulo
     \end{itemize}
 
   \end{block}
-  \only<2>{
+  \only<3>{
     \[ \sigma_e = 8 \pi r_b ^2  \frac{R_h ^2}{m_e v ^2 E_t} 
     \]}
-  \only<3->{
+  \only<4->{
     \[   E_t = 8 \pi r_b ^2 \frac{R_h ^2 Z_e}{m_e v ^2 \sigma_{e, m}}
     \]}
 \end{frame}
@@ -193,7 +195,7 @@ sortcites=true]{biblatex}
 
   \only<4>{
     \begin{block}{Hitrost zvoka v snovi}
-      \[     c_a = \left( \rho \beta_a \right)^{-1/2} 
+      \[ c_a = \left( \rho \beta_a \right)^{-1/2} 
       \]
     \end{block}}
 \end{frame}
@@ -236,7 +238,7 @@ sortcites=true]{biblatex}
 
 \begin{frame}
 \frametitle{Razširjanje mehurčka -~toplotni model}
-\begin{block}{Funamentalna enačba dinamike mehurčkov}
+\begin{block}{Fundamentalna enačba dinamike mehurčkov}
   \[ \frac{p}{\rho} = \ddot{R} R + \frac{3}{2} {\left( \dot{R} \right)}^2
   \]
 
@@ -324,7 +326,7 @@ sortcites=true]{biblatex}
   \]
   \begin{itemize}
     \item  pri tlaku \( p = 0 \) je \( 19 \si{\angstrom} \)
-    \item kritični podtlak \( p = -0.69 \mathrm{bar} \)
+    \item kritični podtlak \( p = -0.69 \ \mathrm{bar} \)
   \end{itemize}
   \vspace{1cm}
   \column{0.6\linewidth}
@@ -382,7 +384,9 @@ sortcites=true]{biblatex}
         \item primerjava z nevtronom
         \end{itemize}
   \item <2-> nizek energijski prag za detekcijo, \( 1 - 100 \ \mathrm{keV} \)
-  \item <3-> neobčutljive na sevanje \( \gamma \) in \( \beta \)
+  \item <3-> neobčutljivost na sevanje \( \gamma \) in \( \beta \)
+  \item<4-> tarčna jedra z veliko maso
+        %zakaj je to pomembno?
 \end{itemize}
 \end{frame}
 
@@ -396,7 +400,7 @@ sortcites=true]{biblatex}
 \end{itemize}
 \only<2->{
   \begin{align*}
-    E_t = 4 \pi R_C ^2 & \left( \sigma - T \left( \frac{\partial \sigma}{\partial T} _{\mu} \right) \right) + \frac{4}{3} R_C ^3 \rho_v \left( H_v - H_l \right) \\
+    E_t = 4 \pi R_C ^2 & \left( \sigma - T \left( \frac{\partial \sigma}{\partial T}\right)_{\mu} \right) + \frac{4}{3} R_C ^3 \rho_v \left( H_v - H_l \right) \\
     &- \frac{4 \pi}{3} R_C ^3 (p_v - p_l)
   \end{align*}
 }
@@ -457,10 +461,11 @@ sortcites=true]{biblatex}
       \item <4-> v pripravah PICO-500
     \end{itemize}
     \column{0.6\linewidth}
+    \only<3->{
     \begin{figure}[htbp]
     \centerline{\includegraphics[width=0.8\linewidth]{../source/figures/PLR_limit_SI.png}}
     \caption{Limita SI WIMP-nukleon sipalnih presekov}
-    \end{figure}
+    \end{figure}}
   \end{columns}
 \end{frame}
 
