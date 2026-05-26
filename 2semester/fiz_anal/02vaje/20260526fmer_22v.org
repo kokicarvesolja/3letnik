@@ -1,0 +1,265 @@
+#+title: Vaje iz Fizikalnih merjenj, 22. teden v letu
+#+subtitle: 2026/05/26
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Primer: fitanje (kolokvijska naloga)
+#+begin_problem
+Z LMNK regresiramo \( N \) ekvidistančnih meritev
+
+\begin{align*}
+  t_1 &= 0 \\
+t_2 &= \Delta t \\
+t_3 &= \Delta t 2 \Delta t \\
+&\vdots \\
+t_N &= (N-1) \Delta t
+\end{align*}
+
+model \( k t + n \) in vektor \( \mathbf{x} = [k \ n ]^T \).
+
+\( \alpha = 10 \% \) in \( \chi ^2 = 28.412 \).
+
+Določi frekvenco vzorčenja \( \nu = \frac{1}{\Delta t} \), nedoločenost meritve je \( \sigma = 0. 2 \ \mathrm{m} \) in \( \sigma_k = 0.02 \frac{\mathrm{m}}{\mathrm{s}} \).
+
+Nabor meritev z napakami so poiskali in določili kovariančno matriko
+
+\[ P = \begin{bmatrix}
+       \sigma_k ^2 & \sigma_{kn} \\
+        \sigma_{kn} & \chi_n ^2
+        \end{bmatrix}.
+\]
+
+Namig: pomagaj si z
+
+\[ \sum\limits_{i = 1}^M i = \frac{M (M + 1)}{2} \quad \text{ in } \quad \sum\limits_{i = 1}^M i ^2 = \frac{M (M + 1)(M + 2)}{6}.
+\]
+#+end_problem
+
+
+Za strukturno matriko oblike
+
+\[ H = \begin{bmatrix} t_{1} & 1 \\ t_{2} & 1 \\ \vdots & \vdots \\ t_{N} & 1 \end{bmatrix} 
+\]
+smo poračunali kovariančno matriko
+
+\[ P = \sigma ^2 \left( H^T H \right)^{-1} =\frac{\sigma ^2}{N \sum\limits_{}^{} t_i ^2 - \left( \sum\limits_{}^{} t_i \right) ^2} \begin{bmatrix}
+                                                                                                                                   N &  - \sum\limits_{}^{} t_i \\
+                                                                                                                                   -\sum\limits_{}^{} t_i &  \sum\limits_{}^{} t_i ^2
+                                                                                                                                    \end{bmatrix}
+\]
+
+Nadalje smo zapisali
+
+\begin{equation}
+\label{eq:1}
+ \delta_k ^2 = \frac{N \sigma ^2}{N \sum\limits_{}^{} t_i ^2 - \left( \sum\limits_{}^{} t_i \right) ^2},
+\end{equation}
+iz česar bomo izračunali \( \Delta t \). Ob upoštevanju \( t_i = \Delta t ( 1 - i) \), lahko prepišemo vsoto
+
+\[ \sum\limits_{i=1}^N t_i = \Delta t \sum\limits_{i = 1}^{N - 1} = \Delta t \frac{(N - 1) N}{2}. 
+\]
+
+Na podoben način prepišemo vsoto kvadratnih členov
+
+\[ \sum\limits_{i = 1}^N t_i ^2 = \left( \Delta t \right) ^2 \sum\limits_{i = 1}^{N - 1} i ^2 = \left( \Delta t \right) ^2 \frac{(N - 1) N (2N - 1)}{6}. 
+\]
+
+(preindeksirali smo z x = i - 1)
+
+Imenovalec enačbe \eqref{eq:1} zapišemo
+
+\begin{align*}
+  \left( N \sum\limits_{}^{} t_i ^2 - \left( \sum\limits_{}^{} t_i \right) ^2 \right) &= \left( \Delta t \right) ^2 \frac{(N - 1) N ^2 (2n - 1)}{6}  - \left( \Delta t \right) ^2 \frac{(N - 1) ^2 N ^2}{4} \\
+&= \frac{\left( \Delta t \right) ^2 N ^2 (N - 1)}{12} \left( 2 (2N - 1) - 3(N - 1) \right)\\
+&= \left( \Delta t \right)^2 \frac{N ^2 (N - 1) (N + 1)}{12} = \left( \Delta t \right) \frac{N ^2 (N ^2 - 1)}{12}.
+\end{align*}
+
+Izračunano nesemo v enačbo \eqref{eq:1} in dobimo
+
+\[\sigma_k ^2 = \frac{N \sigma ^2}{\left( \Delta t \right) ^2 N ^2 \left( N ^2 - 1 \right)},
+\]
+iz česar lahko izrazimo razmik med meritvami
+
+\[ \Delta t = \frac{\sigma}{\sigma_k} \sqrt{\frac{12}{N (N ^2 - 1)}}. 
+\]
+
+Iz \( \alpha = 10\% \) in \( \chi_{>} ^2 = 28.412 \) izračunamo še število meritev \( N \). Kritični \( \chi_{>} ^2 \) je določen preko števila prostostnih stopenj \( n_{pr.st} = N - M \) in v tabeli poiščemo vrednost \( 28.412 \) za \( \alpha = 10\% \) (horizontala)
+
+\[ \chi ^2_{>} \left( n_{pr. st.} = N - M, \alpha = 10\% \right) = 28.412. 
+\]
+
+Preberemo, da je prostostnih stopenj \( n_{pr.st.} = 20 = N - M \), kar pomeni, da je \( N = 22 \).
+
+Dobljeno število meritev vstavimo v frekvenco vzorčenja
+
+\begin{align*}
+  \nu &= \frac{1}{ \left( \Delta t \right) ^2} = \frac{\sigma_k}{\sigma} \sqrt{\frac{N (N ^2 - 1)}{12}} \\
+&= \frac{0.02 \ \mathrm{m} \mathrm{s} ^{-1}}{0.2 \ \mathrm{m}} \sqrt{\frac{22 (22 ^2 - 1)}{12}} \approx 3 \ \mathrm{s}^{-1}.
+\end{align*}
+* Ocenjevanje natančnosti (relativna natančnost)
+
+To vajo ponavadi naredi na začetku vaj, vendar jo letos delamo sedaj.
+
+Snov je dodatna informacija, ki se ne pojavalja na kolokvijih.
+** Primer: vpeta struna
+
+#+begin_problem
+Imamo vpeto struno z maso \( m \) s silo \( F \) in je napeta na razdalji \( l_0 \). Struno v prečni smeri odmaknemo za \( x \ll l_0 \). Oceni natančnost zvonenja strune
+
+\[ \frac{\Delta \nu}{\nu}, 
+\]
+
+kar je relativna natančnost frekvence za osnovni nihajni način.
+#+end_problem
+
+Poiskati moram odvisnost frekvence iz lastnosti strune. Frekvenca je
+
+\[ \nu = \frac{c}{\lambda}. 
+\]
+
+Osnovni način valovanje pomeni, da je valovna dolžina \( \lambda= 2 l_0 \), kar pomeni, da je frekvenca
+
+\[ \nu = \frac{c}{2l_0}. 
+\]
+
+Hitrost valovanja je določena z enačbo
+
+\[ c = \sqrt{\frac{F}{\mu}}, 
+\]
+kjer je \( \mu = \frac{m}{l_0} \) dolžinska gostota.
+
+Frekvenca je potem
+
+\begin{equation}
+\label{eq:2}
+ \nu = \frac{1}{2l_0} \sqrt{\frac{F}{\mu}} = f (F, \mu)
+\end{equation}
+
+Zaradi odmika v prečni smeri bo struna malo daljša \( l_0 + \Delta l \), kar pomeni, da se dolžinska gostota spremeni \( \mu + \Delta \mu \). Prav tako se zaradi odmika v prečni smeri poveča sila \( F \).
+
+Frekvenca je potem
+
+\[ \nu + \Delta \nu = \frac{1}{2l_0} \sqrt{\frac{F + \Delta F}{\mu + \Delta \mu}}.
+\] 
+
+Enačbo lahko razvijemo po Taylorju, saj je \( x \) majhen
+
+\begin{align*}
+  \nu + \Delta \nu &= \frac{1}{2_{l_0}} \sqrt{\frac{F}{\mu}} \sqrt{\frac{1 + \frac{\Delta F}{F}}{1 + \frac{\Delta \mu }{\mu}}} \\
+&= \nu \sqrt{\frac{1 + \frac{\Delta F}{F}}{1 + \frac{\Delta \mu }{\mu}}} \\
+1 + \left( \frac{\Delta \nu}{\nu} \right) &\approx \left( 1 + \frac{1}{2} \frac{\Delta F}{F} \right) \left( 1 - \frac{1}{2} \frac{\Delta \mu}{\mu} \right) \\
+&= 1 + \frac{1}{2} \frac{\Delta F}{F} - \frac{1}{2} \frac{\Delta \mu}{\mu} - \cancel{\frac{1}{4}\frac{\Delta F}{F} \frac{\Delta \mu}{\mu}} 
+\end{align*}
+
+V drugi vrstici smo upoštevali definicijo osnovne frekvence iz enačbe \eqref{eq:2} in v zadnji vrstici smo zanemarili mešani produkt, saj je kvadratičen v \( x \). Ostane nam
+
+\begin{equation}
+\label{eq:3}
+ \left( \frac{\Delta \nu}{ \nu} \right) = \frac{1}{2} \frac{\Delta F}{F} - \frac{1}{2} \frac{\Delta \mu }{\mu}. 
+\end{equation}
+
+Dolžinska gostota \( \mu = \frac{m}{l_0} \) se spremeni
+
+\begin{align*}
+  \mu + \Delta \mu &= \frac{m}{L_0 (1 + \frac{\Delta l}{l_0})} \\
+1 + \frac{\Delta \mu}{\mu} & \approx 1 - \frac{\Delta l}{l_0}
+\end{align*} 
+
+Za spremembo sile bomo upoštevali Hookov zakon
+
+\[ \frac{\Delta F}{S} = E \frac{\Delta l}{l_0}.
+\]
+kjer je \( S \) presek žice in \( E \) Youngov modul. Sprememba sile bo potem
+
+\[ \Delta F = ES \frac{\Delta l}{l_0}. 
+\]
+
+Obe izpeljavi nesemo v enačbo \eqref{eq:3} in dobimo
+
+\begin{align*}
+  \left( \frac{\Delta \nu}{\nu} \right) &= \frac{1}{2} \frac{\Delta F}{F} + \frac{1}{2} \frac{\Delta l}{l_0} \\
+&= \frac{1}{2} \frac{ES}{F} \frac{\Delta l}{l_0} + \frac{1}{2} \frac{\Delta l}{l_0} \\
+&= \frac{1}{2} \left( \frac{\Delta l}{l_0} \right) \left( 1 + \frac{E S}{F} \right)
+\end{align*}
+
+Predpostavimo, da odmik tvori enakostranični trikotnik in potem velja
+
+\begin{align*}
+  \left( \frac{l_0 + \Delta l}{2} \right) ^2 &= \left( \frac{l_0}{2} \right) ^2 + x ^2 \\
+l_0 ^2 + 2l_0 \Delta l + \cancel{\left( \Delta l \right) ^2} &= l_0 ^2 + 4 x ^2 ,
+\end{align*}
+kjer smo upoštevali samo odmik v prvem redu.
+
+Odmik je torej
+
+\[ \left( \frac{\Delta l}{l_0 } \right) = 2 \left( \frac{x}{l_0} \right) ^2.
+\]
+
+Natančnost frekvence je
+
+\begin{equation}
+\label{eq:4}
+\frac{\Delta \nu}{\nu} = \frac{1}{2} \left( \frac{\Delta l}{l_0} \right) \left( 1 + \frac{E S}{F} \right) = \left( \frac{x}{l_0} \right) ^2 \left( 1 + \frac{ES}{F} \right).
+\end{equation}
+** Primer: ocenjevanje s pomočjo principa nedoločenosti (npr. za signal)
+
+\[ \left( \Delta \nu \right) \left( \Delta t \right) \gtrsim 1 
+\]
+
+\( \Delta \nu \) je pasovna širina (ang. /bandwidth/), medtem ko \( \Delta t \) je velikost oz. širina okna.
+
+#+begin_problem
+Koliko časa moramo poslušati ton z nam neznano frekvenco (440Hz), da jo določimo na pol tona natančno?
+
+Med osnovnim tonom \( \nu_0 = 440 \ \mathrm{Hz} \) in prvo vzbujeno frekvenco \( \nu_1 = 2 \nu_0 \) je 12 poltonov (12. polton je \( \nu_1 \)), za katere velja
+
+\[ \frac{\hat{\nu}_{n + 1}}{\hat{\nu}_n} = x 
+\]
+#+end_problem
+
+Če želimo določiti frakvenco na pol tona natančno, potem velja
+
+\begin{align*}
+  \Delta \nu &= \hat{\nu}_1 - \nu_0 \\
+&= x \hat{\nu}_0 - \nu_0 \\
+&= x \nu_0 - \nu_0 \\
+&= \nu_0 (x - 1).
+\end{align*}
+
+Velikost okna je potem
+
+\[ \Delta t = \frac{1}{\Delta \nu} = \frac{1}{ \nu_0 (x - 1)}. 
+\]
+
+Iz
+
+\[ \frac{\hat{\nu}_1}{\nu_0} = x, \ \frac{\hat{\nu}_2}{\nu_0} = x ^2, \ \frac{\hat{\nu}_3}{\nu_0} = x ^3, 
+\]
+
+vidimo, da v splošnem velja
+
+\[ \frac{\hat{\nu}_n}{\nu_0} = x^n.
+\]
+
+Za \( n = 12 \) potem velja
+
+\[ \frac{\hat{\nu}_{12}}{\nu_0} = \frac{\nu_1}{\nu_0} = 2 = x ^{12}, 
+\]
+in nadalje \( x = \sqrt[12]{2} \).
+
+Da določimo ton do poltona natančno potem velja
+
+\[ \Delta \nu = \nu_0 \left( \sqrt[12]{2} - 1 \right) \approx 26 \ \mathrm{Hz}, 
+\]
+
+in velikost okna je
+
+\[ \left( \Delta t \right) = \frac{1}{ \Delta \nu} = 40 \ \mathrm{ms}. 
+\]
+
+Več o tem v spletni učilnici.
