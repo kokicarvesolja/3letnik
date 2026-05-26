@@ -19,7 +19,7 @@ sortcites=true]{biblatex}
 %======================================================================
 \setbeamertemplate{navigation symbols}{}
 
-\setbeamertemplate{footline}{\raisebox{5.5pt}{\makebox[\paperwidth]{\hfill \makebox[20pt]{\scriptsize \insertframenumber/\inserttotalframenumber}}}}
+\setbeamertemplate{footline}{\raisebox{5.5pt}{\makebox[\paperwidth]{\hspace{11cm} \makebox[20pt]{\scriptsize \insertframenumber/\inserttotalframenumber}}}}
 
 % should give no caption
 \setbeamertemplate{caption}{\raggedright\insertcaption\par}
@@ -164,10 +164,13 @@ sortcites=true]{biblatex}
   \begin{block}{Energija sipanja}
     \[   E_t = 8 \pi r_b ^2 \frac{R_h ^2 Z_e}{m_e v ^2 \sigma_{e, m}}
     \]
+
+    Sipanje na jedru?
   \end{block}
   \begin{block}{Eksperimentalni podatki}
     Sipanje protona z gibalno količino \( 915 \, \mathrm{MeV}/ \mathrm{c} \) na vodiku in propanu
   \end{block}
+  \vspace{-0.5cm}
   \begin{center}
     \[\begin{array}{|c|c|c|} \hline
       & \mathrm{H}_2 & \mathrm{C}_3 \mathrm{H}_8 \\ \hline
@@ -182,7 +185,7 @@ sortcites=true]{biblatex}
   \frametitle{Nastanek mehurčka -~toplotni model}
   \begin{block}{Hitrost sten mehurčka}
     \begin{itemize}
-      \item<1-> žarek \( \delta \) odda energijo v kroglo \( R_0 < R_C \). 
+      \item<1-> žarek \( \delta \) odda energijo v kroglo s polmerom \( R_0 < R_C \). 
       \item<2-> difuzija toplote \( \tau_h = r ^2 / (4D) \)
       \item <3-> hitrost sten mehurčka
     \end{itemize}
@@ -309,7 +312,7 @@ sortcites=true]{biblatex}
   \frametitle{Mehanski model}
   \begin{itemize}
     \item<1-> vodik, helij
-    \item <2-> nestisljiva tekočina pri \( T = 0 \)
+    \item <2-> nestisljiva tekočina pri \( T = 0 \ \mathrm{K} \)
     \item <3-> elektron v potencialni jami z obliko sfere, potencial \( V_0 \approx 1 \, \mathrm{eV} \)
   \end{itemize}
   \vspace{1cm}
@@ -322,13 +325,14 @@ sortcites=true]{biblatex}
 \frametitle{Mehanski model}
 \begin{columns}
   \column{0.4\linewidth}
-  \[ R_{min} = \left( \frac{h ^2}{32 \pi m_e \sigma} \right)^{1/4}
-  \]
   \begin{itemize}
-    \item  pri tlaku \( p = 0 \) je \( 19 \si{\angstrom} \)
+    \item  pri tlaku \( p = 0 \) je \( R_{\min}= 19 \ \si{\angstrom} \)
+    \item ustvarjanje podtlaka
     \item kritični podtlak \( p = -0.69 \ \mathrm{bar} \)
   \end{itemize}
   \vspace{1cm}
+  \[ R_{min} = \left( \frac{h ^2}{32 \pi m_e \sigma} \right)^{1/4}
+  \]
   \column{0.6\linewidth}
   \begin{figure}[htbp]
     \centerline{\includegraphics[width=\linewidth]{../source/main-figure0.pdf}}
@@ -352,8 +356,7 @@ sortcites=true]{biblatex}
   \item ohlajanje vesolja, število WIMP-ov pada
   \item širjenje vesolja, nemogoča medsebojna anihilacija
 \end{itemize}
-\end{block}
-}
+\end{block}}
 \end{frame}
 
 \begin{frame}
@@ -379,9 +382,10 @@ sortcites=true]{biblatex}
 \begin{frame}
 \frametitle{Detekcija temne snovi -~mehurčne komore}
 \begin{itemize}
-  \item <1-> sipanje WIMP-a na jedru
+  \item <1-> sipanje WIMP-a na jedru, en mehurček
         \begin{itemize}
-        \item primerjava z nevtronom
+          \item primerjava z nevtronom
+          \item spinsko odvisna in neodvisna interakcija
         \end{itemize}
   \item <2-> nizek energijski prag za detekcijo, \( 1 - 100 \ \mathrm{keV} \)
   \item <3-> neobčutljivost na sevanje \( \gamma \) in \( \beta \)
@@ -436,7 +440,7 @@ sortcites=true]{biblatex}
     \end{block}
     \column{0.6\linewidth}
     \begin{figure}[htbp]
-      \centerline{\includegraphics[width=0.5\linewidth]{../source/figures/moscabC}}
+      \centerline{\includegraphics[width=0.7\linewidth]{../source/figures/moscabC}}
     \caption[]{Shema detektorja MOSCAB, vir:~\cite{collaboration_moscab_2017}}
     \end{figure}
   \end{columns}
@@ -463,8 +467,8 @@ sortcites=true]{biblatex}
     \column{0.6\linewidth}
     \only<3->{
     \begin{figure}[htbp]
-    \centerline{\includegraphics[width=0.8\linewidth]{../source/figures/PLR_limit_SI.png}}
-    \caption{Limita SI WIMP-nukleon sipalnih presekov}
+    \centerline{\includegraphics[width=0.8\linewidth]{../source/figures/PLR_limit_SDp}}
+    \caption{Limita SD WIMP-nukleon sipalnih presekov}
     \end{figure}}
   \end{columns}
 \end{frame}
