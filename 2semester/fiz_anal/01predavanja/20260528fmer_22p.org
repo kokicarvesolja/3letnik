@@ -1,0 +1,76 @@
+#+title: Predavanja iz Fizikalnih merjenj, 22. teden v letu
+#+subtitle: 2026/05/28
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Senzor majhnih premikov
+** Uporovni  (R)
+** Kapacitivni (C)
+** Piezo
+
+Ogledali si bomo pervskitni kristal \( \mathrm{Pb} \mathrm{Ti} \mathrm{O}_5 \). Osnovna celica je FCC z nevtralnim nabojem
+
+\[ \left( 2 e_0 \right) \frac{1}{8} \cdot 8  + \left( -2 e_0 \right) 6 \cdot \frac{1}{2} + 4 e_0 = 0,
+\]
+saj kristal sestavljajo \( \mathrm{Pb}^{+2} \), \( \mathrm{O}^{-2} \) in \( \mathrm{Ti}^{4+} \).
+
+Kristal je simetričen (torej je neodvisno, kam kaže električno polje) in ob prisotnosti električnega polja (?), potencial pa se pretvori iz harmoničnega spremeni. (Glej Janine zapiske). Pričakovana vrednost električnega dipola \( \left\langle \mathbf{p}_e \right\rangle \) je posledično različna od nič. Posledično je tudi električna polarizacija \( \bf{P} = \sum\limits_{}^{} \mathbf{p}_{e,i}  \).
+
+V prvem približku velja
+
+\[ \mathbf{P} \propto \mathsf{d} \mathsf{T}, 
+\]
+kjer je \( \mathsf{d} \) piezoelektričen tenzor in \( \mathsf{T} \) napetostni tenzor. V Einsteinovi zapišemo
+
+\[ P_i = d_{ijk} T_{jk}. 
+\]
+
+Nismo podrobno opisovali neodvisnih komponent tenzorjev, ampak smo samo zapisali, da je naboj
+
+\[ e_i = P \cdot S_i = d_{ij} \sigma_j S = d_{ij} F_j,   
+\]
+
+kjer velja \( F_j = \sigma_j S \).
+
+Glej vezje na sliki 5.16 v Likarju. V vezju je skupni tok skozi elemente
+
+\[ I = \dot{e} = I_p + I_{C_k} + I_R,
+\]
+kar je za komponente vezja drugače zapisano
+
+\[ d_{33} \dot{F} = \left( C_p U_i \right) \dot{} + \left( C_k U_i \right) \dot{} + \frac{U_i}{R}. 
+\]
+
+Opravimo Laplaceovo transormacijo
+
+\begin{align*}
+  R d_{33} s F &= \left[ \left( C_p + C_k \right) Rs + 1  \right] U_i \\
+&= \left( \tau s + 1 \right) U_i,
+\end{align*}
+kjer je \( ( C_p + C_k ) R = \tau \).
+
+Sila in premik sta povezana preko Hookovega zakona
+
+\[ \frac{F}{S} = E S \frac{\Delta x}{x_0}.
+\]
+
+Zapišemo
+
+\[ \left[ \frac{d_{33} ES}{\left( C_p + C_k \right) x_0} \right] \tau s \Delta x = \left( \tau s + 1 \right) U_i,
+\]
+in če označimo \( K = \frac{d_{33} ES}{x_0 \left( C_p + C_k \right)} \), lahko zapišemo
+
+\[ \left( \frac{U_i}{\Delta x} \right) = K_i \left(\frac{\tau s}{\tau s + 1}  \right). 
+\]
+** Induktivni senzorji majhnih premikov
+
+V zanimivost.
+
+
+
+
