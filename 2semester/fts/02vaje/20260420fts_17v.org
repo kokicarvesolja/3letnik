@@ -13,8 +13,10 @@
 
 Kakor smo spoznali pri predavanjih, je energija elektrona v približku tesne vezi za tri dimenzije
 
-\[ \epsilon(\mathbf{k}) =  E_0 - \frac{\beta + \sum\limits_{\mathbf{R} \ne 0}^{} \gamma(\mathbf{R}) e^{\mathrm{i} \mathbf{k} \cdot \mathbf{R}}}{1 + \sum\limits_{\mathbf{R} \ne 0}^{} \alpha (\mathbf{R}) e^{\mathrm{i} \mathbf{k} \cdot \mathbf{R}}},
-\]
+\begin{equation}
+\label{eq:1}
+ \epsilon(\mathbf{k}) =  E_0 - \frac{\beta + \sum\limits_{\mathbf{R} \ne 0}^{} \gamma(\mathbf{R}) e^{\mathrm{i} \mathbf{k} \cdot \mathbf{R}}}{1 + \sum\limits_{\mathbf{R} \ne 0}^{} \alpha (\mathbf{R}) e^{\mathrm{i} \mathbf{k} \cdot \mathbf{R}}},
+\end{equation}
 kjer je \( E_0 \) energija elektrona za izoliran atom in \( \mathbf{k} \) valovni vektor elektrona. Vsota poteka po vseh sosednjih točkah Bravaiseve mreže razen po izhodišču in enačba *ne deluje za osnovne celice z bazo*. Enačba prav tako *ne deluje za atome z več kot 1 orbitalo*.
 
 Grške črke \( \alpha, \beta \) in \( \gamma \) so t.i.~prekrivalni integrali (ang. /overlap integrals/)
@@ -29,6 +31,8 @@ kjer je \( \Delta V \) definiran kot
 \[ \Delta V (\mathbf{r}) = \sum\limits_{\mathbf{R} \ne 0}^{} U_{at} (\mathbf{r} - \mathbf{R}), 
 \]
 in zajame vse popravke k atomskemu potencialu, da opiše periodičen potencial v kristalu, \( \psi_0 \) valovna funkcija izoliranega atoma in \( V_0 \) volumen kristala.
+
+Pokrivalni integral \( \alpha \) je simetričen \( \alpha(-\mathbf{R}) = \alpha(\mathbf{R}) \), saj je \( \psi_0(\mathbf{r}) \) realna in odvisna samo od velikost \( \mathbf{r} \). Inverzija prostora v Bravaisovi rešetki zahteva simetričen potencial \( \Delta V(- \mathbf{r}) = \Delta V(\mathbf{r}) \) in zato velja \( \gamma(- \mathbf{R}) = \gamma(\mathbf{R}) \).
 ** Reševanje Kronig-Penney
 
 Na prejšnjih vajah smo definirali vezavno energijo in valovno funkcijo za Kronig-Penneyjev model 
@@ -65,6 +69,46 @@ Glavni, nezanemarljivi, člen vsote po vseh točkah Bravaisove mreže sta točki
 
 \[ \gamma(\pm a) = \tilde{Q} \tilde{\lambda} e^{- \tilde{Q} a} 
 \]
+
+Podobno izračunamo še zadnji izmed pokrivalnih integralov
+
+\begin{align*}
+  \alpha (Na) &= \int\limits_{}^{} \psi^{\ast}_{at} (x) \psi_{at} (x - Na) \, \mathrm{d} x \\
+&= \int\limits_{}^{} \sqrt{\tilde{Q}} e^{- \tilde{Q} \left| x \right|} \sqrt{\tilde{Q}} e^{- \tilde{Q} \left| x - Na \right|} \, \mathrm{d} x \\
+&= \tilde{Q} \int\limits_{}^{} e^{- \mathbf{Q} \left( \left| x \right|  + \left| x - Na \right|\right)} \, \mathrm{d} x,
+\end{align*}
+katerega rezultat je 
+
+\[ \alpha(\pm a) = \tilde{Q} e^{- \tilde{Q} a} a. 
+\]
+
+Vse izračunane integrale lahko sedaj združimo v enačbi za energijo elektrona v približku tesne vezi \eqref{eq:1}, ki se glasi
+
+\[ \epsilon(k) = E_0 - \frac{\beta + \gamma(a) e^{\mathrm{i} ka} + \gamma(- a) e^{- \mathrm{i} ka}}{1 + \alpha(a) e^{\mathrm{i} ka} + \alpha ( -a) e^{- \mathrm{i} ka}}
+\]
+
+Integral \( \beta \) lahko zanemarimo, saj ima kvadratno eksponentno odvisnost \( e^{- 2 \tilde{Q} a} \) in prevladuje integral \( \gamma \). Upoštevamo tudi simetrične lastnosti, ki smo jih omenili v uvodu te naloge in zapišemo
+
+\[ \epsilon(k) = E_0 - \frac{\lambda \tilde{Q} e^{- \tilde{Q} a} \left( e^{\mathrm{i} ka + e^{- \mathrm{i} ka}} \right)}{1 + a \tilde{Q} e^{- \tilde{Q} a} \left( e^{\mathrm{i} ka} + e^{- \mathrm{i} ka} \right)} 
+\]
+
+Vrednost pokrivalnega integrala \( \alpha \) je majhna v primerjavi z \( \gamma \), zato ga lahko zanemarimo in dobimo enak rezultat kot smo ga dobili prejšnji teden pri analitični rešitvi!
+
+\[ \epsilon(k) \approx E_0 - 2 \gamma \cos (ka) 
+\]
+* Naloga: FCC in približek tesne vezi
+#+begin_problem
+Uporabi približek tesne vezi za izračun disperzijske relacije, širine energijske reže in gostoto stanj v FCC kristalni strukturi. Predpostavi, da so pokrivalni integrali majhni in zanemari pokrivalni integral \( \alpha \).
+#+end_problem
+
+Kot smo že povedali, je energija elektrona v približku tesne vezi
+
+\[ \epsilon(\mathbf{k}) = E_0 - \frac{\beta + \sum\limits_{\mathbf{R} \ne 0}^{} \gamma(\mathbf{R}) e^{\mathrm{i} \mathbf{k} \cdot \mathbf{R}}}{1 + \sum\limits_{\mathbf{R} \ne 0}^{} \alpha(\mathbf{R}) e^{\mathrm{i} \mathbf{k} \cdot \mathbf{R}}} \approx E_0 - \beta - \sum\limits_{\mathbf{R} \in \left\{ nn \right\}}^{} \gamma(\mathbf{R}) e^{\mathrm{i} \mathbf{k} \cdot \mathbf{R}},
+\]
+
+kjer smo v skladu z navodili zanemarili pokrivalni integral \( \alpha \). Integral \( \gamma \) je upoštevan zgolj za najbljižje sosede in integral \( \beta \) predstavlja samo zamik celotne energijske reže ter je odvisen od potenciala.
+
+Na spodnji sliki se nahaja FCC kristal z narisanim elektronskim pasom \( s \) za vsak atom. 
 
 
 
