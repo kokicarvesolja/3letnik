@@ -8,4 +8,63 @@
 #+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
 #+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
 #+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Nadaljevanje naloge: Kronig-Penneyjev model s približkom tesne vezi
+** Ponovitev iz predavanj
+
+Kakor smo spoznali pri predavanjih, je energija elektrona v približku tesne vezi za tri dimenzije
+
+\[ \epsilon(\mathbf{k}) =  E_0 - \frac{\beta + \sum\limits_{\mathbf{R} \ne 0}^{} \gamma(\mathbf{R}) e^{\mathrm{i} \mathbf{k} \cdot \mathbf{R}}}{1 + \sum\limits_{\mathbf{R} \ne 0}^{} \alpha (\mathbf{R}) e^{\mathrm{i} \mathbf{k} \cdot \mathbf{R}}},
+\]
+kjer je \( E_0 \) energija elektrona za izoliran atom in \( \mathbf{k} \) valovni vektor elektrona. Vsota poteka po vseh sosednjih točkah Bravaiseve mreže razen po izhodišču in enačba *ne deluje za osnovne celice z bazo*. Enačba prav tako *ne deluje za atome z več kot 1 orbitalo*.
+
+Grške črke \( \alpha, \beta \) in \( \gamma \) so t.i.~prekrivalni integrali (ang. /overlap integrals/)
+
+\begin{align*}
+\beta &= - \int\limits_{V_0}^{} \psi_0^{\ast} (\mathbf{r}) \Delta V (\mathbf{r}) \psi_0 (\mathbf{r}) \, \mathrm{d} ^3 \mathbf{r} \\
+  \alpha (\mathbf{R}) &= \int\limits_{V_0}^{} \psi_0^{\ast} (\mathbf{r}) \psi_0 (\mathbf{r} - \mathbf{R}) \, \mathrm{d} ^3 \mathbf{r} \\
+\gamma(\mathbf{R}) &= - \int\limits_{V_0}^{} \psi_0^{\ast} \Delta V(\mathbf{r}) \psi_0 (\mathbf{r} - \mathbf{R}) \, \mathrm{d} ^3 \mathbf{r},
+\end{align*}
+kjer je \( \Delta V \) definiran kot
+
+\[ \Delta V (\mathbf{r}) = \sum\limits_{\mathbf{R} \ne 0}^{} U_{at} (\mathbf{r} - \mathbf{R}), 
+\]
+in zajame vse popravke k atomskemu potencialu, da opiše periodičen potencial v kristalu, \( \psi_0 \) valovna funkcija izoliranega atoma in \( V_0 \) volumen kristala.
+** Reševanje Kronig-Penney
+
+Na prejšnjih vajah smo definirali vezavno energijo in valovno funkcijo za Kronig-Penneyjev model 
+
+\[ \epsilon_{at} = - \frac{\hbar ^2 \tilde{Q}}{2m} \quad \text{ in } \quad \psi_{at} = \sqrt{\tilde{Q}} e^{- \tilde{Q} \left| x \right|},
+\]
+kjer je
+
+\[ \tilde{Q} = \frac{m \tilde{\lambda}}{\hbar ^2} = - \frac{m \lambda}{\hbar ^2}. 
+\]
+
+Sedaj lahko izračunamo prekrivalne integrale v eni dimenziji, začenši z
+
+\begin{align*}
+  \beta &= - \int\limits_{}^{} \psi_{at}^{\ast} (x) \Delta V(x) \psi_{at} (x) \, \mathrm{d} x \\
+&= - \int\limits_{}^{} \sqrt{\tilde{Q}} e^{- \tilde{Q} \left| x \right|} \left( \sum\limits_{n \ne 0}^{} - \tilde{\lambda} \delta(x - na) \right) \cdot \sqrt{\tilde{Q}} e^{- \tilde{Q} \left| x \right|} \, \mathrm{d} x \\
+&= \tilde{Q} \tilde{\lambda} \int\limits_{}^{} e^{- 2 \tilde{Q} \left| x \right|} \left( \sum\limits_{n \ne 0}^{} \delta (x - na) \right) \, \mathrm{d} x.
+\end{align*}
+
+V približku tesnega modela obravnavamo elektrone v izoliranih atomih, kjer se njihove valovne funkcije skoraj ne prekrivajo. Vsota po sosedih bo torej imela samo dva člena - najbližja soseda, saj ostalih elektron ne občuti. Za \( n = \pm 1 \) je torej
+
+\[ \beta = 2 \tilde{\lambda} \tilde{Q} e^{- 2 \tilde{Q} a}. 
+\]
+
+Nadaljujemo z izračunom pokrivalnega integrala \( \gamma \), kjer so točke Bravaisove mreže \( \mathbf{R} = N\mathbf{a} \) za \( N \in \mathbb{Z}, N \ne 0 \)
+
+\begin{align*}
+  \gamma (Na) &= - \int\limits_{V_0}^{} \psi_{at}^{\ast}(x) \Delta U(x) \psi_{at} (x - Na) \, \mathrm{d} x \\
+&= - \int\limits_{V_0}^{} \sqrt{\tilde{Q}} e^{- \tilde{Q} \left| x \right|} \left( \sum\limits_{n \ne 0}^{} - \tilde{\lambda} \delta(x - na) \right) \sqrt{\tilde{Q}} e^{- \tilde{Q} \left| x - Na \right|} \, \mathrm{d} x \\
+&= \tilde{Q} \tilde{\lambda} \int\limits_{V_0}^{} e^{- \tilde{Q} \left( \left| x \right| + \left| x - Na \right|\right)} \left( \sum\limits_{n \ne 0}^{} \delta (x - na) \right) \, \mathrm{d} x
+\end{align*}
+
+Glavni, nezanemarljivi, člen vsote po vseh točkah Bravaisove mreže sta točki \( \gamma(\pm a) \) za \( N = \pm 1 \). Vse ostale točke imajo eksponentno manjši člen. Vrednost integrala je potem
+
+\[ \gamma(\pm a) = \tilde{Q} \tilde{\lambda} e^{- \tilde{Q} a} 
+\]
+
+
 
