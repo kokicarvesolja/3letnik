@@ -142,11 +142,137 @@ Ob odsotnosti potenciala ločimo dva primera:
 
 Približek tesne vezi je še en od načinov, kako opišemo elektrone v kristalu. Spoznali smo že približek šibkega potenciala, v katerem predpostavimo, proste elektroni s pripadajočimi lastnimi valovnimi funkcijami, ki jih perturbiramo s šibkim periodičnim potencialom. V približku tesne vezi predpostavimo, da elektron ni prost in je njegova valovna funkcija funkcija elektrona v izoliranem atomu.
 
+V približku šibkega potenciala za Kronig-Penneyjev model smo uporabili periodičen \( \delta \) potencial s pozitivnimi utežmi \( \lambda \). V približku tesne vezi ima periodičen potencial negativne vrednosti uteži \( \lambda \).
 
+** Reševanje naloge
 
+Iz kvantne mehanike vemo, da ima potencial oblike
 
+\[ U(x) = - \lambda \delta(x), 
+\]
+samo eno vezano stanje z energijo
 
+\[ \epsilon_{at} = - \frac{m \lambda ^2}{2 \hbar ^2}, 
+\]
+s pripadajočo valovno funkcijo
 
-  
+\[ \psi_{at} (x) = \sqrt{Q} e^{- \kappa_0 \left| x \right|}, \ Q = \frac{m \lambda}{\hbar ^2}. 
+\]
+
+Za večjo vrednost \( Q \) bodo repi valovne funkcije \( \psi(x) \) padali hitreje. 
+
+Periodičen potencial s konstanto \( a \) za približek tesne vezi ima obliko
+
+\[ U(x) = \sum\limits_n^{} - \lambda \delta(x - na). 
+\]
+
+Repa dveh sosednjih valovnih funkcij se bosta prekrivala za dovolj majhno vrednost \( \lambda \). V približku temne vezi je predpostavljeno, kot povedano v uvodu, da se repi vezanih stanj skoraj ne prekrivajo. Posledično nastane energijska reža, ki je centrirana okoli \( \epsilon_{at} \).
+
+Iz predhodnih vaj (13. teden) vemo, da je enačba, ki nam jo podaja Kronig-Penneyjev model
+
+\begin{equation}
+\label{eq:2}
+ \cos (ka) = \cos (qa) + Q a \frac{\sin (qa)}{qa} 
+\end{equation}
+
+kjer je \( k \) Blochov valovni vektor znotraj prve Brillouinove cone \( k \in \left[ - \frac{\pi}{a}, \frac{\pi}{a} \right] \) in
+
+\[ q = \sqrt{\frac{2 m \epsilon}{\hbar ^2}}, 
+\]
+valovni vektor prostega elektrona z energijo \( \epsilon \).
+
+Zaradi periodičnega potenciala, ki ima obratno predznačen \( \delta \) potencial od približka skoraj prostih elektronov, definiramo \( \tilde{\lambda} = - \lambda \) in nadalje
+
+\[ \tilde{Q} = \frac{m \tilde{\lambda}}{\hbar ^2}. 
+\]
+
+Energija \( \epsilon_{at} \) je negativna, saj ustreza vezanemu stanju, kar pomeni, da je valovni vektor prostega elektrona imaginaren
+
+\[ q = \mathrm{i} \tilde{q}.
+\]
+
+Posodobljena enačba Kronig-Penneyjevega modela \eqref{eq:2} je
+
+\[ \cos (ka) = \cos \left( \mathrm{i} \tilde{q} a \right) - \frac{\tilde{Q} a}{\mathrm{i} \tilde{q} a}  \sin \left( \mathrm{i} \tilde{q} a \right).
+\]
+
+Iz Mat4 vemo, da lahko kompleksne trigonometrične funkcije izrazimo s hiperboličnimi funkcijami, zato upoštevamo \( \cos (\mathrm{i} x) = \mathrm{ch} (x) \) in \( \sin(\mathrm{i} x) = \mathrm{i} \mathrm{sh} (x) \) in zapišemo 
+
+\begin{equation}
+\label{eq:3}
+ \cos (ka) = \mathrm{ch} \left( \tilde{q} a \right) - \frac{\tilde{Q} a}{\tilde{q} a} \mathrm{sh} (\tilde{q} a) 
+\end{equation}
+
+[[file:figures/16KPTB.png]]
+
+Grafično reševanje enačbe je vidno na zgornji sliki. V skladu s približkom tesne vezi rešujemo enačbo v limiti \( \tilde{Q} a \gg 1 \), ki pomeni, da imajo valovne funkcije majhen rep in se skoraj ne prekrivajo. Limita tudi pomeni veliko utež \( \tilde{\lambda} \), ki pomeni močen potencial in tesno vezane elektrone. 
+
+Za \( x \gg 1 \) velja \( \cosh (x) \approx \sinh (x) \) in zato pričakujemo, da bo rešitev (in posledično dovoljeno stanje) \( \tilde{q} a \approx \tilde{Q} a \). Za \( \tilde{Q} a \gg 1 \) je \( \cosh (\tilde{Q} a) \approx \sinh(\tilde{Q} a) \) in
+
+\[ \cosh (\tilde{Q} a) - \frac{\tilde{Q} a}{\tilde{Q}a} \sinh (\tilde{Q} a) = \cosh (\tilde{Q} a) - \sinh(\tilde{Q}a) \approx 0. 
+\]
+
+Uporabimo nastavek za valovni vektor elektrona
+
+\begin{equation}
+\label{eq:4}
+ \tilde{q} a = \tilde{Q} a + x, \quad x \ll \tilde{Q} a, 
+\end{equation}
+in ga vstavimo v enačbo \eqref{eq:3}
+
+\[ \cos (ka) = \cosh (\tilde{Q} a + x) - \frac{\tilde{Q} a}{\tilde{Q} a + x} \sinh (\tilde{Q} a + x).
+\]
+
+Uporabimo identiteti
+
+\[ \cosh (x + \mathrm{d} x) \approx \sin (x + \mathrm{d} x) \approx \frac{1}{2} e^x, \quad x \gg 1 \quad \text{ in } \quad  \mathrm{d} x \ll 1,
+\]
+da enačbo zapišemo v
+
+\begin{align*}
+  \cos (ka) &\approx \frac{e^{\tilde{Q} a + x}}{2} \left( 1 - \frac{1}{1 + \frac{x}{\tilde{Q} a}} \right) \\
+&\approx \frac{e^{\tilde{Q} a + x}}{2} \frac{x}{\tilde{Q} a},
+\end{align*}
+kjer smo upoštevali še Taylorjev razvoj \( \frac{1}{1 + x} \approx 1 - x \) za \( x \ll 1 \). Upoštevamo še identiteto
+
+\[ e^x x \approx \left( 1 + x + \frac{x ^2}{2} + \ldots \right) \cdot x = x + x ^2 + \frac{x ^3}{2} + \ldots \approx x,  
+\]
+kjer zanemarimo vse rede večje od 1, saj \( x \ll 1 \).
+
+Zapišemo torej
+
+\[ \cos (ka) \approx \frac{e^{\tilde{Q} a}}{2} \frac{e^x  x}{\tilde{Q} a} \implies 2 \tilde{Q} a e^{- \tilde{Q} a} \cos (ka).
+\]
+
+Nastavek za valovni vektor elektrona je potem
+
+\[ \tilde{q} a = \tilde{Q} a + x = \tilde{Q} a \left( 1 + 2 e^{- \tilde{Q} a} \cos (ka) \right). 
+\]
+
+Če nastavek vstavimo v energijo za prost elektron, dobimo
+
+\[ \epsilon = - \frac{\hbar ^2}{2m} \tilde{Q}  ^2 \left( 1 + 2 e^{- \tilde{Q} a} \cos (ka) \right) ^2.  
+\]
+
+Razpišemo kvadrat vsote
+
+\[ \epsilon = - \frac{\hbar ^2}{2m} \tilde{Q} ^2 \left( 1 + 4 e^{- \tilde{Q} a} \cos (ka) + \cancel{e^{-2 \tilde{Q} a} \cos ^2 (ka)} \right), 
+\]
+in zanemarimo 2. red. Preostane nam torej
+
+\begin{align*}
+  \epsilon &= - \frac{\hbar ^2}{2m} \tilde{Q} \left( 1 + 4 e^{- \tilde{Q} a} \cos (ka) \right) \\
+&= - \frac{\hbar ^2}{2m} \tilde{Q} ^2 - 4 \frac{\hbar ^2}{2m} \tilde{Q} ^2 e^{- \tilde{Q} a} \cos (ka) \\
+&= E_0 - 2 \gamma \cos (ka),
+\end{align*}
+kjer smo definirali
+
+\begin{align*}
+  E_0 &= - \frac{\hbar ^2}{2m} \tilde{Q} ^2 \\
+\gamma &= \frac{\hbar ^2}{m} \frac{\tilde{Q}  ^2}{e^{\tilde{Q} a}}.
+\end{align*}
+
+Prvi člen, \( E_0 \), v enačbi je energija vezanega stanja \( \delta \) funkcije, preostanek pa je popravek, ki odpravi degeneracijo zaradi prekrivanja valovnih repov. Degeneracija je odpravljena z nastankom energijske reže s širino \( 4 \gamma \)
+
 
 
