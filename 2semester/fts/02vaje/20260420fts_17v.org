@@ -96,9 +96,9 @@ Vrednost pokrivalnega integrala \( \alpha \) je majhna v primerjavi z \( \gamma 
 
 \[ \epsilon(k) \approx E_0 - 2 \gamma \cos (ka) 
 \]
-* Naloga: FCC in približek tesne vezi
+* Naloga: Dvodimenzionalna kristalna mreža in približek tesne vezi
 #+begin_problem
-Uporabi približek tesne vezi za izračun disperzijske relacije, širine energijske reže in gostoto stanj v FCC kristalni strukturi. Predpostavi, da so pokrivalni integrali majhni in zanemari pokrivalni integral \( \alpha \).
+Uporabi približek tesne vezi za izračun disperzijske relacije, širine energijske reže in gostoto stanj v dvodimenzionalni kristalni mreži. Predpostavi, da so pokrivalni integrali majhni in zanemari pokrivalni integral \( \alpha \).
 #+end_problem
 
 Kot smo že povedali, je energija elektrona v približku tesne vezi
@@ -108,7 +108,72 @@ Kot smo že povedali, je energija elektrona v približku tesne vezi
 
 kjer smo v skladu z navodili zanemarili pokrivalni integral \( \alpha \). Integral \( \gamma \) je upoštevan zgolj za najbljižje sosede in integral \( \beta \) predstavlja samo zamik celotne energijske reže ter je odvisen od potenciala.
 
-Na spodnji sliki se nahaja FCC kristal z narisanim elektronskim pasom \( s \) za vsak atom. 
+Na spodnji sliki se nahaja shema dvodimenzionalne kristalne mreže z narisanim elektronskim pasom \( s \) za vsak atom. 
 
+[[file:figures/17fccSorbitale.png]]
 
+\( s \) orbitala je sferno simetrična z \( Y_{00} = \frac{1}{\sqrt{4 \pi}} \) in ima samo radialno odvisnosti \( R(r) \propto e^{- \frac{r}{r_0}} \).
 
+Energijo elektrona v \( s \) orbitali določa enačba
+
+\begin{equation}
+\label{eq:2}
+ \epsilon(\mathbf{k}) = - \sum\limits_{\mathbf{R} \in \left\{ nn \right\}}^{} \gamma(\mathbf{R}) e^{\mathrm{i} \mathbf{k} \cdot \mathbf{R}}.
+\end{equation}
+
+Najbližji sosedi so določeni s koordinatami
+
+\[ \pm \mathbf{a}_1 = \left( \pm a, 0 \right) \quad \text{ in } \quad \pm \mathbf{a}_2 = \left( 0, \pm a \right). 
+\]
+
+Pokrivalni integral \( \gamma \) je določen z enačbo
+
+\[ \gamma(\mathbf{R}) = - \int\limits_{}^{} \psi_{at}^{\ast} (\mathbf{r}) \Delta V(\mathbf{r}) \psi_0 (\mathbf{r} - \mathbf{R}) \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Simetrijska operacija \( A \in \mathcal{G} \), ki je del simetrijske grupe \( \mathcal{G} \) poda enakost
+
+\[ \epsilon(A \mathbf{k}) = \sum\limits_{}^{} \gamma(\mathbf{R}) e^{ \mathrm{i} A \mathbf{k} \cdot A \left(A^{-1} \mathbf{R}\right)} = \sum\limits_{}^{} \gamma(\mathbf{R}) e^{\mathrm{i} \mathbf{k} \cdot A^{-1} \mathbf{R}} = \epsilon(\mathbf{k}).
+\]
+
+Tukaj smo se poslužili ohranjanja skalarnega produkta pri ortogonalnih transformacijah, kot smo jih spoznali pri [[file:20260330fts_14v.org][energijski reži v FCC.]]
+
+Zaradi simetrije torej velja
+
+\[ \gamma(\mathbf{a}_1) = \gamma(\mathbf{a}_2) = \gamma(- \mathbf{a}_1) = \gamma (- \mathbf{a}_2) = \gamma \in \mathbb{R}. 
+\]
+
+Energijo elektrona razpišemo v
+
+\[ \epsilon(\mathbf{k}) = - \gamma \left( e^{ \mathrm{i} k_x a} + e^{ -\mathrm{i} k_x a} + e^{ \mathrm{i} k_y a} + e^{- \mathrm{i} k_y a} \right)  = - 2\gamma \left[ \cos (k_x a) + \cos (k_y a) \right].
+\]
+
+Z izpeljano enačbo za energijo lahko sedaj poiščemo energijsko režo. Recipročna mreža dvodimenzionalne kvadratne kristalne mreže je ponovno kvadratna mreža s konstanto \( \frac{2 \pi}{a} \) in prva Brillouinova cona je matematično podana z
+
+\[ \left\{ \left( k_x, k_y \right); \ k_x \in \left( - \frac{\pi}{a}, \frac{\pi}{a} \right) \text{ in } k_y \in \left( - \frac{\pi}{a}, \frac{\pi}{a} \right)  \right\}. 
+\]
+
+Grafično je Brillouinova cona predstavljena na spodnji levi sliki.
+
+[[file:figures/17Brillo2dKvadrat.png]]
+
+Zamislimo si sedaj pot, ki je že prikazana na zgornji sliki levo, ki poteka iz središča Brillouinove cone \( \Gamma = (0, 0) \) do središča stranice \( X = \left( \frac{\pi}{a}, 0 \right) \) nadaljuje pot do oglišča \( M = \left( \frac{\pi}{a}, \frac{\pi}{a} \right) \) in se vrne v središče \( \Gamma \).
+
+Poti parametriziramo s parametrom \( q \). Pot od središča \( \Gamma \) do razpolovišča stranice \( X \) opiše \( \mathbf{k} = \left( q, 0 \right) \) za vrednosti parametra \( q \in \left[ 0, \frac{\pi}{a} \right] \). Energija elektrona se na tej poti spreminja v skladu z enačbo
+
+\[ \epsilon (q) = - 2 \gamma \left( \cos \left( q a \right) + 1 \right),
+\]
+in zasede vrednosti od \(  \epsilon = - 4\gamma \) do \( \epsilon = 0 \). V točki \( X \) ima energija sedlo.
+
+Nadalje pot od razpolovišča stranice \( X \) do oglišča \( M \) opišemo \( \mathbf{k} = \left( \frac{\pi}{a}, q \right) \) za vrednosti parametra \( q \in \left[ 0, \frac{\pi}{a} \right] \). Energijo opiše enačba
+
+\[ \epsilon = - 2\gamma \left( - 1 + \cos (q a) \right), 
+\]
+in zasede vrednosti \( \epsilon \in [0, 4 \gamma] \). V točki \( M \) ima energija maksimum.
+
+Zadnji pot od oglišča \( M \) do središča \( \Gamma \) opišemo s \( \mathbf{k} = \left( \frac{\pi}{a} - q, \frac{\pi}{a} - q \right) \) za vrednosti \( q \in \left[ 0, \frac{\pi}{a} \right] \). Energijo podaja enačba
+
+\[\epsilon(q) = -2 \gamma \cdot 2 \cos \left[ \left( \frac{\pi}{a} - q \right) a \right] = -4 \gamma \cos \left( \pi - q a \right) = 4 \gamma \cos (qa).
+\]
+
+Na tem delu energija zasede vrednosti \( \epsilon \in [4 \gamma, - 4\gamma] \). Energija elektrona na celotni poti niha med minimum v točki \( \Gamma \) z energijo \( \epsilon = -4\gamma \) in maksimum v točki \( M \) z energijo \( \epsilon = 4 \gamma \). Energijska reža celotne poti je \( 8 \gamma \).
