@@ -1,5 +1,5 @@
-#+title: Vaje iz Fizike trdne snovi, 17. teden v letu
-#+subtitle: 2026/04/20
+#+title: Vaje iz Fizike trdne snovi, 17. in 19. teden v letu
+#+subtitle: 2026/04/20 in 2026/05/04
 #+startup: nolatexpreview
 #+startup: entitiespretty nil
 #+startup: show2levels
@@ -230,7 +230,13 @@ Z uvedbo efektivne mase \( m^{\ast} = \frac{\hbar ^2}{2 \gamma a ^2} \) disperzi
 \[ \epsilon(\mathbf{q}) =  - 4 \gamma + \frac{\hbar ^2 q ^2}{2 m^{\ast}}.
 \]
 
-Prvi člen disperzijske relacije je konstanta in drugi člen ima kvadratno odvisnosti. V okolici središča Brillouinove cone je disperzijska relacija elektrona enaka prostemu elektronu. Iz tega lahko tudi izračunamo gostoto stanj \( g (\epsilon) \).
+Prvi člen disperzijske relacije je konstanta in drugi člen ima kvadratno odvisnosti. V okolici središča Brillouinove cone je disperzijska relacija elektrona enaka prostemu elektronu.
+
+Podobno kot pri disperzijski relaciji tudi gostoto stanj povežemo z analogijo prostih elektronov. Gostoto stanj zapišemo v obliki
+
+\[ g(\epsilon) = \frac{m^{\ast}}{\pi \hbar ^2} \Theta \left( \epsilon + 4 \gamma \right),
+\]
+kjer je \( \Theta \) Heavisideov stopničasta funkcija.
 *** Razvoj okrog sedla \( X \)
 
 Tokrat ima naš nastavek \eqref{eq:3} obliko
@@ -351,11 +357,148 @@ Logaritem razdelimo na dva dela preko identitete \( \ln \frac{A}{B} = \ln A - \l
 
 V bližini sedla, kjer je \( \epsilon \ll \gamma \), zanemarimo prvi algoritem in gostota stanje je podana z enačbo
 
-\[ g(\epsilon) \approx - \frac{\ln \epsilon}{\gamma a ^2 \pi ^2}.
-\]
+\begin{equation}
+\label{eq:7}
+ g(\epsilon) \approx - \frac{\ln \epsilon}{\gamma a ^2 \pi ^2}.
+\end{equation}
 
 Gostota stanje torej narašča logaritmično blizu točke \( X \) za \( \epsilon \ll \gamma \) oz. \( \epsilon \to 0 \).
+
+Logaritem v enačbi \eqref{eq:7} divergira za \( \epsilon \to 0 \). Tej singularnosti pravimo Van-Harejeva singularnosti. Vsako sedlo v dvodimenzionalnem kristalu poda logaritemsko odvisnost gostote stanj, medtem ko v trodimenzionalnem kristalu ne divergira, ima pa nezvezen odvod.
 *** Razvoj okrog točke \( M \)
 
+Pri transformaciji \( \Gamma \to M \) za disperzijsko relacijo velja
+
+\begin{equation}
+\label{eq:6}
+ \epsilon (M) = - \epsilon(\Gamma). 
+\end{equation}
+
+Kakor smo izvedeli v prvem podpoglavju, ima okrog središča \( \Gamma \) disperzijska relacija parabolično odvisnost. Zaradi relacije \eqref{eq:6} ima tudi disperzijska relacija okrog točke \( M \) parabolično odvisnost, vendar tokrat drugače predznačeno. 
+
+[[file:figures/17disperzijaGammaM.png]]
+
+Na zgornji sliki energija znotraj rdečega romba pada in ima minimum v točki \( \Gamma \). Zunaj rdečega romba, kjer je pobarvano z oranžno barvo, pa energija narašča z maksimum v točkah \( M \). Na stranicah romba velja \( \epsilon = - \epsilon \implies \epsilon = 0\).
+
+Iz tega sledi, da ima tudi gostota stanj okrog točke \( M \) sledečo odvisnost
+
+\[ g (\epsilon) \propto \Theta \left( \epsilon + 4\gamma \right). 
+\]
+* Naloga: Grafen in približek tesne vezi 
+
+#+begin_problem
+Izpelji model z uporabo približka tesne vezi za opis elektronske disperzijske relacije v grafenu.
+#+end_problem
+
+Energijske enačbe uporabljene v prejšnji nalogi tukaj ne moremo uporabiti iz dveh razlogov:
+
+- deluje zgolj za atome z napolnjeno orbitalo \( s \) 
+  
+- deluje za kristale, ki jih ne opišemo z bazo. 
+
+Grafen je sestavljen iz ogljikovih atomov \( C \) z elektronskimi orbitalami
+
+\[ ^{12}\mathrm{C}:\ 1 s ^2 \, 2 s ^2 \, 2p ^2
+\]
+
+Elektrona v orbitali \( 1s ^2 \) sta daleč stran od Fermijeve energije in ju lahko zanemarimo. Orbitali \( 2s ^2 \, 2p ^2 \) se [[https://www.physicsclassroom.com/Chemistry-Tutorial/Chemical-Bonding-and-Molecular-Geometry/Hybridized-Orbital-Theory][hibridizirata]] v obliko \( sp_z \). Elektronske orbitale za grafen imajo torej obliko
+
+\[ ^{12} \mathrm{C}: \ 1 s ^2 \, 2 sp_2^3 \, \mathbf{2 p_z }
+\]
+
+Odebeljena orbitala je edina, ki je dovolj blizu Fermijeve enregije, da je nezanemarljiva. Orientirana je v smeri izven ravnine lista kot prikazuje priložena slika. 
+
+Grafen definirata dva primitivna vektorja \( \mathbf{a}_1\) in \( \mathbf{a}_2 \), ki sta enako dolga in med njima je kot \( \frac{\pi}{3} \). Vse točke v grafenu opišemo z bazama
+
+\[ \mathbf{r}_1 =  0 \quad \text{ in } \quad \mathbf{r}_2 = \frac{\mathbf{a}_1 + \mathbf{a}_2}{3}.
+\]
+
+Za boljšo predstavo, ponovno glej spodaj priloženo sliko.
+
+[[file:figures/18grafen.png]]
+
+Zaradi neustreznosti enačbe za disperzijsko relacijo predstavljene v prejšnji nalogi smo prisiljeni, da izpeljemo enačbo, ki nam bo podala disperzijsko relacijo za grafen.
+
+** Energija elektrona
+
+Reševali bomo stacionarno Schrödingerjevo enačbo
+
+\[ H \left| \psi \right\rangle = \epsilon \left| \psi \right\rangle,
+\]
+vendar moramo definirani bazo Hilbertovega prostora, znotraj katerega bomo delovali. Bazo sestavljajo enoelektronske valovne funkcije \( \left| \psi \right\rangle \), ki jo razvijemo po položajih \( \mathbf{R} \)
+
+\[ \left| \psi \right\rangle = \sum\limits_{\mathbf{R}, n}^{} c_{\mathbf{R}, n} \left| \mathbf{R}, n \right\rangle.
+\]
+
+Velja
+
+\[ \left\langle \mathbf{r} \middle| \mathbf{R}, n \right\rangle = \psi_{2p_z} \left( \mathbf{r} - \mathbf{R} - \mathbf{r}_n \right),
+\]
+
+kjer je \( \psi_{2p_z} \left( \mathbf{r} - \mathbf{R} - \mathbf{r}_n \right) \) valovna funkcija \( 2p_z \) orbitale v koordinatni reprezentaciji. Črka (in indeks) \( n \) določa bazo, \( \mathbf{R} \) pa je vektor Bravaiseve rešetke.
+
+Nastavek vstavimo v Schrödingerjevo enačbo
+
+\[ H \sum\limits_{\mathbf{R}', n'}^{} c_{\mathbf{R}', n '} \left| \mathbf{R} ', n ' \right\rangle = \epsilon \sum\limits_{\mathbf{R}', n '}^{} c_{\mathbf{R} ', n '} \left| \mathbf{R}', n' \right\rangle,
+\]
+in jo pomnožimo z \( \left\langle \mathbf{R}, n \right| \). Rezultat je
+
+\begin{equation}
+\label{eq:8}
+ \sum\limits_{\mathbf{R}', n'}^{} c_{\mathbf{R}', n'} \left\langle \mathbf{R}, n \middle| H \middle| \mathbf{R}', n' \right\rangle = \epsilon \sum\limits_{\mathbf{R}', n'}^{} c_{\mathbf{R}', n'} \left\langle \mathbf{R}, n \middle| \mathbf{R}', n' \right\rangle.
+\end{equation}
+
+Baza Hilbertovega prostora \( \left| \mathbf{R}, n \right\rangle \) ni ortonormalna, ne velje \( \left\langle \mathbf{R}, n \middle| \mathbf{R}', n'  \right\rangle = \delta_{\mathbf{R}, \mathbf{R}'} \delta_{n, n'} \).
+
+Produkt
+
+\[ \left\langle \mathbf{R}, n \middle| \mathbf{R}', n' \right\rangle = \delta_{\mathbf{R}, n, \mathbf{R}', n'}
+\]
+ima tudi izvendiagonalne člene, ker se valovne funkcije posameznih atomov lahko prekrivajo.
+
+Rešujemo posplošen problem lastnih vrednosti
+
+\[ H \mathbf{c} = \epsilon S \mathbf{c}, 
+\]
+kjer Hamiltonian razdelimo na vsoto izoliranih atomskih Hamiltonianov \( H_{at} \), ki je diagonalen, ter potencial \( \Delta U \), ki zajame prekrivanje med valovnimi funkcijami. Lastne vrednosti \( S \) zapišemo kot
+
+\[ S = \mathbf{I} + \alpha, 
+\]
+kjer \( \mathbf{I} \) vsebuje diagonalne elemente in \( \alpha \) majhne izvendiagonalne elemente. 
+
+Za Hamiltonian izoliran atomov velja
+
+\[ H_{at} \left| \mathbf{R}, n \right\rangle  = \epsilon \left| \mathbf{R}, n \right\rangle.
+\]
+
+Nastavek za Hamiltonian \( H = H_{at} + \Delta V \) vstavimo v enačbo \eqref{eq:8} in dobimo
+
+\begin{align*}
+  \left\langle \mathbf{R}, n \middle| H \middle| \mathbf{R}', n' \right\rangle &= \left\langle \mathbf{R}, n \middle| H_{at} \middle| \mathbf{R}', n' \right\rangle + \left\langle \mathbf{R}, n \middle| \Delta V \middle| \mathbf{R}', n' \right\rangle \\
+&= \epsilon_{at} \left\langle \mathbf{R}, n \middle| \mathbf{R}', n ' \right\rangle + \left\langle \mathbf{R}, n \middle| \Delta V \middle| \mathbf{R}', n' \right\rangle
+\end{align*}
+
+Definiramo
+
+\[ \left\langle \mathbf{R}, n \middle| \Delta V \middle| \mathbf{R}', n' \right\rangle = \begin{cases}
+                                                                                        -\beta &; \mathbf{R},n = \mathbf{R}', n'  \\
+                                                                                        -\gamma &; \mathbf{R}, n \ne \mathbf{R}', n' \end{cases},
+\]
+
+kjer je \( \gamma \) vrednost pokrivalnega integrala za najbližje sosede. Posledično velja
+
+\[ \left\langle \mathbf{R}, n \middle| H \middle| \mathbf{R}', n' \right\rangle = \begin{cases}
+                                                                                  \epsilon_{at}-\beta &; \mathbf{R}, n = \mathbf{R}', n' \\
+                                                                                  -\gamma &; \mathbf{R}, n \ne \mathbf{R}', n' \\
+                                                                                  0 &; \text{else}
+                                                                                  \end{cases}.
+\]
+
+Za vsak atom \( \mathbf{R}, n \) imamo enačbo
+
+\[ \left( \epsilon_{at} - \beta \right) c_{\mathbf{R}, n} + \sum\limits_{\mathbf{R}', n' \in \left\{ nn \right\}}^{} (- \gamma) c_{\mathbf{R}', n'} = \epsilon c_{\mathbf{R}, n} 
+\]
+
+Prvi člen nam pove, da se energija elektrona na atomu popravi za faktor \( \beta \), medtem ko skalar \( \gamma \) dovoli elektronom skakanje v orbitale najbližjih sosedov.
 
 
