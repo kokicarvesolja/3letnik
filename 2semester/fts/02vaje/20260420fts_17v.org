@@ -418,9 +418,7 @@ Za boljšo predstavo, ponovno glej spodaj priloženo sliko.
 [[file:figures/18grafen.png]]
 
 Zaradi neustreznosti enačbe za disperzijsko relacijo predstavljene v prejšnji nalogi smo prisiljeni, da izpeljemo enačbo, ki nam bo podala disperzijsko relacijo za grafen.
-
 ** Energija elektrona
-
 Reševali bomo stacionarno Schrödingerjevo enačbo
 
 \[ H \left| \psi \right\rangle = \epsilon \left| \psi \right\rangle,
@@ -452,53 +450,135 @@ Baza Hilbertovega prostora \( \left| \mathbf{R}, n \right\rangle \) ni ortonorma
 
 Produkt
 
-\[ \left\langle \mathbf{R}, n \middle| \mathbf{R}', n' \right\rangle = \delta_{\mathbf{R}, n, \mathbf{R}', n'}
-\]
+\begin{equation}
+\label{eq:10}
+ \left\langle \mathbf{R}, n \middle| \mathbf{R}', n' \right\rangle = \delta_{\mathbf{R}, n, \mathbf{R}', n'}
+\end{equation}
 ima tudi izvendiagonalne člene, ker se valovne funkcije posameznih atomov lahko prekrivajo.
 
-Rešujemo posplošen problem lastnih vrednosti
+Hamiltonian \( H \) zapišemo kot vsoto izoliranih atomskih Hamiltonianov \( H_{at} \) in potencialnega člena \( \Delta V \)
 
-\[ H \mathbf{c} = \epsilon S \mathbf{c}, 
+\[ H = H_{at} + \Delta V 
 \]
-kjer Hamiltonian razdelimo na vsoto izoliranih atomskih Hamiltonianov \( H_{at} \), ki je diagonalen, ter potencial \( \Delta U \), ki zajame prekrivanje med valovnimi funkcijami. Lastne vrednosti \( S \) zapišemo kot
-
-\[ S = \mathbf{I} + \alpha, 
-\]
-kjer \( \mathbf{I} \) vsebuje diagonalne elemente in \( \alpha \) majhne izvendiagonalne elemente. 
 
 Za Hamiltonian izoliran atomov velja
 
 \[ H_{at} \left| \mathbf{R}, n \right\rangle  = \epsilon \left| \mathbf{R}, n \right\rangle.
 \]
 
-Nastavek za Hamiltonian \( H = H_{at} + \Delta V \) vstavimo v enačbo \eqref{eq:8} in dobimo
+Za Hamiltonian \( H \) velja
 
 \begin{align*}
   \left\langle \mathbf{R}, n \middle| H \middle| \mathbf{R}', n' \right\rangle &= \left\langle \mathbf{R}, n \middle| H_{at} \middle| \mathbf{R}', n' \right\rangle + \left\langle \mathbf{R}, n \middle| \Delta V \middle| \mathbf{R}', n' \right\rangle \\
-&= \epsilon_{at} \left\langle \mathbf{R}, n \middle| \mathbf{R}', n ' \right\rangle + \left\langle \mathbf{R}, n \middle| \Delta V \middle| \mathbf{R}', n' \right\rangle
+&= \epsilon_{at} \left\langle \mathbf{R}, n \middle| \mathbf{R}', n ' \right\rangle + \left\langle \mathbf{R}, n \middle| \Delta V \middle| \mathbf{R}', n' \right\rangle.
 \end{align*}
 
-Definiramo
+Dobljeno vstavimo v enačbo \eqref{eq:8} in dobimo
 
-\[ \left\langle \mathbf{R}, n \middle| \Delta V \middle| \mathbf{R}', n' \right\rangle = \begin{cases}
-                                                                                        -\beta &; \mathbf{R},n = \mathbf{R}', n'  \\
-                                                                                        -\gamma &; \mathbf{R}, n \ne \mathbf{R}', n' \end{cases},
+\[ \sum\limits_{\mathbf{R}', n'}^{} c_{\mathbf{R}', n'} \left[ \epsilon_{at} \left\langle \mathbf{R}, n\middle| \mathbf{R}', n' \right\rangle + \left\langle \mathbf{R}, n \middle| \Delta V \middle| \mathbf{R}', n' \right\rangle\right] = \epsilon \sum\limits_{\mathbf{R}', n'}^{} c_{\mathbf{R}', n'} \left\langle \mathbf{R}, n \middle| \mathbf{R}', n' \right\rangle 
 \]
 
-kjer je \( \gamma \) vrednost pokrivalnega integrala za najbližje sosede. Posledično velja
+Izpostavimo ista člena
+
+\begin{equation}
+\label{eq:9}
+ \sum\limits_{\mathbf{R}', n'}^{} c_{\mathbf{R}', n'} \left\langle \mathbf{R}, n \middle| \Delta V \middle| \mathbf{R}', n' \right\rangle = \left( \epsilon - \epsilon_{at} \right) \sum\limits_{\mathbf{R}', n'}^{} c_{\mathbf{R}', n'} \left\langle \mathbf{R}, n \middle| \mathbf{R}', n' \right\rangle
+\end{equation}
+
+in nazadnje upoštevamo na desni strani \( \left\langle \mathbf{R}, n\middle| \mathbf{R}', n' \right\rangle = 1 \)
+
+\[ \sum\limits_{\mathbf{R}', n'}^{} c_{\mathbf{R}', n'} \left\langle \mathbf{R}, n \middle| \Delta V \middle| \mathbf{R}', n' \right\rangle = \left( \epsilon - \epsilon_{at} \right) \left( c_{\mathbf{R}, n} + \sum\limits_{\mathbf{R}', n' \ne \mathbf{R}, n}^{} c_{\mathbf{R}', n'} \left\langle \mathbf{R}, n \middle| \mathbf{R}', n' \right\rangle \right)
+\]
+
+Vsota na levi igra vlogo pokrivalnih integralov \( \beta \) in \( \gamma \), zato definiramo
+
+\[ \left\langle \mathbf{R}, n \middle| \Delta V \middle| \mathbf{R}', n' \right\rangle = \begin{cases}
+                                                                                        -\beta_n &; \mathbf{R},n = \mathbf{R}', n'  \\
+                                                                                        -\gamma_n &; \mathbf{R}, n \ne \mathbf{R}', n' \end{cases}.
+\]
+
+Posledično velja
 
 \[ \left\langle \mathbf{R}, n \middle| H \middle| \mathbf{R}', n' \right\rangle = \begin{cases}
-                                                                                  \epsilon_{at}-\beta &; \mathbf{R}, n = \mathbf{R}', n' \\
-                                                                                  -\gamma &; \mathbf{R}, n \ne \mathbf{R}', n' \\
+                                                                                  \epsilon_{at}-\beta_n &; \mathbf{R}, n = \mathbf{R}', n' \\
+                                                                                  -\gamma_n &; \mathbf{R}, n \ne \mathbf{R}', n' \\
                                                                                   0 &; \text{else}
                                                                                   \end{cases}.
 \]
 
-Za vsak atom \( \mathbf{R}, n \) imamo enačbo
+Vsota na desni pa igra vlogo pokrivalnega integrala \( \alpha \). Če se vrnemo k enačbi \eqref{eq:9}, opazimo, da je enačba v matrični obliki posplošen lastnih vrednosti
 
-\[ \left( \epsilon_{at} - \beta \right) c_{\mathbf{R}, n} + \sum\limits_{\mathbf{R}', n' \in \left\{ nn \right\}}^{} (- \gamma) c_{\mathbf{R}', n'} = \epsilon c_{\mathbf{R}, n} 
+\[ A \mathbf{c} = \left( \epsilon - \epsilon_{at} \right) B \mathbf{c}, 
+\]
+kjer sta \( A, B \) matriki in \( \mathbf{c} \) vektorja koeficientov. Če bi bila matrika \( B \) samo skalar, bi imeli problem lastnih vrednosti, vendar je matrika zaradi izvendiagonalnih členov v produktu \eqref{eq:10}.
+
+Problem rešimo z nastavkom
+
+\[ B = I + \delta B, 
 \]
 
-Prvi člen nam pove, da se energija elektrona na atomu popravi za faktor \( \beta \), medtem ko skalar \( \gamma \) dovoli elektronom skakanje v orbitale najbližjih sosedov.
+kjer \( \delta B \) predstavlja majhne energijske popravke - podobno pokrivalnim integralom \( \alpha \) in \( \beta \). Inverz nastavka je \( B^{-1} = I + \delta \tilde{B} \), kjer \( \delta \tilde{B} \) zanemarimo. Preostane nam
 
+\[ A \mathbf{c} = \left( \epsilon - \epsilon_{at} \right) \mathbf{c}, 
+\]
+kar je navaden problem lastnih vrednosti. Na koncu lahko preobrazimo iz matrične oblike nazaj v vsoto. Za vsak atom \( \mathbf{R}, n \) imamo enačbo
+
+\[ -\beta_n c_{\mathbf{R}, n} + \sum\limits_{\mathbf{R}', n' \in \left\{ nn \right\}}^{} (- \gamma_n) c_{\mathbf{R}', n'} = \left( \epsilon - \epsilon_{at} \right) c_{\mathbf{R}, n} 
+\]
+
+
+#+begin_my_example
+V primeru ene orbitale na celico lahko je problem lastnih vrednosti oblike
+
+\[ - \sum\limits_{\mathbf{R}' \ne \mathbf{R}}^{} \gamma \left( \mathbf{R}' - \mathbf{R} \right) c_{\mathbf{R}} = \left[ \epsilon - \left( \epsilon_{at} - \beta \right) \right] c_{\mathbf{R}},
+\]
+kjer iz člena \( \epsilon_{at} - \beta \) vidimo zamik atomske orbitale, medtem ko nam \( \gamma (\mathbf{R}' - \mathbf{R}) \) pove energijo potrebno za preskok elektrona iz atoma na lokaciji \( \mathbf{R} \) na atom na lokaciji \( \mathbf{R}' \).
+
+S pomočjo Blochovega teorema lahko koeficiente zapišemo v obliki
+
+\[ c_{\mathbf{R}} = c_0 e^{\mathrm{i} \mathbf{k} \cdot \mathbf{R}}, 
+\]
+in problem lastnih vrednosti postane
+
+\[ - \sum\limits_{\mathbf{R}' \ne \mathbf{R}}^{} \gamma \left( \mathbf{R}' - \mathbf{R}  \right) e^{\mathrm{i} \mathbf{k} \cdot \left( \mathbf{R}' - \mathbf{R} \right)} = \epsilon_{at} - \beta - \sum\limits_{\mathbf{R} \ne 0}^{} \gamma(\mathbf{R}) e^{\mathrm{i} \mathbf{k} \cdot \mathbf{R}}.
+\]
+
+Z množenjem \( e^{- \mathrm{i} \mathbf{k} \cdot \mathbf{R}} \) in pokrajšanjem \( c_0 \) dobimo disperzijsko relacijo
+
+\[ \epsilon(\mathbf{k}) = \epsilon_{at} - \beta - \sum\limits_{\mathbf{R}' \ne \mathbf{R}}^{} \gamma \left( \mathbf{R}' - \mathbf{R} \right) e^{\mathrm{i} k \cdot \left( \mathbf{R}' - \mathbf{R} \right)} 
+\]
+#+end_my_example
+
+Vrnimo se nazaj k problemu z dvema orbitalama. Na začetku smo povedali, da se osredotočamo na prispevek \( 2p_z \) orbital k elektronski energijski reži.
+
+Velja
+
+\[ \beta_1 = \beta_2 = \beta. 
+\]
+
+Za bazi \( \mathbf{r}_1 \) in \( \mathbf{r}_2 \) imamo sistem dveh enačb
+
+\begin{align*}
+\gamma c_{\mathbf{R}, 1} - \gamma c_{\mathbf{R}+ \mathbf{a}_1, 1} - \gamma c_{\mathbf{R} + \mathbf{a}_2, 1}  &= \epsilon - \epsilon_{at} = \left[ \epsilon - \left( \epsilon_{at} - \beta \right) \right] c_{\mathbf{R}, 2} \\
+\gamma c_{\mathbf{R}, 2} - \gamma c_{\mathbf{R} - \mathbf{a}_1, 2} - \gamma c_{\mathbf{R} - \mathbf{a}_2, 2}  &= \epsilon - \epsilon_{at} = \left[ \epsilon - \left( \epsilon_{at} - \beta \right) \right] c_{\mathbf{R}, 1}.
+\end{align*}
+
+Podobno kot v zgornjem primeru za eno orbitalo, uporabimo Blochova nastavka
+
+\[ c_{\mathbf{R}, 1} = c_1 e^{\mathrm{i} \mathbf{k} \cdot \mathbf{R}} \quad \text{ in } \quad c_{\mathbf{R}, 2} = c_2 e^{\mathrm{i} \mathbf{k} \cdot \mathbf{R}},
+\]
+ki ju vstavimo v zgornji enačbi in zapišemo v matrični obliki kot
+
+\[ \begin{bmatrix}
+   \epsilon_{at} - \beta - \epsilon & - \gamma \left( 1 + e^{- \mathrm{i} \mathbf{k} \cdot \mathbf{a}_1} + e^{- \mathrm{i} \mathbf{k} \cdot \mathbf{a}_2} \right) \\
+ -\gamma \left( 1 + e^{ \mathrm{i} \mathbf{k} \cdot \mathbf{a}_1} + e^{ \mathrm{i} \mathbf{k} \cdot \mathbf{a}_2} \right)    & \epsilon_{at} - \beta - \epsilon
+    \end{bmatrix} \begin{bmatrix} c_{1} \\ c_{2} \end{bmatrix} = 0.
+\]
+
+Problem lastnih vrednosti ima rešitev za ničelno determinanto, kar pomeni, da se naš problem poenostavi v
+
+\[ \epsilon(\mathbf{k}) = \epsilon_{at} - \beta \pm \gamma \left| 1 + e^{\mathrm{i} \mathbf{k} \cdot \mathbf{a}_1} + e^{\mathrm{i} \mathbf{k} \cdot \mathbf{a}_2} \right|.
+\]
+
+Disperzijska relacija ima dve veji in vsaka od \( p_z \) orbital prispeva dve elektrona energijska pasova.
 
