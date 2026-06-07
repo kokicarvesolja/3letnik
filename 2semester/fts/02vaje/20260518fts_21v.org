@@ -250,8 +250,10 @@ Analogno je za odmik \( v_n \)
 
 Za \( N \) atomov v kristalni mreži imamo na tak način sklopljen sistem \( 2N \) enačb. Periodičen robni pogoj oz.~translacijska simetrija nam omogoča reševanje z Blochovim teorem. Uporabili bomo torej nastavka, ki sta ravna valova
 
-\[ u_n = u_0 e^{\mathrm{i} \left( kna - \omega t \right)} \quad \text{ in } \quad v_n = v_0 e^{\mathrm{i} \left( kna - \omega t \right)}.
-\]
+\begin{equation}
+\label{eq:6}
+ u_n = u_0 e^{\mathrm{i} \left( kna - \omega t \right)} \quad \text{ in } \quad v_n = v_0 e^{\mathrm{i} \left( kna - \omega t \right)}.
+\end{equation}
 
 Nastavka vstavimo v zgornji enačbi. Prva poda rezultat
 
@@ -272,11 +274,13 @@ Analogno iz druge enačbe dobimo
 
 Sedaj lahko to zapišemo v matrični obliki in imam \( 2 \times 2 \) sistem
 
-\[ \begin{bmatrix}
+\begin{equation}
+\label{eq:7}
+ \begin{bmatrix}
   K + Q - \omega ^2 M  & - K - Q e^{\mathrm{i} ka} \\
    -K - Q e^{\mathrm{i} ka} & K + Q - \omega ^2 M
     \end{bmatrix} \begin{bmatrix} u_{0} \\ v_{0} \end{bmatrix} = 0.
-\]
+\end{equation}
 
 Kakor že mnogokrat letos, ta sistem ima rešitev za ničelno determinanto, kar nam poda enačbo
 
@@ -295,8 +299,10 @@ Koren razširimo s \( 2K Q - 2KQ \), zato da dobimo popoln kvadrat, sočasno pa 
 
 Za konec izpostavimo faktor \( \frac{K + Q}{M} \)
 
-\[ \omega ^2 = \frac{K + Q}{M} \left[ 1 \pm \sqrt{1 - \frac{4 K Q}{\left( K + Q \right) ^2} \sin ^2 \left( \frac{ka}{2} \right)}  \,\right] 
-\]
+\begin{equation}
+\label{eq:5}
+ \omega ^2 = \frac{K + Q}{M} \left[ 1 \pm \sqrt{1 - \frac{4 K Q}{\left( K + Q \right) ^2} \sin ^2 \left( \frac{ka}{2} \right)}  \,\right] 
+\end{equation}
 
 Dobili smo disperzijsko relacijo \( \omega (k) \).
 ** Lastne frekvence disperzijske relacije
@@ -326,3 +332,83 @@ Na robu Brillouinove cone \( k = \frac{\pi}{a} \) pa enačba \eqref{eq:4} poda d
 
 Lastni frekvenci sta v tem primer \( \omega ^2 = \frac{2K}{M} \) in \( \omega ^2 = \frac{2Q}{M} \).
 ** Disperzijska relacija blizu središča Brillouinove cone
+
+Blizu središča Brillouinove cone velja \( \left| k \right| \ll \frac{\pi}{a}\), kar pomeni, da lahko enačbo \eqref{eq:5} razvijemo najprej sinusno funkcijo, nato pa še koren
+
+\begin{align*}
+  \omega ^2 &= \frac{K + Q}{M} \left[ 1 \pm \sqrt{1 - \frac{4KQ}{\left( K + Q \right) ^2} \sin ^2 \left( \frac{ka}{2} \right)} \right] \\
+&\approx \frac{K + Q}{M} \left[ 1 \pm \sqrt{1 - \frac{4KQ}{\left( K + Q \right) ^2} \cdot \frac{\left( ka \right) ^2}{4}} \right] \\
+&\approx \frac{K + Q}{M} \left[ 1 \pm \left[ 1 - \frac{KQ}{2 \left( K + Q \right) ^2} \left( ka \right) ^2 \right] \right]
+\end{align*}
+
+Kvadrat pozitivne lastne frekvence je
+
+\[ \omega ^2 = \frac{2 (K + Q)}{M} - \mathcal{O} \left[ \left( ka \right) ^2 \right], 
+\]
+kvadrat negativne lastne frekvence pa
+
+\[ \omega ^2 = \frac{KQ}{2 \left( K + Q \right) M} \left( ka \right) ^2.
+\]
+
+Pozitivna veja \( \omega(k) \) je navzdol obrnjena parabola v okolici \( k = 0 \) in se ji reče /optična veja/.
+
+Negativni veji s frekvenco
+
+\[ \omega = \sqrt{\frac{KQ}{2 (K + Q)}M} \left| k \right|,
+\]
+pravimo /akustična veja/.
+
+Optična veja se pojavi samo, ko imamo več atomov v osnovni celici, medtem ko je akustična veja vedno prisotna.
+** Valovni načini disperzijske relacije
+
+Želimo najti vrednosti oscilacijskih amplitud \( u_0 \) in \( v_0 \), ki smo ju uvedli na začetku poglavja, v enačbi \eqref{eq:6}. Izhajali bomo iz \( 2 \times 2 \) matričnega sistema v enačbi \eqref{eq:7}. Določimo \( Q > K \).
+*** Akustična veja pri \( k = 0 \)
+
+Kvadrat lastne frekvence v središču Brillouinove cone pri \( k = 0 \) za akustično vejo je \( \omega ^2 = 0 \). Matrika se preobrazi v
+
+\[ \begin{bmatrix}
+   K + Q & - (K + Q) \\
+   -- & --
+    \end{bmatrix} \begin{bmatrix} u_{0} \\ v_{0} \end{bmatrix} = 0,
+\]
+kar vodi do \( u_0 = v_0 \). Za celoten kristal to pomeni \( u_n = v_n = u_0 \). Ta rešitev je v fizikalnem smislu translacija celotne kristala. To je tudi smiselno, saj \( \omega ^2 = 0 \) ni osciliranje.
+*** Optična veja pri \( k = 0 \)
+
+Kvadrat lastne frekvence je \( \omega ^2 = \frac{2 (K + Q)}{M} \) in matrika je oblike
+
+\[ \begin{bmatrix}
+   -(K + Q) & -(K + Q) \\
+   -- & --
+    \end{bmatrix} \begin{bmatrix} u_{0} \\ v_{0} \end{bmatrix} = 0. 
+\]
+
+Dobimo enakost \( v_0 = - u_0 \), kar pomeni, da atoma v osnovni celici nihata v nasprotnih si fazah.
+*** Akustična veja pri \( k = \frac{\pi}{a} \)
+
+Kvadrat lastne frekvence \( \omega ^2 = \frac{2Q}{M} \) blizu roba Brillouinove cone \( k = \frac{\pi}{a} \) poda matriko
+
+\[ \begin{bmatrix}
+   K - Q & - (K - Q) \\
+   -- & --
+    \end{bmatrix} \begin{bmatrix} u_{0} \\ v_0 \end{bmatrix} = 0. 
+\]
+
+Amplitudi podaja enakost \( u_0 = v_0 \) za osnovno celico, kar pomeni, da atoma v njej nihata v fazi. Splošen nastavek \eqref{eq:6} pa je
+
+\begin{align*}
+  u_n &= u_0 e^{\mathrm{i} kna} = \left( -1 \right)^n u_0 \\
+v_n &= v_0 e^{\mathrm{i} kna} = \left( -1 \right)^n = \left( -1 \right)^n_0
+\end{align*}
+
+Sosednji osnovni celici nihata v nasprotnih fazah. Frekvenca je odvisna od večje konstante vzmeti.
+*** Optična veja pri \( k = \frac{\pi}{a} \)
+
+Kvadrat lastne frekvence \( \omega ^2 = \frac{2K}{M} \) poda matriko
+
+\[ \begin{bmatrix}
+   Q - K  & - (Q - K) \\
+   -- & --
+    \end{bmatrix} \begin{bmatrix} u_{0} \\ v_{0} \end{bmatrix} = 0.
+\]
+
+Atoma v osnovni celici nihata z isto amplitudo v isti smeri, saj \( u_0 = v_0 \), sosednji osnovni celici pa nihata v nasprotnih fazah. Frekvenca je odvisna od manjše konstante vzmeti.
