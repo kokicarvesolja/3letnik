@@ -155,7 +155,6 @@ kjer indeks \( s \) poteka po vseh veja disperzijske relacije (akustične in opt
 \end{equation}
 
 Energijo bomo na koncu odvajali po temperaturi, kar pomeni, da lahko konstantne člene zavržemo.
-
 *** Nizkotemperaturna limita 
 
 Pri nizkotemperaturni limiti \( k_B T \ll \hbar \omega (\mathbf{k}) \) so vzbujeni samo nizkofrekvenčni fononi. Prispevek k notranji energiji zaradi

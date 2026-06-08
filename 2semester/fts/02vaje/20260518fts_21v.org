@@ -154,7 +154,7 @@ oziroma
 
 \begin{equation}
 \label{eq:1}
-  e^{\beta \mu} = \frac{1}{4} e^{\beta \epsilon_d} \left[ -1 \pm \sqrt{1 + \frac{8N_d}{N_c} e^{\beta(\epsilon_d - \epsilon_c)}} \right],
+  e^{\beta \mu} = \frac{1}{4} e^{\beta \epsilon_d} \left[ -1 \pm \sqrt{1 + \frac{8N_d}{N_c} e^{\beta(\epsilon_c - \epsilon_d)}} \right],
 \end{equation}
 kjer vzamemo rešitev s plusom, saj je drugače rezultat nefizikalen.
 
