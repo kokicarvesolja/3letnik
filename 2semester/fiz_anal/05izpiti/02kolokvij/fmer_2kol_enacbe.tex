@@ -1,0 +1,285 @@
+\documentclass[10pt,landscape]{article}
+\usepackage{multicol}
+\usepackage[landscape, inner=1cm, outer=1cm, top=1cm, bottom=1cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{icomma}
+\usepackage{soul}
+\usepackage{physics}
+\usepackage{cancel}
+\usepackage[european]{circuitikz}
+
+% Turn off header and footer
+\pagestyle{empty}
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+	{-1ex plus -.5ex minus -.2ex}%
+	{0.5ex plus .2ex}%x
+	{\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+	{-1explus -.5ex minus -.2ex}%
+	{0.5ex plus .2ex}%
+	{\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+	{-1ex plus -.5ex minus -.2ex}%
+	{1ex plus .2ex}%
+	{\normalfont\small\bfseries}}
+\makeatother
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+% My environments
+\theoremstyle{definition}
+\newtheorem*{primer}{Primer}
+
+\begin{document}
+\begin{multicols}{3}
+
+  \section{Senzorji}
+
+  Imamo vhodne podatke \( z(t) \) v senzor in izhodne podatke izven \( x(t) = \hat{x} (t) \). Senzor \( n \)-tega reda je optimalen za sledenje spremenljivki z dinamiko \( \frac{\mathrm{d} ^{n}}{\mathrm{d} t^{n}} x = w(t) \), kjer je \( w(t) \) dinamičen šum. Ojačevalni faktor je \( \lim_{t \to \infty} K = K_{\infty} \). 
+
+  \subsection{Senzor 1. reda}
+
+  Enačba senzorja je \( z(t) = \tau \dot{x} + x \), kjer je \( \tau ^2 = \frac{R}{Q} \). \( R = \left\langle r(t), r(t') \right\rangle \) in \( Q = \left\langle w(t) w(t') \right\rangle \). Prenosna funkcija \( H(s) = \frac{1}{1 + \tau s} \) in potem izračunamo \( X(s) = H(s) Z(s) \). 
+
+  \begin{primer}[Linearen signal]
+  \end{primer}
+
+  \subsection{Senzor 2. reda}
+  
+  Enačba senzorja je \( \ddot{x} + 2 \xi \omega_0 \dot{x} + \omega_0 ^2 x = \omega_0 ^2 z \), kjer je \( \omega_0 ^2 = \frac{Q}{R} \) in optimalna frekvenca dušenja \( \theta = \frac{\sqrt{2}}{2} \). Prenosna funkcija je \( H(s) = \left( \omega_0 ^2 + \color{gray}{2 \xi \omega_0 s} \right) \left[ s ^2 + 2 \xi \omega_0 s + \omega_0 ^2 \right]^{-1} = \omega_0 ^2 \left[ \left( s + \xi \omega_0 \right)^2 + \omega_0 ^2 \left( 1 - \xi \right) \right] ^{-1} \). Sivi del je za sledenje še odvodu \( \dot{z} \).
+
+  Tri vrste dušenja: \( \xi < 1 \) je podkritično, \( \xi > 1 \) nadkritično in \( \xi = 1 \) kritično. 
+
+  \subsection{Periodični vhodni signal}
+
+  \( z(t) = z_0 e^{\mathrm{i} \omega t} \implies x(t) = x_0 e^{\mathrm{i} \delta} e^{\mathrm{i} \omega t} \)  in \( s \to \mathrm{i} \omega \).
+
+  Velikosti amplitud \( \left| H(\mathrm{i} \omega) \right| = \frac{x_0}{z_0}\) in \( \tan \delta = \frac{\Im H}{\Re H} \).
+  
+  \section{Elektronika}
+
+  Tok ne teče v smeri \( U_{out} \), ampak na ground. 
+
+  \textbf{low-pass filter}
+
+  $H = \frac{U_{out}}{U_{in}} = \frac{1}{1 + i \omega \tau}$, \qquad $\tau = RC$ \\
+  \vspace{-15pt}
+  \begin{center}
+    \begin{circuitikz}
+      \scalebox{0.6}{
+        \draw node[left]{$U_{in}$} (0, 0) to[R=$R$, o-] (2, 0) to[short, -o] (4, 0) 
+        node[right]{$U_{out}$};
+        \draw (2, 0) to[C=$C$] node[ground]{} (2, -1.5);
+      }
+    \end{circuitikz} 
+  \end{center}\vspace{-25pt}
+
+  Bodejev diagram ima na \( x \) osi \( \log_{10} (\omega t) \) in na \( y \) osi \( 10 \log \left( \left| H \right| \right) \).
+
+  \[
+    \begin{array}[tb]{|c|c|c|} \hline
+      \omega \tau \gg 1 & \left( \omega \tau \right)^{-2} & -20 \log (\omega \tau) \\
+      \omega \tau \ll 1 & 1 & 0 \mathrm{dB} \\
+      \omega \tau = 1 & \frac{1}{2} & 10 \log 2^{-1} = - 3 \, \mathrm{dB}. \\\hline
+    \end{array}
+  \]
+
+  \textbf{high-pass filter}
+
+  $H = \frac{i \omega \tau}{1 + i \omega \tau}$, \qquad $\tau = RC$ \\
+  \vspace{-20pt}
+  \begin{center}
+    \begin{circuitikz}
+      \scalebox{0.6}{
+        \draw node[left]{$U_{in}$} (0, 0) to[C=$C$, o-] (2, 0) to[short, -o] (4, 0) 
+        node[right]{$U_{out}$};
+        \draw (2, 0) to[R=$R$] node[ground]{} (2, -1.5);
+      }
+    \end{circuitikz}
+  \end{center}\vspace{-30pt}
+
+  \section{Aktivna vezja}
+  \textbf{Operacijski ojačevalec (OPAMP)} \\
+  $U_{out} = A(s) (U_+ - U_-)$ \\
+  Idealni OPAMP: $A_s \to \infty$, $I_+ = I_- = 0$ in \( Z_+ = Z_- = \infty \) \\
+  \vspace{-25pt}
+  \begin{center}
+    \begin{circuitikz}
+      \scalebox{0.6}{
+        \draw (0,0) node[op amp] (opamp) {} 
+        (opamp.+) node[left] {$U_+$}
+        (opamp.-) node[left] {$U_-$}
+        (opamp.out) node[right] {$U_{out}$}
+        (opamp.up) --++(0,0.5) node[vcc]{$5 \ {V}$}
+        (opamp.down) --++(0,-0.5) node[vee]{$-5 \ {V}$};
+      }
+    \end{circuitikz} 
+  \end{center}\vspace{-40pt}
+
+
+  \textbf{Diferenciator} \\
+  $U_{out}(t) = \tau \dot U_{in}(t)$ \\
+  $H = i \omega \tau$, \qquad $\tau = RC$ \\
+
+  V stičišču pred opampom in po kondenzatorjem, je napetost \( 0 \mathrm{V} \), saj je \( U_+ = U_- \) in \( U_- = 0 \). Tok teče od \( U_{in} \) do \( U_{out} \) in skozi člena teče enak tok \( I_c = I_R \), kjer je \( I_c = U_{in} / Z_C \) in \( I_R = U_{out} / R \)
+  \vspace{-25pt}
+  \begin{circuitikz}
+    \scalebox{0.6}{
+      \draw (0,0) node[op amp] (opamp) {} 
+      (opamp.+) to[short] ++(0, -0.5) node[ground] {}
+      (opamp.-) to[short] ++(-0.5, 0) --coordinate(A) ++(-0.5, 0) to[C=$C$] ++(-1, 0) to[short, 
+      -o] ++(-1, 0) node[left]{$U_{in}$}
+      (A) to[short] ++(0, 1) to[R=$R$] ++(3, 0) -- ++(0, -1.49)
+      (opamp.out) to[short, -o] (2, 0) node[right] {$U_{out}$};
+    }
+  \end{circuitikz} \vspace{-20pt} \\
+
+  \textbf{Integrator} \\
+  $U_{out}(t) = - \frac{1}{\tau} \int_0^t U_{in}(t') \dd{t'}$ \\
+  $H = - \frac{1}{i \omega \tau}$, \qquad $\tau = RC$ \\
+  \vspace{-25pt}
+  \begin{circuitikz}
+    \scalebox{0.6}{
+      \draw (0,0) node[op amp] (opamp) {} 
+      (opamp.+) to[short] ++(0, -0.5) node[ground] {}
+      (opamp.-) to[short] ++(-0.5, 0) --coordinate(A) ++(-0.5, 0) to[R=$R$] ++(-1, 0) to[short, 
+      -o] ++(-1, 0) node[left]{$U_{in}$}
+      (A) to[short] ++(0, 1) to[C=$C$] ++(3, 0) -- ++(0, -1.49)
+      (opamp.out) to[short, -o] (2, 0) node[right] {$U_{out}$};
+    }
+  \end{circuitikz} \vspace{-15pt} \\
+
+  \textbf{Invertirajoči ojačevalnik} \\
+  $H = - \frac{R_2}{R_1}$ \\
+  \vspace{-30pt}
+  \begin{circuitikz}
+    \scalebox{0.6}{
+      \draw (0,0) node[op amp] (opamp) {} 
+      (opamp.+) to[short] ++(0, -0.5) node[ground] {}
+      (opamp.-) to[short] ++(-0.5, 0) --coordinate(A) ++(-0.5, 0) to[R=$R_1$] ++(-1, 0) to[short, 
+      -o] ++(-1, 0) node[left]{$U_{in}$}
+      (A) to[short] ++(0, 1) to[R=$R_2$] ++(3, 0) -- ++(0, -1.49)
+      (opamp.out) to[short, -o] (2, 0) node[right] {$U_{out}$};
+    }
+  \end{circuitikz} \\
+
+  \textbf{Neinvertirajoči ojačevalnik} \\
+
+  $H = 1 + \frac{R_1}{R_2}$ \\
+  \begin{circuitikz}
+    \scalebox{0.6}{
+      \draw (0,0) node[op amp] (opamp) {} 
+      (opamp.+) to[short, -o] ++(-1,0) node[left]{$U_{in}$}
+      (opamp.-) -- ++(0, 1) -- ++(2.5, 0) coordinate(A) to[R=$R_1$] ++(0, -1.49)
+      (A) to[R=$R_2$] ++(2, 0) node[ground]{}
+      (opamp.out) to[short, -o] (2, 0) node[right] {$U_{out}$};
+    }
+  \end{circuitikz}  \\
+
+  \textbf{Napetostni sledilnik} \\ 
+
+  Po dolgem času je \( U_{in} = U_{out} \) in prenosna funkcija je \( H = 1 \). Pomaga nam pri združevanje vezij, saj v negativno zanko ne teče tok!
+  \vspace{-35pt}
+  \begin{circuitikz}
+    \scalebox{0.6}{
+      \draw (0,0) node[op amp] (opamp) {} 
+      (opamp.+) to[short, -o] ++(-1,0) node[left]{$U_{in}$}
+      (opamp.-) -- ++(0, 1) -- ++(2.5, 0) coordinate(A) -- ++(0, -1.49)
+      (opamp.out) to[short, -o] (2, 0) node[right] {$U_{out}$};
+    }
+  \end{circuitikz} \\
+
+  \textbf{Negativna povratna zanka}
+
+  Za prenosno funkcijo \( H(s) \) in ojačevalnik \( A \), in dodatno prenosno funkcijo \( F(s) \) bo veljalo \( U_{out} = K H \left( U_{in} - F(s) U_{out} \right) \).
+
+  \subsection{Resonančna vezja}
+
+  \textbf{Pasovni prepustni (band-pass) filter} \\
+  $H = \frac{s \omega_c}{s^2 + s \omega_c + \omega_0^2}$\\
+  $\omega_0^2 = \frac{1}{LC}$, \qquad $\omega_c = \frac{1}{RC}$ \\
+  Blizu resonance $s \approx i \omega_0$: \\
+  $\Delta \omega_{-3 \, \text{dB}} = \omega_c$ \\
+  $Q = \frac{\omega_0}{\Delta \omega_{-3 \, \text{dB}}} = \frac{\omega_0}{\omega_c}$ \\
+
+  Rešujemo ga tako, da vzporedno vezana \( L \) in \( C \) nadomestimo z impedanco \( Z_{LC} \), za katero velja \( Z_{LC}^{-1} = Z_C^{-1} + Z_L^{-1} \), kjer je \( Z_C = \left( \mathrm{i} \omega C \right)^{-1} \) in \( Z_L = \mathrm{i} \omega L \).
+  \vspace{-17pt}
+  \begin{center}
+    \begin{circuitikz}
+      \scalebox{0.6}{
+        \draw node[left]{$U_{in}$} (0, 0) to[R=$R$, o-] (2, 0) to[short, -o] (4, 0) 
+        node[right]{$U_{out}$};
+        \draw (2, 0) -- ++(0, -0.5) -- ++(0.5, 0) to[cute, L=$L$] ++(0, -1.5) -- 
+        ++(-0.5, 
+        0) 
+        coordinate(A) -- ++(-0.5, 0) to[C=$C$] ++(0, 1.5) -- ++(0.5, 0)
+        (A) node[ground]{};
+      }
+    \end{circuitikz} 
+  \end{center}\vspace{-35pt}
+
+  \textbf{Pasovni neprepustni (band-reject) filter} \\
+  $H = \frac{s^2 + \omega_0^2}{s^2 + s\omega_c + \omega_0^2}$ \\
+  $\omega_0^2 = \frac{1}{LC}$, \qquad $\omega_c = \frac{R}{L}$ \\
+  Blizu resonance $s \approx i \omega_0$: \\
+  $\Delta \omega_{-3 \, \text{dB}} = \omega_c$ \\
+  $Q = \frac{\omega_0}{\Delta \omega_{-3 \, \text{dB}}} = \frac{\omega_0}{\omega_c}$ \\
+  \vspace{-17pt}
+  \begin{center}
+    \begin{circuitikz}
+      \scalebox{0.6}{
+        \draw node[left]{$U_{in}$} (0, 0) to[R=$R$, o-] (2, 0) to[short, -o] (4, 0) 
+        node[right]{$U_{out}$};
+        \draw (2, 0) to[C=$C$] ++(0, -1) to[cute, L = $L$] ++(0, -1) node[ground]{};
+      }
+    \end{circuitikz} 
+  \end{center}\vspace{-45pt}
+
+  \section{Statistika}
+
+  Vzorec \( \left\{ z_i \right\}_{i = 1}^N \) in \( z_i \sim \mathcal{N} (a, \sigma ^2 ) \). Želimo oceniti vrednosti parametrov \( \mathcal{N} \). Pogoj nepristranskosti pravi, da je pričakovana vrednosti cenilke \( u \) enaka količini, ki jo ocenjujemo: \( \left\langle u \right\rangle = a\). \\
+
+  \( \bar{z} = \frac{1}{N} \sum\limits_i^{} z_i \) \\
+
+  Če poznamo \( a \),  \( \sigma = \frac{1}{N} \sum\limits_{}^{} \left( z_i - a \right) ^2 \), drugače \\
+
+\( \left\langle s ^2 \right\rangle = \frac{1}{N - 1} \sum\limits_i^{} \left( z_i - \bar{z} ^2 \right)\)
+
+  \section{Misc}
+
+  Laplaceove transformacije
+
+  \[
+    \begin{array}[tb]{|c|c|} \hline
+      f(t) & F(s)  \\\hline
+      \Theta(t) & \frac{1}{s}  \\
+      e^{at} & \frac{1}{s - a} \\
+      f(t) e^{at}& F(s - a) \\
+      \frac{\mathrm{d} }{\mathrm{d} t} f(t) & s F(s) \\
+      t & \frac{1}{s ^2} \\
+      t^n & \frac{n!}{s^{n + 1}} \\
+      \cos (\omega t) & \frac{s}{s ^2 + \omega ^2} \\
+      \sin (\omega t) & \frac{\omega}{s ^2 + \omega ^2} \\
+      \delta(t) & 1 \\
+      \Theta(t - a) & \frac{1}{s} e^{-a s} \\
+      f(t - \tau) \Theta(t - \tau) & e^{- s \tau} F(s) \\
+      \frac{\mathrm{d} ^{n}}{\mathrm{d} t^n} f(t) & s^n F(s) \\ \hline
+    \end{array}
+  \]
+
+  Pod pogojem, da so \( f(0) = f'(0) = \ldots = \frac{\mathrm{d} ^{n - 1}}{\mathrm{d} t^{n - 1}} f(0) = 0 \). Če \( f(0) \ne 0 \), potem \( \mathcal{L}(f) = F(s) + f(0) \).
+\end{multicols}
+\end{document}
