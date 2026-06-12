@@ -54,7 +54,11 @@
 
   Enačba senzorja je \( z(t) = \tau \dot{x} + x \), kjer je \( \tau ^2 = \frac{R}{Q} \). \( R = \left\langle r(t), r(t') \right\rangle \) in \( Q = \left\langle w(t) w(t') \right\rangle \). Prenosna funkcija \( H(s) = \frac{1}{1 + \tau s} \) in potem izračunamo \( X(s) = H(s) Z(s) \). 
 
-  \begin{primer}[Linearen signal]
+  \begin{primer}[Linearen signal] Signal \( z(t) = kt \), kar je \( Z(s) = \frac{k}{s ^2} \). Izhodni signal je (parcialni ulomki) \\
+    \( X(s) = \frac{1}{1 + \tau s} \frac{k}{ s^2 } = k \left( \frac{\tau ^2}{1 + \tau s} - \frac{\tau}{s} + \frac{1}{s ^2} \right) \). \\
+    Izhodni signal je potem \\
+    \( x(t) = k \left( \tau e^{-t/ \tau} - \tau \Theta(t) + t \right) \) in v \( \lim_{t \to \infty} = k \tau - kt \). Potem je \\
+    \( \Delta (t) = z(t) - k(t) = k \tau \)
   \end{primer}
 
   \subsection{Senzor 2. reda}
@@ -115,7 +119,7 @@
   \textbf{Operacijski ojačevalec (OPAMP)} \\
   $U_{out} = A(s) (U_+ - U_-)$ \\
   Idealni OPAMP: $A_s \to \infty$, $I_+ = I_- = 0$ in \( Z_+ = Z_- = \infty \) \\
-  \vspace{-25pt}
+  \vspace{-60pt}
   \begin{center}
     \begin{circuitikz}
       \scalebox{0.6}{
@@ -136,6 +140,7 @@
 
   V stičišču pred opampom in po kondenzatorjem, je napetost \( 0 \mathrm{V} \), saj je \( U_+ = U_- \) in \( U_- = 0 \). Tok teče od \( U_{in} \) do \( U_{out} \) in skozi člena teče enak tok \( I_c = I_R \), kjer je \( I_c = U_{in} / Z_C \) in \( I_R = U_{out} / R \)
   \vspace{-25pt}
+  \begin{center}
   \begin{circuitikz}
     \scalebox{0.6}{
       \draw (0,0) node[op amp] (opamp) {} 
@@ -145,12 +150,14 @@
       (A) to[short] ++(0, 1) to[R=$R$] ++(3, 0) -- ++(0, -1.49)
       (opamp.out) to[short, -o] (2, 0) node[right] {$U_{out}$};
     }
-  \end{circuitikz} \vspace{-20pt} \\
+  \end{circuitikz}
+  \end{center}\vspace{-25pt}
 
   \textbf{Integrator} \\
   $U_{out}(t) = - \frac{1}{\tau} \int_0^t U_{in}(t') \dd{t'}$ \\
   $H = - \frac{1}{i \omega \tau}$, \qquad $\tau = RC$ \\
   \vspace{-25pt}
+  \begin{center}
   \begin{circuitikz}
     \scalebox{0.6}{
       \draw (0,0) node[op amp] (opamp) {} 
@@ -160,11 +167,13 @@
       (A) to[short] ++(0, 1) to[C=$C$] ++(3, 0) -- ++(0, -1.49)
       (opamp.out) to[short, -o] (2, 0) node[right] {$U_{out}$};
     }
-  \end{circuitikz} \vspace{-15pt} \\
+  \end{circuitikz}
+  \end{center}\vspace{-15pt}
 
   \textbf{Invertirajoči ojačevalnik} \\
   $H = - \frac{R_2}{R_1}$ \\
   \vspace{-30pt}
+  \begin{center}
   \begin{circuitikz}
     \scalebox{0.6}{
       \draw (0,0) node[op amp] (opamp) {} 
@@ -174,11 +183,14 @@
       (A) to[short] ++(0, 1) to[R=$R_2$] ++(3, 0) -- ++(0, -1.49)
       (opamp.out) to[short, -o] (2, 0) node[right] {$U_{out}$};
     }
-  \end{circuitikz} \\
+  \end{circuitikz}
+  \end{center}\vspace{-25pt}
 
   \textbf{Neinvertirajoči ojačevalnik} \\
 
   $H = 1 + \frac{R_1}{R_2}$ \\
+  \vspace{-60pt}
+  \begin{center}
   \begin{circuitikz}
     \scalebox{0.6}{
       \draw (0,0) node[op amp] (opamp) {} 
@@ -187,7 +199,8 @@
       (A) to[R=$R_2$] ++(2, 0) node[ground]{}
       (opamp.out) to[short, -o] (2, 0) node[right] {$U_{out}$};
     }
-  \end{circuitikz}  \\
+  \end{circuitikz}
+  \end{center}
 
   \textbf{Napetostni sledilnik} \\ 
 
@@ -200,7 +213,7 @@
       (opamp.-) -- ++(0, 1) -- ++(2.5, 0) coordinate(A) -- ++(0, -1.49)
       (opamp.out) to[short, -o] (2, 0) node[right] {$U_{out}$};
     }
-  \end{circuitikz} \\
+  \end{circuitikz} \vspace{20pt}\\
 
   \textbf{Negativna povratna zanka}
 
@@ -256,7 +269,68 @@
 
   Če poznamo \( a \),  \( \sigma = \frac{1}{N} \sum\limits_{}^{} \left( z_i - a \right) ^2 \), drugače \\
 
-\( \left\langle s ^2 \right\rangle = \frac{1}{N - 1} \sum\limits_i^{} \left( z_i - \bar{z} ^2 \right)\)
+  \( \left\langle s ^2 \right\rangle = \frac{1}{N - 1} \sum\limits_i^{} \left( z_i - \bar{z} ^2 \right)\)\\
+  \textbf{T-statistika} \\
+  Porazdelitev \( S(k) = \frac{\mathrm{d} P}{\mathrm{d} T} (k) = \frac{1}{\sqrt{k} B \left( \frac{k}{2}, \frac{1}{2} \right)} \left( 1 + \frac{T ^2}{k} \right)^{- \frac{k + 1}{2}} \) in \\
+  \( T = \frac{\bar{z} - a}{\sqrt{s ^2}} \sqrt{N} \sim S (N - 1) \), \( k = N - 1 \) prostostne stopnje \\
+  Interval zaupanja pir \( \alpha \) določiš z rešitvijo \( P \left( \left| T \right| > T_{>} \right) = \bf{\alpha} \) in ocena je \\
+  \( a = \bar{z} \pm T_{>} \frac{s}{\sqrt{N}} \)
+
+  \( \chi ^2 \) \textbf{statistika} \\
+  Izmerke \( z_i \) pretvorimo na nromalno porazdelitev \( x_i = \frac{\left( z_i - a \right) ^2}{\sigma ^2} \sim \mathcal{N} (0, 1) \), potem \\
+  \( \chi ^2 = \sum\limits_i^{} \frac{\left( z_i - a \right) ^2}{\sigma ^2} = (N - 1) \frac{s ^2}{\sigma ^2} \sim \chi ^2 (k) = \chi ^2 (N - 1 \), \\
+  kjer je \( \chi ^2 \) porazdelitev \( \chi ^2 (k) = \frac{\mathrm{d} P}{\mathrm{d} \chi ^2 }(k) \). \\
+  Interval zaupanja pri \( \alpha \), rešimo enačbi \( P \left( \chi ^2 > \chi_{>} ^2 \right) = \frac{\alpha}{2} \) in \( P \left( \chi ^2 > \chi_{<} ^2 \right) = 1 - \frac{\alpha}{2} \)
+
+  \( \sigma_{\lessgtr} = (N - 1) \frac{s ^2}{\chi ^2_{\gtrless}} \)
+
+  \textbf{Primerjava dveh vzorcev} \\
+  Dva vzorca \( \left\{ x_i \right\}_{i = 1}^N \) in \( \left\{ y_i \right\}_{i = 1}^M \), \( x_i \sim \mathcal{N} (a_x, \sigma ^2 \) in \( y\sim \mathcal{N} ( a_y, \sigma ^2 ) \). 
+
+  \[ T = \frac{\left( \bar{x} - \bar{y} \right) - \left( a_x - a_y \right)}{\sqrt{\frac{1}{N} + \frac{1}{M}}} \frac{\sqrt{N + M - 2}}{\sqrt{s_x ^2 (N - 1) + s_y ^2 (M - 1}} \sim S (N + M - 2) 
+  \]
+
+  \textbf{Testiranje hipotez}\\
+  Nulta hipoteza \( H_0: \ a = a_0 \). Izračunaš \( T_0 = \frac{\bar{z} - a}{s ^2} \sqrt{N} \) in primerjaš z rešitvijo enačbe \( P \left( \left| T \right| > T_C \right) = \alpha \). Če \( \left| T_0 \right| > T_C \) hipotezo zavrnemo, drugače je ne moremo zavreči.
+
+  Nulta hipoteza \( H_0 = \sigma ^2 = \sigma ^2_0 \). Izračunaš \( \chi_0 ^2 = (N - 1) \frac{s ^2}{\sigma_0 ^2} \) in primerjaš z rešitvama \\
+  \( P \left( \chi ^2 > \chi_{>} ^2 \right) = \frac{\alpha}{2} \) in \( P \left( \chi ^2 > \chi_{<} ^2 \right) = 1 - \frac{\alpha}{2} \)\\
+  Če \( \chi_0 ^2 \le \chi_{<} ^2 \) ali \( \chi_0 ^2 \ge \chi_{>} ^2 \), hipotezo zavrnemo. 
+
+  \section{Oblikovni testi}
+
+  \subsection{Pearsonov test \( \chi_p ^2 \)}
+
+  Izmeri \( \left\{ z_i \right\}_{i = 1}^N \) so porazdeljeni v \( k \) razredov/intervalo. Število izmerkov v \( k \)-tem intervalu je \( N_k \) in testiramo porazdelitveno funkcijo \( \frac{\mathrm{d} P}{\mathrm{d} x} \) \\
+
+  \( P_k = \int\limits_{z_{k - 1}}^{z_k} \frac{\mathrm{d} P}{\mathrm{d} x} \, \mathrm{d} x \) \\
+  \( \chi_p ^2 = \sum\limits_{i = 1}^k \frac{(N_k - Np_k)}{N p_k} \sim \chi ^2 (k - 1) \) \textbf{za} \( \bf{Np_k} \ge 5 \) . 
+
+  \section{Linearna metoda najmanjših kvadratov}
+
+  Imamo \( N \) meritev \( z_i = z(t_i) \sim \mathcal{N} (a_i, \sigma_i ^2), \ \sigma_{ij} = 0 \) in iščemo optimalno oceno \( M \) parametrov \( \mathbf{x} \in \mathbb{R}^M \) za model
+
+  \[ \mathbf{z} = \begin{bmatrix} z(t_{1}) \\ z(t_{2}) \\ \vdots \\ z(t_{N}) \end{bmatrix} = H \mathbf{x} = \begin{bmatrix}
+    f_{0} (t_1) & \ldots & f_M (t_1)  \\
+    \vdots & & \\
+    f_0 (t_{N}) & \ldots & f_M (t_N)
+  \end{bmatrix}
+  \begin{bmatrix} x_{0} \\ x_{2} \\ \vdots \\ x_{M} \end{bmatrix}
+  \]
+Ker je \( \sigma = \sigma_i \ \forall i  \), je \( R = \sigma ^2 I \) (ni korelacije).
+
+  Minimiziranje kvadratne forme \\
+  \( \chi ^2 = 2J = \mathbf{r} R^{-1} \mathbf{r}^T \sim \chi ^2 (N - 1) \),\\
+  poda enačbi\\
+  \( \hat{\mathbf{x}} = \left( H^T H \right)^{-1} H^T \mathbf{z} \) in \\
+  \( P = \left( H^T H \right)^{-1} \delta ^2 \)
+
+  \section{Linearni model z 2 parametroma}
+
+  \( z = x_0 t + x_1 \), kar pomeni \( f_0 (x) = x \) in \( f_1 (x) = 1 \). Imamo \( n \) izmerkov \( z_i = z (t_i) \). Potem je
+  \[ \hat{\mathbf{x}} = \frac{1}{C} \begin{bmatrix} N \sum\limits_i^{} t_i z_i  - \left( \sum\limits_i^{} t_i \right) \cdot \left( \sum\limits_{i}^{}z_i \right) \\ - \left( \sum\limits_i^{} t_i \right) \left( \sum\limits_i^{} t_i z_i \right) + \left( \sum\limits_i^{} z_i \right) \cdot \left( \sum\limits_i^{} t_i ^2 \right)  \end{bmatrix},
+  \]
+  kjer je \( C = N \sum\limits_i^{} t_i ^2 - \left( \sum\limits_i^{} t_i \right) ^2 \).
 
   \section{Misc}
 
@@ -279,7 +353,15 @@
       \frac{\mathrm{d} ^{n}}{\mathrm{d} t^n} f(t) & s^n F(s) \\ \hline
     \end{array}
   \]
-
-  Pod pogojem, da so \( f(0) = f'(0) = \ldots = \frac{\mathrm{d} ^{n - 1}}{\mathrm{d} t^{n - 1}} f(0) = 0 \). Če \( f(0) \ne 0 \), potem \( \mathcal{L}(f) = F(s) + f(0) \).
+  Pod pogojem, da so \( f(0) = f'(0) = \ldots = \frac{\mathrm{d} ^{n - 1}}{\mathrm{d} t^{n - 1}} f(0) = 0 \). Če \( f(0) \ne 0 \), potem \( \mathcal{L}(f) = F(s) + f(0) \).\\
+  Inverz matrike \\
+  \( A = \begin{bmatrix}
+         a & b \\
+         c & d
+  \end{bmatrix} \) je\\
+  \( A^{-1} = \frac{1}{ad - bc} \begin{bmatrix}
+               d & -b \\
+               -c & a
+               \end{bmatrix} \)
 \end{multicols}
 \end{document}
