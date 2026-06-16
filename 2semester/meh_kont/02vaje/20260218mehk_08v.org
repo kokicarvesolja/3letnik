@@ -201,7 +201,7 @@ oziroma v prvem redu približka
 \[ u_{ij} \approx \frac{1}{2} \left( \frac{\partial u_{i}}{\partial x_{j}} + \frac{\partial u_{j}}{\partial x_{i}}  \right).
 \]
 
-Tenzor \( \underline{\underline{u}} \) lahko zapišemo tudi kot
+Tenzor \( \mathsf{u} \) lahko zapišemo tudi kot
 
 \[ \underline{\underline{u}} = \frac{1}{2} \left( \nabla \mathbf{u} + \left( \nabla \mathbf{u} \right)^T \right).
 \]

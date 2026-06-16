@@ -16,7 +16,7 @@ Na palico delujemo s silo \( F \) v smeri \( z \) na osnovno ploskev \( S \). Za
 
 Spremembo površine bomo izračunali po enačbi, izpeljani na predavanjih,
 
-\[ \frac{\Delta V}{V} = \mathrm{tr} \left( u \right).
+\[ \frac{\Delta V}{V} = \mathrm{tr} \left( \mathsf{u} \right).
 \]
 
 Priboriti se moramo torej do posameznih elementov deformacijskega tenzorja.
@@ -64,7 +64,7 @@ Nimamo sil, ki delujejo na celoten volumen, iz česar sledi \( f_z = 0 \). Cauch
 \[ \frac{\partial p_{zk}}{\partial x_{k}} = 0.
 \]
 
-Deformacijski tenzor ustreza enačbi iz uvoda \ref{eq:1}
+Deformacijski tenzor ustreza enačbi iz uvoda \eqref{eq:1}
 
 \[ u_{ij} = \frac{1}{2 \mu} p_{ij} - \frac{\lambda}{2 \mu \left( 2 \mu + 3 \lambda \right)} p_{ll} \delta_{ij}.
 \]
