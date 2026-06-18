@@ -151,7 +151,7 @@ Drugi Newtonov zakon v zveznem mediju je Cauchyjeva enačba
 
 kjer so \( f_i \) zunanje sile, ki delujejo po gostoti površine (gravitacija, električno polje). V primeru ravnovesja velja
 
-\[ f_i \frac{\partial p_{ik}}{\partial x_{k}} = 0.
+\[ f_i + \frac{\partial p_{ik}}{\partial x_{k}} = 0.
 \]
 
 Zvezni medij ima robne pogoje
@@ -222,7 +222,7 @@ Preostane nam enačba
 \[ \mathbf{f} + \left( 1 + \frac{1}{1 - 2\sigma} \right) \frac{E}{2 (1 + \sigma)} \nabla \nabla \cdot \mathbf{u} = 0.
 \]
 
-Sistemsko silo, ki je posledica vrtenja, predstavimo kot \( \mathbf{f} = \omega ^2 r \rho \hat{e}_r \).
+Sistemsko gostoto sile, ki je posledica vrtenja, predstavimo kot \( \mathbf{f} = \omega ^2 r \rho \hat{e}_r \).
 
 Spomnimo se še, da je divergenca vektorja
 

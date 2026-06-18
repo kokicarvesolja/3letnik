@@ -115,7 +115,7 @@ Do tega pridemo preko
 \[ p_{ij} n_j = \begin{pmatrix} p_{rr} \\ p_{r\phi} \\ p_{rz} \end{pmatrix} = \begin{pmatrix} - \frac{F_l}{A} \\ - k \frac{F_l}{A}  \\ 0 \end{pmatrix}.
 \]
 
-Robni pogoj \ref{eq:2} nam da enačbo oblike
+Robni pogoj \eqref{eq:3} nam da enačbo oblike
 
 \[ \frac{A R_1}{2} + \frac{B}{R_1} = 0,
 \]
