@@ -193,7 +193,7 @@ Vemo, da niha, torej bo časovna odvisna vektorja \( \mathbf{u} = \mathbf{u}_0 e
 
 Uvedemo konstanto
 
-\[ k ^2 = - \frac{\rho ( 1 + \sigma ) (1 - 2 \sigma)}{E (1 - \sigma)},
+\[ k ^2 = - \frac{\rho \omega ^2 ( 1 + \sigma ) (1 - 2 \sigma)}{E (1 - \sigma)},
 \]
 
 in imamo enačbo
@@ -219,7 +219,7 @@ Enačbo delimo s \( k ^2 \) in enačba dobi obliko sferične Besslove diferencia
 #+begin_note
   Sferična Besslova diferencialna enačba je oblike
 
-  \[ \frac{\partial ^2 }{\partial x ^2} z_l (x) + \frac{2}{x} \frac{\partial }{\partial x} z(x) + \left( 1 - \frac{l (l + 1)}{x ^2} \right) z_l (x) = 0
+  \[ \frac{\partial ^2 }{\partial x ^2} z_l (x) + \frac{2}{x} \frac{\partial }{\partial x} z_l(x) + \left( 1 - \frac{l (l + 1)}{x ^2} \right) z_l (x) = 0
   \]
 
   in rešita jo \( j_l (x) \) in \( n_l (x) \).
@@ -230,7 +230,7 @@ Z uvedbo spremenljivke \( x \) enačba postane
 \[ \frac{\partial ^2 }{\partial x ^2}   + \frac{2}{x} \frac{\partial u_{0}}{\partial x} + \left( - \frac{2}{x ^2} + 1 \right) u_0 = 0,
 \]
 
-iz česar lahko določimo, da je \( l(l + 1) = 2 \) in posledično \( l = 1 \). Nastavek rešitve bo potem \( u_0 (x) = A J_0 (x) \).
+iz česar lahko določimo, da je \( l(l + 1) = 2 \) in posledično \( l = 1 \). Nastavek rešitve bo potem \( u_0 (x) = A j_0 (x) \).
 
 Robni pogoj je, da je površina prosta
 

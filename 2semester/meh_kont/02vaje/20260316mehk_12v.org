@@ -51,7 +51,7 @@ n & \nu_n [Hz] \\ \hline
 
 Elastična prosta energija kristala ima obliko kvadratne forme
 
-\[ f(u) = \frac{1}{2} C_{ijkl} u_{ij} u_{kl}.
+\[ f(\mathsf{u}) = \frac{1}{2} C_{ijkl} u_{ij} u_{kl}.
 \]
 
 Iz definicije napetostnega tenzorja
@@ -98,7 +98,7 @@ Gostota proste energije bo tako
 \label{eq:1}
 \begin{aligned}
   f(u) = \frac{1}{2} & \left[ C_{xxxx } \left( u_{xx } ^2 + u_{yy} ^2 \right) + C_{zzzz} u_{zz} ^2 + 2 C_{xx zz} \left( u_{xx } u_{zz} + u_{yy} u_{zz} \right) \right. \\
-& \left. C_{xxyy} u_{xx} u_{yy} + 4 C_{xyxy} u_{xy} ^2 + 4 C_{xzxz} \left( u_{xz} ^2 + u_{yz} ^2 \right) \right],
+& \left. C_{xxyy} u_{xx} u_{yy} + 2 C_{xyxy} u_{xy} ^2 + 2 C_{xzxz} \left( u_{xz} ^2 + u_{yz} ^2 \right) \right],
 \end{aligned}
 \end{equation}
 
