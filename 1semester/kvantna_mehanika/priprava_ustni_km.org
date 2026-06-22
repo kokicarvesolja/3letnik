@@ -338,5 +338,72 @@ Vezana stanja v enodimenzionalnem sistemu so nedegenerirana.
 
    Dokaz: (7) nam pove, da sta lastni funkciji \( \psi_1 \) in \( \psi_2 \) linearno odvisni, kar pa je v nasprotju s predpostavki, da sta linearno neodvisni.
 #+end_proof
+* Četrti set vprašanj
+#+begin_problem
+Pričakovana vrednosti in \( \frac{\mathrm{d} \left\langle \hat{x} \right\rangle}{\mathrm{d} t} \), operator gibalne količine ter časovni odvod pričakovane vrednosti poljubnega operatorja \( \frac{\mathrm{d} \left\langle \hat{A} \right\rangle}{\mathrm{d} t} \).
+#+end_problem
+** Pričakovana vrednost
+
+Pričakovana vrednost poljubnega operatorja \( A \) za valovno funkcijo \( \psi \) s pripadajočo verjetnostno gostoto \( \rho(x, t) = \left| \psi \right| ^2 \) je definirana kot
+
+\[ \left\langle A \right\rangle = \int\limits_V^{} A \rho (\mathbf{r}, t) \, \mathrm{d}^3 \mathbf{r} = \int\limits_V^{} \psi^{\ast} (\mathbf{r}, t) A \psi (\mathbf{r}, t) \, \mathrm{d} ^3 \mathbf{r}.
+\]
+
+Po opravljenih mnogo meritvah količine, ki je povezana z operatorjem \( A \), je pričakovana vrednost statistično pričakovana povprečna vrednost teh meritev.
+
+** Operator gibalne količine
+
+Operator gibalne količine v eni dimenziji je definiran kot
+
+\[ p = - \mathrm{i} \hbar \frac{\partial }{\partial x}.
+\]
+
+Izpeljemo ga preko izračuna hitrosti pričakovane vrednosti koordinate \( x \) (aka hitrost težišča)
+
+\begin{align*}
+  \frac{\mathrm{d} \left\langle x \right\rangle}{\mathrm{d} t} &= \frac{\mathrm{d} }{\mathrm{d} t} \int\limits_{- \infty}^{\infty} \psi^{\ast} (x, t) x \psi(x, t) \, \mathrm{d} x \\
+&= \int\limits_{- \infty}^{\infty} \left( \frac{\partial \psi^{\ast} (x, t)}{\partial t} x \psi(x, t) + \psi^{\ast} (x, t) x \frac{\partial \psi(x, t)}{\partial t}  \right) \, \mathrm{d} x
+\end{align*}
+
+Ob predpostavki realnega potenciala \( V(x) \) lahko nadomestimo \( \frac{\mathrm{d} \psi}{\mathrm{d} t} \) z \( \frac{\partial ^2 \psi}{\partial x ^2}  \) s pomočjo Schrödingerjeve enačbe
+
+\[ \mathrm{i} \hbar \frac{\partial \psi (x, t)}{\partial t} = - \frac{\hbar ^2}{2m} \frac{\partial ^2 \psi (x, t)}{\partial x ^2} + V(x, t) \psi(x, t).
+\]
+
+Časovni odvod pričakovane vrednosti postane
+
+\[ \frac{\mathrm{d} \left\langle x \right\rangle}{\mathrm{d} t} = \frac{\hbar}{2 \mathrm{i} m} \int\limits_{- \infty}^{\infty} \left( \frac{\partial ^2 \psi^{\ast}(x, t)}{\partial x ^2} x \psi(x, t) - \frac{\partial ^2 \psi^{\ast}(x, t)}{\partial x ^2} x \psi^{\ast} (x, t) \right),
+\]
+ki ga lahko nadalje prepišemo  obliko
+
+\[ \frac{\mathrm{d} \left\langle x \right\rangle}{\mathrm{d} t} = \frac{\hbar}{2 \mathrm{i} m} \int\limits_{- \infty}^{\infty} \frac{\partial }{\partial x} \left( \frac{\partial \psi^{\ast} (x, t)}{\partial x} x \psi(x, t) - \left| \psi (x, t) \right|  ^2 - \psi^{\ast} x \frac{\partial \psi(x, t)}{\partial x} \right) \, \mathrm{d} x + \frac{1}{m} \int\limits_{- \infty}^{\infty} \psi^{\ast}(x,t) \left( - \mathrm{i} \hbar \frac{\partial }{\partial x} \psi(x, t) \right) \, \mathrm{d} x.
+\]
+
+Če sta valovna funkcija in njen odvod del Schwarzovega prostora, potem je prvi integral na desni strani enačbe ničeln in preostane nam
+
+\[ \frac{\mathrm{d} \left\langle x \right\rangle}{\mathrm{d} t}= \frac{1}{m} \int\limits_{- \infty}^{\infty} \psi^{\ast} \left( - \mathrm{i} \hbar \frac{\partial \psi}{\partial x}  \right)\, \mathrm{d} x.
+\]
+
+Rezultat lahko zapišemo v obliki gibalne količine
+
+\[ m \frac{\mathrm{d} \left\langle x \right\rangle}{\mathrm{d} t} = m v_T = \left\langle p \right\rangle = \int\limits_{- \infty}^{\infty} \psi^{\ast} \left( - \mathrm{i} \hbar \frac{\partial \psi}{\partial x}  \right) \, \mathrm{d} x.
+\]
+** Časovni odvod pričakovanih vrednosti
+* Določi-število set vprašanj
+** Operatorske lastnosti in hermitski operator 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
