@@ -368,7 +368,7 @@ Robna pogoja specifičnega problema sta
 \[ \left. u_z \right|_{\partial S} = 0 \quad \text{ in } \quad \left. \left( \frac{\partial ^2 u_{z}}{\partial r ^2} + \sigma \frac{\partial \theta}{\partial l} \frac{\partial z}{\partial r}   \right) \right|_{\partial S} = 0. 
 \]
 
-Nastavek podan v navodili zadosti robnim pogojem.
+Nastavek podan v navodilih zadosti robnim pogojem.
 
 Del enačbe \ref{eq:3}, ki je znotraj \( \left\{ \ldots \right\} \) lahko zapišemo tudi malo drugače. Za poljubno funkcijo \( z \) se vsebina oklepaja prepiše v
 
@@ -389,7 +389,7 @@ Funkcional proste energije ima sedaj obliko
 
 Nastavek podan v navodilih je sestavljen iz funkcij, ki so ortogonalne na kvadratu. Posledično v integral z \( \Delta_{\perp } \)  ne bo imel mešanih členov \( A_{mn} A_{ij} \). Apliciramo operator na nastavek
 
-\[ \Delta_{\perp } = - \sum\limits_{m, n}^{} A_{mn} \left[ \left( \frac{m \pi}{a} \right) ^2 \sin \frac{m \pi x}{a} \sin \frac{n \pi y}{a} + \left( \frac{n \pi}{a} \right) ^2 \sin \frac{m \pi x}{a} \sin \frac{n \pi x}{a} \right].
+\[ \Delta_{\perp } z = - \sum\limits_{m, n}^{} A_{mn} \left[ \left( \frac{m \pi}{a} \right) ^2 \sin \frac{m \pi x}{a} \sin \frac{n \pi y}{a} + \left( \frac{n \pi}{a} \right) ^2 \sin \frac{m \pi x}{a} \sin \frac{n \pi x}{a} \right].
 \]
 
 Za računanje bomo vzeli prevladujoč člen, ki ima indeksa \( n = 1 \) in \(  m = 1 \). Vstavimo člen v funckional proste energije
