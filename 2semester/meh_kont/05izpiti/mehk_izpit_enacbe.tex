@@ -5,6 +5,7 @@
 \usepackage{color,graphicx,overpic}
 \usepackage{hyperref}
 \usepackage{amsthm}
+\usepackage{bm}
 \usepackage{mathrsfs}
 \usepackage{enumerate}
 \usepackage{enumitem}
@@ -190,21 +191,272 @@
   \end{primer}
 
   Funkcional proste energije je
-
+  \vspace{-10pt}
   \begin{align*}
-    F = F_0 &+ \frac{1}{2} D \int\limits_{}^{} \left\{ \left( \nabla ^2_{\perp} u \right) ^2 + 2 (1 + \sigma) \left[ {\left( \frac{\partial ^2 u}{\partial x \partial y}  \right)}^2 - \frac{\partial ^2 u}{\partial x ^2} \frac{\partial ^2 u}{\partial y ^2}  \right] \right\} \, \mathrm{d} S \\
-    &- \int\limits_{}^{} P u_z \, \mathrm{d} S
+    F = F_0 &+ \frac{1}{2} D \int\limits_{}^{} \left\{ \left( \nabla ^2_{\perp} u \right) ^2 + 2 (1 + \sigma) \cdot \right. \\
+    &\cdot \left. \left[ {\left( \frac{\partial ^2 u}{\partial x \partial y}  \right)}^2 - \frac{\partial ^2 u}{\partial x ^2} \frac{\partial ^2 u}{\partial y ^2}  \right] \right\} \, \mathrm{d} S - \int\limits_{}^{} P u_z \, \mathrm{d} S
   \end{align*}
 
   Velja tudi
 
   \( u_{xy}  ^2 - u_{xx} u_{yy} = \nabla \cdot \left( u_y u_{xy}, -u_y u_{xx } \right) \), kjer indeksi označujejo \textbf{odvode}.
+  \subsection{Palice}
+  \subsubsection{Torzija}
+  Torzijski zasuk zapišemo kot \( \mathrm{d} \phi = \tau \mathrm{d} z \), kjer je \( \tau \) torzijski zasuk na enoto dolžine in je konst. Majhna torzijska deformacije je toga rotacija \( \mathbf{u} = \bf{\phi} \times \mathbf{r}\), kjer je \( \psi(x, y) \) torzijska funkcija
 
-  \section{Palice}
+  \( \mathbf{u} = (- \tau y z, \tau x y, \tau \psi(x, y) \).
 
-  \subsection{Torzija}
+  Po definiciji def. tenzorja sta neničelni komponenti
 
+  \( u_{xz} = \frac{\tau}{2} \left( \partial_x \psi - y \right) \) in
+
+  \( u_{yz} = \frac{\tau}{2} \left( \partial_y \psi + x \right) \).
+
+  \textbf{Ohranja se prostornina} \( \tr \mathsf{u} = u_{kk} = 0 \).
+
+  Neničelne komponente tenzorja \( p_{ij} \) so zaradi simetričnosti
+
+  \( p_{xz} = p_{zx} = \mu \tau \left( \partial_x \psi - y \right) = 2 \mu \tau \partial_y \chi \) in
+
+  \( p_{yz} = p_{zy} = \mu \tau \left( \partial_y \psi + x \right) = - 2 \mu \tau \partial_x \chi \)
+
+  Cauchyjeva enačba v ravnovesju poda
+
+  \( f_z = \partial_z p_{zx} + \partial_z p_{zy} = 0 \implies \quad \nabla ^2 \psi(x, y) = 0  \).
+
+  Definiramo prirejeno torzijsko funkcijo \( \chi (x, y) \) z
+
+  \( \partial_x \psi = y + 2 \partial_y \chi \) in
+
+  \( \partial_y \psi = -x  -2 \partial_x \chi \).
+
+  Velja torej \( \nabla ^2 \chi = - 1 \).
+
+  Prosti robni pogoj je \( p_{zx} n_x + p_{zy} n_y = 0 \), za enostavno povezano območje \( \left. \chi \right|_{\text{rob}} = 0 \).
+
+  Navor na palico \( M_z = - 2 \mu \tau \int\limits_{}^{} \mathbf{r} \cdot \nabla \chi \, \mathrm{d} S \approx 4 \mu \tau \int\limits_{}^{} \chi \, \mathrm{d} S \) za en. pov. obm. 
+
+  \begin{primer}[Elipsast valj]
+    Enačbo \( \nabla ^2 \chi = -1 \) rešimo z nastavkom
+
+    \( \chi = C \left[ \frac{x ^2}{a ^2} + \frac{y ^2}{b ^2} - 1 \right] \)
+
+    in dobimo \( C = - a ^2 b ^2 / \left( 2 \left[ a ^2 + b ^2 \right] \right) \). Potem je
+
+    \( \chi (x, y) = - \frac{a ^2 b ^2}{2 (a ^2 + b ^2)} \left[ \frac{x ^2}{a ^2} + \frac{y ^2}{b ^2} - 1 \right] \) in
+
+    \( \psi(x, y) = xy \frac{b ^2 - a ^2}{a ^2 + b ^2} \).
+  \end{primer}
+  
+  \subsubsection{Upogib}
+
+  \textbf{Globalna teorija palic}
+
+  Tangenta \( \hat{\mathbf{t}} = \partial_l \mathbf{r} (l) \)
+
+  Normala \( \hat{\mathbf{n}} = R \partial_l \hat{\mathbf{t}} (l) \)
+
+  \textbf{Ravnovesje}
+
+  Ravnovesje sil na del palice je \( \frac{\mathrm{d} \mathbf{F}}{\mathrm{d} l} + \mathbf{K} = 0 \), kjer je \( \mathbf{K} \) dolžinska gostota zunanjih sil na palico.
+
+  Ravnovesje navoro je \( \frac{\mathrm{d} \mathbf{M}}{\mathrm{d} l} + \hat{\mathbf{t}} \times \mathbf{F} = 0 \)
+
+  \textbf{Majhen upogib pravkoten na os z}
+
+  \( \mathbf{M} = E \mathsf{I} \left( - \partial_z ^2 y, \partial_z ^2 x \right) \)
+
+  \( \mathbf{F} = - E \mathsf{I} \partial_z ^3 \mathbf{r} + F_z \partial_z \mathbf{r} \) za \( \mathbf{r} = (x, y) \)
+
+  \( E \mathsf{I} \partial_z ^4 \mathbf{r} - F_z \partial_z ^2 x - \partial_z F_z \partial_z x - \mathbf{K} = 0 \).
     
+  \textbf{Robni pogoji}
+
+  Togo vpeta \( \left. x \right|_{\text{rob}} = 0 \quad \text{ in } \quad  \left. \partial_z x \right|_{\text{rob}} = 0 \)
+
+  Prost \( \left. \mathbf{M} \right|_{\text{rob}} = 0 \quad \text{ in } \quad  \left. \mathbf{F} \right|_{\text{rob}} = 0 \)
+
+  Podprt/ vrtljivo vpet \(  \left. x \right|_{\text{rob}} = 0 \quad \text{ in } \quad \left. \mathbf{M} \right|_{\text{rob}} = 0 \)
+
+  \begin{primer}[Poves pod lastno težo]
+    \( K_x = mg / L \) in rešujemo \( E \mathsf{I} x^{(4)} - K_x = 0 \), rešitev je
+
+    \( x(z) = \frac{mg}{E\mathsf{I}L} \left( z^4 / 24 - L z ^3 / 6 + L ^2 z ^2 / 4 \right) \).
+
+    Sila in navor sta \( F_x (z) = - \frac{mg}{L} (z - L ) \) ter \( M_y (z) = \frac{mg}{L} (z ^2 / 12 - Lz + L ^2/ 4) \). Na steno je to \( F_x (0) = mg \) (\textbf{pozitivno!}) in \( M_y (0) = mgL /2 \). 
+  \end{primer}
+
+  \begin{primer}
+    Na konca palice deluje sila \( F_0 \), vendar \( F_z \) ne poznamo! Rešujemo \( E I x^{(4)} - F_z x^2 = 0 \). Nova spremenljivka \( v = x^{(2)} \).
+  \end{primer}
+
+  \begin{primer}[lastne frekvence]
+    Rešujemo \( E \mathsf{I} x^{(4)} + \rho \frac{\partial ^2}{\partial t ^2} x = 0  \) in nastavek \( x(z, t) = v(z) e^{- \mathrm{i} \omega t} \).
+  \end{primer}
+  
+  \subsection{Elastični valovi}
+
+  Longitudinalni val \( \nabla \times \mathbf{u}_L = 0 \) z enačbo
+
+  \( - \rho \omega_L ^2 \mathbf{u}_L = - \frac{E}{2(1 + \sigma)} k ^2 \mathbf{u}_L  \) in
+
+  \( c_L ^2 = \frac{E (1 - \sigma)}{\rho (1 + \sigma) (1 - 2 \sigma)} \)
+
+  Transverzalni val  \( \nabla \cdot \mathbf{u}_T = 0 \) in hitrost je
+
+  \( c_T ^2 = \frac{E}{2 (1 + \sigma)} < c_L ^2 \).
+
+  Razmerje hitrosti je \( 0 < \frac{c_T ^2}{cc_L ^2} = \frac{1 - 2 \sigma}{2 (1 - \sigma)} < \frac{1}{2} \). 
+
+  Dinamična Navierova enačba
+
+  \( \ddot{\mathbf{u}} = - c_T ^2 \nabla \times \nabla \times u_T + c_L ^2 \nabla \nabla \cdot \mathbf{u}_L \)
+
+  in Hookov zakon \( p_{ij} = 2 \rho c_T ^2 u_{ij} + \rho \left( c_L ^2 - 2 c_T ^2 \right)u_{ll} \delta_{ij} \). 
+
+  \begin{primer}
+    Specifična impedanca \( z = p / v \). Vektor hitrosti je \( \mathbf{u} = u_x \hat{\mathbf{e}}_x + u_y \hat{\mathbf{e}}_y \). Za longitudinalni val je \( z_L = - p_{xx} / \dot{u}_x \) in transverzalni val \( z_T = - p_{yx} / \dot{u}_y \).
+  \end{primer}
+
+  \begin{primer}[vpadno valovanje na snov]
+    Na levi strani snov 1, na desni snov 2. Odboj in lom \( k_{\parallel}^{\text{vpadni}} = k_{\parallel}^{\text{odbiti}} = k_{\parallel}^{\text{lomljeni}}  \).
+  \end{primer}
+  
+  \section{Hidrodinamika}
+
+  \subsection{Idelane tekočine}
+
+  Hitrost \( \mathbf{v}(\mathbf{r}, t) \), tlak \( p(\mathbf{r}, t) \) in volumnska gostota sile \( \mathbf{f}(\mathbf{r}, t) \).
+
+  Eulerjeva enačba \( \rho \left[ \frac{\partial \mathbf{v}}{\partial t}  + \left( \mathbf{v} \cdot \nabla \right) \mathbf{v} \right] = - \nabla p + \mathbf{f} \).
+
+  Eulerjeva en. za gostoto gibalne količine \( \frac{\partial }{\partial t}  g_i + \frac{\partial }{\partial x_{j}} \Pi_{ij} = f_i \), kjer je \( \Pi_{ij} = \rho v_i v_j + p \delta_{ij} \).
+  Drugi člen na levi je advekcijski. 
+
+  \begin{primer}[koleno]
+
+    Na vhodu so \( S_1, v_1, p_1 \) in na izhodu \( S_2, v_2, p_2 \) pod kotom \( \alpha \).  Gibalna količina se ne spremeni in \( f_i = 0 \)
+
+    \( 0 = \frac{\partial }{\partial t}  G_i = \int\limits_{}^{} \frac{\partial }{\partial t} g_i \, \mathrm{d} V = - \oint\limits_{}^{} \Pi_{ij} \, \mathrm{d} S \)
+
+    Zaključeno površino sestavlja \( S_1, S_2 \) in plašč. \( \mathbf{S}_{plasc} \perp \mathbf{v} \), dobimo \vspace{-10pt}
+    \begin{align*}
+     \frac{\partial }{\partial t}G_x = - \int\limits_{S_1}^{} &\rho v_x \left( \mathbf{v}_1 \cdot \mathrm{d} \mathbf{S} \right) - \int\limits_{S_1}^{} p \, \mathrm{d} S - \int\limits_{S_2}^{} \rho v_x \left( \mathbf{v}_2 \cdot \mathrm{d} \mathbf{S} \right) \\ -& \int\limits_{S_2}^{} p \, \mathrm{d} S - \int\limits_{pl}^{} p \, \mathrm{d} S
+    \end{align*}
+
+    Velja \( \int\limits_{S_i}^{} p \mathrm{d} S = p_i S_i \) in zadnji integral je sila \( F_x \). Analogno za \( F_y \). 
+    \end{primer}
+
+  Kontinuitetna enačba \( \frac{\partial \rho}{\partial t}  + \nabla \cdot \left( \rho \mathbf{v} \right) = 0 \).
+
+  Nestisljive tekočine \( \nabla \cdot \mathbf{v} = 0 \)
+
+  Brezvrtinčne količine \( \nabla \times \mathbf{v} = 0 \), iz česar sledi potencial \( \mathbf{v} = \nabla \phi \).
+
+  Nestljiva brezvrtinčna tekočina \( \nabla ^2 \phi = 0 \).
+  \subsubsection{Bernoullijeva enačba}
+  Tokovnica: $\frac{\mathrm{d} x}{v_x} = \frac{\mathrm{d} y}{v_y} = \frac{\mathrm{d} z}{v_z}$
+  
+  Vrtinčnica: krivulja v smeri $ \nabla \times \mathbf{v} $
+  
+  $\frac{v^2}{2} + h + gz = konst.$ \qquad na tokovnici in vrtinčnici, $ \frac{\mathsf{d} \mathbf{v}}{\mathsf{d}t}= 0$
+
+  Nestisljive tekočine: $\frac{v^2}{2} + \frac{p}{\rho} + gz = konst.$ \qquad na tokovnici in vrtinčnici, $ \frac{\mathsf{d} \mathbf{v}}{\mathsf{d} t} = 0$
+  
+  Brezvrtinčne tekočine: $\frac{v^2}{2} + h + gz + \frac{\partial \phi}{\partial t}  = konst.$  povsod
+
+  \subsubsection{Cirkulacija}
+
+  Znana vrtinčnost hitrostnega polja \( \bm{\omega} (\mathbf{r}) = \nabla \times \mathbf{v} \).
+
+  Cirkulacija \( \Gamma = \int\limits_{}^{} \bm{\omega} \, \mathrm{d} \mathbf{S} = \oint \mathbf{v} \cdot \mathrm{d} \mathbf{r} \). 
+
+  Kelvinov zakon pravi, da se deli vrtinčne niti gibljejo s hitrostmi, ki jih ima tekočina na mestih \( \frac{\mathrm{d} \Gamma}{\mathrm{d} t} = 0 \).
+
+  \( \mathbf{v} (\mathbf{r}) = \frac{1}{4 \pi} = \int\limits_{}^{} \frac{\bm{\omega} (\mathbf{r}') \times (\mathbf{r} - \mathbf{r}')}{\left| \mathbf{r} - \mathbf{r}' \right|} \, \mathrm{d} ^3 \mathbf{r}' = \frac{\Gamma}{4 \pi} \int\limits_{}^{} \frac{\mathrm{d} \mathbf{l} \times (\mathbf{r} - \mathbf{r}')}{\left| \mathbf{r} - \mathbf{r}' \right| ^3} \)
+
+  \begin{primer}
+    Neskončna nit s cirkulacijo \( \Gamma \) ima hitrostno polje \( \mathbf{v}(r) = \frac{\Gamma}{2 \pi r} \hat{\mathbf{e}}_r \).
+  \end{primer}
+  \begin{primer}[Rankinov vrtinec]
+    Hitrostno polje je
+
+    \( v(r) = \begin{cases}\omega r &, r < a \\ \frac{\Gamma}{2 \pi r} &, r > a\end{cases} \)
+
+    Za \( r < a \) polje ni brezvrtinčno, rešujemo z Eulerjevo enačbo za stacionarno polje, kjer velja \( \mathbf{v} \cdot \nabla \mathbf{v} = - \frac{v ^2}{r} \hat{\mathbf{e}}_{\phi} \).
+  \end{primer}
+
+  \subsubsection{2D nestisljiv brezvrtinčni tok}
+
+  Tokovna funkcijo \( \psi \), ki je konstantna vzdolž tokovnic. Iz Cauchy-Riemmanovih enačb sledi
+
+  \( \mathbf{v} = (v_x, v_y ) = \left( \partial_x \phi, \partial_y \phi \right) = \left( \partial_y \psi, - \partial_x \psi \right) \).
+
+  Zapišemo kompleksni potencial \( w(z) = \phi(z) + \mathrm{i} \psi(z), \ z = x + \mathrm{i} y \) in velja \( \frac{\mathrm{d} \omega}{\mathrm{d} z} = v_x - \mathrm{i} v_y \).
+
+  Pretok skozi poljubno krivuljo za normalo \( \hat{\mathbf{n}} = (- \mathrm{d} y, \mathrm{d} x) \) je
+
+  \( q = \int\limits_{\mathbf{r}_1}^{\mathbf{r}_2} \left( \mathbf{v} \cdot \mathbf{n} \right) \, \mathrm{d} l = \int\limits_{\mathbf{r}_1}^{\mathbf{r}_2} \partial_l \, \mathrm{d} l = \psi(\mathbf{r}_2) - \psi(\mathbf{r}_1) \).
+  
+  \begin{primer}[Izvir]
+    Krožnica okrog izvira poda kompleksno potencialno polje \( w(z) = \frac{q}{2 \pi} \ln z = \frac{q}{2 \pi} \left\{ \ln r + \mathrm{i} \phi \right\} \).
+  \end{primer}
+
+  Domeno pod kotom \( \alpha \) preslikamo v zgornjo polravnino, za katero vemo, da je \( w_0 = v_0 (x + \mathrm{i} y) \). Na robovih zahtevamo, da je kompleksen potencial \( w(z) = 0 \forall z \in \partial S \).
+
+  Preslikava \( f(z) \) ohrani identiteto točkastih in neskončno oddaljenih multipolov, če slika \( 0 \to 0 \) in \( \infty \to \infty \), drugače jih zamenja, če slika \( 0 \to \infty \) in \( \infty \to 0 \). 
+
+  \begin{primer}[Zrcaljenje preko polravnine]
+    Virtualen izvir na drugi strani polravnine nam poda kompleksne potencial \( w(z) = \frac{q}{2 \pi} \left[ \ln (z - a) + \ln (z + a) \right] \). Sila na dolžinsko enoto na steno je \( F_y / l = - \int\limits_{- \infty}^{\infty} p (0, y) \, \mathrm{d} l \)
+  \end{primer}
+
+  \begin{primer}
+    Vrtinčna nit ima kompleksen potencial \( w_{\Gamma} (z) = - \mathrm{i} \frac{\Gamma}{2 \pi} \ln z \). 
+  \end{primer}
+
+  \subsubsection{Viskozne tekočine}  
+
+  Navier- Stokes \( \rho \left[ \partial_t \mathbf{v} + \left( \mathbf{v} \cdot \nabla \right) \mathbf{v} \right] = - \nabla p + \nabla \cdot \sigma_{ij}^v + \mathbf{f} \)
+
+  Viskozni napetostni tenzor \( \sigma_{ij}^{v} = 2 \eta \left( v_{ij} - \frac{1}{3} v_{kk} \delta_{ij} \right) + \zeta v_{kk} \delta_{ij} \) in gradient hitrosti \( v_{ij} = \frac{1}{2} \left( \partial_j v_i + \partial_i v_j \right) \). \( \eta \) viskoznost, \( \zeta \) dilatacijska viskoznost.
+
+  Navier-Stokes običajna oblika \( \rho \left( \partial_t \mathbf{v} + \left( \mathbf{v} \cdot \nabla \right) \mathbf{v} \right) = - p + \eta \nabla ^2 \mathbf{v} + \left( \zeta + \frac{1}{3} \eta \right) \nabla \nabla \cdot \mathbf{v} + \mathbf{f} \)
+
+  \( \mathbf{f} = 0 \) in \( \rho = 0 \) za nestisljive tekočine je Helmholtzova enačba za vrtinčnost \( \bm{\omega} = \nabla \times \mathbf{v} \)
+
+  \( \partial_t \bm{\omega} + \left( \mathbf{v} \cdot \nabla \right) \bm{\omega} = \left( \bm{\omega} \cdot \nabla \right) \mathbf{v} + \frac{\eta}{\rho} \nabla ^2 \bm{\omega} \).
+
+  \begin{primer}
+    Plošča pri \( z = 0 \) se začne premikati po \( t > 0 \) proti \( + x \) z \( v_0 \). Vrtinčnost \( \bm{\omega} = \omega \hat{\mathbf{e}}_y \). Helmholtz v difuzijsko enačbo, ki ima vključen začetni pogoj
+
+    \( \partial_t \bm{\omega} + D \nabla ^2 \bm{\omega} = v_0 \delta(z) \delta(t)  \).
+
+    Rešitev je Greenova funcija, ki jo preslikamo še na območje \( z < 0 \), saj splošna rešitev velja z \( - \infty < z < \infty \).
+
+    \( \omega(z) = \frac{1}{\sqrt{4 \pi D t}} \exp \left\{ - \frac{z ^2}{4 D t} \right\} \).
+
+    Rešitev je potem
+
+    \( \omega(z, t) = - 2 v_0 \frac{1}{\sqrt{4 \pi D t}} \exp \left\{ - \frac{z ^2}{4 D t} \right\} \).
+  \end{primer}
+
+  \begin{primer}
+    Hitrostno polje s cirkulacijo \( \mathbf{v}(r) = \frac{\Gamma}{2 \pi r} \hat{\mathbf{e}}_r \). Vrtinčnost je \( \bm{\omega} = \Gamma \delta ^2(\mathbf{r})  \hat{\hat{e}}_z \). Rešujemo difuzijsko enačbo
+
+    \( \partial_t u - D \left( \partial_x ^2 u + \partial_y ^2 y \right) = \delta(x) \delta(y) \delta(t) \).
+
+    Rešitev je združena Greenova funkcija za \( x \) in \( y \)
+
+    \( \omega(\mathbf{r}, t) = \frac{\Gamma}{4 \pi D t} \exp \left\{ - \frac{r ^2}{4 \pi D t} \right\} \). 
+
+    Hitrostno polje je preko Stokesovega izreka
+
+    \( \oint_{\partial S} \mathbf{v} \cdot \mathrm{d} \mathbf{l} = \int\limits_S^{} \bm{\omega} \cdot \mathrm{d} \mathbf{S} \)
+
+    potem
+
+    \( v \cdot 2 \pi r = 2 \pi \int\limits_0^r \omega r \cdot \mathrm{d} r = \Gamma \left( 1 - \exp \left\{ - \frac{r ^2}{4 \pi D t} \right\} \right) \).
+    \end{primer}
   \section{Misc}
 
   Besselova enačba za sferične koordinate je
@@ -224,8 +476,7 @@
   Identiteta
 
   \( \int\limits_{}^{} x \ln \frac{x}{x_0} \, \mathrm{d} x = \frac{x ^2}{2} \ln \frac{x}{x_0} - \frac{x ^2}{4} \).
-  
-  
-  
+  \columnbreak
+  \vfill\null
 \end{multicols}
 \end{document}
