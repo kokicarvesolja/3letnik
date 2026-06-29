@@ -1,0 +1,231 @@
+\documentclass[10pt,landscape]{article}
+\usepackage{multicol}
+\usepackage[landscape, inner=1cm, outer=1cm, top=1cm, bottom=1cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{icomma}
+\usepackage{soul}
+\usepackage{physics}
+\usepackage{cancel}
+\usepackage[european]{circuitikz}
+
+% Turn off header and footer
+\pagestyle{empty}
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+	{-1ex plus -.5ex minus -.2ex}%
+	{0.5ex plus .2ex}%x
+	{\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+	{-1explus -.5ex minus -.2ex}%
+	{0.5ex plus .2ex}%
+	{\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+	{-1ex plus -.5ex minus -.2ex}%
+	{1ex plus .2ex}%
+	{\normalfont\small\bfseries}}
+\makeatother
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+% My environments
+\theoremstyle{definition}
+\newtheorem*{primer}{Primer}
+
+\begin{document}
+\begin{multicols}{3}
+  \section{Elastomehanika}
+  \subsection{Splošne deformacije}
+
+  Vektor premika \( \mathbf{u} (\mathbf{r}) = \mathbf{r}' - \mathbf{r} \) in deformacijski tenzor
+
+  \( u_{ik} = \frac{1}{2} \left( \frac{\partial u_{i}}{\partial x_{k}} + \frac{\partial u_{k}}{\partial x_{i}}  \right) \).
+
+  \( i \) pove komponento, \( k \) pove stolpec v tenzorju!
+
+  \textbf{Sferične koordinate} 
+
+  \( u_{rr} = \partial_r u_r \)
+
+  \( u_{\theta \theta} = \frac{1}{r} \partial_{\theta} u_{\theta} + \frac{u_r}{r} \)
+
+  \( u_{\phi\phi} = \frac{1}{\sin \theta} \frac{1}{r} \partial_{\phi} u_{\phi} + \frac{u_r}{r} + \frac{u_{\theta}}{r \tan \theta} \)
+
+  \( u_{r\theta} = \frac{1}{2} \left( \partial_r u_{\theta} - \frac{u_{\theta}}{r} + \frac{1}{r} \partial_{\theta} u_r \right) \)
+
+  \( u_{r\phi} = \frac{1}{2} \left( \partial_r u_{\phi} - \frac{u_{\phi}}{r} + \frac{1}{r \sin \theta} \partial_{\phi} u_r \right) \)
+
+  \( u_{\theta \phi} = \frac{1}{2} \left( \frac{1}{r} \partial_{\theta} u_{\phi} - \frac{u_{\phi}}{r \tan \theta} + \frac{1}{r \sin \theta} \partial_{\phi} u_{\theta} \right) \)
+
+  \textbf{Cilindrične koordinate}
+
+  \( u_{rr} = \partial_r u_r \)
+
+  \( u_{\phi\phi} = \frac{1}{r} \partial_{\phi} u_{\phi} + \frac{u_r}{r} \)
+
+  \( u_{zz} = \partial_z u_z \)
+
+  \( u_{r\phi} = \frac{1}{2} \left( \partial_r u_{\phi} - \frac{u_{\phi}}{r} + \frac{1}{r} \partial_{\phi} u_r \right) \)
+
+  \( u_{rz} = \frac{1}{2} \left( \partial_z u_r + \partial_r u_z \right) \)
+
+  \( u_{\phi z} = \frac{1}{2} \left( \frac{1}{r} \partial_{\phi} u_z + \partial_z u_{\phi} \right) \)
+
+  \textbf{Hookov zakon}
+
+  \( p_{ij} = 2\mu u_{ij} + \lambda u_{kk} \delta_{ij} = \frac{E}{1 + \sigma} \left( u_{ij} + \frac{\sigma}{1 - 2\sigma} u_{kk} \delta_{ij} \right) \),
+
+  kjer je \( u_{kk} = \tr \mathsf{u} \), \( \mu = \frac{E}{2 (1 + \sigma}, \lambda = \frac{E \sigma}{(1 - 2 \sigma) (1 + \sigma)} \) Laméjeva el. koeficienta, \( E = \frac{p_{zz}}{u_{zz}} = \frac{\mu \left( 2 \mu + 3 \lambda \right)}{\mu + \lambda} \) Youngov modul in \( \sigma = - \frac{u_{xx/yy}}{u_{zz}} = \frac{1}{2(1 + \frac{\mu}{\lambda})} \) Poissonovo število. Obratno
+
+  \( u_{ij} = \frac{1}{2\mu} p_{ij} - \frac{\lambda}{2 \mu \left( 2\mu + 3 \lambda \right)} p_{kk} \delta_{ij} = \frac{1}{E} \left[ \left( 1+ \sigma \right) p_{ij} - \sigma p_{kk} \delta_{ij} \right] \)
+
+  \textbf{Cauchyjeva enačba v ravnovesju}
+
+  \( \ddot{u}_i = f_i + \frac{\partial }{\partial x_{k}} p_{ik} = 0 \), kjer so \( f_i \) volumnsko porazdeljene zunanje sile. 
+
+  Za površinske sile velja \( p_{ik}  n_k = F_i \), kjer je \( n_k \) vektor normale na površino.
+
+  \textbf{Navierova enačba}
+
+  V indeksni obliki
+
+  \( \rho \ddot{u}_i = f_i + \mu \nabla ^2 u_i + \left( \mu + \lambda \right) \frac{\partial }{\partial x_{i}} \left( \frac{\partial }{\partial x_{k}} u_k \right) \)
+
+  in v vektorski obliki
+
+  \( \rho \ddot{\mathbf{u}} = \mathbf{f} + \mu \nabla ^2 \mathbf{u} + \left( \mu + \lambda \right) \nabla \nabla \cdot \mathbf{u} \)
+
+  z \( E, \sigma \)
+
+  \( \rho \ddot{\mathbf{u}} = \mathbf{f} + \frac{E}{2(1 + \sigma)} \left( \nabla ^2 \mathbf{u} + \frac{1}{1 - 2\sigma} \nabla \nabla \cdot \mathbf{u} \right) \)
+
+  \begin{primer}[Enoosna obremenitev]
+    Položen valj, katerega daljša stranica leži v smeri \( z \). Površinski sili na osnovni ploskvi \( S \), ki sta vzporedni ravnini \( xy \) zapišemo kot \( p_{ij} (0, 0, 1)^T = (0, 0, - F/S)  \)
+  \end{primer}
+
+  \begin{primer}
+    Hidrostatičen tlak iz predavanj predstavimo z \( p_{ik} = - p \delta_{ik} \)
+  \end{primer}
+  \begin{primer}
+    Strižna obremenitev ima dve izvendiagonalni komponenti neničelni \( p_{ik} = p (\delta_{iz} \delta_{kx} + \delta_{ix} \delta_{kz} \)
+  \end{primer}
+
+  Ob uporabi identitete \( \nabla \nabla \cdot = \nabla ^2 + \nabla \times \nabla \times \), kjer je pogosto drugi člen ničeln, je stacionarna Navierova enačba 
+
+  \( \mathbf{f} + \left( 1 + \frac{1}{1 - 2 \sigma} \right) \frac{E}{2 (1 + \sigma)} \nabla \nabla \cdot \mathbf{u} - \frac{E}{2(1 + \sigma)} \nabla \times \nabla \times \mathbf{u} = 0  \).
+
+  \begin{primer}
+    Drugi člen je ničeln za \( \mathbf{u} = u_r (r) \mathbf{e}_i \), kjer je \( i = r, \phi \)
+  \end{primer}
+  
+  Sprememba volumna je
+
+  \( \frac{\Delta V}{V} = u_{kk} = \frac{1}{2 \mu + 3 \lambda} p_{kk} \), kjer velja za sled tudi \( u_{kk} = \nabla \cdot \mathbf{u} \).
+
+  \begin{primer}
+    V primeru deformacijskega vektorja oblike \( \mathbf{u} = u_r (r) \mathbf{e}_r + u_{\phi} (r) \mathbf{e}_{\phi} \) ločimo na \( \mathbf{u} = \mathbf{u}_1 + \mathbf{u}_2\), kjer je \( \nabla \cdot u_2 = 0 \) in \( \nabla \times u_1 = 0 \).
+  \end{primer}
+
+  \subsection{Kristali}
+
+  Elastična prosta energija je
+
+  \( f(\mathsf{u}) = f_0 + \frac{1}{2} C_{ijkl} u_{ij} u_{kl} \),
+
+  kjer je \( C_{ijkl} \) tenzor el. konstant z največ 21 neodvisnimi konstantami!
+
+  \( p_{ij} = \frac{\partial }{\partial u_{ij}} f = C_{ijkl} u_{kl} \).
+  
+  \begin{primer}[Zrcaljenje tetragonalnega kristala]
+    Zrcaljenje \( x \to -x \) (preko ravnine \( zy \)) po definiciji
+
+    \( u_{xy} = \frac{1}{2} \left( \partial_y u_x + \partial_x u_y \right) \to \frac{1}{2} \left( \partial_y (- u_x ) + \partial_{(-x)} u_y \right) = - u_{yx} \)
+
+    Elastična prosta energija se pri zrcaljenju ne spremeni, torej bo zrcaljenje \( C_{xyxx} u_{xy} u_{xx} \to C_{xyxx} (-u_{xy}) u_{xx} \) veljalo za \( C_{xyxx} = 0 \).
+  \end{primer}
+  
+  \section{Plošče}
+
+  Odmik \( u_z = \zeta (x, y) \) opisuje enačba ravnovesja
+
+  \( D ^2 \Delta ^2_{\perp} u_z - P(x, y) = 0, \quad D = K = \frac{E h ^3}{12 (1 - \sigma ^2)} \),
+
+  kjer je \( P(x, y) \) površinska gostota sil (tlak). 
+
+  \begin{primer}
+    \( \Delta_{\perp} ^2 f = \Delta_{\perp} \left[ \frac{1}{r} \partial_r \left( r \partial_r f \right) \right] = \frac{1}{r} \partial_r \left\{ r \partial_r \left[ \frac{1}{r} \partial_r \left( r \partial_r f \right) \right] \right\} \)
+  \end{primer}
+  
+  \textbf{Togo vpeta plošča}
+
+  ima robna pogoja
+
+  \( \left. u_z \right|_{\partial S} = 0 \quad \text{ in } \quad \left. \frac{\partial }{\partial \mathbf{n}} u_z \right|_{\partial S} = 0\),
+
+  kjer je \( \partial S \) rob plošče in \( \partial_{\mathbf{n}} \) odvod v smeri, ki je vzporedna z ravnino plošče in pravokotna na njen rob. 
+
+  \textbf{Prislonjena plošča}
+
+  ima prvi robni pogoj isti, drugi je
+
+  \( \left. \left( \frac{\partial ^2 u_{z}}{\partial \mathbf{n} ^2} + \sigma \frac{\partial \phi}{\partial l}  \frac{\partial u_{z}}{\partial \mathbf{n}}  \right)\right|_{\partial S} = 0 \),
+
+  kjer je \( \phi \) kot med tangento na rob plošče in vodoravno koordinato. Ponavadi je \( \partial_l \phi = \frac{1}{R} \).
+
+  \begin{primer}
+    Na okroglo ploščo polmera \( R \) pritiska ploskovna gostota s silo \( F_0 \) v koncentrične krogu polmera \( r_0 < R \). Ploskovna gostota je potem \( F_0 = \int\limits_{}^{} P \, \mathrm{d} S \).
+
+    \( P = \frac{F_0 \delta(r - r_0)}{2 \pi r} \)
+  \end{primer}
+
+  Funkcional proste energije je
+
+  \begin{align*}
+    F = F_0 &+ \frac{1}{2} D \int\limits_{}^{} \left\{ \left( \nabla ^2_{\perp} u \right) ^2 + 2 (1 + \sigma) \left[ {\left( \frac{\partial ^2 u}{\partial x \partial y}  \right)}^2 - \frac{\partial ^2 u}{\partial x ^2} \frac{\partial ^2 u}{\partial y ^2}  \right] \right\} \, \mathrm{d} S \\
+    &- \int\limits_{}^{} P u_z \, \mathrm{d} S
+  \end{align*}
+
+  Velja tudi
+
+  \( u_{xy}  ^2 - u_{xx} u_{yy} = \nabla \cdot \left( u_y u_{xy}, -u_y u_{xx } \right) \), kjer indeksi označujejo \textbf{odvode}.
+
+  \section{Palice}
+
+  \subsection{Torzija}
+
+    
+  \section{Misc}
+
+  Besselova enačba za sferične koordinate je
+
+  \( \partial_x ^2 z_l (x) + \frac{2}{x} \partial_x z(x) + \left( 1 - \frac{l (l + 1)}{x ^2} \right) z_l (x) = 0 \)
+
+  s splošno rešitvijo \( z_l (x) = A j_l (x) + B n_l (x) \), drugi člen v \( x = 0 \) divergira. Dodatne identitete
+
+  \( - x ^{- l}  z_{l + 1} = \left(x^{-l} z_l \right)' \)
+
+  \( x^{l + 1} z_{l - 1} = \left(x^{l + 1} z_l \right)' \) in \( j_0 (x) = \frac{\sin x}{x} \).
+
+  \( \int\limits_{}^{} f(x) H(x - x_0 ) \, \mathrm{d} x = \left[ F(x) - F(x_0) \right] H(x - x_0) + C \), kjer je
+
+  \( F(x) = \int\limits_{}^{} f(x) \, \mathrm{d} x \)
+
+  Identiteta
+
+  \( \int\limits_{}^{} x \ln \frac{x}{x_0} \, \mathrm{d} x = \frac{x ^2}{2} \ln \frac{x}{x_0} - \frac{x ^2}{4} \).
+  
+  
+  
+\end{multicols}
+\end{document}
