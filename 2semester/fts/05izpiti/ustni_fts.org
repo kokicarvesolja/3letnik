@@ -1,0 +1,191 @@
+#+title: Izpitna vprašanja iz Fizike trdne snovi
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Vprašanje 1
+#+begin_problem
+Definicija primitivne rešetke, primitivni vektorji.
+#+end_problem
+
+Kristal sestavljajo periodične ponavljajoče enote, ki jim pravimo osnovna celica. Ponavljajoče enote so lahko posamezni atomi, skupine atomov, molekule ali ioni, ipd. 
+
+Geometrijo periodičnih enot opiše Bravaisova rešetka neodvisno od tega, kaj enote so.
+
+#+begin_definition
+1) BR je neskončen nabor diskretnih točk s postavitvijo in orientacijo, ki izgleda identitično iz vsake točke, iz katere nabor gledamo. 
+2) Tridimenzionalna BR je množica vseh točk, ki jo opisuje vektor \( \mathbf{R} \) in ima obliko
+
+   \[ \mathbf{R} = n_1 \mathbf{a}_1 + n_2 \mathbf{a}_2 + n_3 \mathbf{a}_3, \ n_i \in \mathbb{Z}, \ i = 1, 2, 3.
+   \]
+
+   Vektorji \( \mathbf{a}_i, \ i = 1, 2, 3 \) so trije vektorji, ki so med seboj nekolinearni.
+#+end_definition
+
+Vektorjem \( a_i, \ i = 1, 2, 3 \) pravimo primitivni osnovni vektorji. Pri izbiri primitivnih vektorjev je gostota mrežnih točk maksimalna in vsaka druga izbira vektorjev vodi do mreže z manjšo gostoto. Izbira ni enolična.
+
+/Primitivna celica/ je območje volumna ali površine, s katero lahko zapolnimo cel prostor (ne pusti nič praznega ali dvakrat pokritega prostora). Vsaki primitivni celici pripada natanko ena mrežna točka. Tudi izbira primitivne celice ni enolična. 
+
+/Wigner-Seitzova osnovna celica/ za mrežno točko je enolično določena in odraža simetrijo Bravaisove mreže. Wigner-Seitzova celica je območje kristala, ki je bližje izbrani mrežni točki kot katerikoli drugi točki.
+
+Uporabimo besedno zvezo /kristalna struktura/, ko želimo poudariti razliko med množico točk Bravaisove mreže in fizičnim kristalom. Kristalna struktura vsebuje iste mrežne enote, ki jim pravimo /baza/.
+
+Ne smemo zamešati baze kristalne strukture z /mrežno strukturo z bazo/. Če mrežna enota ni fizikalen objekt, ampak nova množica točka, potem je to /mrežna struktura z bazo/. 
+
+Baza kristalne mreže so atomi \( \mathrm{NaCl} \), mrežna struktura z bazo je satovje.
+* Vprašanje 2
+#+begin_problem
+Simetrijske operacije na kristalu (translacije ter točkovne simetrijske operacije).
+#+end_problem
+* Vprašanje 3
+#+begin_problem
+Primeri in opis nekaj najbolj značilnih Bravaisovih rešetk.
+#+end_problem
+* Vprašanje 4
+#+begin_problem
+Definicija recipročne rešetke.
+#+end_problem
+* Vprašanje 5
+#+begin_problem
+Mrežne ravnine ter Mullerjevi indeksi.
+#+end_problem
+* Vprašanje 6
+#+begin_problem
+Braggovo sipanje ter von Lauejeva formulacija sipanja.
+#+end_problem
+* Vprašanje 7
+#+begin_problem
+Geometrijski strukturni faktor.
+#+end_problem
+* Vprašanje 8
+#+begin_problem
+Klasifikacija Bravaisovih rešetk.
+#+end_problem
+* Vprašanje 9
+#+begin_problem
+Model prostih elektronov.
+#+end_problem
+* Vprašanje 10
+#+begin_problem
+Temperaturna odvisnost specifične toplote ter kemičnega potenciala v modelu prostih elektronov.
+#+end_problem
+* Vprašanje 11
+#+begin_problem
+Drudejev model električne prevodnosti (upora).
+#+end_problem
+* Vprašanje 12
+#+begin_problem
+Elektroni v periodičnem potencialu, Blochov teorem.
+#+end_problem
+* Vprašanje 13
+#+begin_problem
+Elektronska stanja v približku šibkega periodičnega potenciala.
+#+end_problem
+* Vprašanje 14
+#+begin_problem
+Gostota elektronskih stanj.
+#+end_problem
+* Vprašanje 15
+#+begin_problem
+Metoda tesne vezi.
+#+end_problem
+* Vprašanje 16
+#+begin_problem
+Semiklasični opis gibanja elektronov v periodičnem potencialu. Razloži pojem efektivne elektronske mase ter efektivne mase vrzeli.
+#+end_problem
+* Vprašanje 17
+#+begin_problem
+Blochove oscilacije ter semiklasični opis gibanja elektronov v prisotnosti zunanjega magnetnega polja.
+#+end_problem
+* Vprašanje 18
+#+begin_problem
+Van der Waalsova vez, Lenard-Jonesov potencial in kohezivna energija.
+#+end_problem
+* Vprašanje 19
+#+begin_problem
+Ionska vez ter elektrostatska energija ter kovalentna vez.
+#+end_problem
+* Vprašanje 20
+#+begin_problem
+Homogeni polprevodniki, razlika med prevodniki, polprevodniki ter prevodniki.
+#+end_problem
+* Vprašanje 21
+#+begin_problem
+Gostota elektronov (vrzeli) v prevodnem (valenčnem) pasu homogenega čistega polprevodnika.
+#+end_problem
+* Vprašanje 22
+#+begin_problem
+Kemijski potencial čistega polprevodnika (temperaturna odvisnost).
+#+end_problem
+* Vprašanje 23
+#+begin_problem
+Opis energijskih stanj nečistoč ter njihov vpliv na gostoti nosilcev v prevodnem in valenčnem pasu.
+#+end_problem
+* Vprašanje 24
+#+begin_problem
+Zasedenost donorskih oz. akceptorskih nivojev ter ravnovesne gostote nosilcev nabojev v dopiranih polprevodnikih.
+#+end_problem
+* Vprašanje 25
+#+begin_problem
+Nehomogeni polprevodniki, zaporna plast ter vpliv električnega potenciala na gostoto nosilcev v prevodnem in valenčnem pasu.
+#+end_problem
+* Vprašanje 26
+#+begin_problem
+Odvisnost skoka električnega potenciala preko p-n stika od gostote donorskih ter akceptorskih nečistoč. Potek pasov v bližini p-n stika.
+#+end_problem
+* Vprašanje 27
+#+begin_problem
+Izpeljava oblike potenciala preko p-n stika v limiti popolnoma ioniziranih nivojev nečistoč.
+#+end_problem
+* Vprašanje 28
+#+begin_problem
+p-n stik, priključen na zunanjo napetost. Vpliv napetosti na širino zaporne plasti.
+#+end_problem
+* Vprašanje 29
+#+begin_problem
+I-V karakteristika p-n stika (električni tok skozi p-n stik v odvisnosti od zunanje napetosti).
+#+end_problem
+* Vprašanje 30
+#+begin_problem
+Enodimenzionalni model za opis mrežnih nihanj, pojem disperzijske relacije, povezava z valovno enačbo.
+#+end_problem
+* Vprašanje 31
+#+begin_problem
+Dvoatomni enodimenzionalni model za opis mrežnih nihanj, optična ter akustična veja.
+#+end_problem
+* Vprašanje 32
+#+begin_problem
+Oblika lastnih nihanj v simetrijskih točkah (\( k = 0 \) in \( k = \pi \)) optične ter akustične veje dvoatomnega enodimenzionalnega modela za opis mrežnih nihanj.
+#+end_problem
+* Vprašanje 33
+#+begin_problem
+Disperzijske relacije - opis nihajnih načinov v treh dimenzijah v kristalih brez oz. z bazo.
+#+end_problem
+* Vprašanje 34
+#+begin_problem
+Kvantizacija mrežnih nihanj, zapis Hamiltoniana za mrežna nihanja z bozonskimi anihilacijskimi in kreacijskimi operatorji.
+#+end_problem
+* Vprašanje 35
+#+begin_problem
+Fononski prispevek specifični toploti - nizko- ter visokotemperaturna limita.
+#+end_problem
+* Vprašanje 36
+#+begin_problem
+Debyjev približek.
+#+end_problem
+* Vprašanje 37
+#+begin_problem
+Posledice obstoja anharmonskih členov v razvoju elastične energije, termično raztezanje kristala.
+#+end_problem
+* Vprašanje 38
+#+begin_problem
+Kinetična teorija mrežne toplotne prevodnosti.
+#+end_problem
+* Vprašanje 39
+#+begin_problem
+Ocena temperaturne odvisnosti toplotne prevodnosti - pomen Umklapp procesov.
+#+end_problem
