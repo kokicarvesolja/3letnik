@@ -1,7 +1,7 @@
 #+title: Izpitna vprašanja iz Fizike trdne snovi
 #+startup: nolatexpreview
 #+startup: entitiespretty nil
-#+startup: show2levels
+#+startup: showeverything
 #+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
 #+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
 #+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
@@ -51,11 +51,11 @@ Definicija recipročne rešetke.
 #+end_problem
 * Vprašanje 5
 #+begin_problem
-Mrežne ravnine ter Mullerjevi indeksi.
+Definiraj mrežno ravnino, družino mrežnih ravnin, valovni vektor družine mrežnih ravnin ter Mullerjevi indeksi.
 #+end_problem
 * Vprašanje 6
 #+begin_problem
-Braggovo sipanje ter von Lauejeva formulacija sipanja.
+Braggovo sipanje: pogoji, problemi ter von Lauejeva formulacija sipanja. Ekvivalenca Braggovega in von Lauejevega sipanja.
 #+end_problem
 * Vprašanje 7
 #+begin_problem
