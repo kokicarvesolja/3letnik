@@ -48,7 +48,6 @@ Kristal ime dve vrsti simetrij:
   - rotacija okoli izbrane osi za določene kot (na zgornji sliki so koti \( \frac{\pi}{2}, \pi \) ali \( \frac{3\pi}{2} \))
   - zrcaljenje (na sliki imamo 4 zrcalne ravnine)
   - inverzija (poljubna točka se zrcali preko izbrane točke v neko drugo točko)
-
 ** Primitivna osnovna celica
 
 Primitivna celica (ang. /primitive cell/ ali /primitive unit cell/) je območje volumna ali površine, ki ne pusti nič praznega ali dvakrat pokritega prostora, ko je translirana z vsemi vektorji, ki tvorijo BR. 

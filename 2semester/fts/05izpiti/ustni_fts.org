@@ -101,14 +101,6 @@ Semiklasični opis gibanja elektronov v periodičnem potencialu. Razloži pojem 
 #+begin_problem
 Blochove oscilacije ter semiklasični opis gibanja elektronov v prisotnosti zunanjega magnetnega polja.
 #+end_problem
-* Vprašanje 18
-#+begin_problem
-Van der Waalsova vez, Lenard-Jonesov potencial in kohezivna energija.
-#+end_problem
-* Vprašanje 19
-#+begin_problem
-Ionska vez ter elektrostatska energija ter kovalentna vez.
-#+end_problem
 * Vprašanje 20
 #+begin_problem
 Homogeni polprevodniki, razlika med prevodniki, polprevodniki ter prevodniki.
