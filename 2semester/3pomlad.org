@@ -5,6 +5,9 @@
 #+STARTUP: nolatexpreview
 #+startup: entitiespretty nil
 * Fizika trdne snovi
+:PROPERTIES:
+:VISIBILITY: folded
+:END:
 ** lastnosti
 *** profesor
 Janez Bonča
@@ -118,10 +121,10 @@ CLOSED: [2026-04-10 Fri 22:08] DEADLINE: <2026-04-10 Fri>
 CLOSED: [2026-06-08 Mon 11:26] DEADLINE: <2026-06-08 Mon 09:00>
 *** NOTDONE FTS, izpit 2
 CLOSED: [2026-06-17 Wed 00:18] DEADLINE: <2026-06-17 Wed>
-*** IZPIT FTS, izpit 3
-DEADLINE: <2026-08-31 Mon>
-*** IZPIT ustni, FTS
-DEADLINE: <2026-07-07 Tue 11:00-12:00>
+*** CANCELED FTS, izpit 3
+CLOSED: [2026-07-08 Wed 08:04] DEADLINE: <2026-08-31 Mon>
+*** DONE ustni, FTS
+CLOSED: [2026-07-08 Wed 08:04] DEADLINE: <2026-07-06 Mon 11:00-12:00>
 ** rezultati
 * Fizikalna merjenja
 ** lastnosti
@@ -202,13 +205,12 @@ CLOSED: [2026-05-27 Wed 05:48] DEADLINE: <2026-05-26 Tue 13:00-15:00>
 ** kolokviji/izpiti
 *** DONE FMER, kolokvij 1, VFP
 CLOSED: [2026-04-14 Tue 21:57] DEADLINE: <2026-04-14 Tue 16:00-18:00>
-*** KOLOKVIJ FMER, kolokvij 2, VFP
-DEADLINE: <2026-06-12 Fri 13:00-15:00>
+*** DONE FMER, kolokvij 2, VFP
+CLOSED: [2026-07-08 Wed 08:03] DEADLINE: <2026-06-12 Fri 13:00-15:00>
 *** NOTDONE FMER, izpit 2, F2
 CLOSED: [2026-06-17 Wed 00:18] DEADLINE: <2026-06-26 Fri 10:00-12:00>
 *** IZPIT FMER, izpit 3, F4
 DEADLINE: <2026-08-21 Fri 10:00-12:00>
-** rezultati
 * Mehanika kontinuov
 ** lastnosti
 *** profesor
@@ -294,12 +296,14 @@ CLOSED: [2026-04-18 sob 10:34] DEADLINE: <2026-04-17 Fri 18:15-20:15>
 CLOSED: [2026-06-02 Tue 14:13] DEADLINE: <2026-06-10 Wed>
 *** NOTDONE MEHK, izpit 1, F1
 CLOSED: [2026-06-17 Wed 00:18] DEADLINE: <2026-06-19 Fri 12:00-14:00>
-*** IZPIT MEHK, izpit 2, F1
-DEADLINE: <2026-06-30 Tue 10:00-12:00>
+*** DONE MEHK, izpit 2, F1
+CLOSED: [2026-07-08 Wed 08:05] DEADLINE: <2026-06-30 Tue 10:00-12:00>
 *** IZPIT MEHK, izpit 3
 DEADLINE: <2026-08-28 Fri>
-** rezultati
 * Seminar
+:PROPERTIES:
+:VISIBILITY: folded
+:END:
 ** lastnosti
 *** profesor
 Tomaž Rejec, Gregor Skačej, Luka Šantelj
@@ -339,3 +343,5 @@ CLOSED: [2026-05-27 Wed 14:05] DEADLINE: <2026-05-27 Wed 08:00-11:00>
 * Drugo
 ** CANCELED ustni KM 
 CLOSED: [2026-06-29 Mon 14:40] DEADLINE: <2026-06-30 Tue 08:15>
+** IZPIT ustni, KM 
+DEADLINE: <2026-07-22 Wed 10:00-11:00>
