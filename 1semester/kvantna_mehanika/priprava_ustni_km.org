@@ -388,9 +388,6 @@ Rezultat lahko zapišemo v obliki gibalne količine
 
 \[ m \frac{\mathrm{d} \left\langle x \right\rangle}{\mathrm{d} t} = m v_T = \left\langle p \right\rangle = \int\limits_{- \infty}^{\infty} \psi^{\ast} \left( - \mathrm{i} \hbar \frac{\partial \psi}{\partial x}  \right) \, \mathrm{d} x.
 \]
-** Časovni odvod pričakovanih vrednosti
-* Določi-število set vprašanj
-** Operatorske lastnosti in hermitski operator 
 
 
 
