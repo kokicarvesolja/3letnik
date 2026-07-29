@@ -1,0 +1,57 @@
+\documentclass[10pt, titlepage, a4paper]{article}
+
+\usepackage{kcp}
+
+\def\npredmet{Zaključna naloga MAF2}
+
+\bibliography{refs.bib} %insert .bib file
+
+% when compiling run
+% pdflatex <main>.tex
+% biber <main>[.bcf]
+% pdflatex <main>.tex
+% pdflatex <main>.tex
+
+\title{\includegraphics[width=0.25\textwidth]{./figures/fmf_logo}\\
+  {\small Oddelek za fiziko} \\
+  Naloga 20: Vrv \\
+  {\small Zaključna naloga pri predmetu Matematična fizika 2} \vspace{2cm}
+\begin{center}\begin{minipage}[c]{0.9\textwidth}\centering \footnotesize Obravnavaj nihanje dolge težke vrvi obešene na strop [\textit{verjetno bo potrebna numerika}].\end{minipage}\end{center}}
+
+\author{Kristofer Čepon Povšič, 28211104 \\
+\small{Profesor: Marko Žnidarič}}
+
+\date{Julij, 2026}
+
+
+% page header
+
+\pagestyle{fancyplain}
+\ifx\ncoursehead\undefined
+  \def\ncoursehead{\npredmet}
+\fi
+
+\lhead{\emph{\nouppercase{\leftmark}}}
+\rhead{
+  \ifnum\thepage=1
+  \else
+    \ncoursehead
+  \fi
+}
+
+\setlength\parindent{0pt}
+
+
+\begin{document}
+\pagenumbering{gobble} % remove counter from first page
+
+\maketitle
+
+\pagenumbering{arabic}
+\tableofcontents
+
+\newpage
+\section{Uvod}
+
+\printbibliography[heading=bibintoc]
+\end{document}

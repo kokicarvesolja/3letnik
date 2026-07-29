@@ -1,0 +1,81 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{kcp}
+
+
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amsthm}
+\RequirePackage{amssymb}
+\RequirePackage[slovene]{babel}% load language package
+\RequirePackage[
+sorting=nyt, %sorting by name, year, title
+style=numeric
+]{biblatex}
+% to add bibliography add to master.tex \printbibliography[heading=bibintoc]
+
+% add \addbibresource{} to the master.tex preamble
+
+% adding Bibliography to Table of Contents (ToC)
+\RequirePackage{tocbibind}
+% it can be also done with \printbibliography[heading=bibintoc]
+\RequirePackage{cancel}
+\RequirePackage{caption} %for giving captions to figures and tables
+\RequirePackage{fancyhdr} % for headers
+\RequirePackage[T1]{fontenc} % T1 encoding supports most European languages
+% https://latexref.xyz/fontenc-package.html
+\RequirePackage{float} %used for floating stuff (tables, figures, etc)
+\RequirePackage{gensymb} % package to load degree
+\RequirePackage[a4paper, inner=2.5cm, outer=2.5cm, top=2.25cm, bottom=2.25cm]{geometry} % page geometry
+\RequirePackage{graphicx} % package for graphics
+\RequirePackage{hyperref} % makes pdf include hyperlinks (for equation, titles, etc)
+% good to be imported last
+\hypersetup{
+  colorlinks,
+  linkcolor={black},
+  citecolor={black},
+  urlcolor={blue!80!black}
+  %pdfauthor={Kristofer Č. Povšič},
+  %pdfsubject{FMF zapiski: Semester \npart\ - \npredmet},
+  %pdftitle={Semester \npart\ - \npredmet}
+}
+\RequirePackage{import} % importing files from different folders relative to the import-ed one
+\RequirePackage[utf8]{inputenc} % makes sure that pdflatex uses utf-8 encoding and not ascii
+% usually not necessary but nice to have (https://tex.stackexchange.com/questions/370278/is-there-any-reason-to-use-inputenc)
+\RequirePackage{mathtools}
+\RequirePackage{parskip} %replaces parindent changes
+\RequirePackage{pdfpages}% inserting external multi-page pdf
+\RequirePackage{siunitx} % does correct applications of units of measurement (see docs)
+\RequirePackage{textcomp} % load Companion fonts such as bullet, copyright, yen, etc
+% for creating diagrams in LaTeX
+\RequirePackage{tikz}
+\RequirePackage{tikz-cd}
+\RequirePackage{titlesec} % change title and page styles with one command (see docs)
+\RequirePackage{url}
+\RequirePackage{xcolor} % gives me access to a shit ton of colors, look at docs for packages of color (docs: https://mirror.szerverem.hu/ctan/macros/latex/contrib/xcolor/xcolor.pdf)
+
+
+% must be loaded after hyperref, and amsmath!
+\RequirePackage{cleveref}
+% beside reference number also adds reference style (figure, equation), which can be modified (docs: https://ctan.mirror.garr.it/mirrors/ctan/macros/latex/contrib/cleveref/cleveref.pdf)
+% use \cref or \Cref for capitalizing
+% cancelling different things of mathematical formulae
+
+% to make index of keywords,
+%\RequirePackage{imakeidx}
+
+%--------------------------------------------------------------------------------
+%
+% CONFIGURATIONS
+%
+%--------------------------------------------------------------------------------
+
+% Theorems
+\theoremstyle{definition}
+\newtheorem*{theorem}{Izrek}
+\newtheorem*{definition}{Definicija}
+\newtheorem*{lemma}{Lema}
+\newtheorem*{corollary}{Posledica}
+\newtheorem*{my_example}{Primer}
+
+\theoremstyle{remark}
+\newtheorem*{solution}{Rešitev}
