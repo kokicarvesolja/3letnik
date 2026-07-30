@@ -1,35 +1,45 @@
 \section{Teoretični model}
-\subsection{Izpeljava valovne enačbe}
+\subsection{Izpeljava enačbe strune}
 
 V sklopu predavanj predmeta Matematična fizika 2 smo izpeljali valovno enačbo za struno. Izpeljavo bom tukaj ponovno povzel zaradi celovitosti naloge.
 
-Vrv dolžine \( L \) s konstantno dolžinsko gostoto \( \mu \) visi s stropa, kakor prikazuje slika \ref{fig:koordinate}. Odmiki vrvi naj bodo majhni glede na koordinatno os \( x \) in pravokotni nanjo (naša slika je torej močno pretirana).
+Vrv dolžine \( L \) s konstantno dolžinsko gostoto \( \mu \) visi s stropa, kakor prikazuje slika \ref{fig:koordinate}. Odmike vrvi \( u \) aproksimiramo s horizontalnim odmikom od ravnovesne lege, torej \( y = u(x, t) \).
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=0.45\textwidth]{figures/koordinate.pdf}}
-\caption{\small Skica našega problema - težka vrv, ki visi s stropa.\label{fig:koordinate}}
+\caption{\small Skica našega problema - težka elastična vrv, ki visi s stropa.\label{fig:koordinate}}
 \end{figure}
 
-Opazujemo košček vrvi dolžine \( \mathrm{d} s \) in sile, ki delujejo na njega, kot je prikazano na sliki \ref{fig:koscekVrvi}.
+Valovno enačbo izpeljemo s pomočjo drugega Newtonovega zakona \( \mathbf{F} = m \mathbf{a} \). V mirovni legi vrvi, ki jo na sliki \ref{fig:koscekVrvi} prikazuje modro obarvana črta, masa delčka vrvi na intervalu \( [x, x + \mathrm{d} x] \) znaša \( \mu \mathrm{d} x \).
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[width=0.60\textwidth]{figures/delcekvrvi.pdf}}
-\caption{\small Košček vrvi \( \mathrm{d} s \) in sile, ki delujejo na njega. \label{fig:koscekVrvi}}
+\centerline{\includegraphics[height=0.60\textwidth]{figures/delcekvrvi.pdf}}
+\caption{\small Košček vrvi \( \mathrm{d} x \) in natezne sile, ki delujejo na njega. Modra črta predstavlja vrv v ravnovesni legi.\label{fig:koscekVrvi}}
 \end{figure}
 
-Edina zunanja sila, ki deluje na vrv, je sila teže \( F_x = \mu (L - x) g \). Preko definicije kosinusa zapišemo
+Privzamemo, da je vrv elastična, zato bodo natezne sile tangentne na vrv~\cite{haberman_applied_2004}. Naj \( \theta = \theta (x, t) \) opiše kot med vertikalno premico in tangento natezne sile. Raztezek v navpični smeri zanemarimo in posledično tudi pospeševanje v navpični smeri. Pospeševanje delčka vrvi dolžine \( \mathrm{d} x \) v vodoravni smeri je podano z razliko nateznih sil
 
-\[ F_y = F \frac{\mathrm{d} y}{\mathrm{d} s}. 
+\[ \mu \mathrm{d} x \frac{\partial ^2 u (x, t)}{\partial t ^2} = F(x + \mathrm{d} x, t)\sin \left[ \theta(x + \mathrm{d} x, t) \right] - F(x) \sin \left[ \theta(x, t) \right].
 \]
-Ker so odmiki v smeri \( x \) majhni (\( \mathrm{d} x \ll \mathrm{d} y \)), lahko dolžino loka \( \mathrm{d} s \) nadomestimo s projekcijo \( \mathrm{d} y \). Enako lahko storimo tudi z razliko nateznih sil
+Enačbo delimo z \( \mathrm{d}x \), upoštevamo limito \( \mathrm{d} x \to 0 \) ter definicijo odvoda in preostane
 
-\[ \mathbf{F}(s + \mathrm{d}s) - \mathbf{F}(s) = \frac{\partial }{\partial s} F_x = \frac{\partial }{\partial s} \left( F \frac{\mathrm{d} x}{\mathrm{d} s} \right).
+\begin{equation}
+\label{eq:1.1}
+ \mu \frac{\partial ^2 u(x, t)}{\partial t ^2} = \frac{\partial }{\partial x} \left[ F(x, t) \sin \left( \theta (x, t) \right) \right].
+\end{equation}
+
+Za majhne kote \( \theta \) uporabimo približek
+
+\[ \sin \theta \approx \tan \theta = \frac{\partial u}{\partial x},
 \]
-Razlika nateznih sil po drugem Newtonovem zakonu struno pospešuje, zato zapišemo
+kjer smo upoštevali definicijo funkcije tangens na sliki~\ref{fig:koscekVrvi}. Enačbo~\eqref{eq:1.1} preoblikujemo v
 
-\[ \mu \frac{\partial ^2 y}{\partial t ^2} = \frac{\partial }{\partial s} \left( F \frac{\mathrm{d} x}{\mathrm{d} s} \right)  
-\]
+\begin{equation}
+\label{eq:1.2}
+\mu \frac{\partial ^2 u(x, t)}{\partial t ^2} = \frac{\partial }{\partial x}  \left[ F(x, t) \left( \frac{\partial u(x, t)}{\partial x}  \right) \right].
+\end{equation}
 
+Enačba~\eqref{eq:1.2} predstavlja enačbo strune za vrv, ki ima nekonstantno natezno silo \( F(x, t) \), in jo bomo uporabljali v nadaljevanju te naloge.
 
 \subsection{Definicija problema}
 \subsection{Splošna rešitev}
