@@ -42,5 +42,89 @@ kjer smo upoštevali definicijo funkcije tangens na sliki~\ref{fig:koscekVrvi}. 
 Enačba~\eqref{eq:1.2} predstavlja enačbo strune za vrv, ki ima nekonstantno natezno silo \( F(x, t) \), in jo bomo uporabljali v nadaljevanju te naloge.
 
 \subsection{Definicija problema}
-\subsection{Splošna rešitev}
+
+Iščemo lastne nihajne načine vrvi, ki je pritrjena na strop, drug konec vrvi pa je prost. Upoštevati moramo tudi silo teže, ki jo določa enačba
+
+\[  F(x) = \mu g (L - x).
+\]
+
+Imamo parcialno diferencialno enačbo
+
+\begin{equation}
+\label{eq:1.5}
+\mu \frac{\partial ^2 u(x, t)}{\partial t ^2} = \frac{\partial }{\partial x} \left( \mu g (L - x) \frac{\partial u(x, t) }{\partial x} \right),
+\end{equation}
+z robnima pogojema
+
+\begin{align} \label{eq:1.3}
+  u(x = 0, t) &= 0 \\ \label{eq:1.4}
+  \left| u(x = L, t) \right| &< \infty.
+\end{align}
+
+Problem rešujemo s separacijo spremenljivk \( u(x, t) = X(x) T(t) \), kar vstavimo v enačbo~\eqref{eq:1.5}. V nadaljevanju bom opustil pisanje parametrov zaradi kompaktnosti. Dobimo
+
+\[ \mu \ddot{T}  X = \frac{\partial }{\partial x} \left( \mu g (L - x) X' T \right),
+\]
+kjer pikice (\( \ddot{\cdot} \)) označujejo dvojni časovni odvod in \( ' \) označuje krajevni odvod. Vsako spremenljivko postavimo na svojo stran enačbe in strani sta ekvivalentni zgolj, če sta obe enaki do neke konstante
+
+\[ \frac{\ddot{T}}{gT} = \frac{1}{X} \frac{\partial }{\partial x}  \left[ (L - x) X' \right] = - \lambda, \quad \lambda > 0.
+\]
+
+Časovni del enačbe je 
+
+\[ \ddot{T} + \omega ^2 T = 0, 
+\]
+kjer smo uvedli \( \omega ^2 = \lambda g \). Rešitev časovnega dela je
+
+\begin{equation}
+\label{eq:1.6}
+T(t) = A \cos \left( \omega t \right) + B \sin \left( \omega t \right),
+\end{equation}
+kot smo spoznali na predavanjih predmeta Matematična fizika 2.
+
+Krajevni del enačbe je
+
+\begin{equation}
+\label{eq:1.7}
+ \frac{\mathrm{d}}{\mathrm{d} x} \left( (L - x) X' \right)= - \frac{\omega ^2}{g} X
+\end{equation}
+ki ga rešimo z uvedbo nove spremenljivke \( z = 2 \sqrt{\frac{\omega ^2}{g} (L - x)} \). Odvod nove spremenljivke po \( x \) je
+
+\[ \frac{\mathrm{d} z}{\mathrm{d} x} = - \sqrt{\frac{\omega ^2}{g(L - x)}},
+\]
+ki ga upoštevamo pri verižnem pravilu
+
+\begin{equation}
+\label{eq:1.8}
+ \frac{\mathrm{d} X(z)}{\mathrm{d} x} = \frac{\mathrm{d} X(z)}{\mathrm{d} z} \frac{\mathrm{d} z}{\mathrm{d} x} = \frac{\mathrm{d} X(z)}{\mathrm{d} z} \left( - \sqrt{\frac{\omega ^2}{g(L - x)}} \right).
+\end{equation}
+
+Enačbo~\eqref{eq:1.8} množimo z \( (L -x) \) in na desni strani upoštevamo definicijo spremenljivke \( z \)
+
+\[ (L - x) \frac{\mathrm{d} X(z) }{\mathrm{d} x} = - \frac{z}{2} \frac{\mathrm{d} X(z) }{\mathrm{d} z}.
+\]
+
+Enačbo~\eqref{eq:1.8} ponovno odvajamo po \( x \) in prav tako upoštevamo verižno pravilo ter enakost iz zgornje enačbe
+
+\begin{equation}
+\label{eq:1.9}
+\begin{aligned}
+  \frac{\mathrm{d} }{\mathrm{d} x} \left[ (L - x) \frac{\mathrm{d} }{\mathrm{d} x} X(z) \right] &= - \frac{1}{2} \frac{\mathrm{d} }{\mathrm{d} z} \left[ z \frac{\mathrm{d} X(z)}{\mathrm{d} z} \right] \frac{\mathrm{d} z}{\mathrm{d} x} \\
+                                                                                                &= - \frac{1}{2} \left( - \sqrt{\frac{\omega ^2}{g(L - x)}} \right) \frac{\mathrm{d} }{\mathrm{d} z} \left[ z \frac{\mathrm{d} X(z)}{\mathrm{d} z} \right] && \left/ \cdot \frac{\omega ^2 g}{\omega ^2 g} \right. \\
+  &= - \frac{\omega ^2}{g} \frac{1}{z} \frac{\mathrm{d} }{\mathrm{d} z}\left[ z \frac{\mathrm{d} X(z)}{\mathrm{d} z} \right].
+\end{aligned}
+\end{equation}
+
+Levo stran enačbe~\eqref{eq:1.7} sedaj nadomestimo z ravno izpeljano enačbo~\eqref{eq:1.9}, pokrajšamo enake koeficiente in množimo z \( z ^2 \)
+
+\[ z ^2 \frac{\mathrm{d} ^2 }{\mathrm{d} z ^2} X + z \frac{\mathrm{d} }{\mathrm{d} z} X + z ^2 X = 0.
+\]
+
+Dobili smo Besslovo enačbo ničtega reda in rešitev krajevnega dela je
+
+\[ X(x) = C J_0 \left( 2 \sqrt{\frac{\omega ^2}{g} (L- x)} \right) + D Y_0 \left( 2 \sqrt{\frac{\omega ^2}{g} (L - x)} \right),
+\]
+kjer sta \( J_0 \) in \( Y_0 \) Besslova in Neumannova funkcija. Zaradi robnega pogoja~\eqref{eq:1.3} je \( D =0 \), saj tam \( Y_0(x) \) divergira.
+
+
 \subsection{Začetni pogoji}
