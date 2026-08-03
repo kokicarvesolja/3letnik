@@ -11,6 +11,9 @@
 sorting=nyt, %sorting by name, year, title
 style=numeric
 ]{biblatex}
+\DefineBibliographyStrings{slovene}{
+  pagetotals = {strani}
+}
 % to add bibliography add to master.tex \printbibliography[heading=bibintoc]
 
 % add \addbibresource{} to the master.tex preamble
@@ -77,5 +80,9 @@ style=numeric
 \newtheorem*{corollary}{Posledica}
 \newtheorem*{my_example}{Primer}
 
+\theoremstyle{plain}
+\newtheorem*{trditev}{Trditev}
+
 \theoremstyle{remark}
 \newtheorem*{solution}{Rešitev}
+

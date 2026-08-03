@@ -58,12 +58,12 @@ z robnima pogojema
 
 \begin{align} \label{eq:1.3}
   u(x = 0, t) &= 0 \\ \label{eq:1.4}
-  \left| u(x = L, t) \right| &< \infty.
+  \left| u(x, t) \right| &< \infty.
 \end{align}
 
 Problem rešujemo s separacijo spremenljivk \( u(x, t) = X(x) T(t) \), kar vstavimo v enačbo~\eqref{eq:1.5}. V nadaljevanju bom opustil pisanje parametrov zaradi kompaktnosti. Dobimo
 
-\[ \mu \ddot{T}  X = \frac{\partial }{\partial x} \left( \mu g (L - x) X' T \right),
+\[ \mu \ddot{T}  X = \frac{\partial }{\partial x} \left[ \mu g (L - x) X' T \right],
 \]
 kjer pikice (\( \ddot{\cdot} \)) označujejo dvojni časovni odvod in \( ' \) označuje krajevni odvod. Vsako spremenljivko postavimo na svojo stran enačbe in strani sta ekvivalentni zgolj, če sta obe enaki do neke konstante
 
@@ -86,7 +86,7 @@ Krajevni del enačbe je
 
 \begin{equation}
 \label{eq:1.7}
- \frac{\mathrm{d}}{\mathrm{d} x} \left( (L - x) X' \right)= - \frac{\omega ^2}{g} X
+ \frac{\mathrm{d}}{\mathrm{d} x} \left[ (L - x) \frac{\mathrm{d} }{\mathrm{d} x} X \right]= - \frac{\omega ^2}{g} X
 \end{equation}
 ki ga rešimo z uvedbo nove spremenljivke \( z = 2 \sqrt{\frac{\omega ^2}{g} (L - x)} \). Odvod nove spremenljivke po \( x \) je
 
@@ -104,7 +104,7 @@ Enačbo~\eqref{eq:1.8} množimo z \( (L -x) \) in na desni strani upoštevamo de
 \[ (L - x) \frac{\mathrm{d} X(z) }{\mathrm{d} x} = - \frac{z}{2} \frac{\mathrm{d} X(z) }{\mathrm{d} z}.
 \]
 
-Enačbo~\eqref{eq:1.8} ponovno odvajamo po \( x \) in prav tako upoštevamo verižno pravilo ter enakost iz zgornje enačbe
+Ponovno odvajamo po \( x \), upoštevamo verižno pravilo in enakost iz zgornje enačbe
 
 \begin{equation}
 \label{eq:1.9}
@@ -124,7 +124,60 @@ Dobili smo Besslovo enačbo ničtega reda in rešitev krajevnega dela je
 
 \[ X(x) = C J_0 \left( 2 \sqrt{\frac{\omega ^2}{g} (L- x)} \right) + D Y_0 \left( 2 \sqrt{\frac{\omega ^2}{g} (L - x)} \right),
 \]
-kjer sta \( J_0 \) in \( Y_0 \) Besslova in Neumannova funkcija. Zaradi robnega pogoja~\eqref{eq:1.3} je \( D =0 \), saj tam \( Y_0(x) \) divergira.
+kjer sta \( J_0 \) in \( Y_0 \) Besslova in Neumannova funkcija. Zaradi robnega pogoja~\eqref{eq:1.4} je \( D =0 \), saj \( Y_0(x) \) v izhodišču divergira. Robni pogoj~\eqref{eq:1.3} nam poda pogoj za krajevno odvisnost \( X(0) = 0 \), iz česar sledi enačba
 
+\[ J_0 \left( 2 \sqrt{\frac{\omega ^2 L}{g}} \right) = 0.
+\]
+Označimo ničle funkcija \( J_0(x) \) z \( \xi_n^{(0)} = \xi_n \). S pomočjo njih preko zgornje enačbe definiramo lastne frekvence
+
+\[  \omega_n = \frac{1}{2} \sqrt{\frac{g}{L}} \xi_n.
+\]
+
+\( n \)-ta rešitev enačbe s separacijo spremenljivk je
+
+\[ u_n(x, t) = X_n(x) T_n (x) =  J_0 \left( \xi_n \sqrt{1 - \frac{x}{L}} \right) \left[ A_n \cos \left( \omega_n t \right) + B_n \sin \left( \omega_n t \right) \right],
+\]
+splošna rešitev pa je superpozicija le-teh
+
+\[ u(x, t) = \sum\limits_{n = 1}^{\infty} J_0  \left( \xi_n \sqrt{1 - \frac{x}{L}} \right) \left[ A_n \cos \left( \omega_n t \right) + B_n \sin \left( \omega_n t \right) \right].
+\]
+
+\begin{trditev}
+  Diferencialna enačba~\eqref{eq:1.7} s pripadajočima robnima pogojema~\eqref{eq:1.3} in~\eqref{eq:1.4} je regularni Sturm-Liouvilleov problem.
+\end{trditev}
+\begin{proof}
+  Regularni Sturm-Liouvilleov problem definira diferencialna enačba oblike
+
+  \[ \frac{\mathrm{d} }{\mathrm{d} x} \left[ p(x) \frac{\mathrm{d} \phi}{\mathrm{d} x} \right] + q(x) \phi + \lambda \sigma(x) = 0, \quad a < x < b,
+  \]
+  kjer so \( p(x), q(x), \sigma(x) \) realno zvezno odvedljive funkcije na intervalu \( [a, b] \) in \( p(x), \sigma(x) > 0 \), z robnima pogojema oblike
+  \begin{align*}
+    \beta_1 \phi(a) + \beta_2 \frac{\mathrm{d} \phi}{\mathrm{d} x} (a) &= 0 \\
+    \beta_3 \phi(b) + \beta_4 \frac{\mathrm{d} \phi}{\mathrm{d} x} (b) &= 0,
+  \end{align*}
+  kjer so \( \beta_i \in \mathbb{R}, \ i = 1, 2, 3, 4 \)~\cite{haberman_applied_2004}.
+
+  Iz primerjave enačbe~\eqref{eq:1.7} s Sturm-Liouvilleovo diferencialno enačbo razberemo \( p(x) = L - x \in \mathbb{R} \), \( q(x) = \sigma(x) = 1 \) in \( \lambda = \frac{\omega ^2}{g} \) za \( x \in [0, L] \).
+
+  Robni pogoji~\eqref{eq:1.3} in~\eqref{eq:1.4} ustrezajo robnim pogojem Sturm-Liouvillea za vrednosti koeficientov \( \beta_1 = 1, \beta_2 = 0, \beta_3 = \mathrm{konst} \) in \( \beta_4 = 0 \).
+\end{proof}
 
 \subsection{Začetni pogoji}
+
+Koeficienti \( A_n \) in \( B_n \) so odvisni in določeni s pomočjo začetnih pogojev \( u(x, t = 0) \) in \( \left. \frac{\partial }{\partial t} u(x, t ) \right|_{t = 0} \). Za to zaključno nalogo sta izbrana začetna pogoja \( u(x, t = 0 ) = 0 \) in \( \left. \frac{\partial }{\partial t} u(x, t) \right|_{t= 0} = f(x) \). Vrv je ob času \( t = 0 \) v mirovni legi, posamezen košček vrvi pa ima določeno hitrost glede na funkcijo \( f(x) \). Izbira začetnih pogojev ni naključna, ampak so me navdihnile plezalne vrvi pri športnem plezanju, ki visijo iz vrha smeri.
+
+Iz prvega pogoja sledi \( A_n = 0 \), medtem ko pri drugem pogoju dobimo pogoj
+
+\[ \left. \frac{\partial }{\partial t} u(x, t)\right|_{t = 0} = \left. \sum\limits_{n = 1}^{\infty} J_0 \left( \xi_n \sqrt{1 - \frac{x}{L}} \right) \omega_n B_n \cos \left( \omega_n t \right) \right|_{t= 0} = \sum\limits_{n = 1}^{\infty} J_0 \left( \xi_n \sqrt{1 - \frac{x}{L}} \right) \omega_n B_n = f(x).
+\]
+
+Ker smo v prejšnjem podpoglavju dokazali, da je viseča vrv Sturm-Liouvilleov problem, sedaj uporabimo lastnost ortogonalnosti lastnih fukcij, ki jim pripada lastna vrednost z utežjo \( w(x) \)~\cite{haberman_applied_2004}. Velja
+
+\[ \int\limits_0^L X_n (x) X_m (x) \, \mathrm{d} x  = 0 , \quad m \ne n,
+\]
+z utežjo \( w(x) = 1 \) in sedaj dobimo izraz za izračun koeficientov 
+
+\[ B_n = \frac{1}{\omega_n} \frac{\int\limits_0^L f(x) X_n (x) \, \mathrm{d} x}{\int\limits_0^L X_n ^2 (x) \, \mathrm{d} x}. 
+\]
+
+
