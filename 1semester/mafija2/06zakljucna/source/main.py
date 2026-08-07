@@ -10,9 +10,9 @@ import scipy.integrate as si
 g = 9.81
 L = 1.0
 v0 = 1.0
-sigma = 0.5 * L
+sigma = 0.05 * L
 m = 1000
-N = 1000
+N = 20000
 
 def stevec(x, nicle):
     '''
@@ -39,18 +39,6 @@ xi = np.broadcast_to(ss.jn_zeros(0, N), (m, N)).T
 
 omega = (1 / 2) * np.sqrt(g / L) * xi[:, 0]
 
-# preverimo ortogonalnost
-
-n = [2, 5, 6, 7]
-x_kord = np.linspace(0, 1, m)
-
-for i in n:
-    value1 = np.trapezoid(ss.j0(xi[2, 0] * np.sqrt(1 - x_kord / L)) * ss.j0(xi[i, 0] * np.sqrt(1 - x_kord / L)), x_kord)
-    print(f'{i} ', value1)
-
-
-
-'''
 # gradnja intervala velikosti (N, m)
 
 interval = np.broadcast_to(np.linspace(0, 1, m), (N, m))
@@ -63,39 +51,20 @@ y = np.arange(N, step=1.0)
 # matrika oblike [[0, 0, 0], [1, 1, 1], ..., [N, N, N]]
 _, rez = np.meshgrid(x, y) 
 
-
+# stevec
 rez[:, 0] = np.trapezoid(stevec(interval, xi), np.linspace(0, 1, m), axis=1)
+# imenovalec
 rez[:, 1] = np.trapezoid(imenovalec(interval, xi), np.linspace(0, 1, m), axis=1)
+# koeficienti
 rez[:, 2] = (1 / omega) * (rez[:, 0] / rez[:, 1]) 
 
-# graf exp - sum, plot maksimalnega errorja razlike
-
-# vmesni rezultat
-
-temp = 0
-for i in range(N):
-    # vsota Besselovih funkcija
-    temp += rez[i, 2] * ss.j0(xi[i] * np.sqrt(1 - x_kord / L)) 
-
-    # razlika od Gaussovke
-    diff = np.abs(gauss(v0, sigma, x_kord)[-1] - temp[-1])
-
-    # maksimalna error, plot
-    plt.scatter(i, np.max(diff), marker='.')
-
-    
-#plt.stem(np.arange(N, step=1), np.abs(omega * rez[:, 2]), markerfmt='.')
+#plt.stem(np.arange(N, step=1), np.log(np.abs(rez[:, 2])), markerfmt='.')
+plt.plot(np.arange(N, step=1), np.cumsum(np.abs(rez[:, 2])))
 #plt.semilogy(np.arange(N, step=1), np.cumsum(np.abs(rez[:, 2])))
 
-plt.xlabel('N')
-plt.ylabel(r'$\left| \exp{- \frac{(x - L)^2}{2 \sigma^2}} - \sum_{n = 1}^{N} B_n J_n (\ldots) \right|$')
-plt.title('Razlika vrednosti samo pri x = L = 1')
+plt.xlabel('n')
+plt.ylabel(r'$\sum_{n = 1}^{N}\left| B_n \right|^2$')
 plt.show()
-
-plt.plot(x_kord, temp)
-plt.plot(x_kord, gauss(v0, sigma, x_kord), color='r')
-plt.show()
-'''
 
 
 
