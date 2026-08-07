@@ -3,6 +3,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.special as ss
+import scipy.integrate as si
 
 # Constants
 
@@ -40,14 +41,26 @@ omega = (1 / 2) * np.sqrt(g / L) * xi[:, 0]
 
 # preverimo ortogonalnost
 
-n = [3, 5, 6, 7]
+n = [2, 5, 6, 7]
 x_kord = np.linspace(0, 1, m)
 
-for i in n:
-    print(xi[2, 0], ' ', ss.jn_zeros(0, 3)[-1])
-    print(xi[i, 0], ' ', ss.jn_zeros(0, i+1)[-1])
-    print(np.trapezoid(ss.j0(xi[2, 0] * np.sqrt(1 - x_kord / L) \
-                             * ss.j0(xi[i, 0] * np.sqrt(1 - x_kord / L))), x_kord))
+# druga ničla
+
+xi_2 = ss.jn_zeros(0, 2)[-1]
+
+# tretja ničla
+
+xi_3 = ss.jn_zeros(0, 3)[-1]
+
+value2 = si.quad(lambda x: ss.j0(xi_2 * np.sqrt(1 - x / L)) * ss.j0(xi_2 * np.sqrt(1 - x / L)), 0, 1)
+value3 = si.quad(lambda x: ss.j0(xi_2 * np.sqrt(1 - x / L)) * ss.j0(xi_3 * np.sqrt(1 - x / L)), 0, 1)
+
+print("scipy.integrate ", value2, ' ', value3)
+
+valueNP2 = np.trapezoid(ss.j0(xi_2 * np.sqrt(1 - x_kord/ L)) * ss.j0(xi_2 * np.sqrt(1 - x_kord / L)), x_kord)
+valueNP3 = np.trapezoid(ss.j0(xi_2 * np.sqrt(1 - x_kord/ L)) * ss.j0(xi_3 * np.sqrt(1 - x_kord / L)), x_kord)
+
+print("numpy ", valueNP2, ' ', valueNP3)
 
 '''
 # gradnja intervala velikosti (N, m)
