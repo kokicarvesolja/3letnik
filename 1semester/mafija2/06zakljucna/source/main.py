@@ -86,7 +86,7 @@ interval = np.broadcast_to(uniform, (N, m))
 
 koef_int = np.trapezoid(alt_stevec(interval, xi), uniform, axis=1)
 
-koef_int = (2 / ((ss.j1(xi[:, 0]) ** 2)) * koef_int) 
+koef_int = (2 * koef_int  / (ss.j1(xi[:, 0]) ** 2))
 print('koef_int ', koef_int)
 
 # izračun koeficientov preko identitete
@@ -132,16 +132,18 @@ rez[:, 0] = np.trapezoid(alt_stevec(interval, xi), uniform, axis=1)
 # imenovalec
 rez[:, 1] = ss.j1(xi[:, 0]) ** 2
 # koeficienti
-rez[:, 2] = (2 / omega) * (rez[:, 0] / rez[:, 1]) 
+rez[:, 2] = (2 ) * (rez[:, 0] / rez[:, 1]) 
+
+#koef_int_moje = (2 *  rez[:, 0] / (ss.j1(xi[:, 0]) ** 2))
 
 # initial condition plot
-
-x_kord = uniform
 
 j0i = 0 # rez[N-1, 2] * ss.j0(xi[N-1, 0] * np.sqrt(1 - x_kord / L))
 
 for i in range(N):
     j0i += rez[i, 2] * ss.j0(xi[i, 0] * uniform)
+
+
 
 #plt.plot(x_kord, j0i)
 #plt.plot(x_kord, gauss(v0, sigma, x_kord))
