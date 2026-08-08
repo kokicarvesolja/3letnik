@@ -117,8 +117,10 @@ Ponovno odvajamo po \( x \), upoštevamo verižno pravilo in enakost iz zgornje 
 
 Levo stran enačbe~\eqref{eq:1.7} sedaj nadomestimo z ravno izpeljano enačbo~\eqref{eq:1.9}, pokrajšamo enake koeficiente in množimo z \( z ^2 \)
 
-\[ z ^2 \frac{\mathrm{d} ^2 }{\mathrm{d} z ^2} X + z \frac{\mathrm{d} }{\mathrm{d} z} X + z ^2 X = 0.
-\]
+\begin{equation}
+\label{eq:1.10}
+ z \frac{\mathrm{d} }{\mathrm{d} z} \left[ z \frac{\mathrm{d} X(z)}{\mathrm{d} z} \right] + z ^2 X(z) = z^2 \frac{\mathrm{d} ^2 }{\mathrm{d} z ^2} X + z \frac{\mathrm{d} }{\mathrm{d} z} X + z ^2 X = 0.
+\end{equation}
 
 Dobili smo Besslovo enačbo ničtega reda in rešitev krajevnega dela je
 
@@ -143,12 +145,12 @@ splošna rešitev pa je superpozicija le-teh
 \]
 
 \begin{trditev}
-  Diferencialna enačba~\eqref{eq:1.7} s pripadajočima robnima pogojema~\eqref{eq:1.3} in~\eqref{eq:1.4} je regularni Sturm-Liouvilleov problem.
+  Diferencialna enačba~\eqref{eq:1.10} s pripadajočima robnima pogojema~\eqref{eq:1.3} in~\eqref{eq:1.4} je regularni Sturm-Liouvilleov problem.
 \end{trditev}
 \begin{proof}
   Regularni Sturm-Liouvilleov problem definira diferencialna enačba oblike
 
-  \[ \frac{\mathrm{d} }{\mathrm{d} x} \left[ p(x) \frac{\mathrm{d} \phi}{\mathrm{d} x} \right] + q(x) \phi + \lambda \sigma(x) = 0, \quad a < x < b,
+  \[ \frac{\mathrm{d} }{\mathrm{d} x} \left[ p(x) \frac{\mathrm{d} \phi}{\mathrm{d} x} \right] + q(x) \phi + \lambda \sigma(x) \phi = 0, \quad a < x < b,
   \]
   kjer so \( p(x), q(x), \sigma(x) \) realno zvezno odvedljive funkcije na intervalu \( [a, b] \) in \( p(x), \sigma(x) > 0 \), z robnima pogojema oblike
   \begin{align*}
@@ -157,7 +159,11 @@ splošna rešitev pa je superpozicija le-teh
   \end{align*}
   kjer so \( \beta_i \in \mathbb{R}, \ i = 1, 2, 3, 4 \)~\cite{haberman_applied_2004}.
 
-  Iz primerjave enačbe~\eqref{eq:1.7} s Sturm-Liouvilleovo diferencialno enačbo razberemo \( p(x) = L - x \in \mathbb{R} \), \( q(x) = \sigma(x) = 1 \) in \( \lambda = \frac{\omega ^2}{g} \) za \( x \in [0, L] \).
+  Levo stran enačbe~\eqref{eq:1.10} delimo z \( z \) in jo s tem preobrazimo v Sturm-Liouvilleovo obliko
+
+  \[ \frac{\mathrm{d} }{\mathrm{d} z} \left[ z \frac{\mathrm{d} X(z)}{\mathrm{d} z} \right] + z X(z) = 0.
+  \]
+  Iz enačbe sedaj razberemo \( x = z \), \( p(z) = z \), \( \sigma(z) = z \) in \( q(z) = 0 \), saj \( z \) po definiciji že vsebuje \( \lambda = \frac{\omega ^2}{g} \).
 
   Robni pogoji~\eqref{eq:1.3} in~\eqref{eq:1.4} ustrezajo robnim pogojem Sturm-Liouvillea za vrednosti koeficientov \( \beta_1 = 1, \beta_2 = 0, \beta_3 = \mathrm{konst} \) in \( \beta_4 = 0 \).
 \end{proof}
@@ -171,13 +177,13 @@ Iz prvega pogoja sledi \( A_n = 0 \), medtem ko pri drugem pogoju dobimo pogoj
 \[ \left. \frac{\partial }{\partial t} u(x, t)\right|_{t = 0} = \left. \sum\limits_{n = 1}^{\infty} J_0 \left( \xi_n \sqrt{1 - \frac{x}{L}} \right) \omega_n B_n \cos \left( \omega_n t \right) \right|_{t= 0} = \sum\limits_{n = 1}^{\infty} J_0 \left( \xi_n \sqrt{1 - \frac{x}{L}} \right) \omega_n B_n = f(x).
 \]
 
-Ker smo v prejšnjem podpoglavju dokazali, da je viseča vrv Sturm-Liouvilleov problem, sedaj uporabimo lastnost ortogonalnosti lastnih fukcij, ki jim pripada lastna vrednost z utežjo \( w(x) \)~\cite{haberman_applied_2004}. Velja
+Ker smo v prejšnjem podpoglavju dokazali, da je viseča vrv Sturm-Liouvilleov problem, sedaj uporabimo lastnost ortogonalnosti lastnih fukcij, ki jim pripada lastna vrednost z utežjo \( \sigma(x) \)~\cite{haberman_applied_2004}. Preko identitete podane na Wikipedii~\cite{noauthor_fourierbessel_2026} v splošnem velja
 
-\[ \int\limits_0^L X_n (x) X_m (x) \, \mathrm{d} x  = 0 , \quad m \ne n,
+\[ \int\limits_0^L X_n (\xi_n x) X_m (\xi_m x) x \, \mathrm{d} x = \int\limits_0^L J_0 (\xi_n x) J_0 (\xi_m x) x \, \mathrm{d} x = \frac{\delta_{mn}}{2} {\left[ J_1 (\xi_n) \right]}^2
 \]
-z utežjo \( w(x) = 1 \) in sedaj dobimo izraz za izračun koeficientov 
+z utežjo \( \sigma(x) = x \) in sedaj dobimo izraz za izračun koeficientov 
 
-\[ B_n = \frac{1}{\omega_n} \frac{\int\limits_0^L f(x) X_n (x) \, \mathrm{d} x}{\int\limits_0^L X_n ^2 (x) \, \mathrm{d} x}. 
+\[ B_n = \frac{2}{\omega_n} \frac{\int\limits_0^L f(x) X_n (x) x \, \mathrm{d} x}{{\left[ J_1 \left( \xi_{n} \right) \right]} ^2}. 
 \]
 
 
