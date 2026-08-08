@@ -186,4 +186,10 @@ z utežjo \( \sigma(x) = x \) in sedaj dobimo izraz za izračun koeficientov
 \[ B_n = \frac{2}{\omega_n} \frac{\int\limits_0^L f(x) X_n (x) x \, \mathrm{d} x}{{\left[ J_1 \left( \xi_{n} \right) \right]} ^2}. 
 \]
 
+Splošna rešitev za naše začetne pogoje je torej
+
+\[ u(x, t) = \sum\limits_{n = 1}^{\infty} \frac{2}{\omega_n} \frac{1}{{\left[ J_1 \left( \xi_n \right)\right]}^2}  \left[ \int\limits_0^L f(x) J_0 \left( \xi_n \sqrt{1 - \frac{x}{L}} \right) x \,\mathrm{d} x\right] J_0 \left( \xi_n \sqrt{1 - \frac{x}{L}} \right) \sin \left( \omega_n t \right).
+\]
+
+% več na https://www.johndcook.com/blog/2017/11/04/fourier-bessel-series-and-gibbs-phenomena/
 
