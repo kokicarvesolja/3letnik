@@ -2,7 +2,82 @@
 
 Občasno, ko vrv prosto visi z vrha plezalne smeri, njen prost konec udarim z roko in opazujem dogajanje. Lokaliziran udarec je \( \delta \) funkcija, ki pa jo aproksimiramo s Heavisideovo funkcijo na zadnji \( 5\% \) vrvi
 
-\[ f(x) = v_0 \theta(x - 0.95 * L) 
-\]
+\begin{equation}
+\label{eq:2.1}
+ f(x) = v_0 \theta(x - 0.95 * L) 
+\end{equation}
 
 Za numerične izračune si zamislimo vrv z dolžino \( L = 1 \mathrm{m} \), začetno hitrost \( v_0 = 1 \frac{\mathrm{m}}{\mathrm{s}} \) in gravitacijski pospešek je \( g = 9.81 \frac{\mathrm{m}}{\mathrm{s} ^2} \).
+
+V rešitvi~\eqref{eq:1.12} imamo vrsto z neskončno členi, vendar fizično tega ni možno sešteti. Določiti moramo torej optimalno število členov, kjer je z besedo optimalno želimo čim manjšo napako z najkrajšim časom računanja. 
+
+Iz predmeta Matematika 4 vemo, da Fourier-Besslova vrsta konvergira, po definiciji, glede na normo, ki izhaja iz pripadajočega skalarnega produkta. V našem primeru, vrsta konvergira v obteženi \( L^2 \) normi
+
+\[ \lim_{N \to \infty} \int\limits_0^L {\left[ f(x) - u_N \left( \xi_n \sqrt{1 - \frac{x}{L} } \right) \right]}^2 \, \mathrm{d} x = 0,
+\]
+kjer je \( u_N \) vsota \( N \) členov Fourier-Besslove vrste in je že upoštevana zamenjava spremenljivke kot pokazano v~\cite{dunaev_answer_2023}.
+
+Za izračun koeficientov \( B_n \) in \( L^2 \) norme sem uporabil knjižnici \texttt{NumPy} s pripadajočo metodo \texttt{numpy.trapezoid} za izračun integralov in \texttt{SciPy} za izračun vrednosti Besslovih funkcij \( J_0 \) in \( J_1 \). Obstajajo boljše metode kot je trapezna metoda, vendar sem se zaradi načina implementacije lahko oprl na nizko časovno zahtevnost, ki jo prinese knjižnica \texttt{NumPy}.
+
+Z upoštevanjem oblike začetnega sunka~\eqref{eq:2.1} se \( L^2 \) norma prevede na integral
+
+\[ \left\lVert f(x) - u_N \right\rVert = \int\limits_{0.95}^{1} {\left[ 1 - u_N \left( \xi_n \sqrt{1 - \frac{x}{L}} \right) \right]} ^2 \, \mathrm{d} x.
+\]
+
+Konvergenca norme je vidna na sliki~\ref{fig:konvL2}. Interval \( [0.95, 1] \) sem na začetku razdelil na \( M = 1000 \) enakih delov, vendar se vidi začetek divergence za \( N > 200 \). Za \( M = 10^4 \) je lepo vidna konvergenca vse do \( N = 350 \) člena. To nam sporoča, da so izračuni pravilni. Seveda bi tudi tukaj zaradi numerične integracije začelo divergirati.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.75\textwidth]{figures/konvergencaL2.png}}
+\caption{\label{fig:konvL2} \small Konvergenca \( L^2 \) norme na intervalu \( [0.95, 1] \), ki je razdeljen na \( M = 1000 \) in \( M = 10^4 \) delov, za vsote s členi \( N \in [20, 350] \). Bolj fino razdeljen interval konvergira pri členu \( N = 350 \), medtem ko je grob interval že začel divergirati.}
+\end{figure}
+
+Delna vsota \( u_N \) pa ne konvergira po točkah pri nezveznostih \( x = 0.95 \) in \( x  = 1.0 \), kjer se pojavi t.i. Gibbsov fenomen. To je pojav, viden na sliki~\ref{fig:gibbs}, kjer vsota preseže vrednosti Heavisideove funkcije.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.75\textwidth]{figures/GibbsPhenomenon.png}}
+\caption{\label{fig:gibbs} \small Vsota \( u_N \) za \( N = 200 \), kjer se jasno vidi Gibbsov fenomen, ko vsota preseže vrednosti stopničaste funkcije. Za člene \( N > 200 \) je približek pri \( x = 1 \) naraščal v neskončnost.}
+\end{figure}
+
+Konvergenco po točkah sem ponovno opazoval za fino in grobo razdeljen interval \( [0.95, 1] \) kot maksimalno razliko med stopničasto funkcijo in vsoto vrste
+
+\[ I_{\text{tocke}} = \max \left[ f(x) - u_N \left( \xi_n \sqrt{1 - \frac{x}{L}} \right) \right],
+\]
+kar vidimo na sliki~\ref{fig:konvTocke}. Opazimo tudi minimum v razliki pri grobi razdelitvi za vsoto členov \( N = 100 \), kar uporabimo tudi v nadaljevanju.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.75\textwidth]{figures/konvergencaTocke.png}}
+\caption[]{\label{fig:konvTocke} \small Konvergenca po točkah za grobo in fino razdeljen interval \( [0.95, 1] \) za vsoto \( N \in [25, 250] \) členov \( u_N \). Za grobo razdeljen interval se vidi začetek divergence po 150. členu.}
+\end{figure}
+
+Dodatno lahko preverimo pravilnost naše implementacije in odločitev, da je \( N = 100 \) členov dovolj s kumulativno vsoto koeficientov vrste
+
+\[ R = \sum\limits_{n = 1}^N \left| B_n \right| ^2,
+\]
+ki je prikazana na sliki~\ref{fig:cumtail}. 
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.75\textwidth]{figures/cumtail.png}}
+\caption{\label{fig:cumtail} \small Kumulativna vsota koeficientov \( B_n  \) konvergira proti končni vrednosti. Za desetkrat več členov v vsoti ta naraste za manj kot petino.}
+\end{figure}
+
+Logartimirane vrednosti prvih sto koeficientov \( \left| B_n \right| \) in pripadajočih hitrostnih koeficientov \( \left| B_n \omega_n \right| \) so vidne na sliki~\ref{fig:cleni}. Integral v enačbi za koeficiente~\eqref{eq:1.13} je na intervalu \( x = [0.95 \cdot L, L] \approx L \) enak za vse \( n \), saj je \( J_0 (0) = 1 \). To pomeni, da so vsi lastni načini enako vzbujeni. Relativna vrednost koeficientov pada s členom \( \frac{1}{\omega_n {\left[ J_1 (\xi_n) \right]}^2} \). Višji lastni načini so torej manj izraziti z danim začetnim pogojem.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=\textwidth]{figures/stemplot.png}}
+\caption{\label{fig:cleni} \small Logaritmirane vrednosti koeficientov vrste \( \left| B_n \right| \) in pripadajoči hitrostni koeficienti \( \left| B_n \omega_n \right| \).}
+\end{figure}
+
+Z določenim optimalnim številom členov vrste \( N = 100 \) in izračunanimi koeficienti lahko sedaj tudi opazujemo nihanje vrvi kot videno na sliki~\ref{fig:vrv}. Nihanje ni popolnoma fizikalno, saj je opazno da se dolžina vrvi popolnoma ne ohranja. Opazimo lahko, da se med \( t = \frac{3 \pi}{16} \) in \( t = \frac{\pi}{4} \) zgodi odboj od vrha, kjer je vrv pritrjena. 
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.75\textwidth]{figures/casovnirazvoj.png}}
+\caption{\label{fig:vrv} \small Časovni razvoj vrvi preko enačbe~\eqref{eq:1.12} za \( N = 100 \) členov. Dolžina vrvi se popolnoma ne ohranja.}
+\end{figure}
+
+
+
+
+
+
+
+
