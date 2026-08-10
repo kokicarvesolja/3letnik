@@ -76,16 +76,16 @@ def u_n(n, m, koef, zero=nicle):
 
 def u_nt(n, m, cas, koef, zero=nicle):
     '''
-    Returns the sum of n-terms in the Fourier Bessel series with time evolution
+    Returns the sum of n-terms in the Fourier Bessel series with time evolution on the interval x = [0, 1]
     '''
-    uniform = np.linspace(0.95 * L, 1 * L, m)
+    x = np.linspace(0, 1, m)
     # frekvence
     omega = (1 / 2) * np.sqrt(g / L) * zero(n, m)[:, 0]
     # vsota
     sumJ = 0
     for i in range(n):
-        sumJ += koef(n, m)[i] * ss.j0(zero(n, m)[i, 0] * np.sqrt(1 - uniform/L)) *\
-            np.sin(omega * cas)
+        sumJ += koef(n, m)[i] * ss.j0(zero(n, m)[i, 0] * np.sqrt(1 - x/L)) *\
+            np.sin(omega[i] * cas)
     return sumJ
 
 def koef_n(n, m, zero=nicle, kick=0.95, L=1, g=9.81):
@@ -142,7 +142,32 @@ def koef_n_omega(n, m, zero=nicle, kick=0.95, L=1, g=9.81):
 c1, c2, c3 = cmr.take_cmap_colors("cmr.cosmic", 3, cmap_range=(0.2, 0.8),
                                   return_fmt="hex")
 
+# time evolution
 
+#time = [0, np.pi/8,  np.pi/4,  3 * np.pi/8,  np.pi/2, 5 * np.pi/8,  3 * np.pi/4,  np.pi] 
+time = [i * np.pi/16 for i in range(1, 9, 1)] 
+#casi = [r"$t = 0$", r"$t = \frac{\pi}{8}$", r"$t = \frac{\pi}{4}$", r"$t = \frac{3 \pi}{8}$",  r"$t = \frac{\pi}{2}$",  r"$t = \frac{5\pi}{8}$",  r"$t = \frac{3\pi}{4}$",  r"$t = \pi$" ]
+casi = [fr'$ t = \frac{{{i} \pi}}{{16}}[\mathrm{{s}}]$' for i in range(1, 9, 1)]
+
+fig, ax = plt.subplots(4, 2, figsize=(10,8))
+
+x_t = np.linspace(0, 1, M)
+for t, ime, axes in zip(time, casi, ax.ravel()):
+    temp = u_nt(N, M, t, koef=koef_n)
+    axes.plot(temp, x_t, color=c2)
+    axes.yaxis.set_inverted(True)
+    axes.set_title(ime)
+    axes.set_xlim(-0.5, 0.5)
+    axes.vlines(0, 0, 1, color='k', alpha=0.25, zorder=1)
+fig.suptitle('Časovni potek nihanja vrvi')
+fig.supxlabel(r'$y$')
+fig.supylabel(r'$x$')
+fig.tight_layout()
+fig.savefig('casovnirazvoj.png')
+plt.show()
+
+
+'''
 # Gibbs phenomenon
 
 NG = 200
@@ -154,9 +179,7 @@ plt.title(r'Gibbsov fenomen za $N = 200$')
 plt.savefig('GibbsPhenomenon.png')
 plt.show()
 
-# time evolution
-
-
+'''
 
 '''
 # stem plot for \omega and \omega_n
