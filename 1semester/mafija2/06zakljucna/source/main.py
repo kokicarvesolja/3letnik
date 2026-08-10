@@ -68,12 +68,24 @@ def u_n(n, m, koef, zero=nicle):
     Returns the sum of n-terms in the Fourier Bessel series
     '''
     uniform = np.linspace(0.95 * L, 1 * L, m)
+    # vsota
+    sumJ = 0
+    for i in range(n):
+        sumJ += koef(n, m)[i] * ss.j0(zero(n, m)[i, 0] * np.sqrt(1 - uniform/L))
+    return sumJ
+
+def u_nt(n, m, cas, koef, zero=nicle):
+    '''
+    Returns the sum of n-terms in the Fourier Bessel series with time evolution
+    '''
+    uniform = np.linspace(0.95 * L, 1 * L, m)
     # frekvence
     omega = (1 / 2) * np.sqrt(g / L) * zero(n, m)[:, 0]
     # vsota
     sumJ = 0
     for i in range(n):
-        sumJ += koef(n, m)[i] * ss.j0(zero(n, m)[i, 0] * np.sqrt(1 - uniform/L))
+        sumJ += koef(n, m)[i] * ss.j0(zero(n, m)[i, 0] * np.sqrt(1 - uniform/L)) *\
+            np.sin(omega * cas)
     return sumJ
 
 def koef_n(n, m, zero=nicle, kick=0.95, L=1, g=9.81):
@@ -126,18 +138,25 @@ def koef_n_omega(n, m, zero=nicle, kick=0.95, L=1, g=9.81):
     rez[:, 2] =  (rez[:, 0] / rez[:, 1]) 
     return rez[:, 2]
 
-# convergence in L2 space
-
-mja = [1000, 10000]
-sums = [i for i in range(25, 275, 25)]
-
-# colors
-
-colors = cmr.take_cmap_colors("cmr.cosmic", len(sums), cmap_range=(0.2, 1),
-                              return_fmt="hex")
 
 c1, c2, c3 = cmr.take_cmap_colors("cmr.cosmic", 3, cmap_range=(0.2, 0.8),
                                   return_fmt="hex")
+
+
+# Gibbs phenomenon
+
+NG = 200
+
+plt.plot(np.linspace(0.95 * L, 1 * L, M), u_n(NG, M, koef=koef_n_omega), color=c2)
+plt.xlabel(r'$x$')
+plt.ylabel(r'$\left. \partial_t u_N(x, t)\right|_{t = 0}$')
+plt.title(r'Gibbsov fenomen za $N = 200$')
+plt.savefig('GibbsPhenomenon.png')
+plt.show()
+
+# time evolution
+
+
 
 '''
 # stem plot for \omega and \omega_n
@@ -157,6 +176,7 @@ plt.savefig('stemplot.png')
 
 '''
 
+'''
 # cumulative tail plot
 
 fig, (ax1, ax2) = plt.subplots(2, 1)
@@ -175,7 +195,17 @@ fig.supylabel(r'$\sum_n {\left|B_n \right|}^2$')
 fig.suptitle(r'Konvergenca kumulativne vsote koeficientov')
 fig.tight_layout()
 plt.savefig('cumtail.png')
+'''
 
+# convergence in L2 space
+
+mja = [1000, 10000]
+sums = [i for i in range(25, 275, 25)]
+
+# colors
+
+colors = cmr.take_cmap_colors("cmr.cosmic", len(sums), cmap_range=(0.2, 1),
+                              return_fmt="hex")
 '''
 for u, ax in zip(mja, [ax1, ax2]):
     for s, c in zip(sums, colors):
