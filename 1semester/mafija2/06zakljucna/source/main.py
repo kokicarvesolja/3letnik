@@ -13,7 +13,7 @@ g = 9.81
 L = 1.0
 v0 = 1.0
 M = 1000
-N = 180
+N = 100
 
 def nicle(n, m):
     '''
@@ -37,7 +37,7 @@ def alt_stevec(x, nicle):
     '''
     return x * ss.j0(nicle * 20 * x)
 
-def stem_plot(n, koef):
+def stem_plot(n, color, koef):
     '''
     Makes a stem plot of |B_n| in relation to n
     '''
@@ -45,17 +45,21 @@ def stem_plot(n, koef):
     plt.stem(x, np.abs(koef), markerfmt='.')
     plt.xlabel(r'$n$')
     plt.ylabel(r'$\left| B_N \right|$')
+    plt.title(r'Vrednosti posameznih koeficientov do $N = 100$')
+    plt.savefig('stemplot.png')
     plt.show()
     pass
 
-def cumulative_tail(n, m, koef):
+def cumulative_tail(n, m, color, koef):
     '''
     Makes a cumulative tail plot
     '''
     x = np.arange(n, step=1)
     plt.plot(x, np.cumsum(np.abs(koef)))
     plt.xlabel(r'$n$')
-    plt.ylabel(r'$\sum_{n = 1}^{N}\left| B_N \right|^2$')
+    plt.ylabel(r'$\Sigma$')
+    plt.title(r'Kumulativna vsota koeficientov do $N = 100$')
+    plt.savefig('cumtail.png')
     plt.show()
     pass
 
@@ -94,7 +98,32 @@ def koef_n(n, m, zero=nicle, kick=0.95, L=1, g=9.81):
     # imenovalec
     rez[:, 1] = ss.j1(zero(n, m)[:, 0]) ** 2
     # koeficienti
-    rez[:, 2] = (rez[:, 0] / rez[:, 1]) 
+    rez[:, 2] = (1 / omega) * (rez[:, 0] / rez[:, 1]) 
+    return rez[:, 2]
+
+def koef_n_omega(n, m, zero=nicle, kick=0.95, L=1, g=9.81):
+    '''
+    Returns array of length n with coefficients of Fourier-Bessel series.
+    '''
+    # frekvenca omega_n v arrayju dimenzije (n,)
+    omega = (1 / 2) * np.sqrt(g / L) * zero(n, m)[:, 0]
+
+    # gradnja intervala velikosti (N, m)
+    uniform = np.linspace(0.95 * L, 1 * L, m)
+    interval = np.broadcast_to(uniform, (n, m))
+
+    # gradnja matrike z rezultati, dimenzij (N, 3)
+    x = np.arange(3, step=1.0)
+    y = np.arange(n, step=1.0)
+
+    # matrika oblike [[0, 0, 0], [1, 1, 1], ..., [N, N, N]]
+    _, rez = np.meshgrid(x, y)
+    # stevec
+    rez[:, 0] = np.trapezoid(stevec(interval, n, m, zero), uniform, axis=1)
+    # imenovalec
+    rez[:, 1] = ss.j1(zero(n, m)[:, 0]) ** 2
+    # koeficienti
+    rez[:, 2] =  (rez[:, 0] / rez[:, 1]) 
     return rez[:, 2]
 
 # convergence in L2 space
@@ -107,15 +136,52 @@ sums = [i for i in range(25, 275, 25)]
 colors = cmr.take_cmap_colors("cmr.cosmic", len(sums), cmap_range=(0.2, 1),
                               return_fmt="hex")
 
+c1, c2, c3 = cmr.take_cmap_colors("cmr.cosmic", 3, cmap_range=(0.2, 0.8),
+                                  return_fmt="hex")
 
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 8))
+'''
+# stem plot for \omega and \omega_n
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8, 6))
+
+x = np.arange(N, step=1)
+ax1.stem(x, np.log(np.abs(koef_n(N, M))), linefmt=c2, basefmt=c3, markerfmt='.')
+ax1.set_ylabel(r'$\left| B_n \right|$')
+
+ax2.stem(x, np.log(np.abs(koef_n_omega(N, M))), linefmt=c2, basefmt=c3, markerfmt='.')
+ax2.set_ylabel(r'$\left|\omega_n B_n \right|$')
+
+fig.supxlabel(r'$n$')
+fig.suptitle(r'Vrednosti koeficientov do $N = 100$')
+plt.savefig('stemplot.png')
+
+'''
+
+# cumulative tail plot
+
+fig, (ax1, ax2) = plt.subplots(2, 1)
+
+N1 = 100
+x1 = np.arange(N1, step=1)
+ax1.plot(x1, np.cumsum(np.abs(koef_n(N1, M))), color=c2)
+
+
+N2 = 1000
+x2 = np.arange(N2, step=1)
+ax2.plot(x2, np.cumsum(np.abs(koef_n(N2, M))), color=c2)
+
+fig.supxlabel(r'$n$')
+fig.supylabel(r'$\sum_n {\left|B_n \right|}^2$')
+fig.suptitle(r'Konvergenca kumulativne vsote koeficientov')
+fig.tight_layout()
+plt.savefig('cumtail.png')
 
 '''
 for u, ax in zip(mja, [ax1, ax2]):
     for s, c in zip(sums, colors):
         print("Racunam za ", s)
         uniform = np.linspace(0.95, 1, u)
-        error = np.sqrt(np.trapezoid((1 - u_n(s, u, koef=koef_n)) ** 2, uniform))
+        error = np.sqrt(np.trapezoid((1 - u_n(s, u, koef=koef_n_omega)) ** 2, uniform))
         ax.scatter(s, np.max((error)), marker='.', color=c)
 
 ax1.set_title(r'M = 1000')
