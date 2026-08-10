@@ -1,8 +1,8 @@
 \section{Numerični izračuni}
 
-Občasno, ko vrv prosto visi z vrha plezalne smeri, njen prost konec udarim z roko in opazujem dogajanje. Lokaliziran udarec je \( \delta \) funkcija, ki pa jo aproksimiramo, kot smo se naučili pri Matematični fiziki 1, z ozko Gaussovo funkcijo
+Občasno, ko vrv prosto visi z vrha plezalne smeri, njen prost konec udarim z roko in opazujem dogajanje. Lokaliziran udarec je \( \delta \) funkcija, ki pa jo aproksimiramo s Heavisideovo funkcijo na zadnji \( 5\% \) vrvi
 
-\[ f(x) = v_0 \exp \left\{ - \frac{{\left( x - L \right)}^2}{2 \sigma ^2} \right\}. 
+\[ f(x) = v_0 \theta(x - 0.95 * L) 
 \]
 
-Za numerične izračune si zamislimo vrv z dolžino \( L = 1 \mathrm{m} \), začetno hitrost \( v_0 = 1 \frac{\mathrm{m}}{\mathrm{s}} \), širino lokaliziranega udarca \( \sigma ^2 = 0.05L \) in gravitacijski pospešek je \( g = 9.81 \frac{\mathrm{m}}{\mathrm{s} ^2} \).
+Za numerične izračune si zamislimo vrv z dolžino \( L = 1 \mathrm{m} \), začetno hitrost \( v_0 = 1 \frac{\mathrm{m}}{\mathrm{s}} \) in gravitacijski pospešek je \( g = 9.81 \frac{\mathrm{m}}{\mathrm{s} ^2} \).

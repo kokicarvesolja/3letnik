@@ -174,21 +174,29 @@ Koeficienti \( A_n \) in \( B_n \) so odvisni in določeni s pomočjo začetnih 
 
 Iz prvega pogoja sledi \( A_n = 0 \), medtem ko pri drugem pogoju dobimo pogoj
 
-\[ \left. \frac{\partial }{\partial t} u(x, t)\right|_{t = 0} = \left. \sum\limits_{n = 1}^{\infty} J_0 \left( \xi_n \sqrt{1 - \frac{x}{L}} \right) \omega_n B_n \cos \left( \omega_n t \right) \right|_{t= 0} = \sum\limits_{n = 1}^{\infty} J_0 \left( \xi_n \sqrt{1 - \frac{x}{L}} \right) \omega_n B_n = f(x).
-\]
+\begin{equation}
+\label{eq:1.11}
+ \left. \frac{\partial }{\partial t} u(x, t)\right|_{t = 0} = \left. \sum\limits_{n = 1}^{\infty} J_0 \left( \xi_n \sqrt{1 - \frac{x}{L}} \right) \omega_n B_n \cos \left( \omega_n t \right) \right|_{t= 0} = \sum\limits_{n = 1}^{\infty} J_0 \left( \xi_n \sqrt{1 - \frac{x}{L}} \right) \omega_n B_n = f(x).
+\end{equation}
 
 Ker smo v prejšnjem podpoglavju dokazali, da je viseča vrv Sturm-Liouvilleov problem, sedaj uporabimo lastnost ortogonalnosti lastnih fukcij, ki jim pripada lastna vrednost z utežjo \( \sigma(x) \)~\cite{haberman_applied_2004}. Preko identitete podane na Wikipedii~\cite{noauthor_fourierbessel_2026} v splošnem velja
 
-\[ \int\limits_0^L X_n (\xi_n x) X_m (\xi_m x) x \, \mathrm{d} x = \int\limits_0^L J_0 (\xi_n x) J_0 (\xi_m x) x \, \mathrm{d} x = \frac{\delta_{mn}}{2} {\left[ J_1 (\xi_n) \right]}^2
-\]
-z utežjo \( \sigma(x) = x \) in sedaj dobimo izraz za izračun koeficientov 
-
-\[ B_n = \frac{2}{\omega_n} \frac{\int\limits_0^L f(x) X_n (x) x \, \mathrm{d} x}{{\left[ J_1 \left( \xi_{n} \right) \right]} ^2}. 
+\[\int\limits_0^1 J_0 (\xi_n r) J_0 (\xi_m r) r \, \mathrm{d} r = \frac{\delta_{mn}}{2} {\left[ J_1 (\xi_n) \right]}^2.
 \]
 
-Splošna rešitev za naše začetne pogoje je torej
+V zgornji enačbi uvedemo novo spremenljivko \( r = \sqrt{1 - \frac{x}{L}} \)~\cite{dunaev_answer_2023}, iz česar sledi identiteta
 
-\[ u(x, t) = \sum\limits_{n = 1}^{\infty} \frac{2}{\omega_n} \frac{1}{{\left[ J_1 \left( \xi_n \right)\right]}^2}  \left[ \int\limits_0^L f(x) J_0 \left( \xi_n \sqrt{1 - \frac{x}{L}} \right) x \,\mathrm{d} x\right] J_0 \left( \xi_n \sqrt{1 - \frac{x}{L}} \right) \sin \left( \omega_n t \right).
+\[ \int\limits_0^L J_0 \left( \xi_n \sqrt{1 -\frac{x}{L}} \right) J_0 \left( \xi_m \sqrt{1 - \frac{x}{L}} \right) \, \mathrm{d} x = L \delta_{mn} {\left[ J_1 (\xi_n) \right]}^2.
+\]
+
+Obe strani enačbe~\eqref{eq:1.11} integriramo z \( \int\limits_0^L J_0 \left(\xi_m \sqrt{1 - \frac{x}{L}}\right) \, \mathrm{d} x \) in izrazimo koeficient
+
+\[ B_n = \frac{1}{\omega_n L {\left[ J_1 (\xi_n) \right]}^2} \int\limits_0^L f(x) J_0 \left( \xi_n \sqrt{1 - \frac{x}{L}} \right) \, \mathrm{d} x. 
+\]
+
+Rešitev našega primera je potem
+
+\[ u(x, t) = \sum\limits_{n = 1}^{\infty} \frac{1}{\omega_n L {\left[ J_1(\xi_n) \right]} ^2} \left[ \int\limits_0^{L} f(x) J_0 \left(\xi_n \sqrt{1 - \frac{x}{L}} \right) \, \mathrm{d} x \right] J_0 \left( \xi_n \sqrt{1 - \frac{x}{L}} \right) \sin \left( \omega_n t \right), \quad x \in [0, L].
 \]
 
 % več na https://www.johndcook.com/blog/2017/11/04/fourier-bessel-series-and-gibbs-phenomena/
