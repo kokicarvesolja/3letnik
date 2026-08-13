@@ -1,6 +1,6 @@
 \section{Numerični izračuni}
 
-Občasno, ko vrv prosto visi z vrha plezalne smeri, njen prost konec udarim z roko in opazujem dogajanje. Lokaliziran udarec je \( \delta \) funkcija, ki pa jo aproksimiramo s Heavisideovo funkcijo na zadnji \( 5\% \) vrvi
+Občasno, ko vrv prosto visi z vrha plezalne smeri, njen prost konec udarim z roko in opazujem dogajanje. Lokaliziran udarec je \( \delta \) funkcija, ki pa jo aproksimiramo s Heavisideovo funkcijo na zadnjih \( 5\% \) vrvi
 
 \begin{equation}
 \label{eq:2.1}
@@ -17,14 +17,14 @@ Iz predmeta Matematika 4 vemo, da Fourier-Besslova vrsta konvergira, po definici
 \]
 kjer je \( u_N \) vsota \( N \) členov Fourier-Besslove vrste in je že upoštevana zamenjava spremenljivke kot pokazano v~\cite{dunaev_answer_2023}.
 
-Za izračun koeficientov \( B_n \) in \( L^2 \) norme sem uporabil knjižnici \texttt{NumPy} s pripadajočo metodo \texttt{numpy.trapezoid} za izračun integralov in \texttt{SciPy} za izračun vrednosti Besslovih funkcij \( J_0 \) in \( J_1 \). Obstajajo boljše metode kot je trapezna metoda, vendar sem se zaradi načina implementacije lahko oprl na nizko časovno zahtevnost, ki jo prinese knjižnica \texttt{NumPy}.
+Za izračun koeficientov \( B_n \) in \( L^2 \) norme sem uporabil knjižnici \texttt{NumPy} s pripadajočo metodo \texttt{numpy.trapezoid} za izračun integralov in \texttt{SciPy} za izvrednotenje Besslovih funkcij \( J_0 \) in \( J_1 \). Obstajajo boljše metode kot je trapezna metoda, vendar sem se zaradi načina implementacije lahko oprl na nizko časovno zahtevnost, ki jo prinese knjižnica \texttt{NumPy}.
 
 Z upoštevanjem oblike začetnega sunka~\eqref{eq:2.1} se \( L^2 \) norma prevede na integral
 
 \[ \left\lVert f(x) - u_N \right\rVert = \int\limits_{0.95}^{1} {\left[ 1 - u_N \left( \xi_n \sqrt{1 - \frac{x}{L}} \right) \right]} ^2 \, \mathrm{d} x.
 \]
 
-Konvergenca norme je vidna na sliki~\ref{fig:konvL2}. Interval \( [0.95, 1] \) sem na začetku razdelil na \( M = 1000 \) enakih delov, vendar se vidi začetek divergence za \( N > 200 \). Za \( M = 10^4 \) je lepo vidna konvergenca vse do \( N = 350 \) člena. To nam sporoča, da so izračuni pravilni. Seveda bi tudi tukaj zaradi numerične integracije začelo divergirati.
+Konvergenca norme je vidna na sliki~\ref{fig:konvL2}. Interval \( [0.95, 1] \) sem na začetku razdelil na \( M = 1000 \) enakih delov, vendar se vidi začetek divergence za \( N > 200 \). Za \( M = 10^4 \) je lepo vidna konvergenca vse do \( N = 350 \) člena. To nam sporoča, da so izračuni pravilni. Seveda bi tudi tukaj zaradi numerične integracije prej ali slej začelo divergirati.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=0.75\textwidth]{figures/konvergencaL2.png}}
@@ -60,7 +60,7 @@ ki je prikazana na sliki~\ref{fig:cumtail}.
 \caption{\label{fig:cumtail} \small Kumulativna vsota koeficientov \( B_n  \) konvergira proti končni vrednosti. Za desetkrat več členov v vsoti ta naraste za manj kot petino.}
 \end{figure}
 
-Logartimirane vrednosti prvih sto koeficientov \( \left| B_n \right| \) in pripadajočih hitrostnih koeficientov \( \left| B_n \omega_n \right| \) so vidne na sliki~\ref{fig:cleni}. Integral v enačbi za koeficiente~\eqref{eq:1.13} je na intervalu \( x = [0.95 \cdot L, L] \approx L \) enak za vse \( n \), saj je \( J_0 (0) = 1 \). To pomeni, da so vsi lastni načini enako vzbujeni. Relativna vrednost koeficientov pada s členom \( \frac{1}{\omega_n {\left[ J_1 (\xi_n) \right]}^2} \). Višji lastni načini so torej manj izraziti z danim začetnim pogojem.
+Logaritmirane vrednosti prvih sto koeficientov \( \left| B_n \right| \) in pripadajočih hitrostnih koeficientov \( \left| B_n \omega_n \right| \) so vidne na sliki~\ref{fig:cleni}. Integral v enačbi za koeficiente~\eqref{eq:1.13} je na intervalu \( x = [0.95, 1] \approx 1 \) enak za vse \( n \), saj je \( J_0 (0) = 1 \). To pomeni, da so vsi lastni načini enako vzbujeni. Relativna vrednost koeficientov pada s členom \( {\left(\omega_n^{-1} {\left[ J_1 (\xi_n) \right]}^{-2}\right)} \). Višji lastni načini so torej manj izraziti z danim začetnim pogojem.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=\textwidth]{figures/stemplot.png}}
