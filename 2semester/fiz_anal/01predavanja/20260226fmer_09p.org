@@ -69,17 +69,17 @@ saj je \( \bar{z} \) definirana z \( z_i \).
 Izračunati moramo še
 
 \begin{align*}
-  \overline{\left( \bar{z} - z \right) ^2} &= \overline{\left( \frac{1}{N} \sum\limits_{i=1}^N z_i - x \right) ^2} \\
+  \overline{\left( \bar{z} - x \right) ^2} &= \overline{\left( \frac{1}{N} \sum\limits_{i=1}^N z_i - x \right) ^2} \\
 &= \frac{1}{N ^2} \overline{\left( \sum\limits_{i = 1}^N z_i - N x \right) ^2} \\
 &= \frac{1}{N ^2} \overline{\left( \sum\limits_{i = 1}^N (z_i - x) \right) ^2} \\
 &= \frac{1}{N ^2} \left( \overline{\sum\limits_{i = 1}^N \left( z_i - x \right) ^2} + \overline{\sum\limits_{i = 1}^N \sum\limits_{j = 1}^N \left( z_i - x \right) \left( z_j - x \right)} \right) \\
 &= \frac{1}{N ^2} \left( \overline{\sum\limits_{i = 1}^N \left( z_i - x \right) ^2} + \overline{\sum\limits_{i = 1}^N \sum\limits_{j = 1}^N r_i r_j}  \right) \\
-&= \frac{1}{N ^2} \sum\limits_{i = 1}^N \overline{\left( z_i - x \right) ^2} = \frac{\sigma}{N}
+&= \frac{1}{N ^2} \sum\limits_{i = 1}^N \overline{\left( z_i - x \right) ^2} = \frac{\sigma ^2}{N}
 \end{align*}
 
 Zaključimo torej, da je povprečna vrednost porazdeljena po ožji normalni porazdelitvi
 
-\[ \frac{\mathrm{d} P}{\mathrm{d} \bar{z}} = N\left(x, \frac{\sigma}{\sqrt{\pi}}\right).
+\[ \frac{\mathrm{d} P}{\mathrm{d} \bar{z}} = N\left(x, \frac{\sigma}{\sqrt{N}}\right).
 \]
 
 To je tudi smisel ponavljanja in povprečevanja vrednosti.

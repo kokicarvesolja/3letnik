@@ -1,0 +1,215 @@
+#+title: Optimalno filtriranje
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+* Združevanje meritev 
+
+#+begin_idea
+Želimo sinhronizirati realni sistem \( S \) z modelskim sistemom \( M \) tako, da poznamo napako spremenljivk sistema \( M \) glede na prave vrednosti v sistemu \( S \).
+
+Izmerek \( z \) spremenljivke \( x \) vsebuje tudi merilni šum \( r \)
+
+\begin{equation}
+\label{eq:1}
+ z = x + r, 
+\end{equation}
+za katerega velja, da je porazdeljen po normalni porazdelitvi \( \mathcal{N}(0, \sigma) \). Velja \( \left\langle r \right\rangle = 0 \) in \( \left\langle r ^2 \right\rangle = \sigma ^2 \).
+
+Imejmo \( z_i, i = 1, 2, 3, \ldots, N \) izmerkov z normalno porazdelitvijo \( \mathcal{N}(x, \sigma) \), ki so med seboj neodvisni. Povprečje izmerkov
+
+\[ \bar{z} = \frac{1}{N} \sum\limits_{n = 1}^N z_i, 
+\]
+je porazdeljeno po *ožji* normalni porazdelitvi
+
+\[ \frac{\mathrm{d} P}{\mathrm{d} z} = \mathcal{N} \left( x, \frac{\sigma}{\sqrt{N}} \right). 
+\]
+
+Dva seta meritev, prvega z \( N \) meritvami \( \left( \bar{z}_1, \sigma_1 = \frac{\sigma}{\sqrt{N}} \right) \), drugega z \( M \) meritvami \( \left( \bar{z}_2, \sigma_2 = \frac{\sigma}{\sqrt{M}} \right) \) optimalno združimo z inovacijo
+
+\[ \bar{z}_3 = \bar{z}_1 + \frac{\sigma_1 ^2}{\sigma_1 ^2 + \sigma_2 ^2} \left( \bar{z}_2 - \bar{z}_1 \right),
+\]
+kjer je razliki v drugem členu pravimo *inovacija*, faktorjem pred njo pa *utež*. Disperzija združitve pa je
+
+\[ \frac{1}{\sigma_3 ^2} = \frac{1}{\sigma_1 ^2} + \frac{1}{\sigma_2 ^2},
+\]
+Do tega rezultata lahko pridemo na več načinov: definicija povprečja \( \bar{z}_3 \), kvadratna forma ali linearna kombinacija \( z_3 = \alpha z_1 + \beta z_2 \).
+#+end_idea
+
+#+attr_latex: :options [Pričakovane vrednosti šuma]
+#+begin_izpeljava
+Merilni šum \( r \) je porazdeljen po normalni porazdelitvi \( \frac{\mathrm{d} P}{\mathrm{d} r} = \mathcal{N}(0, \sigma) \). Po definiciji pričakovane vrednosti velja
+
+\[ \left\langle r \right\rangle = \int\limits_{- \infty}^{\infty} \frac{\mathrm{d} P}{\mathrm{d} r} \cdot r \, \mathrm{d} r = 0,
+\]
+saj integriramo liho funkcijo \( r \) po sodem intervalu. Varianca šuma je po definiciji
+
+\[ \left\langle \left( r - \left\langle r \right\rangle \right) ^2 \right\rangle = \left\langle r ^2 \right\rangle.
+\]
+
+Pričakovana vrednost kvadrata šuma je, ponovno po definiciji,
+
+\begin{align*}
+  \left\langle r ^2 \right\rangle &= \int\limits_{- \infty}^{\infty} \frac{\mathrm{d} P}{\mathrm{d} r} \cdot r ^2 \, \mathrm{d} r \\
+&= \int\limits_{- \infty}^{\infty} \frac{1}{\sqrt{2 \pi} \sigma} r ^2 \exp \left\{ - \frac{r ^2}{2 \sigma ^2} \right\} \, \mathrm{d} r. 
+\end{align*}
+Z uvedbo nove spremenljivke \( u ^2 = \frac{r ^2}{2 \sigma ^2} \) in \( \mathrm{d} r = \sqrt{2 \sigma} \mathrm{d} u \) lahko izvrednotimo integral s pomočjo \( \Gamma \) funkcije
+
+\[ \left\langle r ^2 \right\rangle = 2 \sigma ^2 \frac{1}{ \sqrt{\pi}} \int\limits_{- \infty}^{\infty} u ^2 e ^{- u ^2} \, \mathrm{d} u = \sigma ^2.
+\]
+
+Varianca šuma je torej \( \left\langle r ^2 \right\rangle = \sigma ^2\).
+#+end_izpeljava
+
+#+attr_latex: :options [Normalna porazdelitev povprečja]
+#+begin_izpeljava
+Šum lahko izrazimo s pomočjo spremenljivke \( x \) in izmerka \( z \) iz enačbe~\eqref{eq:1} kot \( r = z - x \). Velja
+
+\[ \left\langle r \right\rangle = 0 = \overline{\left( z_i  - x \right)}
+\]
+in posledično tudi
+
+\[ \overline{\left( \bar{z} - x \right)} = 0, 
+\]
+saj je \( \bar{z} \) definirana z \( z_i \). Izračunati moramo še kvadrat pričakovane vrednosti
+
+\[ \overline{\left( \bar{z} - x \right) ^2} = \overline{\left( \frac{1}{N} \sum\limits_{i = 1}^N z_i - x \right) ^2}.
+\]
+V nadaljevanju izpostavimo \( N^{-1} \) in zapišemo razliko izmerka in spremenljivke pod eno vsoto
+
+\begin{align*}
+   \overline{\left( \frac{1}{N} \sum\limits_{i = 1}^N z_i - x \right) ^2} &= \frac{1}{N ^2} \overline{\left( \sum\limits_{i = 1}^N z_i - N x \right) ^2} \\
+&= \frac{1}{N ^2} \overline{\left[ \sum\limits_{i = 1}^N \left( z_i - x \right) \right] ^2}.
+\end{align*}
+Kvadrat vsote lahko ločimo na dva dela in upoštevamo, da imamo neodvisne meritve in velja \( r_i r_j = \delta_{ij} \)
+
+\begin{align*}
+   \frac{1}{N ^2} \overline{\left[ \sum\limits_{i = 1}^N \left( z_i - x \right) \right] ^2} &= \frac{1}{N ^2} \left[ \overline{\sum\limits_{i = 1}^N \left( z_i - x \right) ^2} + \overline{\sum\limits_{i = 1}^N \sum\limits_{j = 1, j\ne i}^N \left( z_i - x \right) \left( z_j - x \right)}  \right] \\
+&= \frac{1}{N ^2} \left[ \sum\limits_{i=1}^N \sigma ^2 + \overline{\sum\limits_{i = 1}^N \sum\limits_{j = 1, j\ne i}^N r_i r_j} \right]
+&= \frac{1}{N ^2} N \sigma ^2 = \frac{\sigma ^2}{N}.
+\end{align*}
+
+Povprečna vrednost je torej res porazdeljena po ožji normalni porazdelitvi
+
+\[ \frac{\mathrm{d} P}{\mathrm{d} \bar{z}} = N \left( x, \frac{\sigma}{\sqrt{N}} \right).
+\]
+#+end_izpeljava
+
+#+attr_latex: :options [Združevanje meritev - povprečje]
+#+begin_izpeljava
+Dva seta izmerkov z različnima disperzijama
+
+\[ \bar{z}_1 = \frac{1}{N} \sum\limits_{i = 1}^N z_i, \ \sigma_1 ^2 = \frac{\sigma ^2}{N} \quad \text{ in } \quad \bar{z}_2 = \frac{1}{M} \sum\limits_{i = 1}^M z_i, \ \sigma_2 ^2 = \frac{\sigma ^2}{M}
+\]
+
+združimo v \( \left( \mathbf{z}_3, \sigma_3 \right) \) po definiciji povprečja
+
+\[ \mathbf{z}_3 = \frac{1}{N + M} \sum\limits_{i = 1}^{N + M} z_i, \ \sigma_3 ^2 = \frac{\sigma ^2}{N + M}.
+\]
+
+Vsoto razdelimo na dve
+
+\[ \mathbf{z}_3 = \frac{N}{N + M} \left( \frac{1}{N} \sum\limits_{i = 1}^N z_i \right) + \frac{M}{N + M} \left( \frac{1}{M} \sum\limits_{i = 1}^M z_i \right). 
+\]
+Uteži pred vsotama, \( \frac{N}{N + M} \) in \( \frac{M}{N + M} \), zapišemo z disperzijami \( \sigma_1, \sigma_2 \) in \( \sigma_3 \). Velja
+
+\[ N = \frac{\sigma ^2}{\sigma_1 ^2} \quad \text{ in } \quad M = \frac{\sigma ^2}{\sigma_2 ^2}
+\]
+in njuna vsota je
+
+\[ N + M = \frac{\sigma ^2}{\sigma_1 ^2} + \frac{\sigma ^2}{\sigma_2 ^2} = \frac{\sigma ^2}{\sigma_3 ^2}, 
+\]
+kjer smo upoštevali definicijo \( \sigma_3 \). Izpeljali smo zvezo
+
+\begin{equation}
+\label{eq:2}
+ \sigma_3^{-2} = \sigma_1^{-2} + \sigma_2^{-2}.
+\end{equation}
+
+Sedaj nadomestimo vsote po \( N \) in \( M \) z variancami
+
+\begin{align*}
+  \frac{N}{N + M} &= \frac{\sigma ^2}{\sigma_1 ^2} \cdot \frac{\sigma_3 ^2}{\sigma ^2} \\
+&= \frac{\sigma_3 ^2}{\sigma_1 ^2},
+\end{align*}
+in analogno za drugo utež. Iz zveze~\eqref{eq:2} dobimo enakost
+
+\[ \sigma_3 ^2 = \frac{\sigma_1 ^2 \sigma_2 ^2}{\sigma_1 ^2 + \sigma_2 ^2},
+\]
+ki jo upoštevamo v uteži, da zapišemo kot
+
+\[ \mathbf{z}_3 = \frac{\sigma_2 ^2}{\sigma_1 ^2 + \sigma_2 ^2} \bar{z}_1 +\frac{\sigma_1 ^2}{\sigma_1 ^2 + \sigma_2 ^2} \bar{z}_2.
+\]
+
+Optimalno združena ocena je torej
+
+\[ \bar{z}_3 = \mathbf{z}_1 + \frac{\sigma_1 ^2}{\sigma_1 ^2 + \sigma_2 ^2} \left( \bar{z}_2 - \bar{z}_1 \right). 
+\]
+
+#+end_izpeljava
+
+#+attr_latex: :options [Združevanje meritev - kvadratna forma]
+#+begin_izpeljava
+Dve meritvi
+
+\[ z_1 = \mathcal{N} \left( x, \sigma_1 \right) \quad \text{ in } \quad  z_2 = \mathcal{N} \left( x, \sigma_2 \right),
+\]
+pretvorimo na standarno normalno porazdelitev \( \mathcal{N} (0, 1) \)
+
+\[ \mathcal{N}(0, 1) = \frac{\left( z_1 - x \right)}{\sigma_1} = \frac{\left( z_2 - x \right)}{\sigma_2}. 
+\]
+
+Kvadratna forma ima obliko
+
+\[ 2 J(x) = \frac{\left( z_1 - x \right) ^2}{\sigma_1 ^2} + \frac{\left( z_2 - x \right) ^2}{\sigma_2 ^2},
+\]
+ki jo v iskanju optimalne združitve minimiziramo z odvodom,
+\[ 0 = \frac{\mathrm{d} }{\mathrm{d} x} \left[ 2J(x) \right] = - \frac{2 \left( z_1 - x \right)}{\sigma_1 ^2} - \frac{2 \left( z_2 - x \right)}{\sigma_2 ^2}.
+\]
+Izpostavimo \( x \) in optimalna združitev je
+
+\[ x = z_3 = \left( \sigma_1^{-2} + \sigma_2^{-2} \right)^{-1} \left[ \frac{z_1}{\sigma_1 ^2} + \frac{z_2}{\sigma_2 ^2} \right]. 
+\]
+#+end_izpeljava
+
+#+ATTR_LATEX: :options [Združevanje meritev - linearna kombinacija]
+#+begin_izpeljava
+Dva izmerka
+
+\[ \bar{z}_1 = x + r_1, \ \left\langle r_1 ^2 \right\rangle = \sigma_1 ^2 \quad \text{ in } \quad  \bar{z}_2 = x + r_2, \ \left\langle r_2 ^2 \right\rangle = \sigma_2 ^2
+\]
+združimo v novo oceno z linearno kombinacijo
+
+\[ \bar{z}_3 = x + r_3 = \alpha \bar{z}_1 + \beta \bar{z}_2.
+\]
+Upoštevamo definicij izmerkov in enačimo koeficiente
+\[ x + r_3 = \left( \alpha + \beta \right) x + \alpha r_1 + \beta r_2,
+\]
+ki nam podajata pogoja, kjer prvega \( \alpha + \beta = 1 \) upoštevamo v drugem
+
+\[ r = \alpha r_1 + \beta \left( 1 - \alpha \right)r_2 = \alpha r_1 + \left( 1 - \alpha \right) r_2. 
+\]
+Pričakovana vrednost šumov \( r_1 \) in \( r_2 \) je \( 0 \) in enako velja za skupen šum. Iz pričakovane vrednosti kvadrata pa sledi
+
+\begin{align*}
+  \left\langle r_3 ^2 \right\rangle &= \left\langle \left[ \alpha r_1 + \left( 1 - \alpha \right) r_{2}  \right]^2 \right\rangle \\
+&= \left\langle \alpha ^2 r_1 ^2 + \left( 1 - \alpha \right) ^2 r_2 ^2 + 2 \alpha (1 - \alpha) r_1 r_2 \right\rangle.
+\end{align*}
+Pričakovano vrednost apliciramo na vsak člen posebej ter upoštevamo nekoreliranost šumov
+
+\[ \sigma_3 ^2 = \alpha ^2 \sigma_1 ^2 + \left( 1 - \alpha \right) ^2 \sigma_2 ^2.
+\]
+Optimalna vrednost disperzije je v minimumu, zato odvajamo v odvisnosti od parametra \( \alpha \)
+
+\[ \frac{\mathrm{d} }{\mathrm{d} \alpha} \left( \sigma_3 ^2 \right) = 2 \alpha \sigma_1 ^2 - 2 \left( 1 - \alpha \right)   \sigma_2 ^2 = 0,
+\]
+iz česar sledita enakosti
+
+\[ \alpha = \frac{\sigma_2 ^2}{\sigma_1 ^2 + \sigma_2 ^2} \quad \text{ in } \quad \beta = \frac{\sigma_1 ^2}{\sigma_1 ^2 + \sigma_2 ^2}.
+\]
+#+end_izpeljava
+** Primer: Brumov šum
