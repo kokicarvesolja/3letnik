@@ -7,6 +7,7 @@
 #+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
 #+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
 #+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+#+bibliography: refs.bib
 * Združevanje meritev 
 
 #+begin_idea
@@ -31,8 +32,11 @@ je porazdeljeno po *ožji* normalni porazdelitvi
 
 Dva seta meritev, prvega z \( N \) meritvami \( \left( \bar{z}_1, \sigma_1 = \frac{\sigma}{\sqrt{N}} \right) \), drugega z \( M \) meritvami \( \left( \bar{z}_2, \sigma_2 = \frac{\sigma}{\sqrt{M}} \right) \) optimalno združimo z inovacijo
 
-\[ \bar{z}_3 = \bar{z}_1 + \frac{\sigma_1 ^2}{\sigma_1 ^2 + \sigma_2 ^2} \left( \bar{z}_2 - \bar{z}_1 \right),
-\]
+\begin{equation}
+\label{eq:4}
+ \bar{z}_3 = \bar{z}_1 + \frac{\sigma_1 ^2}{\sigma_1 ^2 + \sigma_2 ^2} \left( \bar{z}_2 - \bar{z}_1 \right),
+\end{equation}
+
 kjer je razliki v drugem členu pravimo *inovacija*, faktorjem pred njo pa *utež*. Disperzija združitve pa je
 
 \[ \frac{1}{\sigma_3 ^2} = \frac{1}{\sigma_1 ^2} + \frac{1}{\sigma_2 ^2},
@@ -67,7 +71,7 @@ Varianca šuma je torej \( \left\langle r ^2 \right\rangle = \sigma ^2\).
 
 #+attr_latex: :options [Normalna porazdelitev povprečja]
 #+begin_izpeljava
-Šum lahko izrazimo s pomočjo spremenljivke \( x \) in izmerka \( z \) iz enačbe~\eqref{eq:1} kot \( r = z - x \). Velja
+Šum lahko izrazimo s pomočjo spremenljivke \( x \) in izmerka \( z \) iz enačbe \eqref{eq:1} kot \( r = z - x \). Velja
 
 \[ \left\langle r \right\rangle = 0 = \overline{\left( z_i  - x \right)}
 \]
@@ -136,7 +140,7 @@ Sedaj nadomestimo vsote po \( N \) in \( M \) z variancami
   \frac{N}{N + M} &= \frac{\sigma ^2}{\sigma_1 ^2} \cdot \frac{\sigma_3 ^2}{\sigma ^2} \\
 &= \frac{\sigma_3 ^2}{\sigma_1 ^2},
 \end{align*}
-in analogno za drugo utež. Iz zveze~\eqref{eq:2} dobimo enakost
+in analogno za drugo utež. Iz zveze \eqref{eq:2} dobimo enakost
 
 \[ \sigma_3 ^2 = \frac{\sigma_1 ^2 \sigma_2 ^2}{\sigma_1 ^2 + \sigma_2 ^2},
 \]
@@ -213,3 +217,83 @@ iz česar sledita enakosti
 \]
 #+end_izpeljava
 ** Primer: Brumov šum
+#+begin_idea
+Brum ali brumov šum so motnje zaradi napajanja z AC napetostjo. Verjetnostna gostota za napetost \( U = U_0 \cos \left( \omega t \right) \) je
+
+\[ \frac{\mathrm{d} P}{\mathrm{d} U}= \frac{1}{\pi} \frac{1}{\sqrt{U_0 ^2 - U ^2}}. 
+\]
+
+Centralni limitni izrek: Vsota velikega števila neodvisnih naključnih spremenljivk s končno disperzijo teži proti normalni porazdelitvi neodvisno od porazdelitvenih zakonov posameznih spremenljivk v vsoti. 
+
+Zaradi centralnega limitnega izreka bo verjetnostna gostota vsote
+
+\[ U_v = \frac{1}{N} \sum\limits_{i = 1}^N U_i,
+\]
+porazdeljena po normalni porazdelitvi
+
+\[ \frac{\mathrm{d} P}{\mathrm{d} U_{v}} = \mathcal{N}(0, \sigma).
+\]
+#+end_idea
+
+#+ATTR_LATEX: :width 0.5\textwidth :caption \caption{AC napetost, nihanje napetosti na izhodu naprave ter ena naključna meritev U}
+[[file:figures/brum.png]]
+
+Neko napravo napajamo z AC napetostjo in iz nje izhaja DC napetost, ki zaradi napajanja z AC napetostjo niha okoli neke vrednosti, ki je v povprečju \( 0 \). To nihanje opišemo z
+
+\[ U = U_0 \cos \left( \omega t \right),
+\]
+njen odvod pa je
+
+\[ \mathrm{d} U = - U_0 \omega \sin \left( \omega t \right) \mathrm{d}t.  
+\]
+
+Verjetnost, da ob \( \mathrm{d} t \in \left[ 0, \frac{T}{2} \right] \) izmerimo vrednost napetosti \( U = - U_0 \cos \left( \omega t \right) \) je
+
+\begin{equation}
+\label{eq:3}
+ \mathrm{d} P = \frac{\mathrm{d} t}{\frac{T}{2}} = \frac{2}{T} \frac{\mathrm{d} U}{U_0 \omega \sin \left( \omega t \right)}. 
+\end{equation}
+Upoštevamo identiteto \( \sin ^2 \left( \omega t \right) = 1 - \cos ^2 \left( \omega t \right) \) za \( \omega = \frac{2 \pi}{T} \) in zapišemo \eqref{eq:3}
+
+\begin{align*}
+  \frac{\mathrm{d} P}{\mathrm{d} U} &= \frac{2}{T} \frac{T}{2 \pi} \frac{1}{U_0 \sqrt{\sin ^2 \left( \omega t \right)}}  \\
+&= \frac{1}{\pi} \frac{1}{\sqrt{U_0 ^2 - U_0 \cos ^2 \left( \omega t \right)}} \\
+&= \frac{1}{\pi} \frac{1}{\sqrt{U_0 ^2 - U ^2}}.
+\end{align*}
+
+To ni Gaussova porazdelitev, vendar kakor lahko vidimo na sliki 2.2 v Osnovah fizikalnih merjenj (str. 19) že za vsoto \( n = 10 \) merjenj napetosti, dobiva Gaussovo porazdelitev.
+
+#+ATTR_LATEX: :width 0.5\textwidth :caption \caption{Prikaz centralnega limitnega izreka, \cite{likar_osnove_2016}, str. 19, slika 2.2}
+[[file:figures/brum_gauss.png]]
+** Združevanje odvisnih meritev
+#+begin_idea
+Dva seta meritev \( z_1 \) in \( z_2 \) s pripadajočima šuma \( w_1 \) in \( w_2 \). Velja
+
+\[ \bar{z}_1 = x + w_1, \ \left\langle w_1 ^2 \right\rangle = \sigma_1 ^2 \quad \text{ in } \quad \bar{z}_2 = x + w_2, \ \left\langle w_2  ^2 \right\rangle = \sigma_2 ^2.
+\]
+Zaradi odvisnosti meritev pa velja tudi
+
+\[ \left\langle w_1 w_2 \right\rangle = \sigma_{xy} = \rho_{12} \sigma_1 \sigma_2 \ne 0,
+\]
+kjer je \( \rho_{12} \) korelacijski koeficient z vrednostmi \( \left| \rho_{12} \right|  \leq 1 \).
+Kovarianco lahko izračunamo tudi po enačbi
+
+\[ \sigma_{12} = \overline{z_1 z_2} - \bar{z}_1 \bar{z}_2. 
+\]
+Optimalna ocena koreliranih meritev \( \hat{z} \) je
+
+\[ \hat{z} = \left( \frac{1}{\sigma_1 ^2} + \frac{1}{\sigma_2 ^2} - \frac{2 \rho}{\sigma_1 \sigma_2} \right)^{-1} \left[ \frac{z_1}{\sigma_1 ^2} + \frac{z_2}{\sigma_2 ^2} - \frac{\rho (z_1 + z_2)}{\sigma_1 \sigma_2} \right]. 
+\]
+
+V primeru, da ni korelacije, torej \( \rho = 0 \), dobimo enačbo \eqref{eq:4}.
+
+V primeru, da je korelacija popolna, torej \( \rho = 1 \), je optimalna ocena \( \hat{z} = z_2 = z_1 \).
+
+Za poljuben \( \rho \), vendar \( \sigma_1 = \sigma_2 = \sigma \), potem je optimalna ocena
+
+\[ \hat{z} = \frac{z_1 + z_2}{2}. 
+\]
+#+end_idea
+* Merjenje konstantnim skalarnim količinam
+
+
