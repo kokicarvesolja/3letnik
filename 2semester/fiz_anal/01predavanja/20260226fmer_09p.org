@@ -379,7 +379,7 @@ Prepoznamo meritev iz \( n \)-tega koraka in dodamo števcu prvega ulomka \( 1 -
 
 Izrazimo lahko torej optimalno oceno
 
-\[ \hat{x}_{n + 1} = \hat{x}_n \frac{1}{n + 1} \left( z_{n + 1} - \hat{x}_n \right).
+\[ \hat{x}_{n + 1} = \hat{x}_n +  \frac{1}{n + 1} \left( z_{n + 1} - \hat{x}_n \right).
 \]
 
 Za varianco velja
@@ -403,7 +403,7 @@ in pridobljena shema je filter s spremenljivim ojačevalnim faktorjem \( K_n \).
 
 V limiti \( T \to 0 \) gre razlika ocene
 
-\[ \lim_{T \to 0} = \frac{\hat{x}_{n + 1} - \hat{x}_n}{T} = \dot{\hat{x}} (t) = \frac{\hat{\sigma}_{n + 1} ^2}{\sigma ^2 T} \left( z_{n + 1} - \hat{x}_n \right).
+\[ \lim_{T \to 0} \frac{\hat{x}_{n + 1} - \hat{x}_n}{T} = \dot{\hat{x}} (t) = \frac{\hat{\sigma}_{n + 1} ^2}{\sigma ^2 T} \left( z_{n + 1} - \hat{x}_n \right).
 \]
 
 V tej limiti gredo naše diskretne spremenljivke v zvezen spekter \( \hat{x}_n \to \hat{x}, \ \hat{\sigma}_n ^2 \to \hat{\sigma}_x ^2 \) in \( z_n \to z(t) \). There's some discussion to be had, ali je meritev dejansko lahko zvezna.

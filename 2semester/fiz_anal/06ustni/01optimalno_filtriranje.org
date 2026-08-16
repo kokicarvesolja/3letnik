@@ -294,6 +294,197 @@ Za poljuben \( \rho \), vendar \( \sigma_1 = \sigma_2 = \sigma \), potem je opti
 \[ \hat{z} = \frac{z_1 + z_2}{2}. 
 \]
 #+end_idea
-* Merjenje konstantnim skalarnim količinam
 
+#+attr_latex: :options [Izpeljava - kovarianca]
+#+begin_izpeljava
+Za dva seta meritev \( \left\{ x_i \right\} \) in \( \left\{ y_i \right\} \), kjer \( i = 1, 2, \ldots, N \) je kovarianca definirana kot
+
+\[ \sigma_{xy} = \frac{1}{N} \sum\limits_{i= 1}^N \left( x_i + \bar{x} \right) \left( y_i - \bar{y} \right).
+\]
+Oklepaja zmnožimo med seboj znotraj vsote, da dobimo
+\[ \frac{1}{N} \sum\limits_{i= 1}^N \left( x_i + \bar{x} \right) \left( y_i - \bar{y} \right) =\frac{1}{N} \sum\limits_{i = 1}^N \left( x_i y_i + \bar{x} y_i - x_i \bar{y} + \bar{x} \bar{y} \right).
+\]
+Vsoto na koncu razdelimo po posameznih členih
+
+\begin{align*}
+  \sigma_{xy} &= \frac{1}{N}\sum\limits_{i = 1}^N x_i y_i + \frac{1}{N} \bar{x} \sum\limits_{i = 1}^N y_i - \frac{1}{N} \bar{y} \sum\limits_{i = 1}^N x_i + \frac{1}{N} \bar{x} \bar{y} \sum\limits_{i = 1}^N 1 \\
+&= \overline{xy} - \bar{x} \bar{y} - \bar{x} \bar{y} + \bar{x} \bar{y}  
+\end{align*}
+#+end_izpeljava
+
+#+attr_latex: :options [Izpeljava - združevanje koreliranih ocen]
+#+begin_izpeljava
+Dva izmerka \( z_1 \) in \( z_2 \) s pripadajočima variancama \( \left\langle w_1 ^2 \right\rangle = \sigma_1 ^2 \) ter \( \left\langle w_2 \right\rangle = \sigma_2 ^2 \), kjer sta \( w_1, w_2 \) šuma
+
+\[ z_1 = x + w_1 \quad \text{ in } \quad z_2 = x + w_2.
+\]
+Naj obstaja korelacija med šumoma, torej \( \left\langle w_1 w_2 \right\rangle = \sigma_{12} \ne 0 \). Posledično lahko šum prvega zapišemo kot linearno kombinacijo šuma drugega in neodvisnega dela
+
+\[ w_1 = \alpha w_2 + w, \ \left\langle w_2 w \right\rangle = 0.
+\]
+V zgornji izraz sedaj šum nadomestimo z razliko izmerka in spremenljivke
+
+\[ \left( z_1 - x \right) = \alpha \left( z_2 - x \right) + w, \ \left\langle w w_2 \right\rangle = \left\langle w (z_2 - x) \right\rangle = 0.
+\]
+
+V definicijo kovariance sedaj vstavimo linearno odvisnost ter upoštevamo \( \left\langle w \right\rangle = 0 \) in \( \left\langle w ^2 \right\rangle = \sigma ^2 \)
+
+\begin{align*}
+  \sigma_{12} &= \left\langle w_1 w_2 \right\rangle = \left\langle \left( \alpha w_2 + \xi \right) w_2 \right\rangle \\
+&= \alpha \left\langle w_2 ^2 \right\rangle + \left\langle w w_2 \right\rangle = \alpha \sigma_2 ^2
+\end{align*}
+
+Hkrati pa za kovarianco velja \( \sigma_{12} = \rho_{12} \sigma_1 \sigma_2 \), iz česar sledi
+
+\begin{equation}
+\label{eq:6}
+ \alpha = \rho_{12} \frac{\sigma_1}{\sigma_2}.
+\end{equation}
+
+Zapišemo še varianco prvega šuma
+
+\begin{align*}
+  \sigma_1 ^2 &= \left\langle w_1 ^2 \right\rangle = \left\langle \left( \alpha w_2 + w \right) ^2 \right\rangle \\
+&= \left\langle a ^2 w_2 ^2 + w ^2 + 2 \alpha w_2 w \right\rangle \\
+&= \alpha ^2 \sigma_1 ^2 + \sigma ^2
+\end{align*}
+
+Izraz \eqref{eq:6} sedaj upoštevamo v zgornjem in neodvisen šum zapišemo kot
+
+\[ \sigma ^2 = \sigma_1 ^2 \left( 1 - \rho_{12} ^2 \right) 
+\]
+
+Optimalno združevanje ocen bomo izpeljali s pomočjo kvadratne forme 
+
+\[ 2 J (x) = \frac{w_2 ^2(x)}{\sigma_2 ^2} + \frac{w ^2(x)}{\sigma ^2} = \frac{w_2 ^2}{\sigma_2 ^2} + \frac{\left( w_1 - \alpha w_2 \right) ^2}{\sigma ^2}
+\]
+
+Upoštevamo \eqref{eq:6} ter ulomka razstavimo
+
+\[ 2 J(x) = \frac{w_2 ^2}{\sigma_2 ^2} \left[ 1 + \frac{\rho ^2}{\left( 1 - \rho ^2 \right)} \right] + \frac{w_1 ^2}{\sigma_1 ^2 \left( 1 - \rho ^2 \right)} - \frac{2 \rho w_1 w_2}{\sigma_1 \sigma_2 \left( 1- \rho ^2 \right)}.
+\]
+Upoštevamo, da je šum razlika izmerka in spremenljivke
+
+\[ 2 J(x) = \frac{(z_2 - x) ^2}{\left( 1 - \rho ^2 \right) \sigma_2 ^2} + \frac{\left( z_1 - x \right) ^2}{\left( 1 - \rho ^2 \right)\sigma_1 ^2} - \frac{2 \rho \left[ (z_1 - x) (z_2 - x)  \right]}{\left( 1 - \rho ^2 \right) \sigma_1 \sigma_2},
+\]
+
+in minimiziramo v iskanju optimalne ocene
+
+\begin{align*}
+  \frac{\mathrm{d} }{\mathrm{d} x} \left[ 2 J(x) \right] &= 0\\
+-\frac{2 (z_2 - x)}{\sigma_2 ^2} - \frac{2 (z_1 - x)}{\sigma_1 ^2} + \frac{2 \rho}{\sigma_1 \sigma_2} \left( 2x - (z_1 + z_2) \right) &= 0,
+\end{align*}
+in dobimo predpis za optimalno združevanje
+
+\[ \hat{z} = \left[ \frac{1}{\sigma ^2_2} + \frac{1}{\sigma_1 ^2} - \frac{2 \rho}{\sigma_1 \sigma_2} \right] ^{-1} \left[ \frac{z_2}{\sigma_2 ^2} + \frac{z_1}{\sigma_1 ^2} - \frac{\rho (z_1 + z_2)}{\sigma_1 \sigma_2} \right]. 
+\]
+#+end_izpeljava
+* Merjenje konstantnih skalarnih količin
+#+begin_idea
+Merimo količino \( x \) iz sistema \( S \), za katero vemo, da je konstantna. Na časovno periodo \( T \) razberemo nov izmerek \( z_i = x + r_i \), kjer je \( r_i \) šum porazdeljen po normalni porazdelitvi. Merilni šum je prav tako nekoreliran, torej
+
+\[ \left\langle r_i r_j \right\rangle = \sigma ^2 \delta_{ij}.
+\]
+
+Optimalno oceno \( \hat{x}_n \) ob \( n \)-ti meritvi združimo z novim izmerkom \( z_{n + 1} \). Optimalna ocena \( n + 1 \) meritve je določena z enačbo
+
+\[ \hat{x}_{n + 1} = \hat{x}_n + \frac{\sigma_{n + 1} ^2}{\sigma ^2} \left( z_{n + 1} - \hat{x}_n \right), 
+\]
+kjer je \( \sigma_{n + 1} = \frac{\sigma ^2}{n + 1} \). Faktorju \( K_{n + 1} = \frac{\sigma_{n + 1} ^2}{\sigma ^2} \) pravimo ojačevalni faktor. To je *diferenčna enačba povratne zanke*.
+
+Pri prehodu na zvezno sliko \( T \to 0 \) dobimo diferencialno enačbo
+
+\[ \dot{\hat{x}} = \frac{\sigma_{\hat{x}} ^2 (t)}{R} \left( z(t) - \hat{x} (t) \right),
+\]
+in varianca je
+
+\[ \dot{\sigma}_{\hat{x}} ^2 (t) = - \frac{\sigma_{\hat{x}} ^4 (t)}{R},
+\]
+kjer je \( R = \lim_{T \to 0} \sigma ^2 T > 0 \). Ob zmanjšanju časa med meritvami so sosednje meritve vse bolj korelirane, kar upoštevamo s tem, da se napaka meritev \( \sigma ^2 \) ustrezno povečuje in se \( R \) ohranja. 
+#+end_idea
+
+#+attr_latex: :width 0.5\textwidth :caption \caption{Shema povratne zanke.}
+[[file:figures/09p_Kalman.png]]
+
+#+attr_latex: :options [Izpeljava diferenčne enačbe]
+#+begin_izpeljava
+Vzorčimo s časovno periodo \( T \) in ob vsaki meritvi dobimo izmerek \( z_i = x + r_i \). Šumi so nekorelirani \( \left\langle r_i r_j \right\rangle = \sigma ^2 \delta_{ij} \). Optimalna ocena s pripadajočo varianco ob \( n \)-ti meritvi je že znana
+
+\[ \hat{x} = \frac{1}{n} \sum\limits_{i = 1}^n z_i \quad \text{ in } \quad \hat{\sigma}_n = \frac{\sigma ^2}{n}.
+\]
+
+Dodajmo sedaj izmereke \( z_{n + 1} \).  Po definiciji lahko optimalno meritev zapišemo
+
+\[ \hat{x}_{n + 1} = \frac{1}{n + 1} \sum\limits_{i = 1}^{n + 1} z_i \quad \text{ in } \quad \hat{\sigma}_{n + 1} = \frac{\sigma ^2}{n + 1},
+\]
+vendar jo lahko zapišemo tudi z optimalno oceno iz \( n \)-tega koraka
+
+\begin{align*}
+  \hat{x}_{n + 1} &= \frac{1}{n + 1} \left( \sum\limits_{i = 1}^n z_i + z_{n + 1} \right) \\
+&= \frac{n}{n + 1} \left( \frac{1}{n} \sum\limits_{i = 1}^n z_i \right) + \frac{1}{n + 1} z_{n + 1} \\
+&= \frac{n}{n + 1} \hat{x}_n + \frac{1}{ n + 1} z_{n + 1}.
+\end{align*}
+
+Faktor pred \( n \)-to optimalno oceno razširimo z \( 1 - 1 \)
+
+\[ \hat{x}_{n + 1} = \hat{x}_n + \frac{1}{n + 1} \left( z_{n + 1} - \hat{x}_n \right). 
+\]
+
+Utež želimo zapisati z varianco, za katero velja
+
+\begin{equation}
+\label{eq:7}
+ \sigma_{n + 1} ^{-2} = \frac{n + 1}{\sigma ^2} = \sigma_n ^{-2} + \sigma^{-2}, 
+\end{equation}
+
+in sledi
+
+\[ \hat{x}_{n + 1} = \hat{x}_n + \frac{\hat{\sigma}_{n + 1} ^2}{\sigma ^2} \left( z_{n + 1} - \hat{x}_n \right) 
+\]
+#+end_izpeljava
+
+#+attr_latex: :options [Izpeljava diferencialne enačbe]
+#+begin_izpeljava
+Z naraščanjem pogostosti merjenja \( T \to 0 \) je limita
+
+\[ \lim_{T \to 0} \frac{\hat{x}_{n + 1} - \hat{x}_n}{T} = \dot{\hat{x}} (t) = \frac{\hat{\sigma}_{n + 1}}{\sigma ^2 T} \left( z_{n + 1} - \hat{x}_n \right).
+\]
+
+V limiti označimo prehod na zvezno sliko \( \hat{x}_n \to \hat{x} \), \( \hat{\sigma}_n ^2 \to \hat{\sigma}_x ^2 \) in \( z_n \to z(t) \). Naš izmereke je torej oblike
+
+\[ z(t) = x + r(t), 
+\]
+kjer za nekoreliranost zapišemo z
+
+\[ \left\langle r(t) r'(t) \right\rangle = \delta(t - t') R.
+\]
+
+Diferenčna enačba je v limiti diferencialna enačba
+
+\[ \dot{\hat{x}} (t) = \frac{\sigma_{\hat{x}} ^2}{R} \left[ z(t) - \hat{x}(t) \right], 
+\]
+če velja \( \lim_{T \to 0}  \left( \sigma ^2 T \right) = R > 0 \). S to limito ohranjamo potek merjenja v zvezni sliki enak merjenju na diskretni sliki. Če to ne bi veljalo, bi ocena \( \hat{x} \) neskončno hitro kazala pravo vrednost \( x \).
+
+Variacijo v zvezni sliki zapišemo glede na \refeq{eq:7}. Velja
+
+\[ \hat{\sigma}_{n + 1} ^2 = \left( \frac{1}{\hat{\sigma}_n ^2} + \frac{1}{\sigma ^2} \right)^{-1} = \frac{\hat{\sigma}_n ^2 \sigma ^2}{\hat{\sigma}_n ^2 + \sigma ^2},
+\]
+kar upoštevamo v limiti
+
+\[ \dot{\hat{\sigma}}_x ^2 (t) = \frac{\hat{\sigma}_{n + 1} ^2 - \hat{\sigma}_n ^2}{T}.
+\]
+
+Zapišemo
+
+\begin{align*}
+  \dot{\hat{\sigma}}_x ^2 (t) &= \frac{1}{T} \left[ \frac{\hat{\sigma}_n ^2 \sigma ^2}{\hat{\sigma}_n ^2 + \sigma ^2} - \frac{\hat{\sigma}_n ^2 \left( \hat{\sigma}_n ^2 + \sigma ^2 \right)}{\left( \hat{\sigma}_n ^2 + \sigma ^2 \right)} \right]\\
+&= - \frac{\left[ \hat{\sigma}_n ^2 (t)\right] ^2}{\cancel{\hat{\sigma}_n ^2 T} + \sigma ^2 T} = -\frac{\hat{\sigma}_n ^4}{R}.
+\end{align*}
+
+Negotovost se v limiti \( T \to 0 \) zmanjša na nič.
+#+end_izpeljava
+* Merjenje skalarne spremenljivke
+#+begin_idea
+
+#+end_idea
 
