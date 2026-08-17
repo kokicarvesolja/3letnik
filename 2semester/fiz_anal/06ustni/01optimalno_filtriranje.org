@@ -388,8 +388,11 @@ Merimo količino \( x \) iz sistema \( S \), za katero vemo, da je konstantna. N
 
 Optimalno oceno \( \hat{x}_n \) ob \( n \)-ti meritvi združimo z novim izmerkom \( z_{n + 1} \). Optimalna ocena \( n + 1 \) meritve je določena z enačbo
 
-\[ \hat{x}_{n + 1} = \hat{x}_n + \frac{\sigma_{n + 1} ^2}{\sigma ^2} \left( z_{n + 1} - \hat{x}_n \right), 
-\]
+\begin{equation}
+\label{eq:8}
+ \hat{x}_{n + 1} = \hat{x}_n + \frac{\sigma_{n + 1} ^2}{\sigma ^2} \left( z_{n + 1} - \hat{x}_n \right), 
+\end{equation}
+
 kjer je \( \sigma_{n + 1} = \frac{\sigma ^2}{n + 1} \). Faktorju \( K_{n + 1} = \frac{\sigma_{n + 1} ^2}{\sigma ^2} \) pravimo ojačevalni faktor. To je *diferenčna enačba povratne zanke*.
 
 Pri prehodu na zvezno sliko \( T \to 0 \) dobimo diferencialno enačbo
@@ -485,6 +488,191 @@ Negotovost se v limiti \( T \to 0 \) zmanjša na nič.
 #+end_izpeljava
 * Merjenje skalarne spremenljivke
 #+begin_idea
+Če nimamo informacij o spreminjanju količine, potem je najboljše čim gostejše in natančno merjenje. 
 
+Če imamo informacijo o spreminjanju količine, pravimo, da poznamo *dinamični zakon* spremenljivke. Dinamični zakon se podaja v obliki diferencialne enačbe kot je
+
+\begin{equation}
+\label{eq:5}
+ \dot{x} = A(t) x + c(t).  
+\end{equation}
+Diferenčno enačbo oblike ob \( n \)-ti meritvi
+\[  x_{n + 1} = \Phi_n x_n + c_n,
+\]
+podajamo kot približek enačbe \eqref{eq:5}, kjer je \( \Phi_n = 1 + A(nT) \) in \( c_n = c(nT) T \). Z znano optimalno oceno \( \hat{x}_n \) in pripadajočo kovarianco \( \hat{\sigma}_n ^2 \), napovemo oceno ob času \( (n + 1) T \) z
+
+\[ \bar{x}_{n + 1} = \Phi_n \hat{x}_n + c_n \quad \text{ in } \quad \bar{\sigma}_{n + 1} ^2 = \Phi_n ^2 \hat{\sigma}_n ^2,
+\]
+ki jo nato izostrimo z novim izmerkom \( z_{n + 1} \)
+
+\[ \hat{x}_{n + 1} = \bar{x}_{n + 1} + \frac{\bar{\sigma}_{n + 1} ^2}{\bar{\sigma}_{n + 1} ^2 + \sigma ^2} \left( z_{n + 1} - \bar{x}_{n + 1} \right). 
+\]
+Pripadajoča varianca je
+\[ \hat{\sigma}_{n + 1} ^2 = \frac{\bar{\sigma}_{n + 1} ^2 \sigma ^2}{\bar{\sigma}_{n + 1} ^2 + \sigma ^2}. 
+\]
+
+Uvedemo nove oznake za oceno variance, izostreno oceno variance ter ojačevalni faktor.
+
+\begin{align*}
+\bar{\sigma}_{n + 1} ^2 &= M_{n + 1} = \Phi_n ^2 \hat{\sigma}_n ^2 = \Phi_n P_n \\
+\hat{\sigma}_{n + 1} ^2 &= P_{n + 1} = M_{n + 1} - \frac{M_{n + 1} ^2}{M_{n + 1} ^2 + \sigma ^2} \\
+\frac{\bar{\sigma}_{n + 1} ^2}{\bar{\sigma}_{n + 1} ^2 + \sigma ^2} &= K_{n + 1} = \frac{P_{n + 1}}{\sigma ^2}.
+\end{align*}
+
+Ker dinamike v sistemu \( S \) ne poznamo eksaktno, pomeni, da imata \( \Phi_n \) in \( c_n \) svojo negotovost, ki jo predstavimo v obliki dinamičnega žuma \( \Gamma_n w_n \), za katerega velja
+
+\[ \left\langle w_n w_n' \right\rangle = \delta_{n, n'} Q_n.
+\]
+Posodobljen člen ocene variance je potem
+
+\[ M_{n + 1} = \Phi_n P_n + \Gamma_n ^2 Q_n,  
+\]
+vsi ostali členi pa ga ne vsebujejo.
+
+Pri prehodu na zvezno sliko za \( T \to 0 \) velja
+
+\[ \dot{\hat{x}} (t) = A(t) \hat{x}(t) + c(t) + \frac{P(t)}{R(t)} \left[ z(t) - \hat{x}(t) \right], 
+\]
+kjer so \( \lim_{T \to 0} \left( \sigma ^2 T \right) = R(t) \), \( \lim_{T \to 0} P_{n + 1} = P(t) \) ter \( \lim_{T \to 0} \Phi_n = 1 \). Enačba za disperzijo je
+
+\[ \dot{P}(t) = 2A(t) P(t) - \frac{P ^2 (t)}{R(t)} + \Gamma ^2 (t) Q(t),
+\]
+kjer je \( \lim_{T \to 0} TQ_n = Q(t) \) in \( \Gamma ^2 = \lim_{T \to 0} \frac{\Gamma_n ^2}{T ^2} \).
 #+end_idea
 
+#+attr_latex: :options [Izostrena ocena diferenčne enačbe]
+#+begin_izpeljava
+V diskretnem prostoru, kjer vzorčimo s časovno periodo \( T \) pretvorimo diferencialno enačbo \eqref{eq:5} v diferenčno z upoštevanjem
+
+\[ \dot{x} = \frac{x_{n + 1} - x_n}{T},
+\]
+kjer je \( x_n = (nT) \) ter \( x_{n + 1} = x[(n + 1) T] \), ki ga izrazimo
+
+\[ x_{n + 1} = x_n + A (nT) T x_n + c(nT) T. 
+\]
+
+Z uvedbo \( \Phi_n = 1 + A(nT) T \) in \( c_n = c(nT) T \) dobimo diferenčno enačbo
+
+\[ x_{n + 1} = \Phi_n x_n + c_n. 
+\]
+
+Po \( n \) vzorčenjih imamo optimalno oceno \( \hat{x}_n \) in pripadajočo varianco \( \hat{\sigma} ^2_n \), s katerima lahko preko diferenčne enačbe napovemo oceno
+
+\[ \bar{x}_{n + 1} = \Phi_n \hat{x}_n + c_n. 
+\]
+
+Do variance \( \bar{\sigma}_{n + 1} ^2 \) po definiciji variance
+
+\[ \bar{\sigma}_{n + 1} ^2 = \left\langle \left( \bar{x}_{n + 1}  - x_{n + 1} \right) ^2 \right\rangle,
+\]
+v kateri upoštevamo napoved ocene
+
+\begin{align*}
+  \bar{\sigma}_{n + 1} ^2 &= \left\langle \left[ \left( \Phi_n \hat{x}_n + c_n \right) - \left( \Phi_n x_n - c_n \right) \right] ^2 \right\rangle \\
+&= \left\langle \left[ \Phi_n \left( \hat{x}_n - x_n \right) \right] ^2 \right\rangle.
+\end{align*}
+V zadnji vrstici prepoznamo definicijo disperzije za izostreno oceno \( \hat{\sigma}_n ^2 \) in posledično velja
+
+\[ \bar{\sigma}_{n + 1} = \Phi_n ^2 \hat{\sigma}_n ^2. 
+\]
+
+Oceno \( \bar{x}_{n + 1} \) in pripadajočo disperzijo izostrimo z novim izmerkom \( z_{n + 1} \) z enačbo \eqref{eq:8}
+
+\[ \hat{x}_{n + 1} = \bar{x}_{n + 1} + \frac{\hat{\sigma}_{n + 1} ^2}{\sigma ^2} \left( z_{n + 1} - \bar{x}_{n + 1} \right). 
+\]
+
+in varianca izostrene ocene je
+
+\[ \hat{\sigma}_{n + 1} ^2 = \left( \bar{\sigma}_{n + 1} ^{-2} + \sigma^{-2} \right)^{-1} = \frac{\bar{\sigma}_{n + 1} ^2 \sigma ^2}{\bar{\sigma}_{n + 1} ^2 + \sigma ^2},
+\]
+s čimer posodobimo zapis izostrene ocene
+
+\begin{equation}
+\label{eq:10}
+ \hat{x}_{n + 1} = \bar{x}_{n + 1} + \frac{\bar{\sigma}_{n + 1} ^2}{\bar{\sigma}_{n + 1} ^2 + \sigma ^2} \left( z_{n + 1} - \bar{x}_{n + 1} \right). 
+\end{equation}
+#+end_izpeljava
+
+#+attr_latex: :options [Dinamični šum]
+#+begin_izpeljava
+Kot smo napisali v povzetku, pri zgornji izpeljavi smo privzeli, da se spremenljivke točno ujemajo z dinamično enačbo. V resnici členov \( \Phi_n \) in \( c_n \) ne poznamo eksaktno in imata pripadajočo negotovost. To rešimo z uvedbo člena dinamičnega šuma \( \Gamma_n w_n \), kjer velja \( \left\langle w_n \right\rangle = 0 \) in \( \left\langle w_n w_{n'} \right\rangle = \delta_{n n'} Q_n \).
+
+Odstopanje v sistemu \( M \) od spremenljivke v sistemu \( S \) pri izostreni oceni \( \hat{x}_{n + 1} \) ne bo imelo vpliva, bo pa vplivalo na negotovost
+
+\begin{align*}
+  M_{n + 1} = \bar{\sigma}_{n + 1} &= \left\langle \left( \bar{x}_{n + 1} - x_{n + 1} \right) ^2 \right\rangle \\
+&= \left\langle \left[ \left( \Phi_n \hat{x}_n + c_n \right) - \left( \Phi_n x_n + c_n + \Gamma_n w_n \right) \right] ^2 \right\rangle \\
+&= \left\langle \left[ \Phi_n \left( \hat{x}_n - x_n \right) - \Gamma_n w_n \right] ^2 \right\rangle.
+\end{align*}
+Korelacije med \( \hat{x}_n, x_n \) in \( w_n \), zato po kvadriranju ostane
+
+\begin{align*}
+  M_{n + 1} &= \left\langle \Phi_n ^2 \left( \hat{x}_n - x \right) ^2 + \left( \Gamma_n w_n \right) ^2 \right\rangle \\
+&= \Phi_n ^2 P_n + \Gamma_n ^2 \left\langle w_n ^2 \right\rangle \\
+&= \Phi_n ^2 P_n + \Gamma_n ^2 Q_n
+\end{align*}
+#+end_izpeljava
+
+#+attr_latex: :options [Prehod na zvezno sliko]
+#+begin_izpeljava
+Enačbo \eqref{eq:10} ponesemo v čas \( (n + 1)T \)
+
+\[ \hat{x}_{n + 1} = \Phi_n \hat{x}_n + K_n \left( z_n - \Phi_n \hat{x}_n \right) + c_n, 
+\]
+ki jo pretvorimo v
+\begin{equation}
+\label{eq:11}
+ \frac{\hat{x}_{n + 1} - \hat{x}_n}{T} = \frac{\left( \Phi_n - 1 \right)}{T} \hat{x}_n + \frac{c_n}{T} + \frac{P_{n + 1}}{\sigma ^2 T} \left( z_{n + 1} - \hat{x}_{n} \right),
+\end{equation}
+s pomočjo ocene \( \bar{x}_n \). 
+
+Ob upoštevanju limite \( T \to 0 \)
+
+\begin{align*}
+  \lim_{T \to 0} \left( \sigma ^2 T \right) &= R(t) \\
+\lim_{T \to 0} P_{n + 1} &= P(t) \\
+\lim_{T \to 0} \Phi_n &= 1 \\
+\lim_{T \to 0} \frac{\Phi_n - 1}{T} &= A(t),
+\end{align*}
+preide enačba \eqref{eq:11} v obliko
+
+\[ \dot{\hat{x}} (t) = A(t) \hat{x}(t) + c(t) \frac{P(t)}{R(t)} \left[ z(t) - \hat{x}(t) \right],
+\]
+s katero sledimo merjeni količini \( x \), v katero dodamo inovacijo \( z(t) - \hat{x}(t) \). Ojačevalni faktor \( \frac{P(t)}{R(t)} \) se s časom spreminja, saj se spreminja tudi stopnja usklajenosti med sistemoma \( S \) in \( M \), ki jo meri \( P(t) \) \cite{likar_osnove_2016}.
+
+Do negotovosti pridemo na podoben način preko enačbe
+
+\[ P_{n + 1} = M_{n + 1} - \frac{M_{n + 1} ^2}{M_{n + 1}  + \sigma ^2} = \Phi_n  ^2 P_n  + \Gamma_n Q_n - \frac{\left( \Phi_n ^2 P_n + \Gamma_n Q_n \right) ^2}{M_{n + 1} + \sigma ^2},
+\]
+kjer zapišemo
+
+\[ \frac{P_{n + 1} - P_n}{T} = \frac{\left( \Phi_n ^2 - 1 \right) P_n}{T} + \frac{\Gamma_n ^2 Q_n}{T} - \frac{\Phi_n ^2 P_n ^2 + 2 \Phi_n ^2 P_n \Gamma_n ^2 Q_n + \Gamma_n ^4 Q_n ^2}{T M_{n + 1} + \sigma ^2 T}.
+\]
+Upoštevamo limito \( T \to 0 \) in lahko prvi člen zapišemo kot
+
+\[ \lim_{T \to 0}  \frac{\left( \Phi_n ^2 - 1 \right)P_n}{T} = \lim_{T \to 0}  \left( \Phi_n - 1 \right) \frac{\left( \Phi_n - 1 \right)}{T} P_n = 2 A P(t).
+\]
+
+Definiramo limito \( \lim_{T \to 0} \left( Q_n T \right) = Q(t) \) in drugi člen zapišemo na sledeč način
+
+\[ \lim_{T \to 0} \frac{\Gamma_n ^2 Q_n}{T} = \lim_{T \to 0}  \frac{\Gamma_n ^2 Q_n T}{T ^2} = \Gamma ^2 Q.
+\]
+
+Zadnji člen v limiti pa je
+
+\begin{align*}
+  \lim_{T \to 0} \frac{\Phi_n ^2 P_n ^2 + 2 \Phi_n ^2 P_n \Gamma_n ^2 Q_n + \Gamma_n ^4 Q_n ^2}{T M_{n + 1} + \sigma ^2 T} &= \lim_{T \to 0}\left[ \frac{1}{T M_{n + 1} + \sigma ^2 T} \left( \Phi_n ^2 P_n ^2 + 2 \Phi_n ^2 P_n \Gamma_n ^2 Q_n \frac{T ^2}{T ^2} + \Gamma_n ^4 Q_n ^2 \frac{T ^4}{T ^4} \right)\right] \\
+&= \frac{1}{T M(t) + R} \left[ P ^2 (t) + 2 P \Gamma ^2 Q \lim_{T \to 0} (T) + \Gamma ^4 (t) Q(t) \lim_{T \to 0} T ^2 \right] \\
+&= \frac{P ^2}{R},
+\end{align*} 
+kjer smo upoštevali limiti 
+
+\[ \lim_{T \to 0}  \left( \frac{\Gamma_n}{T} \right) = \Gamma(t) \quad \text{ in } \quad \lim_{T \to 0}  \left( Q_n T \right) = Q(t).
+\]
+
+Negotovost v zveznem spektru je potlej
+
+\[ \dot{P}(t) = 2 A(t) P(t) - \frac{P ^2 (t)}{R(t)} + \Gamma ^2 Q(t), 
+\]
+kjer prvi člen opisuje širjenje napake spremenljivke \( x \), drugi člen zmanjšuje negotovost zaradi dotoka novih meritev, tretji člen pa povečuje negotovost ocene z upoštevanjem dinamičnega šuma. 
+#+end_izpeljava
