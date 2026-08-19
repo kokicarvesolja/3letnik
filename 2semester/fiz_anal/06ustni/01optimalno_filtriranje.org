@@ -2,7 +2,7 @@
 #+startup: nolatexpreview
 #+startup: entitiespretty nil
 #+startup: show2levels
-#+latex_header: \usepackage{amsmath} \usepackage{unicode-math} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \usepackage{amsmath} \usepackage{cancel} \usepackage{graphicx}
 #+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
 #+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
 #+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
@@ -732,11 +732,13 @@ do katere pridemo s pomočjo Lagrangeovo metodo multiplikatorja. Pripadajočo ko
 
 Naj sistem \( S \) sledi dinamični enačbi oblike
 
-\[ \mathbf{x}_{n + 1} = \Phi_n \mathbf{x}_n + \mathbf{c}_n + \Gamma_n \mathbf{w}_n, 
-\]
-kjer sta \( \Phi_n, \Gamma_n \) matriki, \( \mathbf{c}_n \) znan vektor in \( \mathbf{w}_n \) naključen vektor s povprečjem nič in kovariančno matriko \( \left\langle \mathbf{w}_n \mathbf{w}_{n'}^T \right\rangle = Q_n \delta_{n, n'}\). Pri prehodu iz \( n \)-te meritve na \( (n + 1) \)-to meritev najprej zapišemo oceno
+\begin{equation}
+\label{eq:19}
+ \mathbf{x}_{n + 1} = \Phi_n \mathbf{x}_n + \mathbf{c}_n + \Gamma_n \mathbf{w}_n, 
+\end{equation}
+kjer sta \( \Phi_n, \Gamma_n \) matriki, \( \mathbf{c}_n \) znan vektor in \( \mathbf{w}_n \) naključen vektor s povprečjem nič in kovariančno matriko \( \left\langle \mathbf{w}_n \mathbf{w}_{n'}^T \right\rangle = Q_n \delta_{n, n'}\). Pri prehodu iz \( n \)-te meritve na \( (n + 1) \) meritev najprej zapišemo oceno
 
-\[ \bar{\mathbf{x}}_{n + 1} = \Phi_n \hat{\mathbf{x}} + \mathbf{c}_n,
+\[ \bar{\mathbf{x}}_{n + 1} = \Phi_n \hat{\mathbf{x}}_n + \mathbf{c}_n,
 \]
 ki ji pripada kovariančna matrika 
 
@@ -760,7 +762,7 @@ Pri prehodu na zvezno sliko je optimalna shema za sledenje zvezni spremenljivki
 
 \[ \dot{\hat{\mathbf{x}}} (t) = A(t) \hat{\mathbf{x}} + c(t) + \mathsf{P} \mathsf{H}^T \mathsf{R}^{-1} \left( \mathbf{z} - \mathsf{H} \hat{\mathbf{x}}(t) \right),
 \]
-kjer je \( A(t) = \lim_{T \to 0}  \frac{\Phi_{n + 1} - 1}{T} \) in \( c(t) = \lim_{T \to 0} \frac{\mathbf{c}_n}{T} \).
+kjer je \( A(t) = \lim_{T \to 0}  \frac{\Phi_{n + 1} - 1}{T} \) in \( \mathbf{c}(t) = \lim_{T \to 0} \frac{\mathbf{c}_n}{T} \).
 
 Kovariančna matrika izostrene ocene je
 
@@ -799,8 +801,8 @@ kjer je vektor \( \mathbf{p} \) vektor naključnih odmikov izboljšane ocene \( 
 od koder dobimo enačbi 
 
 \begin{align}
-  \mathsf{A} + \mathsf{B} \mathsf{H} &= \mathsf{I} \\ \label{ali:1}
-\mathsf{A} \mathbf{m} + \mathsf{B} \mathbf{r} &= \mathbf{p}, \label{ali:2}.
+ \label{ali:1} \mathsf{A} + \mathsf{B} \mathsf{H} &= \mathsf{I} \\ \label{ali:2}
+\mathsf{A} \mathbf{m} + \mathsf{B} \mathbf{r} &= \mathbf{p}, 
 \end{align}
 kjer je \( \mathsf{I} \) identiteta.
 
@@ -901,10 +903,106 @@ Hkrati lahko enačbo \eqref{eq:17} z množenjem s \( \mathsf{H}^T \) z desne zap
 
 \begin{align*}
   \mathsf{P} \left( \mathsf{H}^T + \mathsf{H}^T \mathsf{R}^{-1} \mathsf{H} \mathsf{M} \mathsf{H} \right) &= \mathsf{M} \mathsf{H}^T \\
-\mathsf{P} \mathfs{H}^T \left( \mathsf{I} + \mathsf{R}^{-1} \mathsf{H} \mathsf{M} \mathsf{H}^T \right) = \mathsf{M} \mathsf{H}^T,
+\mathsf{P} \mathfs{H}^T \left( \mathsf{I} + \mathsf{R}^{-1} \mathsf{H} \mathsf{M} \mathsf{H}^T \right) &= \mathsf{M} \mathsf{H}^T,
 \end{align*}
-kjer smo v drugi vrstici izpostavili \( \mathsf{H}^T \).
+kjer smo v drugi vrstici izpostavili \( \mathsf{H}^T \). Z upoštevanjem \( \mathsf{I} = \mathsf{R}^{-1} \mathsf{R} \) pa lahko izpostavimo še \( \mathsf{R}^{-1} \)
 
+\[ \mathsf{P} \mathsf{H}^T \mathsf{R}^{-1} \left( \mathsf{R} + \mathsf{H} \mathsf{M} \mathsf{H}^T \right) = \mathsf{M} \mathsf{H}^T.
+\]
+
+Nadalje upoštevamo
+
+\[ \mathsf{P} \mathsf{H}^T \mathsf{R}^{-1} = \mathsf{M} \mathsf{H}^T \left( \mathsf{R} + \mathsf{H} \mathsf{M} \mathsf{H}^T \right)^{-1} 
+\]
+v enačbi \eqref{eq:16} in dobimo iskano zvezo
+
+\[ \mathsf{P} = \mathsf{M} - \mathsf{M} \mathsf{H}^T \left( \mathsf{H} \mathsf{M} \mathsf{H}^T + \mathsf{R} \right)^{-1} \mathsf{H} \mathsf{M}. 
+\]
+#+end_izpeljava
+
+#+attr_latex: :options [Diskretne in zvezne meritve]
+#+begin_izpeljava
+Ocena meritev ob \( n + 1 \) meritvi je
+
+\begin{equation}
+\label{eq:18}
+ \bar{\mathbf{x}}_{n + 1} = \Phi_n \hat{\mathbf{x}} + \mathbf{c}_n, 
+\end{equation}
+po definiciji pa izračunamo tudi kovariančno matriko
+
+\begin{align*}
+  \mathsf{M}_{n + 1} &= \left\langle \left( \bar{\mathbf{x}}_{n + 1} - \mathbf{x}_{n + 1} \right) \left( \bar{\mathbf{x}}_{n + 1} - \mathbf{x}_{n + 1} \right)^T \right\rangle \\
+&= \left\langle \left[ \Phi_n \left( \hat{\mathbf{x}}_n - \mathbf{x}_n \right) - \Gamma_n \mathbf{w}_n \right] \left[ \Phi_n \left( \hat{\mathbf{x}}_n - \mathbf{x}_n\right) - \Gamma_n \mathbf{w}_n \right]^T \right\rangle \\ 
+&= \left\langle \Phi_n \left( \hat{\mathbf{x}}_n - \mathbf{x}_n \right) \left( \hat{\mathbf{x}}_n - \mathbf{x}_n \right)^T \Phi^T  \right\rangle + \Gamma_n \left\langle \mathbf{w}_n \mathbf{w}_{n'} \right\rangle \Gamma_n^T \\
+&= \Phi_n P_n \Phi_n^T + \Gamma_n Q_n \Gamma_n^T,
+\end{align*}
+kjer smo iz prve v drugo vrstici upoštevali definicijo ocene \eqref{eq:18} ter definicijo dinamike \eqref{eq:19}. Iz prejšnje izpeljave sledi kovariančna matrika izostrene ocene
+
+\[ \mathsf{P}_{n + 1} = \mathsf{M}_{n + 1} - \mathsf{M}_{n + 1} \mathsf{H}^T \left( \mathsf{H} \mathsf{M}_{n + 1}^T + \mathsf{R}_{n + 1}^{-1} \right) \mathsf{H} \mathsf{M}_{n + 1}.
+\]
+
+V limiti časovne periode \( T \to 0 \), podobno kot pri skalarni spremenljivki zapišemo
+
+\[ \lim_{T \to 0}  \frac{\hat{\mathbf{x}}_{n + 1} + \hat{\mathbf{x}}_n}{T} = \dot{\hat{\mathbf{x}}} (t) = \lim_{T \to 0} \frac{\bar{\mathbf{x}}_{n + 1} - \mathsf{P}_{n + 1} \mathsf{H}^T \mathsf{R}^{-1}_{n + 1} \left( \mathbf{z}_{n + 1} - \mathsf{H} \bar{\mathbf{x}}_{n + 1} \right) - \hat{\mathbf{x}}_n}{T}. 
+\]
+S pomočjo enačbe \eqref{eq:18} zapišemo
+
+\[ \dot{\hat{\mathbf{x}}} (t) = \lim_{T \to 0} \frac{\Phi_n - 1}{T} \hat{\mathbf{x}}_n + \frac{\mathbf{c}_n}{T} + \frac{K_{n + 1}}{T} \left( \mathbf{z}_{n + 1} - \mathsf{H} \bar{\mathbf{x}}_{n + 1} \right).
+\]
+Označimo
+
+\begin{align}
+ \label{ali:3} \lim_{T \to 0} \frac{\Phi_n - 1}{T} &= A(t)  \\ 
+\lim_{T \to 0} P_{n + 1} &= P(t) \\
+\lim_{T \to 0} \left( R^{-1} T \right) &= R(t) \\
+\lim_{T \to 0} K_{n + 1} &= K(t),
+\end{align}
+in optimalna shema za sledenje zvezni spremenljivki je
+
+\[ \dot{\hat{\mathbf{x}}} (t) = A(t) \hat{\mathbf{x}} + \mathbf{c}(t) + K(t) \left[ \mathbf{z}(t) - \mathsf{H} \bar{\mathbf{x}} \right].
+\]
+
+Za kovariančno matriko pa v zvezni sliki najprej zapišemo razliko
+
+\[ \mathsf{P}_{n + 1} - \mathsf{P}_n = \mathsf{M}_{n + 1} - \mathsf{M}_{n + 1} \mathsf{H}^T \left( \mathsf{H} \mathsf{M}_{n + 1}^T + \mathsf{R}_{n + 1} \right)^{-1} \mathsf{H} \mathsf{M}_{n + 1} - \mathsf{P}_n, 
+\]
+v kateri upoštevamo definicijo kovariančne matrike \( \mathsf{M}_{n + 1} \),
+
+\[  \mathsf{P}_{n + 1} - \mathsf{P}_n = \Phi_n \mathsf{P}_n \Phi_n^T + \Gamma_n Q_n \Gamma_n^T - \mathsf{M}_{n + 1} \mathsf{H}^T \left( \mathsf{H} \mathsf{M}_{n + 1}^T + \mathsf{R}_{n + 1} \right)^{-1} \mathsf{H} \mathsf{M}_{n + 1} - \mathsf{P}_n.
+\]
+
+Delimo s \( T \) in limitiramo \( T \to 0 \),
+
+\begin{align*}
+\lim_{T \to 0}  \frac{\mathsf{P}_{n + 1} - \mathsf{P}_n}{T} &= \lim_{T \to 0}  \left(\Phi_n \mathsf{P}_n \Phi_n^T + \Gamma_n Q_n \Gamma_n^T - \mathsf{M}_{n + 1} \mathsf{H}^T \left( \mathsf{H} \mathsf{M}_{n + 1}^T + \mathsf{R}_{n + 1} \right)^{-1} \mathsf{H} \mathsf{M}_{n + 1} - \mathsf{P}_n \right) \\
+&= \lim_{T \to 0} \left( \frac{\Phi_n \mathsf{P}_n \Phi_n^T - \mathsf{P}_n}{T} \right) - \lim_{T \to 0} \left[ \mathsf{M}_{n + 1} \mathsf{H}^T \left( \mathsf{H} \mathsf{M}_{n + 1}^T T + \mathsf{R}_{n + 1}T \right)^{-1} \mathsf{H} \mathsf{M}_{n + 1}^T \right] + \\
+&\quad + \lim_{T \to 0} \left( \frac{\Gamma_n Q_n \Gamma_n^T }{T}\right)
+\end{align*}
+
+Pri prvem členu upoštevamo definicijo \eqref{ali:3} in zapišemo
+
+\begin{align*}
+  \lim_{T \to 0} \left( \frac{\Phi_n \mathsf{P}_n \Phi_n^T - \mathsf{P}_n}{T} \right) &= \lim_{T \to 0} \left[\frac{\left( 1 + A T \right) \mathsf{P}_n \left( 1 + A^T T \right) - \mathsf{P}_n }{T} \right] \\
+&= \lim_{T \to 0} \left[ \frac{\mathsf{P}_n + A \mathsf{P}_n T + \mathsf{P}_n A^T + A \mathsf{P}_n A^T T ^2 - \mathsf{P}_n}{T} \right] \\
+&= A(t) \mathsf{P}(t) + \mathsf{P}(t) A^T (t).
+\end{align*}
+
+V drugem členu upoštevamo limiti \( \lim_{T \to 0} \mathsf{M}_{n + 1} = \mathsf{P} (t) \) ter \( \lim_{T \to 0} T \mathsf{R}_n = \mathsf{R}(t) \)
+
+\[ \lim_{T \to 0} \left[ \mathsf{M}_{n + 1} \mathsf{H}^T \left( \mathsf{H} \mathsf{M}_{n + 1}^T T + \mathsf{R}_{n + 1}T \right)^{-1} \mathsf{H} \mathsf{M}_{n + 1}^T \right] = \mathsf{P} (t) \mathsf{H}^T \mathsf{R}^{-1} (t) \mathsf{H} \mathsf{P}(t),
+\]
+saj gre prvi člen \( \mathsf{H} \mathsf{M}_{n + 1}^T T \) v limiti v \( 0 \). Preostane nam še tretji člen, v katerem upoštevamo limiti \( \lim_{T \to 0}  \frac{\Gamma_n}{T} = \Gamma \) ter \( \lim_{T \to 0} \frac{\delta_{n n'}}{T} Q_n T = Q(t) \delta (t - t') \)
+
+\begin{align*}
+  \lim_{T \to 0} \left( \frac{\Gamma_n Q_n \Gamma_n^T }{T}\right) &= \lim_{T \to 0}  \left( \frac{\Gamma_n}{T} Q_n T \frac{\Gamma_n^T}{T} \right) \\
+&= \Gamma Q(t) \Gamma^T,
+\end{align*}
+ki za beli šum divergira pri \( t = t' \).
+
+Kovarianca je tako
+
+\[ \dot{\mathsf{P}} (t) = A(t) \mathsf{P}(t) + \mathsf{P}(t) A^T (t) + \Gamma Q (t) \Gamma^T  - \mathsf{P}(t) \mathsf{H}^T \mathsf{R}^{-1} (t) \mathsf{H} \mathsf{P}(t).
+\]
 #+end_izpeljava
 ** Primer: ocena lege gibajočega se telesa
 
@@ -985,4 +1083,5 @@ Kot dodatek, gostota verjetno porazdelitve je
 \[ p \left( \begin{bmatrix} x \\ v \end{bmatrix} \right) = \frac{1}{\sqrt{ \left( 2 \pi \right)  ^2 \sigma_x ^2 \sigma_v ^2 \left( 1 - \rho ^2 \right)}} \exp \left\{ - \frac{1}{2 \left( 1 - \rho ^2 \right)} \left[ \frac{\left( x - \bar{x} \right) ^2}{\sigma_x ^2} + \frac{\left( v - \bar{v} \right) ^2}{\sigma_v ^2} - \frac{2 \rho \left( x - \bar{x} \right) \left( v - \bar{v} \right)}{\sigma_{xv}} \right] \right\}
 \]
 ** Primer: Brownovo gibanje
+
 ** Primer: praznenje RC člena  
