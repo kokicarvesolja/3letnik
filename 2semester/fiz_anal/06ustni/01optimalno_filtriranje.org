@@ -676,3 +676,96 @@ Negotovost v zveznem spektru je potlej
 \]
 kjer prvi člen opisuje širjenje napake spremenljivke \( x \), drugi člen zmanjšuje negotovost zaradi dotoka novih meritev, tretji člen pa povečuje negotovost ocene z upoštevanjem dinamičnega šuma. 
 #+end_izpeljava
+* Merjenje vektorskih spremenljivk
+#+begin_idea
+Spremenljivke sistema \( S \), ki nas zanimajo, zberemo v vektor
+
+\[ \mathbf{x} = [x_1, x_2, x_3, \ldots, x_n]^T \in \mathbf{R}^n.
+\]
+
+(Izostrene) ocene v sistemu \( M \) prav tako zberemo v vektor,
+
+\[ \bar{\mathbf{x}} = [\bar{x}_1, \bar{x}_2, \bar{x}_3, \ldots, \bar{x}_n]^T. 
+\]
+Disperzijo in korelacijo, ki pripada ocenam v sistemu \( S \) zapišemo s kovariančno matriko \( \mathsf{M} \)
+
+\[ \mathsf{M} = \left\langle \left( \bar{\mathbf{x}} - \mathbf{x} \right) \left( \bar{\mathbf{x}} - \mathbf{x} \right)^T \right\rangle = \begin{bmatrix}
+                                                                                                                                         \sigma_1 ^2 & \sigma_{12} & \ldots & \sigma_{1n} \\
+                                                                                                                                         \sigma_{21} & \sigma_2 ^2 & & \vdots \\
+                                                                                                                                         \vdots &  & \ddots & \\
+                                                                                                                                         \sigma_{n1} & \ldots & & \sigma_n ^2 
+                                                                                                                                         \end{bmatrix},
+\]
+kjer so diagonalni matrični elementi znane disperzije, izvendiagonalni elementi \( \sigma_{ij} \) pa so korelacije med različnimi spremenljivkami. Kovariančno matriko izostrenih ocen označimo s \( \mathsf{P} \) in se jo izračuna analogno \( \mathsf{M} \) kot
+
+\[ \mathsf{P} = \left\langle \left( \hat{\mathbf{x}} - \mathbf{x} \right) \left( \hat{\mathbf{x}} - \mathbf{x} \right)^T \right\rangle 
+\]
+Matriki \( \mathsf{M} \) in \( \mathsf{P} \) sta simetrični ter pozitivno definitni. Gostota verjetnosti \( p \) vektorske spremenljivke \( \bar{\mathbf{x}} \) zapišemo z večrazsežno normalno porazdelitvijo
+
+\[ p(\bar{\mathbf{x}}) = \frac{1}{\sqrt{\left( 2 \pi \right)^n \det \mathsf{M}}} \exp \left\{ - \frac{1}{2} \left( \mathbf{x} - \bar{\mathbf{x}} \right)^T \mathsf{M}^{-1} \left( \mathbf{x} - \bar{\mathbf{x}} \right) \right\} 
+\]
+
+Pri merjenju ene spremenljivke znotraj vektorja \( \mathbf{x} \), lahko ostrimo tudi kakšno drugo komponento vektorja (glej primer za hitrost).
+
+Pri merjenju vektorskih spremenljivk imamo lahko več senzorjev \( s \), ki vsak meri eno ali več spremenljivk vektorja \( \mathbf{x} \). Signale iz senzorjev zapišemo v vektor
+
+\[ \mathbf{z} = \left[ z_1, z_2, z_3, \ldots, z_s \right] ^T \in \mathbf{R}^s.
+\]
+
+Za linearen odziv in idealen senzor velja
+
+\[ \mathbf{z} = \mathsf{H} \mathbf{z} - \mathbf{r},
+\]
+kjer je \( \mathsf{H} \) senzorsko okno, \( \mathbf{r} \) pa je vektor šumov, ki pripada vsakemu senzorskemu signalu in so lahko korelirani. Zapišemo torej kovariančno matriko merilnega šuma
+
+\[ \mathsf{R} = \left\langle \mathbf{r} \mathbf{r}^T \right\rangle.
+\]
+
+Oceno \( \bar{\mathbf{x}} \) želimo izostriti z meritvami \( \mathbf{z} \), kar naredimo z enačbo
+
+\[ \hat{\mathbf{x}} = \bar{\mathbf{x}} + \mathsf{P} \mathsf{H}^T \mathsf{R}^{-1} \left( \mathbf{z} - \mathsf{H} \bar{\mathbf{x}} \right),
+\]
+do katere pridemo s pomočjo Lagrangeovo metodo multiplikatorja. Pripadajočo kovariančno matriko \( \mathsf{P} \) določa enačba
+
+\[ \mathsf{P} = \mathsf{M} - \mathsf{M} \mathsf{H}^T \left( \mathsf{H} \mathsf{M} \mathsf{H}^T + \mathsf{R} \right)^{-1} \mathsf{H} \mathsf{M}. 
+\]
+
+Naj sistem \( S \) sledi dinamični enačbi oblike
+
+\[ \mathbf{x}_{n + 1} = \Phi_n \mathbf{x}_n + \mathbf{c}_n + \Gamma_n \mathbf{w}_n, 
+\]
+kjer sta \( \Phi_n, \Gamma_n \) matriki, \( \mathbf{c}_n \) znan vektor in \( \mathbf{w}_n \) naključen vektor s povprečjem nič in kovariančno matriko \( \left\langle \mathbf{w}_n \mathbf{w}_{n'}^T \right\rangle = Q_n \delta_{n, n'}\). Pri prehodu iz \( n \)-te meritve na \( (n + 1) \)-to meritev najprej zapišemo oceno
+
+\[ \bar{\mathbf{x}}_{n + 1} = \Phi_n \hat{\mathbf{x}} + \mathbf{c}_n,
+\]
+ki ji pripada kovariančna matrika 
+
+\[ \mathsf{M}_{n + 1} = \Phi_n \mathsf{P}_n \Phi_n^T + \Gamma_n Q_n \Gamma_n^T. 
+\]
+
+Izostreno oceno določa enačba
+
+\[ \hat{\mathbf{x}}_{n + 1} = \bar{\mathbf{x}}_{n + 1} + K_{n + 1} \left( \mathbf{z}_{n + 1} - \mathsf{H} \bar{\mathbf{x}}_{n + 1} \right),
+\]
+kjer je
+
+\[ K_{n + 1} = \mathsf{P}_{n + 1} \mathsf{H}^T \mathsf{R}_{n + 1}^{-1},
+\]
+in
+
+\[ \mathsf{P}_{n + 1} = \mathsf{M}_{n + 1} - \mathsf{M}_{n + 1} \mathsf{H}^T \left( \mathsf{H} \mathsf{M}_{n + 1} \mathsf{H}^T + \mathsf{R}_{n + 1} \right) ^{-1} \mathsf{H} \mathsf{M}_{n + 1}. 
+\]
+
+Pri prehodu na zvezno sliko je optimalna shema za sledenje zvezni spremenljivki
+
+\[ \dot{\hat{\mathbf{x}}} (t) = A(t) \hat{\mathbf{x}} + c(t) + \mathsf{P} \mathsf{H}^T \mathsf{R}^{-1} \left( \mathbf{z} - \mathsf{H} \hat{\mathbf{x}}(t) \right),
+\]
+kjer je \( A(t) = \lim_{T \to 0}  \frac{\Phi_{n + 1} - 1}{T} \) in \( c(t) = \lim_{T \to 0} \frac{\mathbf{c}_n}{T} \).
+
+Kovariančna matrika izostrene ocene je
+
+\[ \dot{\mathsf{P}} = A \mathsf{P} + \mathsf{P} A^T + \Phi Q \Phi^T - \mathsf{P} \mathsf{H}^T \mathsf{R}^{-1} \mathsf{H} \mathsf{P}
+\]
+
+Zgornja enačba se imenuje Ricattijeva enačba. Tretji člen podaja dinamični šum, zadnji člen pa zmanjšuje vrednost izraza zaradi dotoka novih meritev. 
+#+end_idea
