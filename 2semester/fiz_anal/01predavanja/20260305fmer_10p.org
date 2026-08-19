@@ -295,7 +295,7 @@ na levi strani nimamo nobenega člena z \( v \), zaključimo \( a_{xv} = 0 \). H
 Pričakovane vrednosti so ničelne, zato bomo gledali variance
 
 \begin{align*}
-  \left\langle p_x ^2 \right\rangle &= a_{xx } ^2 \left\langle m_x \right\rangle ^2 + (1 - a_{xx }) ^2 \left\langle r ^2 \right\rangle + a_{xx } (1 - a_{xx }) \left\langle w_x r \right\rangle \\
+  \left\langle p_x ^2 \right\rangle &= a_{xx } ^2 \left\langle m_x \right\rangle ^2 + (1 - a_{xx }) ^2 \left\langle r ^2 \right\rangle + a_{xx } (1 - a_{xx }) \left\langle m_x r \right\rangle \\
 &= a_{xx } ^2 \sigma_x ^2 + (1 - a_{xx }) ^2 \sigma_r ^2.
 \end{align*}
 
@@ -306,7 +306,7 @@ Upoštevali smo nekoreliranost. Optimalna ocena je potem pri
 
 kar je pri
 
-\[ a_{xx } \frac{\sigma_r ^2}{\sigma_r ^2 + \sigma_x ^2}.
+\[ a_{xx } = \frac{\sigma_r ^2}{\sigma_r ^2 + \sigma_x ^2}.
 \]
 
 Na podoben način pridemo tudi pri \( \hat{v} \)
@@ -318,7 +318,7 @@ Zaključimo, da je \( a_{vv} = 1 \) ter \( a_{vx} + b_v = 0 \).
 
 Torej
 
-\[ p_v = a_{vx} m_x + m_r + b_v r = \left( a_{vx} (m_x - r) + m_r \right) ^2.
+\[ p_v = a_{vx} m_x + m_v + b_v r = \left( a_{vx} (m_x - r) + m_v \right).
 \]
 
 Izračunamo kvadrat in varianco

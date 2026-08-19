@@ -769,3 +769,220 @@ Kovariančna matrika izostrene ocene je
 
 Zgornja enačba se imenuje Ricattijeva enačba. Tretji člen podaja dinamični šum, zadnji člen pa zmanjšuje vrednost izraza zaradi dotoka novih meritev. 
 #+end_idea
+
+#+attr_latex: :options [Združevanje vektorskih meritev]
+#+begin_izpeljava
+Oceno
+
+\[ \bar{\mathbf{x}} = \mathbf{x} + \mathbf{m}, \ \left\langle \mathbf{m} \mathbf{m}^T \right\rangle = \mathsf{M}
+\]
+želimo združiti z izmerkom
+
+\[ \mathbf{z} = \mathsf{H} \mathbf{x} + \mathbf{r}, \ \left\langle \mathbf{r} \mathbf{r}^T \right\rangle = \mathsf{R},
+\]
+da dobimo optimalno oceno \( \hat{\mathbf{x}} \), ki bo linearna kombinacija vseh ocen in meritev
+
+\begin{equation}
+\label{eq:9}
+ \hat{\mathbf{x}} = \mathsf{A} \bar{\mathbf{x}} + \mathsf{B} \mathbf{z}, 
+\end{equation}
+kjer matriki \( \mathsf{A} \in \mathbf{R}^{n \times n} \) in \( \mathsf{B} \in \mathbf{R}^{n \times s} \) vsebujeta uteži za komponente vektorjev \( \mathbf{x} \) in \( \mathbf{z} \). Za izostreno oceno mora veljati oblika
+
+\begin{equation}
+\label{eq:12}
+ \hat{\mathbf{x}} = \mathbf{x} + \mathbf{p}, 
+\end{equation}
+kjer je vektor \( \mathbf{p} \) vektor naključnih odmikov izboljšane ocene \( \hat{\mathbf{x}} \). V linearni kombinaciji \eqref{eq:9} upoštevamo definicijo ocene in izmerka ter jo primerjamo z obliko \eqref{eq:12}
+
+\[ \hat{x} = \mathbf{x} + \mathbf{p} = \mathsf{A}(\mathbf{x} + \mathbf{m}) + \mathsf{B} \left( \mathsf{H} \mathbf{x} + \mathbf{r} \right) = \left( \mathsf{A} + \mathsf{B} \mathsf{H} \right) \mathbf{x} + \mathsf{A} \mathbf{m} + \mathsf{B} \mathbf{r}, 
+\]
+od koder dobimo enačbi 
+
+\begin{align}
+  \mathsf{A} + \mathsf{B} \mathsf{H} &= \mathsf{I} \\ \label{ali:1}
+\mathsf{A} \mathbf{m} + \mathsf{B} \mathbf{r} &= \mathbf{p}, \label{ali:2}.
+\end{align}
+kjer je \( \mathsf{I} \) identiteta.
+
+V iskanju optimalne ocene minimiziramo kovariančno matriko \( \mathsf{P} \), v kateri upoštevamo \eqref{ali:2}
+
+\begin{equation}
+\label{eq:13}
+\begin{aligned}
+  \mathsf{P} &= \mathbf{p} \mathbf{p}^T = \left( \mathsf{A} \mathbf{m} + \mathsf{B} \mathbf{r} \right) \left( \mathsf{A} \mathbf{m} + \mathsf{B} \mathbf{r} \right)^T \\
+&= \mathsf{A} \mathbf{m} \mathbf{m}^T A^T + \mathsf{B} \mathbf{r} \mathbf{r}^T B^T \\
+&= \mathsf{A} \mathsf{M} A^T + \mathsf{B} \mathsf{R} \mathsf{B}^T.
+\end{aligned}
+\end{equation}
+
+Kovariančno matriko bomo minimizirali s pomočjo Langreeve metode, v kateri moramo upoštevati vez \eqref{ali:1}
+
+\[ \tilde{\mathsf{P}} = \mathsf{A} \mathsf{M} \mathsf{A}^T + \mathsf{B}\mathsf{R}\mathsf{B}^T - \lambda \left( \mathsf{A} + \mathsf{B} \mathsf{H} - \mathsf{I} \right). 
+\]
+
+Potreben pogoj, da \( \tilde{\mathsf{P}} \) doseže minimum podajajo enačbe 
+
+\begin{align*}
+  \frac{\partial \tilde{\mathsf{P}}}{\partial \mathsf{A}} &= 2 \mathsf{M} \mathsf{A}^T - \lambda = 0 \\
+\frac{\partial \tilde{\mathsf{P}}}{\partial \mathsf{B}}  &= 2 \mathsf{B} \mathsf{R} - \mathsf{H} \lambda = 0 \\
+\frac{\partial \tilde{\mathsf{P}}}{\partial \lambda} &= \mathsf{A}^T + \left( \mathsf{B}\mathsf{H} \right)^T - \mathsf{I}^T = 0.
+\end{align*}
+
+Iz prvega in drugega pogoja dobimo enakosti
+
+\[ \mathsf{A}^T = \mathsf{M}^{-1} \frac{\lambda}{2} \quad \text{ in } \quad \mathsf{B} = \mathsf{R}^{-1} \mathsf{H} \frac{\lambda}{2},
+\]
+ki jih vstavimo v tretji pogoj in dobimo vrednost Lagrangeevega multiplikatorja (ki je matrika!)
+
+\begin{align*}
+  \mathsf{I} &= \mathsf{A}^T + \mathsf{H} ^T \mathsf{B}^T \\
+&= \mathsf{M}^{-1} \frac{\lambda}{2} + \mathsf{H}^T \mathsf{R}^{-1} \mathsf{H} \frac{\lambda}{2} \\
+&= \frac{\lambda}{2} \left( \mathsf{M}^{-1} + \mathsf{H}^T \mathsf{R}^{-1} \mathsf{H} \right),
+\end{align*}
+ki znaša
+
+\begin{equation}
+\label{eq:14}
+ \frac{\lambda}{2} = \left( \mathsf{M}^{-1} + \mathsf{H}^T \mathsf{R}^{-1} \mathsf{H} \right)^{-1}.
+\end{equation}
+
+Multiplikator vstavimo v začetno enačbo \eqref{eq:13}, od koder dobimo 
+
+\begin{align*}
+  \mathsf{P} &= \frac{\lambda ^T}{2} \mathsf{M}^{-1} \mathsf{M} \mathsf{M}^{-1} \frac{\lambda}{2} + \frac{\lambda}{2} \mathsf{H}^T \mathsf{R}^{-1} \mathsf{R} \mathsf{R}^{-1} \mathsf{H} \frac{\lambda}{2} \\
+&= \frac{\lambda ^T}{2} \left( \mathsf{M}^{-1} + \mathsf{H}^T \mathsf{R}^{-1} \mathsf{H} \right) \frac{\lambda}{2} \\
+&= \frac{\lambda^T}{2},
+\end{align*}
+kjer smo prepoznali v oklepaju prepoznali izraz enačbe \eqref{eq:14}.
+
+Kovariančna matrika je potem
+
+\begin{equation}
+\label{eq:15}
+ \mathsf{P}^{-1} = \mathsf{M}^{-1} + \mathsf{H}^T \mathsf{R}^{-1} \mathsf{H},
+\end{equation}
+kar je vektorski analog \( \hat{\sigma}_x ^{-2} = \bar{\sigma}_x^{-2} + \sigma^{-2}  \).
+
+Izračunano upoštevamo v enačbi \eqref{eq:9} in zapišemo
+
+\[ \hat{\mathbf{x}} = \mathsf{A} \bar{\mathbf{x}} + \mathsf{B} \mathbf{z} = \frac{\lambda^T}{2} \mathsf{M}^{-1} \bar{\mathbf{x}} + \left( \mathsf{H} \frac{\lambda}{2} \right)^T \mathsf{R}^{-1} \mathbf{z} 
+\]
+
+Izraz razširimo
+
+\begin{align*}
+  \hat{\mathbf{x}} &= \frac{\lambda^T}{2} \mathsf{M}^{-1} \bar{\mathbf{x}} + \left( \mathsf{H} \frac{\lambda}{2} \right)^T \mathsf{R}^{-1} \mathbf{z} + \mathsf{H}^T \mathsf{R}^{-1} \mathsf{H} \bar{\mathbf{x}} - \mathsf{H}^T \mathsf{R}^{-1} \mathsf{H} \bar{\mathbf{x}} \\
+&= \frac{\lambda^T}{2} \left[ \left( \mathsf{M}^{-1} + \mathsf{H}^T \mathsf{R}^{-1} \mathsf{H} \right) \bar{\mathbf{x}} + \mathsf{H}^T \mathsf{R}^{-1} \left( \mathbf{z} - \mathsf{H} \bar{\mathbf{x}} \right) \right]
+\end{align*}
+
+Iz enačbe \eqref{eq:15} vemo, da velja \( \mathsf{P} = \frac{\lambda^T}{2} \) in posledično \( \mathsf{P}^{-1} = \left( \frac{\lambda^T}{2} \right)^{-1} \). Izostrena ocena je potem
+
+\[ \hat{\mathbf{x}} = \mathsf{P} \mathsf{P}^{-1} \bar{\mathbf{x}} + \mathsf{P} \mathsf{H} \mathsf{R}^{-1} \left( \mathbf{z} - \mathsf{H} \bar{\mathbf{x}} \right) = \bar{\mathbf{x}} +\mathsf{P} \mathsf{H} \mathsf{R}^{-1} \left( \mathbf{z} - \mathsf{H} \bar{\mathbf{x}} \right)
+\]
+
+Kovariančno matriko \( \mathsf{P} \) dobimo tako, da enačbo \eqref{eq:15} pomnožimo z \( \mathsf{M} \) z desne strani
+
+\[ \mathsf{P}^{-1} M = I + \mathsf{H}^T \mathsf{R}^{-1} \mathsf{H} \mathsf{M},
+\]
+nato pa z leve s \( \mathsf{P} \), od koder dobimo
+
+\begin{equation}
+\label{eq:17}
+ \mathsf{P} \left( \mathsf{I} + \mathsf{H}^T \mathsf{R}^{-1} \mathsf{H} \mathsf{M} \right) = \mathsf{M},
+\end{equation}
+kar lahko z množenjem prepišemo v
+
+\begin{equation}
+\label{eq:16}
+\mathsf{P} = \mathsf{M} - \mathsf{P} \mathsf{H}^T \mathsf{R}^{-1} \mathsf{H} \mathsf{M}.
+\end{equation}
+
+Hkrati lahko enačbo \eqref{eq:17} z množenjem s \( \mathsf{H}^T \) z desne zapišemo kot
+
+\begin{align*}
+  \mathsf{P} \left( \mathsf{H}^T + \mathsf{H}^T \mathsf{R}^{-1} \mathsf{H} \mathsf{M} \mathsf{H} \right) &= \mathsf{M} \mathsf{H}^T \\
+\mathsf{P} \mathfs{H}^T \left( \mathsf{I} + \mathsf{R}^{-1} \mathsf{H} \mathsf{M} \mathsf{H}^T \right) = \mathsf{M} \mathsf{H}^T,
+\end{align*}
+kjer smo v drugi vrstici izpostavili \( \mathsf{H}^T \).
+
+#+end_izpeljava
+** Primer: ocena lege gibajočega se telesa
+
+Obravnavamo merjenje lege gibajočega se telesa. Spremenljivke, ki nas zanimajo so lega \( x \) in hitrost \( v \), kar pomeni, da je vektor spremenljivk oblike
+
+\[ \mathbf{x} = [x, v]^T. 
+\]
+
+Zajemamo meritve v obliki \( z = x + r \) - merimo torej samo lego delca. Za šum velja \( \left\langle r ^2 \right\rangle = \sigma_r ^2 \). Oceni za lego in hitrost naj bosta korelirani
+
+\[ \bar{\mathbf{x}} = \begin{bmatrix} \bar{x} \\ \bar{p} \end{bmatrix} = \begin{bmatrix} x + m_{x} \\ v + m_{v} \end{bmatrix},
+\]
+kjer velja \( \left\langle m_x m_v \right\rangle \ne 0  \) in \( \left\langle r m_x \right\rangle = \left\langle r m_v \right\rangle = 0 \). Medsebojna odvisnost je pričakovana, saj je tudi lega telesa povezana s hitrostjo preko enačbe \( x(t) = x(t) + vt \).
+
+Z izmerkom \( z \) želimo izostriti oceno \( \hat{\mathbf{x}} \), kjer predpostavimo sledečo obliko
+
+\[ \hat{\mathbf{x}} = \begin{bmatrix} \hat{x} + p_{x} \\ \hat{v} + p_v \end{bmatrix},
+\]
+ter nekorelacijo \( \left\langle rp_x \right\rangle = \left\langle rp_v \right\rangle = 0 \). Oceni želimo izostriti z linearno superpozicijo 
+
+\begin{align*}
+   \hat{x} &= x + p_x = a_{xx} \bar{x} + a_{xv} \bar{v} + b_x z \\
+\hat{v} &= v + p_v = a_{vx} \bar{x} + a_{vv} \check{v} + b_v z.
+\end{align*}
+
+Iščemo take koeficiente \( a_{ij} \) in \( b_i \), da bosta imela šuma \( p_x \) in \( p_v \) najmanjšo disperzijo. V enačbo izostrene ocene za \( \hat{x} \) vnesemo definicijo ocene \( \bar{x} \), razpišemo in primerjamo z definicijo izostrene ocene
+
+\begin{align*}
+  \hat{x} &= a_{xx} \left( x + m_x \right) + a_{xv} \left( v + m_v \right) + b_x (x + r) \\
+x + p_x &= x (a_{xx} + b_x) + a_{xv} v + a_{xv} m_v + a_{xx} m_x + b_x r \\
+\end{align*}
+Sledi, da je \( a_{xv} = 0 \), saj v definiciji izostrene ocene \( \hat{x} \) ni člena z \( v \), ter velja \( a_{xx} + b_x = 1 \). Na podoben način postopamo pri izostreni oceni za hitrost
+
+\begin{align*}
+  \hat{v} &= a_{vx} (x + m_x) + a_{vv} (v + m_v) + b_v (x + r) \\
+v + p_v &= x(a_{vx} + b_v) + a_{vv} v + a_{vv} m_v  + a_{vx} m_x + b_v r,
+\end{align*}
+od koder sledi enačba \( a_{vx} + b_v = 0 \) ter \( a_{vv} = 1 \). Varianca \( p_x \) je torej
+
+\[ p_x = a_{xv} m_v + a_{xx} m_x + b_x r = a_{xx} m_x + \left( 1 - a_{xx} \right) r
+\]
+in lahko izračunamo njeno pričakovano vrednost kvadrata
+
+\begin{align*}
+  \left\langle p_x ^2 \right\rangle &= a_{xx} ^2 \left\langle m_x \right\rangle ^2 + \left( 1- a_{xx} \right) ^2 \left\langle r ^2 \right\rangle + a_{xx} \left( 1 - a_{xx} \right) \left\langle m_x r \right\rangle \\
+&= a_{xx} ^2 \sigma_x ^2 + \left( 1 - a_{xx} \right) ^2 \sigma_r ^2.
+\end{align*}
+
+Optimalno oceno dobimo z odvodom zgornje enačbe
+
+\[  \frac{\mathrm{d} }{\mathrm{d} a_{xx}} \left\langle p_x ^2 \right\rangle = 2a_{xx} \sigma_x ^2 - 2 \left( 1 - a_{xx} \right) \sigma_r ^2   =0,
+\]
+iz česar sledi
+
+\[ a_{xx} = \frac{\sigma_r ^2}{\sigma_r ^2 + \sigma_x ^2}.
+\]
+
+Analogno postopamo tudi pri izostreni oceni \( \hat{v} \), kjer dobimo enačbo
+
+\[ p_v = a_{vx} m_x + m_v + b_v r = a_{vx} (m_x - r) + m_v, 
+\]
+ki jo kvadriramo in odvajamo po \( a_{vx} \) v iskanju minimuma ter dobimo
+
+\[ a_{vx} = - \frac{\left\langle m_x m_v \right\rangle}{\sigma_x ^2 + \sigma_r ^2}.
+\] 
+
+Izostrena ocena lege in hitrosti je potem določena z enačba
+
+\begin{align*}
+  \hat{x} &= \bar{x} + \frac{\sigma_x ^2}{\sigma_x ^2 + \sigma_r ^2} (z - \bar{x}) \\
+\hat{v} &= \bar{v} + \frac{\left\langle m_x m_v \right\rangle}{\sigma_x ^2 + \sigma_r ^2} \left( z - \bar{x} \right).
+\end{align*}
+
+Dokazali smo, da navkljub merjenju zgolj lege, ostrimo tudi komponento hitrosti.
+
+Kot dodatek, gostota verjetno porazdelitve je
+
+\[ p \left( \begin{bmatrix} x \\ v \end{bmatrix} \right) = \frac{1}{\sqrt{ \left( 2 \pi \right)  ^2 \sigma_x ^2 \sigma_v ^2 \left( 1 - \rho ^2 \right)}} \exp \left\{ - \frac{1}{2 \left( 1 - \rho ^2 \right)} \left[ \frac{\left( x - \bar{x} \right) ^2}{\sigma_x ^2} + \frac{\left( v - \bar{v} \right) ^2}{\sigma_v ^2} - \frac{2 \rho \left( x - \bar{x} \right) \left( v - \bar{v} \right)}{\sigma_{xv}} \right] \right\}
+\]
+** Primer: Brownovo gibanje
+** Primer: praznenje RC člena  

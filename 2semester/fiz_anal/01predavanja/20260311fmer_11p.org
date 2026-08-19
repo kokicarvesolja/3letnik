@@ -42,7 +42,7 @@ Dobimo 3 pogoje
 
 \begin{align*}
   \frac{\partial \mathrm{tr} \tilde{P}}{\partial A} &= 0 = 2 Am - \lambda ^T \\
-\frac{\partial \mathrm{tr} \tilde{P}}{\partial B} &= 0 = 2B R - \left( H \lambda \right)^T \\
+\frac{\partial \mathrm{tr} \tilde{P}}{\partial B} &= 0 = 2B R - \left( H \lambda \right) \\
 \frac{\partial \mathrm{tr} \tilde{P}}{\partial \lambda} &= 0 = \left( A + BH - I \right)^T .
 \end{align*}
 
