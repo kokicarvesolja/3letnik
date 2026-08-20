@@ -758,9 +758,16 @@ in
 \[ \mathsf{P}_{n + 1} = \mathsf{M}_{n + 1} - \mathsf{M}_{n + 1} \mathsf{H}^T \left( \mathsf{H} \mathsf{M}_{n + 1} \mathsf{H}^T + \mathsf{R}_{n + 1} \right) ^{-1} \mathsf{H} \mathsf{M}_{n + 1}. 
 \]
 
+V zvezni sliki je dinamična enačba
+
+\begin{equation}
+\label{eq:20}
+\dot{\hat{\mathbf{x}}} = A(t) \mathbf{x} + \mathbf{c}(t) + \Gamma \mathbf{w}.
+\end{equation}
+
 Pri prehodu na zvezno sliko je optimalna shema za sledenje zvezni spremenljivki
 
-\[ \dot{\hat{\mathbf{x}}} (t) = A(t) \hat{\mathbf{x}} + c(t) + \mathsf{P} \mathsf{H}^T \mathsf{R}^{-1} \left( \mathbf{z} - \mathsf{H} \hat{\mathbf{x}}(t) \right),
+\[ \dot{\hat{\mathbf{x}}} (t) = A(t) \hat{\mathbf{x}} + \mathbf{c}(t) + \mathsf{P} \mathsf{H}^T \mathsf{R}^{-1} \left( \mathbf{z} - \mathsf{H} \hat{\mathbf{x}}(t) \right), 
 \]
 kjer je \( A(t) = \lim_{T \to 0}  \frac{\Phi_{n + 1} - 1}{T} \) in \( \mathbf{c}(t) = \lim_{T \to 0} \frac{\mathbf{c}_n}{T} \).
 
@@ -1083,5 +1090,214 @@ Kot dodatek, gostota verjetno porazdelitve je
 \[ p \left( \begin{bmatrix} x \\ v \end{bmatrix} \right) = \frac{1}{\sqrt{ \left( 2 \pi \right)  ^2 \sigma_x ^2 \sigma_v ^2 \left( 1 - \rho ^2 \right)}} \exp \left\{ - \frac{1}{2 \left( 1 - \rho ^2 \right)} \left[ \frac{\left( x - \bar{x} \right) ^2}{\sigma_x ^2} + \frac{\left( v - \bar{v} \right) ^2}{\sigma_v ^2} - \frac{2 \rho \left( x - \bar{x} \right) \left( v - \bar{v} \right)}{\sigma_{xv}} \right] \right\}
 \]
 ** Primer: Brownovo gibanje
+#+begin_idea
+Obravnavamo enodimenzionalni primer delca z maso \( m \), radijem \( r \), ki se v viskozni tekočini z viskoznostjo \( \eta \) premika s hitrostjo \( v = \dot{x} \). Dinamiko delca opisuje drugi Newtonov zakon s Stokesovo silo upora ter naključne sile \( F_x (t) \), ki predstavljajo trke med delci in so za nas šum. Ob času \( t = 0 \) ne sprejemamo signala iz senzorjev, zato je \( R \to \infty \). Vrednost kovariančne matrike naj bo \( P(t = 0) = P_0 \) in \( \bar{x} = \bar{v} = 0 \). Dinamika v sistemu \( S \) je
 
+\[ \frac{\mathrm{d} }{\mathrm{d} t } \begin{bmatrix} x \\ v \end{bmatrix} = \begin{bmatrix}
+                                                                            0 & 1 \\
+                                                                            0 & -\frac{1}{\tau}
+                                                                             \end{bmatrix} \begin{bmatrix} x \\ v \end{bmatrix} + 0 + \begin{bmatrix} 0 \\ 1 \end{bmatrix} \frac{F_x (t)}{m},
+\]
+kjer je \( \tau^{-1} = 6 \pi r \eta \) in \( \left\langle \frac{F_x(t)}{m} \frac{F_x (t')}{m} \right\rangle = \delta(t - t') Q \). Iz enačbe \eqref{eq:20} lahko razberemo, kaj so matrika \( A \), vektor \( \mathbf{c} \) in dinamični šum.
+
+Pripadajoče spreminjanje kovariančne matrike podaja enačba
+
+\[ \dot{\mathsf{P}} = \begin{bmatrix}
+                      2 \left\langle xv \right\rangle  & \left\langle v ^2 \right\rangle - \frac{1}{\tau} \left\langle xv \right\rangle\\
+                      \left\langle v ^2 \right\rangle - \frac{1}{\tau} \left\langle xv \right\rangle & - \frac{2}{\tau} \left\langle v ^2 \right\rangle
+                       \end{bmatrix} + \begin{bmatrix}
+                                       0 & 0 \\
+                                       0 & Q
+                                        \end{bmatrix}.
+\]
+Pričakovane vrednosti \( \left\langle v ^2 \right\rangle, \ \left\langle xv \right\rangle\) se ustalijo, ko rešimo enačbo \( \dot{\mathsf{P}} = 0 \), medtem ko \( \left\langle x ^2 \right\rangle \) narašča linearno s časom.
+
+Če začnemo meriti lego delca, je senzorsko okno oblike \( H = [1 \ 0] \) in kovariančna matrika ima sedaj obliko
+
+\[ \dot{\mathsf{P}} = \begin{bmatrix}
+                      2 \left\langle xv \right\rangle  - \frac{1}{R} \left\langle x ^2 \right\rangle ^2 & \left\langle v ^2 \right\rangle - \frac{1}{\tau} \left\langle xv \right\rangle - \frac{1}{R} \left\langle x ^2 \right\rangle \left\langle xv \right\rangle \\
+                      \left\langle v ^2 \right\rangle - \frac{1}{\tau} \left\langle xv \right\rangle - \frac{1}{R} \left\langle x ^2 \right\rangle \left\langle xv \right\rangle & - \frac{2}{\tau} \left\langle v ^2 \right\rangle - \frac{1}{R} \left\langle xv \right\rangle ^2 + Q
+                       \end{bmatrix}.
+\]
+Stacionarna rešitev zgornje enačbe je enačba 4. stopnje
+
+\[ y ^4 - 4 y ^3 - 4 y ^2 + \frac{4 \tau ^2 Q}{R} = 0, \ y = \frac{\tau}{R} \left\langle x ^2 \right\rangle,
+\]
+ki jo rešimo grafično in nam omeji prostor nedoločenosti lege! Če občasno merimo - groba meritev ali velik \( R \) - so vsi \( y \) majhni in sledi, da je negotovost kraja konstantna z
+
+\[ \left\langle x ^2 \right\rangle _{\infty} = \tau \sqrt{R Q}.
+\]
+#+end_idea
+
+#+attr_latex: :options [Dinamika]
+#+begin_izpeljava
+Delec z maso \( m \), radijem \( r \) in hitrostjo \( v = \dot{x} \) se giblje v tekočini z viskoznostjo \( \eta \). Nanjega deluje Stokesova sila \( F_s = 6 \pi r \eta v \) ter naključne sile \( F_x (t) \), ki predstavljajo trke med delci in so za nas šum. Dinamična enačba je 2. Newtonov zakon
+
+\[ m \ddot{x} = - 6 \pi r \eta \dot{x} + F_x (t),
+\]
+kjer za šum predpostavimo konstanten \( Q \)
+
+\[ \left\langle \frac{F_x(t)}{m} \frac{F_x (t')}{m} \right\rangle = \delta (t - t') Q.
+\]
+Problem, ki ga imamo, je to, da je zgornja enačba diferencialna enačba 2. reda, medtem ko smo do sedaj našo dinamiko opisovali z enačbi \eqref{eq:20}, ki je 1. reda. Rešimo ga tako, da 2. Newtonov zakon razdelimo na dve enačbi prvega reda s pomočjo hitrosti \( \dot{x} = v \). Torej
+
+\begin{align*}
+  \dot{x} &= v \\
+\dot{v} &= - \frac{1}{\tau} v + \frac{F_x (t)}{m}, \quad \tau^{-1} = \frac{6 \pi r \eta}{m}.
+\end{align*}
+Zgornji sistem lahko sedaj zapišemo vektorsko za vektor \( \mathbf{x} = [x, v]^T \) kot
+
+\[ \frac{\mathrm{d} }{\mathrm{d} t} \begin{bmatrix} x \\ v \end{bmatrix} = \begin{bmatrix}
+                                                                           0 & 1 \\
+                                                                           0 & -\tau^{-1}
+                                                                            \end{bmatrix} \begin{bmatrix} x \\ v \end{bmatrix} + \begin{bmatrix} 0 \\ 1 \end{bmatrix} \frac{F_x (t)}{m}.
+\]
+Zgornji zapis primerjamo z \eqref{eq:20} in razberemo
+
+\begin{equation}
+\label{eq:22}
+ A(t) = \begin{bmatrix}
+          0 & 1 \\
+          0 & -\tau^{-1}
+           \end{bmatrix}, \quad \mathbf{c}(t) = \vec{0}, \quad \Gamma \mathbf{w} = \frac{F_x (t)}{m} \begin{bmatrix} 0 \\ 1 \end{bmatrix} 
+\end{equation}
+#+end_izpeljava
+
+#+attr_latex: :options [Kovariančna matrika]
+#+begin_izpeljava
+Ob času \( t = 0 \) prenehamo meritev lege in naj ima takrat kovariančna matrika vrednost \( \mathsf{P}(t = 0) = P_0 \). Za čase \( t > 0 \) se matrika \( \mathsf{P} \) spreminja po enačbi
+
+\begin{equation}
+\label{eq:23}
+ \dot{\mathsf{P}} = A(t) \mathsf{P}(t) + \mathsf{P}(t) A^T (t) + \Gamma Q(t) \Gamma^T - \mathsf{P} \mathsf{H}^T \mathsf{R}^{-1} \mathsf{H} \mathsf{P},
+\end{equation}
+vendar ker *ni dotoka novih meritev* gre \( \mathsf{R} \to \infty \). S tem sporočamo, da meritve senzorja nimajo vpliva na sistem \( M \). Enačba je torej
+
+\[ \dot{\mathsf{P}} = A(t) \mathsf{P}(t) + \mathsf{P}(t) A^T (t) + \Gamma Q(t) \Gamma^T.
+\]
+Matrika \( \mathsf{P} \) je simetrična, zato velja \( \mathsf{P} A^T = \left( AP \right)^T \). Iz \eqref{eq:22} poračunamo
+
+\begin{align*}
+  \dot{\mathsf{P}} &= \begin{bmatrix}
+                      0 & 1 \\
+                      0 & - \frac{1}{\tau}
+                       \end{bmatrix} \begin{bmatrix}
+                                     \left\langle x ^2 \right\rangle & \left\langle xv \right\rangle \\
+                                      \left\langle xv \right\rangle & \left\langle v ^2 \right\rangle
+                                      \end{bmatrix} + \left( \begin{bmatrix}
+                                                             0 & 1 \\
+                                                             0 & - \frac{1}{\tau} 
+                                                              \end{bmatrix} \begin{bmatrix}
+                                                                            \left\langle x ^2 \right\rangle & \left\langle xv \right\rangle \\
+                                                                             \left\langle xv \right\rangle & \left\langle v ^2 \right\rangle 
+                                                                             \end{bmatrix}\right)^T + \begin{bmatrix} 0 \\ 1 \end{bmatrix} Q [0 \ 1] \\
+&= \begin{bmatrix}
+   2 \left\langle xv \right\rangle & \left\langle v ^2 \right\rangle - \frac{1}{\tau} \left\langle xv \right\rangle\\
+   \left\langle v ^2 \right\rangle - \frac{1}{\tau} \left\langle xv \right\rangle & - \frac{2}{\tau} \left\langle v ^2 + Q \right\rangle
+    \end{bmatrix}
+\end{align*}
+
+Drugače zapisano, smo dobili sistem enačb
+
+\[ \frac{\mathrm{d} }{\mathrm{d} t}\begin{bmatrix}
+   \left\langle x ^2 \right\rangle & \left\langle xv \right\rangle \\
+   \left\langle xv \right\rangle & \left\langle v ^2 \right\rangle
+    \end{bmatrix} = \begin{bmatrix}
+   2 \left\langle xv \right\rangle & \left\langle v ^2 \right\rangle - \frac{1}{\tau} \left\langle xv \right\rangle\\
+   \left\langle v ^2 \right\rangle - \frac{1}{\tau} \left\langle xv \right\rangle & - \frac{2}{\tau} \left\langle v ^2 + Q \right\rangle
+    \end{bmatrix}.
+\]
+
+Z rešitvijo tega sistema enačb lahko določimo ali se nedoločenosti \( \left\langle x ^2 \right\rangle, \left\langle xv \right\rangle \) in \( \left\langle v ^2 \right\rangle \) ustalijo, oz. \( \dot{\mathsf{P}} = 0 \). Rešimo za začetek enačbo za nedoločenost hitrosti:
+
+\begin{align*}
+  \frac{\mathrm{d} }{\mathrm{d} t}\left\langle v ^2 \right\rangle = 0 &= - \frac{2}{\tau} \left\langle v ^2 \right\rangle + Q \\
+\left\langle v ^2 \right\rangle_{\infty} &= \frac{Q \tau}{2}.
+\end{align*}
+Nedoločenost hitrosti je konstantna. Povežemo jo lahko tudi s temperaturo tekočine preko ekviparticijskega izreka in določimo vrednost dinamičnega šuma \( Q \)
+
+\[ \frac{1}{2} m \left\langle v ^2 \right\rangle _{\infty} = \frac{k T}{2} \implies Q = \frac{2 k T}{m \tau}.
+\]
+Sedaj lahko rešimo drugo enačbo
+
+\[ \frac{\mathrm{d} }{\mathrm{d} t}\left\langle xv \right\rangle = 0 = \left\langle v ^2 \right\rangle - \frac{1}{\tau} \left\langle xv \right\rangle,
+\]
+v kateri upoštevamo rešitev prve enačbe:
+
+\[ \left\langle v ^2 \right\rangle _{\infty} - \frac{1}{\tau} \left\langle xv \right\rangle_{\infty} \implies \left\langle xv \right\rangle_{\infty} = \frac{k T \tau}{m},
+\]
+in je tudi konstantna. Rešimo še tretjo enačbo, nedoločenost lege, ki nima stacionarne rešitve, saj je pogojena z zgornjim rezultatom
+
+\[ \frac{\mathrm{d} }{\mathrm{d} t}\left\langle x ^2 \right\rangle = 2 \left\langle xv \right\rangle_{\infty} \ne 0.
+\]
+Po integraciji do časa \( t \) dobimo z uvedbo difuzijske konstante \( D = \frac{kT \tau}{m} \) difuzijsko enačbo
+
+\[ \left\langle x ^2 (t) \right\rangle - \left\langle x ^2 (0) \right\rangle = \frac{2k T \tau}{m} t \implies \left\langle x ^2 \right\rangle = \left\langle x ^2(0) \right\rangle + 2 D t
+\]
+
+Negotovost lege torej narašča linearno s časom.
+#+end_izpeljava
+
+#+attr_latex: :options [Dodatne meritve]
+#+begin_izpeljava
+Sedaj ponovno začnemo meriti lego, kar upoštevamo s senzorskim oknom \( H = [1 \ 0] \) in kovariančno matriko izračunamo sedaj po polni enačbi \eqref{eq:23}. Dodaten člen, ki ga prejle še nismo upoštevali je 
+
+\begin{align*}
+  \mathsf{P} \mathsf{H}^T R^{-1} \mathsf{H} \mathsf{P} &= \begin{bmatrix}
+                                                          \left\langle x ^2 \right\rangle & \left\langle xv \right\rangle \\
+                                                          \left\langle xv \right\rangle & \left\langle v ^2 \right\rangle
+                                                           \end{bmatrix} \begin{bmatrix} 1 \\ 0 \end{bmatrix} \frac{1}{R} [1 \ 0] \begin{bmatrix}
+                                                                                                                                  \left\langle x ^2 \right\rangle & \left\langle xv \right\rangle \\
+                                                                                                                                  \left\langle xv \right\rangle & \left\langle v ^2 \right\rangle
+                                                                                                                                   \end{bmatrix} \\
+&= \frac{1}{R} \begin{bmatrix} \left\langle x ^2 \right\rangle \\ \left\langle xv \right\rangle \end{bmatrix} \left[ \left\langle x ^2 \right\rangle \ \left\langle xv \right\rangle \right] \\
+&= \frac{1}{R} \begin{bmatrix}
+               \left\langle x ^2 \right\rangle & \left\langle x ^2 \right\rangle \left\langle xv \right\rangle \\
+                \left\langle xv \right\rangle \left\langle x ^2 \right\rangle & \left\langle xv \right\rangle ^2
+                \end{bmatrix}
+\end{align*}
+
+Z dodanim členom je spreminjanje kovariančne matrike določeno z
+
+\[ \dot{\mathsf{P}} = \begin{bmatrix}
+                      2 \left\langle xv \right\rangle  - \frac{1}{R} \left\langle x ^2 \right\rangle ^2 & \left\langle v ^2 \right\rangle - \frac{1}{\tau} \left\langle xv \right\rangle - \frac{1}{R} \left\langle x ^2 \right\rangle \left\langle xv \right\rangle \\
+                      \left\langle v ^2 \right\rangle - \frac{1}{\tau} \left\langle xv \right\rangle - \frac{1}{R} \left\langle x ^2 \right\rangle \left\langle xv \right\rangle & - \frac{2}{\tau} \left\langle v ^2 \right\rangle - \frac{1}{R} \left\langle xv \right\rangle ^2 + Q
+                       \end{bmatrix}.
+\]
+
+Ponovno iščemo stacionarno rešitev \( \dot{\mathsf{P}} = 0 \) za naslednji sistem treh enačb
+
+\begin{align} \label{ali:p1}
+  2 \left\langle xv \right\rangle - \frac{1}{R} \left\langle x ^2 \right\rangle ^2 &= 0 \\ \label{ali:p2}
+\left\langle v ^2 \right\rangle - \frac{1}{\tau} \left\langle xv \right\rangle - \frac{1}{R} \left\langle x ^2 \right\rangle \left\langle xv \right\rangle &= 0 \\ \label{ali:p3}
+-\frac{2}{\tau} \left\langle v ^2 \right\rangle - \frac{1}{R} \left\langle xv \right\rangle ^2 + Q &= 0,
+\end{align}
+ki ga rešimo tako, da iz enačbe \eqref{ali:p1} izrazimo
+
+\[ \left\langle xv \right\rangle = \frac{1}{2R} \left\langle x ^2 \right\rangle ^2,
+\]
+in ga nesemo v enačbo \eqref{ali:p3}
+
+\begin{align*}
+  \left\langle v ^2 \right\rangle &= \frac{Q\tau}{2} - \frac{\tau}{2 R} \left\langle xv \right\rangle ^2 \\
+&= \frac{Q \tau}{2} - \frac{\tau ^4 \left\langle x ^2 \right\rangle ^4 R}{2 ^3 R^4 \tau ^3},
+\end{align*}
+kjer smo zadnjo vrstico razširili z \( R \). Uvedemo brezdimenzijsko spremenljivko \( y = \left\langle x ^2 \right\rangle \frac{\tau}{R} \) in enačbo zapišemo kot
+
+\[ \left\langle v ^2 \right\rangle = \frac{Q \tau}{2} - \frac{R}{8 \tau ^3} y ^4.
+\]
+Slednje nesemo v enačbo \eqref{ali:p2} in dobimo enačbo 4. reda
+
+\[ y ^4 + 4 y ^3 + 4 y ^2 = \frac{4 Q T ^4}{R},
+\]
+ki jo rešimo grafično.
+
+#+attr_latex: :width 0.5\textwidth :caption \caption{Grafična rešitev enačbe \cite{likar_osnove_2016}}
+[[file:figures/brown.png]]
+
+Če meritev opravljamo redko - groba meritev ali velik \( R \) - potem velja \( y \gg y^i, \ i = 2, 3, 4 \) in nedoločenost lege je konstantna
+
+\[ y \approx \tau ^2 \sqrt{\frac{Q}{R}} = \frac{\tau}{R} \left\langle x ^2 \right\rangle_{\infty} => \left\langle x ^2 \right\rangle = \tau \sqrt{R Q}.
+\]
+#+end_izpeljava
 ** Primer: praznenje RC člena  
