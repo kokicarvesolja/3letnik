@@ -773,7 +773,7 @@ kjer je \( A(t) = \lim_{T \to 0}  \frac{\Phi_{n + 1} - 1}{T} \) in \( \mathbf{c}
 
 Kovariančna matrika izostrene ocene je
 
-\[ \dot{\mathsf{P}} = A \mathsf{P} + \mathsf{P} A^T + \Phi Q \Phi^T - \mathsf{P} \mathsf{H}^T \mathsf{R}^{-1} \mathsf{H} \mathsf{P}
+\[ \dot{\mathsf{P}} = A \mathsf{P} + \mathsf{P} A^T + \Gamma Q \Gamma^T - \mathsf{P} \mathsf{H}^T \mathsf{R}^{-1} \mathsf{H} \mathsf{P}
 \]
 
 Zgornja enačba se imenuje Ricattijeva enačba. Tretji člen podaja dinamični šum, zadnji člen pa zmanjšuje vrednost izraza zaradi dotoka novih meritev. 
@@ -1301,3 +1301,172 @@ ki jo rešimo grafično.
 \]
 #+end_izpeljava
 ** Primer: praznenje RC člena  
+#+begin_idea
+Imamo vezje s kondenzatorjem kapacitete \( C \) ter upor z upornostjo \( R \). Iz Kirchoffovega zakona \( \sum\limits_i^{} U_i = 0 \) izračunamo dinamiko v sistemu \( S \)
+
+\[ \dot{U} = - \frac{1}{\tau} U + w(t), \ \frac{1}{\tau} = \frac{1}{RC}, 
+\]
+kjer je \( U \) napetost na kondenzatorju in za šum \( w(t) \) velja
+
+\[ \left\langle w(t) w(t') \right\rangle = \delta(t - t') Q.
+\]
+Razberemo koeficiente Kalmanovega filtra \( A = - \tau^{-1} \) in \( \Gamma = 1 \).
+
+Meritev napetosti na kondenzatorju ima obliko
+
+\[ z = U + r, \ \left\langle r(t) r(t') \right\rangle = \delta(t - t') R.
+\]
+Začetna vrednost disperzije naj bo \( P_0 \), ob kasnejših časih pa jo določa enačba
+
+\[ \dot{P} = - \frac{2}{\tau} P + Q - \frac{P ^2}{R}. 
+\]
+
+Stacionarna rešitev \( t \to \infty \) zgornje enačbe je za \( \dot{P} = 0 \). Rešujem kvadratno enačbo
+
+\[ \frac{P ^2}{R} + \frac{2}{\tau} P - Q = 0,
+\]
+z rešitvama je
+
+\begin{equation}
+\label{eq:21}
+ P_{1, 2 \infty} = - \frac{R}{\tau} \pm \frac{R}{\tau} \sqrt{1 + \frac{Q \tau ^2}{R}} 
+\end{equation}
+
+Do splošne rešitve za poljuben čas \( t \) pridemo s parcialnimi ulomki in znaša
+
+\[ P(t) = - \frac{R}{\tau} + \alpha \left( \frac{1 + \exp \left\{ -\frac{2 \alpha}{R}t \right\}}{1 - \exp \left\{ - \frac{2\alpha}{R} t \right\}} \right), \ \alpha = \frac{R}{\tau} \sqrt{1 + \frac{Q \tau ^2}{R}}
+\]
+
+Za *majhen dinamičen šum* \( Q \) lahko \eqref{eq:21} razvijemo s Taylorjevim razvojem in izračunamo *konstanten* ojačevalni faktor
+
+\[ K_{\infty} = \frac{P_{\infty}}{R} = \frac{\tau}{2} \frac{Q}{R}.
+\]
+
+V splošnem je ojačevalni faktor odvisen od časa. Dinamična enačba v sistemu \( M \) je
+
+\[ \dot{\hat{U}} = - \frac{\hat{U}}{\tau} + K(t) \left( z - \hat{U} \right),
+\]
+za konstanten ojačevalni faktor pa je
+
+\[ \dot{\hat{U}} = - \frac{\hat{U}}{\tau} + \frac{\tau Q}{2 R} \left( z - \hat{U} \right),
+\]
+kjer lahko uvedemo novo konstanto
+
+\[ \dot{\hat{U}} = \frac{1}{\tau_{eff}} \hat{U} + \frac{Q \tau}{2 R}, \ \frac{1}{\tau_{eff}} = \frac{1}{\tau} + \frac{\tau Q}{2R},
+\]
+in velja \( \tau_{eff} < \tau \).
+
+Če sunku, ki je močno zašumljen, sledimo s časovno odvisnim ojačevalnim faktorjem, popolnoma zajamemo pravi signal eksponentnega padanja kot je prikazano na spodnji sliki. Predvidevam (piše ne), da je tak ojačevalni faktor računsko zahtevnejši.
+
+#+attr_latex: :width 0.5\textwidth :caption \caption{Zajemanje podatkov s časovno odvisnim ojačevalnim faktorjem \cite{likar_osnove_2016}, str. 51.}
+[[file:figures/rc_clen_k.png]]
+
+Če sunku, ki je močno zašumljen, sledimo s konstantnim ojačevalnim faktorjem, imamo dva /trade-offa/. Lahko imamo majhno vrednost \( Q \), ki nam prinese sistematično napako pri začetnem merjenju, kar je dobro, če nas zanima končna vrednost.
+
+#+attr_latex: :width 0.5\textwidth :caption \caption{Zajemanje podatkov s konstantnim ojačevalnim faktorjem in majhnim šumom \( Q \). Začetna sistematična napaka je velika \cite{likar_osnove_2016}, str. 52.}
+[[file:figures/rc_clen_q_small.png]]
+
+Za večjo vrednost \( Q \) zmanjšamo sistematično napako, ampak so kasnejše meritve bolj zašumljene. Odločamo se na case-to-case basis.
+
+#+attr_latex: :width 0.5\textwidth :caption \caption{Zajemanje podatkov s konstantnim ojačevalnim faktorjem in večjim šumom \( Q \). Začetna sistematična napaka je manjša, vendar je celotna meritev bolj zašumljena \cite{likar_osnove_2016}, str. 52}
+[[file:figures/rc_clen_q_big.png]]
+#+end_idea
+
+#+attr_latex: :options [Dinamična enačba]
+#+begin_izpeljava
+Napetost na kondenzatorju s kapaciteto \( C \) označimo z \( U_C \), napetost na uporniku z uporom \( R \) pa z \( U_R \). Iz Kirchoffovega zakona sledi
+
+\[ \sum\limits_i^{} U_i = U_C + U_R = 0. 
+\]
+
+V enačbo vstavimo definicijo napetosti na kondenzatorju \( U_C = \frac{e}{C} \), nato pa jo odvajamo po času
+
+\begin{align*}
+  \frac{e}{C} &= -U_R && \left| \frac{\mathrm{d} }{\mathrm{d} t} \right.\\
+\frac{\dot{e}}{C} &= - \dot{U}_R.
+\end{align*}
+
+Upoštevamo definicijo električnega toka \( I = \frac{\mathrm{d} e}{\mathrm{d} t} \) ter enakost iz Kirchoffovega zakona \( U_C = - U_R \), iz česar sledi
+
+\[ \dot{U}_C = - \frac{I}{C}. 
+\]
+Električni tok izrazimo preko Ohmovega zakona \( I = \frac{U_R}{R} \)
+
+\[ \dot{U}_C = \frac{U_R}{RC} = - \frac{U_C}{RC} = - \frac{U_C}{\tau}.
+\]
+Dinamiki dodamo še naključen šum \( w(t) \) in smo dobili dinamiko v sistemu \( S \)
+
+\[ \dot{U} = -\frac{U}{\tau} + w(t), 
+\]
+kjer za šum velja
+
+\[ \left\langle w(t) w(t') \right\rangle = Q \delta(t - t').
+\]
+
+V primerjavi s splošnim Kalmanovim filtrom \eqref{eq:20} odčitamo koeficiente \( A = \tau^{-1} \) in \( \Gamma = 1 \). S pomočjo tega zapišemo disperzijo
+
+\begin{equation}
+\label{eq:25}
+ \dot{P} = 2 AP + \Gamma Q \Gamma - \frac{P ^2}{R} = -\frac{2}{\tau} P - \frac{P ^2}{R} + Q. 
+\end{equation}
+#+end_izpeljava
+
+#+attr_latex: :options [Stacionarna rešitev]
+#+begin_izpeljava
+Stacionarna rešitev enačbe \eqref{eq:25} je za \( t \to \infty \), iz česar sledi kvadratna enačba
+
+\[ \frac{P ^2}{R} + \frac{2}{\tau}  P - Q = 0,
+\]
+ki ima rešitvi
+
+\[ P_{1,2 \infty} = - \frac{R}{\tau} \pm \frac{R}{\tau} \sqrt{1 + \frac{Q \tau ^2}{R}}.
+\]
+Označimo
+
+\[ \alpha =  \frac{R}{\tau} \sqrt{1 + \frac{Q \tau ^2}{R}}.
+\]
+#+end_izpeljava
+
+#+attr_latex: :options [Splošna rešitev]
+#+begin_izpeljava
+Pri splošni rešitvi rešujemo enačbo oblike
+
+\[ \frac{\mathrm{d} P }{\frac{P ^2}{R} + \frac{2P}{\tau} - Q} = - \mathrm{d} t, 
+\]
+ki jo s pomočjo rešitev stacionarne enačbi zapišemo v ničelni obliki
+
+\[ \frac{\mathrm{d} P \cdot R}{\left( P + \frac{R}{\tau} - \alpha \right) \left( P + \frac{R}{\tau} + \alpha \right)} = - \mathrm{d} t. 
+\]
+
+Dobljeno razbijemo sedaj na parcialne ulomke
+
+\[ \frac{1}{\left( P + \frac{R}{\tau} - \alpha \right) \left( P + \frac{R}{\tau} + \alpha \right)} = \frac{\frac{1}{2 \alpha}}{\left( P + \frac{R}{\tau} - \alpha \right)} - \frac{\frac{1}{2 \alpha}}{\left( P + \frac{R}{\tau} + \alpha \right)},
+\]
+in integriramo
+
+\[ - \int\limits_0^t \, \mathrm{d} t = \frac{R}{2 \alpha} \left[ \int\limits_{P_0}^P \frac{\mathrm{d} P}{\left( P + \frac{R}{\tau} - \alpha \right)} - \int\limits_{P_0}^P \frac{\mathrm{d} P}{\left( P + \frac{R}{\tau} + \alpha \right)} \right].
+\]
+
+Rešitev integracije je
+
+\begin{align*}
+  -\frac{2\alpha t}{R} &= \left. \left[ \ln \left( P + \frac{R}{\tau} - \alpha \right) - \ln \left( P + \frac{R}{\tau} + \alpha \right) \right] \right|_{P_0}^P \\
+&= \left. \ln \left( \frac{P + \frac{R}{\tau} - \alpha}{P + \frac{R}{\tau} + \alpha} \right) \right|_{P_0}^P.
+\end{align*}
+
+Zapišemo
+
+\[   \frac{P + \frac{R}{\tau} - \alpha}{P + \frac{R}{\tau} + \alpha} =   \frac{P_0 + \frac{R}{\tau} - \alpha}{P_0 + \frac{R}{\tau} + \alpha} \exp \left\{ -\frac{2 \alpha}{R} t \right\}.
+\]
+
+Ob času \( t \to 0 \) o sistemu ne vemo veliko, zato \( P_0 \to \infty \) in posledično gre faktor na desni strani enačbe proti \( 1 \). Preostane nam
+
+\[ \left( P + \frac{R}{\tau} - \alpha \right) = \left( P + \frac{R}{\tau} + \alpha \right) \exp \left\{ - \frac{2\alpha}{R} t \right\}, 
+\]
+od koder izrazimo
+
+\[ P(t) = - \frac{R}{\tau} + \alpha \left( \frac{1 + \exp \left\{ - \frac{2 \alpha}{R} t \right\}}{1 - \exp \left\{ - \frac{2 \alpha}{R} t \right\}}  \right).
+\]
+
+Preverimo lahko tudi limito \( t \to \infty \) in dobimo rezultat identičen stacionarni rešitvi.
+#+end_izpeljava

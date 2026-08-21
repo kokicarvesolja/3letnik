@@ -349,7 +349,7 @@ Ulomek razcepimo
 
 Integral torej zapišemo kot
 
-\[ R \left[ \int\limits_{}^{} \frac{1}{2 \alpha} \frac{\mathrm{d} P}{\left( P + \frac{R}{\tau} - \alpha \right)} - \int\limits_{}^{} \frac{1}{2 \alpha}  \frac{\mathrm{d} P}{\left( P + \frac{R}{\tau} + \right)} \right] = - \int\limits_{}^{} \, \mathrm{d} t.
+\[ R \left[ \int\limits_{}^{} \frac{1}{2 \alpha} \frac{\mathrm{d} P}{\left( P + \frac{R}{\tau} - \alpha \right)} - \int\limits_{}^{} \frac{1}{2 \alpha}  \frac{\mathrm{d} P}{\left( P + \frac{R}{\tau} + \alpha \right)} \right] = - \int\limits_{}^{} \, \mathrm{d} t.
 \]
 
 Integrala sedaj trivialno integriramo
