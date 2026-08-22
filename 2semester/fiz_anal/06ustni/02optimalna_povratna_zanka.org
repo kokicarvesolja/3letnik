@@ -1,0 +1,77 @@
+#+title: Optimalna povratna zanka
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+#+bibliography: refs.bib
+* Optimalna povratna zanka
+
+#+attr_latex: :width 0.5\textwidth :caption \caption{Skica povratne zanke.}
+[[file:figures/povratnaZanka.png]]
+
+V splošnem spremenljivko \( x \) iz sistema \( S \) /transformiramo/(?) v sistem \( M \) preko meritve \( \mathbf{z} = H\mathbf{x} + \mathbf{r} \). Našo trenutno oceno sistema \( \hat{\mathbf{x}} \) izboljšamo z inovacijo \( \mathbf{z} - \mathsf{H} \hat{\mathbf{x}} \) ter (časovno odvisnim) ojačevalnim faktorjem. Oceno izboljšamo z matriko \( A \) in po integraciji dobimo novo, boljšo oceno \( \hat{\mathbf{x}} \). Iz izhoda novo, boljšo oceno preko senzorske matrike \( H \) ponovno pelje na stičišče s senzorji.
+
+V primeru popolne usklajenosti med sistemoma \( S \) in \( M \) je inovacija \( \mathbf{z} - \mathsf{H} \hat{\mathbf{x}} \) samo beli šum s pričakovano vrednostjo \( 0 \).
+
+Prispevek ojačevalnega faktorja \( K(t) \) s časom pada, zato se v praksi uporablja konstanten ojačevalni faktor \( K_{\infty} \). Ker je definiran z matriko \( A \) mora biti tudi ta časovno neodvisna. Zanima nas končna vrednost (think, termometer), ne sprotno dogajanje, za kar je potrebno nekaj časa.
+
+* Senzorji
+#+begin_idea
+Zahteve za senzor:
+- občutljiv naj bo na eno količino, najpogosteje napetost
+
+- hitra uskladitev z merjeno količino
+
+- odstranitev čim večje količine šuma
+
+- čim manjši vpliv na sistem \( S \).
+
+Obstajajo senzorji večih redov. Senzor je reda \( n \), če je to najvišja potenca odvoda v diferencialni enačbi, ki jo rešuje za povezovanje vhodne količine \( z \) in izhodne količine \( \hat{x} \).
+
+Drugače povedano: senzor \( n \)-tega reda obravnavamo kot optimalen sledilni sistem za spremenljivke \( \mathbf{x}(t) \), katerih dinamika v sistemu \( S \) se spreminja kvečjemu kot
+
+\[ \frac{\mathrm{d} ^{(n)}}{\mathrm{d} t^{(n)}} \mathbf{x} = 0 + \mathbf{w}, 
+\]
+kjer je \( \mathbf{w} \) beli šum. 
+
+Dinamična enačba v sistemu \( S \) za *senzor 1. reda* je
+
+\[ \dot{x} = w, 
+\]
+kjer za šum velja \( \left\langle w(t) w(t') \right\rangle = Q \delta(t - t') \). Diferencialna enačba za senzor 1. reda za meritev \( z = x + r(t), \ \left\langle r ^2 \right\rangle = R \) je tako
+
+\[ \tau \dot{\hat{x}} + \hat{x} = z, \quad  \tau = \frac{1}{K_{\infty}} = \sqrt{\frac{R}{Q}}
+\]
+
+Dinamična enačba v sistemu \( S \) za *senzor 2. reda* je
+\[ \frac{\mathrm{d} ^2 x}{\mathrm{d} t ^2} = w. 
+\]
+Diferencialna enačba za senzor 2. reda je
+
+\[ \ddot{\hat{x}} + 2 \xi \omega \dot{\hat{x}} + \omega ^2 \hat{x} = 2 \xi \omega \dot{z} + \omega ^2 z, 
+\]
+kjer je \( \xi \) koeficient dušenja in \( \omega \) frekvenca z vrednostima
+
+\[ \xi = \frac{1}{\sqrt{2}} \quad \text{ in } \quad \omega ^2 = \sqrt{\frac{Q}{R}}.
+\]
+
+#+end_idea
+
+#+attr_latex: :options [Senzor 1. reda]
+#+begin_izpeljava
+
+#+end_izpeljava
+
+#+attr_latex: :options [Senzor 2. reda]
+#+begin_izpeljava
+
+#+end_izpeljava
+** Primer: vhod \( \delta(t) \)
+** Primer: vhod \( \alpha t \)
+** Primer: blažilnik, amortizer
+* Prenosna funkcija senzorja
+
