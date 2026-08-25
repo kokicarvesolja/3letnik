@@ -497,7 +497,7 @@ Ojačevalni faktor je potem
 
 Torej bo napoved ocene
 
-\[ \dot{\hat{x}}  K_{\infty} \left( z - \hat{x} \right) = \sqrt{\frac{Q}{R}} \left( z - \hat{x} \right).
+\[ \dot{\hat{x}} = K_{\infty} \left( z - \hat{x} \right) = \sqrt{\frac{Q}{R}} \left( z - \hat{x} \right).
 \]
 
 Izrazimo meritev

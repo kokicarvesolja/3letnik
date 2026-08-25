@@ -63,13 +63,206 @@ kjer je \( \xi \) koeficient dušenja in \( \omega \) frekvenca z vrednostima
 
 #+attr_latex: :options [Senzor 1. reda]
 #+begin_izpeljava
+Dinamična enačba v sistemu \( S \) za senzor 1. reda je
+
+\[ \dot{x} = w, 
+\]
+kjer ima dinamični šum znano disperzijo
+
+\[ \left\langle w(t) w(t') \right\rangle = Q \delta(t - t').
+\]
+
+Iz enačbe za Kalmanov filter razberemo \( A = 0 \), \( c = 0 \), \( \Gamma = 1 \) in \( H = 1 \). Senzor zajame nek izmerek
+
+\[ z = x + r, 
+\]
+kjer je \( r \) merilni šum z znano disperzijo
+
+\[ \left\langle r(t) r(t') \right\rangle = R \delta(t - t').
+\]
+
+V merilnem sistemu \( M \) je ocena
+
+\[ \dot{\hat{x}} = A \hat{x} + c + K(z - H \hat{x}) = K (z - \hat{x}),
+\]
+s pripadajočo disperzijo
+
+\[ \dot{P} = 2 AP + \Gamma ^2 Q - \frac{P ^2}{R} = Q - \frac{P ^2}{R}. 
+\]
+Po definiciji je potem ojačevalni faktor
+
+\[ K = \frac{P}{R}. 
+\]
+
+Konstanten ojačevalni faktor \( K_{\infty} \) dobimo za rešitev enačbe \( \dot{P} = 0 \). Rešitev nam poda enakost
+
+\[ Q = \frac{P_{\infty} ^2}{R} \implies \ P_{\infty} = \sqrt{QR}. 
+\]
+Iz definicije sledi
+
+\[ K_{\infty} = \frac{P_{\infty}}{R} = \sqrt{\frac{Q}{R}}, 
+\]
+in izostritev ocene je
+
+\[ \dot{\hat{x}} = K_{\infty} (z - \hat{x}) = \sqrt{\frac{Q}{R}} (z - \hat{x}).
+\]
+
+Senzor torej opišemo z enačbo 1. reda
+
+\[ \frac{1}{K_{\infty}} \dot{\hat{x}} + \hat{x} = z,
+\] 
+kjer uvedemo časovno konstanto
+
+\[ \tau = \frac{1}{K_{\infty}} = \sqrt{\frac{R}{Q}}. 
+\]
 
 #+end_izpeljava
 
 #+attr_latex: :options [Senzor 2. reda]
 #+begin_izpeljava
+Dinamična enačba v sistemu \( S \) za senzor 2. reda je
+
+\[ \frac{\mathrm{d} ^2 x}{\mathrm{d} t ^2} = w, 
+\]
+kjer je \( w \) dinamičnim šum z znano disperzijo
+
+\[ \left\langle w(t) w(t') \right\rangle = Q \delta(t - t').
+\]
+
+Preidemo na vektorsko reševanje zgornje dinamične enačbe z \( \mathbf{x} = [x \ v]^T \)
+
+\[ \dot{x} = v \quad \text{ in } \quad \dot{v} = w,
+\]
+kar zapišemo v matrični enačbo 
+
+\begin{equation}
+\label{eq:1}
+ \frac{\mathrm{d} }{\mathrm{d} t} \begin{bmatrix} x \\ v \end{bmatrix} = \begin{bmatrix}
+                                                                           0 & 1 \\
+                                                                           0 & 0
+                                                                            \end{bmatrix} \begin{bmatrix} x \\ v \end{bmatrix} +
+                                                                            \begin{bmatrix} 0 \\ 1 \end{bmatrix} w
+\end{equation}
+
+Senzor naj se optimalno odziva na spremembo spremenljivke \( x \), toreb bo izmerek oblike
+
+\[ z = x + r, 
+\]
+kjer je \( r \) dinamični šum z znano disperzijo
+
+\[ \left\langle r(t) r(t') \right\rangle = R \delta(t - t').
+\]
+
+Iz enačbe \eqref{eq:1} razberemo
+
+\[ A = \begin{bmatrix}
+       0 & 1 \\
+       0 & 0
+        \end{bmatrix}, \quad \mathbf{c} = 0, \quad \Gamma = w,
+\]
+in senzorsko okno je oblike \( H = [1 \ 0] \).
+
+V sistemu \( M \) je ocena podana z enačbo
+
+\begin{equation}
+\label{eq:2}
+\begin{aligned}
+   \dot{\hat{x}} &= A \mathbf{x} + \mathbf{c} + \Gamma \mathbf{w} \\ 
+\frac{\mathrm{d} }{\mathrm{d} t} \begin{bmatrix} \hat{x} \\ \hat{v} \end{bmatrix} &= \begin{bmatrix}
+                                                                         0 & 1 \\
+                                                                         0 & 0
+                                                                          \end{bmatrix} \begin{bmatrix} \hat{x} \\ \hat{v} \end{bmatrix} + \mathsf{P} \mathsf{H} \frac{1}{R} \left( z - \mathsf{H} \hat{\mathbf{x}} \right)
+\end{aligned}
+\end{equation}
+pripada pa ji enačba za disperzijo
+
+\begin{align*}
+  \dot{\mathsf{P}} &= A \mathsf{P} + \mathsf{P} A^T + \Gamma Q \Gamma^T - \mathsf{P} \mathsf{H}^T R^{-1} \mathsf{H} \mathsf{P} \\
+\frac{\mathrm{d} }{\mathrm{d} t} \begin{bmatrix}
+                                 p_{11} & p_{12} \\
+                                 p_{21} & p_{22}
+                                  \end{bmatrix} &= \begin{bmatrix}
+                                                   2p_{12} & p_{22} \\
+                                                   p_{22} & Q
+                                                    \end{bmatrix} - \frac{1}{R} \begin{bmatrix}
+                                                                                p_{11} ^2 & p_{11} p_{12} \\
+                                                                                 p_{11} p_{12} & p_{12} ^2
+                                                                                 \end{bmatrix}.
+\end{align*}
+
+Stacionarno rešitev zgornje enačbe dobimo pri pogoju \( \dot{\mathsf{P}} = 0 \), iz česar sledi sistem treh enačb
+
+\begin{align} \label{ali:1}
+  2p_{12} - \frac{1}{R} p_{11} ^2 &= 0 \\ \label{ali:2}
+p_{22} - \frac{1}{R} p_{11} p_{12} &= 0 \\ \label{ali:3}
+Q - \frac{1}{R} p_{12} ^2 &= 0.
+\end{align}
+
+Iz enačbe \eqref{ali:3} izrazimo
+
+\[ p_{12} = + \sqrt{QR}, 
+\]
+kar vstavimo v enačbo \eqref{ali:1}
+
+\[ p_{11} = \sqrt{2 R p_{12}} = \sqrt{2R \sqrt{RQ}},
+\]
+ter v enačbo \eqref{ali:2}
+
+\[ p_{22} = \sqrt{2 Q \sqrt{RQ}}. 
+\]
+
+Konstanten ojačevalni faktor je potem iz definicije
+
+\[ K_{\infty} = \frac{1}{R} P_{\infty} H^T = \frac{1}{R} \begin{bmatrix} p_{11} \\ p_{12} \end{bmatrix},
+\]
+in ga vstavimo v enačbo \eqref{eq:2}
+
+\begin{align*}
+  \dot{\hat{x}} &= \hat{v} + \frac{1}{R} p_{11} \left( z - \hat{x} \right) \\
+\dot{\hat{v}} &= \frac{1}{R} p_{12} \left( z - \hat{x} \right).
+\end{align*}
+
+Ne opazujemo hitrosti \( \hat{v} \), zato enačbo za oceno \( \dot{\hat{x}} \) odvajamo in nadomestimo odvod ocene \( \dot{\hat{v}} \) z njeno vrednostjo
+
+\[ \ddot{\hat{x}} = \frac{1}{R} p_{12} \left( z - \hat{x} \right) + \frac{1}{R} \left( z - \dot{\hat{x}} \right). 
+\]
+
+Dobili smo enačbo 2. reda za \( \hat{x} \), ki jo preoblikujemo v
+
+\[ \ddot{\hat{x}} = \frac{p_{11}}{R} \dot{\hat{x}} + \frac{p_{12}}{R} \hat{x} = \frac{p_{11}}{R} \dot{z} + \frac{p_{12}}{R}z. 
+\]
+
+Pogosto ne opazujemo odvoda meritve \( \dot{z} \), zato ga lahko zanemarimo.
+
+
 
 #+end_izpeljava
+** Primer senzorja 1. reda: termometer
+Predstavljajmo (ali skuhajmo!) si skodelico kave/čaja, ki naj ima temperaturo \( T_z \). S termometrom merimo temperaturo \( \hat{T}(t) \), vendar temperaturi nista isti, saj ima termometer stekleno steno površine \( S \) z debelino \( d \), skozi katero gre neka gostota toplotnega toka \( \mathbf{j} \). Zaradi steklene stene bo \( T(t) \) vedno zaostajal za dejansko temperaturo \( T_c \).
+
+Gostota toplotnega toka je definirana z
+
+\[ \mathbf{j} = - \lambda\nabla T = - \lambda \left( \frac{T_z - T}{d - 0} \right).
+\]
+
+Po definiciji je toplotni tok
+
+\[ P = - \mathbf{j} S = - \frac{\lambda S}{d} \left( T_z - T \right),
+\]
+ki je hkati enak tudi spremembi toplote v tekočini
+
+\[ P = \frac{\mathrm{d} Q}{\mathrm{d} t} = -m c_p \frac{\mathrm{d} T}{\mathrm{d} t}. 
+\]
+
+Obe enačbi enačimo in dobimo diferencialno enačbo senzorja prvega reda
+
+\[ \dot{T} = \frac{\lambda S}{m c_p d} \left( T_z - T \right),  
+\]
+kjer konstanto označimo z \( \Lambda = \frac{\lambda S}{m c_p d} \)
+
+\[ \frac{1}{\Lambda} \dot{T} + T = T_z. 
+\]
+
 ** Primer: vhod \( \delta(t) \)
 ** Primer: vhod \( \alpha t \)
 ** Primer: blažilnik, amortizer

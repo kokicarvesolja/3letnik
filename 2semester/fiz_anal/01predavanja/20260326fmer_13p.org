@@ -99,7 +99,7 @@ Prvi člen je enak vhodni funkciji, drugemu členu pravimo /zamik/ (ang. /offset
 Imamo torej sistematično napako v vrednosti zamika. Rezultati so zamaknjeni v relaciji z dejanskimi vrednostmi.
 ** Senzor drugega reda
 
-Obravnvamo senzorje optimalne za spremljanje dinamike oblike
+Obravnavamo senzorje optimalne za spremljanje dinamike oblike
 
 \[ \frac{\mathrm{d} ^2 x}{\mathrm{d} t ^2} = 0 + w.
 \]
