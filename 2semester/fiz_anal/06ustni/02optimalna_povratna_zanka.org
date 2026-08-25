@@ -431,5 +431,73 @@ Za dane pogoje je amortizer senzor 2. reda. Če je senzor optimalen \( \xi = \fr
 \]
 kjer je \( \gamma \) koeficient upora.
 * Prenosna funkcija senzorja
+#+begin_idea
+Delovanje senzorjev predstavimo s pomočjo prenosne funkcije senzorjev. Do te funkcije pridemo s pomočjo Laplaceove transformacije diferencialne enačbe senzorja \( n \)-tega reda.
+
+Prenosna funkcija senzorja je definirana kot
+
+\[ H(s) = \frac{\hat{x}(s)}{z(s)} = \frac{s^m + b_{m - 1}s^{m - 1} + \ldots b_0}{s^n + a_{n - 1}s^{n - 1} + \ldots + a_0} 
+\]
+
+Prenosna funkcija senzorja 1. reda je
+
+\[ H(s) = \frac{1}{1 + \tau s}.
+\]
+
+Prenosna funkcija senzorja 2. reda je
+
+\[ H(s) = \frac{\omega ^2}{s ^2 + 2 \xi \omega s + \omega ^2}. 
+\]
+#+end_idea
+#+begin_definition
+Laplaceova transformacija \( \mathcal{L} \) je preslikava, ki funkcijo \( f(t) \) preslika v kompleksno funkcijo \( F(s) \) po enačbi
+
+\[ F(s) = \int\limits_0^{\infty} f(t) e^{- st }\, \mathrm{d} t. 
+\]
+
+Za funkcijo \( f(t) \) zahtevamo, da je od nič različna za vse pozitivne čase. Prav tako naj velja isto za njene odvode.
+#+end_definition
+
+#+begin_theorem
+Lastnosti Laplaceove transformacije so:
+
+- \[ \mathcal{L}(1) = \int\limits_0^{\infty} e^{- s t} \, \mathrm{d} t = \left. \frac{1}{s} e^{-st} \right|_0^{\infty} = \frac{1}{s}.
+  \]
+
+- \[ \mathcal{L} \left( e^{at} \right) = \int\limits_0^{\infty} e^{(s - a) t} \, \mathrm{d} t = \frac{1}{s - a}.
+  \]
+
+- Produkt funkcije z eksponentno bodo
+  \[ \mathcal{L} \left( f(t) e^{a t} \right) = \int\limits_0^{\infty} f(t) e^{(s - a) t} \, \mathrm{d} t = F(s - a).
+  \]
+
+- odvod funckije po parametru
+
+  \[ \mathcal{L} \left( \frac{\mathrm{d} }{\mathrm{d} t} f(t) \right) = \int\limits_0^{\infty} \frac{\mathrm{d} }{\mathrm{d} t} f(t) e^{- st} \, \mathrm{d} t = s F(s)
+  \]
+  To se izračuna s pomočjo integriranja po delih za \( u = e^{- st} \) in \( \mathrm{d} v = \frac{\mathrm{d} }{\mathrm{d} t} f(t) \, \mathrm{d} t \).
+
+- \[ \mathcal{L} \left( t \right) = \int\limits_0^{\infty} t e^{- st }\, \mathrm{d} t = \frac{1}{s ^2}.
+  \]
+
+  Do te identitete lahko pridemo tudi z uporabo prve alineje in lastnosti odvajanja.
+
+- Podobno kot prejšnja alineja
+
+  \[ \mathcal{L} \left( t^n \right) = n! \frac{1}{s ^{n + 1}}.
+  \]
+
+- z uporabo druge alineje za \( e^{\mathrm{i} \omega t} \) lahko dobimo vrednost za kosinus in sinus
+
+  \[ \mathcal{L} \left( \cos (\omega t) + \mathrm{i} \sin (\omega t)  \right) = \mathcal{L} \left( e^{\mathrm{i} \omega t} \right) = \frac{s}{s ^2 + \omega ^2} + \mathrm{i} \frac{\omega}{s ^2 + \omega ^2}.
+  \]
+
+  Torej
+
+  \[ \mathcal{L} \left( \cos \left( \omega t \right) \right) = \frac{s}{s ^2 + \omega ^2} \quad \text{ in } \quad \mathcal{L} \left( \sin \left( \omega t \right) \right) = \frac{\omega}{s ^2 + w ^2}.
+  \]
+#+end_theorem
+
+
 * Vpliv senzorja na opazovani sistem
 
