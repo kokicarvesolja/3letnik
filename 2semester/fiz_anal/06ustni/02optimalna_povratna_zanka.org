@@ -44,16 +44,20 @@ Dinamična enačba v sistemu \( S \) za *senzor 1. reda* je
 \]
 kjer za šum velja \( \left\langle w(t) w(t') \right\rangle = Q \delta(t - t') \). Diferencialna enačba za senzor 1. reda za meritev \( z = x + r(t), \ \left\langle r ^2 \right\rangle = R \) je tako
 
-\[ \tau \dot{\hat{x}} + \hat{x} = z, \quad  \tau = \frac{1}{K_{\infty}} = \sqrt{\frac{R}{Q}}
-\]
+\begin{equation}
+\label{eq:5}
+ \tau \dot{\hat{x}} + \hat{x} = z, \quad  \tau = \frac{1}{K_{\infty}} = \sqrt{\frac{R}{Q}}
+\end{equation}
 
 Dinamična enačba v sistemu \( S \) za *senzor 2. reda* je
 \[ \frac{\mathrm{d} ^2 x}{\mathrm{d} t ^2} = w. 
 \]
 Diferencialna enačba za senzor 2. reda je
 
-\[ \ddot{\hat{x}} + 2 \xi \omega \dot{\hat{x}} + \omega ^2 \hat{x} = 2 \xi \omega \dot{z} + \omega ^2 z, 
-\]
+\begin{equation}
+\label{eq:6}
+ \ddot{\hat{x}} + 2 \xi \omega \dot{\hat{x}} + \omega ^2 \hat{x} = 2 \xi \omega \dot{z} + \omega ^2 z, 
+\end{equation}
 kjer je \( \xi \) koeficient dušenja in \( \omega \) frekvenca z vrednostima
 
 \[ \xi = \frac{1}{\sqrt{2}} \quad \text{ in } \quad \omega ^2 = \sqrt{\frac{Q}{R}}.
@@ -441,8 +445,10 @@ Prenosna funkcija senzorja je definirana kot
 
 Prenosna funkcija senzorja 1. reda je
 
-\[ H(s) = \frac{1}{1 + \tau s}.
-\]
+\begin{equation}
+\label{eq:8}
+ H(s) = \frac{1}{1 + \tau s}.
+\end{equation}
 
 Prenosna funkcija senzorja 2. reda je
 
@@ -457,7 +463,6 @@ Laplaceova transformacija \( \mathcal{L} \) je preslikava, ki funkcijo \( f(t) \
 
 Za funkcijo \( f(t) \) zahtevamo, da je od nič različna za vse pozitivne čase. Prav tako naj velja isto za njene odvode.
 #+end_definition
-
 #+begin_theorem
 Lastnosti Laplaceove transformacije so:
 
@@ -473,8 +478,10 @@ Lastnosti Laplaceove transformacije so:
 
 - odvod funckije po parametru
 
-  \[ \mathcal{L} \left( \frac{\mathrm{d} }{\mathrm{d} t} f(t) \right) = \int\limits_0^{\infty} \frac{\mathrm{d} }{\mathrm{d} t} f(t) e^{- st} \, \mathrm{d} t = s F(s)
-  \]
+  \begin{equation}
+  \label{eq:4}
+   \mathcal{L} \left( \frac{\mathrm{d} }{\mathrm{d} t} f(t) \right) = \int\limits_0^{\infty} \frac{\mathrm{d} }{\mathrm{d} t} f(t) e^{- st} \, \mathrm{d} t = s F(s)
+  \end{equation}
   To se izračuna s pomočjo integriranja po delih za \( u = e^{- st} \) in \( \mathrm{d} v = \frac{\mathrm{d} }{\mathrm{d} t} f(t) \, \mathrm{d} t \).
 
 - \[ \mathcal{L} \left( t \right) = \int\limits_0^{\infty} t e^{- st }\, \mathrm{d} t = \frac{1}{s ^2}.
@@ -498,6 +505,210 @@ Lastnosti Laplaceove transformacije so:
   \]
 #+end_theorem
 
+#+attr_latex: :options [Splošna prenosna funkcija senzorja]
+#+begin_izpeljava
+Splošna diferencialna enačbo za senzor \( n \)-tega reda je
 
+\[ \frac{\mathrm{d}^{(n)} }{\mathrm{d} t^{(n)}} x + a_{n - 1} \frac{\mathrm{d}^{(n - 1)} }{\mathrm{d} t^{(n - 1)}} x + \ldots + a_1 \frac{\mathrm{d} }{\mathrm{d} t} x + a_0 x = \frac{\mathrm{d}^{(m)} }{\mathrm{d} t^{(m)}} z + b_{m - 1 } \frac{\mathrm{d}^{(m - 1)} }{\mathrm{d} t^{(m - 1)}} z + \ldots + b_1 \frac{\mathrm{d} }{\mathrm{d} t}z + b_0 z.
+\]
+
+Z lastnostjo \eqref{eq:4} jo Laplaceovo transformiramo v
+
+\[ \left( s^n + a_{n - 1} s^{n - 1} + \ldots + a_0 \right) x(s) = \left( s^m + b_{m - 1}s^{m - 1} + \ldots + b_0 \right) z(s), 
+\]
+in prenosna funkcija je
+
+\[ H(s) = \frac{x(s)}{z(s)} = \frac{s^m + b_{m- 1} s^{m - 1} + \ldots + b_0}{s^n + a_{n - 1} s^{n - 1} + \ldots + a_0}. 
+\]
+#+end_izpeljava
+
+#+attr_latex: :options [Prenosna funkcija senzorja 1. reda]
+#+begin_izpeljava
+Laplaceova transformacije enačbe \eqref{eq:5} je
+
+\[ \left( \tau s + 1 \right) x(s) = z(s), 
+\]
+iz česar sledi prenosna funkcija senzorja 1. reda
+
+\[ H(s) = \frac{1}{1 + \tau s}. 
+\]
+#+end_izpeljava
+
+#+attr_latex: :options [Prenosna funkcija senzorja 2. reda]
+#+begin_izpeljava
+Laplaceova transformacija enačbe \eqref{eq:6} je
+
+\[ \left( s ^2 + 2 \xi \omega s + \omega ^2 \right) x(s) = \left( 2 \xi \omega s + \omega ^2  \right)z(s) 
+\]
+in prenosna funkcija senzorja 2. reda je
+
+\[ H(s) = \frac{\omega ^2 + 2 \xi \omega s}{s ^2 + 2 \xi \omega s + \omega ^2}.
+\]
+#+end_izpeljava
+** Bodejevi diagrami
+#+begin_idea
+V primeru periodičnega vhoda \( z(t) = z_0 e^{\mathrm{i} \omega t} \) je na izhodu tudi harmonična funkcija, ki pa je premaknjena za neko fazo \( \delta \)
+
+\[ x = x_0 e^{\mathrm{i} \omega t} e^{\mathrm{i} \delta} 
+\]
+
+Parameter \( s \) nadomestimo z \( \mathrm{i} \omega \) v prenosnih funkciji
+
+\[ H(\mathrm{i} \omega) = \frac{x(\mathrm{i} \omega)}{z(\mathrm{i} \omega)},
+\]
+razmerje velikost amplitud pa je
+
+\[ \left| H (\mathrm{i} \omega) \right| = \left| \frac{x_0}{z_0} \right|.
+\]
+
+Za fazo \( \delta \) velja
+
+\[ \tan \delta = \frac{\mathrm{Im} H(\mathrm{i \omega})}{\mathrm{Re} H (\mathrm{i} \omega)}.
+\]
+
+Vsako prenosno funkcijo, ki sledi iz diferencialne enačbe s konstantnimi koeficienti lahko zapišemo kot produkt prenosnih funkcij prvega in drugega reda
+
+\[ H(\mathrm{i} \omega) = \frac{\prod_{i}^{} \left( 1 + \mathrm{i} \omega \tau_i \right) \cdot \prod_{j}^{} \left[ \left( \frac{\mathrm{i} \omega}{\omega_j} \right) ^2 + \frac{2 \xi_j \mathrm{i}\omega}{\omega_j} + 1 \right]}{\prod_{k}^{} \left( 1 + \mathrm{i} \omega \tau_k \right) \cdot \prod_{l}^{} \left[ \left( \frac{\mathrm{i} \omega}{\omega_l} \right) ^2 + \frac{2 \xi_l \mathrm{i}\omega}{\omega_l} + 1 \right]}.
+\]
+
+Zapišemo jih lahko tudi kot
+
+\[ H(\mathrm{i} \omega) = \frac{\prod_{i}^{} \left|\left( 1 + \mathrm{i} \omega \tau_i \right) \right| e^{\mathrm{i} \delta_i} \cdot \left| \prod_{j}^{} \left[ \left( \frac{\mathrm{i} \omega}{\omega_j} \right) ^2 + \frac{2 \xi_j \mathrm{i}\omega}{\omega_j} + 1 \right]\right| e^{\mathrm{i} \delta_j}}{\left|\prod_{k}^{} \left( 1 + \mathrm{i} \omega \tau_k \right)\right| e^{\mathrm{i} \delta_k} \cdot\left| \prod_{l}^{} \left[ \left( \frac{\mathrm{i} \omega}{\omega_l} \right) ^2 + \frac{2 \xi_l \mathrm{i}\omega}{\omega_l} + 1 \right]\right| e^{\mathrm{i} \delta_l}},
+\]
+kjer je fazni faktor
+
+\[ \Delta = \exp \left[ \mathrm{i} \left( \sum\limits_i^{} \delta_i + \sum\limits_j^{} \delta_j + \sum\limits_k^{} \delta_{k} + \sum\limits_l^{} \delta_l \right) \right].
+\]
+
+Definiramo decibel (\( \mathrm{dB} \)) na enoto moči
+
+\[ 20 \log_{10} \left| H(\mathrm{i} \omega) \right| = 10 \log_{10} \left| H(\mathrm{i} \omega) \right| ^2.
+\]
+
+Rišemo lahko dve vrsti Bodejevih diagramov (glej slike primerov!)
+
+- *amplitudni Bodejev diagram* rišemo \( 20 \log_{10} \left| H(\mathrm{i} \omega) \right| \) v odvisnosti od frekvence \( \omega \)
+- *fazni Bodejev diagram* rišemo fazni zamik \( \Delta \) v odvisnosti od frekvence \( \omega \).
+#+end_idea
+
+#+attr_latex: :options [Razmerje velikosti amplitud]
+#+begin_izpeljava
+Parameter \( s \) v prenosni funkciji \( H(s) \) lahko nadomestimo s harmoničnim \( \mathrm{i} \omega \), saj velja enačba
+
+\[ \frac{\mathrm{d} }{\mathrm{d} t} e^{\mathrm{i} \omega t} = \mathrm{i \omega} e^{\mathrm{i} \omega t}. 
+\]
+
+Transformacija zgornje enačbe je
+
+\[ s \mathcal{L} \left( e^{\mathrm{i} \omega t} \right) = \mathrm{i} \omega \mathcal{L} \left( e^{\mathrm{i} \omega t} \right), 
+\]
+iz česar sklepamo \( s = \mathrm{i} \omega \) in posledično \( H(s) = H(\mathrm{i} \omega) \).
+
+Po definiciji prenosne funkcije senzorja velja
+
+\[ H(\mathrm{i} \omega) z(\mathrm{i} \omega) = x(\mathrm{i} \omega), 
+\]
+in njena transformacija za harmoničnen vhod \( z = z_0 e^{\mathrm{i} \omega t} \) in izhod \( x = x_0 e^{\mathrm{i} \omega t} e^{\mathrm{i} \delta} \) je
+
+\begin{equation}
+\label{eq:7}
+ H(\mathrm{i} \omega) \cdot z_0  \mathcal{L} \left( e^{\mathrm{i} \omega t} \right) = x_0 e^{\mathrm{i} \delta} \mathcal{L} \left( e^{\mathrm{i} \omega t} \right).
+\end{equation}
+
+Iz absolutne vrednosti zgornje enačbe dobimo razmerje velikosti amplitud
+
+\[ \left| H(\mathrm{i} \omega) \right| =\left| \frac{x_0}{z_0} \right|.
+\]
+#+end_izpeljava
+
+#+attr_latex: :options [Faza \( \delta \)]
+#+begin_izpeljava
+Za kompleksno funkcijo \( H(\mathrm{i} \omega) \in \mathbb{C} \) je faza \( \alpha \) po definiciji
+
+\[ \tan \alpha = \frac{\mathrm{Im} H(\mathrm{i} \omega)}{\mathrm{Re} H(\mathrm{i} \omega)}. 
+\]
+V kompleksnem prostoru torej lahko zapišemo kot
+
+\[ H(\mathrm{i} \omega) = \left| H(\mathrm{i} \omega) \right| e^{\mathrm{i} \alpha}.
+\]
+Njeno transformacijo enačimo z zapisom \eqref{eq:7}
+
+\[ \left| H(\mathrm{i} \omega) \right| e^{\mathrm{i} \alpha} z_0 \mathcal{L} \left( e^{\mathrm{i} \omega t} \right) = x_0 e^{\mathrm{i} \delta} \mathcal{L} \left( e^{\mathrm{i} \omega t} \right),
+\]
+iz česar sledi \( \alpha = \delta \).
+#+end_izpeljava
+
+#+attr_latex: :options [Bodejevi diagrami(?)]
+#+begin_izpeljava
+Brez dokaza navajamo, da lahko vsako prenosno funkcijo, ki sledi iz diferencialne enačbe s konstantnimi koeficienti, zapišemo kot produkt prenosnih funkcij za sistem prvega in drugega reda.
+
+\[ H(\mathrm{i} \omega) = \frac{\prod_{i}^{} \left( 1 + \mathrm{i} \omega \tau_i \right) \cdot \prod_{j}^{} \left[ \left( \frac{\mathrm{i} \omega}{\omega_j} \right) ^2 + \frac{2 \xi_j \mathrm{i}\omega}{\omega_j} + 1 \right]}{\prod_{k}^{} \left( 1 + \mathrm{i} \omega \tau_k \right) \cdot \prod_{l}^{} \left[ \left( \frac{\mathrm{i} \omega}{\omega_l} \right) ^2 + \frac{2 \xi_l \mathrm{i}\omega}{\omega_l} + 1 \right]}.
+\]
+
+Zapišemo jih lahko tudi kot
+
+\[ H(\mathrm{i} \omega) = \frac{\prod_{i}^{} \left|\left( 1 + \mathrm{i} \omega \tau_i \right) \right| e^{\mathrm{i} \delta_i} \cdot \left| \prod_{j}^{} \left[ \left( \frac{\mathrm{i} \omega}{\omega_j} \right) ^2 + \frac{2 \xi_j \mathrm{i}\omega}{\omega_j} + 1 \right]\right| e^{\mathrm{i} \delta_j}}{\left|\prod_{k}^{} \left( 1 + \mathrm{i} \omega \tau_k \right)\right| e^{\mathrm{i} \delta_k} \cdot\left| \prod_{l}^{} \left[ \left( \frac{\mathrm{i} \omega}{\omega_l} \right) ^2 + \frac{2 \xi_l \mathrm{i}\omega}{\omega_l} + 1 \right]\right| e^{\mathrm{i} \delta_l}},
+\]
+kjer je fazni faktor
+
+\[ \Delta = \exp \left[ \mathrm{i} \left( \sum\limits_i^{} \delta_i + \sum\limits_j^{} \delta_j + \sum\limits_k^{} \delta_{k} + \sum\limits_l^{} \delta_l \right) \right].
+\]
+
+Množenje (in deljenje) prevedemo s pomočjo logaritmiranja na seštevanje (in odštevanje)
+
+\begin{align*}
+ 20 \log_{10} \left| H(s) \right| = 20 & \left[ \sum\limits_i^{} \log \left| 1 + \mathrm{i} \omega \tau_i\right|  + \sum\limits_j^{} \left| \left( \frac{\mathrm{i} \omega}{\omega_j} \right) ^2 + \frac{2 \xi_j \mathrm{i}\omega}{\omega_j} + 1  \right| \right. \\
+& \left. - \sum\limits_k^{}\left|  1 + \mathrm{i} \omega \tau_k \right| - \sum\limits_l^{} \left| \left( \frac{\mathrm{i} \omega}{\omega_l} \right) ^2 + \frac{2 \xi_l \mathrm{i}\omega}{\omega_l} + 1  \right| \right]
+\end{align*}
+#+end_izpeljava
+*** Senzor 1. reda
+
+Prenosna funkcija senzorja 1. reda za periodične vhode izhaja iz enačbe \eqref{eq:8} in je
+
+\[ H(\mathrm{i} \omega) = \frac{1}{1 + \mathrm{i} \omega \tau}. 
+\]
+
+Njena absolutna vrednost je
+
+\[ \left| H (\mathrm{i} \omega) \right| = \frac{1}{\sqrt{1 + \omega ^2 \tau ^2 }}
+\]
+
+Za amplitudni Bodejev diagram si pogledamo naslednje točke
+
+- \( \omega \tau \to 0 \), iz česar sledi
+
+  \[ 20 \log \left| H(\mathrm{i} \omega) \right| \to 0
+  \]
+
+- \( \omega \tau \to \infty \), iz česar sledi preko Taylorjevega razvoja sledi
+
+  \[ 20 \log \left| \frac{1}{\omega \tau} \right| = -20 \log \left( \omega \tau \right)
+  \]
+
+- \( \omega \tau = 1 \), iz česar sledi
+
+  \[ 20 \log \left( \frac{1}{\sqrt{2}} \right) = -10 \log (2) \approx - 3 
+  \]
+
+Za fazni Bodejev diagram si pogledamo iste točke
+
+- \( \omega \to 0 \) je faza \( \delta = 0 \)
+  
+- \( \omega \to \infty \) je faza \( \delta = - \frac{\pi}{2} \)
+
+- \( \omega = 1 \) je faza \( \delta = - \frac{\pi}{4} \).
+
+*vstavi sliko diagramov*
+*** Prenosna funkcija člena s potenco
+
+Prenosna funkcija, ki vsebuje člen s potenco je
+
+\[ H(\mathrm{i} \omega) = \left( \mathrm{i} \omega \right)^n = \omega^n \exp \left\{ \mathrm{i} n \frac{\pi}{2} \right\}, \quad n = 1, 2, 3, \ldots 
+\]
+
+*vstavi grafe*
+*** Senzor 2. reda
+*** Low-pass filter
+*** High-pass filter
 * Vpliv senzorja na opazovani sistem
 
