@@ -121,7 +121,7 @@ za naš primer je potem
 \[ \frac{\mathrm{d} }{\mathrm{d} t} \begin{bmatrix} x \\ v \end{bmatrix} = \begin{bmatrix}
                                                                            0 & 1 \\
                                                                            0 & 0
-                                                                            \end{bmatrix} + \begin{bmatrix} 0 \\ 1 \end{bmatrix} w.
+                                                                            \end{bmatrix} \begin{bmatrix} x \\ v \end{bmatrix} + \begin{bmatrix} 0 \\ 1 \end{bmatrix} w.
 \]
 
 Naš senzor zajema \( z = H\mathbf{x} + r \), kjer je okno \( H = \left| 1 \ 0 \right| \) - merimo torej samo spremenljivko \( x \) in ne njenega odvoda.
@@ -214,7 +214,7 @@ Sledilna enačba je, ko združimo vse izračunane člene
 Rešujemo torej sistem enačb
 
 \begin{align*}
-  \dot{p}_{11} &= 2 p_{11} - \frac{1}{R} p_{11} ^2 \\
+  \dot{p}_{11} &= 2 p_{12} - \frac{1}{R} p_{11} ^2 \\
 \dot{p}_{12} &= p_{22}  - \frac{1}{R} p_{11} p_{12} \\
 \dot{p}_{22} &= Q - \frac{1}{R} p_{12} ^2
 \end{align*}
@@ -302,7 +302,7 @@ Začetni pogoji senzorja so
 
 Homogen diferencialne enačbe
 
-\[ \ddot{x} + 2 \xi \omega + \omega ^2 x = 0
+\[ \ddot{x} + 2 \xi \omega \dot{x} + \omega ^2 x = 0
 \]
 
 bomo rešili z nastavkom \( x = e^{\lambda x} \). Rešitvi za \( \lambda \) sta
@@ -345,12 +345,13 @@ Drugi začetni pogoj \( \dot{x}(0) = \omega ^2 \) dobimo vrednost konstante
 
 Rešitev je potem
 
-\[ x(t) = \frac{\omega \sqrt{2}}{2 \mathrm{i}} \left(e^x - e^{- x} \right) e^{- \frac{\omega t}{\sqrt{2}}} = \omega \sqrt{2} \sin \left( \frac{\omega t}{\sqrt{2}} \right) e^{- \frac{\omega t}{\sqrt{2}}} = G(t).
+\[ x (t) = \frac{\omega \sqrt{2}}{2 \mathrm{i}} \left( \exp \left\{  - \frac{\omega}{\sqrt{2}} (1 + \mathrm{i}) t\right\} - \exp \left\{ \frac{\omega}{\sqrt{2}} \left( 1 + \mathrm{i} \right) t \right\}  \right) = \omega \sqrt{2} \sin \left( \frac{\omega t}{\sqrt{2}} \right) \exp \left\{ - \frac{\omega t}{\sqrt{2}} \right\} = G(t).
+\]
 \]
 
 Za splošen \( \xi \) pa je sta rešitvi kvadratne enačbe
 
-\[ \lambda_{1, 2} = - \xi \omega \pm \mathrm{i} \omega \sqrt{1 - \epsilon ^2}.
+\[ \lambda_{1, 2} = - \xi \omega \pm \mathrm{i} \omega \sqrt{1 - \xi ^2}.
 \]
 
 Njuna razlika je

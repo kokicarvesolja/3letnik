@@ -234,8 +234,22 @@ Dobili smo enačbo 2. reda za \( \hat{x} \), ki jo preoblikujemo v
 
 Pogosto ne opazujemo odvoda meritve \( \dot{z} \), zato ga lahko zanemarimo.
 
+Z uvedbo koeficienta dušenja \( \xi \) in frekvence \( \omega \), ki imata vrednosti
 
+\[ \omega ^2 = \frac{p_{12}}{R} = \sqrt{\frac{Q}{R}},
+\]
 
+ter
+
+\[ 2 \xi \omega = 2 \xi \sqrt{\frac{p_{12}}{R}} = \frac{1}{2}\frac{\sqrt{2 R \sqrt{RQ}}}{\sqrt{R \sqrt{RQ}}}  \implies \xi = \frac{1}{\sqrt{2}}.
+\]
+
+zapišemo normalizirano obliko diferencialne enačbe 2. reda za senzor 2. reda
+
+\begin{equation}
+\label{eq:3}
+ \ddot{\hat{x}} + 2 \xi  \omega \dot{\hat{x}} + \omega ^2  \hat{x} = 2 \xi \omega \dot{z} + \omega ^2 z.
+\end{equation}
 #+end_izpeljava
 ** Primer senzorja 1. reda: termometer
 Predstavljajmo (ali skuhajmo!) si skodelico kave/čaja, ki naj ima temperaturo \( T_z \). S termometrom merimo temperaturo \( \hat{T}(t) \), vendar temperaturi nista isti, saj ima termometer stekleno steno površine \( S \) z debelino \( d \), skozi katero gre neka gostota toplotnega toka \( \mathbf{j} \). Zaradi steklene stene bo \( T(t) \) vedno zaostajal za dejansko temperaturo \( T_c \).
@@ -264,7 +278,158 @@ kjer konstanto označimo z \( \Lambda = \frac{\lambda S}{m c_p d} \)
 \]
 
 ** Primer: vhod \( \delta(t) \)
+
+Naj bo vhodna količina \( z(t) = \delta(t) \). Rešujemo nehomogeno diferencialno enačbo
+
+\[ \tau \dot{x} + x = \delta(t). 
+\]
+
+Rešitev homogenega dela diferencialne enačbe je eksponentna funkcija
+
+\[ x = C \exp \left\{ - \frac{t}{\tau} \right\}, 
+\]
+parcialno rešitev pa poiščemo z integracijo po intervalu \( \left[ -\epsilon, \epsilon \right] \) v limiti \( \epsilon \to 0 \).
+
+\begin{align*}
+  \tau \int\limits_{-\epsilon}^{\epsilon} \frac{\mathrm{d} x}{\mathrm{d} t} \, \mathrm{d} t + \int\limits_{-\epsilon}^{\epsilon} x \, \mathrm{d} t &= \int\limits_{-\epsilon}^{\epsilon} \delta(t) \, \mathrm{d} t \\
+\tau \left[ x(\epsilon) - x(- \epsilon) \right] = 1,
+\end{align*}
+kjer smo upoštevali, da je vrednost integracije po spremenljivki \( x \) ničelna.
+
+Zahtevamo, da za čase \( t < 0 \) velja, da je merilec v prvotni legi in se ne vrača tja. Z drugimi besedami, zahtevamo
+
+\[ \hat{x} (t < 0) = \ldots = \hat{x}^{(n)} (t < 0) = 0, 
+\]
+iz česar sledi rešitev parcialnega dela diferencialne enačbe
+
+\[ \hat{x}_p (t = 0) = \frac{1}{\tau} = C,
+\]
+kar je tudi vrednost koeficienta \( C \). Rešitev diferencialne enačbe ima torej obliko Greenove funkcije
+
+\[ x(t) = G(t) = \frac{1}{\tau} \exp \left\{ - \frac{t}{\tau} \right\}. 
+\]
+
+*vstavi sliko*
+
+V primeru senzorja 2. reda integriramo enačbo \eqref{eq:3}
+
+\[ \int\limits_{-\epsilon}^{\epsilon} \ddot{x} \, \mathrm{d} t + \int\limits_{- \epsilon}^{\epsilon} 2 \xi \omega \dot{x} \, \mathrm{d} t+ \int\limits_{- \epsilon}^{\epsilon} \omega ^2 x \, \mathrm{d} t = \omega ^2 \int\limits_{-\epsilon}^{\epsilon} \delta(t) \, \mathrm{d} t, 
+\]
+kjer smo zanemarili odvod vhodne količine \( \dot{z} \). Integracija nam poda enačbo
+
+\[ \dot{x}(\epsilon) - \dot{x}(-\epsilon) + 2 \xi \omega \left[ x(\epsilon) - x(-\epsilon)  \right] = \omega ^2,
+\]
+kjer upoštevamo, da je integral lihe funkcije \( x \) na sodem intervalu ničeln ter enake začetne pogoje kot prej, torej \( \frac{\mathrm{d} ^{(n)} x(t)}{\mathrm{d} t^{(n)}} = 0 \) za \( n = 0, 1, 2, \ldots \) in čas \( t > 0 \). Iz tega prav tako sledijo začetni pogoji
+
+\[ x(t = 0) = 0 \quad \text{ in }\quad \dot{x}(t = 0) = \omega ^2. 
+\]
+
+Rešitev homogenega dela enačbe \eqref{eq:3} pridobimo z eksponentnim nastavkom \( x = \exp \left\{ \lambda x \right\} \)
+
+\[ \lambda_{1, 2} = - \frac{2 \xi  \omega \pm \sqrt{4 \xi ^2 \omega ^2 - \omega ^2 }}{2}, 
+\]
+kar prepišemo v
+
+\[ \lambda_{1, 2} = - \frac{\omega}{\sqrt{2}} \left( 1 \mp \mathrm{i} \right)
+\]
+če upoštevamo \( \xi = \frac{1}{2} \), saj želimo optimalen filter. Rešitev je
+
+\[ x(t) = C_1 \exp \left\{\lambda_1  t  \right\} + C_2 \exp \left\{ \lambda_2 t \right\}. 
+\]
+
+Iz začetnega pogoja \( x(0) = 0 \) sledi \( C_1 = -C_2 \). Iz drugega začetnega pogoja \( \dot{x}(0) = \omega^2 \) rešujemo enačbo
+
+\[ \left. \dot{x}(t) \right|_{t = 0} =\left.  C_1 \lambda_1 \exp \left\{ \lambda_1 t \right\} - C_1 \lambda_2 \exp \left\{ \lambda_2 t \right\} \right|_{t = 0} = \omega ^2,
+\]
+iz česar določimo vrednost konstante
+
+\[ C_1 = \frac{\omega ^2}{\lambda _1 - \lambda_2} = \frac{\omega \sqrt{2}}{2 \mathrm{i}}. 
+\]
+
+Rešitev je torej 
+
+\[ x (t) = \frac{\omega \sqrt{2}}{2 \mathrm{i}} \left( \exp \left\{  - \frac{\omega}{\sqrt{2}} (1 + \mathrm{i}) t\right\} - \exp \left\{ \frac{\omega}{\sqrt{2}} \left( 1 + \mathrm{i} \right) t \right\}  \right) = \omega \sqrt{2} \sin \left( \frac{\omega t}{\sqrt{2}} \right) \exp \left\{ - \frac{\omega t}{\sqrt{2}} \right\} = G(t).
+\]
+
+Za splošen \( \xi \) sta vrednosti
+
+\[ \lambda_{1, 2} = - \xi  \omega \pm \mathrm{i} \omega \sqrt{1 - \xi ^2}
+\]
+
+in njuna razlika je potem
+
+\[ \lambda_1 - \lambda_2 = 2 \mathrm{i} \omega \sqrt{1 - \xi ^2}.
+\]
+
+Iz enakih začetnih pogojev potem določimo koeficient
+
+\[ C_1 = \frac{\omega}{2 \mathrm{i} \sqrt{1 - \xi ^2}},
+\]
+pripadajoča rešitev pa je
+
+\begin{align*}
+ x(t) = G(t) &= \frac{\omega}{\sqrt{1 - \xi ^2}} \frac{1}{2 \mathrm{i}} \left[ \exp \left\{ \mathrm{i} \omega \sqrt{1 - \xi ^2} t \right\} - \exp\left\{ -\mathrm{i} \omega \sqrt{1 - \xi ^2} t \right\}  \right] \exp \left\{ - \xi \omega t \right\}\\
+& = \frac{\omega}{ \sqrt{1 - \xi ^2}} \sin \left( \sqrt{1 - \xi ^2 } \omega t \right) \exp \left\{ - \xi \omega t \right\}
+\end{align*}
+
+V primeru splošnega \( \xi \) ločimo tri primere:
+
+- \( \xi \to 0 \) imamo nedušeno nihanje
+
+  \[ x(t) = \omega \sin (\omega t). 
+  \]
+
+- za \( \xi \to \frac{1}{\sqrt{2}} \) smo rešitev že zapisali, dušenje oscilatorno.
+
+- za \( \xi \gg 1 \) je senzor predušen in sinus razvijevo
+
+  \[ x(t) = \frac{\omega}{\xi ^2 - 1} \sinh \left( \sqrt{\xi ^2 - 1 } \omega t \right) \exp \left\{ - \xi \omega t \right\},
+  \]
+  in dušenje ni več oscilatorno.
 ** Primer: vhod \( \alpha t \)
+
+Naj bo vhodni signal oblike \( z(t) = \alpha t \), kjer je \( \alpha \in \mathbb{R} \). Za senzor 1. reda rešujemo nehomogeno diferencialno enačbo
+
+\[ \tau \dot{x} + x = \alpha t, 
+\]
+katere homogeno rešitev že poznamo
+
+\[ x_h(t) =  C \exp \left\{ - \frac{t}{\tau} \right\}.
+\]
+
+Parcialno rešitev pridobimo z nastavkom oblike 
+
+\[ x_p (t) = A t + B, 
+\]
+ki jo vstavimo v enačbo in dobimo \( A = \alpha \) ter \( B = - \alpha \tau \). Celotna rešitev je
+
+\[ x(t) = x_h (t) + x_p (t) = C \exp \left\{ - \frac{t}{\tau} \right\} + \alpha t - \alpha \tau. 
+\]
+
+Iz robnih pogojev \( x(0) = 0 \), sledi \( C = \alpha \tau \) in rešitev je potem
+
+\[ x(t) = \alpha t + \alpha \tau \left( \exp \left\{ - \frac{t}{\tau} - 1 \right\} \right) 
+\]
+
+Prvi člen je enak vhodni funkciji, drugemu členu pa pravimo \textit{zamik} (ang. /offset/). V naši meritvi imamo torej sistematično napako, ki je enaka vrednosti zamika. Za dovolj majhen \( \tau \) je ta zanemarljiva.
 ** Primer: blažilnik, amortizer
+
+Nahajamo se na vrhu kolesa z amortizerjem, ki ima v sebi tekočino z viskoznostjo \( \eta \) (kar bi rad trenutno počel, ampak se moram učiti). Vozimo se s hitrostjo \( v \) in imamo maso \( m \). Pri vožnji se spreminja višina terena, kar je naš vhodni signal \( z(t) \). Zanima nas odziv našega sedeža \( x(t) \) glede na vhodni signal.
+
+Dinamika našega sistema je odvisna od relativne lege in sile upora \( F_u = - \beta v \), torej
+
+\[ m \ddot{x} = k (z - x) - \beta (\dot{x} - \dot{z}), 
+\]
+kar prepišemo v
+
+\[ \ddot{x} + \frac{\beta}{m} \dot{x} + \frac{k}{m} x = \frac{k}{m} z + \frac{\beta}{m} \dot{z}.
+\]
+
+Za dane pogoje je amortizer senzor 2. reda. Če je senzor optimalen \( \xi = \frac{1}{\sqrt{2}} \), določimo koeficient \( \beta \) iz zgornje enačbe
+
+\[ 2 \xi \omega = 2 \xi \sqrt{\frac{k}{m}} = \frac{\beta}{m} \implies \beta = \sqrt{2 km} = \gamma \eta, 
+\]
+kjer je \( \gamma \) koeficient upora.
 * Prenosna funkcija senzorja
+* Vpliv senzorja na opazovani sistem
 
