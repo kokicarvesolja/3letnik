@@ -8,6 +8,7 @@
 #+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
 #+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
 #+latex_header: \def\npredmet{FMER - OPZ}
+#+latex_header: \usepackage[european]{circuitikz}
 #+bibliography: refs.bib
 * Optimalna povratna zanka
 
@@ -709,7 +710,471 @@ Prenosna funkcija, ki vsebuje člen s potenco je
 
 *vstavi grafe*
 *** Senzor 2. reda
+
+Prenosna funkcija senzorja 2. reda za periodične vhode izhaja iz enačbe \eqref{eq:6} in je
+
+\[ H(\mathrm{i} \omega) = \frac{1}{- \frac{\omega ^2}{\omega_0 ^2} + \frac{2 \xi \omega}{\omega_0} + 1}. 
+\]
+
+Njena absolutna vrednost je
+
+\[ \left| H(\mathrm{i} \omega) \right| = \frac{1}{\sqrt{\left( 1 - \frac{\omega ^2}{\omega_0 ^2} \right) ^2 + \left( \frac{2 \xi \omega}{ \omega_0} \right) ^2}}
+\]
+
+Označimo \( x = \frac{\omega}{\omega_0} \) in absolutna vrednost je
+
+\[ \left| H(\mathrm{i} \omega) \right| = \left[ \left( 1 - x ^2 \right) ^2 + \left( 2 \xi x \right) ^2 \right]^{- \frac{1}{2}} = \left[ 1 -2 x ^2 + x ^4 + 4 \xi ^2 x ^2 \right]^{-\frac{1}{2}}.
+\]
+
+Faza pa je
+
+\[ \tan \delta = -\frac{2 \xi x}{1 - x ^2}. 
+\]
+
+Za amplitudni Bodejev diagram so pomembne sledeče točke
+
+- \( x \to 0 \), iz česar sledi
+
+  \[ 20 \log \left| H(\mathrm{i} \omega) \right| = 20 \log 1 = 0
+  \]
+
+- \( x \gg 1 \), iz česar sledi
+
+  \[ 20 \log \left| H \right| = 20 \log \left( x ^{-2}\right) = -40 \log x
+  \]
+
+- \( x = 1 \), iz česar sledi
+
+  \[ 20 \log \frac{1}{2 \xi} = -10 \log 2 = -3 
+  \]
+
+Za fazni Bodejev diagram so pomembne točke
+
+- \( \omega \to 0 \), iz česar sledi
+
+  \[ \tan \delta = 0 \implies \ \delta = 0
+  \]
+
+- \( x \to \infty \), iz česar sledi
+
+  \[ \tan \delta = - \frac{2 \xi}{x} \implies \ \delta = - \pi
+  \]
+
+- ter \( x  = 1 \), iz česar sledi
+
+  \[ \tan \delta = - \frac{2\xi}{1 - x} \implies \delta = - \frac{\pi}{2}. 
+  \]
 *** Low-pass filter
+
+Shema low-pass filtra je naslednja
+
+#+begin_src latex
+\begin{center}
+ \begin{circuitikz}
+    \scalebox{1}{
+      \draw node[left]{$U_{in}$} (0, 0) to[R=$R$, o-] (2, 0) to[short, -o] (4, 0) 
+      node[right]{$U_{out}$};
+      \draw (2, 0) to[C=$C$] node[ground]{} (2, -1.5);
+    }
+  \end{circuitikz} 
+\end{center}
+#+end_src
+
+Low-pass filter je filter, ki prepušča nizke frekvence. Za osnovne komponente električnih vezij (upor, kondenzator, tuljava) naslednje:
+
+- upor \( Z_R = R \)
+
+- kondenzator \( Z_C = \frac{1}{\mathrm{i} \omega C} \), kjer je \( C \) kapaciteta kondenzatorja
+
+- tuljava \( Z_L = \mathrm{i} \omega L \), kjer je \( L \) induktivnost (?)
+
+Impedanca low-pass filtra je
+
+\[ Z = R + \frac{1}{\mathrm{i} \omega C} = \frac{\mathrm{i} \omega RC + 1}{\mathrm{i} \omega C}. 
+\]
+
+Preko Ohmovega zakona zapišemo napetost na izhodu \( U_{out} \), ki je
+
+\begin{equation}
+\label{eq:9}
+ U_{out} = I \cdot Z_C. 
+\end{equation}
+
+Za tok, ki teče od \( U_{in} \) do *GROUND* pa velja
+
+\begin{equation}
+\label{eq:10}
+ I = \frac{U_{in}}{Z} = U_{in} \frac{\mathrm{i} \omega C}{1 + \mathrm{i} \omega RC}. 
+\end{equation}
+
+Ko združimo enačbi \eqref{eq:9} in \eqref{eq:10} lahko izrazimo razmerje med vhodno in izhodno napetostjo
+
+\[ U_{out} = U_{in} \frac{1}{1 + \mathrm{i} \omega C} \implies \ H(\mathrm{i} \omega) = \frac{U_{out}}{U_{in}} = \frac{1}{1 + \mathrm{i} \omega \tau},
+\]
+kjer smo uvedli karakteristični čas \( \tau = RC \).
+
+Za visoke frekvence \( \omega \tau \gg 1 \) je low-pass filter integrator, saj velja
+
+\[ H(\mathrm{i} \omega) = \frac{1}{\mathrm{i} \omega \tau} = \frac{1}{\mathrm{i} \omega} \frac{1}{\tau} = \frac{1}{\tau} H(\mathrm{i} \omega) 
+\]
+
+Za neko frekvenco \( \nu = \nu_0 e^{\mathrm{i} \omega t} \) velja
+
+\[ \int\limits_{}^{} \nu \, \mathrm{d}t = \nu_0 \int\limits_{}^{} e^{\mathrm{i} \omega t} = \nu_0 \frac{1}{\mathrm{i} \omega} e^{\mathrm{i} \omega t}. 
+\]
+
+*vstavi graf*
 *** High-pass filter
+
+Shema high-pass filtra je
+
+#+begin_src latex
+\begin{center}
+  \begin{circuitikz}
+    \scalebox{1.}{
+      \draw node[left]{$U_{in}$} (0, 0) to[C=$C$, o-] (2, 0) to[short, -o] (4, 0) 
+      node[right]{$U_{out}$};
+      \draw (2, 0) to[R=$R$] node[ground]{} (2, -1.5);
+    }
+  \end{circuitikz}
+\end{center}\vspace{-30pt}
+#+end_src
+
+Impedanca zgornje sheme je
+
+\[ Z + \frac{1}{ \mathrm{i} \omega C} + R = \frac{1 + \mathrm{i} \omega \tau}{\mathrm{i} \omega C}, \ \tau = RC.
+\]
+
+Preko Ohmovega zakona (ali pa Kirchoffovega) je napetost \( U_{out} \) definirana kot
+
+\[ U_{out} - 0 = R I. 
+\]
+
+Tok iz vhodne napetosti \( U_{in} \) do GROUND je
+
+\[ I = \frac{U_{in}}{Z} = U_{in} \frac{- \mathrm{i} \omega C}{1 + \mathrm{i} \omega \tau}. 
+\]
+
+Združitev zgornjih dveh enačb nam poda prenosno funkcijo za high-pass filter
+
+\[ H(\mathrm{i} \omega) = \frac{U_{out}}{U_{in}} = \frac{\mathrm{i} \omega \tau}{1 + \mathrm{i} \omega \tau}. 
+\]
+
+Poglejmo si Bodejev amplitudni diagram za značilne točke
+
+- \( \tau \omega \to 1 \), iz česar sledi
+
+  \[ 20 \log \left| H(\mathrm{i} \omega) \right|  \to -\infty.
+  \]
+
+- \( \omega \tau \to \infty \), iz česar sledi
+
+  \[ 20 \log \left| H(\mathrm{i} \omega) \right| = 0,
+  \]
+
+- \( \omega \tau = 1 \), iz česar sledi
+
+  \[ 20 \log \frac{1}{\sqrt{2}} = - 3 
+  \]
+
+Za nizke frekvence deluje high-pass filter kot diferenciator. Za diferenciator velja
+
+\[ \nu_0 e^{\mathrm{i} \omega t} \to \mathrm{i} \omega \nu_0 e^{\mathrm{i} \omega t}. 
+\]
+
+Prenosna funkcija diferenciatorja je
+
+\[ H = H_{dif} \tau = \mathrm{i} \omega \tau
+\]
+*vstavi graf*
 * Vpliv senzorja na opazovani sistem
+#+begin_idea
+Senzor interagira z opazovanim sistemom \( S \). Merilo, ki ga uporabljamo za opis vpliva senzorja na sistem \( S \) je moč, ki jo senzor črpa iz opazovanega sistema
+
+\[ P_M = \frac{U_M ^2}{Z_M}, 
+\]
+kjer je \( U_M \) napetosti, ki jo kaže voltmeter, ter \( Z_M \) vhodni upor voltmetra.
+
+Preko Theveninovega izreka pridemo do zaključka, da za \( U_M < U_{AB} \), kjer \( U_{AB} \) napetost med dvema točkama \( A \) in \( B \) v sistemu \( S \), velja \( \frac{Z_{AB}}{Z_M} \to 0 \). Naš sistem bo trošil minimalno moč \( P \ll P_{\max} \), ko je \( Z_M \gg Z_{AB} \).
+
+Želimo, da je vhodna impedanca \( Z_{in} \to \infty \) ter izhodna impedanca \( Z_{out} = 0 \).
+#+end_idea
+
+#+attr_latex: :options [Theveninov izrek]
+#+begin_theorem
+Vsako električno vezje sestavljeno iz linearnih elementov (upor, tuljava, kondenzator) v poljubnih točkah \( A \) in \( B \) lahko nadomestimo z generatorjem napetosti \( U_{AB} \) in notranjo upornostjo \( Z_{AB} \).
+#+end_theorem
+
+#+attr_latex: :options [Trošena moč]
+#+begin_izpeljava
+Vezje za senzor, ki interagira s sistemom \( S \) nadomestimo z vezje, ki ima napetostni izvor \( U_{AB} \) ter impedanco \( Z = Z_{AB} + Z_M \). Tok (glej sliko) je potem
+
+\[ I = \frac{U_{AB}}{Z_{AB} + Z_M}. 
+\]
+
+#+attr_latex: :width 0.5\textwidth :caption \caption{Uporaba Theveninovega izreka za izračun moči \( P_M \), ki jo troši naš senzor. Vir: \cite{likar_osnove_2016}.}
+[[file:figures/TheveninovIzrek.png]]
+
+Po Ohmovem zakonu je napetost \( U_M \)  v merilnem sistemu z uporom \( Z_M \) potem
+
+\[ U_M = I Z_M = U_{AB}\frac{Z_M}{Z_{AB} + Z_M}. 
+\]
+
+Moč, ki se troši na senzorju je potem po definiciji
+
+\begin{equation}
+\label{eq:11}
+ P_M = \frac{U_M ^2}{Z_M} = \frac{U_{AB} ^2 Z_M}{ \left( Z_{AB} + Z_M \right) ^2}.
+\end{equation}
+
+Odvajamo po \( Z_M \), da najdemo točko, v kateri senzor črpa maksimalno moč
+
+\[ \frac{\mathrm{d} P}{\mathrm{d} Z_{M}} = 0 = U_{AB} \left[ \frac{Z_M + Z_{AB}}{\left(Z_{AB} + Z_M\right) ^2} - \frac{2 Z_M}{\left( Z_{AB} + Z_M \right) ^2} \right].
+\]
+
+Največ moči se torej točki, ko velja \( Z_{AB} = Z_M \) in sicer
+
+\[ P_{\max} = U_{AB} ^2 \frac{Z_{AB}}{4 Z_{AB} ^2}  = \frac{U_{AB} ^2}{4 Z_{AB}}.
+\]
+
+Enačbo \eqref{eq:11} razširimo s \( 4 Z_{AB} \), zato da zapišemo
+
+\[ P_M = \frac{U_{AB} ^2}{4 Z_{AB}} \frac{Z_M}{\left( Z_{AB} + Z_M \right) ^2} = P_{\max} \frac{4 Z_{AB} Z_M}{\left( Z_M + Z_{AB} \right) ^2}.
+\]
+
+Iz imenovalca izpostavimo \( Z_M \), ki se nam pokrajša s števcem
+
+\[ P_M = 4 P_{\max} \frac{4 Z_{AB}}{Z_M \left( 1 + \frac{Z_{AB}}{Z_M} \right) ^2},
+\]
+
+ali drugače
+
+\[ P_M = P_{\max} \frac{Z_M}{Z_{AB}} \frac{4}{\left( 1 + \frac{Z_M}{Z_{AB}} \right) ^2}. 
+\]
+
+Za \( \frac{Z_M}{Z_{AB}} \gg 1 \) imenovalec razvijemo po Taylorju
+
+\[ P_M = P_{\max} = \frac{Z_M}{Z_{AB}} \frac{Z_{AB} ^2}{Z_M ^2} = 4 P_{\max} \frac{Z_{AB}}{Z_M}.
+\] 
+
+Izrazimo v razmerju
+
+\[ \frac{P_M}{P_{\max}} = 4\frac{Z_{AB}}{Z_M}, 
+\]
+iz česar lahko zaključimo, da bo moč \( P_M \) na senzorju minimalna za \( Z_M \gg Z_{AB} \).
+#+end_izpeljava
+** Primer: Premik v kondenzatorju
+
+#+attr_latex: :width 0.5\textwidth :caption \caption{Shema vezja za merjenje hitrosti \( \dot{\xi}(t) \)}
+[[file:figures/premiksKondenzatorjem.png]]
+
+Ena od plošč je direktno povezana s sistemom \( S \), ki mu merimo hitrost \( \dot{\xi}(t) \). Premik plošče označimo s \( \xi(t) \). Za premik plošče je potrebna majhna sila, zato ima senzor veliko impedanco. Delo, ki ga mora sistem \( S \) opraviti za premik kondenzatorja je
+
+\[ A = F_e \Delta \xi, 
+\]
+kjer je \( F_e \) električna sila. Moč, ki jo bo potem črpal naš senzor iz sistema \( S \), je
+
+\[ P = \frac{\mathrm{d} A}{\mathrm{d} t} = F_e \dot{\xi}.
+\]
+
+Električno polje znotraj kondenzatorja z začetno širino plošč \( \xi_0 \) je
+
+\[ E = \frac{1}{C} \frac{e}{\xi_0}, 
+\]
+
+za naboj pa velja
+
+\[ e = C U. 
+\]
+
+Izrazimo torej električno silo
+
+\[ F_e = \frac{1}{2} e E = \frac{1}{2} \epsilon_0 \frac{U ^2}{\xi_0 ^2} S = \frac{1}{2} \frac{CU ^2}{\xi_0}.
+\]
+
+Moč je potem
+
+\[ P = \frac{1}{2} C U ^2 \frac{\dot{\xi}}{\xi_0},
+\]
+in je majhna za majhne \( C \), \( U \) ter velik \( \xi_0 \). Vendar to ni vse! Signal, ki ga dobimo iz senzorja je tudi odvisen od teh količin. Za majhne hitrosti \( \dot{\xi} \) je napetost \( U \) na kondenzatorju v prvem približku konstantna. Tok skozi desno polovico vezja je potem
+
+\[ I = \dot{C} U, 
+\]
+signal pa je
+
+\[ z = IR = R U \dot{C} = - RU \frac{\epsilon_0 S}{\xi_0 ^2} \dot{\xi} = RUC \frac{\dot{\xi}}{\xi_0}. 
+\]
+
+Za velik signal moramo torej izbrati velik \( C \), \( U \) ter čim manjši \( \xi_0 \), kar je ravno obratno od tega, kar zahtevamo za trošenje minimalne moči. Zato uporabljamo ojačevalnike.
+** Instrumentacijski ojačevalnik
+
+Shema instrumentacijskega ojačevalnika je
+
+#+attr_latex: :width 0.5\textwidth :caption \caption{Shema instrumentacijskega ojačevalnika, vir \cite{likar_osnove_2016}.}
+[[file:figures/ojacevalnik.png]]
+
+Sestavljajo ga trije operacijski ojačevalniki (OPAMP), ki imajo sledečo shemo
+
+#+begin_src latex
+\begin{center}
+  \begin{circuitikz}
+    \scalebox{1.}{
+      \draw (0,0) node[op amp] (opamp) {} 
+      (opamp.+) node[left] {$U_+$}
+      (opamp.-) node[left] {$U_-$}
+      (opamp.out) node[right] {$U_{out}$}
+      (opamp.up) --++(0,0.5) node[vcc]{$5 \ {V}$}
+      (opamp.down) --++(0,-0.5) node[vee]{$-5 \ {V}$};
+    }
+  \end{circuitikz} 
+\end{center}
+#+end_src
+
+Njegova naloga je, da ojača šibke električne signale. Ima dva vhoda \( U_1 \) (ang. /inverting/), \( U_2 \) (ang. /non-inverting/) in en izhod \( U_{izh} \). Prenosna funkcija OPAMP-a je
+
+\[ H = A_{DC} H_{LPF}, 
+\]
+kjer je \( H_{LPF} \) prenosna funkcija low-pass filtra. Napetost na izhodu podaja enačba
+
+\[ U_{izh} = A_{DC} \left( U_1 - U_2 \right). 
+\]
+
+V shemi instrumentacijskega ojačevalnika se uporablja tudi negativno povratno zank s shemo 
+
+#+begin_src latex
+\begin{center}
+  \begin{circuitikz}
+    \scalebox{1.}{
+      \draw (0,0) node[op amp] (opamp) {} 
+      (opamp.+) to[short, -o] ++(-1,0) node[left]{$U_{in}$}
+      (opamp.-) -- ++(0, 1) to[R = $F$] ++(2.5, 0) -- ++(0, -1.49)
+      (opamp.out) to[short, -o] (2, 0) node[right] {$U_{out}$};
+    }
+  \end{circuitikz}
+\end{center}
+#+end_src
+
+Tvorimo jo tako, da izhod OPAMP-a povežemo z invertirajočim vhodom \( U_2 \) preko upora \( F \).
+
+Faktor ojačanja \( A \) je pogojen z uporom \( F \). Za napetost na izhodu velja
+
+\[ U_{out} = A \left( U_{in} - FU_{out} \right), 
+\]
+iz česar sledi
+
+\[ A U_{in} = AF U_{out} + U_{out}.
+\]
+
+Prenosna funkcija je potem
+
+\[ H = \frac{U_{out}}{U_{in}} = \frac{A}{AF + 1} = \frac{1}{F + \frac{1}{A}} \approx \frac{1}{F}, 
+\]
+kjer smo upoštevali velik \( A \gg 1 \). V primeru \( F = 1 \) imamo t.i. /napetostni sledilnik/, ki sledi napetosti na vhodu in od signala ne črpa moči.
+
+#+begin_idea
+Za izhodno napetosti instrumentacijskega ojačevalnika velja
+
+\[ U_{out} = - \frac{R_3}{R_2} \left[ \tilde{U}_1 - \left( 1 + \frac{R_2}{R_3} \right) \frac{R_3 '}{R_2 ' + R_3 ' }\tilde{U}_2 \right] 
+\]
+
+Faktor pred \( \tilde{U}_2 \) je enak 1 za
+
+\[ \frac{R_2}{R_3} = \frac{R_2 '}{R_3 '},
+\]
+vendar ne drži vedno v praktičnih primerih. Če je faktor
+
+\[   \left( 1 + \frac{R_2}{R_3} \right) \frac{R_3 '}{R_2 ' + R_3 ' } = \frac{1 + \epsilon}{1 - \epsilon},
+\]
+
+za \( \epsilon \ll 1 \), potem velja na izhodu
+
+\[ U_{out} = - \frac{R_3}{R_1 (1 - \epsilon)} \left[ \Delta \tilde{U}_1 - \epsilon \left( \tilde{U}_1 + \tilde{U}_2 \right) \right]. 
+\]
+
+Ohranja se \( \Delta \tilde{U}_1 \), močno pa se spreminja vsota \( \tilde{U}_1 + \tilde{U}_2 \), saj se spreminja vsota \( U_1 + U_2 \). Z vhodnima OPAMP-oma in verigo uporov \( R_1 - R_0 - R_1 \) ojačamo razliko \( \Delta U \). 
+
+Vsoti napetosti \( U_1 + U_2 \) pravimo *Common mode*. *Common Mode Rejection Ratio (CMRR) je definiran kot
+
+\[ \text{CMRR} = \frac{A \left( U_1 - U_2 \right)}{A \left( U_1 + U_2 \right)}. 
+\]
+#+end_idea
+
+#+attr_latex: :options [Izhodna napetosti instrumentacijskega ojačevalnika]
+#+begin_izpeljava
+Za vezje v črtkanem okviru velja Kirchoffov zakon
+
+\[ \tilde{U}_1 + \tilde{U}_2 = U_1 + U_2.
+\]
+
+Za tok \( I \) potem velja
+
+\[ \frac{\tilde{U}_1 - U_1}{R_1} + \frac{U_2 - \tilde{U}_2}{R_1} = \frac{2(U_1 - U_2)}{R_0},
+\]
+kjer je \( U_1 - U_2 = z \) signal iz senzorja. Prepišemo v
+
+\[\left[ \frac{\tilde{U}_1 - \tilde{U}_2}{R_1} + \frac{U_2 - U_1}{R_1} \right] R_1 = 2 R_1 \frac{\left( U_1 - U_2 \right)}{R_0},
+\]
+
+in nadalje
+
+\[ \left( \tilde{U}_1 - \tilde{U}_2 \right) = \Delta \tilde{U} = \left( 2 \frac{R_1}{R_0} + 1 \right) \left( U_1 - U_2 \right) =  \left( 2 \frac{R_1}{R_0} + 1 \right) \Delta U.
+\]
+
+Za del vezja izven črtkanega okviarja velja
+
+\[ \frac{\tilde{U}_2 - U}{R_2 '} = \frac{U}{R_3 '}, 
+\]
+iz česar sledi
+
+\[ \frac{\tilde{U}_2}{R_2 '} = U \left( \frac{1}{R_3 '} + \frac{1}{R_2 '} \right) = U \frac{R_2 ' + R_3 '}{R_3 ' R_2 '} \implies U = \tilde{U}_2 \frac{R_3 '}{R_2 ' + R_3 '}
+\]
+
+Za drugi del vezja pa velja
+
+\[ \frac{\tilde{U}_1 - U}{R_2} = \frac{U - U_{out}}{R_3},
+\]
+in izrazimo
+
+\[ U_{out} = - \frac{R_3}{R_2} \left[ \tilde{U}_1 - \left( 1 + \frac{R_2}{R_3} \right) \frac{R_3'}{R_2 ' + R_3 '} \tilde{U}_2 \right] 
+\]
+#+end_izpeljava
+** Termični šum na uporu
+#+begin_idea
+Termične fluktuacije naboja v uporu povzročajo termični šum. 
+
+#+attr_latex: :width 0.5\textwidth :caption \caption{Vezje, s katerim preučujemo termični šum na uporu, vir \cite{likar_osnove_2016}.}
+[[file:figures/termicniSum.png]]
+
+Kalmanova dinamika za zgornje vezje je
+
+\[ \dot{U}_C = - \frac{1}{\tau} U_C + \frac{U_g}{\tau}, \ \tau = RC, 
+\]
+kjer je \( U_g \) dinamični šum in nihanje napetosti na kondenzatorju ima pričakovano vrednost \( \left\langle U_C ^2 \right\rangle = P_0 \).
+
+Disperzija brez členov za merjenje je
+
+\[ \dot{P} = - \frac{2}{\tau} P + \frac{1}{\tau ^2} Q 
+\]
+
+Stacionarna rešitev je
+
+\[ P = \frac{Q}{2 \tau}, 
+\]
+ki jo lahko povežemo z ekviparticijskim izrekom z eno prostostno stopnjo
+
+\[ \left\langle W_C \right\rangle = \frac{1}{2} C \left\langle U_C ^2 \right\rangle = \frac{1}{2} k_B T \implies \ Q = 2k TR.
+\]
+
+Definiramo *spektralno gostoto šuma*
+
+\[ R \frac{\mathrm{d} P}{\mathrm{d} \omega} = \frac{\mathrm{d} \left\langle U ^2 \right\rangle}{\mathrm{d} \omega},
+\]
+ki nam pove povprečno moč, ki jo dobiva upor \( R \) zaradi nihanja napetosti na intervalu \( [\omega - \mathrm{d} \omega, \omega + \mathrm{d} \omega] \). 
+
+Po Wiener-Khinchinovem izreku sledi, da je spektralna gostota šuma Fourierov obrat avtokorelacijske funkcije funkcije \( \left\langle U_g (t) U_g (t + \tau) \right\rangle = 2k TR \delta(\tau) \),
+
+\[ \frac{\mathrm{d} \left\langle U ^2 \right\rangle}{\mathrm{d} \omega} = \frac{1}{\pi} \int\limits_{- \infty}^{\infty} 2 k TR \delta(t) e^{- \mathrm{i} \omega t}  \, \mathrm{d} t = 2 \frac{k T R}{\pi} = \phi(\omega)
+\]
+
+#+end_idea
 
