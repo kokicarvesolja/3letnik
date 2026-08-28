@@ -119,7 +119,7 @@
     Hidrostatičen tlak iz predavanj predstavimo z \( p_{ik} = - p \delta_{ik} \)
   \end{primer}
   \begin{primer}
-    Strižna obremenitev ima dve izvendiagonalni komponenti neničelni \( p_{ik} = p (\delta_{iz} \delta_{kx} + \delta_{ix} \delta_{kz} \)
+    Strižna obremenitev ima dve izvendiagonalni komponenti neničelni \( p_{ik} = p (\delta_{iz} \delta_{kx} + \delta_{ix} \delta_{kz}) \)
   \end{primer}
 
   Ob uporabi identitete \( \nabla \nabla \cdot = \nabla ^2 + \nabla \times \nabla \times \), kjer je pogosto drugi člen ničeln, je stacionarna Navierova enačba 
@@ -132,7 +132,9 @@
   
   Sprememba volumna je
 
-  \( \frac{\Delta V}{V} = u_{kk} = \frac{1}{2 \mu + 3 \lambda} p_{kk} \), kjer velja za sled tudi \( u_{kk} = \nabla \cdot \mathbf{u} \).
+  \( \frac{\Delta V}{V} = u_{kk} = \frac{1}{2 \mu + 3 \lambda} p_{kk} \), kjer velja za sled tudi \( u_{kk} = \nabla \cdot \mathbf{u} \). Če je krogla/valj votel, potem spremembo volumna preko enačbe
+
+  \( \frac{\Delta V}{V} = \frac{4 \pi R ^2 u_r}{\frac{4}{3} \pi R ^3} \)
 
   \begin{primer}
     V primeru deformacijskega vektorja oblike \( \mathbf{u} = u_r (r) \mathbf{e}_r + u_{\phi} (r) \mathbf{e}_{\phi} \) ločimo na \( \mathbf{u} = \mathbf{u}_1 + \mathbf{u}_2\), kjer je \( \nabla \cdot u_2 = 0 \) in \( \nabla \times u_1 = 0 \).
@@ -164,9 +166,7 @@
 
   kjer je \( P(x, y) \) površinska gostota sil (tlak). 
 
-  \begin{primer}
-    \( \Delta_{\perp} ^2 f = \Delta_{\perp} \left[ \frac{1}{r} \partial_r \left( r \partial_r f \right) \right] = \frac{1}{r} \partial_r \left\{ r \partial_r \left[ \frac{1}{r} \partial_r \left( r \partial_r f \right) \right] \right\} \)
-  \end{primer}
+  \( \Delta_{\perp} ^2 f = \Delta_{\perp} \left[ \frac{1}{r} \partial_r \left( r \partial_r f \right) \right] = \frac{1}{r} \partial_r \left\{ r \partial_r \left[ \frac{1}{r} \partial_r \left( r \partial_r f \right) \right] \right\} \)
   
   \textbf{Togo vpeta plošča}
 
@@ -174,7 +174,7 @@
 
   \( \left. u_z \right|_{\partial S} = 0 \quad \text{ in } \quad \left. \frac{\partial }{\partial \mathbf{n}} u_z \right|_{\partial S} = 0\),
 
-  kjer je \( \partial S \) rob plošče in \( \partial_{\mathbf{n}} \) odvod v smeri, ki je vzporedna z ravnino plošče in pravokotna na njen rob. 
+  kjer je \( \partial S \) rob plošče in \( \partial_{\mathbf{n}} \) odvod v smeri, ki je vzporedna z ravnino plošče in pravokotna na njen rob. V primeru okrogle plošče je to \( \mathbf{n} = r \).
 
   \textbf{Prislonjena plošča}
 
@@ -245,7 +245,9 @@
 
     \( \chi (x, y) = - \frac{a ^2 b ^2}{2 (a ^2 + b ^2)} \left[ \frac{x ^2}{a ^2} + \frac{y ^2}{b ^2} - 1 \right] \) in
 
-    \( \psi(x, y) = xy \frac{b ^2 - a ^2}{a ^2 + b ^2} \).
+    \( \psi(x, y) = xy \frac{b ^2 - a ^2}{a ^2 + b ^2} \). Navor izračunamo po enačbi
+
+    \( M = 4 \mu \tau \int\limits_{}^{} \chi \, \mathrm{d} S \).
   \end{primer}
   
   \subsubsection{Upogib}
@@ -299,6 +301,28 @@
   \begin{primer}[lastne frekvence]
     Rešujemo \( E \mathsf{I} x^{(4)} + \rho \frac{\partial ^2}{\partial t ^2} x = 0  \) in nastavek \( x(z, t) = v(z) e^{- \mathrm{i} \omega t} \).
   \end{primer}
+
+  \begin{primer}[Vzdolžna sila]
+    Palico, ki je na eni strani togo vpeta, drug konec pa ima prost, vlečemo vzporedno s silo \( F_z \), zato da zmanjšamo odmik. Enačba odmika je \( EI u^{(4)} - F_z u^{(2)} - \rho_l g = 0. \) Uporabimo  nastavek \( u^{(2)} = v \) in rešujemo nehomogeno enačbo z nastavkom \( v = e^{\alpha z} \). Parcialna rešitev je \( v_p = \frac{- \lambda ^2}{k ^2} \). Za izračun \( u \) še dvakrat integriramo in upoštevamo robne pogoje za določitev konstant.
+  \end{primer}
+
+  \begin{primer}[kitarska struna]
+    Dinamična enačba za struno napeto s \( F \) je \( EI u^{(4)} - F \ddot{u} = - \rho_l \frac{\partial ^2 u}{\partial t ^2}  \), ki jo rešujemo z nastavkom \( u(x, t) = u_0 \sin (kx) e^{-\mathrm{i} \omega t} \), ki zadosti pogojema vrtljivo vpetih koncev za \( k_n = \frac{(n + 1) \pi}{l} \). Disperzijska relacija je potem \( k_n ^4 + \frac{F}{EI} k_n ^2 = \frac{\rho_l}{EI} \omega ^2 \), izkjer izrazimo \( \omega \). Brez upoštevanja elastičnosti je sila \( F = \frac{\rho_l \omega_0 ^2}{k_0 ^2} = 4 \pi \rho R ^2 l ^2 \nu ^2 \), kjer je \( \nu \) osnovna frekvenca.
+    \end{primer}
+
+  \begin{primer}[Diskretna sila na palico]
+    Togo vpeta palica, kjer imamo diskretno silo \( F \), ki deluje na točki \( x = l_0 \). Rešujemo enačbo \( EI u^{(4)} = 0 \). Zaradi diskretne sile imamo skok pri \( u^{(3)} \), zato rešitev razdelimo na \( u_1(x), \ 0 \leq x < l_0 \) ter \( u_2 (x) \ l_0 < x \leq L \). Poleg robnih pogojev togo vpete palice upoštevamo zveznost odmika in prvih dveh odvodov pri \( x = l_0 \), torej \( u_1 (l_0) = u_2 (l_0) = \dot{u}_1 (l_0) = \dot{u}_2 (l_0) = \ddot{u}_1 (l_0) = \ddot{u}_2 (l_0). \)
+  \end{primer}
+
+  \begin{primer}[Točkasta sila/navor]
+    Palica je na eni strani togo vpeta, drug konec je prost. Odmik od ravnovesne lege popravimo s točkasto silo \( F \) ali točkastim navorom \( M \) na prostem koncu palice. V primeru sile rešujemo enačbo \( E I x^{(2)} = F (L - x) \). V primeru točkastega navora je \( M = konst. \ne M(z) \) in rešujemo \( EI x^{(2)} = M_0 \). Za določitev koeficientov upoštevamo RP togo vpeta konca.
+
+    Elastična energija palice je
+
+    \[ U = \int\limits_0^L \frac{M ^2 (x)}{2 E I} \, \mathrm{d} x, 
+    \]
+    kjer je za \( u = L - x) \) skupaj s težo \( M = \rho_l u \frac{u}{2} - F u \). Za točkast navor pa \( M = \rho_l u \frac{u}{2} - M_0 \). Vstavimo v integral in poračunamo.
+  \end{primer}
   
   \subsection{Elastični valovi}
 
@@ -321,11 +345,15 @@
   in Hookov zakon \( p_{ij} = 2 \rho c_T ^2 u_{ij} + \rho \left( c_L ^2 - 2 c_T ^2 \right)u_{ll} \delta_{ij} \). 
 
   \begin{primer}
-    Specifična impedanca \( z = p / v \). Vektor hitrosti je \( \mathbf{u} = u_x \hat{\mathbf{e}}_x + u_y \hat{\mathbf{e}}_y \). Za longitudinalni val je \( z_L = - p_{xx} / \dot{u}_x \) in transverzalni val \( z_T = - p_{yx} / \dot{u}_y \).
+    Specifična impedanca \( z = p / v \). Vektor hitrosti je \( \mathbf{u} = u_x \hat{\mathbf{e}}_x + u_y \hat{\mathbf{e}}_y \) za nastavek \( \exp \left\{ \mathrm{i} (\mathbf{k} \cdot \mathbf{r} - \omega t \right\} \). Za longitudinalni val je \( z_L = - p_{xx} / \dot{u}_x \) in transverzalni val \( z_T = - p_{yx} / \dot{u}_y \). \( p_{xx} \) in \( p_{yx} \) izračunamo preko Hookovega zakona.
   \end{primer}
 
   \begin{primer}[vpadno valovanje na snov]
-    Na levi strani snov 1, na desni snov 2. Odboj in lom \( k_{\parallel}^{\text{vpadni}} = k_{\parallel}^{\text{odbiti}} = k_{\parallel}^{\text{lomljeni}}  \).
+    Na levi strani snov 1, na desni snov 2. Polarizirano v vpadni ravnini = longitudinalno (2 longitudinalna, 2 transverzalna po lomu). Pravokotno na vpadno ravnino = transverzalno (2 transverzalna po lomu). Splošna oblika valov je \( A_i \mathbf{a}_i \exp \left\{ \mathrm{i} (\pm \mathbf{k} \cdot \mathbf{r} - \omega t)  \right\} \). Enakost faz na meji \( x = 0 \) za \( y \) komponento poda
+
+    \( \frac{\sin \alpha_0}{c_L} = \frac{\sin \alpha_T}{c_T} = \frac{\sin \beta_L}{c_L} = \frac{\sin \beta_T}{c_T} \)
+
+    Neko valovanje ne obstaja, če je \( \sin \alpha > 1 \), kritični kot je \( \sin \alpha = 1 \).
   \end{primer}
   
   \section{Hidrodinamika}
@@ -408,17 +436,28 @@
     Krožnica okrog izvira poda kompleksno potencialno polje \( w(z) = \frac{q}{2 \pi} \ln z = \frac{q}{2 \pi} \left\{ \ln r + \mathrm{i} \phi \right\} \).
   \end{primer}
 
-  Domeno pod kotom \( \alpha \) preslikamo v zgornjo polravnino, za katero vemo, da je \( w_0 = v_0 (x + \mathrm{i} y) \). Na robovih zahtevamo, da je kompleksen potencial \( w(z) = 0 \forall z \in \partial S \).
+  Domeno pod kotom \( \alpha \) preslikamo v zgornjo polravnino, za katero vemo, da ima kompleksen potencial \( w_0 = v_0 (x + \mathrm{i} y) \). Na robovih zahtevamo, da je kompleksen potencial \( w(z) = 0 \forall z \in \partial S \). Iz Mat4 vemo, da je poljubna preslikava \( f(z) = z^{\pi / \alpha} \), določiš \( \alpha \).
 
   Preslikava \( f(z) \) ohrani identiteto točkastih in neskončno oddaljenih multipolov, če slika \( 0 \to 0 \) in \( \infty \to \infty \), drugače jih zamenja, če slika \( 0 \to \infty \) in \( \infty \to 0 \). 
 
+  \begin{primer}[Krožna izboklina]
+   Krožno izboklino s polmerom \( b \) v vogalu s kotom \( \alpha \) preslikamo v ravnino preko dveh preslikah. Prva naredi ravnino s polkrogom \( f(b \exp \left\{ \mathrm{i} \phi \right\}) = b^{\pi / a} \exp \left\{ \mathrm{i} \pi \alpha \phi \right\} \), druga pa ustvari polravnino \( g(z) = z + \frac{b ^2}{z} \), kjer namesto z vstaviš rezultat \( f(z) \). 
+  \end{primer}
+  
   \begin{primer}[Zrcaljenje preko polravnine]
     Virtualen izvir na drugi strani polravnine nam poda kompleksne potencial \( w(z) = \frac{q}{2 \pi} \left[ \ln (z - a) + \ln (z + a) \right] \). V polarni obliki je potencial \( w = \frac{Q}{2 \pi} \left( \ln r_1 + \ln r_2 \right) + \mathrm{i} \frac{Q}{2 \pi} \left( \phi_1 + \phi_2 \right) \), od koder razberemo \( \phi(r) = \mathrm{Re} w(z) \). Hitrostno polje je \( \mathbf{v} = \nabla \phi(x, y) \) in velja \( v_x = \partial_x \phi \) ter \( v_y = \partial_y \phi \). Sila na dolžinsko enoto na steno je \( F_y / l = - \int\limits_{- \infty}^{\infty} p (0, y) \, \mathrm{d} l \), kjer tlak izračunamo s pomočjo Bernoullijeve enačbe \( p + \frac{1}{2} \rho v ^2 = \mathrm{konst} = 0 \). Eni komponenti hitrostnega polja se seštejeta, drugi se odštejeta. V primeru 3D točkastega izvora je hitrostno polje \( v(r) = Q / (4 \pi r ^2) \), ter sila je integral po površini \( F_y / S = - \int\limits_0^{\infty} \int\limits_0^{2 \pi} p(r, a) r\, \mathrm{d} r \).
   \end{primer}
 
   \begin{primer}
-    Vrtinčna nit ima kompleksen potencial \( w_{\Gamma} (z) = - \mathrm{i} \frac{\Gamma}{2 \pi} \ln z \). 
+    Vrtinčna nit ima kompleksen potencial \( w_{\Gamma} (z) = - \mathrm{i} \frac{\Gamma}{2 \pi} \ln z \). Valj ima kompleksen potencial \( w(z) = v_0 \left( z + \frac{a ^2}{z} \right) \). Sila na dolžino v smeri \( \mathbf{n} = (a \cos \phi, 0, 0 \) je \( \frac{F_x}{l} = - \int\limits_0^{2 \pi} p \cdot \mathbf{n} \, \mathrm{d} \phi \).
   \end{primer}
+
+  \begin{primer}[Dipol]
+    Potencial dipola v 3D je \( \phi = - \frac{1}{4 \pi} \frac{\mathbf{p} \cdot \mathbf{r}}{4 ^3} \). Dipolno tokovno polje krogle je \( \phi (r, \theta) = - \frac{u R ^3}{2} \frac{\cos \theta}{r ^2} \), kjer je \( u \) hitrost. Za cev, ki ima izvor in ponor na razdalji je je dipolno polje \( \phi_{cev} (r, \theta) = - \frac{Q l}{4 \pi} \frac{\cos \theta}{r ^2} \), kjer je \( Q \) volumnski pretok skozi cev. Za \( \phi_{krogla} = \phi_{cev} \) izračunamo pretok \( Q \).
+  \end{primer}
+
+  Potencial 3D točkastega izvora je \( \phi(r) = - \frac{Q}{2 \pi r} \), kjer je \( Q \) volumnski pretok, ne obstaja kompleksen potencial. Hitrostno polje je \( v(r) = \frac{a}{4 \pi r ^2} \). 
+  
 
   \subsubsection{Viskozne tekočine}  
 
@@ -426,7 +465,7 @@
 
   Viskozni napetostni tenzor \( \sigma_{ij}^{v} = 2 \eta \left( v_{ij} - \frac{1}{3} v_{kk} \delta_{ij} \right) + \zeta v_{kk} \delta_{ij} \) in gradient hitrosti \( v_{ij} = \frac{1}{2} \left( \partial_j v_i + \partial_i v_j \right) \). \( \eta \) viskoznost, \( \zeta \) dilatacijska viskoznost.
 
-  Navier-Stokes običajna oblika \( \rho \left( \partial_t \mathbf{v} + \left( \mathbf{v} \cdot \nabla \right) \mathbf{v} \right) = - p + \eta \nabla ^2 \mathbf{v} + \left( \zeta + \frac{1}{3} \eta \right) \nabla \nabla \cdot \mathbf{v} + \mathbf{f} \)
+  Navier-Stokes običajna oblika \( \rho \left( \partial_t \mathbf{v} + \left( \mathbf{v} \cdot \nabla \right) \mathbf{v} \right) = - \nabla p + \eta \nabla ^2 \mathbf{v} + \left( \zeta + \frac{1}{3} \eta \right) \nabla \nabla \cdot \mathbf{v} + \mathbf{f} \)
 
   \( \mathbf{f} = 0 \) in \( \rho = 0 \) za nestisljive tekočine je Helmholtzova enačba za vrtinčnost \( \bm{\omega} = \nabla \times \mathbf{v} \)
 
@@ -444,6 +483,8 @@
     Rešitev je potem
 
     \( \omega(z, t) = - 2 v_0 \frac{1}{\sqrt{4 \pi D t}} \exp \left\{ - \frac{z ^2}{4 D t} \right\} \).
+
+    V primeru, da se plošča ob kasnejšem času vstavi, uporabiš princip superpozicije in prišteješ obratno vrednost \( \omega(z, t) \).
   \end{primer}
 
   \begin{primer}
@@ -463,6 +504,39 @@
 
     \( v \cdot 2 \pi r = 2 \pi \int\limits_0^r \omega r \cdot \mathrm{d} r = \Gamma \left( 1 - \exp \left\{ - \frac{r ^2}{4 \pi D t} \right\} \right) \).
     \end{primer}
+
+    \begin{primer}[Reometer]
+      Dve plošči, ena stacionarna, druga niha sinusno s frekvenco \( \omega \). Naj os \( x \) kaže v desno, \( z \) navzdol. Hitrostno polje ima obliko \( \mathbf{v} = v(z, t) \hat{e}_x \). Od Navier-Stokesa ostane enačba v smeri \( x \), torej
+
+      \( \rho \frac{\partial v}{\partial t} = \eta \nabla ^2 v \).
+
+      Uporabimo nastavek ravnega vala \( v = v_0 \exp \left\{ \mathrm{i} (kz - \omega t) \right\} \). Rešitev zgornje enačbe je \( k = \pm \sqrt{\frac{\rho \omega}{\eta}} \frac{1}{\sqrt{2}} (1 + \mathrm{i}) \).  Zapišemo rešitev za oba \( k = \pm (k'  \mathrm{i} k'') \).
+
+      \( v(z, t) = v_0 \exp \left\{ \mathrm{i} (k' z - \omega t) \right\} \exp \left\{ - k'' z \right\} + v_0 ' \exp \left\{ \mathrm{i} (- k' z - \omega t) \right\} \exp{k'' z} \).
+
+      Če spodnje plošče ni, potem \( v_0 ' = 0 \). Če je spodnja plošča na \( z = h \), zadostimo pogoju \( v(h) = 0 \), potem velja \( v_0' = 0 \). Rešitev je
+
+      \( v(z, t) = v_0 \exp \left\{ \mathrm{i} (k' z - \omega t) \right\} \exp \left\{ - k'' z \right\} \),
+
+      vdorna globina je \( \frac{1}{k''} = \sqrt{\frac{2 \eta}{\rho \omega}} \), profil faznega zamika pa \( \Delta \phi = k' z. \).
+    \end{primer}
+
+    Idealni vrtinec določa enačba \( v(r) = \frac{C}{r} \).
+
+    Za dva koncentrična valja polmerov \( R_1 \) in \( R_2 \) je Navier-Stokes določen z enačbo
+
+    \( \frac{\mathrm{d} ^2 v_{\phi}}{\mathrm{d} r ^2} + \frac{1}{r} \frac{\mathrm{d} v_{\phi}}{\mathrm{d} r} - \frac{v_{\phi}}{r ^2} = 0 \),
+
+    ki jo dobimo iz \( \nabla ^2 \mathbf{v} = - \nabla \times \nabla \times \mathbf{v} \) v cilindričnih koordinatah. Splošna rešitev je \( v(r) = A r + \frac{B}{r} \), upoštevamo robne pogoje \( v_{\phi} (R_1) = \omega R_1 \) ter \( v_{\phi} (R_2) = R_2 \omega_2  \), če se vrti, drugače je nič.
+
+    Navor izračunamo preko dolžinske sile \( \frac{\mathrm{d} F}{l} = \sigma_{r\phi}^v r \, \mathrm{d} \phi \), kjer je \( \sigma_{r\phi}^v \) v cilindričnih (glej \( u_{r\phi}! \)). Navor je potem
+
+    \( \frac{\mathrm{d} M}{l} = R \mathrm{d} F_l = \int\limits_0^{2\pi}r ^2 \sigma_{r \phi}^v \, \mathrm{d} \phi  \).
+
+    Moč je \( \frac{P}{l} = M \omega \) ali \( P = \int\limits_{}^{} \sigma_{ij} ^v v_{ij} \, \mathrm{d} V = 2 \eta \int\limits_{}^{} (2 v_{\phi r} ^2) \).
+
+    Valj, ki se s frekvenco \( \omega \) v tekočini, kjer je tlak daleč stran \( p_0 \) ima dve enačbi, v smeri \( \hat{e}_{\phi}: \) \( \nabla ^2 \mathbf{v} = \nabla \times \nabla \times \mathbf{v} \) ter v smeri \( \hat{e}_r \): \( \frac{\partial }{\partial r}  p = \rho \frac{v ^2}{r}  \). Robna pogoja \( v(r \to \infty) = 0 \) in \( v(R) = \omega R \).
+    
   \section{Misc}
 
   Besselova enačba za sferične koordinate je
@@ -482,6 +556,10 @@
   Identiteta
 
   \( \int\limits_{}^{} x \ln \frac{x}{x_0} \, \mathrm{d} x = \frac{x ^2}{2} \ln \frac{x}{x_0} - \frac{x ^2}{4} \).
+
+  Za gostoto sile pri vrtenju s frekvenco \( \omega \) je gostota sile \( \mathbf{f} = \rho \omega ^2 r \hat{e}_r \).
+
+  
   \columnbreak
   \vfill\null
 \end{multicols}
