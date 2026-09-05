@@ -1039,7 +1039,7 @@ kjer je \( H_{LPF} \) prenosna funkcija low-pass filtra. Napetost na izhodu poda
 \[ U_{izh} = A_{DC} \left( U_1 - U_2 \right). 
 \]
 
-V shemi instrumentacijskega ojačevalnika se uporablja tudi negativno povratno zank s shemo 
+V shemi instrumentacijskega ojačevalnika se uporablja tudi negativno povratno zanko s shemo 
 
 #+begin_src latex
 \begin{center}
@@ -1093,7 +1093,7 @@ za \( \epsilon \ll 1 \), potem velja na izhodu
 
 Ohranja se \( \Delta \tilde{U}_1 \), močno pa se spreminja vsota \( \tilde{U}_1 + \tilde{U}_2 \), saj se spreminja vsota \( U_1 + U_2 \). Z vhodnima OPAMP-oma in verigo uporov \( R_1 - R_0 - R_1 \) ojačamo razliko \( \Delta U \). 
 
-Vsoti napetosti \( U_1 + U_2 \) pravimo *Common mode*. *Common Mode Rejection Ratio (CMRR) je definiran kot
+Vsoti napetosti \( U_1 + U_2 \) pravimo *Common mode*. *Common Mode Rejection Ratio* (CMRR) je definiran kot
 
 \[ \text{CMRR} = \frac{A \left( U_1 - U_2 \right)}{A \left( U_1 + U_2 \right)}. 
 \]
@@ -1142,7 +1142,7 @@ in izrazimo
 #+begin_idea
 Termične fluktuacije naboja v uporu povzročajo termični šum. 
 
-#+attr_latex: :width 0.5\textwidth :caption \caption{Vezje, s katerim preučujemo termični šum na uporu, vir \cite{likar_osnove_2016}.}
+#+attr_latex: :width 0.5\textwidth :caption \caption{\label{fig:termSum} Vezje, s katerim preučujemo termični šum na uporu, vir \cite{likar_osnove_2016}.}
 [[file:figures/termicniSum.png]]
 
 Kalmanova dinamika za zgornje vezje je
@@ -1151,16 +1151,19 @@ Kalmanova dinamika za zgornje vezje je
 \]
 kjer je \( U_g \) dinamični šum in nihanje napetosti na kondenzatorju ima pričakovano vrednost \( \left\langle U_C ^2 \right\rangle = P_0 \).
 
-Disperzija brez členov za merjenje je
+Disperzija brez členov s prisotnim dinamičnim šumom za merjenje je
 
-\[ \dot{P} = - \frac{2}{\tau} P + \frac{1}{\tau ^2} Q 
-\]
+\begin{equation}
+\label{eq:13}
+ \dot{P} = - \frac{2}{\tau} P + \frac{1}{\tau ^2} Q 
+\end{equation}
 
 Stacionarna rešitev je
 
-\[ P = \frac{Q}{2 \tau}, 
+\[ P = \frac{Q}{2 \tau}. 
 \]
-ki jo lahko povežemo z ekviparticijskim izrekom z eno prostostno stopnjo
+
+RC člen je v termičnem ravnovesju z okolico pri temperaturi \( T \), zato lahko enačbo za energijo nihajočega električnega polja v kondenzatorju povežemo preko ekviparticijskega izreka z eno prostostno stopnjo
 
 \[ \left\langle W_C \right\rangle = \frac{1}{2} C \left\langle U_C ^2 \right\rangle = \frac{1}{2} k_B T \implies \ Q = 2k TR.
 \]
@@ -1173,8 +1176,127 @@ ki nam pove povprečno moč, ki jo dobiva upor \( R \) zaradi nihanja napetosti 
 
 Po Wiener-Khinchinovem izreku sledi, da je spektralna gostota šuma Fourierov obrat avtokorelacijske funkcije funkcije \( \left\langle U_g (t) U_g (t + \tau) \right\rangle = 2k TR \delta(\tau) \),
 
-\[ \frac{\mathrm{d} \left\langle U ^2 \right\rangle}{\mathrm{d} \omega} = \frac{1}{\pi} \int\limits_{- \infty}^{\infty} 2 k TR \delta(t) e^{- \mathrm{i} \omega t}  \, \mathrm{d} t = 2 \frac{k T R}{\pi} = \phi(\omega)
+\[ \frac{\mathrm{d} \left\langle U ^2 \right\rangle}{\mathrm{d} \omega} = \frac{1}{\pi} \int\limits_{- \infty}^{\infty} 2 k TR \delta(t) e^{- \mathrm{i} \omega t}  \, \mathrm{d} t = 2 \frac{k T R}{\pi} = \phi(\omega), \quad \omega \geq 0.
 \]
 
+Po Nyquistovi izpeljavi, ki izhaja iz spodnjega vezja
+
+#+attr_latex: :width 0.5\textwidth :caption \caption{Vezje, ki ga je uporabil Nyquist za izpeljavo termičnega šuma, vir \cite{likar_osnove_2016}.}
+[[file:figures/nyquist.png]]
+
+kjer imamo enaka upora \( R \), ki sta v termičnem ravnovesju z okolico in sta medseboj povezana s koaksialnim kablom dolžine \( L \).
+
+Spektralna gostota šuma je v tem primeru
+
+\[ \frac{\mathrm{d} \left\langle U ^2 \right\rangle}{\mathrm{d} \omega}  = \frac{2R}{\pi} \frac{\hbar \omega}{\exp \left\{ \frac{\hbar \omega}{k T} - 1 \right\},
+\]
+za visoke frekvence \( \hbar \omega \gg k T \) je to \( 0 \), za nizke frekvence \( \hbar \omega \ll k T \) pa je vrednost
+
+\[ \frac{\mathrm{d} \left\langle U ^2 \right\rangle}{\mathrm{d} \omega }  = \frac{2 k T R}{\pi}.
+\]
 #+end_idea
+
+#+attr_latex: :options [Velikost termičnega šuma]
+#+begin_izpeljava
+Po Kirchoffovem zakonu zapišemo padce napetosti na sliki \ref{fig:termSum}
+
+\begin{equation}
+\label{eq:12}
+ U_g - IR - \frac{e}{C} = 0. 
+\end{equation}
+Naboj na kondenzatorju \( e \) je enak
+
+\[ e = C U_C, 
+\]
+in po odvajanju dobimo tok
+
+\[ \frac{\mathrm{d} e}{\mathrm{d} t} = I = C \dot{U}_C.
+\]
+
+Ko dobljeno vstavimo v enačbo \eqref{eq:12} dobimo
+
+\[ U_g - U_C = IR = RC \mathbf{U}_C. 
+\]
+Označimo \( \tau = RC \) in imamo enačbo za Kalmanovo dinamiko vezja
+
+\[ \dot{U}_C = - \frac{1}{\tau} U_C + \frac{U_g}{\tau}. 
+\]
+Veljata začetna pogoja \( \left\langle \hat{U}_C \right\rangle = 0 \) ter \( \left\langle \hat{U}_C ^2 \right\rangle = P_0 \). Za dinamični šum velja \( \left\langle U_g ^2 \right\rangle = Q \). Odčitamo \( A = \frac{1}{\tau} \) in \( \Gamma = Q \) in lahko zapišemo časovni razvoj za disperzijo
+
+\[ \dot{P} = - \frac{2}{\tau} P + \frac{1}{\tau ^2} Q. 
+\]
+
+V stacionarnem stanju (\( t \to \infty \)) sledi
+
+\begin{equation}
+\label{eq:14}
+ P = \frac{Q}{2\tau}. 
+\end{equation}
+
+Energija nihajočega električna polja v kondenzatorju določa enačba
+
+\[ \left\langle W_C \right\rangle = \frac{1}{2} C \left\langle U_C ^2 \right\rangle = \frac{1}{2} C P,
+\]
+ki je enaka ekviparticijskemu izreku za eno prostostno stopnjo (normalna smer na plošče kondenzatorja)
+
+\[ \frac{1}{2} C P = \frac{k T}{2}. 
+\]
+Vstavimo enačbo \eqref{eq:14} in izrazimo vrednost dinamičnega šuma
+
+\[ Q = \frac{2 k T \tau}{C} = 2 k T R. 
+\]
+
+Ker smo privzeli, da je \( U_g(t) \) beli šum, potem velja enačba
+
+\begin{equation}
+\label{eq:15}
+ \left\langle U_g (t) + U_g \left( t + \tau \right) \right\rangle = 2k T R \delta(t).
+\end{equation}
+#+end_izpeljava
+
+#+attr_latex: :options [Wiener-Khinchinov izrek]
+#+begin_theorem
+Spektralna gostota šuma je enaka Fourierovi transformaciji njegove avtokorelacijske funkcije.
+#+end_theorem
+
+#+begin_proof
+Definicija avtokorelacijske funkcije je
+
+\[ c(\tau) = \int\limits_{-\infty}^{\infty} U(t) U(t + \tau) \, \mathrm{d} t. 
+\]
+
+Definicija (obrata) Fourierove transformacije je
+
+\[ U(t) = \int\limits_{-\infty}^{\infty} \hat{U}(\omega) e^{\mathrm{i} 2\pi \omega t} \, \mathrm{d} \omega 
+\]
+
+Spomnimo tudi na integralsko definicijo \( \delta \) funkcije
+
+\[ \delta(\omega - \omega') = \int\limits_{-\infty}^{\infty} e^{\mathrm{i} 2 \pi \left( \omega - \omega' \right)} \, \mathrm{d} t.  
+\]
+
+Nadomestimo sedaj izraza \( U(t) \) in \( U(t + \tau) \) s Fourierovo transformacijo in konjugirano Fourierovo transformacijo
+
+\begin{align*}
+  c(\tau) &= \iiint\limits_{- \infty}^{\infty} \hat{U}^{\ast} (\omega ') e^{\mathrm{i} 2 \pi \omega t} \, \mathrm{d} \omega ' \hat{U}(\omega) e^{-\mathrm{i} 2 \pi \omega t} e^{- \mathrm{i} 2 \pi \omega \tau} \, \mathrm{d} \omega  \,\mathrm{d t} \\
+&= \iint\limits_{-\infty}^{\infty} \hat{U}^{\ast}(\omega') \hat{U}(\omega) \int\limits_{-\infty}^{\infty} e^{\mathrm{i} 2 \pi (\omega ' - \omega) t} \, \mathrm{d} t \, e^{- \mathrm{i} 2 \pi \omega \tau}  \,\mathrm{d} ' \mathrm{d} \omega \\
+&= \int\limits_{-\infty}^{\infty} \left| \hat{U}(\omega) \right| ^2 e^{- \mathrm{i} 2 \pi \omega \tau} \, \mathrm{d} \omega.
+\end{align*}
+
+Potem velja
+
+\[ \left| U(\omega) \right|  ^2 = \frac{1}{\pi} \int\limits_{- \infty}^{\infty} c(\tau) e^{- \mathrm{i} \omega \tau} \, \mathrm{d} \tau.
+\]
+
+Če upoštevamo izraz \eqref{eq:15}, potem dobimo
+
+\[ \frac{\mathrm{d} \left\langle U ^2(\omega) \right\rangle}{\mathrm{d} \omega} = \frac{1}{\pi} \int\limits_{-\infty}^{\infty} \left\langle U(t) U(t + \tau) \right\rangle e^{-\mathrm{i} \omega \tau} \, \mathrm{d} \tau = \frac{2k TR}{\pi} = \mathrm{konst}.
+\]
+#+end_proof
+
+#+attr_latex: :options [Nyquistova izpeljava]
+#+begin_izpeljava
+
+#+end_izpeljava
+** Primer: Prikaz spektralne gostote termičnega šuma
 
