@@ -1181,14 +1181,14 @@ Po Wiener-Khinchinovem izreku sledi, da je spektralna gostota šuma Fourierov ob
 
 Po Nyquistovi izpeljavi, ki izhaja iz spodnjega vezja
 
-#+attr_latex: :width 0.5\textwidth :caption \caption{Vezje, ki ga je uporabil Nyquist za izpeljavo termičnega šuma, vir \cite{likar_osnove_2016}.}
+#+attr_latex: :width 0.5\textwidth :caption \caption{\label{fig:nyquist} Vezje, ki ga je uporabil Nyquist za izpeljavo termičnega šuma, vir \cite{likar_osnove_2016}.}
 [[file:figures/nyquist.png]]
 
 kjer imamo enaka upora \( R \), ki sta v termičnem ravnovesju z okolico in sta medseboj povezana s koaksialnim kablom dolžine \( L \).
 
 Spektralna gostota šuma je v tem primeru
 
-\[ \frac{\mathrm{d} \left\langle U ^2 \right\rangle}{\mathrm{d} \omega}  = \frac{2R}{\pi} \frac{\hbar \omega}{\exp \left\{ \frac{\hbar \omega}{k T} - 1 \right\},
+\[ \frac{\mathrm{d} \left\langle U ^2 \right\rangle}{\mathrm{d} \omega}  = \frac{2R}{\pi} \frac{\hbar \omega}{\exp \left\{ \frac{\hbar \omega}{k T} - 1 \right\}},
 \]
 za visoke frekvence \( \hbar \omega \gg k T \) je to \( 0 \), za nizke frekvence \( \hbar \omega \ll k T \) pa je vrednost
 
@@ -1213,7 +1213,7 @@ in po odvajanju dobimo tok
 \[ \frac{\mathrm{d} e}{\mathrm{d} t} = I = C \dot{U}_C.
 \]
 
-Ko dobljeno vstavimo v enačbo \eqref{eq:12} dobimo
+Ko dobljeno vstavimo v enačbo \eqref{eq:12}, dobimo
 
 \[ U_g - U_C = IR = RC \mathbf{U}_C. 
 \]
@@ -1296,7 +1296,194 @@ Potem velja
 
 #+attr_latex: :options [Nyquistova izpeljava]
 #+begin_izpeljava
+Opazujemo shemo na sliki \ref{fig:nyquist}. Koaksialni kabel dolžine \( L \) naj ima impedanco \( Z_0 \) enako uporu \( R \). Termične fluktuacije ponazarja generator napeosti \( U \). Koaksialni kabel je v termičnem ravnovesju z okolico, saj je povezan z uporoma. Obravnavamo ga kot enodimenzionalno sevanje črnega telesa. 
 
+Izračunati želimo število rodov \( n \in \mathbb{N} \) v koaksialnem kablu na enoto frekvence \( \frac{\mathrm{d} n}{\mathrm{d} \omega} \). 
+
+Iz hitrosti valovanja \( c \) sledi po definiciji
+
+\[ c = \lambda \nu \implies \ \lambda = \frac{c}{\nu} = \frac{2 \pi}{\omega} c.
+\]
+
+Dolžino kabla potem izrazimo kot
+
+\[ L = n \frac{\lambda}{2} = n \frac{1}{2} \frac{2 \pi}{\omega} c = \frac{n \pi c}{\omega}, 
+\]
+iz česar dobimo število \( \mathrm{d} n \) stoječih elektromagnetnih valov v kratko sklenjem kablu v frekvenčnem intervalu \( \left[ \omega - \mathrm{d} \omega, \omega + \mathrm{d} \omega \right] \)
+
+\[ \mathrm{d} n = \frac{L}{\pi c} \mathrm{d} \omega 
+\]
+
+Povprečno energijo stoječega valovanja določa Bose-Einsteinova porazdelitev za zasedenost stanj pri temperaturi \( T \)
+
+\[ \epsilon(\omega) = \hbar \omega \left( \exp \left\{ \frac{\hbar \omega}{k T} \right\} - 1 \right)^{-1}.
+\]
+Povprečna energija *potujočega valovanja* je polovica energije stoječega valovanja. Povprečna moč na uporu je
+
+\begin{equation}
+\label{eq:16}
+ \mathrm{d} P = R \mathrm{d} \left\langle I ^2 \right\rangle = \frac{1}{2} \frac{c}{L} \frac{L}{\pi c} \epsilon(\omega) \mathrm{d} \omega,
+\end{equation}
+kjer je faktor \( \frac{1}{2} \) zaradi potujočega vala, \( \frac{c}{L} \) pa je čas, ki ga potrebuje val, da prepotuje kabel.
+
+V ravnovesju enako moč upor oddaja tudi kablu. Tok določa enačba
+
+\[ I = \frac{U}{2R}, 
+\]
+iz česar sledi
+
+\[ d \left\langle I ^2 \right\rangle = \mathrm{d} \left\langle U ^2 \right\rangle \frac{1}{4 R ^2}.
+\]
+
+Zgornje vstavimo v enačbo \eqref{eq:16}, obrnemo in dobimo
+
+\[ \frac{\mathrm{d} \left\langle U ^2 \right\rangle}{\mathrm{d} \omega} = \frac{2R}{\pi} \frac{\hbar \omega}{\exp \left\{ \frac{\hbar \omega}{k T} - 1 \right\} - 1}.
+\]
+
+Za visoke frekvence \( \hbar \omega \gg k T \) je zgornja enačba \( 0 \). Za majhne frekvence \( \hbar \omega \ll k T \) pa razvijemo porazdelitev
+
+\[ \epsilon(\omega) \approx \left( 1 + \frac{\hbar \omega}{k T} - 1 \right)^{-1}, 
+\]
+iz česar sledi
+
+\[ \frac{\mathrm{d} \left\langle U ^2 \right\rangle}{\mathrm{d} \omega} = \frac{2 k T R}{\pi}. 
+\]
 #+end_izpeljava
-** Primer: Prikaz spektralne gostote termičnega šuma
+*** Primer: Prikaz spektralne gostote termičnega šuma
+
+Iz enačbe \eqref{eq:15} sledi, da bi bila moč šuma neskončna
+
+\[ P = \int\limits_0^{\infty} \frac{\mathrm{d} \left\langle U ^2 \right\rangle}{\mathrm{d} \omega} \, \mathrm{d} \omega \to \infty. 
+\]
+
+Moč ne bo divergirala, če frekvence obravnavamo neodvisno. Naj imamo na izhodu signal, ki je vsota harmoničnih signalo pri različnih frekvencah \( \omega_1 \), \( \omega_2 \) z različnima amplitudama \( U_0(\omega_1) \), \( U_0 (\omega_2) \) ter različnima fazama \( \phi_1 \), \( \phi_2 \). Signal je potem
+
+\[ U(t) = U_0 (\omega_1) \cos \left( \omega_1 t + \phi_1 \right) + U_0 (\omega_2) \cos \left( \omega_2 t + \phi_2 \right).
+\]
+
+Povprečje kvadrata je
+
+\[ \left\langle U ^2 \right\rangle = \frac{1}{2} U_0 ^2 (\omega_1) + \frac{1}{2} U_0 ^2 (\omega_2) + \left\langle \cos \left( \omega_1 t + \phi_1 \right)  \cos \left( \omega_2 t + \phi_2 \right) \right\rangle,
+\]
+Zadnji člen odpade, ker obravnavamo frekvence kot neodvisne.
+*** Širjenje termičnega šuma skozi linearno vezje
+
+#+begin_idea
+Termični šum se širi skozi vezje, ki je sestavljeno iz linearnih elementov, med katerimi ni uporov. Širjenje določa Nyquistov izrek
+
+\[ \frac{\mathrm{d} \left\langle U_0 ^2 \right\rangle}{\mathrm{d} \omega} = \frac{2 k TR}{\pi} \left| H(\mathrm{i} \omega) \right| ^2 = \frac{2 k T}{\pi} \Re Z_0,
+\]
+kjer je \( U_0 \) napetost na izhodu iz vezja, \( Z_0 \) pa je izhodna impedanca.
+
+Vhonda impedanca je definirana kot
+
+\[ Z = \sum\limits_i^{} Z_i, 
+\]
+izhodna impedanca pa z
+
+\[ \frac{1}{Z_0} = \sum\limits_i^{} \frac{1}{Z_i}. 
+\]
+#+end_idea
+
+#+attr_latex: :options [Nyquistov izrek]
+#+begin_izpeljava
+Napetost termičnega šuma na uporu označimo z \( U(t) \), napetost na izhodu iz vezja pa z \( U_0 (t) \). Po definicije prenosne funkcije sledi
+
+\[ \frac{U_{out}}{U_{in}} = \frac{U_0 (s)}{U (s)} = H(s), 
+\]
+in amplituda za periodičen vhodni signal
+
+\[ \frac{\left\langle U_0 ^2 (\mathrm{i} \omega) \right\rangle}{\left\langle U ^2 (\mathrm{i} \omega) \right\rangle} = \left| H (\mathrm{i} \omega) \right| ^2.
+\]
+
+Spektralna gostota termičnega šuma je
+
+\[ \frac{\mathrm{d} \left\langle U_0 ^2 (\mathrm{i} \omega) \right\rangle}{\mathrm{d} \omega} = \left| H(\mathrm{i} \omega) \right| ^2 \frac{\mathrm{d} \left\langle U ^2(\mathrm{i} \omega) \right\rangle}{\mathrm{d} \omega} = \frac{2 k T}{\pi} R \left| H(\mathrm{i} \omega) \right| ^2 = \frac{2 k T}{\pi} \Re Z_0.
+\]
+#+end_izpeljava
+
+
+#+attr_latex: :options [Vhodne in izhodne impedance]
+#+begin_izpeljava
+Neznano vezje, ki ima vhodno napetost \( U(t) \) ter izhodno napetost \( U_0 \) lahko s pomočjo Theveninovega izreka nadomestimo z generatorjem napetosti \( U_0 \) in notranjim uporom \( Z_0 \).
+
+#+begin_src latex
+\begin{center}
+  \begin{circuitikz}
+    \scalebox{1.}{
+      \draw node[left]{$U(t)$} (0, 0) to[R=$Z_1$, o-] (0, -2) to[R=$Z_2$] node[ground]{} (0, -4);
+      \draw (0, -2) to[short, -o] node[pos=1, right]{$U_0$} (1, -2);
+    }
+  \end{circuitikz}
+\end{center}
+#+end_src
+
+Tok \( I \) v napetostnem sledilniku teče od \( U(t) \) do *GROUND* in zapišemo
+
+\[ U(t) = Z I_1, \quad Z = \sum\limits_i^{} Z_i = Z_1 + Z_2. 
+\]
+
+Napetost na izhodu bo tako
+
+\begin{equation}
+\label{eq:17}
+ U_0 = I_1 Z_2 = \frac{U Z_2}{Z_1 + Z_2}. 
+\end{equation}
+
+V primeru kratkega stika kot je prikazano na spodnji sliki, tok \( I_{SC} \) teče od \( U(t) \) do *GROUND* med uporoma.
+
+#+begin_src latex
+\begin{center}
+  \begin{circuitikz}
+    \scalebox{1.}{
+      \draw node[left]{$U(t)$} (0, 0) to[R=$Z_1$, o-] (0, -2) to[R=$Z_2$] node[ground]{} (0, -4);
+      \draw (0, -2) to[short, -*, i>=$I_{sc}$] (1, -2) to node[ground]{} (1, -2) ;
+    }
+  \end{circuitikz}
+\end{center}
+#+end_src
+
+Velja enačba
+
+\begin{equation}
+\label{eq:18}
+ Z_0 I_{SC} = U_0 
+\end{equation}
+in
+
+\begin{equation}
+\label{eq:19}
+ I_{SC} = \frac{U(t)}{Z_1}. 
+\end{equation}
+
+Sedaj združimo enačbe \eqref{eq:17}, \eqref{eq:18} in \eqref{eq:19} in dobimo
+
+\[ U_0 = \frac{Z_2}{Z_1 + Z_2} Z_1 I_{SC} = \left( \frac{1}{Z_1} + \frac{1}{Z_2} \right)^{-1} I_{SC}, 
+\]
+
+iz česar zaključimo
+
+\[ \frac{1}{Z_0} = \sum\limits_i^{}\frac{1}{Z_i}. 
+\]
+
+Poglejmo si to na primeru RC člena.
+
+#+attr_latex: :width 0.5\textwidth :caption \caption{\label{fig:izrekNyq} Slika RC člena, vir \cite{likar_osnove_2016}}
+[[file:figures/nyquistIzrek.png]]
+
+Izhodna impedanca je
+
+\[ Z_0 = \left( \sum\limits_i^{} Z_i ^{-1} \right) = \left( \frac{1}{R} + \mathrm{i} \omega C \right) = \frac{R \left( 1 - \mathrm{i} \omega RC \right)}{1 + \omega ^2 R ^2 C ^2} 
+\]
+
+Njen realni del je
+
+\[ \Re (Z_0) = \frac{R}{1 + \omega ^2 R ^2 C ^2},
+\] 
+spektralna gostota napetosti na kondenzatorju pa je potem
+
+\[ \frac{\mathrm{d} \left\langle U_0 ^2 \right\rangle}{\mathrm{d} \omega} = \frac{2k T}{\pi} \frac{R}{\tau ^2 \omega ^2 + 1} 
+\]
+#+end_izpeljava
+
 
