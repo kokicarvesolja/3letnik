@@ -1,4 +1,4 @@
-#+title: 03statistika
+#+title: Statistika 
 #+startup: nolatexpreview
 #+startup: entitiespretty nil
 #+startup: show2levels
@@ -7,7 +7,7 @@
 #+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
 #+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
 #+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
-#+latex_header: \def\npredmet{FMER - OPZ}
+#+latex_header: \def\npredmet{FMER - STAT}
 #+latex_header: \usepackage[european]{circuitikz}
 #+bibliography: refs.bib
 * Meritve konstantnih količin in statistika
@@ -25,7 +25,7 @@ Naredimo *vzorčni funkciji* ali *statistiki*
 
 \begin{align*}
   \bar{z} &= \frac{1}{n} \sum\limits_{i = 1}^n z_i \\
-S ^2 = \frac{1}{n - 1} \sum\limits_{i = 1}^n \left( z_i - \bar{z}  \right)^2,
+S ^2 &= \frac{1}{n - 1} \sum\limits_{i = 1}^n \left( z_i - \bar{z}  \right)^2,
 \end{align*}
 s čimer sestavimo novo statistiko
 
@@ -161,7 +161,7 @@ Koren v imenovalcu dodatno razširimo z \( (n - 1) \) in malo preoblikujemo
 #+end_proof
 ** Oblikovni testi
 #+begin_idea
-Z oblikovnimi testi preverimo ali porazdelitev naključne spremenljivke v izmerjenem vzorcu odstopa od privzete porazdelitve.
+Z oblikovnimi testi preverimo, ali porazdelitev naključne spremenljivke v izmerjenem vzorcu odstopa od privzete porazdelitve.
 #+end_idea
 *** Pearsonov \( \chi ^2 \) test
 #+begin_idea
@@ -322,4 +322,399 @@ kjer je \( d \) meja.
 Pri testiranju si mejni \( d_{>} \) izberemo tako, da je \( P(D \sqrt{N} < d_{>}) = 1- \alpha \). Če je \( D \sqrt{N} > d_{>} \), potem lahko s tveganjem \( \alpha \) zavrnemo hipotezo, da \( F(z) \) ustreza izmerkom.
 #+end_izpeljava
 * Metode najmanjših kvadratov
+#+begin_idea
+Z metodo najmanjših kvadratov želimo odfiltrirati šum iz že opravljenih \( n \) meritev \( z_1, z_2, \ldots, z_n \) konstantnih količin. Senzorska matrika je časovno odvisna \( H = H(t) \). Signal iz senzorja v vektorski obliki je
+
+\[ \mathbf{z} = \mathsf{H} \mathbf{x} + \mathbf{r}, 
+\]
+v matrični obliki pa
+
+\[ \begin{bmatrix} z_{1} \\ z_{2} \\ \vdots \\ z_{n} \end{bmatrix} = \begin{bmatrix}
+f_0(t_1) & f_1 (t_1) & \ldots & f_m(t_1) \\
+\vdots & \vdots & \ddots & \vdots \\
+f_0(t_n) & f_1 (t_n) & \ldots & f_m(t_n) \\
+\end{bmatrix} \begin{bmatrix} x_{0} \\ x_{1} \\ \vdots \\ x_{m} \end{bmatrix}.
+\]
+
+Optimalne vrednosti koeficientov vektorja \( \mathbf{x} \) poiščemo preko kvadratne forme
+
+\[ 2J = \left( \mathbf{z} - \mathsf{H} \mathbf{x} \right)^T \mathsf{R}^{-1} \left( \mathbf{z} - \mathsf{H} \mathbf{x} \right),
+\]
+kjer privzamemo nekoreliranost komponent šuma in enako disperzijo \( \mathsf{R} = \sigma ^2 I \), in njegovega ekstrema
+
+\[ \frac{\partial (2J)}{\partial \mathbf{x}} = 0. 
+\]
+
+Optimalne vrednosti so ob privzetku \( \bar{x} = 0 \) in \( M^{-1} = 0 \)
+
+\[ \hat{\mathbf{x}} = \left( \mathsf{H}^T \mathsf{H} \right)^{-1} \mathsf{H}^T \mathbf{z} 
+\]
+#+end_idea
+#+begin_izpeljava
+Pri obravnavi vektorskih meritev smo rezultat za optimalno oceno
+
+\[ \hat{\mathbf{x}} = \bar{\mathbf{x}} + \mathsf{P} \mathsf{H} \mathsf{R}^{-1} \left( \mathbf{z} - \mathsf{H} \bar{\mathbf{x}} \right), 
+\]
+kjer je
+
+\[ \mathsf{P}^{-1} = \mathsf{M}^{-1} + \mathsf{H}^T \mathsf{R}^{-1} \mathsf{H} 
+\]
+
+Pred časom \( t = t_0 \) ne vemo ničesar o meritvi, zato \( \mathsf{M}^{-1} = 0 \). Prav tako postavimo \( \bar{\mathbf{x}} = 0 \).
+
+Če privzamemo, da so komponente šuma medseboj nekorelirane in enake, potem velja
+
+\[ \mathsf{R} = \sigma ^2 I \implies \mathsf{R}^{-1} = \frac{1}{\sigma ^2} I 
+\]
+
+Disperzija je tako podana z
+
+\begin{equation}
+\label{eq:5}
+ P = \sigma ^2 \left( \mathsf{H}^T \mathsf{H} \right)^{-1}, 
+\end{equation}
+in optimalne vrednosti koeficientov so
+
+\begin{equation}
+\label{eq:4}
+ \hat{\mathbf{x}} = \left( \mathsf{H}^T \mathsf{H} \right)^{-1} \mathsf{H}^T \mathbf{z}.
+\end{equation}
+
+Kovariančna matrika je porazdeljena po \( \chi ^2 (n - m - 1) \) z \( n - m - 1 \) prostostnimi stopnjami.
+#+end_izpeljava
+** Primer: Linearen fit
+
+V primeru izmerkov oblike \( \mathbf{z} = x_0 t + \mathbf{r} \), je matrična enačba oblike
+
+\[ \begin{bmatrix} z_{1} \\ z_{2} \\ \vdots \\ z_{n} \end{bmatrix} = \begin{bmatrix} t_{1} \\ t_{2} \\ \vdots \\ t_{n} \end{bmatrix} x_0 + \mathbf{r}
+\]
+
+Produkt senzorskih matrik je
+
+\[ \mathsf{H}^T \mathsf{H} = \sum\limits_{i = 1}^n t_i ^2, 
+\]
+optimalna ocena pa je
+
+\[ x_0 = \frac{1}{\sum\limits_{i = 1}^n t_i ^2} \sum\limits_{i = 1}^n t_i z_i. 
+\]
+
+V primeru izmerkov oblike \( \mathbf{z} = x_0 t + x_1 + r \), pa je matrična enačba oblike
+
+\[ \begin{bmatrix} z_{1} \\ z_{2} \\ \vdots \\ z_{n} \end{bmatrix} = \begin{bmatrix} t_{1} & 1 \\ t_{2} & 1 \\ \vdots & \vdots \\ t_{n} & 1 \end{bmatrix} \begin{bmatrix} x_{0} \\ x_{1} \end{bmatrix} + \mathbf{r}
+\]
+
+Produkt senzorskih matrike je
+
+\[ \mathsf{H}^T \mathsf{H} = \begin{bmatrix}
+                             t_{1} & t_{2} & \ldots & t_n \\
+                             1 & & 1 & \ldots & 1
+                              \end{bmatrix} \begin{bmatrix}
+                                            t_{1} & 1 \\
+                                            t_{2} & 1 \\
+                                            \vdots & \vdots \\
+                                            t_{n} & 1
+                                             \end{bmatrix} = \begin{bmatrix}
+                                                             \sum\limits_{i = 1}^n t_i ^2 & \sum\limits_{i = 1}^n t_i \\
+                                                             \sum\limits_{i = 1}^n t_i & n
+                                                              \end{bmatrix}
+\]
+
+Njen inverz je kot vemo iz Matematike 2
+
+\[ \left( \mathsf{H}^T \mathsf{H} \right)^{-1} = \frac{1}{n \sum\limits_{i = 1}^n t_i ^2 - \left( \sum\limits_{i = 1}^n t_i \right) ^2} \begin{bmatrix}
+n & - \sum\limits_{i = 1}^nt_i \\
+-\sum\limits_{i = 1}^n t_i &  \sum\limits_{i = 1}^n t_i ^2
+\end{bmatrix} 
+\]
+
+Končno pa še
+
+\[ \mathsf{H}^T \mathbf{z} = \begin{bmatrix} \sum\limits_{i = 1}^n t_i z_i \\ \sum\limits_{i = 1}^n z_i \end{bmatrix}. 
+\]
+
+Optimalni vrednosti koeficientov sta
+
+\[ \hat{x} = \begin{bmatrix} x_{0} \\ x_{1} \end{bmatrix} = \frac{1}{n \sum\limits_{i = 1}^n t_i ^2 - \left( \sum\limits_{i = 1}^n t_i  \right) ^2}\begin{bmatrix} n \sum\limits_{i = 1}^n t_i z_i - \left( \sum\limits_{i = 1}^n t_i \right) \left( \sum\limits_{i = 1}^n z_i \right) \\ - \left( \sum\limits_{i = 1}^n t_i \right) \left( \sum\limits_{i = 1}^n t_i z_i \right) + \left( \sum\limits_{i= 1}^n z_i \right) \left( \sum\limits_{i = 1}^n t_i \right) ^2 \end{bmatrix}
+\]
+** Luščenje vrhov v spektru
+#+begin_idea
+Pri radioaktivnem razpadu merimo amplitude sunkov iz detektorjev žarkov \( \gamma \). Ti izmerki so sestavljeni iz ozadja (koeficient \( B \)) ter vrhovov, ki ustrezajo fotonom z dano energijo. Izmerjeni vrhovi se lahko med sabo prekrivajo kot kaže to spodnja slika
+
+#+attr_latex: :width 0.5\textwidth :caption \caption{Prekrivanje dveh vrhov spektra, vir \cite{likar_osnove_2016}.}
+[[file:figures/luscenjeVrhov.png]]
+
+K izmerku \( z_i \) prispevata oba vrhova in ozadje, zato zapišemo
+
+\[ z_i = \left( \mathsf{H} \mathbf{x} + \mathbf{r} \right)_i = B + A_1 f_1 (i) + A_2 f_2 (i) + r_i, \quad i = E_i
+\]
+kjer sta \( A_1 \) in \( A_2 \) amplitudi, \( f_1 \) in \( f_2 \) pa obliki vrhov, v našem primeru Gaussovsko porazdeljeni
+
+\[ f_k (i) = \exp \left\{ - \frac{\left( i - a_k \right) ^2}{2 \sigma_k ^2} \right\}, \quad k = 1, 2. 
+\]
+
+S pomočjo metode najmanjših kvadratov določimo optimalni vrednosti amplitud
+
+\[ \hat{\mathbf{x}} = \begin{bmatrix} \hat{A}_{1} \\ \hat{A}_{2} \end{bmatrix} = \frac{1}{\sum\limits_{i = 1}^n f_1 ^2 \sum\limits_{i = 1}^n f_2 ^2 - \left( \sum\limits_{i = 1}^n f_1 f_2 \right) ^2}\begin{bmatrix}
+\sum\limits_{i = 1}^n f_2 ^2 (i)  \sum\limits_{i = 1}^n f_1 (i) z_i - \sum\limits_{i = 1}^n f_1 (i) f_2 (i) \sum\limits_{i = 1}^n f_2 (i) z_i\\ - \sum\limits_{i= 1}^n f_1 (i) f_2 (i) \sum\limits_{i = 1}^n f_1 (i) z_i + \sum\limits_{i = 1}^n f_1 ^2 (i) \sum\limits_{i = 1}^n f_2 (i) z_i \end{bmatrix}
+\]
+
+Kovariančna matrika je
+
+\[ P = \sigma ^2 \left( \mathsf{H}^T \mathsf{H} \right)^{-1} = \frac{\sigma ^2}{\sum\limits_{i = 1}^n f_1 ^2 (i) \sum\limits_{i = 1}^n f_2 ^2 (i) - \left( \sum\limits_{i = 1}^n f_1 (i) f_2 (i)  \right) ^2}\begin{bmatrix}
+\sum\limits_{i = 1}^n f_2 ^2 (i) & - \sum\limits_{i = 1}^n f_1 (i) f_2 (i) \\
+-\sum\limits_{i= 1}^n f_1 (i) f_2 (i) & \sum\limits_{i = 1}^n f_1 ^2 (i)
+ \end{bmatrix}.
+\]
+
+V primeru, da sta vrhova dobro ločljiva (ni pokrivanja), sta izvendiagonalna člena \( p_{12} = 0 \), saj je \( \sum\limits_{i = 1}^n f_1(i) f_2 (i) \approx 0 \).
+
+V primeru, da vrhova nista dobro ločljiva, potem \( p_{12} = 0 \), potem velja \( f_1 (i) \approx f_2 (i) \). Sledi
+
+\[ \rho_{12} = \frac{- \sum\limits_{i = 1}^n f_1 (i)  f_2 (i)}{\sqrt{\sum\limits_{i = 1}^n f_1 ^2 (i) f_2 ^2 (i)}}  = -1
+\]
+#+end_idea
+
+#+begin_izpeljava
+Za izmerek
+
+\[ z_i = \left( \mathsf{H} \mathbf{x} + \mathbf{r} \right)_i = B + A_1 f_1 (i) + A_2 f_2 (i) + r_i, \quad i = E_i,
+\]
+sta matrična elementa
+
+\[ \mathsf{H} = \begin{bmatrix} f_{1}(1) & f_2 (1) \\ f_{1}(2) & f_{2}(2) \\ \vdots & \vdots \\ f_1(n) & f_2 (n)  \end{bmatrix} \quad \text{ in } \quad \mathbf{x} = \begin{bmatrix} A_{1} \\ A_{2} \end{bmatrix}
+\]
+
+Produkt matrik je
+
+\[ \mathsf{H}^T \mathsf{H} = \begin{bmatrix}
+                             \sum\limits_{i= 1}^n f_1 ^2 (i) & \sum\limits_{i = 1 }^n f_1 (i) f_2 (i) \\
+                              \sum\limits_{i = 1}^n f_1 (i) f_2 (i) & \sum\limits_{i = 1}^n f_2 ^2 (i)
+                              \end{bmatrix} 
+\]
+
+Dobljeno vstavimo v enačbo \eqref{eq:4} za optimalno oceno, ter enačbo \eqref{eq:5} za disperzijo.
+#+end_izpeljava
+** Merjenje odziva sistema na periodično motnjo
+#+begin_idea
+Imamo sistem \( S \) in senzor, ki nam daje izmerke oblike \( \mathbf{z} = \mathsf{H} \mathbf{x} + \mathbf{r} \). Za izluščitev šuma \( \mathbf{r} \) senzor dodatno moduliramo s periodičnim signalom \( \sin (\omega t + \delta) \).
+
+Senzor je linearen sistem, torej bo tudi njegov odziv periodičen,
+
+\begin{equation}
+\label{eq:9}
+ \mathbf{z} = x_0 \sin (\omega t + \delta) + \mathbf{r}. 
+\end{equation}
+
+V primeru, da je \( \delta = 0 \) postopamo kot v nadaljevanju.
+
+Za \( n \) izmerkov lahko preko metode najmanjših kvadratov dobimo optimalno utež
+
+\[ \hat{x}_0 = \frac{\sum\limits_{i = 1}^n \sin (\omega t_i) z_i \Delta t}{\sum\limits_{i = 1}^n \sin ^2 (\omega t_i) \Delta t} \overset{\Delta t \to 0}{\longrightarrow} \frac{\int\limits_0^t \sin (\omega t) z(t)\, \mathrm{d} t}{\int\limits_0^T \sin ^2 (\omega t) \, \mathrm{d} t}
+\]
+
+Kovariančna matrika pa je
+
+\[ P = \frac{\sigma ^2}{\sum\limits_{i = 1}^n \sin ^2 (\omega t_i)  \Delta t} \frac{\Delta t}{\Delta t} \overset{\Delta t \to 0}{\longrightarrow} \frac{\sigma ^2 \Delta t}{\int\limits_0^T \sin ^2 (\omega t) \, \mathrm{d} t} = \frac{2}{T} \sigma ^2 \Delta t 
+\]
+
+V limiti je \( \lim_{\Delta t \to 0} \sigma ^2 \Delta t = R \). Potem je
+
+\[ \lim_{T \to \infty} P = \lim_{T \to \infty} \frac{2R}{T} = 0. 
+\]
+
+Negotovost gre poti \( 0 \), dlje časa kot merimo.
+
+Šum s frekvencami v okolici delovne frekvence pride skozi filter kot
+
+\[ \alpha(\omega) = A_{\omega} \frac{\sin \left[ (\omega - \omega_0) T \right]}{T (\omega - \omega_0)},
+\]
+za referenčni signal
+
+\[ A(t) = A_{\omega} \cos (\omega_0 t). 
+\]
+
+Frekvenčno okno se oža za daljše integracijske čase kot
+
+\[ \Delta \omega = 2 (\omega - \omega_0) = \frac{2\pi}{T} \propto \frac{1}{T}. 
+\]
+
+V primeru, da faza \( \delta \ne 0 \) v enačbi \eqref{eq:9}, si pomagamo z dodatnim referenčnim signalom, ki je zamaknjen za \( \frac{\pi}{2} \) od prvega. Fazo potem izračunamo kot
+
+\[ \tan \delta = \frac{Y_{\frac{\pi}{2} F}}{Y_0F},
+\]
+kjer sta \( Y_{0F} \) in \( Y_{\frac{\pi}{2} F} \) referenčna signala filtrirana skozi LPF.
+
+Optimalna amplituda pa je
+
+\[ x_0 = \frac{2 \sqrt{Y_{0F} ^2 + Y_{\frac{\pi}{2} F} ^2} }{RT} 
+\]
+
+Moduliramo spremenljivko(-e), od katere je odvisen izhod na senzorju. Če je šum nastal pred modulacijo (npr. moduliranje napetosti na senzorju), se ga ne znebimo. Naj bo izhod na senzorju odvisen od stimulusa \( s \) (magnetno polje \( B \), električno polje \( E \), temperatura \( T \), ipd.) in njena modulacija je
+
+\[ s(t) = \bar{s} + A \sin (\Omega T), \quad A \ll \bar{s}. 
+\]
+
+Izhodna funkcija iz senzorja \( V = V(s) \) je potem enako periodična s frekvenco \( \Omega \). Z lock-in detekcijo (vzamemo izhodni signal, ga pomnožimo z referenčnim signalom) izluščimo Fourierovo komponento (sinusno funkcijo) izhoda s frekvenco \( \omega \)
+
+\[ V(s) = V(\bar{s}) + \left.\frac{\mathrm{d} V}{\mathrm{d} s}\right|_{\bar{s}} A \sin (\omega t) + \left. \frac{1}{2} \frac{\mathrm{d} ^2 V}{\mathrm{d} s ^2} \right|_{\bar{s}} A ^2 \sin ^2 (\omega t) + \ldots  
+\]
+
+Izhodna funkcija je potem odvisen od
+
+\[ V_{out} \propto \left. A \frac{\mathrm{d} V}{\mathrm{d} s}\right|_{\bar{s}} 
+\]
+#+end_idea
+
+#+attr_latex: :options [Merjenje odziva sistema na periodično motnjo]
+#+begin_izpeljava
+
+Amplituda \( x_0 \) vsebuje informacije o spremenljivki \( x \), ki jo merimo, in jo moramo izračunati.
+
+Z znano funkcijo \( \sin(\omega t + \delta) \) lahko pridobimo informacije o amplitudi \( x_0 \) preko metode najmanjših kvadratov.
+
+Po opravljenih \( n \) meritvah ob časih \( t_1 = \Delta t, t_2 = 2 \Delta t, \ldots, t_n = n \Delta t \), zapišemo senzorsko okno kot
+
+\[ \mathsf{H} = \begin{bmatrix} \sin(\delta) \\ \sin(\omega \Delta t + \delta) \\ \vdots \\ \sin (n \omega \Delta t + \delta ) \end{bmatrix}. 
+\]
+
+Optimalna vrednost ocene za amplitudo je potem po definiciji
+
+\[ \hat{x}_0 = \left( \mathsf{H}^T \mathsf{H} \right)^{-1} \mathsf{H}^T \mathbf{z} = \frac{\sum\limits_{i = 1}^n z_i \sin (\omega t_i + \delta)}{\sum\limits_{i = 1}^n \sin ^2 (\omega t_i + \delta)}
+\]
+
+V limiti \( \Delta t \to 0 \) je potem optimalna vrednost ocene za amplitudo
+
+\begin{equation}
+\label{eq:6}
+ \hat{x}_0 = \frac{\int\limits_0^T \sin (\omega t + \delta) z(t) \, \mathrm{d} t}{\int\limits_0^T \sin ^2 (\omega t + \delta) \, \mathrm{d} t} 
+\end{equation}
+
+Meritev \( z(t) \) pomnožimo s funkcijo, s katero smo modulirali signal (aka *referenčni signal*), in dobimo optimalno oceno, ki ima izluščen šum.
+
+Napaka ocenjene amplitude \( \hat{x}_0 \) je po definiciji
+
+\[ \mathsf{P} = \left( \mathsf{H}^T \mathsf{H} \right)^{-1} \sigma ^2 = \frac{\sigma ^2}{\sum\limits_{i = 1}^n \sin ^2 (\omega t_i + \delta)} 
+\]
+
+Zgornji ulomek razširimo z \( \Delta t \) in v limiti \( \Delta t \to 0 \) dobimo
+
+\[ P = \frac{\lim_{\Delta t \to 0} (\sigma ^2 \Delta t)}{\int\limits_0^T \sin ^2 (\omega t + \delta) \, \mathrm{d} t} 
+\]
+
+Kot smo naredili pri vektorski spremenljivki, definiramo
+
+\[ \lim_{\Delta t \to 0} (\sigma ^2 \Delta t) = R. 
+\]
+
+V limiti \( T \to \infty \) je vrednost imenovalca \( \frac{T}{2} \) in negotovost se izniči
+
+\[ \mathsf{P} = \frac{2R}{T} \overset{T \to \infty}{\longrightarrow} 0  
+\]
+#+end_izpeljava
+
+#+attr_latex: :options [Prepuščanje harmoničnega signala]
+#+begin_izpeljava
+Referenčni signal, s katerimo moduliramo senzor ima amplitudo \( A_{\omega} \) in frekvenco \( \omega_0 \)
+
+\[ A(t) = A_{\omega} \cos (\omega_0 t). 
+\]
+
+Kot smo videli v enačbi \eqref{eq:6}, amplitudo \( x_0 \) dobimo tako, da pomnožimo signal \( z(t) \) z referenčnim signalom. Če nas zanima prepuščen harmonični signal, vzamemo \( z(t) = \cos (\omega t) \) in izračunamo
+
+\[ \alpha(\omega) =  \frac{\int\limits_0^T \cos(\omega_0 t) \cos(\omega t) \, \mathrm{d} t}{\int\limits_0^T \cos ^2 (\omega_0 t) \, \mathrm{d} t}
+\]
+
+Upoštevamo, da je vrednost imenovalca \( \frac{T}{2} \), produkt kosinusov pa zapišemo kot vsoto
+
+\[ \alpha(\omega) = \frac{A_{\omega}}{T} \int\limits_0^T \left\{ \cos \left[ (\omega - \omega_0) t \right] + \cos \left[ (\omega + \omega_0) t \right] \right\} \, \mathrm{d} t
+\]
+
+Izvrednotimo integral
+
+\[ \alpha(\omega) = \frac{A_{\omega}}{T} \left\{ \frac{\sin \left[ (\omega - \omega_0) T \right]}{(\omega - \omega_0)} + \frac{\sin \left[ (\omega + \omega_0)T \right]}{(\omega + \omega_0)} \right\}.
+\]
+
+Prispevka razlike ali vsote frekvenc sta velika za \( \omega \approx \pm \omega_0 \) in ker nismo nikoli pri \( \omega = - \omega_0 \), lahko zadnji člen zanemarimo.
+
+Velja torej
+
+\[ \alpha(\omega) = A_{\omega} \frac{\sin \left[ (\omega - \omega_0) T \right]}{T (\omega - \omega_0)}. 
+\]
+
+Vemo, da velja limita
+
+\[ \lim_{x \to 0}  \frac{\sin x}{x } = 0.
+\]
+Frekvenčno okno se potem oža kot
+
+\[ \Delta \omega = 2 (\omega - \omega_0) \propto \frac{1}{T} 
+\]
+
+Dlje časa kot integriramo signal, bolj se znebimo šumov in ožje je frekvenčno okno.
+#+end_izpeljava
+
+#+attr_latex: :options [Lock-In detekcija]
+#+begin_izpeljava
+Imamo sistem \( S \) in senzor \( \mathbf{z} = \mathsf{H} \mathbf{x} + \mathbf{r} \). Ponovno umetno moduliramo signal na senzorju s periodično funkcijo. Tej periodični funkcijo previmo referenčni signal
+
+\begin{equation}
+\label{eq:7}
+ \text{Ref}_0 = R \sin (\omega t). 
+\end{equation}
+
+Izhod iz senzorja pa bo oblike
+
+\[ \mathbf{z} = x_0 \sin (\omega t + \delta) + \mathbf{r}. 
+\]
+
+Imamo *dve neznanki*: amplitudo \( x_0 \) in fazo \( \delta \), in obe neznanki nam podata informacije o spremenljivki \( x \). V primeru, da je \( \delta = 0 \) glej enačbo \eqref{eq:6}.
+
+Poleg referenčnega signala \eqref{eq:7}, ki je v fazi s signalom \( z(t) \), lahko uporabimo tudi referenčni signal, ki je v fazi s prvim za \( \frac{\pi}{2} \)
+
+\begin{equation}
+\label{eq:8}
+\text{Ref}_{\frac{\pi}{2}} = R \cos (\omega t).
+\end{equation}
+
+Preko metode najmanjših kvadratov za referenčni signal \eqref{eq:7} dobimo
+
+\[ Y_0 = \text{Ref}_0  z(t) = \text{Ref}_0 \sin(\omega t + \delta).
+\]
+
+Signal \( Y_0 \) peljemo skozi integrator (low-pass filter) in integriran signal označimo z \( Y_{0F} \).
+
+Na podoben način postopamo z referenčnim signalom \eqref{eq:8}, *vendar* \( z(t) \) *je še vedno moduliran s* \eqref{eq:7}!
+
+\[ Y_{\frac{\pi}{2}} = \text{Ref}_{\frac{\pi}{2}} z(t) = \text{Ref}_{\frac{\pi}{2}} \sin (\omega t + \delta). 
+\]
+
+Signal \( Y_{\frac{\pi}{2}} \) ponovno peljemo na integrator in signal označimo z \( Y_{\frac{\pi}{2} F} \).
+
+Signala sta potem
+
+\begin{align*}
+ Y_0 &= R x_0 \sin (\omega t) \sin (\omega t + \delta) = \frac{1}{2} R x_0 \left[ \cos(\delta) - \cos(2\omega t + \delta) \right] \\
+Y_{\frac{\pi}{2}} &= R x_0 \cos (\omega t) \sin (\omega t + \delta) = \frac{1}{2} R x_0 \left[ \sin(\delta) + \sin (2 \omega t + \delta)  \right].
+\end{align*}
+
+Po integraciji nam ostanejo zgolj konstante in torej nam od zgornjih signalov ostanejo zgolj
+
+\begin{align*}
+  Y_{0F} = \frac{1}{2} R x_0 \cos \delta \\
+Y_{\frac{\pi}{2} F} = \frac{1}{2} R x_0 \sin\delta
+\end{align*}
+
+Fazni zamik je potlej
+
+\[ \tan \delta = \frac{Y_{\frac{\pi}{2}F}}{Y_{OF}}, 
+\]
+amplitudo pa dobimo iz enačbe
+
+\[ \frac{1}{2} R x_0 = \sqrt{Y_{0F} ^2 + Y_{\frac{\pi}{2} F} ^2}, 
+\]
+in znaša
+
+\[ x_0 = \frac{2 \sqrt{Y_{0F} ^2 + Y_{\frac{\pi}{2}F} ^2}}{R} 
+\]
+#+end_izpeljava
 
