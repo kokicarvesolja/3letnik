@@ -828,6 +828,9 @@ Hkrati bo pri neki poljubni frekvenci \( 0 \ll \omega_0 \ll \infty \) veljalo
 \[ H(\mathrm{i}\omega_0) = \left| H(\mathrm{i} \omega_0) \right| e^{\mathrm{i} \delta(\omega_0)}.
 \]
 
+#+attr_latex: :width 0.5\textwidth :caption \caption{Nyquistov diagram v odvisnosti od parametra \( \omega \).}
+[[file:figures/stabilnost.png]]
+
 Na sliki jasno vidimo, kako gre od realne neskončnosti do ničle.
 
 Definiramo kvadrat amplitudnega ojačanja kot
@@ -842,6 +845,7 @@ kar je v primeru optimalnega senzorja 2. reda
 Kot že vemo iz poglavja o senzorjih, je Bodejev amplitudni diagram potem
 
 #+attr_latex: :width 0.5\textwidth :caption \caption{Bodejev amplitudni diagram za optimalen senzor 2. reda z dušenjem \( \xi = \frac{1}{\sqrt{2}} \)}
+[[file:figures/stabilnost2.png]]
 
 Z odvajanjem po parametru \( u \) sedaj poiščimo ekstrem
 
@@ -893,5 +897,4 @@ Odprti sistem mora za optimalno dušenje v zaprtem sistemu imeti fazni premik \(
 
 #+attr_latex: :width 0.5\textwidth :caption \caption{Prikaz fazne in amplitudne rezerve, vir \cite{likar_osnove_2016}}
 [[file:figures/amplitudnaRezerva.png]]
-  
 #+end_izpeljava
