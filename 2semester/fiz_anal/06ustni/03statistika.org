@@ -722,8 +722,6 @@ in znaša
 Do sedaj smo imeli opravka zgolj z optimalnimi merilnimi sistemi, ki jih definira določena zgradba in svoj lasten časovno odvisen faktor inovacije \( K(t) \). 
 
 Realen optimalni sistem je neoptimalen (npr. parametri kot so \( \xi \)), kar pomeni, da ne bo deloval enako dobro za vse dinamike, in univerzalen. Oba merilna sistema, realni in optimalni, delujeta po načelu povratne zanke in zadostnega dušenja, zato da stabilno sledi hitrim spremembam. Realne optimalne sisteme je mnogo lažje zgraditi kot optimalne.
-#+end_idea
-
 
 #+begin_src latex
 \begin{center}
@@ -744,6 +742,26 @@ Realen optimalni sistem je neoptimalen (npr. parametri kot so \( \xi \)), kar po
 \end{center}
 #+end_src
 
+Merimo količino s shemo zgornje povratne zanke. Primer take povratne zanke je napetostni sledilnik. Prenosna funkcija \( H(s) \) naj bo znana. Rdeča črta označuje /prenosno funkcijo odprtega sistema/, ki jo označimo s \( H_{OZ} = H(s) \) (OZ pomeni odprta zanka). Ko izhod povežemo z vhodom, dobimo povratno zanko in prenosna funkcija te merilne naprave je /prenosna funkcija zaprtega sistema/
+
+\[ H_{ZZ} = \frac{x}{z} = \frac{H}{1 + H}. 
+\]
+
+Prenosna funkcija \( H_{ZZ} \) bo nestabilna za \( H(s) \to -1 \). V primeru periodičnega vhoda, ko prenosno funkcijo zapišemo kot
+
+\[ H (\mathrm{i} \omega) = \left| H(\mathrm{i} \omega) \right|  e^{\mathrm{i} \delta},
+\]
+se to zgodi pri fazi \( \delta = \pm \pi \) in \( \left| H(\mathrm{i} \omega) \right| \sim 1 \). Pri frekvenci \( \omega \), kjer je fazni zamik \( \delta (\omega) = \pi \), in ojačevalnem faktorju odprte zanke \( f \) je zaprta zanka stabilna za \( f < 1 \).
+
+Poleg ojačevalnega faktorja pa moramo za senzorje drugega reda in višjega reda določiti tudi do zadovoljivega dušenja. Iz optimalne senzorja 2. reda z \( \xi = \frac{1}{\sqrt{2}} \) določimo, da je maksimalna vrednost amplitudnega ojačevalnega faktorja na celotnem frekvenčnem spektru
+
+\[ M_{\max} ^2 (\omega) = \left| \frac{x ^2}{z ^2} \right| = 1.62,
+\]
+iz česar sledi pogoj, da mora realen senzor imeti maksimalno vrednost amplitudnega ojačevalnega faktorja manjšo od \( M_{\max} \), torej
+
+\[ M_{\text{realen}} (\omega) \le M_{\max} (\omega) = 1.3 
+\]
+#+end_idea
 
 #+begin_my_example
 Kot primer razlike med optimalnim in realnim senzorjem, se spomnimo prenosne funkcije optimalnega senzorja drugega reda
@@ -758,3 +776,122 @@ in jo primerjajmo z neoptimalnim senzorjem, kakršni so električni inštrumenti
 Ena od možnih razlik je tako različen (neoptimalen) števec!
 #+end_my_example
 
+#+attr_latex: :options [Določitev pogoja za ojačevalni faktor]
+#+begin_izpeljava
+Iz sheme zaprte zanke odčitamo, da velja
+
+\[ H(s) (z - x) = x, 
+\]
+iz česar določimo prenosno funkcijo zaprtega sistema (zaključene zanke)
+
+\[ H_{zz} = \frac{x}{z} = \frac{H(s)}{1 + H(s)}. 
+\]
+
+Povratna zanka bo nestabilna pri \( H(s) \to -1 \) in v primeru periodičnega vhoda in kompleksnega zapisa
+
+\[ H(\mathrm{i} \omega) = \left| H(\mathrm{i} \omega) \right| e^{\mathrm{i} \delta},
+\]
+velja za vrednosti \( \delta(\omega) = \pm \pi \) ter \( \left| H(\mathrm{i} \omega) \right| \sim 1 \).
+
+Predpostavimo sedaj, da imamo frekvenco \( \omega_0 \), ki ima fazni zamik med vhodom in izhodom \( \delta(\omega_0) = \pi \). Ojačevalni faktor pri tej frekvenci označimo s \( f \). Skozi sistem pošljemo nek val in po prvem prehodu velja
+
+\[ x_1 = z - (-x) = z + x = z + fz = (1 + f) z 
+\]
+
+Zgornji rezultat uporabimo pri drugem prehodu, za katerega velja
+
+\[ x_2 = z - (- x) = z + x = z + f x_1 = z + f (1 + f) z = z (1 + f + f ^2).
+\]
+
+Po \( n \)-tem prehodu bo veljalo
+
+\[ x = z (1 + f + f ^2 + f ^3 + \ldots + f^n), 
+\]
+kar je geometrijska vrsta
+
+\[ \sum\limits_{i = 1}^n f^i = \frac{1}{1 - f},
+\]
+ki bo konvergirala za \( f < 1 \). Dobili smo pogoj za stabilnosti za ojačevalni faktor \( f \) zaprtega vezja \( H_{zz} \), kjer sta vhod in izhod v fazi \( \pi \).
+#+end_izpeljava
+
+#+attr_latex: :options [Določitev pogoja za amplitudno ojačanje]
+#+begin_izpeljava
+Določiti moramo tudi pogoj za dušenje. Začeli bomo z optimalnim senzorjem 2. reda in nato posplošili na realne senzorje.
+
+Narišim Nyquistov diagram v odvisnosti od parametra \( \omega \). Vemo, da za ojačevalni faktor operacijskega ojačevalnika (enačimo ga s \( H_{OZ} \)) veljata limiti
+
+\[ \lim_{\omega \to 0} H_{OZ} (\mathrm{i} \omega) = 10^6 \quad \text{ in } \quad \lim_{\omega \to \infty} H(\mathrm{i} \omega) = 0.
+\]
+
+Hkrati bo pri neki poljubni frekvenci \( 0 \ll \omega_0 \ll \infty \) veljalo
+
+\[ H(\mathrm{i}\omega_0) = \left| H(\mathrm{i} \omega_0) \right| e^{\mathrm{i} \delta(\omega_0)}.
+\]
+
+Na sliki jasno vidimo, kako gre od realne neskončnosti do ničle.
+
+Definiramo kvadrat amplitudnega ojačanja kot
+
+\[ M ^2 = \left| \frac{x}{z} \right|^2,
+\]
+kar je v primeru optimalnega senzorja 2. reda
+
+\[ M ^2 = \frac{1 + 2 \left( \frac{\omega}{\omega_0} \right)^2 }{1 + \left( \frac{\omega}{\omega_0} \right) ^4} = \frac{1 + 2 u ^2}{1 + u ^4}, \quad u = \frac{\omega}{\omega_0}
+\]
+
+Kot že vemo iz poglavja o senzorjih, je Bodejev amplitudni diagram potem
+
+#+attr_latex: :width 0.5\textwidth :caption \caption{Bodejev amplitudni diagram za optimalen senzor 2. reda z dušenjem \( \xi = \frac{1}{\sqrt{2}} \)}
+
+Z odvajanjem po parametru \( u \) sedaj poiščimo ekstrem
+
+\begin{align*}
+  \frac{\mathrm{d} M ^2}{\mathrm{d} u} &= \frac{-1 (1 + 2 u ^2) 4 u ^3}{(1 + u ^4) ^2} + \frac{(1 + u ^4) 4 u}{(1 + u ^4) ^2} \\
+&= \frac{4u \left[ 1 + u ^4 - (1 + 2 u ^2) u ^2 - u ^4 \right]}{\left( 1 + u ^4 \right) ^2} \\
+&= \frac{1 - u ^2 - u ^4}{\left( 1 + u ^4 \right) ^2}
+\end{align*}
+
+Maksimum torej dosežemo v pozitivni točki \( u_1 ^2 = 0.618 \) in maksimalna vrednost znaša
+
+\[ M_{\max} ^2 \left( u = 0.786 \right) =  1.62.
+\]
+
+Naš realen merilni sistem mora torej imeti amplitudno ojačanje enako ali manjše od \( M_{\max} \)
+
+\[ M_{OZ} \le M_{\max} = 1.3 
+\]
+
+Če se vrnemo k zaprti zanki in pripadajoči prenosni funkciji
+
+\[ M ^2 = \left| \frac{x}{z} \right| ^2 = \left| \frac{H (\mathrm{i} \omega)}{1 + H (\mathrm{i} \omega)} \right| ^2 = \left| \frac{\Re H + \mathrm{i} \Im H}{1 + \Re H + \mathrm{i} \Im H}\right|.
+\]
+
+Označimo \( \Re H = \zeta \) in \( \Im H = \eta \) in izračunamo:
+
+\[ M ^2 = \frac{\zeta ^2 + \eta ^2}{\left( 1 + \xi \right) ^2 + \eta ^2}.
+\] 
+
+Po malo preobračanja dobimo enačbo
+
+\[ \left( \frac{M}{1 - M ^2} \right) ^2 = \left( \zeta - \frac{M ^2}{1 - M ^2} \right) ^2 + \eta ^2.
+\]
+
+\( M \) je konstanten in zgornja enačba predstavlja krožnice s polmerom \( \frac{M}{1 - M ^2} \) in središčem v \( \frac{M ^2}{1 - M ^2} \).
+
+Na sliki \ref{fig:kroznice} je celotno območje znotraj krožnice s polmerom \( M_{\max} = 1.3 \) prepovedano, saj drugače naša zaprta zanka ni stabilna.
+
+#+attr_latex: :width 0.5\textwidth :caption \caption{\label{fig:kroznice} Nyquistov diagram z narisanimi krogi. Optimalen senzor 2. reda se dotika krožnice s polmerom \( M_{\max} = 1.3 \) in to želimo tudi za realen senzor, vir \cite{likar_osnove_2016}}
+[[file:figures/stabilnost3.png]]
+
+Definiramo dva termina:
+
+- fazna rezerva, ki nam pove, kako daleč smo od nestabilnosti smo, vendar imamo še zmeraj optimalno dušenje
+
+- pri faznem premiku \( \delta(\omega) = \pi \) mora biti amplituda pod \( -10 \mathrm{dB} \). Amplitudna rezerva nam pove, za koliko se spusti pod \( 0 \mathrm{dB} \).
+
+Odprti sistem mora za optimalno dušenje v zaprtem sistemu imeti fazni premik \( \delta(\omega) = 150^{\degree} \) pri ojačevalnem faktorju \( 1 \).
+
+#+attr_latex: :width 0.5\textwidth :caption \caption{Prikaz fazne in amplitudne rezerve, vir \cite{likar_osnove_2016}}
+[[file:figures/amplitudnaRezerva.png]]
+  
+#+end_izpeljava
