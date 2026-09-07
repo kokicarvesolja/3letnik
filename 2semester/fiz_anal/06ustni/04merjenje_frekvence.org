@@ -1,0 +1,400 @@
+#+title: Merjenje frekvence in časa, majhnih premikov
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{cancel} \usepackage{graphicx}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}} \newcommand{\iu}{\mathrm{i}}
+#+latex_header: \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+#+latex_header: \def\npredmet{FMER - MFCP}
+#+latex_header: \usepackage[european]{circuitikz}
+#+bibliography: refs.bib
+* Merjenje frekvence in časa
+#+begin_idea
+Merimo frekvenco preko fazno vpete zanke (ang. /Phase Locked Loop/ ali /PLL/), ki sinhronizira fizikalna sistema \( S \) in \( M \). V tem primeru prevedemo merjenje frekvence na primerjalno meritev faze iz modelskega sistema \( \theta_m \) in opazovanega sistema \( \theta_s \). Glede na njuno razliko moduliramo frekvenco oscilatorja v modelskem sistemu \( M \).
+
+#+attr_latex: :width 0.5\textwidth :caption \caption{Shema fazno vpete zanke, vir \cite{likar_osnove_2016}.}
+[[file:figures/pll.png]]
+
+Signal iz opazovanega sistema s fazo \( \theta_1 \), ki vsebuje šum \( r \) je
+
+\[ U_1 = U_{10} \sin \left[ \omega_0 t + \theta_1 (t) \right], \quad \theta_1(t) = \theta_s (t) + r(t),
+\]
+na izhodu pa imamo
+
+\[ U_2 = U_{20} \cos \left( \omega_0 t + \theta_m \right).
+\]
+
+Fazno vpeto zanko sestavljajo 3 komponente:
+
+- fazni detektor (FD), ki sprejme na vhodu signala \( U_1 \) in \( U_2 \) na izhodu pa poda razliko faz \( \theta_e = \theta_1 - \theta_2 \). Izhodni signal faznega detektorja je konstantna napetost
+
+  \[ U_{FD} = K_{FD} \sin \theta_e \approx K_{FD} \theta_e, \quad K_{FD} = \frac{k U_{10} U_{20}}{2},
+  \]
+  kjer je \( k \) neka konstanta. Pripadajoča prenosna funkcija je
+
+  \[ H_{FD} (s) = \frac{U_{FD}}{\theta_e} = K_{FD} 
+  \]
+
+- regulacijski filter, ki zaduši signale z visokimi frekvencami in poskrbi za stabilnost povratne zanke (dela podobno kot lowpass filter). Izhodni signal regulacijskega filtra je
+
+  \[ U_F = F(s) U_{FD},
+  \]
+  pripadajoča  prenosna funkcija pa je
+
+  \[ H_{LPF} (s) = \frac{U_F}{U_{FD}} = F(s),
+  \]
+  kjer \( F(s) \) določimo kasneje.
+
+- napetostno občutljiv/kontroliran oscilator (ang. /voltage controlled oscillator/ oz. /VCO/), ki generira drugi signal (radio vsebuje VCO in ko iščemo frekvenco Vala 202, nastavimo izhodiščno frekvenco, s katero najdemo potem signal Vala 202). Izhodni signal je sorazmeren z vhodno napetostjo \( U_F \)
+
+  \[ \omega_2 = \omega_0 + K_0 U_F (t), 
+  \]
+  iz česar dobimo njegovo prenosno funkcijo
+
+  \[ H_{VCO} (s) = \frac{\theta_2}{U_F} = \frac{1}{s} K_0 
+  \]
+
+Izhod iz fazno vpete zanke je potem
+
+\begin{equation}
+\label{eq:2}
+\theta_2 = \frac{1}{s} K_{FD} K_0 F(s) \left( \theta_1 - \theta_2 \right).
+\end{equation}
+
+Prenosna funkcija fazno vpete zanke je potem
+
+\[ H_{PLL} (s) = \frac{\theta_e}{\theta_1} = \frac{1}{1 + \frac{K_0 K_{FD} }{s} F(s)}.
+\]
+
+Kot regulacijski filter si izberemo modificiran RC filter s prenosno funkcijo
+
+\[ F(s) = \frac{1 + \tau_2}{1 + \left( \tau_1 + \tau_2 \right) s}, \quad \tau_i = R_i C,
+\] 
+in dobimo
+
+\[ H_{PLL} = \frac{s ^2 + \frac{1}{\tau_1 + \tau_2} s}{s ^2 + s \left( \frac{1}{\tau_1 + \tau_2} + \frac{\tau_2}{\tau_1 + \tau_2} K_0 K_{FD}  \right) + \frac{K_0 K_{FD}}{\tau_1 + \tau_2}}.
+\]
+
+Odčitamo lahko lastno frekvenco \( \omega_n ^2 \) in faktor dušenja \( 2\xi \omega_n \)
+
+\[ \omega_n ^2 = \frac{K_0 K_{FD}}{\tau_1 + \tau_2} \quad \text{ in } \quad 2\xi\omega_n = \frac{1 + K_0 K_{FD} \tau_2}{\tau_1 + \tau_2}
+\]
+
+Če ne velja \( \theta_e \ll 1 \), potem je dinamična enačba fazno vpetega detektorja
+
+\begin{equation}
+\label{eq:6}
+ \ddot{\theta}_e + \frac{1 + K_0K_{FD} \tau_2 \cos \theta_e }{\tau_1 + \tau_2} \dot{\theta}_e + \frac{K_0 K_{FD}}{\tau_1 + \tau_2} \sin \theta_e = \ddot{\theta}_1 + \frac{\dot{\theta}_1}{\tau_1 + \tau_2} 
+\end{equation}
+
+Fazno vpeta zanka se uspešno ujame na vhodno frekvenco
+
+- za skok, ki ga opišemo kot
+
+  \[ \dot{\theta}_1 = \Delta  \omega \quad \text{ in } \quad \ddot{\theta}_1 = 0,
+  \]
+  če velja pogoj
+
+  \[ \Delta \omega \le \Delta \omega_n = K_0 K_{FD}
+  \]
+
+- za driftanje, ko se frekvenca približuje pravilni in ga opišemo z
+
+  \[ \frac{\mathrm{d} }{\mathrm{d} t}\Delta \omega = \ddot{\theta}_1 \quad \text{ in } \quad \dot{\theta}_1 = 0,
+  \]
+  če velja pogoj
+
+  \[ \frac{\mathrm{d} }{\mathrm{d} t} \Delta \omega \le \omega_n ^2 = \frac{K_0 K_{FD}}{\tau_1 + \tau_2}
+  \]
+
+Pri večji razklenitvi, kjer velja
+
+\[ \left( \Delta \omega \right)_0 = K_0 K_{FD} \left| F (\mathrm{i} \Delta \omega) \right| \le \Delta \omega,
+\]
+se zanka vklene nazaj v času \( \frac{2\pi}{\Delta \omega} \). Mejna frekvenčna razlika \( \Delta \omega_L \), da se to še zgodi je
+
+\[ \Delta \omega \le \Delta \omega_L = K_0 K_{FD} \frac{\tau_2}{\tau_1 + \tau_2} 
+\]
+#+end_idea
+
+#+attr_latex: :options [Fazni detektor]
+#+begin_izpeljava
+Fazni detektor sprejme zašumljen vhodni signal iz opazovanega sistema
+
+\[ U_1 = U_{10} \sin \left[ \omega_0 t + \theta_1 (t) \right], \quad \theta_1 (t) = \theta_s (t) + r(t),
+\]
+ter izhodni signal iz fazno vpete zanke
+
+\[ U_2 = U_{20} \cos \left[ \omega_0 t + \theta_2 (t) \right], \quad \theta_2 (t) = \theta_M (t).
+\]
+
+Izhod faznega detektorja je razlika faz
+
+\[ \theta_e = \theta_1 - \theta_2, 
+\]
+ki jo dobimo s časovnim povprečenjem produkta obeh signalov. Povprečimo torej
+
+\[ U_{FD} = k \left\langle U_{10} U_{20} \sin \left( \omega_0 t + \theta_1 \right) \cos \left( \omega_0 t + \theta_2 \right) \right\rangle,
+\]
+kjer je \( k \) neka konstanta. Uporabimo identiteto
+
+\[ \sin \alpha \sin \beta = \frac{1}{2} \left[ \sin \left( \alpha - \beta \right) + \sin \left( \alpha + \beta \right) \right],
+\]
+in povprečenje je
+
+\[ U_{FD} = \frac{k U_{10} U_{20}}{2} \left\langle \sin (\theta_1 - \theta_2) + \sin \left( 2 \omega_0 t + \theta_1 + \theta_2  \right) \right\rangle.
+\]
+
+Drugi člen ima v primerjavi s spreminjanjem fazne razlike \( \theta_e \) višjo frekvenco in ga lahko zanemarimo. Preostane nam torej
+
+\[ U_{FD} = K_{FD} \sin \theta_e, \quad K_{FD} = \frac{k U_{10} U_{20}}{2}. 
+\]
+
+Za \( \theta_e \ll 1 \) pa naredimo približek
+
+\[ U_{FD} \approx K_{FD} \theta_e. 
+\]
+
+Ločimo več tipov faznih detektorjev
+
+- tip I. (XOR gate)  (glej Marko's chest zapiske), ki ima slabost, da ne loči med zaostajanjem in prehitevanjem signala.
+  
+- tip II., ki nima zgornje slabosti, saj spremeni predznak sunka glede na to ali zaostaja ali prehiteva.
+#+end_izpeljava
+
+#+attr_latex: :options [Prenosna funkcija regulacijskega filtra]
+#+begin_izpeljava
+Fazno vpeto zanko obravnavamo kot optimalen senzor 2. reda pri določanju prenosne funkcije \( F(s) \) regulacijskega filtra. Rešujemo vektorsko enačbo
+
+\[ \frac{\mathrm{d} }{\mathrm{d} t} \begin{bmatrix} \theta_{s} \\ \omega_{s} \end{bmatrix} = \begin{bmatrix}
+                                                                                             0 & 1 \\
+                                                                                             0 & 0
+                                                                                              \end{bmatrix}
+\begin{bmatrix} \theta_{s} \\ \omega_{s} \end{bmatrix} + \begin{bmatrix} 0 \\ 1 \end{bmatrix} w,
+\]
+kjer je \( w \) beli šum, za katerega velja
+
+\[ \left\langle w(t) w(t + \tau) \right\rangle = Q \delta(\tau).
+\]
+
+Izmerek je oblike
+
+\[ \theta_1 = \theta_s + r, 
+\]
+kjer je \( r \) šum in velja
+
+\[ \left\langle r(t) r(t + \tau) \right\rangle = R \delta(\tau).
+\]
+
+Rešujemo torej enačbi za oceni \( \dot{\hat{\theta}}_s \) in \( \dot{\hat{\omega}}_s \)
+
+\begin{align}
+  \label{ali4:1}
+\dot{\hat{\theta}}_s &= \hat{\omega}_s + K_{\theta} \left( z - \hat{\theta}_s \right) \\ \label{ali4:2}
+\dot{\hat{\omega}}_s &= K_{\omega} \left( z - \hat{\theta}_s \right)
+\end{align}
+
+Enačbo \eqref{ali4:1} odvajamo po času in nadomestimo \( \dot{\hat{\omega}}_s \) v odvajanem izrazu z \eqref{ali4:2}. Dobimo
+
+\[ \ddot{\hat{\theta}}_s = K_{\omega} \left( z - \hat{\theta}_s \right) + K_{\theta} \left( \dot{z} - \dot{\hat{\theta}}_s \right).
+\]
+
+Po Laplaceovi transformaciji dobimo zvezo
+
+\begin{equation}
+\label{eq:1}
+ \hat{\theta}_s = \frac{1}{s} \left( \frac{K_{\omega}}{s} + K_{\theta} \right) \left( z - \hat{\theta}_s \right) 
+\end{equation}
+
+Če v enačbi \eqref{eq:1} nadomestimo \( \hat{\theta}_s \) z \( \theta_2 \) in primerjamo z \eqref{eq:2}, razberemo, da je prenosna funkcija regulacijskega filtra
+
+\[ F(s) = \frac{1}{K_0 KFD} \left( \frac{K_{\omega}}{s} + K_{\theta} \right), \quad K_{\omega} = \sqrt{\frac{Q}{R}} \quad \text{ in } \quad K_{\theta} \sqrt{2} \sqrt[4]{\frac{Q}{R}}
+\]
+
+*Ali pa zavržemo vse to delo in si kot prenosno funkcijo izberemo prenosno funkcijo RC filtra!* (What do I know, I just work here).
+
+Ker sledimo konstantni frekvenci, je dobro izbrati filter z dolgo časovno konstanto \( \tau \). Prenosna funkcija RC filtra je
+
+\[ F(s) = \frac{1}{1 + \tau s} 
+\]
+
+in prenosna funkcija fazno vpete zanke je potem
+
+\[ H_{PLL} (s) = \frac{\theta_e}{\theta_1} = \frac{s ^2 + \frac{s}{\tau}}{s ^2 + \frac{s}{\tau} + \frac{K_0 K_{FD}}{\tau}}. 
+\]
+
+Faktor dušenja je torej \( \frac{1}{\tau} \) in velika časovna konstanta \( \tau \) poda majhen faktor dušenja in zato ni primerna.
+
+Shema modificiranega RC filtra se nahaja na spodnji slika
+
+#+begin_src latex
+\begin{center}
+ \begin{circuitikz}
+    \scalebox{1}{
+      \draw node[left]{$U_{in}$} (0, 0) to[R=$R_1$, o-] (2, 0) to[short, -o] (4, 0) 
+      node[right]{$U_{out}$};
+      \draw (2, 0) to[C=$C$] (2, -1.5)
+      to[R=$R_2$] node[ground]{} (2, -3.0);
+    }
+  \end{circuitikz} 
+\end{center}
+#+end_src
+
+Njegova prenosna funkcija je
+
+\begin{equation}
+\label{eq:3}
+ F(s) = \frac{1 + \tau_2 s}{1 + (\tau_1 + \tau_2) s}, \quad \tau_i = R_i C 
+\end{equation}
+#+end_izpeljava
+
+#+attr_latex: :options [VCO]
+#+begin_izpeljava
+Izhodni signal VCO je
+
+\[ U_2 = U_{20} \cos \left[ \omega_0 t + \theta_2 (t) \right], 
+\]
+medtem ko je njegov vhod napetost iz regulacijskega filtra \( U_F \). Označimo frekvenco izhodnega signala kot
+
+\begin{equation}
+\label{eq:4}
+ \omega_2 (t) = \omega_0 + K_0 U_F(t), 
+\end{equation}
+kjer je \( K_0 \) ojačevalni faktor VCO.
+
+Velja
+
+\[ \omega_2 t = \omega_0 t + \theta_2 (t), 
+\]
+in če to odvajamo, dobimo
+
+\[ \dot{\theta}_2 = \omega_2 - \omega_0 = K_0 U_F (t),
+\]
+kjer smo iz enačbe \eqref{eq:4} prebrali razliko \( \omega_2 - \omega_0 \).
+
+Po Laplaceovi transformaciji dobimo
+
+\begin{equation}
+\label{eq:5}
+ \theta_2 = \frac{1}{s} K_0 U_F 
+\end{equation}
+#+end_izpeljava
+
+#+attr_latex: :options [Prenosna funkcija PLL]
+#+begin_izpeljava
+Da sestavimo prenosno funkcijo fazno vpete zanke postopamo v obratnem vrstnem redu: od VCO, LPF do faznega detektorja.
+
+Izhod faznega detektorja je torej
+
+\begin{align*}
+  \theta_2 (s) &= \frac{1}{s} K_0 U_F (s) \\
+&= \frac{1}{s} K_0 \underbrace{F(s) U_{FD} (s)}_{U_F} \\
+&= \frac{1}{s} K_0 F(s) \underbrace{K_{FD} \theta_e (s)}_{U_{FD}} \\
+&= \frac{1}{s} K_0 F(s) K_{FD} \left( \theta_2 - \theta_1 \right),
+\end{align*}
+
+iz česar potem dobimo prenosno funkcijo PLL
+
+\[ H_{PLL} = \frac{\theta_e}{\theta_1} = \frac{1}{1 + \frac{K_0 K_{FD}}{s} F(s)} 
+\]
+
+Ko uporabimo prenosno funkcijo modificiranega RC filtra iz enačbe \eqref{eq:3} dobimo
+
+
+\[ H_{PLL} = \frac{s ^2 + \frac{1}{\tau_1 + \tau_2} s}{s ^2 + s \left( \frac{1}{\tau_1 + \tau_2} + \frac{\tau_2}{\tau_1 + \tau_2} K_0 K_{FD}  \right) + \frac{K_0 K_{FD}}{\tau_1 + \tau_2}}.
+\]
+
+Odčitamo lastno frekvenco \( \omega_n \) in faktor dušenja \( 2 \xi \omega_n \). Tedaj lahko sestavimo enačbo za fazno vpeto zanko
+
+\[ \ddot{\theta}_e + \frac{1 + K_0 K_{FD} \tau_2}{\tau_1 + \tau_2} \dot{\theta}_e + \frac{K_0 K_{FD}}{\tau_1 + \tau_2} \theta_e = \ddot{\theta}_1 + \frac{\dot{\theta}_1}{\tau_1 + \tau_2}.
+\]
+
+V primeru, da ne velja približek \( \theta_e \ll 1 \), dobimo enačbo \eqref{eq:6}.
+#+end_izpeljava
+
+#+attr_latex: :options [PLL skok]
+#+begin_izpeljava
+Za skok, ki ga definira sprememba frekvence
+
+\[ \dot{\theta}_1 = \Delta \omega \quad \text{ in } \quad \ddot{\theta}_1 = 0,
+\] 
+dobimo v stacionarnem primeru
+
+\[ \ddot{\theta}_e = \dot{\theta}_e = 0, 
+\]
+
+enačbo
+
+\[ \frac{K_0 K_{FD}}{\tau_1 + \tau_2} \sin \theta_e = \frac{\Delta \omega}{\tau_1 + \tau_2}.
+\]
+
+Označimo \( \Delta\omega_{\max} = K_0 K_{FD} \). Največji frekvenčni razpon \( \Delta \omega \), da se PLL še sklene z vhodno frekvenco je torej
+
+\[ \Delta \omega \le \Delta \omega_{\max} = K_0 K_{FD} 
+\]
+#+end_izpeljava
+
+#+attr_latex: :options [Driftanje]
+#+begin_izpeljava
+Driftanje, ko se frekvenca približuje pravilni frekvenci, definira naklon premice
+
+\[ \ddot{\theta}_1 = \frac{\mathrm{d} }{\mathrm{d} t} \Delta \omega \quad \text{ in } \quad \dot{\theta}_1 = 0.
+\]
+
+V stacionarnem primeru
+
+\[ \ddot{\theta}_e = \dot{\theta}_e = 0, 
+\]
+dobimo enačbo
+
+\[ \frac{K_0 K_{FD}}{\tau_1 + \tau_2} \sin \theta_e = \frac{\mathrm{d} }{\mathrm{d} t} \Delta \omega,
+\]
+iz česar dobimo pogoj
+
+\[ \frac{\mathrm{d} }{\mathrm{d} t} \Delta \omega < \frac{K_0 K_{FD}}{\tau_1 + \tau_2} = \omega_n ^2 
+\]
+#+end_izpeljava
+
+#+attr_latex: :options [Vklenitev PLL]
+#+begin_izpeljava
+Za razklenitve, kjer je faza majhna, se PLL hitro vklene. Za razklenitve, kjer so razlike večje, pa dobimo mejno frekvenčno razliko \( \Delta \omega_L \), da se PLL še vklene na sledeč način:
+
+Signal iz faznega detektorja prihaja z obliko
+
+\[ U_{FD} = K_{FD} \sin (\Delta \omega),
+\]
+ki se prenese na regulacijski filter in dobimo nihajočo napetost \( U_0 \) z amplitudo
+
+\[ \Delta U_0 = \left| F(\mathrm{i} \Delta\omega) \right| K_{FD},
+\]
+
+Ta nihajoča napetost zaniha frekvenco VCO z amplitudo
+
+\[ \left( \Delta \omega \right)_0 = K_0 K_{FD} \left| F(\mathrm{i} \Delta\omega) \right|.
+\]
+
+Če je \( \left( \Delta \omega \right)_0 \le \Delta \omega \) se zanka vklene v času
+
+\[ t = \frac{2 \pi}{\left( \Delta \omega \right)_0}.
+\]
+
+Mejno frekvenčno razliko dobimo iz transcendentne enačbe
+
+\[ \Delta \omega_L = K_0 K_{FD} \left| F(\mathrm{i} \Delta \omega_L)  \right| 
+\]
+
+Aproksimiramo
+
+\[ F (\mathrm{i} \Delta \omega_L) = \frac{\tau_2}{\tau_1 + \tau_2},
+\]
+in dobimo
+
+\[ \Delta \omega_L = K_0 K_{FD} \frac{\tau_2}{\tau_1 + \tau_2} = \left( \Delta \omega \right)_{\max} \frac{\tau_2}{\tau_1 + \tau_2}.
+\]
+#+end_izpeljava
+
+
+* Merjenje majhnih premikov
+
