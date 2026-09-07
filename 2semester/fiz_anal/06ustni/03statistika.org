@@ -717,4 +717,44 @@ in znaša
 \[ x_0 = \frac{2 \sqrt{Y_{0F} ^2 + Y_{\frac{\pi}{2}F} ^2}}{R} 
 \]
 #+end_izpeljava
+* Stabilnost povratne zanke
+#+begin_idea
+Do sedaj smo imeli opravka zgolj z optimalnimi merilnimi sistemi, ki jih definira določena zgradba in svoj lasten časovno odvisen faktor inovacije \( K(t) \). 
+
+Realen optimalni sistem je neoptimalen (npr. parametri kot so \( \xi \)), kar pomeni, da ne bo deloval enako dobro za vse dinamike, in univerzalen. Oba merilna sistema, realni in optimalni, delujeta po načelu povratne zanke in zadostnega dušenja, zato da stabilno sledi hitrim spremembam. Realne optimalne sisteme je mnogo lažje zgraditi kot optimalne.
+#+end_idea
+
+
+#+begin_src latex
+\begin{center}
+  \begin{circuitikz}
+    \scalebox{1.}{
+      \draw (0, 0) node[mixer](m){}
+      (m.w) node[pos=-0.1, left]{+}
+      (m.s) node[above]{-};
+      \draw[color=red]
+      (m.w) node[inputarrow] to (-1.5, 0) node[above]{$z$}
+      (m.e) to[twoport, t={$H(s)$}] (2.5, 0)
+      to[short, o-] node[above]{$x$} (3.5, 0)
+      \draw (2.5, 0) to (2.5, -1)
+      to (0, -1)
+      to (m.s) node[inputarrow, rotate=90]{}
+    ;}
+  \end{circuitikz}
+\end{center}
+#+end_src
+
+
+#+begin_my_example
+Kot primer razlike med optimalnim in realnim senzorjem, se spomnimo prenosne funkcije optimalnega senzorja drugega reda
+
+\[ H_o(s) = \frac{\alpha \left( 1 + \frac{2 \xi}{\omega_0} s \right)}{\frac{s ^2}{\omega_0 ^2} + \frac{2 \xi s}{\omega_0} + 1},
+\]
+in jo primerjajmo z neoptimalnim senzorjem, kakršni so električni inštrumenti za merjenje toka in napetosti,
+
+\[ H_n(s) = \frac{\alpha}{\frac{s ^2}{\omega_0 ^2} + \frac{2 \xi s}{\omega_0} + 1}.
+\]
+
+Ena od možnih razlik je tako različen (neoptimalen) števec!
+#+end_my_example
 
