@@ -719,7 +719,7 @@ in desni del (rdeča črta) z induktivnostjo
 
 Na material je pritrjena ročka, ki se ob premikih premakne. To inducira napetost, ki jo merimo na voltmetru \( U_R \).
 
-Inducirano napetost dobimo s p omočjo magnetnega pretoka
+Inducirano napetost dobimo s pomočjo magnetnega pretoka
 
 \[ U_L = - \dot{\phi}_m = - \left( LI \right)\dot{} \approx - I \frac{\mathrm{d} L}{\mathrm{d} t},
 \]
