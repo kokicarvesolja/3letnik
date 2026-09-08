@@ -466,8 +466,296 @@ Upoštevamo prej izpeljan rezultat in dobimo
 #+begin_idea
 Shema senzorja premika, ki deluje s pomočjo kondenzatorjev vidimo na sliki \ref{fig:kond}.
 
-#+attr_latex: :width 0.5\textwidth :caption \caption{Shema senzorja premika, ki deluje na osnovi kondenzatorja, vir \cite{likar_osnove_2016}.}
+#+attr_latex: :width 0.5\textwidth :caption \caption{\label{fig:kond} Shema senzorja premika, ki deluje na osnovi kondenzatorja, vir \cite{likar_osnove_2016}.}
+[[file:figures/kondenzatorUpor.png]]
+
+Prenosna funkcija \( H(s) \), ki povezuje premik \( x \) s spremembo napetosti \( U_i \) na izhodu je
+
+\[ H(s) = \frac{U_i}{x} = \frac{U_0}{x_0} \frac{\tau s}{1 + \tau s} 
+\]
 #+end_idea
+#+begin_izpeljava
+Pri spreminjanju razdalje med ploščama kondenzatorja s kapaciteto
+
+\[ C_0 = \frac{\epsilon_0 \epsilon S}{x_0},
+\]
+se njegova kapaciteta spremeni za
+
+\[ \mathrm{d} C = - \frac{\epsilon \epsilon_0 S}{x ^2} \mathrm{d} x = - C_0 \frac{\mathrm{d} x}{x_0}.
+\]
+
+Sprememba kapacitete skozi čas je
+
+\begin{equation}
+\label{eq:9}
+ \frac{\mathrm{d} C}{\mathrm{d} t} = - \frac{C_0}{x_0} \frac{\mathrm{d} x}{\mathrm{d} t} 
+\end{equation}
+
+V stacionarnem stanju nimamo toka \( I \). Pri spremembi kapacitete pa steče po vezju tok
+
+\[ I = \frac{\mathrm{d} e}{\mathrm{d} t} = \frac{\mathrm{d} }{\mathrm{d} t} \left( C U_C \right). 
+\]
+
+Tako \( C \) kot \( U_C \) imata časovno odvisnost, zato odvajamo z verižnim pravilom in dobimo
+
+\begin{align*}
+  I &= \frac{\mathrm{d} }{\mathrm{d} t} \left( C U_C \right) \\
+&= \frac{\mathrm{d} C}{\mathrm{d} t} U_C + C \frac{\mathrm{d} U_{C}}{\mathrm{d} t}
+\end{align*}
+
+Izhodna napetost \( U_i \) iz vezja na sliki \ref{fig:kond} je
+
+\begin{equation}
+\label{eq:10}
+ U_i = IR = R  \left( \frac{\mathrm{d} C}{\mathrm{d} t} U_C + C \frac{\mathrm{d} U_{C}}{\mathrm{d} t} \right).
+\end{equation}
+
+Vsota padcev napetosti je
+
+\[ U_e - U_C - U_i = 0,
+\]
+in odvod padcev napetosti po času je
+
+\[ \frac{\mathrm{d} U_{C}}{\mathrm{d} t} = - \frac{\mathrm{d} U_i}{\mathrm{d} t}.
+\]
+
+Dobljeno enakost upoštevamo v enačbi \eqref{eq:10} 
+
+\[ U_i + RC \frac{\mathrm{d} U_{i}}{\mathrm{d} t} = R U_C \frac{\mathrm{d} C}{\mathrm{d} t} 
+\]
+
+Padec izhodne napetosti je manjši kot padec napetosti na kondenzatorju, zato lahko v približku zapišemo in upoštevamo \( U_C \approx U_e \). Prav tako upoštevamo enačbo \eqref{eq:9}, iz česar dobimo
+
+\[ U_i + RC \frac{\mathrm{d} U_{i}}{\mathrm{d} t} - \frac{C_0}{x_0} U_0 R \frac{\mathrm{d} x}{\mathrm{d} t} = 0.
+\]
+
+Uvedemo spremenljivko \( \tau = RC \approx RC_0 \), transformiramo s pomočjo Laplaceove transformacije in dobimo
+
+\[ U_i \left( 1 + \tau s \right) = \frac{U_0}{x_0} \tau s x, 
+\]
+iz česar lahko izrazimo prenosno funkcijo
+
+\[ H(s) = \frac{U_i}{x} = \frac{U_0}{x_0} \frac{\tau s}{1 + \tau s}.
+\]
+
+Senzor ni primeren za merjenje zelo počasnih premikov, saj smo omejeni s frekvenco nad \( \frac{1}{\tau} \).
+
+Če bi želeli, lahko vezje modificiramo, da dobimo čisti diferenciator.
+
+#+begin_src latex
+\begin{center}
+ \begin{circuitikz}
+    \scalebox{1}{
+      \draw (0, -3) node[ground]
+      to[dcvsource={$U_0$}] (0, -2)
+      to[C={$C$}] (0, 0);
+      \draw (2.5, -0.5) node[op amp, input up](OA){}
+      (OA.-) to (0, 0)
+      (OA.+) to ++ (0, -1.5) node[ground]{}
+      (OA.out) to[short, -o] ++(1, 0) coordinate(p1)
+      (p1) to[short, -o] ++(1, 0) node[above]{$U_i$};
+      \draw (0.5, 0) -- (0.5, 1.5) coordinate(p2) to[R=$R_f$] (p2 -| p1) -- (p1);
+      \draw (p2) -- (0.5, 3.25) coordinate(p3) to[C=$C_{\perp}$] (p3 -| p1) -- (p1)
+    ;}
+  \end{circuitikz} 
+\end{center}
+#+end_src
+
+V tem primeru velja
+
+\[ I = \dot{C} U_0 = - \frac{C_0}{x_0} U_0 \frac{\mathrm{d} x}{\mathrm{d} t} = \frac{U_i}{R_f}.
+\]
+
+Za \( C_{\perp} = 0 \), potem zapišemo
+
+\[ U_i (t) = - \frac{U_0}{x_0} C_0 R_f \dot{x}, 
+\]
+in po Laplaceovi transformaciji dobimo
+
+\[ H(s) = -\frac{U_0}{x_0} \tau s 
+\]
+#+end_izpeljava
 ** Piezoelektrični senzor
+#+begin_idea
+Piezoelektrični senzor premikov ima enako zgradbo kondenzatorskemu senzorju, vendar je tokra kondenzator napolnjen s piezoelektrikom kot je \( \mathrm{PbTiO}_3 \).
+
+Kristal je nevtralen zaradi simetrije, vendar se ob deformaciji v smeri \( z \) spremeni ravnovesna lega \( \mathrm{Ti}^{4+} \), kar povzroči v kristalu polarizacijo
+
+\[ P_i = d_{ijk} T_{jk},
+\]
+kjer je \( d_{ijk} \) piezoelektrični tenzor in \( T_{ij} \) napetostni tenzor.
+
+Kristal tako obrnemo, da je piezoelektrična konstanta največja in naboj na ploščah kondenzatorja je potem
+
+\[ e = d_{33} F,
+\]
+kjer je \( F \) sila.
+
+Osnovna shema piezoelektričnega senzorja premika je vidna na sliki \ref{fig:piezo1}.
+
+#+attr_latex: :width 0.5\textwidth :caption \caption{\label{fig:piezo1} Osnovna shema piezoelektričnega senzorja premika, vir \cite{likar_osnove_2016}.}
+[[file:figures/piezo1.png]]
+
+(Možnost vezave je tudi s koaksialnim kablo, glej zapiske od Marko's chest.)
+
+Desni člen predstavlja izvor naboja \( q \), \( C_p \) je kapaciteta merilnega kondenzatorja, \( R \) upor piezoelektričnega materiala in \( C_K \) je kapaciteta priključnega kabla.
+
+Prenosna funkcija zgornje sheme je
+
+\[ H(s) = K \frac{\tau s}{\tau s + 1}, \ \tau = R(C_P + C_K) \quad \text{ in } \quad K = \frac{d_{33} ES}{x_0 (C_p + C_k)},
+\]
+kjer je \( E \) Youngov modul.
+
+Kapaciteta \( C_k \) ni zanemarljiva in močno vpliva na konstanto \( K \). To je težava, ker potem bi vsaj laboratorij imel svoj \( K \). Namesto tega vezje posodobimo z operacijskim ojačevalnikom kot vidimo na sliki \ref{fig:piezo2}.
+
+#+attr_latex: :width 0.5\textwidth :caption \caption{\label{fig:piezo2} Napredna shema piezoelektričnega senzorja premika, vir \cite{likar_osnove_2016}.}
+[[file:figures/piezo2.png]]
+
+Vhod v operacijski ojačevalnik ima zelo visoko impedanco in ima zato napetost \( U_- = 0 \). Ves naboj se tako zbere na kondenzatorju s kapaciteto \( C_f \) in pripadajoča prenosna funkcija je
+
+\[ H(s) = \frac{U_i}{\Delta x} = - \frac{E S d_{33}}{x_0 C_f} \frac{\tau_f s}{1 + \tau_f s}, \quad \tau_f = R_f C_f 
+\]
+#+end_idea
+
+#+attr_latex: :options [Polarizacija]
+#+begin_izpeljava
+Polarizacija \( P_i \) je povezana z napetostnim tenzorjem \( T_{jk} \) preko piezoelektričnega tenzorja \( d_{ijk} \)
+
+\[ P_i = d_{ijk} T_{jk}.
+\]
+
+Napetostni tenzor je simetričen \( T_{jk} = T_{kj} \) in ima zgolj 6 neodvisnih komponent. To pomeni, da ima \( d_{ijk} \) 18 neodvisnih komponent. Zapišemo
+
+\[ P_i = d_{im} T_m, m = 1, \ldots, 6. 
+\]
+
+Bolj kot je kristal simetričen, manj imamo neodvisnih komponent. 
+
+Deformacija kristala povzroči polarizacijo, kar povzroči, da se na ploščah kondenzatorja nabere naboj
+
+\[ e_i = P_i S = d_{ij} \sigma_j S = d_{ij} F.
+\]
+
+V našem primeru kristal deformiramo vdolž osi \( \mathbf{j} \), plošči kondenzatorja pa sta pravokotni os \( i \).
+
+Naj bo \( d_{33} \) največja piezoelektrična konstanta in naboj je potem
+
+\[ e = d_{33} F.
+\]
+#+end_izpeljava
+
+#+attr_latex: :options [Osnoven piezo]
+#+begin_izpeljava
+Izhajamo iz slike \ref{fig:piezo1}. Skupni tok skozi elemente iz slike je
+
+\[ \frac{\mathrm{d} }{\mathrm{d} t} e = d_{33} \frac{\mathrm{d} }{\mathrm{d} t} F = I_p + I_R + I_k, 
+\]
+kjer je \( I_p \) tok skozi kondenzator s kapaciteto \( C_p \), \( I_R \) tok skozi upornik \( R \) in \( I_k \) tok skozi priključen kabel in vhod v predojačevalnik. Upoštevamo definicije posameznih tokov in dobimo diferencialno enačbo
+
+\[ d_{33} \frac{\mathrm{d} }{\mathrm{d} t} F = C_p \frac{\mathrm{d} }{\mathrm{d} t}U_i + C_k \frac{\mathrm{d} }{\mathrm{d} t} U_i + \frac{U_i}{R}, 
+\]
+ki jo Laplaceovo transformiramo
+
+\[ R d_{33} s F = U_i \left[ \left( C_p + C_k \right)Rs + 1 \right]. 
+\]
+
+Ob upoštevanju Hookovega zakona, ki nam poveže silo in premik
+
+\[ \frac{F}{S} = E \frac{\Delta x}{x_0}, 
+\]
+dobimo prenosno funkcijo osnovne vezave
+
+\begin{equation}
+\label{eq:11}
+ H(s) = \frac{U_i}{\Delta x} = \frac{d_{33} ES}{x_0 (C_p + C_k)} \frac{\tau s}{1 + \tau s} = K \frac{\tau s }{1 + \tau s}
+\end{equation}
+#+end_izpeljava
+
+#+attr_latex: :options [Napreden piezo]
+#+begin_izpeljava
+Faktor \( K \) iz enačbe \eqref{eq:11} je močno odvisen od kapacitete kablov in vhodne kapacitete predojačevalnika. Namesto tega se poslužimo sheme na sliki \ref{fig:piezo2}.
+
+Zaradi visoke impedance je napetost na invertiranem vhodu \( 0 \) (in ker je tudi ne-invertiran vhod vezan na *GROUND*). Edina razlika v potencialu je torej med izvorom naboja ter izhodom \( U_i \). Tok ne teče skozi elemente \( C_p \), \( R \) ali \( C_k \). Ves naboj se bo zbral na kondenzatorju s kapaciteto \( C_f \). 
+
+Tok skozi vezje je sestavljen iz
+
+\[ I = \frac{\mathrm{d} }{\mathrm{d} t} e = d_{33} \frac{ES}{x_0} \Delta \dot{x} = \left( \frac{\mathrm{d} U}{\mathrm{d}  t} - \frac{\mathrm{d} U_{i}}{\mathrm{d} t} \right) C_f + \frac{U - U_i}{R_f},
+\]
+kjer smo že upoštevali Hookov zakon za silo \( F \). Zgornjo enačbo Laplaceovo transformiramo, definiramo \( \tau_f = C_f R_f \) in dobimo prenosno funkcijo, ki nima koeficienta odvisnega od koaksialnega kabla
+
+\[ H(s) = \frac{U_i}{\Delta x} = - \frac{d_{33} ES}{x_0 C_f} \frac{\tau_f s}{1 + \tau_f s}.
+\]
+#+end_izpeljava
 ** Induktivni senzor :v_zanimivost:
+#+begin_izpeljava
+Shema induktivnega senzorja je prikazana na spodnji sliki.
+
+#+begin_src latex
+\begin{center}
+ \begin{circuitikz}[
+   longL/.style = {cute inductor, inductors/scale=0.75,
+   inductors/width=1.6, inductors/coils=9}]
+    \scalebox{1}{
+      \draw (-2, 0) to[dcvsource, v^<=$U_0$, i^<=$I$] (2, 0);
+      \draw (-2, 0) to[R=$R$] (-2, -3)
+      to[longL, l=$L$, name=ind] (2, -3) -- (2, 0);
+      \draw[thick, red] (ind.midtap) -- (ind.core east)
+      \draw (-2,  -2.5) -- (-3, -2.5)
+      to[rmeterwa, t=$U_R$] (-3, -0.5) -- (-2, -0.5)
+    ;}
+  \end{circuitikz} 
+\end{center}
+#+end_src
+
+Merjenec prekrijemo z magnetnim materialom, ki ima magnetno permeabilnost \( \mu \). Vstavimo ga v tuljavo do polovične dolžine tuljave (rdeča črta). Zaradi različne magnetne permeabilnosti imamo efektivno dve tuljavi. Levi del z induktivnostjo
+
+\[ L_1 = \mu_0 \frac{S}{l - x} \left( N \frac{l - x}{l} \right) ^2 = \mu_0 \frac{N ^2 S}{l ^2} (l - x)
+\]
+
+in desni del (rdeča črta) z induktivnostjo
+
+\[ L_2 = \mu_0 \mu \frac{S}{x} \left( N \frac{x}{l} \right) ^2 = \mu \mu_0 \frac{SN ^2}{l ^2} x
+\]
+
+Na material je pritrjena ročka, ki se ob premikih premakne. To inducira napetost, ki jo merimo na voltmetru \( U_R \).
+
+Inducirano napetost dobimo s p omočjo magnetnega pretoka
+
+\[ U_L = - \dot{\phi}_m = - \left( LI \right)\dot{} \approx - I \frac{\mathrm{d} L}{\mathrm{d} t},
+\]
+kjer smo privzeli konstanten tok. Skupna induktivnost je vsota posameznih induktivnosti
+
+\begin{equation}
+\label{eq:12}
+ L = L_1 + L_2 = \mu_0 \frac{S N ^2}{l ^2} \left[ \mu x + l - x \right]. 
+\end{equation}
+
+Padec napetosti tekom zgornje sheme je
+
+\[ U_0 + U_R + U_L = 0. 
+\]
+
+Če razpišemo posamezne napetosti dobimo
+
+\[ U_0 - IR - \frac{\mathrm{d} }{\mathrm{d} t} L I = 0.
+\]
+
+Časovni odvod skupne induktivnosti \eqref{eq:12} je
+
+\[ \frac{\mathrm{d} }{\mathrm{d} t} L = \mu_0 \frac{N ^2 S}{l ^2} (\mu - 1) \dot{x}. 
+\]
+
+Odvod vstavimo v enačbo s padci napetosti
+
+\[ U_0 = \left[ R + \mu_0 \frac{S N ^2}{l ^2} (\mu - 1) \dot{x} \right] I,
+\]
+iz česar razberemo induktivno napetost
+
+\[ U_L \approx - \mu_0 \frac{N ^2 S I}{l ^2} (\mu - 1) \dot{x}  
+\]
+po Laplaceovi transformaciji pa dobimo prenosno funkcijo
+
+\[ H(s) =  \frac{U_L (s)}{x(s)} \approx - \mu_0 \frac{N ^2 S}{l ^2} (\mu - 1) I s
+\]
+#+end_izpeljava
 
