@@ -56,14 +56,14 @@ Fazno vpeto zanko sestavljajo 3 komponente:
   \[ H_{VCO} (s) = \frac{\theta_2}{U_F} = \frac{1}{s} K_0 
   \]
 
-Izhod iz fazno vpete zanke je potem
+Izhod iz fazno vpete zanke je
 
 \begin{equation}
 \label{eq:2}
 \theta_2 = \frac{1}{s} K_{FD} K_0 F(s) \left( \theta_1 - \theta_2 \right).
 \end{equation}
 
-Prenosna funkcija fazno vpete zanke je potem
+in njena prenosna funkcija je
 
 \[ H_{PLL} (s) = \frac{\theta_e}{\theta_1} = \frac{1}{1 + \frac{K_0 K_{FD} }{s} F(s)}.
 \]
@@ -159,7 +159,7 @@ Za \( \theta_e \ll 1 \) pa naredimo približek
 
 Ločimo več tipov faznih detektorjev
 
-- tip I. (XOR gate)  (glej Marko's chest zapiske), ki ima slabost, da ne loči med zaostajanjem in prehitevanjem signala.
+- tip I. (XOR gate)  (glej [[https://pengu5055.github.io/fmf-pdf/year3/FM_time-frequency.pdf][Marko's Chest]] zapiske, str.2), ki ima slabost, da ne loči med zaostajanjem in prehitevanjem signala.
   
 - tip II., ki nima zgornje slabosti, saj spremeni predznak sunka glede na to ali zaostaja ali prehiteva.
 #+end_izpeljava
@@ -196,7 +196,7 @@ Rešujemo torej enačbi za oceni \( \dot{\hat{\theta}}_s \) in \( \dot{\hat{\ome
 \dot{\hat{\omega}}_s &= K_{\omega} \left( z - \hat{\theta}_s \right)
 \end{align}
 
-Enačbo \eqref{ali4:1} odvajamo po času in nadomestimo \( \dot{\hat{\omega}}_s \) v odvajanem izrazu z \eqref{ali4:2}. Dobimo
+Enačbo \eqref{ali4:1} odvajamo po času in nadomestimo \( \dot{\hat{\omega}}_s \) v odvajanem izrazu s \eqref{ali4:2}. Dobimo
 
 \[ \ddot{\hat{\theta}}_s = K_{\omega} \left( z - \hat{\theta}_s \right) + K_{\theta} \left( \dot{z} - \dot{\hat{\theta}}_s \right).
 \]
@@ -227,7 +227,7 @@ in prenosna funkcija fazno vpete zanke je potem
 
 Faktor dušenja je torej \( \frac{1}{\tau} \) in velika časovna konstanta \( \tau \) poda majhen faktor dušenja in zato ni primerna.
 
-Shema modificiranega RC filtra se nahaja na spodnji slika
+Shema modificiranega RC filtra se nahaja na spodnji sliki
 
 #+begin_src latex
 \begin{center}
@@ -394,7 +394,80 @@ in dobimo
 \[ \Delta \omega_L = K_0 K_{FD} \frac{\tau_2}{\tau_1 + \tau_2} = \left( \Delta \omega \right)_{\max} \frac{\tau_2}{\tau_1 + \tau_2}.
 \]
 #+end_izpeljava
-
-
 * Merjenje majhnih premikov
+** Uporovni lističi
+#+begin_idea
+Shema senzorja premika, ki uporablja uporovne lističe je vidna na sliki \ref{fig:upor}.
+
+#+attr_latex: :width 0.5\textwidth :caption \caption{\label{fig:upor} Shema senzorja premika z uporovnimi lističi, vir \cite{likar_osnove_2016}}
+[[file:figures/uporovniListici.png]]
+
+Senzor pri svojem delovanju izkorišča dejstvo, da je upor, definiran kot
+
+\begin{equation}
+\label{eq:7}
+ R = \rho \frac{l}{S}, 
+\end{equation}
+odvisen od dolžine upornika. Če se ta skrči ali raztegne za \( \mathrm{d} l \), se temu primerno spremeni tudi upor. Sprememba napetosti zaradi skrča ali raztega \( \mathrm{d}l \) je enaka
+
+\[ \mathrm{d} U = \frac{3}{4} NU_0 \frac{\mathrm{d}l}{l} \propto \frac{\mathrm{d} l}{l},
+\]
+kjer je \( N \) število žic.
+
+Uporovne lističe se nalepi na merjenec. Ker je specifični upor \( \rho \) odvisen od temperature, imamo kontrolni (kompenzacijski) listič, ki se nahaja pri isti temperaturi.
+#+end_idea
+#+begin_izpeljava
+Če žico raztegnemo (skrčimo) za \( \mathrm{d}l \), se bo upor \( R \) iz enačbe \eqref{eq:7} povečal (zmanjšal) za
+
+\begin{equation}
+\label{eq:8}
+ \mathrm{d} R = \frac{\rho}{S} \mathrm{d} l + \mathrm{d} \rho \frac{l}{S} - \rho l \frac{\mathrm{d} S}{S ^2}
+\end{equation}
+
+Zadnji člen izrazimo s pomočjo Poissonovega števila \( \mu \) in raztezka \( \frac{\mathrm{d} l}{l} \) preko enačbe
+
+\[ \frac{\mathrm{d} S}{S} = - 2 \mu \frac{\mathrm{d} l}{l}. 
+\]
+
+Enačbo \eqref{eq:8} delimo z enačbo \eqref{eq:7} in zapišemo
+
+\[ \frac{\mathrm{d} R}{R} = \frac{\mathrm{d} l}{l} + \frac{\mathrm{d} \rho}{\rho} - \frac{\mathrm{d} S}{S} = \frac{\mathrm{d} l}{l} + \frac{\mathrm{d} \rho}{\rho} + 2 \mu \frac{\mathrm{d} l}{l}
+\]
+
+Izpostavimo relativni skrček
+
+\[ \frac{\mathrm{d} R}{R} = \frac{\mathrm{d} l}{l} \left( 1 + 2 \mu + \frac{\frac{\mathrm{d} \rho}{\rho}}{\frac{\mathrm{d} l}{l}} \right) 
+\]
+
+Zadnji člen je specifična piezoelektričnost in znaša za kovine približno \( 1 \). Koeficientu
+
+\[ G = \frac{\frac{\mathrm{d} R}{R}}{\frac{\mathrm{d} l}{l}} = 1 + 2 \mu + 1 \approx 3, \quad \mu \in [0.24, 0.40],
+\]
+pravimo /umeritveni faktor/.
+
+Uporovni listič vežemo v Wheatstonov most kot vidimo na sliki \ref{fig:upor}. Sprememba upornosti enega od uporov spremeni napetost na izhodu. Za Wheatstonov most velja
+
+\[ \mathrm{d} U = U_0 \frac{R_2 R_3 - R_1 R_4}{\left( R_3 + R_4 \right) \left( R_1 + R_2 \right)}.
+\]
+
+Upoštevamo, da so upori enaki \( R_3 = R_4 \) in \( R_2 = R_1 + \mathrm{d} R \), kjer \( \mathrm{d} R \ll R_2 \). Zgornja enačba postane
+
+\begin{align*}
+  \mathrm{d} U &= U_0 \frac{R (R_2 - R_1)}{2 R \cdot 2 R_1} \\
+&= U_0 \frac{\mathrm{d} R}{4 R}
+\end{align*}
+
+Upoštevamo prej izpeljan rezultat in dobimo
+
+\[ \mathrm{d} U = \frac{3}{4} U_0 \frac{\mathrm{d} l}{l}. 
+\]
+#+end_izpeljava
+** Kondenzatorski senzor
+#+begin_idea
+Shema senzorja premika, ki deluje s pomočjo kondenzatorjev vidimo na sliki \ref{fig:kond}.
+
+#+attr_latex: :width 0.5\textwidth :caption \caption{Shema senzorja premika, ki deluje na osnovi kondenzatorja, vir \cite{likar_osnove_2016}.}
+#+end_idea
+** Piezoelektrični senzor
+** Induktivni senzor :v_zanimivost:
 
