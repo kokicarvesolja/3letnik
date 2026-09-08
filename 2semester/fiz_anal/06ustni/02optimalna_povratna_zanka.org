@@ -895,9 +895,13 @@ Senzor interagira z opazovanim sistemom \( S \). Merilo, ki ga uporabljamo za op
 \]
 kjer je \( U_M \) napetosti, ki jo kaže voltmeter, ter \( Z_M \) vhodni upor voltmetra.
 
-Preko Theveninovega izreka pridemo do zaključka, da za \( U_M < U_{AB} \), kjer \( U_{AB} \) napetost med dvema točkama \( A \) in \( B \) v sistemu \( S \), velja \( \frac{Z_{AB}}{Z_M} \to 0 \). Naš sistem bo trošil minimalno moč \( P \ll P_{\max} \), ko je \( Z_M \gg Z_{AB} \).
+Preko Theveninovega izreka vzpostavimo shemo za merjenje napetosti \( U_M \) našega senzorja. Zaradi zaporedne vezave voltmetra bo vedno veljalo \( U_M < U_{AB} \). V primeru impedance \( Z_M \to \infty \) pa velja \( U_M = U_{AB} \). Iz zveze
 
-Želimo, da je vhodna impedanca \( Z_{in} \to \infty \) ter izhodna impedanca \( Z_{out} = 0 \).
+\[ U_M = \frac{U_{AB}}{1 + \frac{Z_{AB}}{Z_M}} \le U_{AB}, 
+\]
+zaključimo, da bo to veljalo za \( \frac{Z_{AB}}{Z_M} \to 0 \). Naš sistem bo trošil minimalno moč \( P \ll P_{\max} \), ko je \( Z_M \gg Z_{AB} \).
+
+Želimo, da je vhodna impedanca \( Z_{in} \to \infty \) ter izhodna impedanca \( Z_{out} = 0 \), zato da lahko poganja velike toke (in s tem premika kazalce).
 #+end_idea
 
 #+attr_latex: :options [Theveninov izrek]
@@ -1005,12 +1009,12 @@ signal pa je
 \[ z = IR = R U \dot{C} = - RU \frac{\epsilon_0 S}{\xi_0 ^2} \dot{\xi} = RUC \frac{\dot{\xi}}{\xi_0}. 
 \]
 
-Za velik signal moramo torej izbrati velik \( C \), \( U \) ter čim manjši \( \xi_0 \), kar je ravno obratno od tega, kar zahtevamo za trošenje minimalne moči. Zato uporabljamo ojačevalnike.
+Za velik signal moramo torej izbrati velik \( C \), \( U \) ter čim manjši \( \xi_0 \), kar je ravno obratno od tega, kar zahtevamo za trošenje minimalne moči. Zato uporabljamo (pred)ojačevalnike, ki ga vežemo direktno na senzor in imajo vhodno impedanco \( Z_{in} \to \infty \) ter izhodno impedanco \( Z_{out} \to 0 \). Ojačevalnik mora imeti tudi lasten vir napajanja.
 ** Instrumentacijski ojačevalnik
 
-Shema instrumentacijskega ojačevalnika je
+Shema instrumentacijskega ojačevalnika je viden na sliki \ref{fig:insop}.
 
-#+attr_latex: :width 0.5\textwidth :caption \caption{Shema instrumentacijskega ojačevalnika, vir \cite{likar_osnove_2016}.}
+#+attr_latex: :width 0.5\textwidth :caption \caption{\label{fig:insop} Shema instrumentacijskega ojačevalnika, vir \cite{likar_osnove_2016}.}
 [[file:figures/ojacevalnik.png]]
 
 Sestavljajo ga trije operacijski ojačevalniki (OPAMP), ki imajo sledečo shemo
@@ -1032,7 +1036,7 @@ Sestavljajo ga trije operacijski ojačevalniki (OPAMP), ki imajo sledečo shemo
 
 Njegova naloga je, da ojača šibke električne signale. Ima dva vhoda \( U_1 \) (ang. /inverting/), \( U_2 \) (ang. /non-inverting/) in en izhod \( U_{izh} \). Prenosna funkcija OPAMP-a je
 
-\[ H = A_{DC} H_{LPF}, 
+\[ H = A_{DC} H_{LPF}, \quad A_{DC} \approx 10^{6}
 \]
 kjer je \( H_{LPF} \) prenosna funkcija low-pass filtra. Napetost na izhodu podaja enačba
 
@@ -1069,7 +1073,7 @@ Prenosna funkcija je potem
 
 \[ H = \frac{U_{out}}{U_{in}} = \frac{A}{AF + 1} = \frac{1}{F + \frac{1}{A}} \approx \frac{1}{F}, 
 \]
-kjer smo upoštevali velik \( A \gg 1 \). V primeru \( F = 1 \) imamo t.i. /napetostni sledilnik/, ki sledi napetosti na vhodu in od signala ne črpa moči.
+kjer smo upoštevali velik \( A \gg 1 \). V primeru \( F = 1 \) imamo t.i. /napetostni sledilnik/, ki sledi napetosti na vhodu in od signala ne črpa moči, saj ima lastno napajanje in visoko vhodno impedanco \( Z_{in} = \infty \).
 
 #+begin_idea
 Za izhodno napetosti instrumentacijskega ojačevalnika velja
@@ -1081,30 +1085,42 @@ Faktor pred \( \tilde{U}_2 \) je enak 1 za
 
 \[ \frac{R_2}{R_3} = \frac{R_2 '}{R_3 '},
 \]
-vendar ne drži vedno v praktičnih primerih. Če je faktor
+vendar ne drži vedno v praktičnih primerih. Če to drži, potem velja zveza
+
+\[ U_{out} = - \frac{R_3}{R_2} \Delta \tilde{U} = - \frac{R_3}{R_2} \left( 2 \frac{R_1}{R_0} + 1 \right) \Delta U = K \Delta U.
+\]
+
+Če je faktor
 
 \[   \left( 1 + \frac{R_2}{R_3} \right) \frac{R_3 '}{R_2 ' + R_3 ' } = \frac{1 + \epsilon}{1 - \epsilon},
 \]
 
 za \( \epsilon \ll 1 \), potem velja na izhodu
 
-\[ U_{out} = - \frac{R_3}{R_1 (1 - \epsilon)} \left[ \Delta \tilde{U}_1 - \epsilon \left( \tilde{U}_1 + \tilde{U}_2 \right) \right]. 
+\[ U_{out} = - \frac{R_3}{R_1 (1 - \epsilon)} \left[ \Delta \tilde{U} - \epsilon \left( \tilde{U}_1 + \tilde{U}_2 \right) \right]. 
 \]
 
-Ohranja se \( \Delta \tilde{U}_1 \), močno pa se spreminja vsota \( \tilde{U}_1 + \tilde{U}_2 \), saj se spreminja vsota \( U_1 + U_2 \). Z vhodnima OPAMP-oma in verigo uporov \( R_1 - R_0 - R_1 \) ojačamo razliko \( \Delta U \). 
+Ohranja se \( \Delta \tilde{U} \), močno pa se spreminja vsota \( \tilde{U}_1 + \tilde{U}_2 \), saj se spreminja vsota \( U_1 + U_2 \). Z vhodnima OPAMP-oma in verigo uporov \( R_1 - R_0 - R_1 \) ojačamo razliko \( \Delta U \). 
 
-Vsoti napetosti \( U_1 + U_2 \) pravimo *Common mode*. *Common Mode Rejection Ratio* (CMRR) je definiran kot
+Vsoti napetosti \( U_1 + U_2 \) pravimo *Common mode*. Razmerju med ojačano razliko napetosti in neojačano vsoto napetosti pravimo *Common Mode Rejection Ratio* (CMRR) in je definiran kot
 
-\[ \text{CMRR} = \frac{A \left( U_1 - U_2 \right)}{A \left( U_1 + U_2 \right)}. 
+\[ \text{CMRR} = \frac{A \left( U_1 - U_2 \right)}{B \left( U_1 + U_2 \right)},
 \]
+kjer sta \( A, B \) ojačevalna faktorja.
+
+Praktično nam to prav pride v naslednji situaciji: imamo senzor v sistemu \( S \), ki ima dva priključka. Kabla iz posameznega priključka prepletemo med seboj, zato da gresta po isti poti in dobita enak šum (npr. induktivni šum, ipd.). Razlika napetosti \( \Delta U \) je zaradi instrumentacijskega ojačevalnika enaka tako na senzorju kot na predojačevalniku, medtem ko vsota pa ne bo.
+
+Ozemljimo samo eno napravo - senzor ali predojačevalnik, ne obojega. V primeru ozemljenih obeh naprav lahko pride do t.i. *GROUND loop*-a, pri kateri imamo dodaten vir zaradi razlike napetosti med ozemljitvama.
 #+end_idea
 
-#+attr_latex: :options [Izhodna napetosti instrumentacijskega ojačevalnika]
+#+attr_latex: :options [Izhodna napetost instrumentacijskega ojačevalnika]
 #+begin_izpeljava
 Za vezje v črtkanem okviru velja Kirchoffov zakon
 
-\[ \tilde{U}_1 + \tilde{U}_2 = U_1 + U_2.
-\]
+\begin{equation}
+\label{eq:20}
+ \tilde{U}_1 + \tilde{U}_2 = U_1 + U_2.
+\end{equation}
 
 Za tok \( I \) potem velja
 
@@ -1120,13 +1136,15 @@ in nadalje
 \[ \left( \tilde{U}_1 - \tilde{U}_2 \right) = \Delta \tilde{U} = \left( 2 \frac{R_1}{R_0} + 1 \right) \left( U_1 - U_2 \right) =  \left( 2 \frac{R_1}{R_0} + 1 \right) \Delta U.
 \]
 
+Vezje v črtkanem okvirju ojačuje razliko napetosti za faktor \( \left( 2 \frac{R_1}{R_0} + 1 \right) \) (gornja enačba), vsote, enačba \eqref{eq:20} pa ne.
+
 Za del vezja izven črtkanega okviarja velja
 
 \[ \frac{\tilde{U}_2 - U}{R_2 '} = \frac{U}{R_3 '}, 
 \]
 iz česar sledi
 
-\[ \frac{\tilde{U}_2}{R_2 '} = U \left( \frac{1}{R_3 '} + \frac{1}{R_2 '} \right) = U \frac{R_2 ' + R_3 '}{R_3 ' R_2 '} \implies U = \tilde{U}_2 \frac{R_3 '}{R_2 ' + R_3 '}
+\[ \frac{\tilde{U}_2}{R_2 '} = U \left( \frac{1}{R_3 '} + \frac{1}{R_2 '} \right) = U \frac{R_2 ' + R_3 '}{R_3 ' R_2 '} \implies U = \tilde{U}_2 \frac{R_3 '}{R_2 ' + R_3 '}.
 \]
 
 Za drugi del vezja pa velja
@@ -1168,13 +1186,19 @@ RC člen je v termičnem ravnovesju z okolico pri temperaturi \( T \), zato lahk
 \[ \left\langle W_C \right\rangle = \frac{1}{2} C \left\langle U_C ^2 \right\rangle = \frac{1}{2} k_B T \implies \ Q = 2k TR.
 \]
 
+Moč \( P \) definirana z integralom
+
+\[ P = \int\limits_0^{\infty}  \frac{\mathrm{d} \left\langle U ^2 \right\rangle }{\mathrm{d} \omega} \, \mathrm{d} \omega,
+\]
+divergira.
+
 Definiramo *spektralno gostoto šuma*
 
 \[ R \frac{\mathrm{d} P}{\mathrm{d} \omega} = \frac{\mathrm{d} \left\langle U ^2 \right\rangle}{\mathrm{d} \omega},
 \]
-ki nam pove povprečno moč, ki jo dobiva upor \( R \) zaradi nihanja napetosti na intervalu \( [\omega - \mathrm{d} \omega, \omega + \mathrm{d} \omega] \). 
+ki nam pove povprečno moč \( P \), ki jo dobiva upor \( R \) zaradi nihanja napetosti na intervalu \( [\omega - \mathrm{d} \omega, \omega + \mathrm{d} \omega] \). 
 
-Po Wiener-Khinchinovem izreku sledi, da je spektralna gostota šuma Fourierov obrat avtokorelacijske funkcije funkcije \( \left\langle U_g (t) U_g (t + \tau) \right\rangle = 2k TR \delta(\tau) \),
+Wiener-Khinchinovem izrek podaja zvezo med spektralno gostoto šuma in avtokorelacijsko funkcijo \( \left\langle U_g (t) U_g (t + \tau) \right\rangle = 2k TR \delta(\tau) \). Trdi, da je spektralna gostota šuma Fourierova transformacija avtokorelacijske funkcije
 
 \[ \frac{\mathrm{d} \left\langle U ^2 \right\rangle}{\mathrm{d} \omega} = \frac{1}{\pi} \int\limits_{- \infty}^{\infty} 2 k TR \delta(t) e^{- \mathrm{i} \omega t}  \, \mathrm{d} t = 2 \frac{k T R}{\pi} = \phi(\omega), \quad \omega \geq 0.
 \]
@@ -1194,6 +1218,12 @@ za visoke frekvence \( \hbar \omega \gg k T \) je to \( 0 \), za nizke frekvence
 
 \[ \frac{\mathrm{d} \left\langle U ^2 \right\rangle}{\mathrm{d} \omega }  = \frac{2 k T R}{\pi}.
 \]
+
+Moč \( P \) definirana z integralom
+
+\[ P = \int\limits_0^{\infty} \frac{\mathrm{d} \left\langle U ^2 \right\rangle }{\mathrm{d} \omega} \, \mathrm{d} \omega, 
+\]
+tako ne divergira več.
 #+end_idea
 
 #+attr_latex: :options [Velikost termičnega šuma]
@@ -1245,6 +1275,8 @@ Vstavimo enačbo \eqref{eq:14} in izrazimo vrednost dinamičnega šuma
 
 \[ Q = \frac{2 k T \tau}{C} = 2 k T R. 
 \]
+
+S to izpeljavo zaključimo, da bi težko merili napetosti manjše od \( 1 \mathrm{mV} \) zaradi termičnega šuma pri sobni temperaturi.
 
 Ker smo privzeli, da je \( U_g(t) \) beli šum, potem velja enačba
 
@@ -1375,7 +1407,7 @@ Termični šum se širi skozi vezje, ki je sestavljeno iz linearnih elementov, m
 \]
 kjer je \( U_0 \) napetost na izhodu iz vezja, \( Z_0 \) pa je izhodna impedanca.
 
-Vhonda impedanca je definirana kot
+Vhodna impedanca je definirana kot
 
 \[ Z = \sum\limits_i^{} Z_i, 
 \]
