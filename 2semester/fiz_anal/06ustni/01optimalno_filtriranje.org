@@ -110,14 +110,14 @@ Dva seta izmerkov z različnima disperzijama
 \[ \bar{z}_1 = \frac{1}{N} \sum\limits_{i = 1}^N z_i, \ \sigma_1 ^2 = \frac{\sigma ^2}{N} \quad \text{ in } \quad \bar{z}_2 = \frac{1}{M} \sum\limits_{i = 1}^M z_i, \ \sigma_2 ^2 = \frac{\sigma ^2}{M}
 \]
 
-združimo v \( \left( \mathbf{z}_3, \sigma_3 \right) \) po definiciji povprečja
+združimo v \( \left( \bar{z}_3, \sigma_3 \right) \) po definiciji povprečja
 
-\[ \mathbf{z}_3 = \frac{1}{N + M} \sum\limits_{i = 1}^{N + M} z_i, \ \sigma_3 ^2 = \frac{\sigma ^2}{N + M}.
+\[ \bar{z}_3 = \frac{1}{N + M} \sum\limits_{i = 1}^{N + M} z_i, \ \sigma_3 ^2 = \frac{\sigma ^2}{N + M}.
 \]
 
 Vsoto razdelimo na dve
 
-\[ \mathbf{z}_3 = \frac{N}{N + M} \left( \frac{1}{N} \sum\limits_{i = 1}^N z_i \right) + \frac{M}{N + M} \left( \frac{1}{M} \sum\limits_{i = 1}^M z_i \right). 
+\[ \bar{z}_3 = \frac{N}{N + M} \left( \frac{1}{N} \sum\limits_{i = 1}^N z_i \right) + \frac{M}{N + M} \left( \frac{1}{M} \sum\limits_{i = 1}^M z_i \right). 
 \]
 Uteži pred vsotama, \( \frac{N}{N + M} \) in \( \frac{M}{N + M} \), zapišemo z disperzijami \( \sigma_1, \sigma_2 \) in \( \sigma_3 \). Velja
 
@@ -146,12 +146,12 @@ in analogno za drugo utež. Iz zveze \eqref{eq:2} dobimo enakost
 \]
 ki jo upoštevamo v uteži, da zapišemo kot
 
-\[ \mathbf{z}_3 = \frac{\sigma_2 ^2}{\sigma_1 ^2 + \sigma_2 ^2} \bar{z}_1 +\frac{\sigma_1 ^2}{\sigma_1 ^2 + \sigma_2 ^2} \bar{z}_2.
+\[ \bar{z}_3 = \frac{\sigma_2 ^2}{\sigma_1 ^2 + \sigma_2 ^2} \bar{z}_1 +\frac{\sigma_1 ^2}{\sigma_1 ^2 + \sigma_2 ^2} \bar{z}_2.
 \]
 
 Optimalno združena ocena je torej
 
-\[ \bar{z}_3 = \mathbf{z}_1 + \frac{\sigma_1 ^2}{\sigma_1 ^2 + \sigma_2 ^2} \left( \bar{z}_2 - \bar{z}_1 \right). 
+\[ \bar{z}_3 = \bar{z}_1 + \frac{\sigma_1 ^2}{\sigma_1 ^2 + \sigma_2 ^2} \left( \bar{z}_2 - \bar{z}_1 \right). 
 \]
 
 #+end_izpeljava

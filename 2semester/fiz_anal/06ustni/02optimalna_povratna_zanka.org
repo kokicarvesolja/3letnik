@@ -1245,7 +1245,7 @@ in po odvajanju dobimo tok
 
 Ko dobljeno vstavimo v enačbo \eqref{eq:12}, dobimo
 
-\[ U_g - U_C = IR = RC \mathbf{U}_C. 
+\[ U_g - U_C = IR = RC \dot{U}_C. 
 \]
 Označimo \( \tau = RC \) in imamo enačbo za Kalmanovo dinamiko vezja
 

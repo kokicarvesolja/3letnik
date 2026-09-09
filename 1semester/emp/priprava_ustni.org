@@ -1796,7 +1796,7 @@ Ohranitveni zakoni Maxwellovih enačb: razloži in opiši ohranjanje energije, g
 * EMP v snovi
 ** 23. vprašanje
 #+begin_problem
-Razloži in opiši magnetno polje v snovi: vezan tok, magnetizacija, konstitutivna relacija, pomen polarizacije in klasifikacija snovi. 
+Razloži in opiši električno polje v snovi: vezan naboj, polarizacija, slika snovi, konstitutivna relacija, pomen polarizacije in klasifikacija snovi.
 #+end_problem
 ** 24. vprašanje
 #+begin_problem
